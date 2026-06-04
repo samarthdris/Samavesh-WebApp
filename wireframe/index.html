@@ -1,0 +1,1999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samavesh · Student Portal (Wireframe)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  /* Samavesh-inspired palette */
+  --teal-900:#0a3f3a; --teal-700:#0e6e66; --teal-600:#0f857a; --teal-500:#14a99a;
+  --teal-100:#d6efec; --teal-50:#eef8f6; --teal-200:#bce4de; --teal-400:#3cbcae; --teal-800:#0c534c;
+  --marigold:#e8821e; --marigold-soft:#f6b24a; --marigold-50:#fdf2e2;
+  --cream:#faf6ef; --cream-2:#f3ece0; --paper:#ffffff;
+  --ink:#1b2b29; --ink-soft:#4d605d; --ink-faint:#8696930;
+  --muted:#7c8c89;
+  --line:#e7ddcf;
+  --green:#2f9e63; --green-50:#e7f4ec;
+  --blue:#2f6fd6; --blue-50:#e7eefb;
+  --red:#d2553f; --red-50:#fbeae6;
+  --amber:#d99413; --amber-50:#fbf1de;
+  --shadow-sm:0 1px 2px rgba(27,43,41,.06),0 2px 8px rgba(27,43,41,.05);
+  --shadow-md:0 6px 22px rgba(27,43,41,.10);
+  --shadow-lg:0 18px 48px rgba(14,110,102,.16);
+  --r-sm:10px; --r-md:16px; --r-lg:24px; --r-xl:30px;
+  --rail:264px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Mukta',system-ui,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 110% -10%, var(--teal-50), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, var(--marigold-50), transparent 55%),
+    var(--cream);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+  min-height:100vh;
+}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;color:var(--ink)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+img{max-width:100%}
+.serif{font-family:'Fraunces',serif}
+
+/* ---------- App frame ---------- */
+.app{display:flex;min-height:100vh}
+
+/* ---------- Side rail (desktop) ---------- */
+.rail{
+  width:var(--rail);flex:0 0 var(--rail);position:sticky;top:0;height:100vh;
+  background:linear-gradient(180deg,var(--teal-900),var(--teal-700));
+  color:#eaf6f4;padding:26px 18px;display:flex;flex-direction:column;gap:8px;
+  border-right:1px solid rgba(255,255,255,.06);
+}
+.brand{display:flex;align-items:center;gap:12px;padding:6px 8px 18px}
+.brand .mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));
+  display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-weight:700;font-size:22px;box-shadow:0 6px 16px rgba(232,130,30,.4)}
+.brand .name{font-family:'Fraunces';font-weight:600;font-size:20px;color:#fff;line-height:1}
+.brand .tag{font-size:11.5px;color:var(--teal-100);letter-spacing:.02em;opacity:.85}
+.nav{display:flex;flex-direction:column;gap:4px;margin-top:6px}
+.nav-label{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:rgba(214,239,236,.5);padding:14px 12px 6px}
+.nav a{display:flex;align-items:center;gap:13px;padding:11px 13px;border-radius:12px;color:#d3ebe8;font-weight:500;font-size:15px;transition:.18s;position:relative}
+.nav a svg{width:20px;height:20px;flex:0 0 20px;opacity:.92}
+.nav a:hover{background:rgba(255,255,255,.08);color:#fff}
+.nav a.active{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.nav a.active::before{content:"";position:absolute;left:-18px;top:50%;transform:translateY(-50%);width:4px;height:24px;border-radius:0 4px 4px 0;background:var(--marigold)}
+.nav a .soon{margin-left:auto;font-size:10px;font-weight:600;background:rgba(246,178,74,.18);color:var(--marigold-soft);padding:3px 7px;border-radius:20px;letter-spacing:.03em}
+.rail-foot{margin-top:auto;display:flex;align-items:center;gap:11px;padding:12px;border-radius:14px;background:rgba(255,255,255,.07)}
+.rail-foot .av{width:38px;height:38px;border-radius:50%;background:linear-gradient(140deg,#f6b24a,#e8821e);display:grid;place-items:center;color:#3a2400;font-weight:700}
+.rail-foot .who{font-size:13.5px;font-weight:600;color:#fff;line-height:1.1}
+.rail-foot .who small{display:block;font-weight:400;color:var(--teal-100);font-size:11.5px}
+
+/* ---------- Main ---------- */
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{
+  display:flex;align-items:center;gap:16px;padding:18px 30px;position:sticky;top:0;z-index:20;
+  background:rgba(250,246,239,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);
+}
+.topbar .mobile-brand{display:none;align-items:center;gap:10px}
+.topbar .mobile-brand .mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-weight:700;font-size:18px}
+.search{flex:1;max-width:380px;display:flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:10px 16px;color:var(--muted)}
+.search input{border:none;outline:none;background:none;font-family:inherit;font-size:14.5px;color:var(--ink);width:100%}
+.topbar .spacer{flex:1}
+.icon-btn{width:42px;height:42px;border-radius:50%;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-soft);transition:.18s;position:relative}
+.icon-btn:hover{box-shadow:var(--shadow-sm);color:var(--teal-700)}
+.icon-btn .dot{position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:var(--red);border:2px solid var(--paper)}
+.lang{display:flex;align-items:center;gap:7px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:9px 14px;font-size:13.5px;font-weight:600;color:var(--ink-soft)}
+
+.content{padding:30px;max-width:1080px;width:100%;margin:0 auto;flex:1}
+.screen{display:none;animation:fade .5s ease both}
+.screen.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.stagger>*{opacity:0;animation:rise .55s ease forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.stagger>*{transform:translateY(14px)}
+.stagger>*:nth-child(1){animation-delay:.04s}
+.stagger>*:nth-child(2){animation-delay:.1s}
+.stagger>*:nth-child(3){animation-delay:.16s}
+.stagger>*:nth-child(4){animation-delay:.22s}
+.stagger>*:nth-child(5){animation-delay:.28s}
+.stagger>*:nth-child(6){animation-delay:.34s}
+
+/* ---------- Headers ---------- */
+.page-h{margin-bottom:22px}
+.page-h .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-600);margin-bottom:7px}
+.page-h h1{font-size:32px}
+.page-h p{color:var(--ink-soft);font-size:15.5px;margin-top:6px;max-width:60ch}
+
+/* ---------- Hero / greeting ---------- */
+.hero{
+  background:linear-gradient(135deg,var(--teal-700),var(--teal-900));color:#eafaf7;
+  border-radius:var(--r-lg);padding:28px 30px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:22px;
+}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,rgba(246,178,74,.5),transparent 65%)}
+.hero::before{content:"";position:absolute;right:40px;bottom:-80px;width:200px;height:200px;border-radius:50%;border:1.5px solid rgba(255,255,255,.12)}
+.hero .greet{font-size:13.5px;color:var(--teal-100);letter-spacing:.04em}
+.hero h2{color:#fff;font-size:28px;margin:4px 0 10px}
+.hero p{color:#cfeae6;max-width:46ch;font-size:15px}
+.hero .quote{margin-top:16px;display:inline-flex;align-items:center;gap:9px;font-family:'Fraunces';font-style:italic;font-size:15px;color:var(--marigold-soft)}
+
+/* ---------- Journey path (signature) ---------- */
+.journey{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 28px;box-shadow:var(--shadow-sm);margin-bottom:22px}
+.journey .jh{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.journey .jh h3{font-size:20px}
+.journey .jh span{font-size:13.5px;color:var(--muted)}
+.path{display:flex;gap:0;position:relative}
+.step{flex:1;text-align:center;position:relative;padding-top:4px}
+.step::before{content:"";position:absolute;top:21px;left:-50%;width:100%;height:3px;background:var(--cream-2);z-index:0}
+.step:first-child::before{display:none}
+.step.done::before,.step.current::before{background:linear-gradient(90deg,var(--teal-500),var(--teal-600))}
+.step .bub{width:44px;height:44px;border-radius:50%;background:var(--cream-2);color:var(--muted);display:grid;place-items:center;margin:0 auto 10px;position:relative;z-index:1;font-weight:700;border:3px solid var(--cream);transition:.2s}
+.step .bub svg{width:20px;height:20px}
+.step.done .bub{background:linear-gradient(140deg,var(--teal-600),var(--teal-500));color:#fff;box-shadow:0 6px 14px rgba(15,133,122,.35)}
+.step.current .bub{background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));color:#3a2400;box-shadow:0 0 0 6px var(--marigold-50),0 8px 18px rgba(232,130,30,.35);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 6px var(--marigold-50),0 8px 18px rgba(232,130,30,.3)}50%{box-shadow:0 0 0 11px rgba(246,178,74,.18),0 8px 18px rgba(232,130,30,.3)}}
+.step .lbl{font-size:12.5px;font-weight:600;color:var(--ink)}
+.step .sub{font-size:11px;color:var(--muted)}
+.step.upcoming .lbl,.step.upcoming .sub{color:var(--ink-faint);opacity:.55}
+
+/* ---------- Grid + cards ---------- */
+.grid{display:grid;gap:18px}
+.g-2{grid-template-columns:repeat(2,1fr)}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:20px;box-shadow:var(--shadow-sm);transition:.2s}
+.card.hoverable:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+.stat .top{display:flex;align-items:center;justify-content:space-between}
+.stat .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center}
+.stat .num{font-family:'Fraunces';font-size:30px;font-weight:600;margin-top:14px;line-height:1}
+.stat .cap{font-size:13.5px;color:var(--ink-soft);margin-top:3px}
+.ic.teal{background:var(--teal-50);color:var(--teal-700)}
+.ic.gold{background:var(--marigold-50);color:var(--marigold)}
+.ic.green{background:var(--green-50);color:var(--green)}
+.ic.blue{background:var(--blue-50);color:var(--blue)}
+
+.section-h{display:flex;align-items:center;justify-content:space-between;margin:30px 0 14px}
+.section-h h3{font-size:21px}
+.section-h a{font-size:13.5px;font-weight:600;color:var(--teal-700);display:inline-flex;gap:5px;align-items:center}
+
+/* ---------- Pills / status ---------- */
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:5px 11px;border-radius:30px;letter-spacing:.01em}
+.pill .pdot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.pill.green{background:var(--green-50);color:var(--green)}
+.pill.blue{background:var(--blue-50);color:var(--blue)}
+.pill.amber{background:var(--amber-50);color:var(--amber)}
+.pill.red{background:var(--red-50);color:var(--red)}
+.pill.teal{background:var(--teal-50);color:var(--teal-700)}
+.pill.grey{background:var(--cream-2);color:var(--muted)}
+
+/* ---------- Scholarship cards ---------- */
+.sch{display:flex;flex-direction:column;gap:14px}
+.sch-card{display:flex;gap:18px;align-items:flex-start}
+.sch-card .logo{width:54px;height:54px;border-radius:14px;flex:0 0 54px;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;font-size:20px;color:#fff}
+.sch-card .body{flex:1;min-width:0}
+.sch-card h4{font-size:17px;margin-bottom:3px}
+.sch-card .meta{display:flex;flex-wrap:wrap;gap:14px;color:var(--ink-soft);font-size:13px;margin:8px 0 12px}
+.sch-card .meta span{display:inline-flex;align-items:center;gap:6px}
+.sch-card .meta svg{width:15px;height:15px;color:var(--teal-600)}
+.amount{font-family:'Fraunces';font-weight:600;color:var(--teal-700)}
+.progress{height:8px;border-radius:20px;background:var(--cream-2);overflow:hidden;margin-top:4px}
+.progress i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--teal-500),var(--teal-600))}
+.progress.gold i{background:linear-gradient(90deg,var(--marigold-soft),var(--marigold))}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:11px 18px;border-radius:30px;transition:.18s}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:linear-gradient(135deg,var(--teal-600),var(--teal-700));color:#fff;box-shadow:0 6px 16px rgba(15,110,102,.28)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(15,110,102,.34)}
+.btn-gold{background:linear-gradient(135deg,var(--marigold),var(--marigold-soft));color:#3a2400;box-shadow:0 6px 16px rgba(232,130,30,.3)}
+.btn-gold:hover{transform:translateY(-2px)}
+.btn-ghost{background:var(--paper);border:1px solid var(--line);color:var(--ink-soft)}
+.btn-ghost:hover{border-color:var(--teal-500);color:var(--teal-700)}
+.btn-sm{padding:8px 14px;font-size:13px}
+
+/* ---------- Timeline (application status) ---------- */
+.tl{position:relative;padding-left:30px}
+.tl::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--cream-2)}
+.tl-item{position:relative;padding-bottom:22px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item .knob{position:absolute;left:-30px;top:1px;width:20px;height:20px;border-radius:50%;background:var(--paper);border:2px solid var(--cream-2);display:grid;place-items:center}
+.tl-item.done .knob{background:var(--green);border-color:var(--green)}
+.tl-item.done .knob svg{width:11px;height:11px;color:#fff}
+.tl-item.active .knob{background:var(--marigold);border-color:var(--marigold);box-shadow:0 0 0 5px var(--marigold-50)}
+.tl-item .t{font-weight:600;font-size:14.5px}
+.tl-item .d{font-size:12.5px;color:var(--muted)}
+.tl-item.future .t{color:var(--ink-faint);opacity:.5}
+
+/* ---------- Documents ---------- */
+.doc-row{display:flex;align-items:center;gap:16px;padding:15px 4px;border-bottom:1px solid var(--line)}
+.doc-row:last-child{border-bottom:none}
+.doc-row .di{width:44px;height:44px;border-radius:12px;flex:0 0 44px;display:grid;place-items:center;background:var(--cream-2);color:var(--ink-soft)}
+.doc-row .dn{flex:1;min-width:0}
+.doc-row .dn b{font-weight:600;font-size:14.5px;display:block}
+.doc-row .dn small{color:var(--muted);font-size:12.5px}
+.upbox{border:1.5px dashed var(--teal-500);background:var(--teal-50);border-radius:var(--r-md);padding:22px;text-align:center;color:var(--teal-700);margin-top:6px}
+.upbox svg{width:30px;height:30px;margin-bottom:8px}
+.upbox b{display:block;font-size:15px;color:var(--ink)}
+.upbox small{color:var(--ink-soft);font-size:12.5px}
+
+/* ---------- Document procurement (arrange → apply → follow-up → upload → verify) ---------- */
+.arr-card{border:1px solid var(--line);border-radius:var(--r-md);background:var(--paper);margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow-sm)}
+.arr-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;transition:.15s}
+.arr-head:hover{background:var(--cream)}
+.arr-head .di{width:44px;height:44px;border-radius:12px;flex:0 0 44px;display:grid;place-items:center}
+.arr-head .dn{flex:1;min-width:0}
+.arr-head .dn b{font-weight:600;font-size:14.5px;display:block}
+.arr-head .dn small{color:var(--muted);font-size:12.5px}
+.arr-head .chev{color:var(--muted);transition:.25s;flex:0 0 auto}
+.arr-card.open .chev{transform:rotate(180deg)}
+/* micro stepper per document */
+.docflow{display:flex;align-items:center;gap:0;padding:2px 18px 0;margin-bottom:-6px}
+.df{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;gap:5px}
+.df::before{content:"";position:absolute;top:9px;left:-50%;width:100%;height:2px;background:var(--cream-2);z-index:0}
+.df:first-child::before{display:none}
+.df.done::before{background:var(--teal-500)}
+.df .d{width:18px;height:18px;border-radius:50%;background:var(--cream-2);z-index:1;display:grid;place-items:center}
+.df .d svg{width:10px;height:10px;color:#fff}
+.df.done .d{background:var(--teal-600)}
+.df.cur .d{background:var(--marigold);box-shadow:0 0 0 4px var(--marigold-50)}
+.df .t{font-size:10px;font-weight:600;color:var(--muted);text-align:center;line-height:1.1}
+.df.done .t,.df.cur .t{color:var(--ink)}
+/* expandable body */
+.arr-body{display:none;padding:6px 18px 18px;border-top:1px solid var(--line);margin-top:14px}
+.arr-card.open .arr-body{display:block;animation:fade .3s ease}
+.guide{background:var(--cream);border-radius:var(--r-sm);padding:14px 16px;margin:12px 0}
+.guide .gt{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-700);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.guide ol{margin:0 0 0 18px;padding:0}
+.guide li{font-size:13.5px;color:var(--ink-soft);margin-bottom:5px}
+.proc{display:flex;flex-wrap:wrap;gap:10px 26px;margin:6px 0 14px}
+.proc .pi{min-width:120px}
+.proc .pi .k{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.proc .pi .v{font-size:14px;font-weight:600;color:var(--ink)}
+.fellow-help{display:flex;align-items:center;gap:11px;background:var(--teal-50);border-radius:12px;padding:11px 14px;margin-top:12px}
+.fellow-help .fa{width:36px;height:36px;border-radius:50%;flex:0 0 36px;background:linear-gradient(140deg,var(--teal-600),var(--teal-700));color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px}
+.fellow-help div{font-size:13px;color:var(--ink-soft);line-height:1.3}
+.fellow-help b{color:var(--ink)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+/* ---------- Mentors ---------- */
+.mentor{display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
+.mentor .ph{width:74px;height:74px;border-radius:50%;background:linear-gradient(140deg,var(--teal-500),var(--teal-700));display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-size:26px;font-weight:600;margin-bottom:8px}
+.mentor h4{font-size:16px}
+.mentor .role{font-size:12.5px;color:var(--muted)}
+.mentor .tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:10px 0 14px}
+.tagk{font-size:11px;background:var(--teal-50);color:var(--teal-700);padding:4px 9px;border-radius:20px;font-weight:500}
+.stars{color:var(--marigold);font-size:13px;letter-spacing:1px}
+
+/* ---------- Placeholder (LMS) ---------- */
+.placeholder{text-align:center;padding:60px 20px;max-width:520px;margin:40px auto}
+.placeholder .pic{width:96px;height:96px;border-radius:28px;background:linear-gradient(140deg,var(--teal-50),var(--marigold-50));display:grid;place-items:center;margin:0 auto 22px;color:var(--teal-600)}
+.placeholder .pic svg{width:48px;height:48px}
+.placeholder h2{font-size:26px;margin-bottom:10px}
+.placeholder p{color:var(--ink-soft);font-size:15.5px}
+.placeholder .chip{display:inline-block;margin-top:18px;background:var(--marigold-50);color:var(--marigold);font-weight:600;font-size:13px;padding:8px 16px;border-radius:30px}
+
+/* ---------- Profile ---------- */
+.prof-head{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.prof-head .pa{width:84px;height:84px;border-radius:24px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-size:34px;font-weight:700}
+.readonly-note{display:inline-flex;align-items:center;gap:8px;background:var(--teal-50);color:var(--teal-700);font-size:13px;font-weight:500;padding:9px 14px;border-radius:12px;margin:18px 0}
+.readonly-note svg{width:16px;height:16px}
+.field{padding:13px 0;border-bottom:1px solid var(--line)}
+.field .k{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.field .v{font-size:15px;font-weight:500;margin-top:2px}
+.field .v.mask{letter-spacing:2px}
+
+/* ---------- Mobile bottom nav ---------- */
+.botnav{display:none}
+
+/* ---------- Modal ---------- */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(13,33,31,.55);backdrop-filter:blur(3px);z-index:60;align-items:flex-end;justify-content:center;padding:0}
+.modal-bg.open{display:flex;animation:fade .25s ease}
+.modal{background:var(--cream);width:100%;max-width:460px;border-radius:24px 24px 0 0;padding:26px;box-shadow:0 -10px 40px rgba(0,0,0,.2);animation:slideup .3s ease}
+@keyframes slideup{from{transform:translateY(40px);opacity:.6}to{transform:none;opacity:1}}
+.modal h3{font-size:21px;margin-bottom:4px}
+.modal .mclose{position:absolute;top:16px;right:18px}
+.slot{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.slot button{border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 15px;font-weight:600;font-size:13.5px;color:var(--ink-soft);transition:.15s}
+.slot button:hover,.slot button.sel{border-color:var(--teal-600);background:var(--teal-50);color:var(--teal-700)}
+.modal textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;font-family:inherit;font-size:14px;resize:none;margin:8px 0 16px;background:var(--paper)}
+
+/* ---------- Login ---------- */
+.login-wrap{position:fixed;inset:0;z-index:100;display:flex;background:var(--cream)}
+.login-art{flex:1;background:linear-gradient(150deg,var(--teal-700),var(--teal-900));color:#eafaf7;padding:54px 56px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.login-art::after{content:"";position:absolute;right:-90px;bottom:-90px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(246,178,74,.42),transparent 65%)}
+.login-art::before{content:"";position:absolute;left:-60px;top:30%;width:200px;height:200px;border-radius:50%;border:1.5px solid rgba(255,255,255,.12)}
+.login-art .lbrand{display:flex;align-items:center;gap:13px;position:relative;z-index:1}
+.login-art .lbrand .mark{width:46px;height:46px;border-radius:13px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-weight:700;font-size:24px}
+.login-art .lbrand b{font-family:'Fraunces';font-size:22px;color:#fff}
+.login-art .pitch{position:relative;z-index:1}
+.login-art .pitch h2{color:#fff;font-size:38px;line-height:1.08;max-width:14ch}
+.login-art .pitch .tagline{font-family:'Fraunces';font-style:italic;color:var(--marigold-soft);font-size:18px;margin-top:16px}
+.login-art .pts{display:flex;flex-direction:column;gap:13px;position:relative;z-index:1}
+.login-art .pts div{display:flex;align-items:center;gap:11px;font-size:14.5px;color:#d4ebe8}
+.login-art .pts svg{width:20px;height:20px;flex:0 0 20px;color:var(--marigold-soft)}
+.login-form{width:460px;max-width:100%;display:flex;align-items:center;justify-content:center;padding:40px 36px}
+.login-card{width:100%;max-width:340px}
+.login-card .lhead{margin-bottom:26px}
+.login-card .mobile-mark{display:none;align-items:center;gap:11px;margin-bottom:22px}
+.login-card .mobile-mark .mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-weight:700;font-size:22px}
+.login-card h1{font-size:30px}
+.login-card .lsub{color:var(--ink-soft);font-size:14.5px;margin-top:6px}
+.lfield{margin-bottom:16px}
+.lfield label{display:block;font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:7px}
+.lfield .inp{display:flex;align-items:center;gap:10px;background:var(--paper);border:1.5px solid var(--line);border-radius:13px;padding:13px 15px;transition:.15s}
+.lfield .inp:focus-within{border-color:var(--teal-500);box-shadow:0 0 0 4px var(--teal-50)}
+.lfield .inp .cc{font-weight:600;color:var(--ink-soft);font-size:15px;padding-right:10px;border-right:1px solid var(--line)}
+.lfield .inp input{border:none;outline:none;background:none;font-family:inherit;font-size:16px;width:100%;color:var(--ink);letter-spacing:.02em}
+.otp-row{display:flex;gap:10px;margin-bottom:8px}
+.otp-row input{flex:1;text-align:center;font-size:22px;font-weight:700;font-family:'Fraunces';padding:13px 0;border:1.5px solid var(--line);border-radius:13px;background:var(--paper);outline:none;color:var(--teal-900)}
+.otp-row input:focus{border-color:var(--teal-500);box-shadow:0 0 0 4px var(--teal-50)}
+.lhint{font-size:12.5px;color:var(--muted);margin:4px 0 18px}
+.lhint a{color:var(--teal-700);font-weight:600}
+.btn-block{width:100%;justify-content:center;padding:14px}
+.lfoot{text-align:center;font-size:13px;color:var(--muted);margin-top:22px}
+.lfoot a{color:var(--teal-700);font-weight:600}
+.lstep{display:none}.lstep.on{display:block;animation:fade .35s ease}
+
+/* demo role chooser on login */
+.demo{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.demo .dl{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);margin-bottom:11px}
+.demo .drow{display:flex;gap:10px;flex-wrap:wrap}
+.demo button{flex:1;min-width:140px;display:flex;align-items:center;gap:11px;border:1.5px solid var(--line);background:var(--paper);border-radius:13px;padding:11px 13px;text-align:left;transition:.15s}
+.demo button:hover{border-color:var(--teal-500);background:var(--teal-50);transform:translateY(-2px)}
+.demo button .da{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:16px;flex:0 0 36px}
+.demo button .dt{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.15}
+.demo button .dt small{display:block;font-weight:400;color:var(--muted);font-size:11px}
+
+/* role switching */
+.hidden{display:none!important}
+
+/* ---------- Forms (Fellow onboarding / data entry) ---------- */
+.form-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:24px;box-shadow:var(--shadow-sm);margin-bottom:18px}
+.form-sec-title{font-family:'Fraunces';font-size:16.5px;font-weight:600;color:var(--teal-700);margin:4px 0 18px;padding-bottom:11px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px}
+.form-sec-title svg{width:18px;height:18px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:12.5px;font-weight:600;color:var(--ink-soft)}
+.fg label .req{color:var(--red);margin-left:2px}
+.fg input,.fg select,.fg textarea{font-family:inherit;font-size:14.5px;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;background:var(--cream);outline:none;color:var(--ink);transition:.15s;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--teal-500);background:#fff;box-shadow:0 0 0 4px var(--teal-50)}
+.fg .hint{font-size:11.5px;color:var(--muted)}
+.consent-box{background:var(--teal-50);border:1px solid var(--teal-100);border-radius:13px;padding:16px;display:flex;gap:13px;align-items:flex-start;margin-top:4px}
+.consent-box input{margin-top:3px;width:19px;height:19px;flex:0 0 19px;accent-color:var(--teal-600)}
+.consent-box .ct{font-size:13.5px;color:var(--ink-soft);line-height:1.45}
+.consent-box .ct b{color:var(--ink)}
+
+/* dup-search */
+.dupbox{background:var(--marigold-50);border:1px solid #f3dcb6;border-radius:14px;padding:18px;margin-bottom:18px}
+.dupbox .dt{font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.dupbox .dt svg{width:18px;height:18px;color:var(--marigold)}
+.dupbox p{font-size:13px;color:var(--ink-soft);margin-bottom:12px}
+.dupbox .sbar{display:flex;gap:10px;flex-wrap:wrap}
+.dupbox .sbar input{flex:1;min-width:160px;font-family:inherit;font-size:14px;padding:11px 14px;border:1.5px solid var(--line);border-radius:11px;background:#fff;outline:none}
+
+/* ---------- Student list rows (Fellow) ---------- */
+.stu-row{display:flex;align-items:center;gap:15px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--paper);margin-bottom:10px;cursor:pointer;transition:.15s}
+.stu-row:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.stu-row .sa{width:46px;height:46px;border-radius:13px;flex:0 0 46px;display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:18px}
+.stu-row .si{flex:1;min-width:0}
+.stu-row .si b{font-size:15px;font-weight:600;display:block}
+.stu-row .si small{color:var(--muted);font-size:12.5px}
+.stu-row .smeta{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.stu-row .smeta .sc{font-size:12px;color:var(--muted)}
+.stu-row .chev2{color:var(--muted);flex:0 0 auto}
+
+/* ---------- Tabs ---------- */
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:22px;overflow-x:auto}
+.tabs button{padding:12px 17px;font-family:inherit;font-weight:600;font-size:14px;color:var(--muted);border-bottom:2.5px solid transparent;white-space:nowrap;transition:.15s;background:none}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{color:var(--teal-700);border-bottom-color:var(--teal-600)}
+.tabpane{display:none}.tabpane.on{display:block;animation:fade .35s ease}
+
+/* ---------- Task rows (Fellow dashboard) ---------- */
+.task{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
+.task:last-child{border-bottom:none}
+.task .tk-ic{width:42px;height:42px;border-radius:12px;flex:0 0 42px;display:grid;place-items:center}
+.task .tk-b{flex:1;min-width:0}.task .tk-b b{font-size:14.5px;display:block}.task .tk-b small{color:var(--muted);font-size:12.5px}
+
+/* back link */
+.backlink{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--teal-700);margin-bottom:14px;cursor:pointer}
+.backlink svg{width:16px;height:16px}
+
+/* ---------- Multi-step forms (Onboarding / Scholarship / Documentation) ---------- */
+.formwrap{max-width:780px}
+.stepcount{display:inline-flex;align-items:center;gap:8px;background:var(--teal-50);color:var(--teal-700);font-weight:700;font-size:12.5px;padding:7px 14px;border-radius:30px}
+.fprogress{height:8px;border-radius:20px;background:var(--cream-2);overflow:hidden;margin:14px 0 24px}
+.fprogress i{display:block;height:100%;background:linear-gradient(90deg,var(--teal-500),var(--teal-600));border-radius:20px;transition:width .35s ease}
+.fstep{display:none}
+.fstep.on{display:block;animation:fade .35s ease}
+.fstep h2.steptitle{font-size:23px;margin-bottom:4px}
+.fstep .steplead{color:var(--ink-soft);font-size:14px;margin-bottom:20px}
+/* bilingual question block */
+.q{margin-bottom:20px;padding-bottom:4px}
+.q .qen{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.q .qen .req{color:var(--red);margin-left:2px}
+.q .qmr{font-size:12.5px;color:var(--ink-soft);margin-top:1px}
+.q .qhelp{font-size:12px;color:var(--ink-soft);margin-top:6px;background:var(--cream);padding:8px 11px;border-radius:9px;border-left:3px solid var(--teal-200)}
+.q input[type=text],.q input[type=email],.q input[type=tel],.q input[type=number],.q input[type=date],.q input[type=password],.q select,.q textarea{
+  width:100%;font-family:inherit;font-size:14.5px;padding:11px 13px;border:1.5px solid var(--line);border-radius:11px;background:var(--cream);outline:none;color:var(--ink);transition:.15s;margin-top:9px}
+.q input:focus,.q select:focus,.q textarea:focus{border-color:var(--teal-500);background:#fff;box-shadow:0 0 0 4px var(--teal-50)}
+.q textarea{resize:vertical;min-height:74px}
+.q .inline-cb{display:flex;align-items:center;gap:9px;margin-top:10px;font-size:13.5px;color:var(--ink-soft);cursor:pointer}
+.q .inline-cb input{width:17px;height:17px;accent-color:var(--teal-600)}
+/* option lists */
+.opts{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.opts.row{flex-direction:row;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--line);border-radius:11px;background:var(--paper);cursor:pointer;font-size:14px;transition:.15s;flex:1;min-width:120px}
+.opts:not(.row) .opt{flex:none}
+.opt:hover{border-color:var(--teal-400);background:var(--teal-50)}
+.opt input{accent-color:var(--teal-600);width:17px;height:17px;flex:0 0 17px}
+.opt.optout{border-style:dashed;color:var(--muted);background:transparent}
+/* matrix doc checklist */
+.matrix-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:10px}
+.matrix{width:100%;border-collapse:collapse;font-size:13.5px;min-width:420px}
+.matrix th{text-align:center;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);padding:11px 8px;border-bottom:2px solid var(--line);background:var(--cream)}
+.matrix th:first-child{text-align:left}
+.matrix td{padding:12px 8px;border-bottom:1px solid var(--line)}
+.matrix tr:last-child td{border-bottom:none}
+.matrix td:first-child{font-weight:500}
+.matrix td.cc{text-align:center}
+.matrix input{accent-color:var(--teal-600);width:18px;height:18px}
+.matrix .mr{font-size:11px;color:var(--muted);font-weight:400;display:block}
+/* installment grid */
+.instgrid{width:100%;border-collapse:collapse;margin-top:12px;font-size:13px}
+.instgrid th,.instgrid td{border:1px solid var(--line);padding:10px}
+.instgrid th{background:var(--cream);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft)}
+.instgrid td .amt{display:flex;align-items:center;gap:5px}
+.instgrid td .amt .rs{color:var(--muted);font-weight:600}
+.instgrid input{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:8px;font-family:inherit;font-size:13px;background:var(--cream);outline:none}
+.instgrid select{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:7px;font-family:inherit;font-size:12px;background:var(--cream);margin-top:6px;outline:none}
+.instgrid .rowh{background:var(--cream);font-weight:600;font-size:12.5px}
+/* credential + security */
+.cred{position:relative}
+.cred .eye{position:absolute;right:12px;top:calc(50% + 4px);transform:translateY(-50%);cursor:pointer;color:var(--muted);background:none}
+.cred input{font-family:'Courier New',monospace;letter-spacing:.04em}
+.seczone{background:var(--amber-50);border:1px solid #f0d9a8;border-radius:11px;padding:11px 14px;font-size:12.5px;color:#8a6212;display:flex;gap:9px;align-items:flex-start;margin-bottom:16px}
+.seczone svg{width:18px;height:18px;flex:0 0 18px;margin-top:1px}
+/* service branch */
+.branch{display:flex;gap:14px;flex-wrap:wrap}
+.branch .bopt{flex:1;min-width:210px;border:2px solid var(--line);border-radius:16px;padding:24px 20px;cursor:pointer;text-align:center;transition:.15s;background:var(--paper)}
+.branch .bopt:hover{border-color:var(--teal-400);transform:translateY(-2px)}
+.branch .bopt.sel{border-color:var(--teal-600);background:var(--teal-50);box-shadow:var(--shadow-sm)}
+.branch .bopt .bic{width:56px;height:56px;border-radius:15px;margin:0 auto 13px;display:grid;place-items:center;background:var(--teal-50);color:var(--teal-700)}
+.branch .bopt.sel .bic{background:var(--teal-600);color:#fff}
+.branch .bopt h4{font-size:17px}
+.branch .bopt p{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.4}
+/* scheme group */
+.schgroup .sgh{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-700);margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.schgroup .sgh::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--marigold)}
+/* optional banner */
+.optbanner{background:var(--teal-50);border:1px solid var(--teal-100);border-radius:11px;padding:11px 14px;font-size:13px;color:var(--teal-700);margin-bottom:18px;display:flex;gap:9px;align-items:center}
+.optbanner svg{width:18px;height:18px;flex:0 0 18px}
+/* form nav */
+.fnav{display:flex;justify-content:space-between;gap:12px;margin-top:10px;padding-top:20px;border-top:1px solid var(--line)}
+/* date filter + status filter */
+.filterbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.fdate{display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:8px 12px}
+.fdate svg{width:16px;height:16px;color:var(--teal-600)}
+.fdate input{border:none;outline:none;font-family:inherit;font-size:13.5px;background:none;color:var(--ink)}
+.chip{cursor:pointer;user-select:none}
+.chip.on{background:var(--teal-700);color:#fff}
+.empty{text-align:center;padding:46px 20px;color:var(--muted);font-size:14px;background:var(--paper);border:1px dashed var(--line);border-radius:14px}
+.empty svg{width:36px;height:36px;margin-bottom:10px;opacity:.5}
+
+@media(min-width:880px){.g-2{grid-template-columns:1fr 1fr}}
+/* ---------- Responsive ---------- */
+@media(max-width:920px){
+  .rail{display:none}
+  .topbar .mobile-brand{display:flex}
+  .content{padding:20px 16px 96px}
+  .topbar{padding:14px 16px}
+  .search{display:none}
+  .g-3{grid-template-columns:1fr 1fr}
+  .path{overflow-x:auto;padding-bottom:6px;gap:2px}
+  .step{min-width:88px}
+  .botnav{
+    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(255,255,255,.92);
+    backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:8px 6px 10px;justify-content:space-around;
+  }
+  .botnav a{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;font-weight:600;color:var(--muted);padding:5px 8px;border-radius:12px;flex:1;transition:.15s}
+  .botnav a svg{width:22px;height:22px}
+  .botnav a.active{color:var(--teal-700)}
+  .botnav a.active svg{color:var(--teal-700)}
+  .hero h2{font-size:23px}
+  .page-h h1{font-size:26px}
+  .login-art{display:none}
+  .login-form{width:100%;padding:28px 22px}
+  .login-card .mobile-mark{display:flex}
+  .login-card h1{font-size:27px}
+}
+@media(max-width:560px){
+  .g-2,.g-3{grid-template-columns:1fr}
+  .sch-card{flex-direction:row}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-art">
+    <div class="lbrand"><div class="mark">स</div><b>Samavesh</b></div>
+    <div class="pitch">
+      <h2>Your scholarship journey, all in one place.</h2>
+      <div class="tagline">“ From the margins to the mainstream. ”</div>
+    </div>
+    <div class="pts">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>See every scholarship you qualify for</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Track your documents and applications</div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Book free sessions with mentors</div>
+    </div>
+  </div>
+  <div class="login-form">
+    <div class="login-card">
+      <div class="mobile-mark"><div class="mark">स</div><b class="serif" style="font-size:21px">Samavesh</b></div>
+
+      <!-- step 1: mobile -->
+      <div class="lstep on" id="lstep1">
+        <div class="lhead"><h1>Welcome back</h1><div class="lsub">Sign in to your Samavesh account with your registered mobile number.</div></div>
+        <div class="lfield">
+          <label>Mobile number</label>
+          <div class="inp"><span class="cc">🇮🇳 +91</span><input id="loginMobile" type="tel" inputmode="numeric" placeholder="98765 43210" value="9800000021" /></div>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="getOtp()">Get OTP</button>
+
+        <div class="demo">
+          <div class="dl">Prototype — sign in as</div>
+          <div class="drow">
+            <button onclick="loginAs('student')"><span class="da" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><span class="dt">Student<small>Aarti Pawar</small></span></button>
+            <button onclick="loginAs('fellow')"><span class="da" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span><span class="dt">Fellow<small>Rahul More</small></span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- step 2: otp -->
+      <div class="lstep" id="lstep2">
+        <div class="lhead"><h1>Enter OTP</h1><div class="lsub">We sent a 4-digit code by SMS to <b id="otpTo">+91 98xxx xxx21</b>.</div></div>
+        <div class="otp-row">
+          <input maxlength="1" inputmode="numeric" value="4"/><input maxlength="1" inputmode="numeric" value="2"/><input maxlength="1" inputmode="numeric" value="8"/><input maxlength="1" inputmode="numeric" value="1"/>
+        </div>
+        <div class="lhint">Didn't get it? <a href="#" onclick="return false">Resend in 0:24</a> · <a href="#" onclick="backToMobile()">Change number</a></div>
+        <button class="btn btn-primary btn-block" onclick="doLogin()">Sign in</button>
+        <div class="lfoot">Trouble signing in? <a href="#" onclick="return false">Ask your Fellow for help</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app" id="studentApp">
+
+  <!-- ============ SIDE RAIL ============ -->
+  <aside class="rail">
+    <div class="brand">
+      <div class="mark">स</div>
+      <div>
+        <div class="name">Samavesh</div>
+        <div class="tag">From margins to mainstream</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="nav-label">My Journey</div>
+      <a href="#" class="nav-link active" data-go="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>Home
+      </a>
+      <a href="#" class="nav-link" data-go="scholarships">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>Scholarships
+      </a>
+      <a href="#" class="nav-link" data-go="documents">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Documents
+      </a>
+      <div class="nav-label">Grow</div>
+      <a href="#" class="nav-link" data-go="mentorship">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>Mentorship
+      </a>
+      <a href="#" class="nav-link" data-go="learning">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6.5 12 3l9 3.5L12 10 3 6.5Z"/><path d="M21 6.5V13"/><path d="M6 8.6V14c0 1.4 2.7 3 6 3s6-1.6 6-3V8.6"/></svg>Learning<span class="soon">Soon</span>
+      </a>
+      <div class="nav-label">Account</div>
+      <a href="#" class="nav-link" data-go="profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>My Profile
+      </a>
+      <a href="#" class="nav-link" onclick="logout();return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>Sign out
+      </a>
+    </nav>
+    <div class="rail-foot">
+      <div class="av">A</div>
+      <div class="who">Aarti Pawar<small>Pune · UG Year 2</small></div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <header class="topbar">
+      <div class="mobile-brand"><div class="mark">स</div><b class="serif" style="font-size:18px">Samavesh</b></div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        <input placeholder="Search scholarships, documents, mentors…" />
+      </div>
+      <div class="spacer"></div>
+      <div class="lang">🌐 English</div>
+      <button class="icon-btn" title="Notifications"><span class="dot"></span>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+      </button>
+    </header>
+
+    <main class="content">
+
+      <!-- ========== HOME ========== -->
+      <section class="screen active" id="home">
+        <div class="hero stagger">
+          <div class="greet">Good afternoon,</div>
+          <h2>Welcome back, Aarti 🌿</h2>
+          <p>You're doing great. Your Post-Matric scholarship is now <b style="color:#fff">Under Review</b> — we'll let you know the moment it moves forward.</p>
+          <div class="quote">“ From the margins to the mainstream. ”</div>
+        </div>
+
+        <!-- Journey path -->
+        <div class="journey">
+          <div class="jh"><h3>My Scholarship Journey</h3><span>Post-Matric Scholarship · Step 4 of 6</span></div>
+          <div class="path">
+            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Onboarded</div><div class="sub">12 Apr</div></div>
+            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Scholarship Identified</div><div class="sub">3 schemes</div></div>
+            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Documents Complete</div><div class="sub">All Accepted</div></div>
+            <div class="step current"><div class="bub">4</div><div class="lbl">Submitted</div><div class="sub">Under Review</div></div>
+            <div class="step upcoming"><div class="bub">5</div><div class="lbl">Approved</div><div class="sub">Awaited</div></div>
+            <div class="step upcoming"><div class="bub">6</div><div class="lbl">Disbursed</div><div class="sub">—</div></div>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid g-3 stagger">
+          <div class="card stat hoverable">
+            <div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div></div>
+            <div class="num">3</div><div class="cap">Scholarships identified</div>
+          </div>
+          <div class="card stat hoverable">
+            <div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+            <div class="num">6/8</div><div class="cap">Documents Accepted</div>
+          </div>
+          <div class="card stat hoverable">
+            <div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div></div>
+            <div class="num">₹50,000</div><div class="cap">Expected amount</div>
+          </div>
+        </div>
+
+        <!-- Next step + mentor -->
+        <div class="section-h"><h3>What's next for you</h3></div>
+        <div class="grid g-2">
+          <div class="card hoverable" style="border-left:4px solid var(--marigold)">
+            <span class="pill amber"><span class="pdot"></span>2 documents not yet Accepted</span>
+            <h4 class="serif" style="font-size:18px;margin:12px 0 6px">Documents in progress</h4>
+            <p style="color:var(--ink-soft);font-size:14px">For the <b>Ambedkar Scholarship</b>, one document is <b>Pending</b> and one is <b>Under Review</b>. Your Fellow Rahul is handling both.</p>
+            <button class="btn btn-gold btn-sm" style="margin-top:14px" data-go="documents">View documents</button>
+          </div>
+          <div class="card hoverable" style="border-left:4px solid var(--teal-500)">
+            <span class="pill teal"><span class="pdot"></span>Mentorship</span>
+            <h4 class="serif" style="font-size:18px;margin:12px 0 6px">Session with Dr. Meera, Fri 4 PM</h4>
+            <p style="color:var(--ink-soft);font-size:14px">Topic: <i>Choosing a stream after graduation.</i> A video link will arrive 1 hour before the call.</p>
+            <button class="btn btn-ghost btn-sm" style="margin-top:14px" data-go="mentorship">Go to mentorship</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== SCHOLARSHIPS ========== -->
+      <section class="screen" id="scholarships">
+        <div class="page-h">
+          <div class="eyebrow">Eligibility & Tracking</div>
+          <h1>My Scholarships</h1>
+          <p>These are the scholarships you qualify for, matched automatically from your profile. Track each application here — your Fellow keeps the status up to date.</p>
+        </div>
+
+        <!-- Active application with timeline -->
+        <div class="card" style="margin-bottom:18px">
+          <div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+                <div><h4>Post-Matric Scholarship for SC Students</h4>
+                <div style="font-size:13px;color:var(--muted)">Govt. of Maharashtra · National Scholarship Portal</div></div>
+                <span class="pill blue"><span class="pdot"></span>Under Review</span>
+              </div>
+              <div class="meta">
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg><b class="amount">₹50,000</b>/year</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Application ID: MH-PM-2026-44871</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Submitted 28 May</span>
+              </div>
+              <div class="tl">
+                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Documents Complete</div><div class="d">All documents Accepted · 24 May</div></div>
+                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">By Fellow Rahul · 28 May</div></div>
+                <div class="tl-item active"><div class="knob"></div><div class="t">Under Review</div><div class="d">In progress · last checked 2 Jun</div></div>
+                <div class="tl-item future"><div class="t">Approved</div><div class="d">Awaited</div></div>
+                <div class="tl-item future"><div class="t">Disbursed</div><div class="d">—</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-h"><h3>Ready to apply</h3></div>
+        <div class="card" style="margin-bottom:14px">
+          <div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+                <div><h4>Maharashtra State Minority Scholarship</h4><div style="font-size:13px;color:var(--muted)">Minority Dept., Govt. of Maharashtra</div></div>
+                <span class="pill green"><span class="pdot"></span>Ready to submit</span>
+              </div>
+              <div class="meta">
+                <span><b class="amount">₹25,000</b>/year</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Deadline: 30 Jun 2026</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:4px"><span style="color:var(--ink-soft)">Documents</span><b style="color:var(--green)">100% Accepted</b></div>
+              <div class="progress"><i style="width:100%"></i></div>
+              <p style="font-size:13px;color:var(--ink-soft);margin-top:12px">✅ All documents Accepted. Your Fellow will submit this on the portal shortly.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+                <div><h4>Dr. Babasaheb Ambedkar Scholarship</h4><div style="font-size:13px;color:var(--muted)">Social Justice Dept., Govt. of Maharashtra</div></div>
+                <span class="pill amber"><span class="pdot"></span>Documents Pending</span>
+              </div>
+              <div class="meta"><span><b class="amount">₹38,000</b>/year</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Deadline: 15 Jul 2026</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:4px"><span style="color:var(--ink-soft)">Documents</span><b style="color:var(--marigold)">6 of 8 Accepted · 1 Pending, 1 Under Review</b></div>
+              <div class="progress gold"><i style="width:75%"></i></div>
+              <button class="btn btn-gold btn-sm" style="margin-top:14px" data-go="documents">View documents</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== DOCUMENTS ========== -->
+      <section class="screen" id="documents">
+        <div class="page-h">
+          <div class="eyebrow">Documents</div>
+          <h1>My Documents</h1>
+          <p>Your document checklist. Each document moves through <b>Pending → Uploaded → Under Review → Accepted</b>. Your Fellow procures, submits and uploads every document for you — tap any document to see its full history.</p>
+        </div>
+
+        <div class="grid g-3 stagger" style="margin-bottom:18px">
+          <div class="card stat"><div class="num" style="color:var(--amber)">1</div><div class="cap">Pending</div></div>
+          <div class="card stat"><div class="num" style="color:var(--blue)">1</div><div class="cap">Under Review</div></div>
+          <div class="card stat"><div class="num" style="color:var(--green)">6</div><div class="cap">Accepted</div></div>
+        </div>
+
+        <div class="section-h"><h3>Document checklist</h3><span style="font-size:13px;color:var(--muted)">across your 3 scholarships</span></div>
+
+        <!-- (1) Pending — procurement in progress -->
+        <div class="arr-card" id="arr1">
+          <div class="arr-head" onclick="toggleArr('arr1')">
+            <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Non-Creamy Layer Certificate</b><small>Required for Dr. Babasaheb Ambedkar Scholarship</small></div>
+            <span class="pill amber"><span class="pdot"></span>Pending</span>
+            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="docflow">
+            <div class="df cur"><div class="d"></div><div class="t">Pending</div></div>
+            <div class="df"><div class="d"></div><div class="t">Uploaded</div></div>
+            <div class="df"><div class="d"></div><div class="t">Under&nbsp;Review</div></div>
+            <div class="df"><div class="d"></div><div class="t">Accepted</div></div>
+          </div>
+          <div class="arr-body">
+            <div class="proc">
+              <div class="pi"><div class="k">Verification Status</div><div class="v" style="color:var(--amber)">Pending</div></div>
+              <div class="pi"><div class="k">Document Type</div><div class="v">Caste</div></div>
+              <div class="pi"><div class="k">Required for</div><div class="v">Ambedkar Scholarship</div></div>
+            </div>
+            <div class="tl">
+              <div class="tl-item active"><div class="knob"></div><div class="t">Pending — procurement in progress</div><div class="d">Your Fellow is arranging this document · added to checklist 22 May</div></div>
+              <div class="tl-item future"><div class="t">Uploaded</div><div class="d">—</div></div>
+              <div class="tl-item future"><div class="t">Under Review</div><div class="d">—</div></div>
+              <div class="tl-item future"><div class="t">Accepted</div><div class="d">—</div></div>
+            </div>
+            <div class="fellow-help">
+              <div class="fa">R</div>
+              <div><b>Fellow Rahul is arranging this for you.</b> You'll get an SMS as the status changes — nothing for you to do.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- (2) Under Review -->
+        <div class="arr-card" id="arr2">
+          <div class="arr-head" onclick="toggleArr('arr2')">
+            <div class="di" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Domicile Certificate</b><small>Uploaded by your Fellow — being verified</small></div>
+            <span class="pill blue"><span class="pdot"></span>Under Review</span>
+            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="docflow">
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Pending</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div></div>
+            <div class="df cur"><div class="d"></div><div class="t">Under&nbsp;Review</div></div>
+            <div class="df"><div class="d"></div><div class="t">Accepted</div></div>
+          </div>
+          <div class="arr-body">
+            <div class="proc">
+              <div class="pi"><div class="k">Verification Status</div><div class="v" style="color:var(--blue)">Under Review</div></div>
+              <div class="pi"><div class="k">Document Type</div><div class="v">Domicile</div></div>
+              <div class="pi"><div class="k">Uploaded By</div><div class="v">Fellow Rahul</div></div>
+              <div class="pi"><div class="k">Upload Date</div><div class="v">2 Jun 2026</div></div>
+            </div>
+            <div class="tl">
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Pending</div><div class="d">Added to checklist · 22 May</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div><div class="d">By Fellow Rahul · 2 Jun · Re-upload Version 1</div></div>
+              <div class="tl-item active"><div class="knob"></div><div class="t">Under Review</div><div class="d">A Program Admin is verifying this document · since 2 Jun</div></div>
+              <div class="tl-item future"><div class="t">Accepted</div><div class="d">—</div></div>
+            </div>
+            <div class="fellow-help">
+              <div class="fa">R</div>
+              <div><b>Submitted for verification.</b> You'll be notified the moment it's Accepted.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- (3) Accepted — full history incl. Rejected → re-upload loop -->
+        <div class="arr-card" id="arr3">
+          <div class="arr-head" onclick="toggleArr('arr3')">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Income Certificate</b><small>Accepted · Validity Date 31 Mar 2027</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="docflow">
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Pending</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under&nbsp;Review</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div></div>
+          </div>
+          <div class="arr-body">
+            <div class="proc">
+              <div class="pi"><div class="k">Verification Status</div><div class="v" style="color:var(--green)">Accepted</div></div>
+              <div class="pi"><div class="k">Document Type</div><div class="v">Income</div></div>
+              <div class="pi"><div class="k">Reviewer</div><div class="v">Program Admin</div></div>
+              <div class="pi"><div class="k">Review Date</div><div class="v">20 May 2026</div></div>
+              <div class="pi"><div class="k">Validity Date</div><div class="v">31 Mar 2027</div></div>
+            </div>
+            <div class="tl">
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div><div class="d">By Fellow Rahul · 14 May · Re-upload Version 1</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">14 May</div></div>
+              <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected</div><div class="d">Rejection Reason: "Document not clearly legible" · 16 May</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div><div class="d">Re-upload by Fellow Rahul · 18 May · Re-upload Version 2</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">18 May</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div><div class="d">By Program Admin · 20 May</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- remaining Accepted documents -->
+        <div class="card" style="margin-top:14px">
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Caste Certificate</b><small>Document Type: Caste · Accepted 20 May</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Aadhaar Card</b><small>Document Type: Identity · Accepted 18 May</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>10th &amp; 12th Marksheet</b><small>Document Type: Academic · Accepted 18 May</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Bank Passbook</b><small>Document Type: Other · Accepted 18 May</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Bonafide Certificate</b><small>Document Type: Academic · Accepted 18 May</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== MENTORSHIP ========== -->
+      <section class="screen" id="mentorship">
+        <div class="page-h">
+          <div class="eyebrow">Grow · Mentorship</div>
+          <h1>Find a Mentor</h1>
+          <p>Book a free one-on-one session with a mentor — for career advice, higher studies, or scholarship guidance. No referral needed.</p>
+        </div>
+
+        <!-- upcoming -->
+        <div class="card" style="margin-bottom:20px;background:linear-gradient(135deg,var(--teal-700),var(--teal-900));color:#eafaf7;border:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+            <div>
+              <span class="pill" style="background:rgba(255,255,255,.16);color:#fff"><span class="pdot"></span>Upcoming session</span>
+              <h3 style="color:#fff;font-size:19px;margin:10px 0 4px">Dr. Meera Joshi · Career Counsellor</h3>
+              <div style="color:#cfeae6;font-size:14px">Friday, 6 June · 4:00 PM · 45 min · Video call</div>
+            </div>
+            <button class="btn btn-gold btn-sm">Join (link soon)</button>
+          </div>
+        </div>
+
+        <!-- filters -->
+        <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px">
+          <span class="tagk" style="background:var(--teal-700);color:#fff;padding:8px 14px">All mentors</span>
+          <span class="tagk" style="padding:8px 14px">Career</span>
+          <span class="tagk" style="padding:8px 14px">Higher Studies</span>
+          <span class="tagk" style="padding:8px 14px">Engineering</span>
+          <span class="tagk" style="padding:8px 14px">Marathi</span>
+        </div>
+
+        <div class="grid g-3 stagger">
+          <div class="card hoverable mentor">
+            <div class="ph">M</div><h4>Dr. Meera Joshi</h4><div class="role">Career Counsellor · 12 yrs</div>
+            <div class="stars">★★★★★ <span style="color:var(--muted)">4.9</span></div>
+            <div class="tags"><span class="tagk">Career</span><span class="tagk">Higher Studies</span></div>
+            <button class="btn btn-primary btn-sm" data-book="Dr. Meera Joshi">Book a session</button>
+          </div>
+          <div class="card hoverable mentor">
+            <div class="ph" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</div><h4>Amit Deshmukh</h4><div class="role">Software Engineer</div>
+            <div class="stars">★★★★★ <span style="color:var(--muted)">4.8</span></div>
+            <div class="tags"><span class="tagk">Engineering</span><span class="tagk">Scholarships</span></div>
+            <button class="btn btn-primary btn-sm" data-book="Amit Deshmukh">Book a session</button>
+          </div>
+          <div class="card hoverable mentor">
+            <div class="ph" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">S</div><h4>Sunita Kamble</h4><div class="role">College Professor</div>
+            <div class="stars">★★★★☆ <span style="color:var(--muted)">4.6</span></div>
+            <div class="tags"><span class="tagk">Commerce</span><span class="tagk">Marathi</span></div>
+            <button class="btn btn-primary btn-sm" data-book="Sunita Kamble">Book a session</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== LEARNING (LMS placeholder) ========== -->
+      <section class="screen" id="learning">
+        <div class="placeholder">
+          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6.5 12 3l9 3.5L12 10 3 6.5Z"/><path d="M21 6.5V13"/><path d="M6 8.6V14c0 1.4 2.7 3 6 3s6-1.6 6-3V8.6"/></svg></div>
+          <h2>Your Learning Journey is coming soon</h2>
+          <p>Structured courses on careers, life skills and exam prep — with badges and certificates — will live here. We're building it in the next phase.</p>
+          <div class="chip">🚧 Planned for Phase 3</div>
+        </div>
+      </section>
+
+      <!-- ========== PROFILE ========== -->
+      <section class="screen" id="profile">
+        <div class="page-h"><div class="eyebrow">Account</div><h1>My Profile</h1></div>
+        <div class="card">
+          <div class="prof-head">
+            <div class="pa">A</div>
+            <div>
+              <h3 style="font-size:23px">Aarti Ramesh Pawar</h3>
+              <div style="color:var(--ink-soft);font-size:14px">Student ID: SMV-2026-01182 · Onboarded by Fellow Rahul</div>
+              <div style="margin-top:8px"><span class="pill teal"><span class="pdot"></span>Active</span></div>
+            </div>
+          </div>
+          <div class="readonly-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            Your Fellow manages your profile details. To update anything, please reach out to them.
+          </div>
+          <div class="grid g-2">
+            <div class="field"><div class="k">Date of Birth</div><div class="v">14 August 2005</div></div>
+            <div class="field"><div class="k">Gender</div><div class="v">Female</div></div>
+            <div class="field"><div class="k">Category</div><div class="v">SC</div></div>
+            <div class="field"><div class="k">Course</div><div class="v">B.Com · Year 2</div></div>
+            <div class="field"><div class="k">Institution</div><div class="v">Fergusson College, Pune</div></div>
+            <div class="field"><div class="k">State / District</div><div class="v">Maharashtra · Pune</div></div>
+            <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div>
+            <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx21</div></div>
+            <div class="field"><div class="k">Aadhaar</div><div class="v mask">xxxx xxxx 4821</div></div>
+            <div class="field"><div class="k">Guardian</div><div class="v">Ramesh Pawar (Father)</div></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ========== STUDENT BOTTOM NAV (mobile) ========== -->
+<nav class="botnav" id="studentBot">
+  <a href="#" class="nav-link active" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
+  <a href="#" class="nav-link" data-go="scholarships"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>Schemes</a>
+  <a href="#" class="nav-link" data-go="documents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg>Docs</a>
+  <a href="#" class="nav-link" data-go="mentorship"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg>Mentors</a>
+  <a href="#" class="nav-link" data-go="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Profile</a>
+</nav>
+
+
+<!-- ===================================================================== -->
+<!-- ============================ FELLOW APP ============================== -->
+<!-- ===================================================================== -->
+<div class="app hidden" id="fellowApp">
+
+  <aside class="rail">
+    <div class="brand">
+      <div class="mark">स</div>
+      <div><div class="name">Samavesh</div><div class="tag">Fellow Workspace</div></div>
+    </div>
+    <nav class="nav">
+      <div class="nav-label">Workspace</div>
+      <a href="#" class="nav-link active" data-go="f-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard
+      </a>
+      <a href="#" class="nav-link" data-go="f-students">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>My Students
+      </a>
+      <a href="#" class="nav-link" data-go="f-applications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Applications
+      </a>
+      <div class="nav-label">Account</div>
+      <a href="#" class="nav-link" data-go="f-profile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>My Profile
+      </a>
+      <a href="#" class="nav-link" onclick="logout();return false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>Sign out
+      </a>
+    </nav>
+    <div class="rail-foot">
+      <div class="av">R</div>
+      <div class="who">Rahul More<small>Fellow · Pune</small></div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="mobile-brand"><div class="mark">स</div><b class="serif" style="font-size:18px">Fellow</b></div>
+      <div class="search">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+        <input placeholder="Search your students by name or mobile…" />
+      </div>
+      <div class="spacer"></div>
+      <button class="btn btn-primary btn-sm" data-go="f-onboard" style="margin-right:4px">+ Onboard Student</button>
+      <button class="icon-btn" title="Notifications"><span class="dot"></span>
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+      </button>
+    </header>
+
+    <main class="content">
+
+      <!-- ===== FELLOW DASHBOARD ===== -->
+      <section class="screen active" id="f-home">
+        <div class="hero stagger">
+          <div class="greet">Phase 1–4 · Fellow workspace</div>
+          <h2>Namaste, Rahul 🙏</h2>
+          <p>You're supporting <b style="color:#fff">24 students</b> through their scholarship journey. <b style="color:#fff">11 tasks</b> need your attention today.</p>
+          <div class="quote">“ One student, one journey, end to end. ”</div>
+        </div>
+
+        <!-- KPIs (MIS-03 fellow performance) -->
+        <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:8px">
+          <div class="card stat hoverable"><div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg></div></div><div class="num">24</div><div class="cap">My students</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div></div><div class="num">7</div><div class="cap">Documents Pending</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div></div><div class="num">12</div><div class="cap">Applications Submitted</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="num">5</div><div class="cap">Approved</div></div>
+        </div>
+
+        <!-- Tasks (workflow-driven) -->
+        <div class="section-h"><h3>Tasks needing your attention</h3></div>
+        <div class="card">
+          <div class="task">
+            <div class="tk-ic" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div>
+            <div class="tk-b"><b>3 applications Ready to Submit</b><small>All documents Accepted — submit on the government portal &amp; record details</small></div>
+            <button class="btn btn-primary btn-sm" data-go="f-scholarship">Submit</button>
+          </div>
+          <div class="task">
+            <div class="tk-ic" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="tk-b"><b>7 documents Pending across 5 students</b><small>Support document procurement, then upload</small></div>
+            <button class="btn btn-ghost btn-sm" data-go="f-docapp">Apply</button>
+          </div>
+          <div class="task">
+            <div class="tk-ic" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-7 3.3"/><path d="M3 4v4h4"/></svg></div>
+            <div class="tk-b"><b>2 applications Redirected for Correction</b><small>Identify correction issues, provide corrected information &amp; re-submit</small></div>
+            <button class="btn btn-ghost btn-sm" data-go="f-applications">Fix</button>
+          </div>
+          <div class="task">
+            <div class="tk-ic" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div class="tk-b"><b>4 applications Under Review &gt; 15 days</b><small>Log into the government portal and update the status</small></div>
+            <button class="btn btn-ghost btn-sm" data-go="f-applications">Check</button>
+          </div>
+          <div class="task">
+            <div class="tk-ic" style="background:var(--teal-50);color:var(--teal-700)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div>
+            <div class="tk-b"><b>1 application Approved — record disbursement</b><small>Record disbursed amount &amp; date once funds reach the student's account</small></div>
+            <button class="btn btn-ghost btn-sm" data-go="f-applications">Record</button>
+          </div>
+        </div>
+
+        <div class="section-h"><h3>Recent students</h3><a href="#" data-go="f-students">View all →</a></div>
+        <div onclick="go('f-student')" style="cursor:pointer">
+          <div class="stu-row">
+            <div class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</div>
+            <div class="si"><b>Aarti Ramesh Pawar</b><small>B.Com · Year 2 · Pune</small></div>
+            <div class="smeta"><span class="pill blue"><span class="pdot"></span>Submitted</span><span class="sc">3 scholarships</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+        </div>
+        <div class="stu-row">
+          <div class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">S</div>
+          <div class="si"><b>Suresh Jadhav</b><small>Class 12 · Nashik</small></div>
+          <div class="smeta"><span class="pill amber"><span class="pdot"></span>Documents Pending</span><span class="sc">2 scholarships</span></div>
+          <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        </div>
+      </section>
+
+      <!-- ===== MY STUDENTS ===== -->
+      <section class="screen" id="f-students">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Caseload</div><h1>My Students</h1><p>10 students assigned to you. You can only see students assigned to you (RBAC).</p></div>
+          <button class="btn btn-primary" data-go="f-onboard">+ Onboard New Student</button>
+        </div>
+
+        <div class="search" style="max-width:none;margin-bottom:12px">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          <input placeholder="Search by Name + DOB or Mobile (to avoid duplicates)…" />
+        </div>
+
+        <!-- working date filter -->
+        <div class="filterbar">
+          <div class="fdate">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+            <span style="font-size:12.5px;color:var(--muted)">Onboarded on</span>
+            <input type="date" id="stuDateInput" onchange="filterStuDate(this.value)" />
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="document.getElementById('stuDateInput').value='';filterStuDate('')">Clear date</button>
+        </div>
+
+        <!-- working status tabs -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+          <span class="tagk chip on" style="padding:8px 14px" onclick="filterStu('all',this)">All (10)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('onboarded',this)">Onboarded (2)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('documents',this)">Documents Pending (2)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('submitted',this)">Submitted (2)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('approved',this)">Approved (2)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('disbursed',this)">Disbursed (2)</span>
+        </div>
+
+        <div id="stuList">
+          <div class="stu-row" data-status="submitted" data-date="2026-04-12" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</div>
+            <div class="si"><b>Aarti Ramesh Pawar</b><small>SMV-2026-01182 · B.Com Year 2 · Pune · Onboarded 12 Apr</small></div>
+            <div class="smeta"><span class="pill blue"><span class="pdot"></span>Submitted</span><span class="sc">3 scholarships · 6/8 docs</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="documents" data-date="2026-04-18" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">S</div>
+            <div class="si"><b>Suresh Jadhav</b><small>SMV-2026-01190 · Class 12 · Nashik · Onboarded 18 Apr</small></div>
+            <div class="smeta"><span class="pill amber"><span class="pdot"></span>Documents Pending</span><span class="sc">2 scholarships · 4/7 docs</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="disbursed" data-date="2026-03-20" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">P</div>
+            <div class="si"><b>Priya Sonawane</b><small>SMV-2026-01205 · B.Sc Year 1 · Pune · Onboarded 20 Mar</small></div>
+            <div class="smeta"><span class="pill green"><span class="pdot"></span>Disbursed</span><span class="sc">1 scholarship · ₹42,000</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="onboarded" data-date="2026-06-01" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">R</div>
+            <div class="si"><b>Rohit Gaikwad</b><small>SMV-2026-01211 · Class 11 · Satara · Onboarded 1 Jun</small></div>
+            <div class="smeta"><span class="pill grey"><span class="pdot"></span>Onboarded</span><span class="sc">Eligibility identified</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="approved" data-date="2026-04-05" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">S</div>
+            <div class="si"><b>Sneha Patil</b><small>SMV-2026-01177 · B.A Year 3 · Pune · Onboarded 5 Apr</small></div>
+            <div class="smeta"><span class="pill teal"><span class="pdot"></span>Approved</span><span class="sc">1 scholarship · ₹50,000</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="documents" data-date="2026-05-22" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">I</div>
+            <div class="si"><b>Imran Shaikh</b><small>SMV-2026-01230 · Diploma Year 1 · Pune · Onboarded 22 May</small></div>
+            <div class="smeta"><span class="pill amber"><span class="pdot"></span>Documents Pending</span><span class="sc">2 scholarships · 3/6 docs</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="submitted" data-date="2026-05-10" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">K</div>
+            <div class="si"><b>Kavya Deshmukh</b><small>SMV-2026-01221 · B.Com Year 1 · PCMC · Onboarded 10 May</small></div>
+            <div class="smeta"><span class="pill blue"><span class="pdot"></span>Submitted</span><span class="sc">1 scholarship · 7/7 docs</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="onboarded" data-date="2026-06-03" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">G</div>
+            <div class="si"><b>Ganesh Pawar</b><small>SMV-2026-01240 · 12th · Baramati · Onboarded 3 Jun</small></div>
+            <div class="smeta"><span class="pill grey"><span class="pdot"></span>Onboarded</span><span class="sc">Eligibility identified</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="disbursed" data-date="2026-02-28" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">A</div>
+            <div class="si"><b>Asha Kamble</b><small>SMV-2026-01150 · B.Sc Year 2 · Pune · Onboarded 28 Feb</small></div>
+            <div class="smeta"><span class="pill green"><span class="pdot"></span>Disbursed</span><span class="sc">2 scholarships · ₹71,000</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="stu-row" data-status="approved" data-date="2026-04-25" onclick="go('f-student')">
+            <div class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">V</div>
+            <div class="si"><b>Vikram Jadhav</b><small>SMV-2026-01199 · B.E Year 2 · PCMC · Onboarded 25 Apr</small></div>
+            <div class="smeta"><span class="pill teal"><span class="pdot"></span>Approved</span><span class="sc">1 scholarship · ₹62,000</span></div>
+            <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          </div>
+          <div class="empty" id="stuEmpty" style="display:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+            <div>No students match this filter.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== ONBOARD STUDENT (Student Onboarding Form — 42 Q, bilingual, 8 steps) ===== -->
+      <section class="screen" id="f-onboard">
+        <span class="backlink" data-go="f-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to My Students</span>
+        <div class="page-h" style="margin-bottom:10px"><div class="eyebrow">Phase 1 · Student Onboarding Form / विद्यार्थी नोंदणी फॉर्म</div><h1>Onboard New Student</h1><p>Filled by the Fellow on behalf of the student. Every label is shown in English &amp; Marathi.</p></div>
+
+        <div class="dupbox">
+          <div class="dt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>First, check for an existing profile</div>
+          <p>A student can be onboarded only once. Search by <b>Name + DOB</b> or <b>Mobile</b> — duplicates are blocked (BR-01).</p>
+          <div class="sbar"><input placeholder="Enter name + DOB or mobile number…" /><button class="btn btn-ghost btn-sm">Search</button></div>
+        </div>
+
+        <div class="formwrap" id="onbForm">
+          <div class="stepcount">Step <b>1 of 8</b></div>
+          <div class="fprogress"><i style="width:12.5%"></i></div>
+
+          <!-- STEP 1: Welcome + Support Type -->
+          <div class="fstep on" data-step="1">
+            <h2 class="steptitle">Welcome &amp; Support Type</h2>
+            <div class="steplead">आपले स्वागत आहे! — personalised support for scholarships &amp; documentation, kept confidential.</div>
+            <div class="q"><div class="qen">Email <span class="req">*</span></div><div class="qmr">ईमेल</div><input type="email" placeholder="your@email.com" /></div>
+            <div class="q"><div class="qen">Please select the support required <span class="req">*</span></div><div class="qmr">आपल्याला आवश्यक असलेले सहाय्य निवडा (एकापेक्षा जास्त निवडता येईल)</div>
+              <div class="opts">
+                <label class="opt"><input type="checkbox" name="onb_support" /> Scholarship Support (Government/Private) — शिष्यवृत्ती सहाय्य</label>
+                <label class="opt"><input type="checkbox" name="onb_support" /> Documentation Support (Legal Documents) — कायदेशीर कागदपत्रे सहाय्य</label>
+              </div>
+            </div>
+            <div class="fnav"><span></span><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
+          </div>
+
+          <!-- STEP 2: Personal Details -->
+          <div class="fstep" data-step="2">
+            <h2 class="steptitle">Personal Details</h2><div class="steplead">वैयक्तिक माहिती</div>
+            <div class="q"><div class="qen">Full Name (as per govt document) <span class="req">*</span></div><div class="qmr">पूर्ण नाव (शासकीय कागदपत्रानुसार)</div><input type="text" placeholder="Full name as on Govt ID" /></div>
+            <div class="q"><div class="qen">Date of Form Submission <span class="req">*</span></div><div class="qmr">फॉर्म भरण्याची तारीख</div><input type="date" value="2026-06-04" /><div class="qhelp">Auto-filled to today — override only for back-dated entries.</div></div>
+            <div class="q"><div class="qen">Age <span class="req">*</span></div><div class="qmr">वय</div>
+              <select><option value="">Select age</option><option>Below 15</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>30 above</option></select></div>
+            <div class="q"><div class="qen">Contact Number (preferably WhatsApp) <span class="req">*</span></div><div class="qmr">संपर्क क्रमांक (आवडीनुसार व्हॉट्सअ‍ॅप नंबर)</div><input type="tel" placeholder="10-digit mobile" /><div class="qhelp">Used to reach the student about scholarship updates &amp; reminders.</div></div>
+            <div class="q"><div class="qen">Gender <span class="req">*</span></div><div class="qmr">लिंग</div>
+              <div class="opts">
+                <label class="opt"><input type="radio" name="onb_gender" /> Male / पुरुष</label>
+                <label class="opt"><input type="radio" name="onb_gender" /> Female / स्त्री</label>
+                <label class="opt"><input type="radio" name="onb_gender" /> Non-Binary / नॉन-बायनरी</label>
+                <label class="opt"><input type="radio" name="onb_gender" /> Other / इतर</label>
+                <label class="opt optout"><input type="radio" name="onb_gender" /> Prefer not to say / सांगू इच्छित नाही</label>
+              </div>
+            </div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
+          </div>
+
+          <!-- STEP 3: Location -->
+          <div class="fstep" data-step="3">
+            <h2 class="steptitle">Location</h2><div class="steplead">पत्ता</div>
+            <div class="q"><div class="qen">State <span class="req">*</span></div><div class="qmr">राज्य</div>
+              <select onchange="onState(this)"><option value="">Select state</option><option value="Maharashtra">Maharashtra / महाराष्ट्र</option><option value="Tamil Nadu">Tamil Nadu / तमिळनाडू</option><option value="Karnataka">Karnataka / कर्नाटक</option><option value="Other">Other / इतर</option></select></div>
+            <div class="q"><div class="qen">Permanent Address (as per govt address proof) <span class="req">*</span></div><div class="qmr">कायमचा पत्ता (शासकीय कागदपत्रांनुसार)</div><textarea id="onbPermAddr" placeholder="Full permanent address"></textarea></div>
+            <div class="q" id="mhDistricts"><div class="qen">District — Permanent (as per Govt ID) <span class="req">*</span></div><div class="qmr">जिल्हा (कायम पत्त्यानुसार)</div>
+              <select><option value="">Select district</option><option>Ahmednagar (Ahilyanagar)</option><option>Akola</option><option>Amravati</option><option>Chhatrapati Sambhaji Nagar (Aurangabad)</option><option>Beed</option><option>Bhandara</option><option>Buldhana</option><option>Chandrapur</option><option>Dhule</option><option>Gadchiroli</option><option>Gondia</option><option>Hingoli</option><option>Jalgaon</option><option>Jalna</option><option>Kolhapur</option><option>Latur</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Nagpur</option><option>Nanded</option><option>Nandurbar</option><option>Nashik</option><option>Dharashiv (Osmanabad)</option><option>Palghar</option><option>Parbhani</option><option>Pune</option><option>Raigad</option><option>Ratnagiri</option><option>Sangli</option><option>Satara</option><option>Sindhudurg</option><option>Solapur</option><option>Thane</option><option>Wardha</option><option>Washim</option><option>Yavatmal</option><option>Other</option></select></div>
+            <div class="q" id="otherDistrict" style="display:none"><div class="qen">District — Permanent <span class="req">*</span></div><div class="qmr">जिल्हा</div><input type="text" placeholder="Enter your district" /></div>
+            <div class="q"><div class="qen">Current Address of Residence <span class="req">*</span></div><div class="qmr">सध्याच्या राहण्याचा पत्ता</div>
+              <label class="inline-cb"><input type="checkbox" onchange="sameAddr(this,'onbPermAddr','onbCurrAddr')" /> Same as permanent address / कायम पत्त्याप्रमाणेच</label>
+              <textarea id="onbCurrAddr" placeholder="Current address"></textarea></div>
+            <div class="q"><div class="qen">District — Current Residence <span class="req">*</span></div><div class="qmr">सध्याच्या राहण्याच्या पत्त्यानुसार जिल्हा</div>
+              <select><option value="">Select district</option><option>Pune</option><option>Nashik</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Thane</option><option>Satara</option><option>Kolhapur</option><option>Other</option></select></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
+          </div>
+
+          <!-- STEP 4: College & Reference -->
+          <div class="fstep" data-step="4">
+            <h2 class="steptitle">College &amp; Reference</h2><div class="steplead">महाविद्यालय व संदर्भ</div>
+            <div class="q"><div class="qen">College Name <span class="req">*</span></div><div class="qmr">महाविद्यालयाचे नाव</div>
+              <select><option value="">Search &amp; select college…</option><option>Fergusson College, Pune</option><option>Sir Parshurambhau (S.P.) College, Pune</option><option>Modern College, Pune</option><option>Brihan Maharashtra College of Commerce (BMCC)</option><option>Abasaheb Garware College</option><option>Nowrosjee Wadia College</option><option>MIT World Peace University</option><option>College of Engineering Pune (COEP)</option><option>Symbiosis College of Arts &amp; Commerce</option><option>D. Y. Patil College</option><option>PCCOE, Pimpri</option><option>Ness Wadia College of Commerce</option><option>Other</option></select>
+              <div class="qhelp">Searchable dropdown — full college list maintained by Admin in production.</div></div>
+            <div class="q"><div class="qen">How did you hear about SAMAVESH? <span class="req">*</span></div><div class="qmr">तुम्हाला आमच्याबद्दल कसे समजले?</div>
+              <div class="opts">
+                <label class="opt"><input type="radio" name="onb_ref" /> GSP Girls</label>
+                <label class="opt"><input type="radio" name="onb_ref" /> Mudita Alliance</label>
+                <label class="opt"><input type="radio" name="onb_ref" /> Chaitanya</label>
+                <label class="opt"><input type="radio" name="onb_ref" /> Forbes Marshall Kasarwadi</label>
+                <label class="opt"><input type="radio" name="onb_ref" /> College</label>
+                <label class="opt"><input type="radio" name="onb_ref" /> Eaton Employees</label>
+                <label class="opt"><input type="radio" name="onb_ref" /> Thermax Foundation</label>
+                <label class="opt"><input type="radio" name="onb_ref" /> Other</label>
+              </div>
+            </div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
+          </div>
+
+          <!-- STEP 5: Education -->
+          <div class="fstep" data-step="5">
+            <h2 class="steptitle">Educational Background</h2><div class="steplead">शैक्षणिक माहिती</div>
+            <div class="q"><div class="qen">Current Grade of Study <span class="req">*</span></div><div class="qmr">सध्याच्या शिक्षणाची इयत्ता/स्तर</div>
+              <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Graduation - 5th Year</option><option>Masters - 1st Year</option><option>Masters - 2nd Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+            <div class="q"><div class="qen">Stream <span class="req">*</span></div><div class="qmr">शाखा</div>
+              <select><option value="">Select</option><option>Arts / Humanities</option><option>Commerce &amp; Management</option><option>Science</option><option>Engineering &amp; Technology (B.Tech/B.E.)</option><option>Medical Science</option><option>Law</option><option>Design &amp; Media</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+            <div class="q"><div class="qen">Current Marks Obtained <span class="req">*</span></div><div class="qmr">सध्याचे गुण</div><input type="text" placeholder="e.g. 72% or CGPA 7.8" /><div class="qhelp">Enter as percentage (e.g. 72%) or CGPA (e.g. 7.8).</div></div>
+            <div class="q"><div class="qen">Previous Grade of Study <span class="req">*</span></div><div class="qmr">मागील इयत्ता</div>
+              <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+            <div class="q"><div class="qen">Marks Obtained in Previous Grade <span class="req">*</span></div><div class="qmr">मागील इयत्तेतील गुण</div><input type="text" placeholder="e.g. 68% or CGPA 7.2" /></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
+          </div>
+
+          <!-- STEP 6: Documents matrix -->
+          <div class="fstep" data-step="6">
+            <h2 class="steptitle">Documents (Eligibility &amp; Applicability)</h2><div class="steplead">कोणती कागदपत्रे आहेत व कोणत्या कागदपत्रांसाठी मदत हवी आहे हे समजून घेण्यासाठी.</div>
+            <div class="matrix-wrap"><table class="matrix">
+              <thead><tr><th>Document / कागदपत्र</th><th>Have it<span class="mr">आहे</span></th><th>Don't have<span class="mr">नाही</span></th><th>N/A</th></tr></thead>
+              <tbody>
+                <tr><td>Aadhar Card</td><td class="cc"><input type="radio" name="d_aadhar"/></td><td class="cc"><input type="radio" name="d_aadhar"/></td><td class="cc">—</td></tr>
+                <tr><td>Caste Certificate</td><td class="cc"><input type="radio" name="d_caste"/></td><td class="cc"><input type="radio" name="d_caste"/></td><td class="cc"><input type="radio" name="d_caste"/></td></tr>
+                <tr><td>Domicile Certificate</td><td class="cc"><input type="radio" name="d_dom"/></td><td class="cc"><input type="radio" name="d_dom"/></td><td class="cc">—</td></tr>
+                <tr><td>Annual Income Certificate (FY 25/26)</td><td class="cc"><input type="radio" name="d_inc"/></td><td class="cc"><input type="radio" name="d_inc"/></td><td class="cc">—</td></tr>
+                <tr><td>Non-Creamy Layer Certificate</td><td class="cc"><input type="radio" name="d_ncl"/></td><td class="cc"><input type="radio" name="d_ncl"/></td><td class="cc"><input type="radio" name="d_ncl"/></td></tr>
+                <tr><td>Ration Card</td><td class="cc"><input type="radio" name="d_rat"/></td><td class="cc"><input type="radio" name="d_rat"/></td><td class="cc">—</td></tr>
+                <tr><td>10th School Leaving Certificate</td><td class="cc"><input type="radio" name="d_10"/></td><td class="cc"><input type="radio" name="d_10"/></td><td class="cc">—</td></tr>
+                <tr><td>12th School Leaving Certificate</td><td class="cc"><input type="radio" name="d_12"/></td><td class="cc"><input type="radio" name="d_12"/></td><td class="cc">—</td></tr>
+                <tr><td>Orphan Certificate</td><td class="cc"><input type="radio" name="d_orp"/></td><td class="cc"><input type="radio" name="d_orp"/></td><td class="cc"><input type="radio" name="d_orp"/></td></tr>
+              </tbody>
+            </table></div>
+            <div class="qhelp" style="margin-top:12px">Any document marked "Don't have" becomes a Documentation Application task for the Fellow to procure.</div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
+          </div>
+
+          <!-- STEP 7: Socio-economic -->
+          <div class="fstep" data-step="7">
+            <h2 class="steptitle">Socio-Economic Details</h2><div class="steplead">सामाजिक-आर्थिक माहिती</div>
+            <div class="optbanner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>The first three questions are optional / पहिले तीन प्रश्न ऐच्छिक आहेत. Shared in confidence to match the right support.</div>
+            <div class="q"><div class="qen">Social Background</div><div class="qmr">सामाजिक प्रवर्ग (ऐच्छिक)</div>
+              <div class="opts">
+                <label class="opt optout"><input type="radio" name="onb_caste" /> Prefer not to answer / सांगू इच्छित नाही</label>
+                <label class="opt"><input type="radio" name="onb_caste" /> SC</label><label class="opt"><input type="radio" name="onb_caste" /> ST</label><label class="opt"><input type="radio" name="onb_caste" /> OBC</label><label class="opt"><input type="radio" name="onb_caste" /> VJNT</label><label class="opt"><input type="radio" name="onb_caste" /> SEBC</label><label class="opt"><input type="radio" name="onb_caste" /> SBC</label><label class="opt"><input type="radio" name="onb_caste" /> EWS</label><label class="opt"><input type="radio" name="onb_caste" /> General</label><label class="opt"><input type="radio" name="onb_caste" /> Other</label>
+              </div></div>
+            <div class="q"><div class="qen">Identities / Vulnerability Markers</div><div class="qmr">ओळख (ऐच्छिक, एकापेक्षा जास्त निवडता येईल)</div>
+              <div class="opts">
+                <label class="opt"><input type="checkbox" name="onb_vuln" /> Persons with Disabilities / अपंगत्व</label>
+                <label class="opt"><input type="checkbox" name="onb_vuln" /> Economically Disadvantaged / आर्थिकदृष्ट्या मागास</label>
+                <label class="opt"><input type="checkbox" name="onb_vuln" /> First Generation Learner / पहिली व्यक्ती जी उच्च शिक्षण घेत आहे</label>
+                <label class="opt"><input type="checkbox" name="onb_vuln" /> Single Parent / एकल पालक</label>
+                <label class="opt"><input type="checkbox" name="onb_vuln" /> Orphan / अनाथ</label>
+                <label class="opt optout"><input type="checkbox" name="onb_vuln" /> Prefer not to answer</label>
+              </div></div>
+            <div class="q"><div class="qen">Annual Family Income</div><div class="qmr">वार्षिक कौटुंबिक उत्पन्न (ऐच्छिक)</div>
+              <div class="opts">
+                <label class="opt optout"><input type="radio" name="onb_income" /> Prefer not to answer</label>
+                <label class="opt"><input type="radio" name="onb_income" /> Less than ₹50,000</label><label class="opt"><input type="radio" name="onb_income" /> ₹50,000 – ₹1 lakh</label><label class="opt"><input type="radio" name="onb_income" /> ₹1 – 2 lakh</label><label class="opt"><input type="radio" name="onb_income" /> ₹2 – 4 lakh</label><label class="opt"><input type="radio" name="onb_income" /> ₹4 – 8 lakh</label><label class="opt"><input type="radio" name="onb_income" /> ₹8 lakh and above</label>
+              </div></div>
+            <div class="q"><div class="qen">Single Parent Child? <span class="req">*</span></div><div class="qmr">एकल पालकाचे अपत्य?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_sp" /> Yes</label><label class="opt"><input type="radio" name="onb_sp" /> No</label></div></div>
+            <div class="q"><div class="qen">Do parents have any disability? <span class="req">*</span></div><div class="qmr">पालकांना काही अपंगत्व आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_pd" /> Yes</label><label class="opt"><input type="radio" name="onb_pd" /> No</label><label class="opt"><input type="radio" name="onb_pd" /> Maybe</label></div></div>
+            <div class="q"><div class="qen">Family Occupation / Parents' Income Source <span class="req">*</span></div><div class="qmr">कौटुंबिक व्यवसाय / उत्पन्नाचा स्रोत</div>
+              <div class="opts"><label class="opt"><input type="radio" name="onb_occ" /> Farming / शेती</label><label class="opt"><input type="radio" name="onb_occ" /> Daily Wages / मजुरी</label><label class="opt"><input type="radio" name="onb_occ" /> Service / नोकरी</label><label class="opt"><input type="radio" name="onb_occ" /> Business / व्यवसाय</label><label class="opt"><input type="radio" name="onb_occ" /> Seasonal / Contract work</label><label class="opt"><input type="radio" name="onb_occ" /> Other</label></div></div>
+            <div class="q"><div class="qen">Type of House <span class="req">*</span></div><div class="qmr">घराचा प्रकार (एकापेक्षा जास्त निवडता येईल)</div>
+              <div class="opts row"><label class="opt"><input type="checkbox" name="onb_house" /> Own house</label><label class="opt"><input type="checkbox" name="onb_house" /> Rented house</label><label class="opt"><input type="checkbox" name="onb_house" /> Kaccha house / कच्चे घर</label><label class="opt"><input type="checkbox" name="onb_house" /> Pakka house / पक्के घर</label></div></div>
+            <div class="q"><div class="qen">Any drug-addiction problem at home? <span class="req">*</span></div><div class="qmr">घरात व्यसनाची समस्या आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_drug" /> Yes</label><label class="opt"><input type="radio" name="onb_drug" /> No</label><label class="opt"><input type="radio" name="onb_drug" /> Maybe</label><label class="opt optout"><input type="radio" name="onb_drug" /> Prefer not to answer</label></div></div>
+            <div class="q"><div class="qen">WiFi / Internet connection at home? <span class="req">*</span></div><div class="qmr">घरी इंटरनेट आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_net" /> Yes</label><label class="opt"><input type="radio" name="onb_net" /> No</label></div></div>
+            <div class="q"><div class="qen">Computer or Laptop at home? <span class="req">*</span></div><div class="qmr">घरी संगणक/लॅपटॉप आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_comp" /> Yes</label><label class="opt"><input type="radio" name="onb_comp" /> No</label></div></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
+          </div>
+
+          <!-- STEP 8: Aspirations + Consent -->
+          <div class="fstep" data-step="8">
+            <h2 class="steptitle">Aspirations &amp; Consent</h2><div class="steplead">स्वतःबद्दल थोडे अधिक सांगा! + सहमती</div>
+            <div class="q"><div class="qen">Immediate Goals</div><div class="qmr">तातडीची उद्दिष्टे (ऐच्छिक)</div><textarea placeholder="E.g. Pass my 12th exams, apply for scholarship…"></textarea></div>
+            <div class="q"><div class="qen">Long-term Career Aspirations</div><div class="qmr">दीर्घकालीन ध्येय (ऐच्छिक)</div><textarea placeholder="E.g. Become a doctor, start my own business…"></textarea></div>
+            <div class="q"><div class="qen">Anything else you'd like to share</div><div class="qmr">इतर काही (ऐच्छिक)</div><textarea placeholder="Any other information…"></textarea></div>
+            <div class="consent-box" style="margin-top:8px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" style="flex:0 0 20px;color:var(--teal-700)"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              <div class="ct"><b>Consent Declaration / सहमती:</b> I authorise SAMAVESH Action For Impact to collect this information and to act on government scholarship portals on the student's behalf, under the DPDP Act, 2023. <b>Type the student/guardian name below to give consent / सहमती देण्यासाठी खाली नाव टाका.</b></div></div>
+            <div class="q"><div class="qen">Consent — type full name <span class="req">*</span></div><input type="text" id="onbConsent" placeholder="Type student / guardian full name" /></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Submit / सबमिट करा ✓</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STUDENT DETAIL ===== -->
+      <section class="screen" id="f-student">
+        <span class="backlink" data-go="f-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to My Students</span>
+
+        <div class="card" style="margin-bottom:20px">
+          <div class="prof-head">
+            <div class="pa">A</div>
+            <div style="flex:1">
+              <h3 style="font-size:23px">Aarti Ramesh Pawar</h3>
+              <div style="color:var(--ink-soft);font-size:14px">SMV-2026-01182 · B.Com Year 2 · Fergusson College, Pune</div>
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><span class="pill blue"><span class="pdot"></span>Submitted</span><span class="pill grey">Assigned to you</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- per-student journey -->
+        <div class="journey" style="margin-bottom:20px">
+          <div class="jh"><h3>Scholarship Journey</h3><span>Post-Matric Scholarship · Step 4 of 6</span></div>
+          <div class="path">
+            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Onboarded</div><div class="sub">12 Apr</div></div>
+            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Scholarship Identified</div><div class="sub">3 schemes</div></div>
+            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Documents Complete</div><div class="sub">All Accepted</div></div>
+            <div class="step current"><div class="bub">4</div><div class="lbl">Submitted</div><div class="sub">Under Review</div></div>
+            <div class="step upcoming"><div class="bub">5</div><div class="lbl">Approved</div><div class="sub">Awaited</div></div>
+            <div class="step upcoming"><div class="bub">6</div><div class="lbl">Disbursed</div><div class="sub">—</div></div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="on" onclick="ftab(this,'fp-profile')">Profile</button>
+          <button onclick="ftab(this,'fp-sch')">Scholarships</button>
+          <button onclick="ftab(this,'fp-docs')">Documents</button>
+          <button onclick="ftab(this,'fp-apps')">Applications</button>
+        </div>
+
+        <!-- Profile tab -->
+        <div class="tabpane on" id="fp-profile">
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="font-size:18px">Student Profile</h3><button class="btn btn-ghost btn-sm">Edit profile</button></div>
+            <p style="font-size:12.5px;color:var(--muted);margin-bottom:6px">Editable by the assigned Fellow and Program Admin · all edits are audit-logged.</p>
+            <div class="grid g-2">
+              <div class="field"><div class="k">Date of Birth</div><div class="v">14 August 2005</div></div>
+              <div class="field"><div class="k">Gender</div><div class="v">Female</div></div>
+              <div class="field"><div class="k">Caste / Category</div><div class="v">SC</div></div>
+              <div class="field"><div class="k">Religion</div><div class="v">Buddhist</div></div>
+              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div>
+              <div class="field"><div class="k">State / District</div><div class="v">Maharashtra · Pune</div></div>
+              <div class="field"><div class="k">Course / Year</div><div class="v">B.Com · Year 2</div></div>
+              <div class="field"><div class="k">Last Exam %</div><div class="v">78%</div></div>
+              <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx21</div></div>
+              <div class="field"><div class="k">Aadhaar</div><div class="v mask">xxxx xxxx 4821</div></div>
+              <div class="field"><div class="k">Guardian</div><div class="v">Ramesh Pawar (Father)</div></div>
+              <div class="field"><div class="k">Consent</div><div class="v" style="color:var(--green)">Captured · 12 Apr 2026</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scholarships tab -->
+        <div class="tabpane" id="fp-sch">
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Auto-computed from the student's profile. You may manually override eligibility with a reason (audit-logged).</p>
+          <div class="card" style="margin-bottom:12px"><div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
+            <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Post-Matric Scholarship for SC Students</h4><span class="pill blue"><span class="pdot"></span>Submitted</span></div>
+            <div class="meta"><span><b class="amount">₹50,000</b>/year</span><span>Documents: 100% Accepted</span></div></div>
+          </div></div>
+          <div class="card" style="margin-bottom:12px"><div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
+            <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Maharashtra State Minority Scholarship</h4><span class="pill green"><span class="pdot"></span>Ready to Submit</span></div>
+            <div class="meta"><span><b class="amount">₹25,000</b>/year</span><span>Documents: 100% Accepted</span></div>
+            <button class="btn btn-primary btn-sm" style="margin-top:6px" onclick="ftab(document.querySelectorAll('.tabs button')[3],'fp-apps')">Submit Application</button></div>
+          </div></div>
+          <div class="card"><div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
+            <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Dr. Babasaheb Ambedkar Scholarship</h4><span class="pill amber"><span class="pdot"></span>Documents Pending</span></div>
+            <div class="meta"><span><b class="amount">₹38,000</b>/year</span><span>Documents: 6/8 Accepted</span></div>
+            <button class="btn btn-ghost btn-sm" style="margin-top:6px" onclick="ftab(document.querySelectorAll('.tabs button')[2],'fp-docs')">Manage documents</button></div>
+          </div></div>
+        </div>
+
+        <!-- Documents tab (FELLOW ACTIONS) -->
+        <div class="tabpane" id="fp-docs">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+            <p style="font-size:13px;color:var(--ink-soft);max-width:60ch">Procure, upload and re-upload documents here. A Program Admin reviews and Accepts/Rejects each one. Uploads: <b>PDF only · 1–2 MB</b>.</p>
+            <button class="btn btn-gold btn-sm" data-go="f-docapp">+ Documentation Application</button>
+          </div>
+          <div class="card">
+            <div class="doc-row">
+              <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Non-Creamy Layer Certificate</b><small>Type: Caste · procurement needed</small></div>
+              <span class="pill amber" style="margin-right:8px"><span class="pdot"></span>Pending</span>
+              <button class="btn btn-primary btn-sm" onclick="fileAct(this,'Uploaded')">Upload</button>
+            </div>
+            <div class="doc-row">
+              <div class="di" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Domicile Certificate</b><small>Uploaded 2 Jun · Re-upload Version 1</small></div>
+              <span class="pill blue"><span class="pdot"></span>Under Review</span>
+            </div>
+            <div class="doc-row">
+              <div class="di" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+              <div class="dn"><b>Caste Validity Certificate</b><small style="color:var(--red)">Rejected: "Not clearly legible" — re-upload needed</small></div>
+              <span class="pill red" style="margin-right:8px"><span class="pdot"></span>Rejected</span>
+              <button class="btn btn-gold btn-sm" onclick="fileAct(this,'Uploaded')">Re-upload</button>
+            </div>
+            <div class="doc-row">
+              <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Income Certificate · Caste · Aadhaar · 10th &amp; 12th Marksheet · Bank Passbook · Bonafide</b><small>All Accepted by Program Admin</small></div>
+              <span class="pill green"><span class="pdot"></span>6 Accepted</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Applications tab (FELLOW ACTIONS — §10.3) -->
+        <div class="tabpane" id="fp-apps">
+          <div style="display:flex;justify-content:flex-end;margin-bottom:14px"><button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Scholarship Data Entry</button></div>
+          <!-- Ready to Submit -> data-entry form -->
+          <div class="card" style="margin-bottom:16px;border-left:4px solid var(--green)">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px">
+              <h4 class="serif" style="font-size:17px">Maharashtra State Minority Scholarship</h4><span class="pill green"><span class="pdot"></span>Ready to Submit</span>
+            </div>
+            <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">All documents Accepted. Submit on the government portal, then record the details below (the submitted PDF is mandatory proof).</p>
+            <div class="form-grid">
+              <div class="fg"><label>Application Portal<span class="req">*</span></label><input value="National Scholarship Portal" /></div>
+              <div class="fg"><label>Application Submission Date<span class="req">*</span></label><input type="date" /><span class="hint">Cannot be future-dated</span></div>
+              <div class="fg"><label>Government Application ID<span class="req">*</span></label><input placeholder="As shown on the portal" /></div>
+              <div class="fg"><label>Sanctioned / Expected Amount (₹)<span class="req">*</span></label><input type="number" value="25000" /></div>
+              <div class="fg"><label>Bank Account (for disbursal)<span class="req">*</span></label><input placeholder="As per student profile" /></div>
+              <div class="fg"><label>IFSC<span class="req">*</span></label><input placeholder="e.g. SBIN0001234" /></div>
+              <div class="fg full"><label>Submitted Application PDF<span class="req">*</span></label><input type="file" /><span class="hint">Final submitted PDF · mandatory proof per Fellow SOP</span></div>
+            </div>
+            <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="this.outerHTML='<span class=&quot;pill green&quot;><span class=&quot;pdot&quot;></span>Submitted &amp; recorded</span>'">Submit &amp; Record Application</button>
+          </div>
+
+          <!-- Under Review -> update status + correction loop -->
+          <div class="card" style="margin-bottom:16px">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Post-Matric Scholarship for SC Students</h4><span class="pill blue"><span class="pdot"></span>Under Review</span></div>
+            <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-PM-2026-44871</span><span>Submitted 28 May</span><span>Last status check: 2 Jun</span></div>
+            <div class="tl">
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">28 May</div></div>
+              <div class="tl-item active"><div class="knob"></div><div class="t">Under Review</div><div class="d">Department processing</div></div>
+              <div class="tl-item future"><div class="t">Approved → Disbursed</div><div class="d">—</div></div>
+            </div>
+            <div class="btnrow" style="margin-top:14px">
+              <select class="btn btn-ghost btn-sm" style="font-weight:600"><option>Update status…</option><option>Under Review</option><option>Approved</option><option>Redirected for Correction</option><option>Rejected</option></select>
+              <button class="btn btn-ghost btn-sm">Add correction note</button>
+            </div>
+          </div>
+
+          <!-- Approved -> record disbursement -->
+          <div class="card" style="border-left:4px solid var(--marigold)">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px"><h4 class="serif" style="font-size:17px">Dr. Babasaheb Ambedkar Scholarship</h4><span class="pill amber"><span class="pdot"></span>Approved</span></div>
+            <p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">Record disbursement once funds reach the student's bank account.</p>
+            <div class="form-grid">
+              <div class="fg"><label>Disbursed Amount (₹)<span class="req">*</span></label><input type="number" placeholder="38000" /></div>
+              <div class="fg"><label>Disbursement Date<span class="req">*</span></label><input type="date" /></div>
+            </div>
+            <button class="btn btn-gold btn-sm" style="margin-top:14px">Record Disbursement &amp; Close</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== APPLICATIONS (tracking across students) ===== -->
+      <section class="screen" id="f-applications">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Phase 4 · Tracking &amp; Liaising</div><h1>Applications</h1><p>Track and update every scholarship application. Log into the government portal, then update the status here.</p></div>
+          <button class="btn btn-primary" data-go="f-scholarship">+ New Scholarship Entry</button>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
+          <span class="tagk chip on" style="padding:8px 14px" onclick="filterApp('all',this)">All (9)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterApp('ready',this)">Ready to Submit (1)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterApp('scrutiny',this)">Under Scrutiny (2)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterApp('approved',this)">Approved (2)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterApp('benefits',this)">Benefits Received (2)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterApp('reapply',this)">Re-apply (1)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterApp('rejected',this)">Rejected (1)</span>
+        </div>
+
+        <div id="appList">
+          <div class="card appitem" data-astatus="scrutiny" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">A</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Aarti Pawar</b><div style="font-size:12.5px;color:var(--muted)">GoI Post-Matric Scholarship · App ID MH-PM-2026-44871</div></div>
+            <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span><span style="font-size:12.5px;color:var(--muted)">Checked 2 Jun</span>
+          </div></div>
+          <div class="card appitem" data-astatus="ready" style="margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">A</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Aarti Pawar</b><div style="font-size:12.5px;color:var(--muted)">State Minority Scholarship Part II · all docs Accepted</div></div>
+            <span class="pill grey"><span class="pdot"></span>Ready to Submit</span><button class="btn btn-primary btn-sm" data-go="f-scholarship">Submit &amp; record</button>
+          </div></div>
+          <div class="card appitem" data-astatus="scrutiny" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#2f6fd6,#1c4ea8);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">K</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Kavya Deshmukh</b><div style="font-size:12.5px;color:var(--muted)">Post Matric to OBC Students · App ID MH-OBC-2026-30912</div></div>
+            <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span><span style="font-size:12.5px;color:var(--muted)">Checked 30 May</span>
+          </div></div>
+          <div class="card appitem" data-astatus="approved" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">S</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Sneha Patil</b><div style="font-size:12.5px;color:var(--muted)">Dr Babasaheb Ambedkar Swadhar Yojana · ₹50,000</div></div>
+            <span class="pill teal"><span class="pdot"></span>Application Approved</span><button class="btn btn-gold btn-sm">Record disbursement</button>
+          </div></div>
+          <div class="card appitem" data-astatus="approved" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#2f6fd6,#1c4ea8);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">V</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Vikram Jadhav</b><div style="font-size:12.5px;color:var(--muted)">Shahu Maharaj Fee Reimbursement · ₹62,000</div></div>
+            <span class="pill teal"><span class="pdot"></span>Application Approved</span><button class="btn btn-gold btn-sm">Record disbursement</button>
+          </div></div>
+          <div class="card appitem" data-astatus="benefits" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#2f6fd6,#1c4ea8);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">P</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Priya Sonawane</b><div style="font-size:12.5px;color:var(--muted)">GoI Post-Matric Scholarship · ₹42,000 received</div></div>
+            <span class="pill green"><span class="pdot"></span>Benefits Received</span><span style="font-size:12.5px;color:var(--muted)">Closed</span>
+          </div></div>
+          <div class="card appitem" data-astatus="benefits" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">A</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Asha Kamble</b><div style="font-size:12.5px;color:var(--muted)">State Minority Scholarship Part II · ₹71,000 received</div></div>
+            <span class="pill green"><span class="pdot"></span>Benefits Received</span><span style="font-size:12.5px;color:var(--muted)">Closed</span>
+          </div></div>
+          <div class="card appitem" data-astatus="reapply" style="margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">S</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Suresh Jadhav</b><div style="font-size:12.5px;color:var(--muted)">Post Matric to VJNT Students · returned for correction</div></div>
+            <span class="pill amber"><span class="pdot"></span>Re-apply</span><button class="btn btn-primary btn-sm" data-go="f-scholarship">Correct &amp; re-submit</button>
+          </div></div>
+          <div class="card appitem" data-astatus="rejected" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+            <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">I</div>
+            <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Imran Shaikh</b><div style="font-size:12.5px;color:var(--muted)">Post Matric to VJNT Students · income criteria not met</div></div>
+            <span class="pill red"><span class="pdot"></span>Rejected</span><span style="font-size:12.5px;color:var(--muted)">Terminal</span>
+          </div></div>
+          <div class="empty" id="appEmpty" style="display:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg>
+            <div>No applications with this status.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FELLOW PROFILE ===== -->
+      <section class="screen" id="f-profile">
+        <div class="page-h"><div class="eyebrow">Account</div><h1>My Profile</h1></div>
+        <div class="card">
+          <div class="prof-head">
+            <div class="pa">R</div>
+            <div><h3 style="font-size:23px">Rahul More</h3><div style="color:var(--ink-soft);font-size:14px">Samavesh Fellow · Pune region</div><div style="margin-top:8px"><span class="pill teal"><span class="pdot"></span>Active</span></div></div>
+          </div>
+          <div class="grid g-2" style="margin-top:18px">
+            <div class="field"><div class="k">Role</div><div class="v">Fellow</div></div>
+            <div class="field"><div class="k">Region</div><div class="v">Pune</div></div>
+            <div class="field"><div class="k">Students assigned</div><div class="v">24</div></div>
+            <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx11</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SCHOLARSHIP DATA ENTRY FORM (46 Q, branched) ===== -->
+      <section class="screen" id="f-scholarship">
+        <span class="backlink" data-go="f-applications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to Applications</span>
+        <div class="page-h" style="margin-bottom:10px"><div class="eyebrow">SAMAVESH Scholarship Data Entry 25-26</div><h1>Scholarship Data Entry</h1><p>Filled by the Fellow after assisting a student with a scholarship or technical (KYC) support.</p></div>
+
+        <div class="formwrap" id="schForm">
+          <div class="stepcount">Step <b>1 of 7</b></div>
+          <div class="fprogress"><i style="width:14%"></i></div>
+
+          <!-- STEP 1: Fellow & submission info -->
+          <div class="fstep on" data-step="1">
+            <h2 class="steptitle">Fellow &amp; Submission Info</h2><div class="steplead">Your details are auto-filled from your login.</div>
+            <div class="q"><div class="qen">Fellow Email <span class="req">*</span></div><input type="email" value="rahul.more@samavesh.org" disabled style="opacity:.7" /><div class="qhelp">Auto-filled from your authenticated session.</div></div>
+            <div class="q"><div class="qen">Fellow Name <span class="req">*</span></div>
+              <select><option>Rahul More (you)</option><option>Akshay K</option><option>Anil K</option><option>Sandip K</option><option>Dhanashree O</option><option>Vaibhav D</option><option>Vishwas W</option><option>Adesh G</option><option>Tanuja K</option><option>Shalmon S</option><option>Balaji C</option><option>Vijay J</option><option>Sandhya S</option><option>Sanchita</option><option>Vaibhavi</option><option>Anosh W</option><option>Rushikesh K</option><option>Kiran D</option><option>Samiksha T</option><option>Shivani T</option></select></div>
+            <div class="q"><div class="qen">Application Submission Date <span class="req">*</span></div><input type="date" value="2026-06-04" /><div class="qhelp">Date the application was submitted on the portal. Auto-filled to today; override for back-dated entries.</div></div>
+            <div class="fnav"><span></span><button class="btn btn-primary" onclick="formGo('schForm',1)">Continue →</button></div>
+          </div>
+
+          <!-- STEP 2: Student profile -->
+          <div class="fstep" data-step="2">
+            <h2 class="steptitle">Student Profile</h2><div class="steplead">Transcribed from the student's onboarding record.</div>
+            <div class="q"><div class="qen">Student's Name <span class="req">*</span></div><input type="text" placeholder="Full name as per Govt ID" /></div>
+            <div class="q"><div class="qen">Gender <span class="req">*</span></div><div class="opts row"><label class="opt"><input type="radio" name="sch_g" /> Male</label><label class="opt"><input type="radio" name="sch_g" /> Female</label><label class="opt"><input type="radio" name="sch_g" /> Non-Binary</label><label class="opt optout"><input type="radio" name="sch_g" /> Prefer not to say</label></div></div>
+            <div class="q"><div class="qen">Age <span class="req">*</span></div><select><option value="">Select</option><option>Below 15</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>31</option><option>32</option><option>33</option><option>34</option><option>35 and above</option></select></div>
+            <div class="q"><div class="qen">Contact No <span class="req">*</span></div><input type="tel" placeholder="10-digit mobile" /></div>
+            <div class="q"><div class="qen">Category <span class="req">*</span></div>
+              <div class="opts"><label class="opt"><input type="radio" name="sch_cat" /> ST</label><label class="opt"><input type="radio" name="sch_cat" /> SC</label><label class="opt"><input type="radio" name="sch_cat" /> VJNT</label><label class="opt"><input type="radio" name="sch_cat" /> OBC</label><label class="opt"><input type="radio" name="sch_cat" /> Minority</label><label class="opt"><input type="radio" name="sch_cat" /> SBC</label><label class="opt"><input type="radio" name="sch_cat" /> SEBC</label><label class="opt"><input type="radio" name="sch_cat" /> EWS</label><label class="opt"><input type="radio" name="sch_cat" /> General</label><label class="opt"><input type="radio" name="sch_cat" /> Other</label></div></div>
+            <div class="q"><div class="qen">Annual Income <span class="req">*</span></div>
+              <div class="opts"><label class="opt"><input type="radio" name="sch_inc" /> Less than ₹50,000</label><label class="opt"><input type="radio" name="sch_inc" /> ₹50,000 – ₹1 lakh</label><label class="opt"><input type="radio" name="sch_inc" /> ₹1 – 2 lakh</label><label class="opt"><input type="radio" name="sch_inc" /> ₹2 – 4 lakh</label><label class="opt"><input type="radio" name="sch_inc" /> ₹4 – 8 lakh</label><label class="opt"><input type="radio" name="sch_inc" /> ₹8 lakh and above</label></div></div>
+            <div class="q"><div class="qen">Identities / Vulnerability Markers <span class="req">*</span></div>
+              <div class="opts"><label class="opt"><input type="checkbox" name="sch_v" /> Persons with Disabilities</label><label class="opt"><input type="checkbox" name="sch_v" /> Economically Disadvantaged</label><label class="opt"><input type="checkbox" name="sch_v" /> First Generation Learner</label><label class="opt"><input type="checkbox" name="sch_v" /> Single Parent</label><label class="opt"><input type="checkbox" name="sch_v" /> Orphan</label><label class="opt optout"><input type="checkbox" name="sch_v" /> None of the above</label></div></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('schForm',-1)">← Back</button><button class="btn btn-primary" onclick="formGo('schForm',1)">Continue →</button></div>
+          </div>
+
+          <!-- STEP 3: Location -->
+          <div class="fstep" data-step="3">
+            <h2 class="steptitle">Location</h2>
+            <div class="q"><div class="qen">Permanent Address <span class="req">*</span></div><textarea id="schPerm" placeholder="Full address as on Aadhar/ID proof"></textarea></div>
+            <div class="q"><div class="qen">District (permanent) <span class="req">*</span></div><select><option value="">Select district</option><option>Ahilyanagar (Ahmednagar)</option><option>Akola</option><option>Amravati</option><option>Chhatrapati Sambhaji Nagar</option><option>Beed</option><option>Bhandara</option><option>Buldhana</option><option>Chandrapur</option><option>Dhule</option><option>Gadchiroli</option><option>Gondia</option><option>Hingoli</option><option>Jalgaon</option><option>Jalna</option><option>Kolhapur</option><option>Latur</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Nagpur</option><option>Nanded</option><option>Nandurbar</option><option>Nashik</option><option>Dharashiv</option><option>Palghar</option><option>Parbhani</option><option>Pune</option><option>Raigad</option><option>Ratnagiri</option><option>Sangli</option><option>Satara</option><option>Sindhudurg</option><option>Solapur</option><option>Thane</option><option>Wardha</option><option>Washim</option><option>Yavatmal</option><option>Other</option></select></div>
+            <div class="q"><div class="qen">Taluka (as per district) <span class="req">*</span></div><input type="text" placeholder="Enter taluka / tehsil name" /></div>
+            <div class="q"><div class="qen">Current Address of Residence <span class="req">*</span></div><label class="inline-cb"><input type="checkbox" onchange="sameAddr(this,'schPerm','schCurr')" /> Same as permanent address</label><textarea id="schCurr" placeholder="Current address"></textarea></div>
+            <div class="q"><div class="qen">District (current) <span class="req">*</span></div><select><option value="">Select district</option><option>Pune</option><option>Nashik</option><option>Mumbai City</option><option>Thane</option><option>Satara</option><option>Other</option></select></div>
+            <div class="q"><div class="qen">State <span class="req">*</span></div><div class="opts row"><label class="opt"><input type="radio" name="sch_state" checked /> Maharashtra</label><label class="opt"><input type="radio" name="sch_state" /> Other</label></div></div>
+            <div class="q"><div class="qen">Reference (if any)</div>
+              <div class="opts"><label class="opt"><input type="radio" name="sch_ref" /> Astitva</label><label class="opt"><input type="radio" name="sch_ref" /> Ajeevika</label><label class="opt"><input type="radio" name="sch_ref" /> Ashta No Kai</label><label class="opt"><input type="radio" name="sch_ref" /> Panaah</label><label class="opt"><input type="radio" name="sch_ref" /> WFC</label><label class="opt"><input type="radio" name="sch_ref" /> Mudita Alliance</label><label class="opt"><input type="radio" name="sch_ref" /> GSP Girls</label><label class="opt"><input type="radio" name="sch_ref" /> Nari Samata Manch</label><label class="opt"><input type="radio" name="sch_ref" /> Doorstep Foundation</label><label class="opt"><input type="radio" name="sch_ref" /> Swaroopwardhini</label><label class="opt"><input type="radio" name="sch_ref" /> Other</label></div></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('schForm',-1)">← Back</button><button class="btn btn-primary" onclick="formGo('schForm',1)">Continue →</button></div>
+          </div>
+
+          <!-- STEP 4: Academic & College -->
+          <div class="fstep" data-step="4">
+            <h2 class="steptitle">Academic &amp; College</h2>
+            <div class="q"><div class="qen">Marks Obtained in Previous Year (%) <span class="req">*</span></div>
+              <div class="opts"><label class="opt"><input type="radio" name="sch_marks" /> 90% and above</label><label class="opt"><input type="radio" name="sch_marks" /> 80% – 89%</label><label class="opt"><input type="radio" name="sch_marks" /> 70% – 79%</label><label class="opt"><input type="radio" name="sch_marks" /> 60% – 69%</label><label class="opt"><input type="radio" name="sch_marks" /> 50% – 59%</label><label class="opt"><input type="radio" name="sch_marks" /> 40% – 49%</label><label class="opt"><input type="radio" name="sch_marks" /> Below 40%</label></div></div>
+            <div class="q"><div class="qen">Grade Currently Enrolled In <span class="req">*</span></div><select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st year</option><option>Graduation - 2nd year</option><option>Graduation - 3rd year</option><option>Graduation - 4th year</option><option>Graduation - 5th year</option><option>Masters - 1st year</option><option>Masters - 2nd year</option><option>Other</option></select></div>
+            <div class="q"><div class="qen">Stream <span class="req">*</span></div><select><option value="">Select</option><option>Engineering &amp; Technology (B.Tech/B.E.)</option><option>Medical Science</option><option>Commerce &amp; Management</option><option>Science</option><option>Arts/Humanities</option><option>Law</option><option>Design &amp; Media</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+            <div class="q"><div class="qen">Course Details <span class="req">*</span></div><input type="text" placeholder="e.g. B.E. Computer Engineering / B.Com / BA Economics" /></div>
+            <div class="q"><div class="qen">Course Fees (₹) <span class="req">*</span></div><input type="number" placeholder="Annual fee in rupees, numbers only e.g. 45000" /><div class="qhelp">Numbers only — no commas or symbols.</div></div>
+            <div class="q"><div class="qen">College Name <span class="req">*</span></div><select><option value="">Search &amp; select college…</option><option>Fergusson College, Pune</option><option>S.P. College, Pune</option><option>Modern College, Pune</option><option>BMCC, Pune</option><option>MIT World Peace University</option><option>COEP Technological University</option><option>D. Y. Patil College</option><option>PCCOE, Pimpri</option><option>Other</option></select><div class="qhelp">Searchable — full list maintained centrally in production.</div></div>
+            <div class="q"><div class="qen">College Geographical Area <span class="req">*</span></div><div class="opts row"><label class="opt"><input type="radio" name="sch_area" /> Pune</label><label class="opt"><input type="radio" name="sch_area" /> PCMC</label><label class="opt"><input type="radio" name="sch_area" /> Khed / Rajgurunagar / Chakan</label><label class="opt"><input type="radio" name="sch_area" /> Baramati</label><label class="opt"><input type="radio" name="sch_area" /> Other</label></div></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('schForm',-1)">← Back</button><button class="btn btn-primary" onclick="formGo('schForm',1)">Continue →</button></div>
+          </div>
+
+          <!-- STEP 5: Service type branch -->
+          <div class="fstep" data-step="5">
+            <h2 class="steptitle">Type of Service</h2><div class="steplead">This decides the rest of the form.</div>
+            <div class="branch">
+              <div class="bopt sel" onclick="pickBranch(this,'A')">
+                <div class="bic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div>
+                <h4>Scholarship Support</h4><p>Portal credentials, scheme, application status &amp; installments (18 fields)</p>
+              </div>
+              <div class="bopt" onclick="pickBranch(this,'B')">
+                <div class="bic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+                <h4>Technical Support</h4><p>KYC services — Aadhar seeding, bank linkage (3 fields)</p>
+              </div>
+            </div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('schForm',-1)">← Back</button><button class="btn btn-primary" onclick="formGo('schForm',1)">Continue →</button></div>
+          </div>
+
+          <!-- STEP 6A: Scholarship details (Path A) -->
+          <div class="fstep" data-step="6A" id="branchA" data-skip="0">
+            <h2 class="steptitle">Scholarship Application Details</h2>
+            <div class="seczone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div><b>Security notice:</b> portal credentials are sensitive. In production these move to a secure credential vault — never stored in plain text.</div></div>
+            <div class="q"><div class="qen">Applicant User Name <span class="req">*</span></div><input type="text" placeholder="Username exactly as created on the portal" style="font-family:'Courier New',monospace" /></div>
+            <div class="q"><div class="qen">Applicant Password <span class="req">*</span></div><div class="cred"><input type="password" placeholder="Portal password" /><span class="eye" onclick="eye(this)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span></div></div>
+            <div class="q"><div class="qen">Scheme Name <span class="req">*</span></div>
+              <div class="schgroup"><div class="sgh">SC / ST Schemes</div><div class="opts"><label class="opt"><input type="radio" name="sch_scheme"/> Government of India Post-Matric Scholarship</label><label class="opt"><input type="radio" name="sch_scheme"/> Post Matric Scholarship Scheme (Government Of India)</label><label class="opt"><input type="radio" name="sch_scheme"/> Tuition Fee and Exam Fee For Tribal Students (Freeship)</label></div></div>
+              <div class="schgroup"><div class="sgh">OBC Schemes</div><div class="opts"><label class="opt"><input type="radio" name="sch_scheme"/> Post Matric Scholarship to OBC Students</label><label class="opt"><input type="radio" name="sch_scheme"/> Tuition Fees and Examination Fees to OBC Students</label><label class="opt"><input type="radio" name="sch_scheme"/> Post Matric Scholarship to OBC Girls (Professional Courses)</label><label class="opt"><input type="radio" name="sch_scheme"/> Tuition &amp; Exam Fees to OBC Girls (Professional Courses)</label></div></div>
+              <div class="schgroup"><div class="sgh">VJNT / SBC Schemes</div><div class="opts"><label class="opt"><input type="radio" name="sch_scheme"/> Post Matric Scholarship to VJNT Students</label><label class="opt"><input type="radio" name="sch_scheme"/> Tuition Fees and Examination Fees to VJNT Students</label><label class="opt"><input type="radio" name="sch_scheme"/> Post Matric Scholarship to SBC Students</label></div></div>
+              <div class="schgroup"><div class="sgh">Merit / EBC / Freeship</div><div class="opts"><label class="opt"><input type="radio" name="sch_scheme"/> Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Scheme</label><label class="opt"><input type="radio" name="sch_scheme"/> Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</label><label class="opt"><input type="radio" name="sch_scheme"/> Shahu Maharaj Merit Scholarship (11th &amp; 12th, VJNT &amp; SBC)</label><label class="opt"><input type="radio" name="sch_scheme"/> Rajarshi Chhatrapati Shahu Maharaj Fee Reimbursement Scheme</label><label class="opt"><input type="radio" name="sch_scheme"/> Shikshan Shulkh Shishyavrutti Yojna (EBC)</label><label class="opt"><input type="radio" name="sch_scheme"/> Post-Matric Tuition Fee and Examination Fee (Freeship)</label></div></div>
+              <div class="schgroup"><div class="sgh">Minority / Disability</div><div class="opts"><label class="opt"><input type="radio" name="sch_scheme"/> State Minority Scholarship Part II (DHE)</label><label class="opt"><input type="radio" name="sch_scheme"/> Post-Matric Scholarship for persons with disability</label></div></div>
+              <div class="schgroup"><div class="sgh">Hostel / Maintenance</div><div class="opts"><label class="opt"><input type="radio" name="sch_scheme"/> Dr Babasaheb Ambedkar Swadhar Yojana</label><label class="opt"><input type="radio" name="sch_scheme"/> Dr Panjabrao Deshmukh Vastigruh Nirvah Bhatta Yojna (DTE)</label><label class="opt"><input type="radio" name="sch_scheme"/> Dr Punjabrao Deshmukh Vasatigruh Nirvah Bhatta Yojna (DHE)</label></div></div>
+              <div class="schgroup"><div class="sgh">Other</div><div class="opts"><label class="opt"><input type="radio" name="sch_scheme"/> PCMC Scholarship</label><label class="opt"><input type="radio" name="sch_scheme"/> BOCW (Building &amp; Other Construction Workers)</label><label class="opt"><input type="radio" name="sch_scheme"/> Other</label></div></div>
+            </div>
+            <div class="q"><div class="qen">Application ID <span class="req">*</span></div><input type="text" placeholder="Application ID from portal" style="font-family:'Courier New',monospace" /></div>
+            <div class="q"><div class="qen">Total Benefits <span class="req">*</span></div><div class="qhelp" style="margin-top:0">Split across the student and the institute.</div>
+              <div class="form-grid" style="margin-top:10px"><div class="fg"><label>For Student (₹)</label><input type="number" placeholder="0" /></div><div class="fg"><label>For Institute (₹)</label><input type="number" placeholder="0" /></div></div></div>
+            <div class="q"><div class="qen">Application Status <span class="req">*</span></div>
+              <select onchange="onAppStatus(this)"><option value="">Select status</option><option>Under Scrutiny</option><option>Application Approved</option><option>Benefits Received</option><option>Rejected</option><option>Re-apply</option></select></div>
+            <div class="q" id="uploadPdfQ"><div class="qen">Upload Submitted PDF <span class="req">*</span></div><input type="file" accept="application/pdf" /><div class="qhelp">Final submitted application PDF (proof). PDF, max 10 MB.</div></div>
+            <div class="q" id="benefitsProofQ" style="display:none"><div class="qen">Proof of Benefits Received <span class="req">*</span></div><input type="file" accept="application/pdf,image/*" /><div class="qhelp">Screenshot/document showing funds received. PDF/JPG/PNG, max 10 MB.</div></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('schForm',-1)">← Back</button><button class="btn btn-primary" onclick="formGo('schForm',1)">Continue →</button></div>
+          </div>
+
+          <!-- STEP 7A: Financial tracking (Path A) -->
+          <div class="fstep" data-step="7A" id="branchA2" data-skip="0">
+            <h2 class="steptitle">Financial Tracking</h2><div class="steplead">Installment-wise amounts &amp; disbursement status.</div>
+            <table class="instgrid">
+              <thead><tr><th></th><th>First Installment</th><th>Second Installment</th></tr></thead>
+              <tbody>
+                <tr><td class="rowh">Student</td>
+                  <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
+                  <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
+                <tr><td class="rowh">Institute</td>
+                  <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
+                  <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
+              </tbody>
+            </table>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('schForm',-1)">← Back</button><button class="btn btn-primary" onclick="formGo('schForm',1)">Save Entry ✓</button></div>
+          </div>
+
+          <!-- STEP 6B: Technical support (Path B) -->
+          <div class="fstep" data-step="6B" id="branchB" data-skip="1">
+            <h2 class="steptitle">Technical Support</h2><div class="steplead">KYC services such as Aadhar seeding and bank linkage.</div>
+            <div class="seczone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div><b>Security notice:</b> credentials are sensitive — masked here; secure vault in production.</div></div>
+            <div class="q"><div class="qen">Login ID <span class="req">*</span></div><input type="text" placeholder="Service login ID" style="font-family:'Courier New',monospace" /></div>
+            <div class="q"><div class="qen">Login Password <span class="req">*</span></div><div class="cred"><input type="password" placeholder="Service password" /><span class="eye" onclick="eye(this)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></span></div></div>
+            <div class="q"><div class="qen">Technical support provided <span class="req">*</span></div>
+              <div class="opts"><label class="opt"><input type="checkbox" name="sch_tech" /> Aadhar Seeding</label><label class="opt"><input type="checkbox" name="sch_tech" /> Bank Account Linkage</label><label class="opt"><input type="checkbox" name="sch_tech" /> Bank Account Update</label><label class="opt optout"><input type="checkbox" name="sch_tech" /> Not yet completed / Pending</label><label class="opt"><input type="checkbox" name="sch_tech" /> Other</label></div></div>
+            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('schForm',-1)">← Back</button><button class="btn btn-primary" onclick="formGo('schForm',1)">Save Entry ✓</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== DOCUMENTATION APPLICATION + FOLLOW-UP (derived) ===== -->
+      <section class="screen" id="f-docapp">
+        <span class="backlink" data-go="f-student"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to student</span>
+        <div class="page-h" style="margin-bottom:10px"><div class="eyebrow">Documentation Support · Procurement</div><h1>Documentation Application</h1><p>Apply for a document the student doesn't have, and track follow-up until it's procured.</p></div>
+
+        <div class="formwrap" id="docForm">
+          <div class="form-card">
+            <div class="form-sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg>Application details</div>
+            <div class="q"><div class="qen">Student</div><input type="text" value="Aarti Ramesh Pawar (SMV-2026-01182)" disabled style="opacity:.75" /></div>
+            <div class="q"><div class="qen">Document to procure <span class="req">*</span></div>
+              <select><option value="">Select document…</option><option>Domicile Certificate</option><option>Income Certificate</option><option>Caste Certificate</option><option>Caste Validity Certificate</option><option>Non-Creamy Layer Certificate</option><option>Aadhaar Card</option><option>Ration Card</option><option>Bank Passbook</option><option>Bonafide Certificate</option><option>10th &amp; 12th Marksheet / Leaving Certificate</option><option>Orphan Certificate</option><option>Other</option></select>
+              <div class="qhelp">Pre-filled from documents the student marked "Don't have" during onboarding.</div></div>
+            <div class="q"><div class="qen">Issuing authority / office <span class="req">*</span></div><input type="text" placeholder="e.g. Tehsil office / Setu Kendra / Municipal office" /></div>
+            <div class="form-grid">
+              <div class="fg"><label>Date of application<span class="req">*</span></label><input type="date" value="2026-06-04" /></div>
+              <div class="fg"><label>Receipt / Reference number</label><input type="text" placeholder="As given by the office" /></div>
+              <div class="fg"><label>Expected issue date</label><input type="date" /></div>
+              <div class="fg"><label>Current status<span class="req">*</span></label><select><option>Not yet applied</option><option selected>Applied — awaiting issue</option><option>Follow-up in progress</option><option>Received</option><option>Submitted to scholarship</option></select></div>
+            </div>
+            <div class="q"><div class="qen">Follow-up note</div><textarea placeholder="e.g. Visited office on 4 Jun, told to collect after 10 days"></textarea></div>
+          </div>
+
+          <div class="form-card">
+            <div class="form-sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Follow-up history</div>
+            <div class="tl">
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Application made</div><div class="d">By Fellow Rahul · 2 Jun · Receipt logged</div></div>
+              <div class="tl-item active"><div class="knob"></div><div class="t">Follow-up in progress</div><div class="d">Last checked 4 Jun — under process at office</div></div>
+              <div class="tl-item future"><div class="t">Received</div><div class="d">Expected 12 Jun</div></div>
+              <div class="tl-item future"><div class="t">Submitted to scholarship</div><div class="d">—</div></div>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
+            <button class="btn btn-primary" onclick="formSubmit('docForm')">Save Application &amp; Follow-up</button>
+            <button class="btn btn-ghost" data-go="f-student">Cancel</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- FELLOW BOTTOM NAV -->
+<nav class="botnav hidden" id="fellowBot">
+  <a href="#" class="nav-link active" data-go="f-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
+  <a href="#" class="nav-link" data-go="f-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg>Students</a>
+  <a href="#" class="nav-link" data-go="f-onboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Onboard</a>
+  <a href="#" class="nav-link" data-go="f-applications"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg>Apps</a>
+  <a href="#" class="nav-link" data-go="f-profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Profile</a>
+</nav>
+
+<!-- ========== BOOKING MODAL ========== -->
+<div class="modal-bg" id="bookModal">
+  <div class="modal" style="position:relative">
+    <button class="icon-btn mclose" onclick="closeBook()"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    <span class="pill teal"><span class="pdot"></span>Free session</span>
+    <h3 style="margin-top:10px">Book with <span id="bookName">Mentor</span></h3>
+    <p style="color:var(--ink-soft);font-size:14px">Pick a time that works for you.</p>
+    <div class="slot">
+      <button onclick="selSlot(this)">Thu · 3:00 PM</button>
+      <button onclick="selSlot(this)" class="sel">Fri · 4:00 PM</button>
+      <button onclick="selSlot(this)">Sat · 11:00 AM</button>
+      <button onclick="selSlot(this)">Mon · 5:30 PM</button>
+    </div>
+    <label style="font-size:13px;font-weight:600;color:var(--ink-soft)">What would you like to discuss?</label>
+    <textarea rows="2" placeholder="e.g. Which course should I pick after B.Com?"></textarea>
+    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="confirmBook()">Confirm booking</button>
+  </div>
+</div>
+
+<script>
+// ---- role-based login ----
+const ACCOUNTS = { '9800000021':{role:'student'}, '9800000011':{role:'fellow'} };
+let pendingRole='student';
+function roleFor(mobile){ const k=(mobile||'').replace(/\D/g,''); return (ACCOUNTS[k]||{}).role || 'student'; }
+function showApp(role){
+  document.getElementById('studentApp').classList.toggle('hidden',role!=='student');
+  document.getElementById('fellowApp').classList.toggle('hidden',role!=='fellow');
+  document.getElementById('studentBot').classList.toggle('hidden',role!=='student');
+  document.getElementById('fellowBot').classList.toggle('hidden',role!=='fellow');
+  go(role==='fellow'?'f-home':'home');
+}
+function getOtp(){
+  pendingRole=roleFor(document.getElementById('loginMobile').value);
+  document.getElementById('otpTo').textContent='+91 '+(document.getElementById('loginMobile').value||'');
+  document.getElementById('lstep1').classList.remove('on');
+  document.getElementById('lstep2').classList.add('on');
+}
+function backToMobile(){document.getElementById('lstep2').classList.remove('on');document.getElementById('lstep1').classList.add('on');}
+function doLogin(){showApp(pendingRole);document.getElementById('loginWrap').style.display='none';window.scrollTo(0,0);}
+function loginAs(role){pendingRole=role;showApp(role);document.getElementById('loginWrap').style.display='none';window.scrollTo(0,0);}
+function logout(){
+  document.getElementById('loginWrap').style.display='flex';
+  document.getElementById('lstep2').classList.remove('on');
+  document.getElementById('lstep1').classList.add('on');
+  window.scrollTo(0,0);
+}
+
+// ---- simple screen router ----
+const screens=document.querySelectorAll('.screen');
+function go(id){
+  screens.forEach(s=>s.classList.toggle('active',s.id===id));
+  document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.dataset.go===id));
+  document.querySelector('.content').scrollTo({top:0});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();go(el.dataset.go);}));
+
+// ---- booking modal ----
+const bm=document.getElementById('bookModal');
+document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',()=>{
+  document.getElementById('bookName').textContent=b.dataset.book;bm.classList.add('open');
+}));
+function closeBook(){bm.classList.remove('open')}
+function selSlot(el){document.querySelectorAll('.slot button').forEach(s=>s.classList.remove('sel'));el.classList.add('sel')}
+function confirmBook(){bm.querySelector('.modal').innerHTML='<div style="text-align:center;padding:20px"><div style="width:64px;height:64px;border-radius:50%;background:var(--green-50);color:var(--green);display:grid;place-items:center;margin:0 auto 16px"><svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div><h3>Session booked!</h3><p style="color:var(--ink-soft);font-size:14px;margin:8px 0 18px">You\'ll get a confirmation by SMS and email. A video link arrives 1 hour before.</p><button class="btn btn-primary" style="width:100%;justify-content:center" onclick="closeBook()">Done</button></div>'}
+bm.addEventListener('click',e=>{if(e.target===bm)closeBook()});
+
+// ---- document detail expand (status only — no student actions) ----
+function toggleArr(id){document.getElementById(id).classList.toggle('open')}
+
+// ---- fellow interactions ----
+function ftab(btn,id){
+  btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.tabpane').forEach(p=>p.classList.toggle('on',p.id===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function onboardSave(){
+  if(!document.getElementById('consentChk').checked){alert('DPDP consent is mandatory — the profile cannot be saved without consent (BR-02).');return;}
+  alert('Profile saved with a unique Student ID. The eligibility engine has run automatically and matched eligible scholarships.');
+  go('f-student');
+}
+function fileAct(btn,status){
+  const row=btn.closest('.doc-row');
+  const pill=row.querySelector('.pill');
+  pill.className='pill blue';pill.style.marginRight='0';pill.innerHTML='<span class="pdot"></span>Under Review';
+  const small=row.querySelector('.dn small'); if(small){small.style.color='';small.textContent='Uploaded just now — sent to Program Admin for review';}
+  btn.remove();
+}
+function setChip(btn){ btn.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on')); btn.classList.add('on'); }
+
+// My Students: combined status + date filter
+let stuStatus='all', stuDate='';
+function filterStu(status,btn){ stuStatus=status; setChip(btn); applyStu(); }
+function filterStuDate(val){ stuDate=val; applyStu(); }
+function applyStu(){
+  let shown=0;
+  document.querySelectorAll('#stuList .stu-row').forEach(r=>{
+    const okS=stuStatus==='all'||r.dataset.status===stuStatus;
+    const okD=!stuDate||r.dataset.date===stuDate;
+    const vis=okS&&okD; r.style.display=vis?'':'none'; if(vis)shown++;
+  });
+  document.getElementById('stuEmpty').style.display=shown?'none':'block';
+}
+// Applications: status filter
+function filterApp(status,btn){
+  setChip(btn); let shown=0;
+  document.querySelectorAll('#appList .appitem').forEach(a=>{
+    const vis=status==='all'||a.dataset.astatus===status; a.style.display=vis?'':'none'; if(vis)shown++;
+  });
+  document.getElementById('appEmpty').style.display=shown?'none':'block';
+}
+
+// Multi-step form engine
+function formGo(formId,dir){
+  const f=document.getElementById(formId);
+  const steps=[...f.querySelectorAll('.fstep')].filter(s=>s.dataset.skip!=='1');
+  let i=steps.findIndex(s=>s.classList.contains('on'));
+  if(i<0)i=0;
+  const n=i+dir;
+  if(n<0)return;
+  if(n>=steps.length){ formSubmit(formId); return; }
+  steps[i].classList.remove('on'); steps[n].classList.add('on');
+  const pct=Math.round(((n+1)/steps.length)*100);
+  const bar=f.querySelector('.fprogress i'); if(bar)bar.style.width=pct+'%';
+  const cnt=f.querySelector('.stepcount b'); if(cnt)cnt.textContent=(n+1)+' of '+steps.length;
+  window.scrollTo({top:0,behavior:'smooth'});
+  const c=document.querySelector('#fellowApp .content'); if(c)c.scrollTo&&c.scrollTo({top:0});
+}
+function formSubmit(formId){
+  if(formId==='onbForm'){
+    const c=document.getElementById('onbConsent');
+    if(c&&!c.value.trim()){alert('Consent is required — please type the student/guardian name to give consent (BR-02).');return;}
+    alert('✅ Onboarding submitted. A unique Student ID is generated and the eligibility engine has matched scholarships automatically.');
+    go('f-student');return;
+  }
+  if(formId==='schForm'){ alert('✅ Scholarship data entry saved. The application now appears under Applications → Under Scrutiny.'); go('f-applications');return; }
+  if(formId==='docForm'){ alert('✅ Documentation application recorded. It will appear under the student\'s Documents with follow-up tracking.'); go('f-student');return; }
+}
+// password show/hide
+function eye(btn){
+  const inp=btn.parentElement.querySelector('input');
+  inp.type = inp.type==='password' ? 'text' : 'password';
+}
+// service branch (scholarship form)
+function pickBranch(el,which){
+  el.parentElement.querySelectorAll('.bopt').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById('branchA').dataset.skip = which==='A'?'0':'1';
+  document.getElementById('branchA2').dataset.skip = which==='A'?'0':'1';
+  document.getElementById('branchB').dataset.skip = which==='B'?'0':'1';
+}
+// same-as-permanent
+function sameAddr(cb,srcId,dstId){ if(cb.checked){const s=document.getElementById(srcId),d=document.getElementById(dstId); if(s&&d)d.value=s.value;} }
+// conditional district (onboarding)
+function onState(sel){
+  const mh=document.getElementById('mhDistricts'), other=document.getElementById('otherDistrict');
+  if(!mh)return;
+  if(sel.value==='Maharashtra'){mh.style.display='';if(other)other.style.display='none';}
+  else{mh.style.display='none';if(other)other.style.display='';}
+}
+// app status conditional (scholarship form)
+function onAppStatus(sel){
+  const up=document.getElementById('uploadPdfQ'), proof=document.getElementById('benefitsProofQ');
+  if(!up)return;
+  if(sel.value==='Benefits Received'){up.style.display='none';proof.style.display='';}
+  else{up.style.display='';proof.style.display='none';}
+}
+</script>
+</body>
+</html>
