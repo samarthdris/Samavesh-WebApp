@@ -2,6 +2,9 @@
 
 Single file: `wireframe/index.html`. Role-based login (Student / Fellow). Treat as the FINAL dev source of truth — everything must be clickable.
 
+**Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
+**Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
+
 _Last updated: 2026-06-04 — working through the big Fellow build._
 
 ## Legend
