@@ -765,6 +765,7 @@ img{max-width:100%}
             <button onclick="loginAs('student')"><span class="da" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><span class="dt">Student<small>Aarti Pawar</small></span></button>
             <button onclick="loginAs('fellow')"><span class="da" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span><span class="dt">Fellow<small>Rahul More</small></span></button>
             <button onclick="loginAs('admin')"><span class="da" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">M</span><span class="dt">Program Admin<small>Meera Nair</small></span></button>
+            <button onclick="loginAs('mentor')"><span class="da" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">M</span><span class="dt">Mentor<small>Dr. Meera Joshi</small></span></button>
           </div>
         </div>
       </div>
@@ -1222,6 +1223,47 @@ img{max-width:100%}
   <a href="#" class="nav-link" data-go="profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Profile</a>
 </nav>
 
+
+<!-- ===================================================================== -->
+<!-- ============================ MENTOR APP ============================= -->
+<!-- ===================================================================== -->
+<div class="app hidden fp" id="mentorApp">
+  <aside class="rail">
+    <div class="brand"><div class="mark">स</div><div><div class="name">Samavesh</div><div class="tag">Mentor</div></div></div>
+    <nav class="nav">
+      <div class="nav-label">Mentoring</div>
+      <a href="#" class="nav-link active" data-go="m-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
+      <a href="#" class="nav-link" data-go="m-availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/><path d="M12 12.5V15l1.6 1"/></svg>My Availability</a>
+      <a href="#" class="nav-link" data-go="m-sessions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 10l5-3v10l-5-3v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2Z"/></svg>Sessions</a>
+      <div class="nav-label">Account</div>
+      <a href="#" class="nav-link" data-go="m-profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>My Profile</a>
+      <a href="#" class="nav-link" onclick="logout();return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>Sign out</a>
+    </nav>
+    <div class="rail-foot"><div class="av" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">M</div><div class="who">Dr. Meera Joshi<small>Career Counsellor</small></div></div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <div class="mobile-brand"><div class="mark">स</div><b class="serif" style="font-size:18px">Samavesh</b></div>
+      <div class="search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg><input placeholder="Search sessions, mentees…" /></div>
+      <div class="spacer"></div>
+      <div class="lang">🌐 English</div>
+      <button class="icon-btn" title="Notifications"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+    </header>
+    <main class="content">
+      <section class="screen" id="m-home"><div class="page-h"><div class="eyebrow">Mentoring</div><h1>Welcome, Dr. Meera Joshi</h1><p>Your mentoring home — upcoming sessions and this month at a glance.</p></div><!-- m-home body --></section>
+      <section class="screen" id="m-availability"><div class="page-h"><div class="eyebrow">Mentoring · Availability</div><h1>My Availability</h1><p>Publish the times you're open to mentor. Students can book only future, un-booked slots once your profile is Approved.</p></div><!-- m-availability body --></section>
+      <section class="screen" id="m-sessions"><div class="page-h"><div class="eyebrow">Mentoring · Sessions</div><h1>Sessions</h1><p>Your booked sessions. You see only the mentee's first name and their discussion topic — no personal or financial details.</p></div><!-- m-sessions body --></section>
+      <section class="screen" id="m-profile"><div class="page-h"><div class="eyebrow">Account</div><h1>My Mentor Profile</h1><p>Your public mentor card. Published after Program Admin approval.</p></div><!-- m-profile body --></section>
+    </main>
+  </div>
+</div>
+
+<nav class="botnav hidden" id="mentorBot">
+  <a href="#" class="nav-link active" data-go="m-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
+  <a href="#" class="nav-link" data-go="m-availability"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>Slots</a>
+  <a href="#" class="nav-link" data-go="m-sessions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 10l5-3v10l-5-3v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2Z"/></svg>Sessions</a>
+  <a href="#" class="nav-link" data-go="m-profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Profile</a>
+</nav>
 
 <!-- ===================================================================== -->
 <!-- ============================ FELLOW APP ============================== -->
@@ -2453,15 +2495,15 @@ img{max-width:100%}
 
 <script>
 // ---- role-based login ----
-const ACCOUNTS = { '9800000021':{role:'student'}, '9800000011':{role:'fellow'}, '9800000001':{role:'admin'} };
+const ACCOUNTS = { '9800000021':{role:'student'}, '9800000011':{role:'fellow'}, '9800000001':{role:'admin'}, '9800000031':{role:'mentor'} };
 let pendingRole='student';
 function roleFor(mobile){ const k=(mobile||'').replace(/\D/g,''); return (ACCOUNTS[k]||{}).role || 'student'; }
 function showApp(role){
-  [['student','studentApp','studentBot'],['fellow','fellowApp','fellowBot'],['admin','adminApp','adminBot']].forEach(function(t){
+  [['student','studentApp','studentBot'],['fellow','fellowApp','fellowBot'],['admin','adminApp','adminBot'],['mentor','mentorApp','mentorBot']].forEach(function(t){
     document.getElementById(t[1]).classList.toggle('hidden',role!==t[0]);
     document.getElementById(t[2]).classList.toggle('hidden',role!==t[0]);
   });
-  go(role==='fellow'?'f-home':role==='admin'?'a-home':'home');
+  go(role==='fellow'?'f-home':role==='admin'?'a-home':role==='mentor'?'m-home':'home');
 }
 function getOtp(){
   pendingRole=roleFor(document.getElementById('loginMobile').value);
