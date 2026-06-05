@@ -88,7 +88,69 @@ h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em
   </div>
   <p class="wf-tip">Modelled on the Samavesh program workflow. Screen links open the prototype already signed-in as that role.</p>
 
-  <section class="wf-section" id="wf-overview"><h2>Program Overview — the 4 phases</h2><!-- WF: overview --></section>
+  <section class="wf-section" id="wf-overview"><h2>Program Overview — the 4 phases</h2><div class="wf-phases">
+    <div class="wf-phase"><div class="ph-h">Phase 1 · Onboarding</div>
+      <div class="wf-lane">
+        <div class="wf-node wf-action">Fellow initiates onboarding</div>
+        <div class="wf-link"></div>
+        <a class="wf-node wf-screen" href="index.html?role=fellow&screen=f-onboard" target="_blank">Digital Onboarding Form</a>
+        <div class="wf-note">For this we require an mForm</div>
+        <div class="wf-link"></div>
+        <div class="wf-node wf-action">Fills form + DPDP consent</div>
+        <div class="wf-link"></div>
+        <div class="wf-node wf-action">Profile created</div>
+      </div>
+    </div>
+    <div class="wf-phase"><div class="ph-h">Phase 2 · Eligibility &amp; Discovery</div>
+      <div class="wf-lane">
+        <div class="wf-node wf-action">Automated eligibility engine</div>
+        <div class="wf-link"></div>
+        <div class="wf-node wf-action">List of eligible scholarships</div>
+        <div class="wf-link"></div>
+        <div class="wf-node wf-action">Document checklist generated</div>
+      </div>
+    </div>
+    <div class="wf-phase"><div class="ph-h">Phase 3 · Hands-On Support</div>
+      <div class="wf-lane">
+        <div class="wf-node wf-decision">Documents complete?</div>
+        <div class="wf-split">
+          <div class="wf-col"><span class="wf-blabel">No</span>
+            <div class="wf-node wf-action">Procure &amp; upload</div>
+            <div class="wf-link"></div>
+            <a class="wf-node wf-screen" href="index.html?role=admin&screen=a-verify" target="_blank">Admin verifies</a>
+            <div class="wf-note">Added: verification gate (implicit in the original)</div>
+          </div>
+          <div class="wf-col"><span class="wf-blabel">Yes</span>
+            <div class="wf-node wf-action">Submit on govt portal</div>
+            <div class="wf-link"></div>
+            <div class="wf-node wf-action">Record application details</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wf-phase"><div class="ph-h">Phase 4 · Tracking &amp; Re-application</div>
+      <div class="wf-lane">
+        <div class="wf-node wf-action">Logs into govt portal</div>
+        <div class="wf-link"></div>
+        <div class="wf-node wf-decision">Application status?</div>
+        <div class="wf-split">
+          <div class="wf-col"><span class="wf-blabel">Re-apply</span>
+            <div class="wf-node wf-action">Correction loop → re-submit</div>
+          </div>
+          <div class="wf-col"><span class="wf-blabel">Approved</span>
+            <div class="wf-node wf-decision">Funds disbursed?</div>
+            <div class="wf-link"></div>
+            <div class="wf-node wf-action">Record disbursement</div>
+          </div>
+        </div>
+        <div class="wf-link"></div>
+        <div class="wf-node wf-action">MIS dashboard auto-updates</div>
+        <div class="wf-note">Vocabulary reconciled to the build: Under Review → Under Scrutiny; Redirected for Correction → Re-apply</div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-note" style="max-width:none;margin-top:18px">Parallel — Mentoring Journey: once the Profile is created, the student self-books a mentor → mentoring sessions → Learning (Frappe LMS, planned).</div>
+</section>
   <section class="wf-section" id="wf-student"><h2>1 &middot; Student journey</h2><!-- WF: student --></section>
   <section class="wf-section" id="wf-fellow"><h2>2 &middot; Fellow journey</h2><!-- WF: fellow --></section>
   <section class="wf-section" id="wf-admin"><h2>3 &middot; Program Admin journey</h2><!-- WF: admin --></section>
