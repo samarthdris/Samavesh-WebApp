@@ -134,6 +134,9 @@ h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em
         <div class="wf-link"></div>
         <div class="wf-node wf-decision">Application status?</div>
         <div class="wf-split">
+          <div class="wf-col"><span class="wf-blabel">Under Scrutiny</span>
+            <div class="wf-node wf-action">Track &amp; follow up</div>
+          </div>
           <div class="wf-col"><span class="wf-blabel">Re-apply</span>
             <div class="wf-node wf-action">Correction loop → re-submit</div>
           </div>
@@ -160,7 +163,7 @@ h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em
     <span class="wf-blabel">Explore from Home</span>
     <div class="wf-split">
       <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=scholarships" target="_blank">Scholarships</a><div class="wf-link"></div><div class="wf-node wf-action">View matched schemes &amp; application status</div></div>
-      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=documents" target="_blank">Documents</a><div class="wf-link"></div><div class="wf-node wf-action">View status &amp; history (view-only)</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=documents" target="_blank">Documents</a><div class="wf-link"></div><div class="wf-node wf-action">View status &amp; history (view-only)</div><div class="wf-link"></div><div class="wf-node wf-decision">Document status?</div><div class="wf-note">Pending → Uploaded → Under Review → Accepted / Rejected</div></div>
       <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=mentorship" target="_blank">Mentorship</a><div class="wf-link"></div><div class="wf-node wf-decision">Slot available?</div><div class="wf-link"></div><div class="wf-node wf-action">Book a session</div></div>
       <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=learning" target="_blank">Learning</a><div class="wf-note">Planned — Frappe LMS</div></div>
       <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=profile" target="_blank">Profile</a><div class="wf-note">Read-only · managed by Fellow</div></div>
@@ -196,6 +199,8 @@ h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em
     </div>
     <div class="wf-link"></div>
     <a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-applications" target="_blank">Applications — track all</a>
+    <div class="wf-link"></div>
+    <a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-profile" target="_blank">Profile &amp; settings</a>
     <div class="wf-note" style="max-width:none">The Fellow performs every operator action; the student only sees the resulting status.</div>
   </div></section>
   <section class="wf-section" id="wf-admin"><h2>3 &middot; Program Admin journey</h2><div class="wf-rolebar"><b>Frappe Desk</b> · demo login <b>9800000001</b> · the Admin <b>gates &amp; oversees</b> (Meera Nair)</div>
@@ -210,6 +215,7 @@ h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em
       <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-students" target="_blank">All Students</a><div class="wf-link"></div><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-student" target="_blank">Student Detail</a><div class="wf-link"></div><div class="wf-node wf-action">Edit profile · Reassign Fellow</div></div>
       <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-catalogue" target="_blank">Scholarship Catalogue</a><div class="wf-link"></div><div class="wf-node wf-action">Add / edit schemes → feeds eligibility</div></div>
       <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-fellows" target="_blank">Fellows &amp; Users</a><div class="wf-link"></div><div class="wf-node wf-action">Manage users</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-profile" target="_blank">My Profile</a><div class="wf-link"></div><div class="wf-node wf-action">Account settings</div></div>
     </div>
     <div class="wf-note" style="max-width:none">Admin gates verification &amp; approval and oversees all Fellows (RBAC-05).</div>
   </div></section>
