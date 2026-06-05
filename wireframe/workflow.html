@@ -167,8 +167,52 @@ h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em
     </div>
     <div class="wf-note" style="max-width:none">Student sees status only — the Fellow performs every action (RBAC-04).</div>
   </div></section>
-  <section class="wf-section" id="wf-fellow"><h2>2 &middot; Fellow journey</h2><!-- WF: fellow --></section>
-  <section class="wf-section" id="wf-admin"><h2>3 &middot; Program Admin journey</h2><!-- WF: admin --></section>
+  <section class="wf-section" id="wf-fellow"><h2>2 &middot; Fellow journey</h2><div class="wf-rolebar"><b>Frappe Desk</b> · demo login <b>9800000011</b> · the Fellow <b>runs the engine</b> (all 4 phases)</div>
+  <div class="wf-lane">
+    <div class="wf-node wf-action">Logs in as Fellow</div>
+    <div class="wf-link"></div>
+    <a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-home" target="_blank">Dashboard — caseload &amp; tasks</a>
+    <div class="wf-link"></div>
+    <a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-students" target="_blank">My Students</a>
+    <div class="wf-link"></div>
+    <div class="wf-node wf-decision">Duplicate exists?</div>
+    <div class="wf-split">
+      <div class="wf-col"><span class="wf-blabel">Yes</span><div class="wf-node wf-action">Open existing profile</div></div>
+      <div class="wf-col"><span class="wf-blabel">No</span><a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-onboard" target="_blank">Onboarding Form (mForm)</a><div class="wf-link"></div><div class="wf-node wf-action">Capture DPDP consent → profile created</div></div>
+    </div>
+    <div class="wf-link"></div>
+    <a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-student" target="_blank">Student Detail</a>
+    <div class="wf-link"></div>
+    <div class="wf-node wf-decision">Documents complete?</div>
+    <div class="wf-split">
+      <div class="wf-col"><span class="wf-blabel">No</span><div class="wf-node wf-action">Procure &amp; upload</div><div class="wf-note">Program Admin verifies → loop until all Accepted</div></div>
+      <div class="wf-col"><span class="wf-blabel">Yes</span><a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-scholarship" target="_blank">Scholarship Data Entry</a><div class="wf-link"></div><div class="wf-node wf-action">Submit on portal &amp; record</div></div>
+    </div>
+    <div class="wf-link"></div>
+    <div class="wf-node wf-decision">Application status?</div>
+    <div class="wf-split">
+      <div class="wf-col"><span class="wf-blabel">Re-apply</span><a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-docapp" target="_blank">Documentation Application</a><div class="wf-link"></div><div class="wf-node wf-action">Correct &amp; re-submit (loop)</div></div>
+      <div class="wf-col"><span class="wf-blabel">Approved</span><div class="wf-node wf-action">Record disbursement → Benefits Received</div></div>
+    </div>
+    <div class="wf-link"></div>
+    <a class="wf-node wf-screen" href="index.html?role=fellow&amp;screen=f-applications" target="_blank">Applications — track all</a>
+    <div class="wf-note" style="max-width:none">The Fellow performs every operator action; the student only sees the resulting status.</div>
+  </div></section>
+  <section class="wf-section" id="wf-admin"><h2>3 &middot; Program Admin journey</h2><div class="wf-rolebar"><b>Frappe Desk</b> · demo login <b>9800000001</b> · the Admin <b>gates &amp; oversees</b> (Meera Nair)</div>
+  <div class="wf-lane">
+    <div class="wf-node wf-action">Logs in as Program Admin</div>
+    <div class="wf-link"></div>
+    <a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-home" target="_blank">MIS Dashboard — KPIs / funnel / export</a>
+    <div class="wf-link"></div>
+    <span class="wf-blabel">Oversee &amp; gate</span>
+    <div class="wf-split">
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-verify" target="_blank">Document Verification</a><div class="wf-link"></div><div class="wf-node wf-decision">Document valid?</div><div class="wf-split"><div class="wf-col"><span class="wf-blabel">Accept</span><div class="wf-node wf-action">Unlocks "Ready to Submit"</div></div><div class="wf-col"><span class="wf-blabel">Reject</span><div class="wf-node wf-action">Back to Fellow (re-upload)</div></div></div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-students" target="_blank">All Students</a><div class="wf-link"></div><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-student" target="_blank">Student Detail</a><div class="wf-link"></div><div class="wf-node wf-action">Edit profile · Reassign Fellow</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-catalogue" target="_blank">Scholarship Catalogue</a><div class="wf-link"></div><div class="wf-node wf-action">Add / edit schemes → feeds eligibility</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=admin&amp;screen=a-fellows" target="_blank">Fellows &amp; Users</a><div class="wf-link"></div><div class="wf-node wf-action">Manage users</div></div>
+    </div>
+    <div class="wf-note" style="max-width:none">Admin gates verification &amp; approval and oversees all Fellows (RBAC-05).</div>
+  </div></section>
   <section class="wf-section" id="wf-mentor"><h2>4 &middot; Mentor journey</h2><div class="wf-rolebar"><b>Web Portal</b> · demo login <b>9800000031</b> · a <b>parallel</b> lane (Dr. Meera Joshi)</div>
   <div class="wf-lane">
     <div class="wf-node wf-action">Logs in as Mentor</div>
