@@ -1,11 +1,11 @@
 # Samavesh Wireframe — Build Status (heartbeat)
 
-Single file: `wireframe/index.html`. Role-based login (Student / Fellow). Treat as the FINAL dev source of truth — everything must be clickable.
+Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Program Admin / Mentor). Treat as the FINAL dev source of truth — everything must be clickable.
 
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-05 — added Admin student-detail view (a-student)._
+_Last updated: 2026-06-05 — added Mentor portal app (m-home/availability/sessions/profile)._
 
 ## Legend
 - [x] done & in file
@@ -36,6 +36,14 @@ _Last updated: 2026-06-05 — added Admin student-detail view (a-student)._
 - [x] Admin profile + sign out; admin demo login (9800000001 / "Program Admin · Meera Nair")
 - [x] **Student Detail (a-student)** — dynamic per-row header (name/avatar/stage pill/assigned fellow/journey, via goStudent(this)); oversight + admin-only actions: Accept/Reject docs inline (reuses vAct), Edit profile + Reassign Fellow (audit-logged); Scholarships & Applications read-only (no operator buttons). All-Students rows now route here (were going to Verify).
 
+## Mentor section (NEW)
+- [x] Mentor portal app (.fp) — demo login 9800000031 (Dr. Meera Joshi); rail + bottom-nav; wired via ACCOUNTS/showApp/loginAs
+- [x] Home (m-home) — next-session banner, monthly stats (incl. hours-used/cap), my-rating number, confidentiality note
+- [x] My Availability (m-availability) — recurring weekly grid (toggle slots via mSlot; amber=booked) + one-off slots (toggleOneOff/saveOneOff)
+- [x] Sessions (m-sessions) — Upcoming/Past tabs (reuse ftab); Join / Mark complete / Cancel / + Mentor note (mSession/mNote); privacy boundary = mentee first name + topic only, NO feedback shown (RBAC-03 / FR-MENT-011)
+- [x] My Profile (m-profile) — editable bio/skill·stream·geo tags/languages/mode/monthly-hour-cap; Approved pill
+- Only new CSS = the availability grid (.availgrid/.slot-cell). Spec+plan: docs/superpowers/*2026-06-05-mentor-interface*.
+
 ## Verification audit (2026-06-05) — done
 - [x] Full audit vs workflow PDF + BRD. Confirmed aligned: roles, RBAC (student view-only), doc lifecycle, eligibility, masking, dup-check, MIS, forms (onboarding 8-step/9-doc/bilingual; scholarship branched).
 - [x] FIXED: application-status vocabulary was half-migrated → now FORM vocab everywhere (Under Scrutiny / Application Approved / Benefits Received / Re-apply / Rejected). "Under Review" kept ONLY as document status (DOC-03). "Redirected for Correction" removed.
@@ -51,7 +59,7 @@ _Last updated: 2026-06-05 — added Admin student-detail view (a-student)._
 ## Still to do / next
 - [ ] Confirm Documentation Application form design with user (derived, no MD spec)
 - [ ] Documentation follow-up could become its own global queue (like Applications) if user wants
-- [ ] Mentor + Super Admin role apps (not built yet)
+- [x] ~~Mentor role app~~ — DONE 2026-06-05 (.fp portal) · [ ] Super Admin role app (not built yet)
 - [x] ~~Admin: build a real student-detail view~~ — DONE 2026-06-05 (a-student)
 - [ ] Optional: add f-scholarship / f-docapp to fellow rail nav (currently reached contextually)
 
