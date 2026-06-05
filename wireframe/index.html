@@ -551,29 +551,30 @@ img{max-width:100%}
 /* ===== FRAPPE DESK THEME — scoped to .fd (Fellow / Admin) ==== */
 /* ============================================================= */
 .fd{
-  --fd-bg:#f4f5f6; --fd-card:#fff; --fd-border:#e4e7ea; --fd-line:#eef0f2;
-  --fd-ink:#1c2024; --fd-sub:#6b7480; --fd-faint:#9aa3ad;
-  --fd-blue:#2490ef; --fd-blue-bg:#eef6fe; --fd-dark:#1c2024;
+  --fd-bg:#f4f6f5; --fd-card:#fff; --fd-border:#e6e9e8; --fd-line:#eef1f0;
+  --fd-ink:#16201e; --fd-sub:#5f6f6c; --fd-faint:#94a3a0;
+  --fd-blue:#0f857a; --fd-blue-bg:#e6f4f1; --fd-dark:#0a3f3a; --fd-gold:#e8821e;
   font-family:'Inter',system-ui,sans-serif; background:var(--fd-bg);
 }
 .fd .serif{font-family:'Inter',sans-serif}
 /* sidebar */
-.fd .rail{background:#fff;border-right:1px solid var(--fd-border);color:var(--fd-ink);padding:14px 12px;background-image:none}
+.fd .rail{background:linear-gradient(185deg,#0e6e66,#0a3f3a);border-right:none;color:#eaf6f4;padding:16px 13px}
 .fd .brand{padding:4px 8px 16px}
-.fd .brand .mark{background:var(--fd-dark);color:#fff;border-radius:8px;box-shadow:none;font-family:'Inter';font-size:18px}
-.fd .brand .name{color:var(--fd-ink);font-family:'Inter';font-weight:700;font-size:16px}
-.fd .brand .tag{color:var(--fd-sub)}
-.fd .nav-label{color:var(--fd-faint);font-size:10.5px;padding:13px 10px 5px}
-.fd .nav a{color:var(--fd-ink);font-weight:500;font-size:13.5px;border-radius:8px;padding:8px 10px;gap:11px}
-.fd .nav a svg{opacity:.65;width:17px;height:17px}
-.fd .nav a:hover{background:#f1f3f5;color:var(--fd-ink)}
-.fd .nav a.active{background:var(--fd-blue-bg);color:var(--fd-blue);box-shadow:none}
-.fd .nav a.active svg{opacity:1;color:var(--fd-blue)}
-.fd .nav a.active::before{display:none}
-.fd .nav a .soon{background:var(--fd-blue-bg);color:var(--fd-blue)}
-.fd .rail-foot{background:#f1f3f5;border-radius:8px}
-.fd .rail-foot .av{background:var(--fd-dark);color:#fff}
-.fd .rail-foot .who{color:var(--fd-ink)} .fd .rail-foot .who small{color:var(--fd-sub)}
+.fd .brand .mark{background:linear-gradient(140deg,#f6b24a,#e8821e);color:#3a2400;border-radius:10px;box-shadow:0 6px 16px rgba(232,130,30,.35);font-family:'Inter';font-size:19px}
+.fd .brand .name{color:#fff;font-family:'Inter';font-weight:700;font-size:17px}
+.fd .brand .tag{color:#b9e1db}
+.fd .nav-label{color:rgba(214,239,236,.5);font-size:10.5px;padding:13px 10px 5px}
+.fd .nav a{color:#cfe9e5;font-weight:500;font-size:13.5px;border-radius:9px;padding:9px 11px;gap:11px;position:relative}
+.fd .nav a svg{opacity:.85;width:17px;height:17px}
+.fd .nav a:hover{background:rgba(255,255,255,.09);color:#fff}
+.fd .nav a:hover svg{opacity:1}
+.fd .nav a.active{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.fd .nav a.active svg{opacity:1;color:#fff}
+.fd .nav a.active::before{content:"";display:block;position:absolute;left:-13px;top:50%;transform:translateY(-50%);width:4px;height:22px;border-radius:0 4px 4px 0;background:var(--fd-gold)}
+.fd .nav a .soon{background:rgba(246,178,74,.2);color:#f6b24a}
+.fd .rail-foot{background:rgba(255,255,255,.08);border-radius:10px}
+.fd .rail-foot .av{background:linear-gradient(140deg,#f6b24a,#e8821e);color:#3a2400}
+.fd .rail-foot .who{color:#fff} .fd .rail-foot .who small{color:#b9e1db}
 /* navbar */
 .fd .topbar{background:#fff;border-bottom:1px solid var(--fd-border);backdrop-filter:none;padding:8px 22px}
 .fd .topbar .search{background:#f1f3f5;border:1px solid transparent;border-radius:8px;padding:7px 12px;max-width:440px;color:var(--fd-sub)}
@@ -590,20 +591,19 @@ img{max-width:100%}
 .fd .page-h p{font-size:13.5px;color:var(--fd-sub)}
 .fd .section-h h3{font-weight:600;font-size:15px}
 /* cards */
-.fd .card{background:#fff;border:1px solid var(--fd-border);border-radius:10px;box-shadow:none}
-.fd .card.hoverable:hover{box-shadow:0 2px 8px rgba(28,32,36,.07);transform:none;border-color:#d4d8dc}
-/* hero -> flat workspace banner */
-.fd .hero{background:#fff;border:1px solid var(--fd-border);color:var(--fd-ink);box-shadow:none}
-.fd .hero::after,.fd .hero::before{display:none}
-.fd .hero .greet{color:var(--fd-sub)} .fd .hero h2{color:var(--fd-ink)} .fd .hero p{color:var(--fd-sub)} .fd .hero p b{color:var(--fd-ink)!important}
-.fd .hero .quote{color:var(--fd-blue)}
+.fd .card{background:#fff;border:1px solid var(--fd-border);border-radius:12px;box-shadow:0 1px 2px rgba(22,32,30,.04)}
+.fd .card.hoverable:hover{box-shadow:0 6px 18px rgba(15,110,102,.10);transform:translateY(-2px);border-color:#cfe0dc}
+/* hero -> branded workspace banner */
+.fd .hero{background:linear-gradient(135deg,#0f857a,#0a3f3a);color:#eafaf7;border:none;box-shadow:0 12px 30px rgba(10,63,58,.22)}
+.fd .hero .greet{color:#bfe3de} .fd .hero h2{color:#fff} .fd .hero p{color:#d6efec} .fd .hero p b{color:#fff!important}
+.fd .hero .quote{color:#f6b24a}
 /* buttons */
-.fd .btn-primary{background:var(--fd-blue);box-shadow:none;border-radius:7px;font-weight:500;font-size:13px}
-.fd .btn-primary:hover{background:#1a82e2;transform:none;box-shadow:none}
-.fd .btn-ghost{background:#fff;border:1px solid var(--fd-border);border-radius:7px;color:var(--fd-ink);font-weight:500}
-.fd .btn-ghost:hover{border-color:#cfd4d9;color:var(--fd-ink)}
-.fd .btn-gold{background:var(--fd-dark);color:#fff;box-shadow:none;border-radius:7px}
-.fd .btn-gold:hover{background:#000;transform:none}
+.fd .btn-primary{background:linear-gradient(135deg,#0f857a,#0e6e66);box-shadow:0 4px 12px rgba(15,110,102,.22);border-radius:8px;font-weight:600;font-size:13px}
+.fd .btn-primary:hover{background:linear-gradient(135deg,#0e6e66,#0a4f49);transform:translateY(-1px)}
+.fd .btn-ghost{background:#fff;border:1px solid var(--fd-border);border-radius:8px;color:var(--fd-ink);font-weight:500}
+.fd .btn-ghost:hover{border-color:var(--fd-blue);color:var(--fd-blue)}
+.fd .btn-gold{background:linear-gradient(135deg,#e8821e,#f6b24a);color:#3a2400;box-shadow:0 4px 12px rgba(232,130,30,.25);border-radius:8px}
+.fd .btn-gold:hover{transform:translateY(-1px)}
 .fd .btn-accept{background:#28a745}.fd .btn-danger{background:#fbeae9;color:#e24c4c;border-color:#f3c9c6}
 /* indicators (Frappe = colored dot + text, no chip bg) */
 .fd .pill{background:transparent!important;padding:3px 0;font-weight:500;font-size:12px;border-radius:0}
