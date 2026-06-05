@@ -49,6 +49,7 @@ _Last updated: 2026-06-05 — added client workflow diagram (workflow.html)._
 - [x] Program Overview (4 phases + mentoring parallel; Admin verification gate added + status vocab reconciled — both pink-annotated)
 - [x] 4 role flows (Student/Fellow/Program Admin/Mentor) mapped to built screens, with per-role RBAC notes; 27 amber screen-nodes deep-link into the live wireframe
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
+- [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
 
 ## Verification audit (2026-06-05) — done
