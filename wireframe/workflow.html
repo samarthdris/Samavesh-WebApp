@@ -151,10 +151,37 @@ h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em
   </div>
   <div class="wf-note" style="max-width:none;margin-top:18px">Parallel — Mentoring Journey: once the Profile is created, the student self-books a mentor → mentoring sessions → Learning (Frappe LMS, planned).</div>
 </section>
-  <section class="wf-section" id="wf-student"><h2>1 &middot; Student journey</h2><!-- WF: student --></section>
+  <section class="wf-section" id="wf-student"><h2>1 &middot; Student journey</h2><div class="wf-rolebar"><b>Web Portal</b> · demo login <b>9800000021</b> · the student <b>watches</b> the journey</div>
+  <div class="wf-lane">
+    <div class="wf-node wf-action">Logs in as Student</div>
+    <div class="wf-link"></div>
+    <a class="wf-node wf-screen" href="index.html?role=student&amp;screen=home" target="_blank">Home — journey overview</a>
+    <div class="wf-link"></div>
+    <span class="wf-blabel">Explore from Home</span>
+    <div class="wf-split">
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=scholarships" target="_blank">Scholarships</a><div class="wf-link"></div><div class="wf-node wf-action">View matched schemes &amp; application status</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=documents" target="_blank">Documents</a><div class="wf-link"></div><div class="wf-node wf-action">View status &amp; history (view-only)</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=mentorship" target="_blank">Mentorship</a><div class="wf-link"></div><div class="wf-node wf-decision">Slot available?</div><div class="wf-link"></div><div class="wf-node wf-action">Book a session</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=learning" target="_blank">Learning</a><div class="wf-note">Planned — Frappe LMS</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=student&amp;screen=profile" target="_blank">Profile</a><div class="wf-note">Read-only · managed by Fellow</div></div>
+    </div>
+    <div class="wf-note" style="max-width:none">Student sees status only — the Fellow performs every action (RBAC-04).</div>
+  </div></section>
   <section class="wf-section" id="wf-fellow"><h2>2 &middot; Fellow journey</h2><!-- WF: fellow --></section>
   <section class="wf-section" id="wf-admin"><h2>3 &middot; Program Admin journey</h2><!-- WF: admin --></section>
-  <section class="wf-section" id="wf-mentor"><h2>4 &middot; Mentor journey</h2><!-- WF: mentor --></section>
+  <section class="wf-section" id="wf-mentor"><h2>4 &middot; Mentor journey</h2><div class="wf-rolebar"><b>Web Portal</b> · demo login <b>9800000031</b> · a <b>parallel</b> lane (Dr. Meera Joshi)</div>
+  <div class="wf-lane">
+    <div class="wf-node wf-action">Logs in as Mentor</div>
+    <div class="wf-link"></div>
+    <a class="wf-node wf-screen" href="index.html?role=mentor&amp;screen=m-home" target="_blank">Home — next session &amp; stats</a>
+    <div class="wf-link"></div>
+    <div class="wf-split">
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=mentor&amp;screen=m-availability" target="_blank">My Availability</a><div class="wf-link"></div><div class="wf-node wf-action">Publish recurring &amp; one-off slots</div><div class="wf-link"></div><div class="wf-node wf-decision">Profile Approved?</div><div class="wf-link"></div><div class="wf-node wf-action">Slots visible to students</div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=mentor&amp;screen=m-sessions" target="_blank">Sessions</a><div class="wf-link"></div><div class="wf-node wf-action">Join · Mark complete · + Mentor note</div><div class="wf-link"></div><div class="wf-node wf-decision">Cancel &gt; T-4h?</div><div class="wf-split"><div class="wf-col"><span class="wf-blabel">Yes</span><div class="wf-node wf-action">Penalty-free</div></div><div class="wf-col"><span class="wf-blabel">No</span><div class="wf-node wf-action">Recorded no-show</div></div></div></div>
+      <div class="wf-col"><a class="wf-node wf-screen" href="index.html?role=mentor&amp;screen=m-profile" target="_blank">Profile</a><div class="wf-link"></div><div class="wf-node wf-action">Bio · tags · mode · hour cap</div></div>
+    </div>
+    <div class="wf-note" style="max-width:none">Mentor sees mentee first name + topic only — no PII, no student feedback (RBAC-03).</div>
+  </div></section>
 
   <div class="wf-foot"><a href="index.html">&larr; Open the Samavesh wireframe</a></div>
 </div>
