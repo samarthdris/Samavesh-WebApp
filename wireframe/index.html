@@ -6,7 +6,7 @@
 <title>Samavesh · Student Portal (Wireframe)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Mukta:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 :root{
   /* Samavesh-inspired palette */
@@ -546,6 +546,132 @@ img{max-width:100%}
   .g-2,.g-3{grid-template-columns:1fr}
   .sch-card{flex-direction:row}
 }
+
+/* ============================================================= */
+/* ===== FRAPPE DESK THEME — scoped to .fd (Fellow / Admin) ==== */
+/* ============================================================= */
+.fd{
+  --fd-bg:#f4f5f6; --fd-card:#fff; --fd-border:#e4e7ea; --fd-line:#eef0f2;
+  --fd-ink:#1c2024; --fd-sub:#6b7480; --fd-faint:#9aa3ad;
+  --fd-blue:#2490ef; --fd-blue-bg:#eef6fe; --fd-dark:#1c2024;
+  font-family:'Inter',system-ui,sans-serif; background:var(--fd-bg);
+}
+.fd .serif{font-family:'Inter',sans-serif}
+/* sidebar */
+.fd .rail{background:#fff;border-right:1px solid var(--fd-border);color:var(--fd-ink);padding:14px 12px;background-image:none}
+.fd .brand{padding:4px 8px 16px}
+.fd .brand .mark{background:var(--fd-dark);color:#fff;border-radius:8px;box-shadow:none;font-family:'Inter';font-size:18px}
+.fd .brand .name{color:var(--fd-ink);font-family:'Inter';font-weight:700;font-size:16px}
+.fd .brand .tag{color:var(--fd-sub)}
+.fd .nav-label{color:var(--fd-faint);font-size:10.5px;padding:13px 10px 5px}
+.fd .nav a{color:var(--fd-ink);font-weight:500;font-size:13.5px;border-radius:8px;padding:8px 10px;gap:11px}
+.fd .nav a svg{opacity:.65;width:17px;height:17px}
+.fd .nav a:hover{background:#f1f3f5;color:var(--fd-ink)}
+.fd .nav a.active{background:var(--fd-blue-bg);color:var(--fd-blue);box-shadow:none}
+.fd .nav a.active svg{opacity:1;color:var(--fd-blue)}
+.fd .nav a.active::before{display:none}
+.fd .nav a .soon{background:var(--fd-blue-bg);color:var(--fd-blue)}
+.fd .rail-foot{background:#f1f3f5;border-radius:8px}
+.fd .rail-foot .av{background:var(--fd-dark);color:#fff}
+.fd .rail-foot .who{color:var(--fd-ink)} .fd .rail-foot .who small{color:var(--fd-sub)}
+/* navbar */
+.fd .topbar{background:#fff;border-bottom:1px solid var(--fd-border);backdrop-filter:none;padding:8px 22px}
+.fd .topbar .search{background:#f1f3f5;border:1px solid transparent;border-radius:8px;padding:7px 12px;max-width:440px;color:var(--fd-sub)}
+.fd .topbar .search input{font-size:13px}
+.fd .topbar .lang{display:none}
+.fd .icon-btn{background:transparent;border:1px solid transparent;width:34px;height:34px}
+.fd .icon-btn:hover{background:#f1f3f5;color:var(--fd-ink)}
+.fd .mobile-brand .mark{background:var(--fd-dark);color:#fff}
+/* typography / page header */
+.fd .content{background:var(--fd-bg)}
+.fd h1,.fd h2,.fd h3,.fd h4{font-family:'Inter',sans-serif;letter-spacing:0;color:var(--fd-ink)}
+.fd .page-h h1{font-weight:600;font-size:21px}
+.fd .page-h .eyebrow{color:var(--fd-sub);font-weight:500;letter-spacing:.03em;text-transform:none;font-size:12px}
+.fd .page-h p{font-size:13.5px;color:var(--fd-sub)}
+.fd .section-h h3{font-weight:600;font-size:15px}
+/* cards */
+.fd .card{background:#fff;border:1px solid var(--fd-border);border-radius:10px;box-shadow:none}
+.fd .card.hoverable:hover{box-shadow:0 2px 8px rgba(28,32,36,.07);transform:none;border-color:#d4d8dc}
+/* hero -> flat workspace banner */
+.fd .hero{background:#fff;border:1px solid var(--fd-border);color:var(--fd-ink);box-shadow:none}
+.fd .hero::after,.fd .hero::before{display:none}
+.fd .hero .greet{color:var(--fd-sub)} .fd .hero h2{color:var(--fd-ink)} .fd .hero p{color:var(--fd-sub)} .fd .hero p b{color:var(--fd-ink)!important}
+.fd .hero .quote{color:var(--fd-blue)}
+/* buttons */
+.fd .btn-primary{background:var(--fd-blue);box-shadow:none;border-radius:7px;font-weight:500;font-size:13px}
+.fd .btn-primary:hover{background:#1a82e2;transform:none;box-shadow:none}
+.fd .btn-ghost{background:#fff;border:1px solid var(--fd-border);border-radius:7px;color:var(--fd-ink);font-weight:500}
+.fd .btn-ghost:hover{border-color:#cfd4d9;color:var(--fd-ink)}
+.fd .btn-gold{background:var(--fd-dark);color:#fff;box-shadow:none;border-radius:7px}
+.fd .btn-gold:hover{background:#000;transform:none}
+.fd .btn-accept{background:#28a745}.fd .btn-danger{background:#fbeae9;color:#e24c4c;border-color:#f3c9c6}
+/* indicators (Frappe = colored dot + text, no chip bg) */
+.fd .pill{background:transparent!important;padding:3px 0;font-weight:500;font-size:12px;border-radius:0}
+.fd .pill .pdot{width:8px;height:8px}
+.fd .pill.green{color:#28a745!important}.fd .pill.green .pdot{background:#28a745}
+.fd .pill.blue{color:#2490ef!important}.fd .pill.blue .pdot{background:#2490ef}
+.fd .pill.amber{color:#cb7800!important}.fd .pill.amber .pdot{background:#ff9a00}
+.fd .pill.red{color:#e24c4c!important}.fd .pill.red .pdot{background:#e24c4c}
+.fd .pill.teal{color:#7575ff!important}.fd .pill.teal .pdot{background:#7575ff}
+.fd .pill.grey{color:#8d99a6!important}.fd .pill.grey .pdot{background:#c0c6cc}
+/* stat -> Frappe number card */
+.fd .stat .ic{border-radius:8px}
+.fd .stat .num{font-family:'Inter';font-weight:600;font-size:25px}
+.fd .stat .cap{color:var(--fd-sub)}
+/* list rows (My Students = Frappe List View) */
+.fd #stuList{background:#fff;border:1px solid var(--fd-border);border-radius:10px;overflow:hidden}
+.fd .stu-row{border:none;border-bottom:1px solid var(--fd-line);border-radius:0;margin:0;padding:11px 14px;box-shadow:none}
+.fd .stu-row:last-of-type{border-bottom:none}
+.fd .stu-row:hover{background:#f7f8f9;transform:none;box-shadow:none}
+.fd .stu-row .sa{border-radius:7px;font-family:'Inter';font-size:13px}
+.fd .stu-row .si b{font-size:14px}
+/* chips / filter bar */
+.fd .tagk{border-radius:7px;font-weight:500;background:#fff;border:1px solid var(--fd-border);color:var(--fd-sub)}
+.fd .tagk.chip.on{background:var(--fd-blue-bg);color:var(--fd-blue);border-color:#bfe0fb}
+.fd .fdate{border:1px solid var(--fd-border);border-radius:7px}
+/* tabs */
+.fd .tabs button{font-size:13.5px}
+.fd .tabs button.on{color:var(--fd-blue);border-bottom-color:var(--fd-blue)}
+/* tables */
+.fd .dtable-wrap{border:1px solid var(--fd-border);border-radius:10px}
+.fd .dtable th{background:#f7f8f9;color:var(--fd-sub)}
+.fd .dtable td{border-bottom:1px solid var(--fd-line)}
+.fd .dtable tbody tr:hover{background:#f7f8f9}
+/* forms (Frappe form view fields) */
+.fd .stepcount{background:var(--fd-blue-bg);color:var(--fd-blue);border-radius:6px}
+.fd .fprogress i{background:var(--fd-blue)}
+.fd .fstep h2.steptitle{font-weight:600;font-size:19px}
+.fd .q .qen,.fd .fg label{font-weight:500;font-size:13px;color:var(--fd-ink)}
+.fd .q .qmr{color:var(--fd-sub)}
+.fd .q input,.fd .q select,.fd .q textarea,.fd .fg input,.fd .fg select,.fd .fg textarea,.fd .dupbox .sbar input{background:#fff;border:1px solid var(--fd-border);border-radius:7px;font-size:13.5px}
+.fd .q input:focus,.fd .q select:focus,.fd .q textarea:focus,.fd .fg input:focus,.fd .fg select:focus{border-color:var(--fd-blue);box-shadow:0 0 0 2px var(--fd-blue-bg);background:#fff}
+.fd .opt{border:1px solid var(--fd-border);border-radius:7px}
+.fd .opt:hover{background:var(--fd-blue-bg);border-color:#bfe0fb}
+.fd .opt.sel{background:var(--fd-blue-bg);border-color:var(--fd-blue)}
+.fd .opt input{accent-color:var(--fd-blue)}
+.fd .form-card{border:1px solid var(--fd-border);border-radius:10px;box-shadow:none}
+.fd .form-sec-title{color:var(--fd-ink);font-family:'Inter';font-weight:600;font-size:14px}
+.fd .form-sec-title svg{color:var(--fd-blue)}
+.fd .matrix th{background:#f7f8f9}
+.fd .consent-box{background:var(--fd-blue-bg);border-color:#cce4fb}
+.fd .branch .bopt.sel{background:var(--fd-blue-bg);border-color:var(--fd-blue)}
+.fd .branch .bopt .bic{background:#f1f3f5;color:var(--fd-blue)}
+.fd .branch .bopt.sel .bic{background:var(--fd-blue);color:#fff}
+.fd .schgroup .sgh{color:var(--fd-blue)}.fd .schgroup .sgh::before{background:var(--fd-blue)}
+.fd .journey{border:1px solid var(--fd-border);box-shadow:none;border-radius:10px}
+.fd .step.current .bub{background:var(--fd-blue);color:#fff;box-shadow:0 0 0 4px var(--fd-blue-bg);animation:none}
+.fd .step.done .bub{background:#28a745;box-shadow:none}
+.fd .step.done::before,.fd .step.current::before{background:var(--fd-blue)}
+.fd .progress i,.fd .progress.gold i{background:var(--fd-blue)}
+.fd .tl-item.active .knob{background:var(--fd-blue);box-shadow:0 0 0 4px var(--fd-blue-bg)}
+.fd .tl-item.done .knob{background:#28a745;border-color:#28a745}
+.fd .vrow .vi{background:var(--fd-blue-bg);color:var(--fd-blue)}
+.fd .readonly-note,.fd .fellow-help{background:var(--fd-blue-bg);border-color:#cce4fb}
+.fd .fellow-help .fa{background:var(--fd-blue)}
+/* bottom nav (mobile) */
+.fd.app + #fellowBot{}
+#fellowBot.fdbot{background:#fff}
+#fellowBot.fdbot .nav-link.active{color:var(--fd-blue)} #fellowBot.fdbot .nav-link.active svg{color:var(--fd-blue)}
 </style>
 </head>
 <body>
@@ -1043,7 +1169,7 @@ img{max-width:100%}
 <!-- ===================================================================== -->
 <!-- ============================ FELLOW APP ============================== -->
 <!-- ===================================================================== -->
-<div class="app hidden" id="fellowApp">
+<div class="app hidden fd" id="fellowApp">
 
   <aside class="rail">
     <div class="brand">
@@ -1850,7 +1976,7 @@ img{max-width:100%}
 </div>
 
 <!-- FELLOW BOTTOM NAV -->
-<nav class="botnav hidden" id="fellowBot">
+<nav class="botnav hidden fdbot" id="fellowBot">
   <a href="#" class="nav-link active" data-go="f-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Home</a>
   <a href="#" class="nav-link" data-go="f-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg>Students</a>
   <a href="#" class="nav-link" data-go="f-onboard"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Onboard</a>
