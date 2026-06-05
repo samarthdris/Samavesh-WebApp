@@ -2895,6 +2895,12 @@ function filterAStu(){
   });
   document.getElementById('aStuEmpty').style.display=shown?'none':'block';
 }
+// ---- deep-link from workflow.html (?role=&screen=) ----
+(function(){
+  const p=new URLSearchParams(location.search);
+  const role=p.get('role'); const screen=p.get('screen');
+  if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
+})();
 </script>
 </body>
 </html>
