@@ -1250,7 +1250,30 @@ img{max-width:100%}
       <button class="icon-btn" title="Notifications"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
     </header>
     <main class="content">
-      <section class="screen" id="m-home"><div class="page-h"><div class="eyebrow">Mentoring</div><h1>Welcome, Dr. Meera Joshi</h1><p>Your mentoring home — upcoming sessions and this month at a glance.</p></div><!-- m-home body --></section>
+      <section class="screen" id="m-home"><div class="page-h"><div class="eyebrow">Mentoring</div><h1>Welcome, Dr. Meera Joshi</h1><p>Your mentoring home — upcoming sessions and this month at a glance.</p></div>
+        <div class="card" style="margin-bottom:20px;background:linear-gradient(135deg,var(--teal-700),var(--teal-900));color:#eafaf7;border:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+            <div>
+              <span class="pill" style="background:rgba(255,255,255,.16);color:#fff"><span class="pdot"></span>Next session</span>
+              <h3 style="color:#fff;font-size:19px;margin:10px 0 4px">Aarti P. · "Choosing between B.Com and BBA"</h3>
+              <div style="color:#cfeae6;font-size:14px">Friday, 6 June · 4:00 PM · 45 min · Video call</div>
+            </div>
+            <button class="btn btn-gold btn-sm">Join (link soon)</button>
+          </div>
+        </div>
+        <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:20px">
+          <div class="card stat hoverable"><div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 10l5-3v10l-5-3v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2Z"/></svg></div></div><div class="num">6</div><div class="cap">Sessions this month</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div></div><div class="num">4.5 / 8 h</div><div class="cap">Hours used / monthly cap</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 16.9 6.7 19.2l1-5.8L3.5 9.2l5.9-.9Z"/></svg></div></div><div class="num">4.9</div><div class="cap">My average rating</div></div>
+        </div>
+        <div class="card">
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:6px">Student feedback is confidential to the Program team and is never shown to mentors — only your aggregate rating appears here.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:6px">
+            <button class="btn btn-primary btn-sm" data-go="m-availability">Manage availability</button>
+            <button class="btn btn-ghost btn-sm" data-go="m-sessions">View sessions</button>
+          </div>
+        </div>
+</section>
       <section class="screen" id="m-availability"><div class="page-h"><div class="eyebrow">Mentoring · Availability</div><h1>My Availability</h1><p>Publish the times you're open to mentor. Students can book only future, un-booked slots once your profile is Approved.</p></div><!-- m-availability body --></section>
       <section class="screen" id="m-sessions"><div class="page-h"><div class="eyebrow">Mentoring · Sessions</div><h1>Sessions</h1><p>Your booked sessions. You see only the mentee's first name and their discussion topic — no personal or financial details.</p></div><!-- m-sessions body --></section>
       <section class="screen" id="m-profile"><div class="page-h"><div class="eyebrow">Account</div><h1>My Mentor Profile</h1><p>Your public mentor card. Published after Program Admin approval.</p></div><!-- m-profile body --></section>
