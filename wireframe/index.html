@@ -2496,6 +2496,39 @@ function setCrumb(id){
   const parts=txt.split(' › ');
   el.innerHTML=home+parts.map((p,i)=> i<parts.length-1 ? '<span>'+p+'</span><span class="sep">›</span>' : '<b>'+p+'</b>').join('');
 }
+
+// ---- Admin: open a student's record from an All-Students row (dynamic header) ----
+const A_JOURNEY=['Onboarded','Scholarship Identified','Documents Complete','Submitted','Approved','Disbursed'];
+const STAGE_TO_STEP={onboarded:0,documents:2,submitted:3,approved:4,disbursed:5};
+function goStudent(row){
+  const name=row.querySelector('.who').textContent.trim();
+  const av=row.querySelector('.sa');
+  const stage=row.dataset.stage, fellow=row.dataset.fellow||'Unassigned';
+  // identity header
+  const avEl=document.getElementById('asAvatar');
+  avEl.textContent=av.textContent.trim();
+  avEl.setAttribute('style', av.getAttribute('style')||'');
+  document.getElementById('asName').textContent=name;
+  document.getElementById('asStagePill').innerHTML=row.querySelector('.pill').outerHTML;
+  // assigned fellow (sidebar)
+  document.getElementById('asFellow').textContent=fellow;
+  document.getElementById('asFellowAv').textContent=fellow.trim().charAt(0);
+  // journey: rebuild 6 steps, current driven by stage
+  const cur=(stage in STAGE_TO_STEP)?STAGE_TO_STEP[stage]:0;
+  const check='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>';
+  document.getElementById('asPath').innerHTML=A_JOURNEY.map(function(lbl,i){
+    const cls=i<cur?'done':(i===cur?'current':'upcoming');
+    const bub=i<cur?check:(i+1);
+    return '<div class="step '+cls+'"><div class="bub">'+bub+'</div><div class="lbl">'+lbl+'</div><div class="sub"></div></div>';
+  }).join('');
+  // reset to Profile tab (ftab toggles .on globally, so normalize on open)
+  const tabBtns=document.querySelectorAll('#a-student .tabs button');
+  tabBtns.forEach(function(b,i){b.classList.toggle('on',i===0);});
+  ['ap-profile','ap-sch','ap-docs','ap-apps'].forEach(function(id,i){document.getElementById(id).classList.toggle('on',i===0);});
+  // breadcrumb + navigate
+  CRUMBS['a-student']='Students › '+name;
+  go('a-student');
+}
 document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();go(el.dataset.go);}));
 
 // ---- booking modal ----
