@@ -1371,7 +1371,29 @@ img{max-width:100%}
             <div style="font-size:13px;color:var(--muted)">22 May · 5:00 PM · recorded against student</div>
           </div>
         </div></section>
-      <section class="screen" id="m-profile"><div class="page-h"><div class="eyebrow">Account</div><h1>My Mentor Profile</h1><p>Your public mentor card. Published after Program Admin approval.</p></div><!-- m-profile body --></section>
+      <section class="screen" id="m-profile"><div class="page-h"><div class="eyebrow">Account</div><h1>My Mentor Profile</h1><p>Your public mentor card. Published after Program Admin approval.</p></div>
+        <div class="card">
+          <div class="prof-head">
+            <div class="pa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">M</div>
+            <div style="flex:1">
+              <h3 style="font-size:23px">Dr. Meera Joshi</h3>
+              <div style="color:var(--ink-soft);font-size:14px">Career Counsellor · 12 yrs experience</div>
+              <div style="margin-top:8px"><span class="pill green"><span class="pdot"></span>Approved · publicly listed</span></div>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="alert('Profile saved. Changes are re-published after Program Admin review (BR-MENT-01).')">Save profile</button>
+          </div>
+          <p style="font-size:12.5px;color:var(--muted);margin:12px 0 4px">Your profile is publicly listed to students only after Program Admin approval. Your monthly hour commitment is a hard cap on bookings.</p>
+          <div class="form-grid">
+            <div class="fg full"><label>Bio</label><input value="Career counsellor with 12 years guiding first-generation students into higher education and scholarships." /></div>
+            <div class="fg"><label>Skill areas</label><input value="Career, Higher Studies" /></div>
+            <div class="fg"><label>Stream / Domain</label><input value="Commerce, Humanities" /></div>
+            <div class="fg"><label>Geography</label><input value="Pune, Maharashtra" /></div>
+            <div class="fg"><label>Languages</label><input value="Marathi, Hindi, English" /></div>
+            <div class="fg"><label>Mode</label><select><option>Volunteer</option><option selected>Facilitator</option></select></div>
+            <div class="fg"><label>Monthly hour commitment</label><input type="number" value="8" /><span class="hint">Hard cap — bookings beyond this are blocked (FR-MENT-012).</span></div>
+          </div>
+        </div>
+</section>
     </main>
   </div>
 </div>
