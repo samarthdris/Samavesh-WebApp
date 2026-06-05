@@ -1325,7 +1325,52 @@ img{max-width:100%}
             <div style="display:flex;align-items:center;gap:12px;padding:10px 0;font-size:13.5px"><span class="pill amber"><span class="pdot"></span>Booked</span><b>Sun, 8 Jun</b><span style="color:var(--ink-soft)">11:00 · 45 min · Imran S.</span></div>
           </div>
         </div></section>
-      <section class="screen" id="m-sessions"><div class="page-h"><div class="eyebrow">Mentoring · Sessions</div><h1>Sessions</h1><p>Your booked sessions. You see only the mentee's first name and their discussion topic — no personal or financial details.</p></div><!-- m-sessions body --></section>
+      <section class="screen" id="m-sessions"><div class="page-h"><div class="eyebrow">Mentoring · Sessions</div><h1>Sessions</h1><p>Your booked sessions. You see only the mentee's first name and their discussion topic — no personal or financial details.</p></div><div class="tabs">
+          <button class="on" onclick="ftab(this,'ms-upcoming')">Upcoming</button>
+          <button onclick="ftab(this,'ms-past')">Past</button>
+        </div>
+        <div class="tabpane on" id="ms-upcoming">
+          <div class="readonly-note" style="margin-bottom:14px">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            You see only the mentee's first name and discussion topic — no income, Aadhaar or documents (RBAC-03).
+          </div>
+          <div class="card" style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Aarti P.</h4><span class="pill blue"><span class="pdot"></span>Scheduled</span></div>
+            <div style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 4px">Topic: "Choosing between B.Com and BBA"</div>
+            <div style="font-size:13px;color:var(--muted)">Fri, 6 Jun · 4:00 PM · 45 min · Video call</div>
+            <div class="sess-acts" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-gold btn-sm">Join (link soon)</button>
+              <button class="btn btn-primary btn-sm" onclick="mSession(this,'done')">Mark complete</button>
+              <button class="btn btn-ghost btn-sm" onclick="mSession(this,'cancel')">Cancel / Reschedule</button>
+              <button class="btn btn-ghost btn-sm" onclick="mNote(this)">+ Mentor note</button>
+            </div>
+            <div style="font-size:12px;color:var(--muted);margin-top:8px">Penalty-free up to 4 hours before start; later cancellations and no-shows are recorded (BR-MENT-07).</div>
+          </div>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Imran S.</h4><span class="pill blue"><span class="pdot"></span>Scheduled</span></div>
+            <div style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 4px">Topic: "Engineering entrance prep + scholarships"</div>
+            <div style="font-size:13px;color:var(--muted)">Sun, 8 Jun · 11:00 AM · 45 min · Video call</div>
+            <div class="sess-acts" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-gold btn-sm">Join (link soon)</button>
+              <button class="btn btn-primary btn-sm" onclick="mSession(this,'done')">Mark complete</button>
+              <button class="btn btn-ghost btn-sm" onclick="mSession(this,'cancel')">Cancel / Reschedule</button>
+              <button class="btn btn-ghost btn-sm" onclick="mNote(this)">+ Mentor note</button>
+            </div>
+          </div>
+        </div>
+        <div class="tabpane" id="ms-past">
+          <div class="card" style="margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Sneha P.</h4><span class="pill green"><span class="pdot"></span>Completed</span></div>
+            <div style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 4px">Topic: "Scholarship interview preparation"</div>
+            <div style="font-size:13px;color:var(--muted)">28 May · 4:00 PM · 45 min</div>
+            <div style="font-size:12.5px;color:var(--green);margin-top:8px"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px"><path d="M20 6 9 17l-5-5"/></svg> Minutes &amp; transcript dispatched</div>
+          </div>
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Ganesh P.</h4><span class="pill grey"><span class="pdot"></span>No-show</span></div>
+            <div style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 4px">Topic: "Career options after B.Sc"</div>
+            <div style="font-size:13px;color:var(--muted)">22 May · 5:00 PM · recorded against student</div>
+          </div>
+        </div></section>
       <section class="screen" id="m-profile"><div class="page-h"><div class="eyebrow">Account</div><h1>My Mentor Profile</h1><p>Your public mentor card. Published after Program Admin approval.</p></div><!-- m-profile body --></section>
     </main>
   </div>
@@ -2658,6 +2703,24 @@ function saveOneOff(){
   document.getElementById('oneOffList').appendChild(row);
   document.getElementById('ooDate').value=''; document.getElementById('ooTime').value='';
   toggleOneOff();
+}
+function mSession(btn, action){
+  const acts=btn.closest('.sess-acts');
+  if(action==='done'){
+    acts.innerHTML='<span class="pill green"><span class="pdot"></span>Completed</span>';
+  } else {
+    const why=prompt('Reason for cancellation (recorded; penalty-free up to 4 hours before start):');
+    if(why===null) return;
+    acts.innerHTML='<span class="pill grey"><span class="pdot"></span>Cancelled</span>';
+  }
+}
+function mNote(btn){
+  const n=prompt('Private note for this session (visible only to you and the Program Admin):');
+  if(!n) return;
+  const card=btn.closest('.card');
+  let note=card.querySelector('.mnote');
+  if(!note){ note=document.createElement('div'); note.className='mnote'; note.style.cssText='margin-top:10px;font-size:12.5px;color:var(--ink-soft)'; card.appendChild(note); }
+  note.textContent='🔒 Note saved (private): '+n;
 }
 
 // ---- booking modal ----
