@@ -728,6 +728,15 @@ img{max-width:100%}
 .fp .topbar{box-shadow:0 1px 0 rgba(0,0,0,.03)}
 .fp .portal-foot{text-align:center;padding:26px 16px 8px;color:var(--muted);font-size:12px}
 .fp .portal-foot b{color:var(--teal-700)}
+/* ---- mentor weekly availability grid ---- */
+.availgrid{display:grid;grid-template-columns:54px repeat(7,1fr);gap:7px;margin-top:6px}
+.availgrid .day{text-align:center;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.availgrid .time{font-size:11.5px;font-weight:700;color:var(--ink-soft);display:flex;align-items:center}
+.slot-cell{border:1.5px solid var(--line);background:var(--paper);border-radius:9px;padding:8px 4px;font-size:11.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:.14s;text-align:center}
+.slot-cell:hover{border-color:var(--teal-500)}
+.slot-cell.on{background:var(--teal-50);border-color:var(--teal-500);color:var(--teal-700)}
+.slot-cell.booked{background:var(--amber-50);border-color:var(--amber);color:var(--amber);cursor:not-allowed}
+@media(max-width:640px){.availgrid{grid-template-columns:40px repeat(7,1fr);gap:4px}.slot-cell{padding:6px 2px;font-size:10px}.availgrid .time{font-size:10px}}
 </style>
 </head>
 <body>
@@ -1274,7 +1283,48 @@ img{max-width:100%}
           </div>
         </div>
 </section>
-      <section class="screen" id="m-availability"><div class="page-h"><div class="eyebrow">Mentoring · Availability</div><h1>My Availability</h1><p>Publish the times you're open to mentor. Students can book only future, un-booked slots once your profile is Approved.</p></div><!-- m-availability body --></section>
+      <section class="screen" id="m-availability"><div class="page-h"><div class="eyebrow">Mentoring · Availability</div><h1>My Availability</h1><p>Publish the times you're open to mentor. Students can book only future, un-booked slots once your profile is Approved.</p></div><div class="card" style="margin-bottom:18px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:6px">
+            <h3 style="font-size:17px">Recurring weekly availability</h3>
+            <span style="font-size:12.5px;color:var(--muted)">Tap a slot to open or close it · amber = already booked</span>
+          </div>
+          <div class="availgrid">
+            <div></div>
+            <div class="day">Mon</div><div class="day">Tue</div><div class="day">Wed</div><div class="day">Thu</div><div class="day">Fri</div><div class="day">Sat</div><div class="day">Sun</div>
+            <div class="time">4 PM</div>
+            <button class="slot-cell on" onclick="mSlot(this)">4:00</button>
+            <button class="slot-cell" onclick="mSlot(this)">4:00</button>
+            <button class="slot-cell on" onclick="mSlot(this)">4:00</button>
+            <button class="slot-cell" onclick="mSlot(this)">4:00</button>
+            <button class="slot-cell booked">Booked</button>
+            <button class="slot-cell" onclick="mSlot(this)">4:00</button>
+            <button class="slot-cell" onclick="mSlot(this)">4:00</button>
+            <div class="time">5 PM</div>
+            <button class="slot-cell" onclick="mSlot(this)">5:00</button>
+            <button class="slot-cell on" onclick="mSlot(this)">5:00</button>
+            <button class="slot-cell" onclick="mSlot(this)">5:00</button>
+            <button class="slot-cell on" onclick="mSlot(this)">5:00</button>
+            <button class="slot-cell on" onclick="mSlot(this)">5:00</button>
+            <button class="slot-cell" onclick="mSlot(this)">5:00</button>
+            <button class="slot-cell" onclick="mSlot(this)">5:00</button>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+            <h3 style="font-size:17px">One-off slots</h3>
+            <button class="btn btn-gold btn-sm" onclick="toggleOneOff()">+ Add one-off slot</button>
+          </div>
+          <div id="oneOffForm" style="display:none;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px">
+            <div class="fg"><label>Date</label><input type="date" id="ooDate" /></div>
+            <div class="fg"><label>Start time</label><input type="time" id="ooTime" /></div>
+            <div class="fg"><label>Duration</label><select id="ooDur"><option>30</option><option selected>45</option><option>60</option></select></div>
+            <button class="btn btn-primary btn-sm" onclick="saveOneOff()">Add slot</button>
+          </div>
+          <div id="oneOffList">
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13.5px"><span class="pill teal"><span class="pdot"></span>Open</span><b>Sat, 7 Jun</b><span style="color:var(--ink-soft)">10:00 · 60 min</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:10px 0;font-size:13.5px"><span class="pill amber"><span class="pdot"></span>Booked</span><b>Sun, 8 Jun</b><span style="color:var(--ink-soft)">11:00 · 45 min · Imran S.</span></div>
+          </div>
+        </div></section>
       <section class="screen" id="m-sessions"><div class="page-h"><div class="eyebrow">Mentoring · Sessions</div><h1>Sessions</h1><p>Your booked sessions. You see only the mentee's first name and their discussion topic — no personal or financial details.</p></div><!-- m-sessions body --></section>
       <section class="screen" id="m-profile"><div class="page-h"><div class="eyebrow">Account</div><h1>My Mentor Profile</h1><p>Your public mentor card. Published after Program Admin approval.</p></div><!-- m-profile body --></section>
     </main>
@@ -2595,6 +2645,20 @@ function goStudent(row){
   go('a-student');
 }
 document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();go(el.dataset.go);}));
+
+// ---- Mentor app interactions ----
+function mSlot(el){ if(el.classList.contains('booked')) return; el.classList.toggle('on'); }
+function toggleOneOff(){ const f=document.getElementById('oneOffForm'); f.style.display = f.style.display==='none' ? 'flex' : 'none'; }
+function saveOneOff(){
+  const d=document.getElementById('ooDate').value, t=document.getElementById('ooTime').value, dur=document.getElementById('ooDur').value;
+  if(!d || !t){ alert('Pick a date and start time for the slot.'); return; }
+  const row=document.createElement('div');
+  row.style.cssText='display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:13.5px';
+  row.innerHTML='<span class="pill teal"><span class="pdot"></span>Open</span><b>'+d+'</b><span style="color:var(--ink-soft)">'+t+' · '+dur+' min</span>';
+  document.getElementById('oneOffList').appendChild(row);
+  document.getElementById('ooDate').value=''; document.getElementById('ooTime').value='';
+  toggleOneOff();
+}
 
 // ---- booking modal ----
 const bm=document.getElementById('bookModal');
