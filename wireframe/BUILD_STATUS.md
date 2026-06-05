@@ -27,10 +27,30 @@ _Last updated: 2026-06-04 — working through the big Fellow build._
 - [x] Wire student detail (Docs→f-docapp, Apps→f-scholarship) + dashboard tasks to forms
 - [x] Filters/steppers/branch/password-toggle JS all working
 
+## Program Admin section (NEW)
+- [x] MIS Dashboard (a-home) — 5 KPIs, MIS filters, stage funnel, fellow-wise + scholarship-wise tables, export button
+- [x] Document Verification (a-verify) — queue with working Accept/Reject (reason) — the Admin-only action that closes the doc loop
+- [x] Scholarship Catalogue (a-catalogue) — scheme list + working "Add Scholarship" inline form (CRUD)
+- [x] All Students (a-students) — cross-fellow table with working stage + fellow filters
+- [x] Fellows & Users (a-fellows) — performance table + Add User
+- [x] Admin profile + sign out; admin demo login (9800000001 / "Program Admin · Meera Nair")
+
+## Verification audit (2026-06-05) — done
+- [x] Full audit vs workflow PDF + BRD. Confirmed aligned: roles, RBAC (student view-only), doc lifecycle, eligibility, masking, dup-check, MIS, forms (onboarding 8-step/9-doc/bilingual; scholarship branched).
+- [x] FIXED: application-status vocabulary was half-migrated → now FORM vocab everywhere (Under Scrutiny / Application Approved / Benefits Received / Re-apply / Rejected). "Under Review" kept ONLY as document status (DOC-03). "Redirected for Correction" removed.
+- Decisions: forms-vocab canonical · deviations (admin verify, student view-only docs) kept as-is, justified verbally via BRD refs · Frappe target = HYBRID.
+
+## NEXT (greenlit): Frappe hybrid re-skin
+- [ ] Student → Frappe Web Portal look
+- [ ] Fellow → Frappe Desk (workspace sidebar, List View w/ filter bar + status dots, Form View w/ sectioned fields + Save + activity timeline)
+- [ ] Admin → Frappe Desk + number-card dashboard
+- Approach: build a Frappe-Desk CSS layer + list/form components, convert app-by-app (Fellow first), preserving all content/journeys/working filters.
+
 ## Still to do / next
 - [ ] Confirm Documentation Application form design with user (derived, no MD spec)
 - [ ] Documentation follow-up could become its own global queue (like Applications) if user wants
-- [ ] Mentor / Program Admin / Super Admin role apps (not built yet)
+- [ ] Mentor + Super Admin role apps (not built yet)
+- [ ] Admin: build a real student-detail view (currently admin rows route to Verify)
 - [ ] Optional: add f-scholarship / f-docapp to fellow rail nav (currently reached contextually)
 
 ## Key decisions (see memory)

@@ -485,6 +485,37 @@ img{max-width:100%}
 .empty{text-align:center;padding:46px 20px;color:var(--muted);font-size:14px;background:var(--paper);border:1px dashed var(--line);border-radius:14px}
 .empty svg{width:36px;height:36px;margin-bottom:10px;opacity:.5}
 
+/* ---------- MIS dashboard (Program Admin) ---------- */
+.misfilters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+.misfilters select{font-family:inherit;font-size:13px;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink-soft);outline:none}
+.funnel{display:flex;flex-direction:column;gap:10px}
+.funnel .frow{display:flex;align-items:center;gap:12px}
+.funnel .flbl{width:150px;flex:0 0 150px;font-size:12.5px;font-weight:600;color:var(--ink-soft);text-align:right}
+.funnel .fbarwrap{flex:1;background:var(--cream-2);border-radius:8px;overflow:hidden;height:32px}
+.funnel .fbar{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--teal-700),var(--teal-500));display:flex;align-items:center;padding-left:12px;color:#fff;font-weight:700;font-size:13px;white-space:nowrap}
+.dtable-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+.dtable{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px}
+.dtable th{text-align:left;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--ink-soft);padding:12px 14px;border-bottom:2px solid var(--line);background:var(--cream)}
+.dtable td{padding:12px 14px;border-bottom:1px solid var(--line)}
+.dtable tr:last-child td{border-bottom:none}
+.dtable td.num,.dtable th.num{text-align:right;font-variant-numeric:tabular-nums}
+.dtable tbody tr{cursor:pointer;transition:.12s}
+.dtable tbody tr:hover{background:var(--cream)}
+.dtable .who{display:flex;align-items:center;gap:10px}
+.dtable .who .sa{width:34px;height:34px;border-radius:9px;flex:0 0 34px;display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:14px}
+/* verify queue row actions */
+.vrow{display:flex;align-items:center;gap:14px;padding:15px 4px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.vrow:last-child{border-bottom:none}
+.vrow .vi{width:44px;height:44px;border-radius:12px;flex:0 0 44px;display:grid;place-items:center;background:var(--blue-50);color:var(--blue)}
+.vrow .vb{flex:1;min-width:170px}
+.vrow .vb b{font-size:14.5px;display:block}
+.vrow .vb small{color:var(--muted);font-size:12.5px}
+.vrow .vacts{display:flex;gap:8px;align-items:center}
+.btn-danger{background:var(--red-50);color:var(--red);border:1px solid #f0cdc4}
+.btn-danger:hover{background:#f7ddd6}
+.btn-accept{background:linear-gradient(135deg,var(--green),#268a55);color:#fff}
+.btn-accept:hover{transform:translateY(-2px)}
+
 @media(min-width:880px){.g-2{grid-template-columns:1fr 1fr}}
 /* ---------- Responsive ---------- */
 @media(max-width:920px){
@@ -551,6 +582,7 @@ img{max-width:100%}
           <div class="drow">
             <button onclick="loginAs('student')"><span class="da" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><span class="dt">Student<small>Aarti Pawar</small></span></button>
             <button onclick="loginAs('fellow')"><span class="da" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span><span class="dt">Fellow<small>Rahul More</small></span></button>
+            <button onclick="loginAs('admin')"><span class="da" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">M</span><span class="dt">Program Admin<small>Meera Nair</small></span></button>
           </div>
         </div>
       </div>
@@ -634,7 +666,7 @@ img{max-width:100%}
         <div class="hero stagger">
           <div class="greet">Good afternoon,</div>
           <h2>Welcome back, Aarti 🌿</h2>
-          <p>You're doing great. Your Post-Matric scholarship is now <b style="color:#fff">Under Review</b> — we'll let you know the moment it moves forward.</p>
+          <p>You're doing great. Your Post-Matric scholarship is now <b style="color:#fff">Under Scrutiny</b> — we'll let you know the moment it moves forward.</p>
           <div class="quote">“ From the margins to the mainstream. ”</div>
         </div>
 
@@ -645,7 +677,7 @@ img{max-width:100%}
             <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Onboarded</div><div class="sub">12 Apr</div></div>
             <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Scholarship Identified</div><div class="sub">3 schemes</div></div>
             <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Documents Complete</div><div class="sub">All Accepted</div></div>
-            <div class="step current"><div class="bub">4</div><div class="lbl">Submitted</div><div class="sub">Under Review</div></div>
+            <div class="step current"><div class="bub">4</div><div class="lbl">Submitted</div><div class="sub">Under Scrutiny</div></div>
             <div class="step upcoming"><div class="bub">5</div><div class="lbl">Approved</div><div class="sub">Awaited</div></div>
             <div class="step upcoming"><div class="bub">6</div><div class="lbl">Disbursed</div><div class="sub">—</div></div>
           </div>
@@ -701,7 +733,7 @@ img{max-width:100%}
               <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
                 <div><h4>Post-Matric Scholarship for SC Students</h4>
                 <div style="font-size:13px;color:var(--muted)">Govt. of Maharashtra · National Scholarship Portal</div></div>
-                <span class="pill blue"><span class="pdot"></span>Under Review</span>
+                <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span>
               </div>
               <div class="meta">
                 <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg><b class="amount">₹50,000</b>/year</span>
@@ -711,7 +743,7 @@ img{max-width:100%}
               <div class="tl">
                 <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Documents Complete</div><div class="d">All documents Accepted · 24 May</div></div>
                 <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">By Fellow Rahul · 28 May</div></div>
-                <div class="tl-item active"><div class="knob"></div><div class="t">Under Review</div><div class="d">In progress · last checked 2 Jun</div></div>
+                <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">In progress · last checked 2 Jun</div></div>
                 <div class="tl-item future"><div class="t">Approved</div><div class="d">Awaited</div></div>
                 <div class="tl-item future"><div class="t">Disbursed</div><div class="d">—</div></div>
               </div>
@@ -1091,12 +1123,12 @@ img{max-width:100%}
           </div>
           <div class="task">
             <div class="tk-ic" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-7 3.3"/><path d="M3 4v4h4"/></svg></div>
-            <div class="tk-b"><b>2 applications Redirected for Correction</b><small>Identify correction issues, provide corrected information &amp; re-submit</small></div>
+            <div class="tk-b"><b>2 applications need Re-apply</b><small>Identify correction issues, provide corrected information &amp; re-submit</small></div>
             <button class="btn btn-ghost btn-sm" data-go="f-applications">Fix</button>
           </div>
           <div class="task">
             <div class="tk-ic" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <div class="tk-b"><b>4 applications Under Review &gt; 15 days</b><small>Log into the government portal and update the status</small></div>
+            <div class="tk-b"><b>4 applications Under Scrutiny &gt; 15 days</b><small>Log into the government portal and update the status</small></div>
             <button class="btn btn-ghost btn-sm" data-go="f-applications">Check</button>
           </div>
           <div class="task">
@@ -1416,7 +1448,7 @@ img{max-width:100%}
             <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Onboarded</div><div class="sub">12 Apr</div></div>
             <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Scholarship Identified</div><div class="sub">3 schemes</div></div>
             <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Documents Complete</div><div class="sub">All Accepted</div></div>
-            <div class="step current"><div class="bub">4</div><div class="lbl">Submitted</div><div class="sub">Under Review</div></div>
+            <div class="step current"><div class="bub">4</div><div class="lbl">Submitted</div><div class="sub">Under Scrutiny</div></div>
             <div class="step upcoming"><div class="bub">5</div><div class="lbl">Approved</div><div class="sub">Awaited</div></div>
             <div class="step upcoming"><div class="bub">6</div><div class="lbl">Disbursed</div><div class="sub">—</div></div>
           </div>
@@ -1528,15 +1560,15 @@ img{max-width:100%}
 
           <!-- Under Review -> update status + correction loop -->
           <div class="card" style="margin-bottom:16px">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Post-Matric Scholarship for SC Students</h4><span class="pill blue"><span class="pdot"></span>Under Review</span></div>
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Post-Matric Scholarship for SC Students</h4><span class="pill blue"><span class="pdot"></span>Under Scrutiny</span></div>
             <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-PM-2026-44871</span><span>Submitted 28 May</span><span>Last status check: 2 Jun</span></div>
             <div class="tl">
               <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">28 May</div></div>
-              <div class="tl-item active"><div class="knob"></div><div class="t">Under Review</div><div class="d">Department processing</div></div>
+              <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
               <div class="tl-item future"><div class="t">Approved → Disbursed</div><div class="d">—</div></div>
             </div>
             <div class="btnrow" style="margin-top:14px">
-              <select class="btn btn-ghost btn-sm" style="font-weight:600"><option>Update status…</option><option>Under Review</option><option>Approved</option><option>Redirected for Correction</option><option>Rejected</option></select>
+              <select class="btn btn-ghost btn-sm" style="font-weight:600"><option>Update status…</option><option>Under Scrutiny</option><option>Application Approved</option><option>Benefits Received</option><option>Re-apply</option><option>Rejected</option></select>
               <button class="btn btn-ghost btn-sm">Add correction note</button>
             </div>
           </div>
@@ -1826,6 +1858,245 @@ img{max-width:100%}
   <a href="#" class="nav-link" data-go="f-profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Profile</a>
 </nav>
 
+
+<!-- ===================================================================== -->
+<!-- ========================= PROGRAM ADMIN APP ========================= -->
+<!-- ===================================================================== -->
+<div class="app hidden" id="adminApp">
+  <aside class="rail">
+    <div class="brand"><div class="mark">स</div><div><div class="name">Samavesh</div><div class="tag">Program Admin</div></div></div>
+    <nav class="nav">
+      <div class="nav-label">Workspace</div>
+      <a href="#" class="nav-link active" data-go="a-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h4v8H3zM10 3h4v18h-4zM17 9h4v12h-4z"/></svg>MIS Dashboard</a>
+      <a href="#" class="nav-link" data-go="a-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>Document Verification<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">4</span></a>
+      <a href="#" class="nav-link" data-go="a-catalogue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Scholarship Catalogue</a>
+      <div class="nav-label">Manage</div>
+      <a href="#" class="nav-link" data-go="a-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>All Students</a>
+      <a href="#" class="nav-link" data-go="a-fellows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Fellows &amp; Users</a>
+      <div class="nav-label">Account</div>
+      <a href="#" class="nav-link" data-go="a-profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>My Profile</a>
+      <a href="#" class="nav-link" onclick="logout();return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>Sign out</a>
+    </nav>
+    <div class="rail-foot"><div class="av" style="background:linear-gradient(140deg,#5b8def,#2f6fd6)">M</div><div class="who">Meera Nair<small>Program Admin</small></div></div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="mobile-brand"><div class="mark">स</div><b class="serif" style="font-size:18px">Admin</b></div>
+      <div class="search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg><input placeholder="Search students, fellows, scholarships…" /></div>
+      <div class="spacer"></div>
+      <button class="icon-btn" title="Notifications"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+    </header>
+
+    <main class="content">
+
+      <!-- ===== MIS DASHBOARD ===== -->
+      <section class="screen active" id="a-home">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Phase 4 · MIS</div><h1>Program Dashboard</h1><p>Real-time view across all Fellows, scholarships and geographies.</p></div>
+          <button class="btn btn-ghost"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2"/></svg> Export Excel / CSV</button>
+        </div>
+
+        <div class="misfilters">
+          <select><option>Date range: This FY (25-26)</option><option>Last 30 days</option><option>This quarter</option><option>Custom…</option></select>
+          <select><option>All States</option><option>Maharashtra</option></select>
+          <select><option>All Districts</option><option>Pune</option><option>Nashik</option><option>Satara</option></select>
+          <select><option>All Fellows</option><option>Rahul More</option><option>Sandip K</option><option>Dhanashree O</option></select>
+          <select><option>All Scholarships</option><option>GoI Post-Matric</option><option>OBC Post-Matric</option></select>
+          <select><option>All Categories</option><option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>Minority</option></select>
+        </div>
+
+        <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:20px">
+          <div class="card stat hoverable"><div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg></div></div><div class="num">480</div><div class="cap">Students onboarded</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/></svg></div></div><div class="num">1,240</div><div class="cap">Scholarships identified</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div></div><div class="num">264</div><div class="cap">Applications submitted</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="num">182</div><div class="cap">Applications approved</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div></div><div class="num">₹74.2L</div><div class="cap">Total disbursed</div></div>
+        </div>
+
+        <div class="card" style="margin-bottom:20px">
+          <h3 style="font-size:18px;margin-bottom:18px">Stage-wise Funnel</h3>
+          <div class="funnel">
+            <div class="frow"><div class="flbl">Onboarded</div><div class="fbarwrap"><div class="fbar" style="width:100%">480</div></div></div>
+            <div class="frow"><div class="flbl">Scholarship Identified</div><div class="fbarwrap"><div class="fbar" style="width:92%">442</div></div></div>
+            <div class="frow"><div class="flbl">Documents Complete</div><div class="fbarwrap"><div class="fbar" style="width:70%">336</div></div></div>
+            <div class="frow"><div class="flbl">Submitted</div><div class="fbarwrap"><div class="fbar" style="width:55%">264</div></div></div>
+            <div class="frow"><div class="flbl">Approved</div><div class="fbarwrap"><div class="fbar" style="width:38%">182</div></div></div>
+            <div class="frow"><div class="flbl">Disbursed</div><div class="fbarwrap"><div class="fbar" style="width:30%;background:linear-gradient(90deg,#268a55,var(--green))">145</div></div></div>
+          </div>
+        </div>
+
+        <div class="grid g-2" style="align-items:start">
+          <div class="card">
+            <div class="section-h" style="margin:0 0 12px"><h3 style="font-size:17px">Fellow-wise performance</h3></div>
+            <div class="dtable-wrap"><table class="dtable">
+              <thead><tr><th>Fellow</th><th class="num">Students</th><th class="num">Submitted</th><th class="num">Approved</th></tr></thead>
+              <tbody>
+                <tr onclick="go('a-fellows')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span>Rahul More</div></td><td class="num">24</td><td class="num">12</td><td class="num">5</td></tr>
+                <tr onclick="go('a-fellows')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">S</span>Sandip K</div></td><td class="num">19</td><td class="num">9</td><td class="num">6</td></tr>
+                <tr onclick="go('a-fellows')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">D</span>Dhanashree O</div></td><td class="num">22</td><td class="num">11</td><td class="num">4</td></tr>
+                <tr onclick="go('a-fellows')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">V</span>Vaibhav D</div></td><td class="num">17</td><td class="num">8</td><td class="num">3</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+          <div class="card">
+            <div class="section-h" style="margin:0 0 12px"><h3 style="font-size:17px">Scholarship-wise</h3></div>
+            <div class="dtable-wrap"><table class="dtable">
+              <thead><tr><th>Scheme</th><th class="num">Applicants</th><th class="num">Approved</th><th class="num">₹ Disbursed</th></tr></thead>
+              <tbody>
+                <tr onclick="go('a-catalogue')"><td>GoI Post-Matric</td><td class="num">142</td><td class="num">98</td><td class="num">₹28.4L</td></tr>
+                <tr onclick="go('a-catalogue')"><td>OBC Post-Matric</td><td class="num">120</td><td class="num">76</td><td class="num">₹19.2L</td></tr>
+                <tr onclick="go('a-catalogue')"><td>State Minority Part II</td><td class="num">61</td><td class="num">40</td><td class="num">₹12.8L</td></tr>
+                <tr onclick="go('a-catalogue')"><td>Ambedkar Swadhar</td><td class="num">48</td><td class="num">31</td><td class="num">₹13.8L</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== DOCUMENT VERIFICATION ===== -->
+      <section class="screen" id="a-verify">
+        <div class="page-h"><div class="eyebrow">Phase 3 · Verification</div><h1>Document Verification</h1><p>Review documents uploaded by Fellows and Accept or Reject each (rejection requires a reason). This is the Program Admin's action — it moves a document from <b>Under Review</b> to <b>Accepted</b>.</p></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px">
+          <span class="tagk chip on" style="padding:8px 14px" onclick="filterVerify('all',this)">Pending review (4)</span>
+          <span class="tagk chip" style="padding:8px 14px" onclick="filterVerify('done',this)">Recently actioned</span>
+        </div>
+        <div class="card" id="verifyList">
+          <div class="vrow" data-vstatus="all">
+            <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="vb"><b>Domicile Certificate — Aarti Pawar</b><small>Type: Domicile · uploaded by Fellow Rahul · 2 Jun · Re-upload Version 1</small></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+          </div>
+          <div class="vrow" data-vstatus="all">
+            <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="vb"><b>Income Certificate — Kavya Deshmukh</b><small>Type: Income · uploaded by Fellow Rahul · 30 May</small></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+          </div>
+          <div class="vrow" data-vstatus="all">
+            <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="vb"><b>Caste Validity Certificate — Imran Shaikh</b><small>Type: Caste · uploaded by Fellow Sandip K · 1 Jun</small></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+          </div>
+          <div class="vrow" data-vstatus="all">
+            <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="vb"><b>Bonafide Certificate — Ganesh Pawar</b><small>Type: Academic · uploaded by Fellow Dhanashree O · 3 Jun</small></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+          </div>
+          <div class="empty" id="verifyEmpty" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg><div>Nothing pending — all caught up.</div></div>
+        </div>
+      </section>
+
+      <!-- ===== SCHOLARSHIP CATALOGUE ===== -->
+      <section class="screen" id="a-catalogue">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Configuration</div><h1>Scholarship Catalogue</h1><p>Add and edit scholarship schemes, eligibility criteria and required documents — no developer needed (SCH-04).</p></div>
+          <button class="btn btn-primary" onclick="toggleCatForm()">+ Add Scholarship</button>
+        </div>
+
+        <div class="form-card" id="catForm" style="display:none">
+          <div class="form-sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>New Scholarship</div>
+          <div class="form-grid">
+            <div class="fg full"><label>Scheme Name<span class="req">*</span></label><input placeholder="e.g. Post Matric Scholarship to OBC Students" /></div>
+            <div class="fg"><label>Governing Body</label><input placeholder="e.g. Social Justice Dept., Govt. of Maharashtra" /></div>
+            <div class="fg"><label>Portal URL</label><input placeholder="https://mahadbt.maharashtra.gov.in" /></div>
+            <div class="fg"><label>Eligible Categories</label><input placeholder="e.g. OBC, VJNT" /></div>
+            <div class="fg"><label>Income Limit (₹)</label><input type="number" placeholder="e.g. 800000" /></div>
+            <div class="fg"><label>Educational Level</label><input placeholder="e.g. UG, PG" /></div>
+            <div class="fg"><label>Benefit Amount (₹)</label><input type="number" placeholder="e.g. 50000" /></div>
+            <div class="fg"><label>Application Deadline</label><input type="date" /></div>
+            <div class="fg full"><label>Required Documents</label><input placeholder="e.g. Income Cert, Caste Cert, Domicile, Bonafide" /></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:16px"><button class="btn btn-primary btn-sm" onclick="alert('Scholarship added to the catalogue. Eligibility engine will include it on the next profile evaluation.');toggleCatForm()">Save Scholarship</button><button class="btn btn-ghost btn-sm" onclick="toggleCatForm()">Cancel</button></div>
+        </div>
+
+        <div class="card" style="margin-bottom:12px"><div class="sch-card">
+          <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
+          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Government of India Post-Matric Scholarship</h4><button class="btn btn-ghost btn-sm">Edit</button></div>
+          <div class="meta"><span>Category: SC</span><span>Income ≤ ₹2.5L</span><span><b class="amount">₹50,000</b>/yr</span><span>8 docs required</span></div></div>
+        </div></div>
+        <div class="card" style="margin-bottom:12px"><div class="sch-card">
+          <div class="logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">OB</div>
+          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Post Matric Scholarship to OBC Students</h4><button class="btn btn-ghost btn-sm">Edit</button></div>
+          <div class="meta"><span>Category: OBC</span><span>Income ≤ ₹8L</span><span><b class="amount">₹38,000</b>/yr</span><span>7 docs required</span></div></div>
+        </div></div>
+        <div class="card" style="margin-bottom:12px"><div class="sch-card">
+          <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">MS</div>
+          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>State Minority Scholarship Part II (DHE)</h4><button class="btn btn-ghost btn-sm">Edit</button></div>
+          <div class="meta"><span>Category: Minority</span><span>Income ≤ ₹8L</span><span><b class="amount">₹25,000</b>/yr</span><span>6 docs required</span></div></div>
+        </div></div>
+        <div class="card"><div class="sch-card">
+          <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">AB</div>
+          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Dr Babasaheb Ambedkar Swadhar Yojana</h4><button class="btn btn-ghost btn-sm">Edit</button></div>
+          <div class="meta"><span>Category: SC</span><span>Hostel/Maintenance</span><span><b class="amount">₹38,000</b>/yr</span><span>6 docs required</span></div></div>
+        </div></div>
+      </section>
+
+      <!-- ===== ALL STUDENTS ===== -->
+      <section class="screen" id="a-students">
+        <div class="page-h"><div class="eyebrow">Manage</div><h1>All Students</h1><p>Every student across all Fellows (480). Filter by stage and Fellow.</p></div>
+        <div class="filterbar">
+          <select onchange="filterAStu()" id="aStuStage"><option value="all">All stages</option><option value="onboarded">Onboarded</option><option value="documents">Documents Pending</option><option value="submitted">Submitted</option><option value="approved">Approved</option><option value="disbursed">Disbursed</option></select>
+          <select onchange="filterAStu()" id="aStuFellow"><option value="all">All Fellows</option><option value="Rahul More">Rahul More</option><option value="Sandip K">Sandip K</option><option value="Dhanashree O">Dhanashree O</option></select>
+        </div>
+        <div class="dtable-wrap"><table class="dtable" id="aStuTable">
+          <thead><tr><th>Student</th><th>Fellow</th><th>Stage</th><th class="num">Scholarships</th></tr></thead>
+          <tbody>
+            <tr data-stage="submitted" data-fellow="Rahul More" onclick="go('a-verify')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span>Aarti Pawar</div></td><td>Rahul More</td><td><span class="pill blue"><span class="pdot"></span>Submitted</span></td><td class="num">3</td></tr>
+            <tr data-stage="documents" data-fellow="Rahul More" onclick="go('a-verify')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">S</span>Suresh Jadhav</div></td><td>Rahul More</td><td><span class="pill amber"><span class="pdot"></span>Documents Pending</span></td><td class="num">2</td></tr>
+            <tr data-stage="approved" data-fellow="Sandip K" onclick="go('a-verify')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">S</span>Sneha Patil</div></td><td>Sandip K</td><td><span class="pill teal"><span class="pdot"></span>Approved</span></td><td class="num">1</td></tr>
+            <tr data-stage="disbursed" data-fellow="Dhanashree O" onclick="go('a-verify')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">A</span>Asha Kamble</div></td><td>Dhanashree O</td><td><span class="pill green"><span class="pdot"></span>Disbursed</span></td><td class="num">2</td></tr>
+            <tr data-stage="documents" data-fellow="Sandip K" onclick="go('a-verify')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">I</span>Imran Shaikh</div></td><td>Sandip K</td><td><span class="pill amber"><span class="pdot"></span>Documents Pending</span></td><td class="num">2</td></tr>
+            <tr data-stage="onboarded" data-fellow="Dhanashree O" onclick="go('a-verify')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">G</span>Ganesh Pawar</div></td><td>Dhanashree O</td><td><span class="pill grey"><span class="pdot"></span>Onboarded</span></td><td class="num">0</td></tr>
+          </tbody>
+        </table></div>
+        <div class="empty" id="aStuEmpty" style="display:none;margin-top:12px"><div>No students match this filter.</div></div>
+      </section>
+
+      <!-- ===== FELLOWS & USERS ===== -->
+      <section class="screen" id="a-fellows">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Manage</div><h1>Fellows &amp; Users</h1><p>Manage platform users and review Fellow performance.</p></div>
+          <button class="btn btn-primary" onclick="alert('Add User: create a Student, Fellow, Mentor, Program Admin or Super Admin account with the matching role profile (RBAC).')">+ Add User</button>
+        </div>
+        <div class="dtable-wrap"><table class="dtable">
+          <thead><tr><th>Fellow</th><th>Region</th><th class="num">Students</th><th class="num">Approved</th><th class="num">₹ Unlocked</th></tr></thead>
+          <tbody>
+            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span>Rahul More</div></td><td>Pune</td><td class="num">24</td><td class="num">5</td><td class="num">₹2.6L</td></tr>
+            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">S</span>Sandip K</div></td><td>Nashik</td><td class="num">19</td><td class="num">6</td><td class="num">₹3.1L</td></tr>
+            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">D</span>Dhanashree O</div></td><td>Pune</td><td class="num">22</td><td class="num">4</td><td class="num">₹2.2L</td></tr>
+            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">V</span>Vaibhav D</div></td><td>Satara</td><td class="num">17</td><td class="num">3</td><td class="num">₹1.7L</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <!-- ===== ADMIN PROFILE ===== -->
+      <section class="screen" id="a-profile">
+        <div class="page-h"><div class="eyebrow">Account</div><h1>My Profile</h1></div>
+        <div class="card"><div class="prof-head">
+          <div class="pa" style="background:linear-gradient(140deg,#5b8def,#2f6fd6);color:#fff">M</div>
+          <div><h3 style="font-size:23px">Meera Nair</h3><div style="color:var(--ink-soft);font-size:14px">Program Administrator · Samavesh HQ</div><div style="margin-top:8px"><span class="pill teal"><span class="pdot"></span>Active</span></div></div>
+        </div>
+        <div class="grid g-2" style="margin-top:18px">
+          <div class="field"><div class="k">Role</div><div class="v">Program Admin</div></div>
+          <div class="field"><div class="k">Access</div><div class="v">All students, catalogue, MIS, user management</div></div>
+          <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx01</div></div>
+          <div class="field"><div class="k">Documents verified (FY)</div><div class="v">1,210</div></div>
+        </div></div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ADMIN BOTTOM NAV -->
+<nav class="botnav hidden" id="adminBot">
+  <a href="#" class="nav-link active" data-go="a-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h4v8H3zM10 3h4v18h-4zM17 9h4v12h-4z"/></svg>MIS</a>
+  <a href="#" class="nav-link" data-go="a-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>Verify</a>
+  <a href="#" class="nav-link" data-go="a-catalogue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Catalogue</a>
+  <a href="#" class="nav-link" data-go="a-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg>Students</a>
+  <a href="#" class="nav-link" data-go="a-profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Profile</a>
+</nav>
+
 <!-- ========== BOOKING MODAL ========== -->
 <div class="modal-bg" id="bookModal">
   <div class="modal" style="position:relative">
@@ -1847,15 +2118,15 @@ img{max-width:100%}
 
 <script>
 // ---- role-based login ----
-const ACCOUNTS = { '9800000021':{role:'student'}, '9800000011':{role:'fellow'} };
+const ACCOUNTS = { '9800000021':{role:'student'}, '9800000011':{role:'fellow'}, '9800000001':{role:'admin'} };
 let pendingRole='student';
 function roleFor(mobile){ const k=(mobile||'').replace(/\D/g,''); return (ACCOUNTS[k]||{}).role || 'student'; }
 function showApp(role){
-  document.getElementById('studentApp').classList.toggle('hidden',role!=='student');
-  document.getElementById('fellowApp').classList.toggle('hidden',role!=='fellow');
-  document.getElementById('studentBot').classList.toggle('hidden',role!=='student');
-  document.getElementById('fellowBot').classList.toggle('hidden',role!=='fellow');
-  go(role==='fellow'?'f-home':'home');
+  [['student','studentApp','studentBot'],['fellow','fellowApp','fellowBot'],['admin','adminApp','adminBot']].forEach(function(t){
+    document.getElementById(t[1]).classList.toggle('hidden',role!==t[0]);
+    document.getElementById(t[2]).classList.toggle('hidden',role!==t[0]);
+  });
+  go(role==='fellow'?'f-home':role==='admin'?'a-home':'home');
 }
 function getOtp(){
   pendingRole=roleFor(document.getElementById('loginMobile').value);
@@ -1993,6 +2264,45 @@ function onAppStatus(sel){
   if(!up)return;
   if(sel.value==='Benefits Received'){up.style.display='none';proof.style.display='';}
   else{up.style.display='';proof.style.display='none';}
+}
+
+// ---- Program Admin interactions ----
+// Document verification Accept/Reject
+function vAct(btn,action){
+  const row=btn.closest('.vrow');
+  if(action==='reject'){
+    const reason=prompt('Rejection reason (the Fellow will be notified and the slot becomes re-uploadable):');
+    if(reason===null) return;
+    row.dataset.vstatus='done';
+    row.querySelector('.vacts').innerHTML='<span class="pill red"><span class="pdot"></span>Rejected</span>';
+    const sm=row.querySelector('.vb small'); sm.style.color='var(--red)'; sm.textContent='Rejected: "'+(reason||'reason recorded')+'" — Fellow notified';
+    row.querySelector('.vi').style.cssText='background:var(--red-50);color:var(--red)';
+  } else {
+    row.dataset.vstatus='done';
+    row.querySelector('.vacts').innerHTML='<span class="pill green"><span class="pdot"></span>Accepted</span>';
+    row.querySelector('.vi').style.cssText='background:var(--green-50);color:var(--green)';
+  }
+  // update pending count chip
+  const pending=[...document.querySelectorAll('#verifyList .vrow')].filter(r=>r.dataset.vstatus!=='done').length;
+  const chip=document.querySelector('#a-verify .chip'); if(chip)chip.textContent='Pending review ('+pending+')';
+}
+function filterVerify(which,btn){
+  setChip(btn); let shown=0;
+  document.querySelectorAll('#verifyList .vrow').forEach(r=>{
+    const vis = which==='all' ? r.dataset.vstatus!=='done' : r.dataset.vstatus==='done';
+    r.style.display=vis?'':'none'; if(vis)shown++;
+  });
+  document.getElementById('verifyEmpty').style.display=shown?'none':'block';
+}
+function toggleCatForm(){ const f=document.getElementById('catForm'); f.style.display = f.style.display==='none'?'':'none'; if(f.style.display==='')f.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+// All students filter (stage + fellow)
+function filterAStu(){
+  const st=document.getElementById('aStuStage').value, fe=document.getElementById('aStuFellow').value; let shown=0;
+  document.querySelectorAll('#aStuTable tbody tr').forEach(r=>{
+    const okS=st==='all'||r.dataset.stage===st, okF=fe==='all'||r.dataset.fellow===fe;
+    const vis=okS&&okF; r.style.display=vis?'':'none'; if(vis)shown++;
+  });
+  document.getElementById('aStuEmpty').style.display=shown?'none':'block';
 }
 </script>
 </body>
