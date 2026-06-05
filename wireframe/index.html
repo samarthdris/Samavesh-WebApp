@@ -669,9 +669,65 @@ img{max-width:100%}
 .fd .readonly-note,.fd .fellow-help{background:var(--fd-blue-bg);border-color:#cce4fb}
 .fd .fellow-help .fa{background:var(--fd-blue)}
 /* bottom nav (mobile) */
-.fd.app + #fellowBot{}
-#fellowBot.fdbot{background:#fff}
-#fellowBot.fdbot .nav-link.active{color:var(--fd-blue)} #fellowBot.fdbot .nav-link.active svg{color:var(--fd-blue)}
+.fdbot{background:#fff}
+.fdbot .nav-link.active{color:#0f857a} .fdbot .nav-link.active svg{color:#0f857a}
+
+/* admin filter selects */
+.fd .misfilters select{border:1px solid var(--fd-border);border-radius:8px;background:#fff;color:var(--fd-ink)}
+.fd .funnel .fbar{background:linear-gradient(90deg,#0e6e66,#14a99a)}
+
+/* ---- Higher-fidelity Desk: breadcrumbs ---- */
+.fd .crumbs{padding:9px 22px;font-size:12.5px;color:var(--fd-sub);background:#fff;border-bottom:1px solid var(--fd-border);display:flex;align-items:center;gap:8px}
+.fd .crumbs svg{width:14px;height:14px;opacity:.6}
+.fd .crumbs b{color:var(--fd-ink);font-weight:600}
+.fd .crumbs .sep{color:var(--fd-faint)}
+/* ---- Higher-fidelity Desk: list-view toolbar ---- */
+.fd .listbar{display:flex;align-items:center;gap:12px;padding:9px 14px;background:#fff;border:1px solid var(--fd-border);border-bottom:none;border-radius:11px 11px 0 0;font-size:12.5px;color:var(--fd-sub);flex-wrap:wrap}
+.fd .listbar .lbsel{width:15px;height:15px;border:1.5px solid var(--fd-faint);border-radius:4px}
+.fd .listbar .cnt b{color:var(--fd-ink);font-weight:600}
+.fd .listbar .lb-tools{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.fd .listbar .lb-tools button{display:inline-flex;align-items:center;gap:5px;border:none;background:transparent;color:var(--fd-sub);font-size:12.5px;font-weight:500;padding:5px 9px;border-radius:7px;cursor:pointer}
+.fd .listbar .lb-tools button:hover{background:#f1f3f5;color:var(--fd-ink)}
+.fd .listbar .lb-tools svg{width:13px;height:13px}
+.fd .listbar ~ #stuList,.fd .listbar + #appList,.fd .listbar + .dtable-wrap,.fd .listbar + .card{border-top-left-radius:0;border-top-right-radius:0;border-top:none}
+.fd #stuList,.fd #appList{border:1px solid var(--fd-border);border-radius:0 0 11px 11px;overflow:hidden}
+.fd #appList .appitem{border:none;border-bottom:1px solid var(--fd-line);border-radius:0;margin:0;box-shadow:none}
+.fd #appList .appitem:last-of-type{border-bottom:none}
+/* ---- Higher-fidelity Desk: record form layout + right sidebar + activity ---- */
+.rec-layout{display:flex;gap:20px;align-items:flex-start}
+.rec-main{flex:1;min-width:0}
+.rec-side{width:236px;flex:0 0 236px}
+.fd .side-card{background:#fff;border:1px solid var(--fd-border);border-radius:11px;padding:14px;margin-bottom:14px}
+.fd .side-card h5{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--fd-faint);font-weight:700;margin-bottom:11px}
+.rec-side .assignee{display:flex;align-items:center;gap:9px}
+.rec-side .assignee .av2{width:28px;height:28px;border-radius:50%;background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700}
+.rec-side .assignee small{font-size:12px;color:var(--fd-sub)}
+.rec-side .tagchips{display:flex;flex-wrap:wrap;gap:6px}
+.rec-side .tagchip{font-size:11px;background:var(--fd-blue-bg);color:var(--fd-blue);padding:3px 9px;border-radius:20px;font-weight:500}
+.rec-side .meta-line{font-size:12px;color:var(--fd-sub);margin-bottom:7px}
+.rec-side .meta-line b{color:var(--fd-ink);font-weight:500}
+.fd .activity{background:#fff;border:1px solid var(--fd-border);border-radius:11px;padding:18px;margin-top:18px}
+.fd .activity h3{font-size:15px;font-weight:600;margin-bottom:14px}
+.fd .comment-box{display:flex;gap:10px;margin-bottom:16px}
+.fd .comment-box .av2{width:30px;height:30px;border-radius:50%;flex:0 0 30px;background:linear-gradient(140deg,#f6b24a,#e8821e);color:#3a2400;display:grid;place-items:center;font-weight:700;font-size:12px}
+.fd .comment-box input{flex:1;border:1px solid var(--fd-border);border-radius:8px;padding:9px 12px;font-family:inherit;font-size:13px;outline:none}
+.fd .comment-box input:focus{border-color:var(--fd-blue);box-shadow:0 0 0 2px var(--fd-blue-bg)}
+.act-item{display:flex;gap:11px;padding:9px 0}
+.act-item .ai-dot{width:26px;height:26px;border-radius:50%;flex:0 0 26px;background:#eef1f0;display:grid;place-items:center;color:var(--fd-sub)}
+.act-item .ai-dot svg{width:13px;height:13px}
+.act-item .ai-t{font-size:13px;color:var(--fd-ink)} .act-item .ai-t b{font-weight:600}
+.act-item .ai-d{font-size:11.5px;color:var(--fd-faint);margin-top:1px}
+@media(max-width:920px){.rec-side{display:none}.rec-layout{display:block}}
+/* save bar (Desk form dirty state) */
+.fd .savebar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--fd-border);border-radius:10px;padding:10px 14px;margin-bottom:14px}
+.fd .savebar .sb-l{font-size:13px;color:var(--fd-sub)}
+.fd .savebar .sb-l b{color:var(--fd-ink)}
+
+/* ===== Student Frappe Web Portal (.fp) — branded, lighter ===== */
+.fp{font-family:'Inter','Mukta',sans-serif}
+.fp .topbar{box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.fp .portal-foot{text-align:center;padding:26px 16px 8px;color:var(--muted);font-size:12px}
+.fp .portal-foot b{color:var(--teal-700)}
 </style>
 </head>
 <body>
@@ -727,7 +783,7 @@ img{max-width:100%}
   </div>
 </div>
 
-<div class="app" id="studentApp">
+<div class="app fp" id="studentApp">
 
   <!-- ============ SIDE RAIL ============ -->
   <aside class="rail">
@@ -841,6 +897,7 @@ img{max-width:100%}
             <button class="btn btn-ghost btn-sm" style="margin-top:14px" data-go="mentorship">Go to mentorship</button>
           </div>
         </div>
+        <div class="portal-foot">Powered by <b>Samavesh</b> · From the margins to the mainstream</div>
       </section>
 
       <!-- ========== SCHOLARSHIPS ========== -->
@@ -1214,6 +1271,7 @@ img{max-width:100%}
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
       </button>
     </header>
+    <div class="crumbs" id="crumbFellow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><b>Home</b></div>
 
     <main class="content">
 
@@ -1313,6 +1371,7 @@ img{max-width:100%}
           <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('disbursed',this)">Disbursed (2)</span>
         </div>
 
+        <div class="listbar"><span class="lbsel"></span><span class="cnt"><b>10</b> Students</span><div class="lb-tools"><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Filter</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13M3 12h9M3 18h5M18 9l3 3-3 3"/></svg>Sort</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></button></div></div>
         <div id="stuList">
           <div class="stu-row" data-status="submitted" data-date="2026-04-12" onclick="go('f-student')">
             <div class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</div>
@@ -1556,6 +1615,7 @@ img{max-width:100%}
       <section class="screen" id="f-student">
         <span class="backlink" data-go="f-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to My Students</span>
 
+        <div class="rec-layout"><div class="rec-main">
         <div class="card" style="margin-bottom:20px">
           <div class="prof-head">
             <div class="pa">A</div>
@@ -1710,6 +1770,20 @@ img{max-width:100%}
             <button class="btn btn-gold btn-sm" style="margin-top:14px">Record Disbursement &amp; Close</button>
           </div>
         </div>
+            <div class="activity">
+              <h3>Activity</h3>
+              <div class="comment-box"><span class="av2">R</span><input placeholder="Add a comment…" /></div>
+              <div class="act-item"><div class="ai-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div><div><div class="ai-t"><b>Rahul More</b> submitted the Post-Matric application on the portal</div><div class="ai-d">2 Jun, 4:12 PM</div></div></div>
+              <div class="act-item"><div class="ai-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div><div><div class="ai-t"><b>Program Admin</b> accepted Income Certificate</div><div class="ai-d">20 May, 11:03 AM</div></div></div>
+              <div class="act-item"><div class="ai-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></div><div><div class="ai-t"><b>Rahul More</b> onboarded this student</div><div class="ai-d">12 Apr, 10:20 AM</div></div></div>
+            </div>
+          </div>
+          <aside class="rec-side">
+            <div class="side-card"><h5>Assigned To</h5><div class="assignee"><span class="av2">R</span><small>Rahul More (you)</small></div></div>
+            <div class="side-card"><h5>Tags</h5><div class="tagchips"><span class="tagchip">SC</span><span class="tagchip">Pune</span><span class="tagchip">Post-Matric</span></div></div>
+            <div class="side-card"><h5>Details</h5><div class="meta-line">Created <b>12 Apr 2026</b></div><div class="meta-line">Last modified <b>2 Jun 2026</b></div><div class="meta-line">Student ID <b>SMV-2026-01182</b></div></div>
+          </aside>
+        </div>
       </section>
 
       <!-- ===== APPLICATIONS (tracking across students) ===== -->
@@ -1728,6 +1802,7 @@ img{max-width:100%}
           <span class="tagk chip" style="padding:8px 14px" onclick="filterApp('rejected',this)">Rejected (1)</span>
         </div>
 
+        <div class="listbar"><span class="lbsel"></span><span class="cnt"><b>9</b> Applications</span><div class="lb-tools"><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Filter</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13M3 12h9M3 18h5M18 9l3 3-3 3"/></svg>Sort</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></button></div></div>
         <div id="appList">
           <div class="card appitem" data-astatus="scrutiny" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
             <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">A</div>
@@ -1988,7 +2063,7 @@ img{max-width:100%}
 <!-- ===================================================================== -->
 <!-- ========================= PROGRAM ADMIN APP ========================= -->
 <!-- ===================================================================== -->
-<div class="app hidden" id="adminApp">
+<div class="app hidden fd" id="adminApp">
   <aside class="rail">
     <div class="brand"><div class="mark">स</div><div><div class="name">Samavesh</div><div class="tag">Program Admin</div></div></div>
     <nav class="nav">
@@ -2013,6 +2088,7 @@ img{max-width:100%}
       <div class="spacer"></div>
       <button class="icon-btn" title="Notifications"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
     </header>
+    <div class="crumbs" id="crumbAdmin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><b>Home</b></div>
 
     <main class="content">
 
@@ -2087,7 +2163,8 @@ img{max-width:100%}
           <span class="tagk chip on" style="padding:8px 14px" onclick="filterVerify('all',this)">Pending review (4)</span>
           <span class="tagk chip" style="padding:8px 14px" onclick="filterVerify('done',this)">Recently actioned</span>
         </div>
-        <div class="card" id="verifyList">
+        <div class="listbar"><span class="lbsel"></span><span class="cnt"><b>4</b> documents pending review</span><div class="lb-tools"><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Filter</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></button></div></div>
+        <div class="card" id="verifyList" style="border-radius:0 0 11px 11px;border-top:none">
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Domicile Certificate — Aarti Pawar</b><small>Type: Domicile · uploaded by Fellow Rahul · 2 Jun · Re-upload Version 1</small></div>
@@ -2164,7 +2241,8 @@ img{max-width:100%}
           <select onchange="filterAStu()" id="aStuStage"><option value="all">All stages</option><option value="onboarded">Onboarded</option><option value="documents">Documents Pending</option><option value="submitted">Submitted</option><option value="approved">Approved</option><option value="disbursed">Disbursed</option></select>
           <select onchange="filterAStu()" id="aStuFellow"><option value="all">All Fellows</option><option value="Rahul More">Rahul More</option><option value="Sandip K">Sandip K</option><option value="Dhanashree O">Dhanashree O</option></select>
         </div>
-        <div class="dtable-wrap"><table class="dtable" id="aStuTable">
+        <div class="listbar"><span class="lbsel"></span><span class="cnt"><b>480</b> Students</span><div class="lb-tools"><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Filter</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13M3 12h9M3 18h5M18 9l3 3-3 3"/></svg>Sort</button><button>Assign</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></button></div></div>
+        <div class="dtable-wrap" style="border-radius:0 0 11px 11px;border-top:none"><table class="dtable" id="aStuTable">
           <thead><tr><th>Student</th><th>Fellow</th><th>Stage</th><th class="num">Scholarships</th></tr></thead>
           <tbody>
             <tr data-stage="submitted" data-fellow="Rahul More" onclick="go('a-verify')"><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span>Aarti Pawar</div></td><td>Rahul More</td><td><span class="pill blue"><span class="pdot"></span>Submitted</span></td><td class="num">3</td></tr>
@@ -2215,7 +2293,7 @@ img{max-width:100%}
 </div>
 
 <!-- ADMIN BOTTOM NAV -->
-<nav class="botnav hidden" id="adminBot">
+<nav class="botnav hidden fdbot" id="adminBot">
   <a href="#" class="nav-link active" data-go="a-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h4v8H3zM10 3h4v18h-4zM17 9h4v12h-4z"/></svg>MIS</a>
   <a href="#" class="nav-link" data-go="a-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>Verify</a>
   <a href="#" class="nav-link" data-go="a-catalogue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Catalogue</a>
@@ -2275,8 +2353,17 @@ const screens=document.querySelectorAll('.screen');
 function go(id){
   screens.forEach(s=>s.classList.toggle('active',s.id===id));
   document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.dataset.go===id));
-  document.querySelector('.content').scrollTo({top:0});
+  setCrumb(id);
   window.scrollTo({top:0,behavior:'smooth'});
+}
+const CRUMBS={'f-home':'Home','f-students':'Students','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-fellows':'Users','a-profile':'My Settings'};
+function setCrumb(id){
+  const txt=CRUMBS[id]; if(!txt)return;
+  const el=id.indexOf('a-')===0?document.getElementById('crumbAdmin'):document.getElementById('crumbFellow');
+  if(!el)return;
+  const home='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>';
+  const parts=txt.split(' › ');
+  el.innerHTML=home+parts.map((p,i)=> i<parts.length-1 ? '<span>'+p+'</span><span class="sep">›</span>' : '<b>'+p+'</b>').join('');
 }
 document.querySelectorAll('[data-go]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();go(el.dataset.go);}));
 
