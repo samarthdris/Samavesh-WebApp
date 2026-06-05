@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow). Treat 
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-04 — working through the big Fellow build._
+_Last updated: 2026-06-05 — added Admin student-detail view (a-student)._
 
 ## Legend
 - [x] done & in file
@@ -34,6 +34,7 @@ _Last updated: 2026-06-04 — working through the big Fellow build._
 - [x] All Students (a-students) — cross-fellow table with working stage + fellow filters
 - [x] Fellows & Users (a-fellows) — performance table + Add User
 - [x] Admin profile + sign out; admin demo login (9800000001 / "Program Admin · Meera Nair")
+- [x] **Student Detail (a-student)** — dynamic per-row header (name/avatar/stage pill/assigned fellow/journey, via goStudent(this)); oversight + admin-only actions: Accept/Reject docs inline (reuses vAct), Edit profile + Reassign Fellow (audit-logged); Scholarships & Applications read-only (no operator buttons). All-Students rows now route here (were going to Verify).
 
 ## Verification audit (2026-06-05) — done
 - [x] Full audit vs workflow PDF + BRD. Confirmed aligned: roles, RBAC (student view-only), doc lifecycle, eligibility, masking, dup-check, MIS, forms (onboarding 8-step/9-doc/bilingual; scholarship branched).
@@ -51,7 +52,7 @@ _Last updated: 2026-06-04 — working through the big Fellow build._
 - [ ] Confirm Documentation Application form design with user (derived, no MD spec)
 - [ ] Documentation follow-up could become its own global queue (like Applications) if user wants
 - [ ] Mentor + Super Admin role apps (not built yet)
-- [ ] Admin: build a real student-detail view (currently admin rows route to Verify)
+- [x] ~~Admin: build a real student-detail view~~ — DONE 2026-06-05 (a-student)
 - [ ] Optional: add f-scholarship / f-docapp to fellow rail nav (currently reached contextually)
 
 ## Key decisions (see memory)
