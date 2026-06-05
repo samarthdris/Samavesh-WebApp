@@ -40,11 +40,12 @@ _Last updated: 2026-06-04 — working through the big Fellow build._
 - [x] FIXED: application-status vocabulary was half-migrated → now FORM vocab everywhere (Under Scrutiny / Application Approved / Benefits Received / Re-apply / Rejected). "Under Review" kept ONLY as document status (DOC-03). "Redirected for Correction" removed.
 - Decisions: forms-vocab canonical · deviations (admin verify, student view-only docs) kept as-is, justified verbally via BRD refs · Frappe target = HYBRID.
 
-## NEXT (greenlit): Frappe hybrid re-skin
-- [ ] Student → Frappe Web Portal look
-- [ ] Fellow → Frappe Desk (workspace sidebar, List View w/ filter bar + status dots, Form View w/ sectioned fields + Save + activity timeline)
-- [ ] Admin → Frappe Desk + number-card dashboard
-- Approach: build a Frappe-Desk CSS layer + list/form components, convert app-by-app (Fellow first), preserving all content/journeys/working filters.
+## Frappe re-skin — DONE (branded "custom Frappe UI", not stock grey)
+- [x] Fellow → branded Frappe Desk (.fd theme: Inter, teal sidebar + marigold accents, dot indicators, list/form styling)
+- [x] Admin → same branded Frappe Desk + number-card MIS workspace
+- [x] Student → branded Frappe Web Portal (.fp: Inter UI, warm brand kept, portal footer)
+- [x] Higher-fidelity Desk extras (Fellow+Admin): breadcrumbs (JS via go()), list-view toolbars (count + Filter/Sort/refresh), Student Detail record view = 2-col form + right sidebar (Assigned To/Tags/Details) + Activity comment timeline
+- Theme is scoped via classes: `.fd` (Desk) on #fellowApp/#adminApp, `.fp` (Portal) on #studentApp. See memory `samavesh-frappe-ui`.
 
 ## Still to do / next
 - [ ] Confirm Documentation Application form design with user (derived, no MD spec)
