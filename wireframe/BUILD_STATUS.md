@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-05 — added Mentor portal app (m-home/availability/sessions/profile)._
+_Last updated: 2026-06-05 — added client workflow diagram (workflow.html)._
 
 ## Legend
 - [x] done & in file
@@ -43,6 +43,13 @@ _Last updated: 2026-06-05 — added Mentor portal app (m-home/availability/sessi
 - [x] Sessions (m-sessions) — Upcoming/Past tabs (reuse ftab); Join / Mark complete / Cancel / + Mentor note (mSession/mNote); privacy boundary = mentee first name + topic only, NO feedback shown (RBAC-03 / FR-MENT-011)
 - [x] My Profile (m-profile) — editable bio/skill·stream·geo tags/languages/mode/monthly-hour-cap; Approved pill
 - Only new CSS = the availability grid (.availgrid/.slot-cell). Spec+plan: docs/superpowers/*2026-06-05-mentor-interface*.
+
+## Workflow diagram (NEW) — client-facing
+- [x] `wireframe/workflow.html` — standalone branded algorithmic flowchart in the style of `Samavesh workflow.pdf` (green action / amber screen / blue ◆ decision / pink note / teal phase; legend)
+- [x] Program Overview (4 phases + mentoring parallel; Admin verification gate added + status vocab reconciled — both pink-annotated)
+- [x] 4 role flows (Student/Fellow/Program Admin/Mentor) mapped to built screens, with per-role RBAC notes; 27 amber screen-nodes deep-link into the live wireframe
+- [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
+- Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
 
 ## Verification audit (2026-06-05) — done
 - [x] Full audit vs workflow PDF + BRD. Confirmed aligned: roles, RBAC (student view-only), doc lifecycle, eligibility, masking, dup-check, MIS, forms (onboarding 8-step/9-doc/bilingual; scholarship branched).
