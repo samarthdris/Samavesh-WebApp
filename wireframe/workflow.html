@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Samavesh — Role Workflows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400&family=Mukta:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --teal-900:#0a3f3a; --teal-700:#0e6e66; --teal-600:#0f857a; --teal-500:#14a99a;
+  --teal-100:#d6efec; --teal-50:#eef8f6; --teal-200:#bce4de; --teal-400:#3cbcae; --teal-800:#0c534c;
+  --marigold:#e8821e; --marigold-soft:#f6b24a; --marigold-50:#fdf2e2;
+  --cream:#faf6ef; --cream-2:#f3ece0; --paper:#ffffff;
+  --ink:#1b2b29; --ink-soft:#4d605d; --ink-faint:#869693;
+  --muted:#7c8c89;
+  --line:#e7ddcf;
+  --green:#2f9e63; --green-50:#e7f4ec;
+  --blue:#2f6fd6; --blue-50:#e7eefb;
+  --red:#d2553f; --red-50:#fbeae6;
+  --amber:#d99413; --amber-50:#fbf1de;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Mukta',system-ui,sans-serif;color:var(--ink);background:var(--cream);
+  background-image:radial-gradient(1200px 600px at 110% -10%,var(--teal-50),transparent 60%),radial-gradient(900px 500px at -10% 110%,var(--marigold-50),transparent 55%);
+  background-attachment:fixed;padding:34px 22px 90px}
+h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em}
+.wf-wrap{max-width:1200px;margin:0 auto}
+.wf-head{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+.wf-head .mark{width:46px;height:46px;border-radius:13px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-weight:700;font-size:24px}
+.wf-head h1{font-size:30px;margin:0}
+.wf-head p{margin:3px 0 0;color:var(--ink-soft);font-size:14px}
+.wf-legend{display:flex;flex-wrap:wrap;gap:16px;margin:18px 0 12px;padding:14px 18px;background:rgba(255,255,255,.72);border:1px solid var(--line);border-radius:14px}
+.wf-legend .lg{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);font-weight:600}
+.wf-legend .sw{width:22px;height:15px;border-radius:5px;border:1.6px solid}
+.wf-legend .sw.a{background:var(--green-50);border-color:var(--green)}
+.wf-legend .sw.s{background:var(--marigold-50);border-color:var(--marigold)}
+.wf-legend .sw.d{background:var(--blue-50);border-color:var(--blue)}
+.wf-legend .sw.n{background:#fdeaf0;border-color:#dd6c97;border-style:dashed}
+.wf-legend .sw.t{background:var(--teal-700);border-color:var(--teal-900)}
+.wf-tip{font-size:12px;color:var(--muted);margin:0 0 24px}
+.wf-section{margin:26px 0;padding:22px 22px 26px;background:rgba(255,255,255,.55);border:1px solid var(--line);border-radius:18px}
+.wf-section>h2{font-size:21px;margin:0 0 10px;color:var(--teal-900)}
+.wf-rolebar{display:inline-flex;gap:8px;align-items:center;font-size:12.5px;color:var(--ink-soft);background:var(--teal-50);border:1px solid var(--teal-200);border-radius:30px;padding:6px 14px;margin-bottom:22px}
+.wf-rolebar b{color:var(--teal-800)}
+.wf-lane{display:flex;flex-direction:column;align-items:center;gap:0}
+.wf-node{padding:11px 16px;border-radius:12px;font-size:13px;font-weight:600;text-align:center;max-width:250px;line-height:1.3;border:1.6px solid;text-decoration:none;display:inline-block;color:var(--ink)}
+.wf-node.wf-title{background:linear-gradient(135deg,var(--teal-900),var(--teal-700));color:#fff;border-color:var(--teal-900);font-family:'Fraunces';font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;border-radius:10px}
+.wf-node.wf-action{background:var(--green-50);border-color:var(--green);color:#1f6b43;border-radius:30px}
+.wf-node.wf-screen{background:var(--marigold-50);border-color:var(--marigold);color:#8a4b07;cursor:pointer;transition:.15s}
+.wf-node.wf-screen:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(232,130,30,.22)}
+.wf-node.wf-screen::after{content:" \2197";font-size:11px;opacity:.55}
+.wf-node.wf-decision{background:var(--blue-50);border-color:var(--blue);color:#1f4c95;border-radius:8px}
+.wf-node.wf-decision::before{content:"\25C6  ";color:var(--blue);font-size:11px}
+.wf-note{background:#fdeaf0;border:1.4px dashed #dd6c97;color:#9a3a5e;border-radius:10px;padding:9px 13px;font-size:11.5px;max-width:300px;text-align:center;margin:8px auto 0;line-height:1.35}
+.wf-link{width:2px;height:24px;background:#cdd6d3;position:relative;flex:0 0 auto}
+.wf-link::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#cdd6d3}
+.wf-split{display:flex;gap:26px;align-items:flex-start;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.wf-col{display:flex;flex-direction:column;align-items:center;gap:0}
+.wf-blabel{font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:2px 10px}
+.wf-phases{display:flex;gap:14px;align-items:flex-start;overflow-x:auto;padding-bottom:10px}
+.wf-phase{flex:1 1 230px;min-width:215px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 14px}
+.wf-phase>.ph-h{font-family:'Fraunces';font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--teal-700);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:14px;text-align:center}
+.wf-foot{margin-top:34px;text-align:center}
+.wf-foot a{display:inline-flex;align-items:center;gap:8px;background:var(--teal-700);color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:30px}
+.wf-foot a:hover{background:var(--teal-900)}
+@media(max-width:760px){.wf-phases{flex-direction:column}.wf-split{flex-direction:column;align-items:center;gap:8px}}
+@media print{body{background:#fff;background-image:none;padding:0}.wf-section{break-inside:avoid;border:none;background:none}.wf-node.wf-screen::after{content:""}}
+</style>
+</head>
+<body>
+<div class="wf-wrap">
+  <div class="wf-head">
+    <div class="mark">स</div>
+    <div>
+      <h1>Samavesh — Role Workflows</h1>
+      <p>How each role moves through the platform. Click any <b>amber screen</b> to open it live in the wireframe.</p>
+    </div>
+  </div>
+
+  <div class="wf-legend">
+    <div class="lg"><span class="sw t"></span>Phase / section</div>
+    <div class="lg"><span class="sw a"></span>Action (a step the user performs)</div>
+    <div class="lg"><span class="sw s"></span>Screen (click to open it live)</div>
+    <div class="lg"><span class="sw d"></span>Decision (a branch)</div>
+    <div class="lg"><span class="sw n"></span>Note</div>
+  </div>
+  <p class="wf-tip">Modelled on the Samavesh program workflow. Screen links open the prototype already signed-in as that role.</p>
+
+  <section class="wf-section" id="wf-overview"><h2>Program Overview — the 4 phases</h2><!-- WF: overview --></section>
+  <section class="wf-section" id="wf-student"><h2>1 &middot; Student journey</h2><!-- WF: student --></section>
+  <section class="wf-section" id="wf-fellow"><h2>2 &middot; Fellow journey</h2><!-- WF: fellow --></section>
+  <section class="wf-section" id="wf-admin"><h2>3 &middot; Program Admin journey</h2><!-- WF: admin --></section>
+  <section class="wf-section" id="wf-mentor"><h2>4 &middot; Mentor journey</h2><!-- WF: mentor --></section>
+
+  <div class="wf-foot"><a href="index.html">&larr; Open the Samavesh wireframe</a></div>
+</div>
+</body>
+</html>
