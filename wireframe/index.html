@@ -518,6 +518,7 @@ img{max-width:100%}
 
 /* ---------- DocType form (onboarding redesign — Frappe single-page pattern) ---------- */
 .dt-form{display:grid;grid-template-columns:220px 1fr;gap:28px;max-width:1100px;align-items:start}
+.dt-form.simple{grid-template-columns:1fr;max-width:780px}
 .dt-anchors{position:sticky;top:84px;display:flex;flex-direction:column;gap:2px;padding:14px 0;border-right:1px solid var(--line)}
 .dt-anchors a{display:flex;align-items:center;gap:10px;padding:9px 14px;font-size:13px;color:var(--ink-soft);text-decoration:none;border-left:2px solid transparent;transition:.15s;cursor:pointer}
 .dt-anchors a .anum{font-size:11px;font-weight:700;color:var(--muted);min-width:18px;text-align:center}
@@ -2578,36 +2579,50 @@ img{max-width:100%}
         <span class="backlink" data-go="f-student"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to student</span>
         <div class="page-h" style="margin-bottom:10px"><div class="eyebrow">Documentation Support · Procurement</div><h1>Documentation Application</h1><p>Apply for a document the student doesn't have, and track follow-up until it's procured.</p></div>
 
-        <div class="formwrap" id="docForm">
-          <div class="form-card">
-            <div class="form-sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg>Application details</div>
-            <div class="q"><div class="qen">Student</div><input type="text" value="Aarti Ramesh Pawar (SMV-2026-01182)" disabled style="opacity:.75" /></div>
-            <div class="q"><div class="qen">Document to procure <span class="req">*</span></div>
-              <select><option value="">Select document…</option><option>Domicile Certificate</option><option>Income Certificate</option><option>Caste Certificate</option><option>Caste Validity Certificate</option><option>Non-Creamy Layer Certificate</option><option>Aadhaar Card</option><option>Ration Card</option><option>Bank Passbook</option><option>Bonafide Certificate</option><option>10th &amp; 12th Marksheet / Leaving Certificate</option><option>Orphan Certificate</option><option>Other</option></select>
-              <div class="qhelp">Pre-filled from documents the student marked "Don't have" during onboarding.</div></div>
-            <div class="q"><div class="qen">Issuing authority / office <span class="req">*</span></div><input type="text" placeholder="e.g. Tehsil office / Setu Kendra / Municipal office" /></div>
-            <div class="form-grid">
-              <div class="fg"><label>Date of application<span class="req">*</span></label><input type="date" value="2026-06-04" /></div>
-              <div class="fg"><label>Receipt / Reference number</label><input type="text" placeholder="As given by the office" /></div>
-              <div class="fg"><label>Expected issue date</label><input type="date" /></div>
-              <div class="fg"><label>Current status<span class="req">*</span></label><select><option>Not yet applied</option><option selected>Applied — awaiting issue</option><option>Follow-up in progress</option><option>Received</option><option>Submitted to scholarship</option></select></div>
-            </div>
-            <div class="q"><div class="qen">Follow-up note</div><textarea placeholder="e.g. Visited office on 4 Jun, told to collect after 10 days"></textarea></div>
-          </div>
+        <div class="dt-form simple" id="docForm">
+          <div class="dt-body">
 
-          <div class="form-card">
-            <div class="form-sec-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Follow-up history</div>
-            <div class="tl">
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Application made</div><div class="d">By Fellow Rahul · 2 Jun · Receipt logged</div></div>
-              <div class="tl-item active"><div class="knob"></div><div class="t">Follow-up in progress</div><div class="d">Last checked 4 Jun — under process at office</div></div>
-              <div class="tl-item future"><div class="t">Received</div><div class="d">Expected 12 Jun</div></div>
-              <div class="tl-item future"><div class="t">Submitted to scholarship</div><div class="d">—</div></div>
-            </div>
-          </div>
+            <!-- §1 Application details -->
+            <section class="dt-section">
+              <h3 class="dt-sec-title"><span class="anum">1</span>Application Details</h3>
+              <div class="dt-sec-lead">Apply for a document the student doesn't have, and track follow-up until it's procured.</div>
+              <div class="dt-grid">
+                <div class="q full"><div class="qen">Student</div><input type="text" value="Aarti Ramesh Pawar (SMV-2026-01182)" disabled style="opacity:.75" /></div>
+                <div class="q full"><div class="qen">Document to procure <span class="req">*</span></div>
+                  <select><option value="">Select document…</option><option>Domicile Certificate</option><option>Income Certificate</option><option>Caste Certificate</option><option>Caste Validity Certificate</option><option>Non-Creamy Layer Certificate</option><option>Aadhaar Card</option><option>Ration Card</option><option>Bank Passbook</option><option>Bonafide Certificate</option><option>10th &amp; 12th Marksheet / Leaving Certificate</option><option>Orphan Certificate</option><option>Other</option></select>
+                  <div class="qhelp">Pre-filled from documents the student marked "Don't have" during onboarding.</div></div>
+                <div class="q full"><div class="qen">Issuing authority / office <span class="req">*</span></div><input type="text" placeholder="e.g. Tehsil office / Municipal office" /></div>
+                <div class="q"><div class="qen">Date of application <span class="req">*</span></div><input type="date" value="2026-06-09" /></div>
+                <div class="q"><div class="qen">Receipt / Reference number</div><input type="text" placeholder="As given by the office" /></div>
+                <div class="q"><div class="qen">Expected issue date</div><input type="date" /></div>
+                <div class="q"><div class="qen">Current status <span class="req">*</span></div>
+                  <select><option>Not yet applied</option><option selected>Applied — awaiting issue</option><option>Follow-up in progress</option><option>Received</option><option>Submitted to scholarship</option></select>
+                </div>
+                <div class="q full"><div class="qen">Follow-up note</div><textarea placeholder="e.g. Visited office on 4 Jun, told to collect after 10 days"></textarea></div>
+              </div>
+            </section>
 
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px">
-            <button class="btn btn-primary" onclick="formSubmit('docForm')">Save Application &amp; Follow-up</button>
-            <button class="btn btn-ghost" data-go="f-student">Cancel</button>
+            <!-- §2 Follow-up history -->
+            <section class="dt-section">
+              <h3 class="dt-sec-title"><span class="anum">2</span>Follow-up History</h3>
+              <div class="dt-sec-lead">Activity timeline for this document procurement.</div>
+              <div class="tl">
+                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Application made</div><div class="d">By Fellow Rahul · 2 Jun · Receipt logged</div></div>
+                <div class="tl-item active"><div class="knob"></div><div class="t">Follow-up in progress</div><div class="d">Last checked 4 Jun — under process at office</div></div>
+                <div class="tl-item future"><div class="t">Received</div><div class="d">Expected 12 Jun</div></div>
+                <div class="tl-item future"><div class="t">Submitted to scholarship</div><div class="d">—</div></div>
+              </div>
+            </section>
+
+            <!-- Sticky bottom action bar -->
+            <div class="dt-actions">
+              <div class="dt-act-meta">Documentation Application · 1 record</div>
+              <div class="dt-act-btns">
+                <button class="btn btn-ghost btn-sm" data-go="f-student">Cancel</button>
+                <button class="btn btn-primary" onclick="formSubmit('docForm')">Save Application &amp; Follow-up</button>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
