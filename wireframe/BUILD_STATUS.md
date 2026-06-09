@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — Eligible Schemes tab, clickable scholar-rows, functional Applications buttons (no more half-baked UI)._
+_Last updated: 2026-06-09 — Student journey re-wired end-to-end (multi-app status, Also Eligible, doc grouping, functional filters)._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,19 @@ _Last updated: 2026-06-09 — Eligible Schemes tab, clickable scholar-rows, func
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## Student journey re-wire (2026-06-09) — done
+
+All the patterns proven in the Fellow iteration applied to the Student section. No new UX inventions — every pattern is now exercised on at least three surfaces (Fellow / Admin / Student).
+
+- [x] **Home** — single "My Scholarship Journey" 6-step bar replaced with **multi-application status block** (same `.scholar-apps` pattern as f-student/a-student). Each scholar-row is clickable → navigates to Scholarships screen + scrolls + outlines the matching card (`studentSelectApp`). Hero copy updated from singular ("Your Post-Matric scholarship is Under Scrutiny") to plural ("You have 3 scholarship applications").
+- [x] **Scholarships** — restructured into two clearly-distinct sections (no redundancy with Home):
+  - **My Active Applications** (3 detailed cards with timelines + status, the 3 `data-app` deep-link targets)
+  - **Also Eligible — Your Fellow Could Apply** (3 info cards — GoI Post-Matric / RC Shahu Maharaj Merit / EBC Tuition Fees — read-only with eligibility criteria, no Apply CTA since students don't apply per BR-05)
+- [x] **Documents** — **Must Have / Good to Have grouping** rippled from the Fellow's Documents tab. Same `.doc-group-banner` + `.dgb-pill` styling. 4 Must Have (Aadhaar/Income/10th SLC/12th SLC) + 5 Good to Have (Caste/Non-Creamy Layer/Domicile/Ration/Orphan). Rich expandable cards retained for Pending + Under Review + a rich rejected-then-accepted Income Cert history. Stats grid updated to match the canonical 9-doc list (1/1/5).
+- [x] **Mentorship** — filter chips (Career / Higher Studies / Engineering / Scholarships / Commerce / Marathi / All) are now **functional**. Each mentor card has `data-tags`; `filterMentors()` toggles visibility with a chip-on highlight and empty state. "Join (link soon)" button no longer inert — explains video-link delivery timing.
+- [x] **Login** — unified login (Google SSO + magic link) already serves all roles cleanly; no student-specific changes needed (students have compulsory Gmail at onboarding per [[samavesh-brd-discrepancies]] so Google SSO is the natural primary CTA).
+- All patterns now consistent across Fellow / Admin / Student surfaces. No new memory needed — `samavesh-form-pattern`, `samavesh-ripple-check`, `samavesh-no-half-baked` already cover the rules applied this round.
 
 ## Consistency fixes II — Eligible Schemes + functional Applications (2026-06-09) — done
 
