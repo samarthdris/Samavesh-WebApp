@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — Onboarding form redesign (Frappe DocType pattern)._
+_Last updated: 2026-06-09 — All Fellow forms redesigned to Frappe DocType pattern._
 
 ## Legend
 - [x] done & in file
@@ -52,7 +52,49 @@ _Last updated: 2026-06-09 — Onboarding form redesign (Frappe DocType pattern).
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
 
-## Onboarding form redesign (2026-06-09) — done
+## All Fellow forms redesigned (2026-06-09) — done
+
+The same Frappe DocType pattern is now applied to ALL three Fellow forms (Forms 1, 2, 3). No multi-step "Continue" wizards left in the Fellow section.
+
+### Form 2 — Scholarship Data Entry (#schForm)
+- [x] 7-step wizard → single-page with left anchor sidebar (7 sections); branch sections (Path A/B) toggle by `pickBranch`
+- [x] **DOB picker + auto-age** (replaces old Age dropdown)
+- [x] **Mobile validate chip** (Indian 10-digit regex)
+- [x] **Gender dropdown** populated from the **same `GENDER_MASTER`** as the onboarding form — proves the master-DocType pattern (one source of truth, multiple consumers)
+- [x] **26-scheme grouped radio list** → Frappe **`<select>` with `<optgroup>`** (categorised, single dropdown — huge vertical-space win)
+- [x] All other radio lists ≥4 options → dropdowns (Category, Annual Income, Marks, Reference, College Area, etc.)
+- [x] Branch selection (Scholarship Support vs Technical Support) hides/shows the relevant sections + anchor links
+- [x] Sticky bottom Save bar with branch label
+
+### Form 3 — Documentation Application (#docForm)
+- [x] Reskinned to `.dt-form.simple` (single-column variant) for visual consistency with Forms 1 & 2
+- [x] `.form-card` → `.dt-section` with numbered anum chips
+- [x] Save/Cancel → sticky `.dt-actions` footer
+- [x] Already single-page (no stepper); just visual consistency this round
+- [x] Activity timeline (`.tl`) preserved — already Frappe-credible
+
+### Form 1 — Student Onboarding (#onbForm) — already done earlier this session
+- [x] Single-page Frappe DocType form replaces the 8-step "Continue" wizard
+- [x] Left sticky **anchor sidebar with scroll-spy** (8 sections preserved as anchors, not steps)
+- [x] **DOB picker** → auto-calculated **age in years (1 decimal)** displayed inline (replaces old Age dropdown)
+- [x] **Mobile validated** as Indian 10-digit (regex `/^[6-9]\d{9}$/`); shows ✓ Valid / ✗ Invalid chip on blur
+- [x] **Gender as master** — dropdown driven by `GENDER_MASTER` array (5 entries, codes M/F/NB/O/PNS)
+- [x] **Documents child-table** — grouped Must Have / Mandatory (4 docs) and Good to Have / Scholarship-specific (5 docs); status dropdown + attach button (enabled only when status="Have it")
+- [x] All radio lists with ≥4 options converted to **dropdowns** (Social Background, Annual Income, Family Occupation, How heard)
+- [x] **Duplicate-check changed**: Name+DOB-or-Mobile → **Email OR full Name**
+- [x] Sticky bottom Save/Submit bar
+- Spec+plan: `docs/superpowers/specs/2026-06-09-onboarding-form-redesign.md`, `docs/superpowers/plans/2026-06-09-onboarding-form-redesign.md`
+
+### Shared infrastructure
+- New CSS scope: `.dt-form` / `.dt-anchors` / `.dt-section` / `.dt-grid` / `.dt-actions` / `.dob-inline` / `.dob-age` / `.mobile-input` / `.mobile-verify` / `.doc-ctable` — all introduced this session, reused across forms.
+- Old `.formwrap` / `.fstep` / `.stepcount` / `.fprogress` / `.fnav` / `.matrix` CSS still present but no longer used by any Fellow form. Safe to clean up later when no form uses them.
+- `formGo` engine still exists but is now orphaned (Forms 1/2 don't use it; Form 3 never did). Can be removed in a future cleanup.
+
+### Skills applied
+- `frappe-doctype-skill` — Date / Phone-validated Data / Link-to-master / Select / Table child-table / Select-with-optgroup fieldtypes; Section Break + Column Break form layout; branch as `depends_on` (sections show/hide by data attribute).
+- `frappe-dashboard-design` — Inter type scale, light theme, 4px spacing, button hierarchy, status-chip palette.
+
+## Onboarding form redesign (2026-06-09) — superseded by "All Fellow forms" above
 - [x] Single-page Frappe DocType form replaces the 8-step "Continue" wizard
 - [x] Left sticky **anchor sidebar with scroll-spy** (8 sections preserved as anchors, not steps)
 - [x] **DOB picker** → auto-calculated **age in years (1 decimal)** displayed inline (replaces old Age dropdown)
