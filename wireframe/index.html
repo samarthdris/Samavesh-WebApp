@@ -2153,7 +2153,7 @@ img{max-width:100%}
           </div>
           <div class="sah-lead">Each application has its own status. Click into the Scholarships or Applications tabs below for details.</div>
 
-          <div class="scholar-row">
+          <div class="scholar-row" onclick="appSelectInTab('pm',event)" title="Click to open this application's details">
             <div class="sr-head">
               <div class="sr-logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
               <div class="sr-name"><b>Post-Matric Scholarship for SC Students</b><small>PMS-2026-0042 · Submitted 18 May · Under Scrutiny</small></div>
@@ -2170,7 +2170,7 @@ img{max-width:100%}
             <span class="sr-step">4 of 6</span>
           </div>
 
-          <div class="scholar-row">
+          <div class="scholar-row" onclick="appSelectInTab('ms',event)" title="Click to open this application's details">
             <div class="sr-head">
               <div class="sr-logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
               <div class="sr-name"><b>Maharashtra State Minority Scholarship</b><small>Eligibility matched · Docs 100% Accepted · Ready to Submit</small></div>
@@ -2187,7 +2187,7 @@ img{max-width:100%}
             <span class="sr-step">3 of 6</span>
           </div>
 
-          <div class="scholar-row">
+          <div class="scholar-row" onclick="appSelectInTab('ab',event)" title="Click to open this application's details">
             <div class="sr-head">
               <div class="sr-logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
               <div class="sr-name"><b>Dr. Babasaheb Ambedkar Scholarship</b><small>Eligibility matched · Docs 6/8 Accepted · 2 pending</small></div>
@@ -2207,7 +2207,7 @@ img{max-width:100%}
 
         <div class="tabs">
           <button class="on" onclick="ftab(this,'fp-profile')">Profile</button>
-          <button onclick="ftab(this,'fp-sch')">Scholarships</button>
+          <button onclick="ftab(this,'fp-sch')">Eligible Schemes</button>
           <button onclick="ftab(this,'fp-docs')">Documents</button>
           <button onclick="ftab(this,'fp-apps')">Applications</button>
         </div>
@@ -2234,25 +2234,85 @@ img{max-width:100%}
           </div>
         </div>
 
-        <!-- Scholarships tab -->
+        <!-- Eligible Schemes tab — catalogue-matched schemes, grouped by Applied vs Not-Applied -->
         <div class="tabpane" id="fp-sch">
-          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Auto-computed from the student's profile. You may manually override eligibility with a reason (audit-logged).</p>
-          <div class="card" style="margin-bottom:12px"><div class="sch-card">
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Schemes the student is <b>eligible for</b>, auto-computed from profile (SC category · Income ₹1.8L · Maharashtra domicile · B.Com Year 2 · 78% marks). Override eligibility with a reason if needed (audit-logged). Per-application <b>status lives in the Applications tab</b>.</p>
+
+          <div class="elig-group-h">Already Applied <span class="elig-count">3</span></div>
+
+          <div class="card" style="margin-bottom:10px"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
-            <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Post-Matric Scholarship for SC Students</h4><span class="pill blue"><span class="pdot"></span>Submitted</span></div>
-            <div class="meta"><span><b class="amount">₹50,000</b>/year</span><span>Documents: 100% Accepted</span></div></div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Post-Matric Scholarship for SC Students</h4></div>
+              <div class="meta"><span><b class="amount">₹50,000</b>/year</span></div>
+              <div class="elig-criteria">Eligibility matched: <b>SC category</b> · <b>Income &lt; ₹2.5L</b></div>
+              <div class="elig-actions">
+                <button class="elig-link" type="button" onclick="appSelectInTab('pm',event)">View application details<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+            </div>
           </div></div>
-          <div class="card" style="margin-bottom:12px"><div class="sch-card">
+
+          <div class="card" style="margin-bottom:10px"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
-            <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Maharashtra State Minority Scholarship</h4><span class="pill green"><span class="pdot"></span>Ready to Submit</span></div>
-            <div class="meta"><span><b class="amount">₹25,000</b>/year</span><span>Documents: 100% Accepted</span></div>
-            <button class="btn btn-primary btn-sm" style="margin-top:6px" onclick="ftab(document.querySelectorAll('.tabs button')[3],'fp-apps')">Submit Application</button></div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Maharashtra State Minority Scholarship</h4></div>
+              <div class="meta"><span><b class="amount">₹25,000</b>/year</span></div>
+              <div class="elig-criteria">Eligibility matched: <b>Maharashtra domicile</b> · <b>Income &lt; ₹8L</b></div>
+              <div class="elig-actions">
+                <button class="elig-link" type="button" onclick="appSelectInTab('ms',event)">View application details<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+            </div>
           </div></div>
+
           <div class="card"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
-            <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Dr. Babasaheb Ambedkar Scholarship</h4><span class="pill amber"><span class="pdot"></span>Documents Pending</span></div>
-            <div class="meta"><span><b class="amount">₹38,000</b>/year</span><span>Documents: 6/8 Accepted</span></div>
-            <button class="btn btn-ghost btn-sm" style="margin-top:6px" onclick="ftab(document.querySelectorAll('.tabs button')[2],'fp-docs')">Manage documents</button></div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Dr. Babasaheb Ambedkar Scholarship</h4></div>
+              <div class="meta"><span><b class="amount">₹38,000</b>/year</span></div>
+              <div class="elig-criteria">Eligibility matched: <b>SC category</b> · <b>UG enrolled</b></div>
+              <div class="elig-actions">
+                <button class="elig-link" type="button" onclick="appSelectInTab('ab',event)">View application details<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+            </div>
+          </div></div>
+
+          <div class="elig-group-h">Eligible — Not Yet Applied <span class="elig-count">3</span></div>
+
+          <div class="card" style="margin-bottom:10px"><div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#0a3f3a,#0e6e66)">GP</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Government of India Post-Matric Scholarship</h4></div>
+              <div class="meta"><span><b class="amount">₹48,000</b>/year</span><span>Central scheme · NSP portal</span></div>
+              <div class="elig-criteria">Eligibility matched: <b>SC category</b> · <b>UG enrolled</b> · <b>Income &lt; ₹2.5L</b></div>
+              <div class="elig-actions">
+                <button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Apply for this</button>
+                <span style="font-size:11.5px;color:var(--muted)">Opens the Scholarship Data Entry form</span>
+              </div>
+            </div>
+          </div></div>
+
+          <div class="card" style="margin-bottom:10px"><div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">RC</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4></div>
+              <div class="meta"><span><b class="amount">₹32,000</b>/year</span><span>Merit-based · State scheme</span></div>
+              <div class="elig-criteria">Eligibility matched: <b>Merit ≥ 70%</b> · <b>Income &lt; ₹2.5L</b></div>
+              <div class="elig-actions">
+                <button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Apply for this</button>
+              </div>
+            </div>
+          </div></div>
+
+          <div class="card"><div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#d97706,#92400e);color:#fff">EBC</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>EBC Tuition Fees &amp; Examination Fees Reimbursement</h4></div>
+              <div class="meta"><span><b class="amount">₹18,000</b>/year</span><span>Fee reimbursement only</span></div>
+              <div class="elig-criteria">Eligibility matched: <b>Income &lt; ₹2L</b> · <b>UG enrolled</b></div>
+              <div class="elig-actions">
+                <button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Apply for this</button>
+              </div>
+            </div>
           </div></div>
         </div>
 
@@ -2316,11 +2376,12 @@ img{max-width:100%}
           </div>
         </div>
 
-        <!-- Applications tab (FELLOW ACTIONS — §10.3) -->
+        <!-- Applications tab (FELLOW ACTIONS — §10.3). Each card has data-app for deep-link from the top "Scholarship Applications" block. -->
         <div class="tabpane" id="fp-apps">
           <div style="display:flex;justify-content:flex-end;margin-bottom:14px"><button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Scholarship Data Entry</button></div>
-          <!-- Ready to Submit -> data-entry form -->
-          <div class="card" style="margin-bottom:16px;border-left:4px solid var(--green)">
+
+          <!-- Ready to Submit (Maharashtra State Minority) → submit & record -->
+          <div class="card" data-app="ms" style="margin-bottom:16px;border-left:4px solid var(--green)">
             <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px">
               <h4 class="serif" style="font-size:17px">Maharashtra State Minority Scholarship</h4><span class="pill green"><span class="pdot"></span>Ready to Submit</span>
             </div>
@@ -2337,8 +2398,8 @@ img{max-width:100%}
             <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="this.outerHTML='<span class=&quot;pill green&quot;><span class=&quot;pdot&quot;></span>Submitted &amp; recorded</span>'">Submit &amp; Record Application</button>
           </div>
 
-          <!-- Under Review -> update status + correction loop -->
-          <div class="card" style="margin-bottom:16px">
+          <!-- Under Scrutiny (Post-Matric) → status dropdown + correction loop, both functional -->
+          <div class="card" data-app="pm" style="margin-bottom:16px">
             <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Post-Matric Scholarship for SC Students</h4><span class="pill blue"><span class="pdot"></span>Under Scrutiny</span></div>
             <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-PM-2026-44871</span><span>Submitted 28 May</span><span>Last status check: 2 Jun</span></div>
             <div class="tl">
@@ -2346,21 +2407,28 @@ img{max-width:100%}
               <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
               <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
             </div>
-            <div class="btnrow" style="margin-top:14px">
-              <select class="btn btn-ghost btn-sm" style="font-weight:600"><option>Update status…</option><option>Under Scrutiny</option><option>Application Approved</option><option>Benefits Received</option><option>Re-apply</option><option>Rejected</option></select>
-              <button class="btn btn-ghost btn-sm">Add correction note</button>
+            <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+              <select class="btn btn-ghost btn-sm" style="font-weight:600" onchange="updateAppStatus(this)">
+                <option value="">Update status…</option>
+                <option>Under Scrutiny</option>
+                <option>Application Approved</option>
+                <option>Benefits Received</option>
+                <option>Re-apply</option>
+                <option>Rejected</option>
+              </select>
+              <button class="btn btn-ghost btn-sm" type="button" onclick="addCorrectionNote(this)">Add correction note</button>
             </div>
           </div>
 
-          <!-- Approved -> record disbursement -->
-          <div class="card" style="border-left:4px solid var(--marigold)">
+          <!-- Approved (Dr. Babasaheb Ambedkar) — record disbursement, fully functional -->
+          <div class="card" data-app="ab" style="border-left:4px solid var(--marigold)">
             <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px"><h4 class="serif" style="font-size:17px">Dr. Babasaheb Ambedkar Scholarship</h4><span class="pill amber"><span class="pdot"></span>Approved</span></div>
             <p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">Record disbursement once funds reach the student's bank account.</p>
             <div class="form-grid">
               <div class="fg"><label>Disbursed Amount (₹)<span class="req">*</span></label><input type="number" placeholder="38000" /></div>
               <div class="fg"><label>Disbursement Date<span class="req">*</span></label><input type="date" /></div>
             </div>
-            <button class="btn btn-gold btn-sm" style="margin-top:14px">Record Disbursement &amp; Close</button>
+            <button class="btn btn-gold btn-sm" style="margin-top:14px" type="button" onclick="recordDisbursement(this)">Record Disbursement &amp; Close</button>
           </div>
         </div>
             <div class="activity">
