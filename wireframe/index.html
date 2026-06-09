@@ -686,6 +686,31 @@ img{max-width:100%}
 .dtable tbody tr:hover{background:var(--cream)}
 .dtable .who{display:flex;align-items:center;gap:10px}
 .dtable .who .sa{width:34px;height:34px;border-radius:9px;flex:0 0 34px;display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:14px}
+
+/* Cases & Tasks — work-state pills + per-row action buttons */
+.case-state{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:9999px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.case-state::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.case-state.todo{background:#DBEAFE;color:#1D4ED8}
+.case-state.progress{background:#FEF3C7;color:#B45309}
+.case-state.hold{background:#F3F4F6;color:#374151}
+.case-state.completed{background:#DCFCE7;color:#15803D}
+.case-state.discarded{background:#FFE4E6;color:#B91C1C}
+.case-scheme{display:flex;align-items:center;gap:9px}
+.case-scheme .sclogo{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:11.5px;flex:0 0 30px}
+.case-acts{display:flex;gap:6px;justify-content:flex-end}
+.case-acts .btn-mini{font-size:11.5px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;transition:.12s;font-family:inherit;white-space:nowrap}
+.case-acts .btn-mini:hover{border-color:var(--teal-500);background:var(--teal-50);color:var(--teal-700)}
+.case-acts .btn-mini.primary{background:var(--teal-700);color:#fff;border-color:var(--teal-700)}
+.case-acts .btn-mini.primary:hover{background:var(--teal-800)}
+.case-acts .btn-mini.danger{color:var(--red)}
+.case-acts .btn-mini.danger:hover{border-color:var(--red);background:#FFF1F2;color:var(--red)}
+.case-jstage{font-size:11.5px;color:var(--muted)}
+.case-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px}
+.case-summary .csum{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s;box-shadow:var(--shadow-sm)}
+.case-summary .csum:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);border-color:var(--teal-500)}
+.case-summary .csum .num{font-size:24px;font-weight:700;color:var(--ink);line-height:1}
+.case-summary .csum .cap{font-size:12px;color:var(--ink-soft);margin-top:6px;font-weight:500}
+.case-summary .csum .dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
 /* verify queue row actions */
 .vrow{display:flex;align-items:center;gap:14px;padding:15px 4px;border-bottom:1px solid var(--line);flex-wrap:wrap}
 .vrow:last-child{border-bottom:none}
@@ -1821,6 +1846,9 @@ img{max-width:100%}
       <a href="#" class="nav-link" data-go="f-students">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>My Students
       </a>
+      <a href="#" class="nav-link" data-go="f-tasks">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2M14 17h2"/></svg>My Cases<span class="soon" style="background:rgba(246,178,74,.2);color:var(--marigold-soft)">6</span>
+      </a>
       <a href="#" class="nav-link" data-go="f-applications">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Applications
       </a>
@@ -1872,33 +1900,45 @@ img{max-width:100%}
           <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="num">5</div><div class="cap">Approved</div></div>
         </div>
 
-        <!-- Tasks (workflow-driven) -->
-        <div class="section-h"><h3>Tasks needing your attention</h3></div>
+        <!-- My Cases inbox summary (drives Tasks needing your attention) -->
+        <div class="section-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px"><h3>My Cases inbox</h3><a href="#" data-go="f-tasks" style="font-size:13px;color:var(--teal-700);font-weight:600;text-decoration:none">Open My Cases →</a></div>
+        <div class="case-summary">
+          <div class="csum" onclick="go('f-tasks');setTimeout(function(){const c=document.querySelectorAll('#myCaseChipBar .chip')[1];if(c)filterMyCases('todo',c);},150)">
+            <div class="num"><span class="dot" style="background:#1D4ED8"></span>1</div><div class="cap">To Do · ready to start</div>
+          </div>
+          <div class="csum" onclick="go('f-tasks');setTimeout(function(){const c=document.querySelectorAll('#myCaseChipBar .chip')[2];if(c)filterMyCases('progress',c);},150)">
+            <div class="num"><span class="dot" style="background:#B45309"></span>3</div><div class="cap">In-progress · actively working</div>
+          </div>
+          <div class="csum" onclick="go('f-tasks');setTimeout(function(){const c=document.querySelectorAll('#myCaseChipBar .chip')[3];if(c)filterMyCases('hold',c);},150)">
+            <div class="num"><span class="dot" style="background:#374151"></span>1</div><div class="cap">On Hold · blocked</div>
+          </div>
+          <div class="csum" onclick="go('f-tasks');setTimeout(function(){const c=document.querySelectorAll('#myCaseChipBar .chip')[5];if(c)filterMyCases('discarded',c);},150)">
+            <div class="num"><span class="dot" style="background:#B91C1C"></span>1</div><div class="cap">Discarded · closed</div>
+          </div>
+        </div>
+
+        <!-- Workflow-specific shortcuts (still useful for one-click action targeting the most-common workflow next-steps) -->
+        <div class="section-h"><h3>Quick actions</h3></div>
         <div class="card">
           <div class="task">
             <div class="tk-ic" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div>
-            <div class="tk-b"><b>3 applications Ready to Submit</b><small>All documents Accepted — submit on the government portal &amp; record details</small></div>
+            <div class="tk-b"><b>1 application Ready to Submit</b><small>Maharashtra State Minority · all documents Accepted, submit on portal</small></div>
             <button class="btn btn-primary btn-sm" data-go="f-scholarship">Submit</button>
           </div>
           <div class="task">
-            <div class="tk-ic" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="tk-b"><b>7 documents Pending across 5 students</b><small>Support document procurement, then upload</small></div>
-            <button class="btn btn-ghost btn-sm" data-go="f-docapp">Apply</button>
-          </div>
-          <div class="task">
             <div class="tk-ic" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9 9 9 0 0 0-7 3.3"/><path d="M3 4v4h4"/></svg></div>
-            <div class="tk-b"><b>2 applications need Re-apply</b><small>Identify correction issues, provide corrected information &amp; re-submit</small></div>
+            <div class="tk-b"><b>1 application Rejected — Re-apply in progress</b><small>Shahu Maharaj Merit · Caste Validity Certificate being re-procured</small></div>
             <button class="btn btn-ghost btn-sm" data-go="f-applications">Fix</button>
           </div>
           <div class="task">
-            <div class="tk-ic" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <div class="tk-b"><b>4 applications Under Scrutiny &gt; 15 days</b><small>Log into the government portal and update the status</small></div>
-            <button class="btn btn-ghost btn-sm" data-go="f-applications">Check</button>
+            <div class="tk-ic" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="tk-b"><b>2 documents Pending across your students</b><small>Support document procurement, then upload</small></div>
+            <button class="btn btn-ghost btn-sm" data-go="f-docapp">Apply</button>
           </div>
           <div class="task">
-            <div class="tk-ic" style="background:var(--teal-50);color:var(--teal-700)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div>
-            <div class="tk-b"><b>1 application Approved — record disbursement</b><small>Record disbursed amount &amp; date once funds reach the student's account</small></div>
-            <button class="btn btn-ghost btn-sm" data-go="f-applications">Record</button>
+            <div class="tk-ic" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div class="tk-b"><b>1 application Under Scrutiny &gt; 15 days</b><small>Aarti's Post-Matric · log in to portal and check for updates</small></div>
+            <button class="btn btn-ghost btn-sm" data-go="f-applications">Check</button>
           </div>
         </div>
 
@@ -2722,6 +2762,89 @@ img{max-width:100%}
         </div>
       </section>
 
+      <!-- ===== MY CASES (Fellow's inbox: assigned cases with 5-state work tracking) ===== -->
+      <section class="screen" id="f-tasks">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Workspace · Cases</div><h1>My Cases</h1><p>Your assigned cases. Each is one student × one scholarship. Move cases through the 5 work-states as you make progress.</p></div>
+          <div style="font-size:13px;color:var(--ink-soft)">6 cases assigned · last updated 4 Jun</div>
+        </div>
+
+        <!-- 5-state summary cards (clickable filters) -->
+        <div class="case-summary">
+          <div class="csum" onclick="filterMyCases('todo',this)"><div class="num"><span class="dot" style="background:#1D4ED8"></span>1</div><div class="cap">To Do</div></div>
+          <div class="csum" onclick="filterMyCases('progress',this)"><div class="num"><span class="dot" style="background:#B45309"></span>3</div><div class="cap">In-progress</div></div>
+          <div class="csum" onclick="filterMyCases('hold',this)"><div class="num"><span class="dot" style="background:#374151"></span>1</div><div class="cap">On Hold</div></div>
+          <div class="csum" onclick="filterMyCases('completed',this)"><div class="num"><span class="dot" style="background:#15803D"></span>0</div><div class="cap">Completed</div></div>
+          <div class="csum" onclick="filterMyCases('discarded',this)"><div class="num"><span class="dot" style="background:#B91C1C"></span>1</div><div class="cap">Discarded</div></div>
+        </div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px" id="myCaseChipBar">
+          <span class="tagk chip on" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('all',this)">All (6)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('todo',this)">To Do (1)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('progress',this)">In-progress (3)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('hold',this)">On Hold (1)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('completed',this)">Completed (0)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('discarded',this)">Discarded (1)</span>
+        </div>
+
+        <div class="listbar"><span class="lbsel"></span><span class="cnt"><b id="myCaseCnt">6</b> Cases</span><div class="lb-tools"><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Filter</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13M3 12h9M3 18h5M18 9l3 3-3 3"/></svg>Sort</button></div></div>
+
+        <div class="dtable-wrap" style="border-radius:0 0 11px 11px;border-top:none"><table class="dtable" id="myCaseTable">
+          <thead><tr><th>Case</th><th>Scholarship</th><th>State</th><th>Journey Stage</th><th>Created</th><th style="text-align:right">Action</th></tr></thead>
+          <tbody>
+            <tr data-case-state="progress" onclick="go('f-student')" style="cursor:pointer">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-001</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</span>Post-Matric SC</div></td>
+              <td><span class="case-state progress">In-progress</span></td>
+              <td><span class="case-jstage">Submitted · Under Scrutiny</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">12 Apr</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'hold')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'completed')">Mark Complete</button></div></td>
+            </tr>
+            <tr data-case-state="todo" onclick="go('f-student')" style="cursor:pointer">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-002</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</span>Maharashtra State Minority</div></td>
+              <td><span class="case-state todo">To Do</span></td>
+              <td><span class="case-jstage">Documents Complete · Ready to Submit</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">28 Apr</span></td>
+              <td><div class="case-acts"><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'progress')">Start</button><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'discarded')">Discard</button></div></td>
+            </tr>
+            <tr data-case-state="progress" onclick="go('f-student')" style="cursor:pointer">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-003</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</span>Dr. Babasaheb Ambedkar</div></td>
+              <td><span class="case-state progress">In-progress</span></td>
+              <td><span class="case-jstage">Eligibility Identified · 2 docs pending</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">22 May</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'hold')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'completed')">Mark Complete</button></div></td>
+            </tr>
+            <tr data-case-state="progress" onclick="go('f-student')" style="cursor:pointer">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-004</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</span>Shahu Maharaj Merit</div></td>
+              <td><span class="case-state progress">In-progress</span></td>
+              <td><span class="case-jstage" style="color:var(--red)">Decision · Re-apply (rejected 4 Jun)</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">14 May</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'hold')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'completed')">Mark Complete</button></div></td>
+            </tr>
+            <tr data-case-state="hold" onclick="go('f-students')" style="cursor:pointer">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">S</span><div><b>Suresh Jadhav</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-005</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">OB</span>OBC Post-Matric</div></td>
+              <td><span class="case-state hold">On Hold</span></td>
+              <td><span class="case-jstage">Documents Complete · Family unreachable since 22 May</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">1 Mar</span></td>
+              <td><div class="case-acts"><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'progress')">Resume</button><button class="btn-mini danger" onclick="event.stopPropagation();transitionCase(this,'discarded')">Discard</button></div></td>
+            </tr>
+            <tr data-case-state="discarded" onclick="go('f-students')" style="cursor:pointer">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#9ca3af,#6b7280)">R</span><div><b>Ravi Khade</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-010</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#374151,#1f2937)">AS</span>Aadhar Seeding (KYC)</div></td>
+              <td><span class="case-state discarded">Discarded</span></td>
+              <td><span class="case-jstage">Student dropped out 14 May · case closed</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">12 May</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'progress')">Reopen</button></div></td>
+            </tr>
+          </tbody>
+        </table></div>
+        <div class="empty" id="myCaseEmpty" style="display:none;margin-top:12px"><div>No cases match the current filter.</div></div>
+      </section>
+
       <!-- ===== FELLOW PROFILE ===== -->
       <section class="screen" id="f-profile">
         <div class="page-h"><div class="eyebrow">Account</div><h1>My Profile</h1></div>
@@ -3095,10 +3218,15 @@ img{max-width:100%}
       <div class="nav-label">Workspace</div>
       <a href="#" class="nav-link active" data-go="a-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h4v8H3zM10 3h4v18h-4zM17 9h4v12h-4z"/></svg>MIS Dashboard</a>
       <a href="#" class="nav-link" data-go="a-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>Document Verification<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">4</span></a>
+      <a href="#" class="nav-link" data-go="a-tasks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2M14 17h2"/></svg>Cases &amp; Tasks<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">10</span></a>
       <a href="#" class="nav-link" data-go="a-catalogue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Scholarship Catalogue</a>
       <div class="nav-label">Manage</div>
       <a href="#" class="nav-link" data-go="a-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>All Students</a>
       <a href="#" class="nav-link" data-go="a-fellows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Fellows &amp; Users</a>
+      <a href="#" class="nav-link" data-go="a-bulkupload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v14M6 9l6-6 6 6"/><path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/></svg>Bulk Upload<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">Soon</span></a>
+      <div class="nav-label">Configuration</div>
+      <a href="#" class="nav-link" data-go="a-campaigns"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l16-8v18l-16-8z"/><path d="M3 11v6"/></svg>Campaigns<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">Soon</span></a>
+      <a href="#" class="nav-link" data-go="a-forms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Form Builder<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">Soon</span></a>
       <div class="nav-label">Account</div>
       <a href="#" class="nav-link" data-go="a-profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>My Profile</a>
       <a href="#" class="nav-link" onclick="logout();return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>Sign out</a>
@@ -3605,6 +3733,169 @@ img{max-width:100%}
         </table></div>
       </section>
 
+      <!-- ===== CASES & TASKS (Admin view: all cases across all Fellows) ===== -->
+      <section class="screen" id="a-tasks">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Workspace · Cases &amp; Tasks</div><h1>Cases &amp; Tasks</h1><p>Every Fellow's case inbox at a glance. A <b>Case</b> is one student × one scholarship — the unit of Fellow work. Reassign cases, change states, monitor caseload distribution.</p></div>
+          <button class="btn btn-primary" onclick="alert('+ Create Case — opens a dialog to manually create a case for a student × scholarship pair that isn't auto-derived (rare; usually cases are auto-created when a student is eligible for a scheme).')">+ Create Case</button>
+        </div>
+
+        <!-- 5-state summary cards (clickable filters) -->
+        <div class="case-summary">
+          <div class="csum" onclick="filterCases('todo',this)"><div class="num"><span class="dot" style="background:#1D4ED8"></span>3</div><div class="cap">To Do</div></div>
+          <div class="csum" onclick="filterCases('progress',this)"><div class="num"><span class="dot" style="background:#B45309"></span>4</div><div class="cap">In-progress</div></div>
+          <div class="csum" onclick="filterCases('hold',this)"><div class="num"><span class="dot" style="background:#374151"></span>1</div><div class="cap">On Hold</div></div>
+          <div class="csum" onclick="filterCases('completed',this)"><div class="num"><span class="dot" style="background:#15803D"></span>2</div><div class="cap">Completed</div></div>
+          <div class="csum" onclick="filterCases('discarded',this)"><div class="num"><span class="dot" style="background:#B91C1C"></span>1</div><div class="cap">Discarded</div></div>
+        </div>
+
+        <div class="filterbar" style="margin-bottom:14px">
+          <select onchange="filterCasesByFellow(this.value)" id="caseFellowFilter"><option value="all">All Fellows (10)</option><option value="Rahul More">Rahul More (6)</option><option value="Sandip K">Sandip K (2)</option><option value="Dhanashree O">Dhanashree O (2)</option></select>
+          <select onchange="filterCasesByStage(this.value)" id="caseStageFilter"><option value="all">All Journey Stages</option><option>Onboarded</option><option>Eligibility Identified</option><option>Documents Complete</option><option>Submitted</option><option>Decision</option></select>
+        </div>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px" id="caseChipBar">
+          <span class="tagk chip on" style="padding:8px 14px;cursor:pointer" onclick="filterCases('all',this)">All (10)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterCases('todo',this)">To Do (3)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterCases('progress',this)">In-progress (4)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterCases('hold',this)">On Hold (1)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterCases('completed',this)">Completed (2)</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterCases('discarded',this)">Discarded (1)</span>
+        </div>
+
+        <div class="listbar"><span class="lbsel"></span><span class="cnt"><b id="caseCnt">10</b> Cases</span><div class="lb-tools"><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Filter</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13M3 12h9M3 18h5M18 9l3 3-3 3"/></svg>Sort</button></div></div>
+
+        <div class="dtable-wrap" style="border-radius:0 0 11px 11px;border-top:none"><table class="dtable" id="caseTable">
+          <thead><tr><th>Case</th><th>Scholarship</th><th>Fellow</th><th>State</th><th>Journey Stage</th><th>Created</th><th style="text-align:right">Actions</th></tr></thead>
+          <tbody>
+            <tr data-case-state="progress" data-case-fellow="Rahul More" data-case-stage="Submitted">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-001</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</span>Post-Matric SC</div></td>
+              <td>Rahul More</td>
+              <td><span class="case-state progress">In-progress</span></td>
+              <td><span class="case-jstage">Submitted · Under Scrutiny</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">12 Apr</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="todo" data-case-fellow="Rahul More" data-case-stage="Documents Complete">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-002</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</span>Maharashtra State Minority</div></td>
+              <td>Rahul More</td>
+              <td><span class="case-state todo">To Do</span></td>
+              <td><span class="case-jstage">Documents Complete · Ready to Submit</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">28 Apr</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="progress" data-case-fellow="Rahul More" data-case-stage="Eligibility Identified">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-003</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</span>Dr. Babasaheb Ambedkar</div></td>
+              <td>Rahul More</td>
+              <td><span class="case-state progress">In-progress</span></td>
+              <td><span class="case-jstage">Eligibility Identified · 2 docs pending</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">22 May</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="progress" data-case-fellow="Rahul More" data-case-stage="Decision">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-004</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</span>Shahu Maharaj Merit</div></td>
+              <td>Rahul More</td>
+              <td><span class="case-state progress">In-progress</span></td>
+              <td><span class="case-jstage" style="color:var(--red)">Decision · Re-apply (rejected 4 Jun)</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">14 May</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="hold" data-case-fellow="Rahul More" data-case-stage="Documents Complete">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">S</span><div><b>Suresh Jadhav</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-005</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">OB</span>OBC Post-Matric</div></td>
+              <td>Rahul More</td>
+              <td><span class="case-state hold">On Hold</span></td>
+              <td><span class="case-jstage">Documents Complete · Family unreachable</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">1 Mar</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="discarded" data-case-fellow="Rahul More" data-case-stage="Onboarded">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#9ca3af,#6b7280)">R</span><div><b>Ravi Khade</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-010</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#374151,#1f2937)">AS</span>Aadhar Seeding (KYC)</div></td>
+              <td>Rahul More</td>
+              <td><span class="case-state discarded">Discarded</span></td>
+              <td><span class="case-jstage">Student dropped out · case closed</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">12 May</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="completed" data-case-fellow="Sandip K" data-case-stage="Decision">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">S</span><div><b>Sneha Patil</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-006</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</span>Post-Matric SC</div></td>
+              <td>Sandip K</td>
+              <td><span class="case-state completed">Completed</span></td>
+              <td><span class="case-jstage">Decision · Approved · Disbursed</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">10 Feb</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="progress" data-case-fellow="Sandip K" data-case-stage="Eligibility Identified">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">I</span><div><b>Imran Shaikh</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-008</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">OG</span>OBC Girls (Prof. Courses)</div></td>
+              <td>Sandip K</td>
+              <td><span class="case-state progress">In-progress</span></td>
+              <td><span class="case-jstage">Eligibility Identified · documents being procured</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">18 Apr</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="completed" data-case-fellow="Dhanashree O" data-case-stage="Decision">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">A</span><div><b>Asha Kamble</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-007</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">VJ</span>VJNT Tuition Fees</div></td>
+              <td>Dhanashree O</td>
+              <td><span class="case-state completed">Completed</span></td>
+              <td><span class="case-jstage">Decision · Approved · Disbursed</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">5 Mar</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+            <tr data-case-state="todo" data-case-fellow="Dhanashree O" data-case-stage="Onboarded">
+              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">G</span><div><b>Ganesh Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-009</div></div></div></td>
+              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</span>Post-Matric SC</div></td>
+              <td>Dhanashree O</td>
+              <td><span class="case-state todo">To Do</span></td>
+              <td><span class="case-jstage">Onboarded · eligibility check pending</span></td>
+              <td><span style="font-size:12px;color:var(--ink-soft)">28 May</span></td>
+              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();caseReassign(this)">Reassign</button><button class="btn-mini" onclick="event.stopPropagation();caseChangeState(this)">State…</button></div></td>
+            </tr>
+          </tbody>
+        </table></div>
+        <div class="empty" id="caseEmpty" style="display:none;margin-top:12px"><div>No cases match the current filter.</div></div>
+      </section>
+
+      <!-- ===== BULK UPLOAD (placeholder — full screen later) ===== -->
+      <section class="screen" id="a-bulkupload">
+        <div class="page-h"><div class="eyebrow">Manage · Bulk Upload</div><h1>Bulk Upload</h1></div>
+        <div class="placeholder">
+          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v14M6 9l6-6 6 6"/><path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/></svg></div>
+          <h2>Bulk Upload — Coming Soon</h2>
+          <p>Import historical student records (and later applications + documents) from CSV / Excel. The flow: upload file → map columns to onboarding fields → validate against duplicates → preview → commit in batch with full audit log. Builds on Frappe's Data Import tool.</p>
+          <div class="chip">🚧 Configuration · Phase 4</div>
+        </div>
+      </section>
+
+      <!-- ===== CAMPAIGNS (placeholder) ===== -->
+      <section class="screen" id="a-campaigns">
+        <div class="page-h"><div class="eyebrow">Configuration · Campaigns</div><h1>Campaigns</h1></div>
+        <div class="placeholder">
+          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l16-8v18l-16-8z"/><path d="M3 11v6"/></svg></div>
+          <h2>Campaigns — Coming Soon</h2>
+          <p>Create and manage outreach, deadline pushes, and communication initiatives. Target a filtered student segment (by category, college, geography, journey stage), pick a channel (SMS · email · in-app), schedule the send, monitor open / response / conversion rates.</p>
+          <div class="chip">🚧 Configuration · Awaiting product context</div>
+        </div>
+      </section>
+
+      <!-- ===== FORM BUILDER (placeholder) ===== -->
+      <section class="screen" id="a-forms">
+        <div class="page-h"><div class="eyebrow">Configuration · Form Builder</div><h1>Form Builder</h1></div>
+        <div class="placeholder">
+          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
+          <h2>Form Builder — Coming Soon</h2>
+          <p>Edit the 3 existing forms (Onboarding · Scholarship Data Entry · Documentation Application) and publish new versions: tweak questions, change labels, add/remove fields, set conditional visibility (`depends_on`), manage versions. Builds on Frappe's Web Form / Custom Field mechanism.</p>
+          <div class="chip">🚧 Configuration · Phase 4</div>
+        </div>
+      </section>
+
       <!-- ===== ADMIN PROFILE ===== -->
       <section class="screen" id="a-profile">
         <div class="page-h"><div class="eyebrow">Account</div><h1>My Profile</h1></div>
@@ -3931,6 +4222,96 @@ function filterMentors(tag,btn){
 // "Join session" click on the upcoming-session card — explains the link-arrival behavior.
 function joinSession(btn){
   alert('Your video link will appear here 1 hour before the session starts (Friday 3:00 PM). You\'ll also get it on SMS + email.');
+}
+
+// ===== Cases & Tasks (Admin a-tasks + Fellow f-tasks) =====
+// Filter cases on Admin's full caseload table by 5 work-states.
+function filterCases(state, btn){
+  if(btn) setChip(btn);
+  document.querySelectorAll('#a-tasks .case-summary .csum.on').forEach(c => c.classList.remove('on'));
+  if(btn && btn.classList.contains('csum')) btn.classList.add('on');
+  let shown = 0;
+  document.querySelectorAll('#caseTable tbody tr').forEach(function(tr){
+    const vis = state === 'all' || tr.dataset.caseState === state;
+    tr.style.display = vis ? '' : 'none';
+    if(vis) shown++;
+  });
+  const cnt = document.getElementById('caseCnt'); if(cnt) cnt.textContent = String(shown);
+  const empty = document.getElementById('caseEmpty'); if(empty) empty.style.display = shown ? 'none' : 'block';
+}
+function filterCasesByFellow(fellow){
+  let shown = 0;
+  document.querySelectorAll('#caseTable tbody tr').forEach(function(tr){
+    const vis = fellow === 'all' || tr.dataset.caseFellow === fellow;
+    tr.style.display = vis ? '' : 'none';
+    if(vis) shown++;
+  });
+  const cnt = document.getElementById('caseCnt'); if(cnt) cnt.textContent = String(shown);
+}
+function filterCasesByStage(stage){
+  let shown = 0;
+  document.querySelectorAll('#caseTable tbody tr').forEach(function(tr){
+    const vis = stage === 'all' || tr.dataset.caseStage === stage;
+    tr.style.display = vis ? '' : 'none';
+    if(vis) shown++;
+  });
+  const cnt = document.getElementById('caseCnt'); if(cnt) cnt.textContent = String(shown);
+}
+// Fellow's My Cases — same filter for the f-tasks table.
+function filterMyCases(state, btn){
+  if(btn) setChip(btn);
+  let shown = 0;
+  document.querySelectorAll('#myCaseTable tbody tr').forEach(function(tr){
+    const vis = state === 'all' || tr.dataset.caseState === state;
+    tr.style.display = vis ? '' : 'none';
+    if(vis) shown++;
+  });
+  const cnt = document.getElementById('myCaseCnt'); if(cnt) cnt.textContent = String(shown);
+  const empty = document.getElementById('myCaseEmpty'); if(empty) empty.style.display = shown ? 'none' : 'block';
+}
+// Admin: Reassign Fellow for a case.
+function caseReassign(btn){
+  const tr = btn.closest('tr');
+  const fellow = prompt('Reassign this case to which Fellow?\n\nOptions: Rahul More · Sandip K · Dhanashree O · Vaibhav D');
+  if(!fellow) return;
+  const cell = tr.cells[2]; if(cell) cell.textContent = fellow.trim();
+  tr.dataset.caseFellow = fellow.trim();
+  alert('✅ Case reassigned to ' + fellow.trim() + '. Audit-logged.');
+}
+// Admin: open a state-change menu.
+function caseChangeState(btn){
+  const tr = btn.closest('tr');
+  const next = prompt('Change case state to:\n\n  todo · progress · hold · completed · discarded');
+  if(!next) return;
+  const v = next.trim().toLowerCase();
+  if(!['todo','progress','hold','completed','discarded'].includes(v)){ alert('Invalid state. Use: todo / progress / hold / completed / discarded'); return; }
+  applyCaseState(tr, v);
+}
+// Fellow: per-row state transition (To Do → In-progress → Completed | On Hold → Discarded).
+function transitionCase(btn, nextState){
+  const tr = btn.closest('tr');
+  applyCaseState(tr, nextState);
+  // After state change, rewire the row's action buttons to match the new state.
+  const acts = tr.querySelector('.case-acts');
+  if(acts){
+    if(nextState === 'progress') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'hold\')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'completed\')">Mark Complete</button>';
+    else if(nextState === 'hold') acts.innerHTML = '<button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Resume</button><button class="btn-mini danger" onclick="event.stopPropagation();transitionCase(this,\'discarded\')">Discard</button>';
+    else if(nextState === 'completed') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Reopen</button>';
+    else if(nextState === 'discarded') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Reopen</button>';
+    else if(nextState === 'todo') acts.innerHTML = '<button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Start</button><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'discarded\')">Discard</button>';
+  }
+}
+function applyCaseState(tr, newState){
+  const cls = {todo:'todo', progress:'progress', hold:'hold', completed:'completed', discarded:'discarded'};
+  const labels = {todo:'To Do', progress:'In-progress', hold:'On Hold', completed:'Completed', discarded:'Discarded'};
+  if(!cls[newState]) return;
+  tr.dataset.caseState = newState;
+  // Update the State pill (3rd or 4th cell depending on which table).
+  const pill = tr.querySelector('.case-state');
+  if(pill){
+    pill.className = 'case-state ' + cls[newState];
+    pill.textContent = labels[newState];
+  }
 }
 
 // Student-side: click a row in Home's "My Applications" → navigate to Scholarships screen + scroll to that app's card + briefly outline.

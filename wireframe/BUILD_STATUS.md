@@ -52,6 +52,32 @@ _Last updated: 2026-06-09 — Journey funnel 6→5 stages + Rejected/Re-apply de
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
 
+## Cases & Tasks module + 3 placeholder tabs (2026-06-09) — done
+
+New module + 3 deferred-feature placeholders, completing the user's "new admin flow features" scope.
+
+### Cases & Tasks (NEW module — fully functional)
+- [x] Admin `#a-tasks` — full caseload (10 demo cases across 4 Fellows) · 5-state summary cards + chip-bar filter · secondary filters (Fellow dropdown + Journey-stage dropdown) · per-row Reassign + Change-State actions wired
+- [x] Fellow `#f-tasks` ("My Cases") — Fellow's assigned cases (6 demo for Rahul) · same 5-state filter chips · per-row state-aware action buttons (Start / Hold / Mark Complete / Resume / Discard / Reopen)
+- [x] Fellow Dashboard updated: "Tasks needing your attention" → "My Cases inbox" with 4 clickable summary cards (To Do · In-progress · On Hold · Discarded counts) — each navigates to f-tasks pre-filtered
+- [x] New CSS: `.case-state` pills (5 colors mapped to canonical states) · `.case-scheme` logo+name · `.case-acts` mini-button row · `.case-summary` clickable summary cards
+- [x] JS handlers: filterCases, filterCasesByFellow, filterCasesByStage, filterMyCases, caseReassign, caseChangeState, transitionCase, applyCaseState — all genuinely functional (no inert UI)
+- [x] Admin rail nav: new "Cases & Tasks" entry in WORKSPACE group (with count badge "10")
+- [x] Fellow rail nav: new "My Cases" entry between My Students and Applications (with count badge "6")
+- [x] Memory: new `samavesh-cases-tasks` documenting the two-axis status model + full DocType spec for production
+
+### Placeholder screens (Admin nav surfaces, real screens deferred per user)
+- [x] **Bulk Upload** (`#a-bulkupload`) — placeholder in MANAGE group, "Soon" badge
+- [x] **Campaigns** (`#a-campaigns`) — placeholder in new CONFIGURATION group, "Soon" badge, "Awaiting product context" annotation
+- [x] **Form Builder** (`#a-forms`) — placeholder in CONFIGURATION group, "Soon" badge
+- [x] Each placeholder uses the existing `.placeholder` pattern (same as Student's Learning placeholder) with a one-paragraph description of the planned scope so a future developer / Director knows what each tab will become
+
+### Admin rail final structure
+- **WORKSPACE**: MIS Dashboard · Document Verification · **Cases & Tasks** · Scholarship Catalogue
+- **MANAGE**: All Students · Fellows & Users · **Bulk Upload** *(placeholder)*
+- **CONFIGURATION** *(new group)*: **Campaigns** *(placeholder)* · **Form Builder** *(placeholder)*
+- **ACCOUNT**: My Profile · Sign out
+
 ## Journey funnel 6→5 + Rejected visibility (2026-06-09) — done
 
 User decisions: collapse MIS-06 6 stages → **5 stages** with Disbursement as a sub-status of the terminal Decision stage. Also surface Rejected/Re-apply cases — they were missing from all demo applications.
