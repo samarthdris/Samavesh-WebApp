@@ -1491,39 +1491,42 @@ img{max-width:100%}
               <h3 style="color:#fff;font-size:19px;margin:10px 0 4px">Dr. Meera Joshi · Career Counsellor</h3>
               <div style="color:#cfeae6;font-size:14px">Friday, 6 June · 4:00 PM · 45 min · Video call</div>
             </div>
-            <button class="btn btn-gold btn-sm">Join (link soon)</button>
+            <button class="btn btn-gold btn-sm" onclick="joinSession(this)">Join (link soon)</button>
           </div>
         </div>
 
-        <!-- filters -->
-        <div style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px">
-          <span class="tagk" style="background:var(--teal-700);color:#fff;padding:8px 14px">All mentors</span>
-          <span class="tagk" style="padding:8px 14px">Career</span>
-          <span class="tagk" style="padding:8px 14px">Higher Studies</span>
-          <span class="tagk" style="padding:8px 14px">Engineering</span>
-          <span class="tagk" style="padding:8px 14px">Marathi</span>
+        <!-- filters (now functional) -->
+        <div id="mentorFilters" style="display:flex;gap:9px;flex-wrap:wrap;margin-bottom:18px">
+          <span class="tagk chip on" style="padding:8px 14px;cursor:pointer" onclick="filterMentors('all',this)">All mentors</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMentors('career',this)">Career</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMentors('higher-studies',this)">Higher Studies</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMentors('engineering',this)">Engineering</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMentors('scholarships',this)">Scholarships</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMentors('commerce',this)">Commerce</span>
+          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMentors('marathi',this)">Marathi</span>
         </div>
 
-        <div class="grid g-3 stagger">
-          <div class="card hoverable mentor">
+        <div class="grid g-3 stagger" id="mentorGrid">
+          <div class="card hoverable mentor" data-tags="career,higher-studies">
             <div class="ph">M</div><h4>Dr. Meera Joshi</h4><div class="role">Career Counsellor · 12 yrs</div>
             <div class="stars">★★★★★ <span style="color:var(--muted)">4.9</span></div>
             <div class="tags"><span class="tagk">Career</span><span class="tagk">Higher Studies</span></div>
             <button class="btn btn-primary btn-sm" data-book="Dr. Meera Joshi">Book a session</button>
           </div>
-          <div class="card hoverable mentor">
+          <div class="card hoverable mentor" data-tags="engineering,scholarships">
             <div class="ph" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</div><h4>Amit Deshmukh</h4><div class="role">Software Engineer</div>
             <div class="stars">★★★★★ <span style="color:var(--muted)">4.8</span></div>
             <div class="tags"><span class="tagk">Engineering</span><span class="tagk">Scholarships</span></div>
             <button class="btn btn-primary btn-sm" data-book="Amit Deshmukh">Book a session</button>
           </div>
-          <div class="card hoverable mentor">
+          <div class="card hoverable mentor" data-tags="commerce,marathi">
             <div class="ph" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">S</div><h4>Sunita Kamble</h4><div class="role">College Professor</div>
             <div class="stars">★★★★☆ <span style="color:var(--muted)">4.6</span></div>
             <div class="tags"><span class="tagk">Commerce</span><span class="tagk">Marathi</span></div>
             <button class="btn btn-primary btn-sm" data-book="Sunita Kamble">Book a session</button>
           </div>
         </div>
+        <div class="empty" id="mentorEmpty" style="display:none;margin-top:14px">No mentors match this filter — try another tag.</div>
       </section>
 
       <!-- ========== LEARNING (LMS placeholder) ========== -->
@@ -3799,6 +3802,25 @@ function saveCorrectionNote(btn){
   saved.innerHTML = '<b class="cn-label">Correction Note · just now</b><div class="cn-body"></div>';
   saved.querySelector('.cn-body').textContent = text;
   box.replaceWith(saved);
+}
+
+// Student Mentorship: filter the mentor cards by tag (data-tags="career,higher-studies", etc.). "All mentors" shows everyone.
+function filterMentors(tag,btn){
+  setChip(btn);
+  let shown=0;
+  document.querySelectorAll('#mentorGrid .mentor').forEach(function(card){
+    const tags=(card.dataset.tags||'').split(',');
+    const vis = tag==='all' || tags.indexOf(tag) !== -1;
+    card.style.display = vis ? '' : 'none';
+    if(vis) shown++;
+  });
+  const empty=document.getElementById('mentorEmpty');
+  if(empty) empty.style.display = shown ? 'none' : 'block';
+}
+
+// "Join session" click on the upcoming-session card — explains the link-arrival behavior.
+function joinSession(btn){
+  alert('Your video link will appear here 1 hour before the session starts (Friday 3:00 PM). You\'ll also get it on SMS + email.');
 }
 
 // Student-side: click a row in Home's "My Applications" → navigate to Scholarships screen + scroll to that app's card + briefly outline.
