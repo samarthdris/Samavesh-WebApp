@@ -3100,6 +3100,7 @@ function go(id){
   setCrumb(id);
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='f-onboard' && typeof onbInit==='function') setTimeout(onbInit,0);
+  if(id==='f-scholarship' && typeof schInit==='function') setTimeout(schInit,0);
 }
 const CRUMBS={'f-home':'Home','f-students':'Students','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-profile':'My Settings'};
 function setCrumb(id){
@@ -3264,14 +3265,116 @@ function eye(btn){
   const inp=btn.parentElement.querySelector('input');
   inp.type = inp.type==='password' ? 'text' : 'password';
 }
-// service branch (scholarship form)
+// service branch (scholarship form) — toggles .dt-section[data-branch] visibility + anchor links.
 function pickBranch(el,which){
   el.parentElement.querySelectorAll('.bopt').forEach(b=>b.classList.remove('sel'));
   el.classList.add('sel');
-  document.getElementById('branchA').dataset.skip = which==='A'?'0':'1';
-  document.getElementById('branchA2').dataset.skip = which==='A'?'0':'1';
-  document.getElementById('branchB').dataset.skip = which==='B'?'0':'1';
+  // Show only the matching branch's sections; hide the other.
+  document.querySelectorAll('#schForm .dt-section[data-branch]').forEach(function(sec){
+    sec.classList.toggle('hidden', sec.dataset.branch !== which);
+  });
+  // Same for anchor links: show only the relevant branch's anchors.
+  const a1=document.getElementById('schAnchorA1');
+  const a2=document.getElementById('schAnchorA2');
+  const b1=document.getElementById('schAnchorB1');
+  if(a1) a1.classList.toggle('hidden', which !== 'A');
+  if(a2) a2.classList.toggle('hidden', which !== 'A');
+  if(b1) b1.classList.toggle('hidden', which !== 'B');
+  // Update the bottom-bar label.
+  const lbl=document.getElementById('schBranchLbl');
+  if(lbl) lbl.textContent = which==='A' ? 'Path A · Scholarship Support' : 'Path B · Technical Support';
 }
+
+// ===== Scholarship Data Entry form (Frappe DocType pattern) =====
+function schInit(){
+  // Reuse the gender master populated for onboarding (same DocType in production).
+  const sel=document.getElementById('schGender');
+  if(sel && !sel.dataset.populated && typeof GENDER_MASTER!=='undefined'){
+    sel.innerHTML='<option value="">Select / निवडा…</option>' +
+      GENDER_MASTER.map(g=>'<option value="'+g.code+'">'+g.en+' / '+g.mr+'</option>').join('');
+    sel.dataset.populated='1';
+  }
+  // DOB.
+  const dob=document.getElementById('schDob');
+  if(dob && !dob.dataset.wired){ dob.addEventListener('change',schDobChange); dob.dataset.wired='1'; }
+  // Mobile.
+  const mob=document.getElementById('schMobile');
+  if(mob && !mob.dataset.wired){
+    mob.addEventListener('blur',schMobileBlur);
+    mob.addEventListener('input',function(){
+      const c=document.getElementById('schMobileVerify');
+      if(c && (c.classList.contains('ok') || c.classList.contains('bad'))) schMobileBlur();
+    });
+    mob.dataset.wired='1';
+  }
+  // Anchor smooth-scroll.
+  document.querySelectorAll('#schForm .dt-anchors a').forEach(function(a){
+    if(a.dataset.wired) return;
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      const id=a.getAttribute('href').slice(1);
+      const sec=document.getElementById(id);
+      if(sec) sec.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    a.dataset.wired='1';
+  });
+  if(!document._schSpyBound){
+    const main=document.querySelector('#fellowApp .content') || window;
+    main.addEventListener('scroll',schScrollSpy,{passive:true});
+    document._schSpyBound=true;
+  }
+  schScrollSpy();
+}
+function schDobChange(){
+  const dob=document.getElementById('schDob').value;
+  const out=document.getElementById('schAge');
+  if(!out) return;
+  if(!dob){ out.textContent='Age: —'; out.classList.add('empty'); return; }
+  const ms=new Date().getTime()-new Date(dob).getTime();
+  const years=ms/(365.25*24*3600*1000);
+  if(years<0 || years>120){ out.textContent='Age: invalid date'; out.classList.add('empty'); return; }
+  out.textContent='Age: '+years.toFixed(1)+' years';
+  out.classList.remove('empty');
+}
+function schMobileBlur(){
+  const v=(document.getElementById('schMobile').value||'').replace(/\D/g,'');
+  const chip=document.getElementById('schMobileVerify');
+  if(!chip) return;
+  chip.classList.remove('ok','bad');
+  if(!v) return;
+  const valid=/^[6-9]\d{9}$/.test(v);
+  if(valid){
+    chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Valid';
+    chip.classList.add('ok');
+  } else {
+    chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>Invalid';
+    chip.classList.add('bad');
+  }
+}
+function schScrollSpy(){
+  const sections=document.querySelectorAll('#schForm .dt-section:not(.hidden)');
+  const anchors=document.querySelectorAll('#schForm .dt-anchors a:not(.hidden)');
+  if(!sections.length) return;
+  let curIdx=0;
+  sections.forEach(function(s,i){
+    const r=s.getBoundingClientRect();
+    if(r.top<=140) curIdx=i;
+  });
+  anchors.forEach(function(a,i){ a.classList.toggle('on',i===curIdx); });
+  const meta=document.getElementById('schSecCur');
+  if(meta) meta.textContent=String(curIdx+1);
+}
+function schSubmit(){
+  const chip=document.getElementById('schMobileVerify');
+  if(chip && chip.classList.contains('bad')){
+    alert('Mobile number is invalid — please correct it before saving.');
+    document.getElementById('sch-student').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  alert('✅ Scholarship data entry saved. The application now appears under Applications → Under Scrutiny.');
+  go('f-applications');
+}
+document.addEventListener('DOMContentLoaded',function(){ if(document.getElementById('schDob')) setTimeout(schInit,0); });
 // same-as-permanent
 function sameAddr(cb,srcId,dstId){ if(cb.checked){const s=document.getElementById(srcId),d=document.getElementById(dstId); if(s&&d)d.value=s.value;} }
 // conditional district (onboarding)
