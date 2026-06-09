@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — Anchor nav moved from left sidebar to horizontal top tab bar (more form breathing room)._
+_Last updated: 2026-06-09 — 4 user-flagged consistency fixes (scroll-spy, radio rule, multi-app status, doc grouping ripples)._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,14 @@ _Last updated: 2026-06-09 — Anchor nav moved from left sidebar to horizontal t
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## Consistency fixes (2026-06-09) — done
+User flagged 4 issues that should have been caught earlier (saved as `samavesh-ripple-check` memory for next time).
+
+- [x] **Scroll-spy bug fixed** — `IntersectionObserver`-based generic `makeScrollSpy()` replaces the brittle scroll-listener-on-guessed-container approach. Container-agnostic. Filters `.hidden` sections (path A/B). Works on both Form 1 and Form 2.
+- [x] **Radio rule sharpened** — "ONLY 2 options stay as radios". 3+ → dropdown. Applied to Onboarding §7 ("Do parents have any disability?", "Any drug-addiction problem at home?"). Form 2 already conformed.
+- [x] **Multi-scholarship per-app status** — single "Scholarship Journey" replaced with "Scholarship Applications" block on both `f-student` (Fellow view) and `a-student` (Admin oversight). One row per scheme: logo + name + App ID + status pill + 6-dot mini-funnel + "N of 6" step. Demo shows Aarti's 3 applications at different stages.
+- [x] **Documents Must Have / Good to Have grouping** rippled to `f-student` Documents tab and `a-student` Documents tab — same 4+5 categorisation as the Onboarding form §6 child-table. New `.doc-group-banner` styling reused.
 
 ## Form anchor nav → horizontal top tabs (2026-06-09) — done
 - [x] `.dt-anchors` reskinned from vertical 220px left sidebar → horizontal pill tab bar at the top of the form body
