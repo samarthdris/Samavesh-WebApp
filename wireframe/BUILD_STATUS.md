@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-05 — added client workflow diagram (workflow.html)._
+_Last updated: 2026-06-09 — SSO login redesign (Google + magic link)._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,18 @@ _Last updated: 2026-06-05 — added client workflow diagram (workflow.html)._
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## SSO login (2026-06-09) — done
+- [x] `wireframe/index.html` login redesigned: mobile-number/OTP → unified email-based sign-in
+- [x] **Continue with Google** (primary) + **magic-link** for non-Google emails (secondary)
+- [x] All 4 roles use the same login surface; role derived from the User's Role Profile post-auth (production model documented in spec)
+- [x] Fake Google OAuth picker overlay (wireframe-only) for client demo realism
+- [x] `ACCOUNTS` re-keyed to lowercase email (4 Google + 1 magic-link demo for the non-Google path)
+- [x] Demo shortcuts kept, restyled as a tertiary section labelled "Demo shortcuts (this wireframe)"
+- [x] Pitch panel (left teal/marigold) kept — brand surface, not a dashboard surface
+- [x] Deep-link handler `?role=&screen=` unchanged — workflow.html links continue to work
+- Spec+plan: `docs/superpowers/specs/2026-06-09-sso-login-design.md`, `docs/superpowers/plans/2026-06-09-sso-login.md`
+- Skills applied: `frappe-doctype-skill` (data-model doc), `frappe-dashboard-design` (tokens/light theme/button hierarchy). `frappe-custom-html-block` not applicable here (login isn't a CHB).
 
 ## Verification audit (2026-06-05) — done
 - [x] Full audit vs workflow PDF + BRD. Confirmed aligned: roles, RBAC (student view-only), doc lifecycle, eligibility, masking, dup-check, MIS, forms (onboarding 8-step/9-doc/bilingual; scholarship branched).
