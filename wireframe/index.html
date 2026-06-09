@@ -707,6 +707,18 @@ img{max-width:100%}
 .case-inline-select{font-family:inherit;font-size:13px;padding:5px 10px;border:1.5px solid var(--teal-500);border-radius:7px;background:#fff;outline:none;box-shadow:0 0 0 3px var(--teal-50);min-width:150px;color:var(--ink);cursor:pointer}
 .case-inline-select:focus{border-color:var(--teal-700);box-shadow:0 0 0 3px var(--teal-100)}
 .case-just-saved{background:var(--green-50)!important;transition:background .8s ease}
+.case-edit-wrap{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.case-edit-confirm{display:flex;gap:5px;align-items:center;font-size:11.5px;color:var(--ink-soft)}
+.case-edit-confirm .ce-prompt{font-size:11px;color:var(--muted);font-style:italic}
+.case-edit-btn{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;padding:4px 9px;border-radius:6px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;font-family:inherit;transition:.12s}
+.case-edit-btn:hover{border-color:var(--teal-500);color:var(--teal-700);background:var(--teal-50)}
+.case-edit-btn.confirm{background:var(--teal-700);color:#fff;border-color:var(--teal-700)}
+.case-edit-btn.confirm:hover{background:var(--teal-800);color:#fff}
+.case-edit-btn svg{width:11px;height:11px}
+.btn-mini.confirm-pending{background:var(--teal-700)!important;color:#fff!important;border-color:var(--teal-700)!important;display:inline-flex;align-items:center;gap:5px;animation:fade .15s ease}
+.btn-mini.confirm-pending svg{width:11px;height:11px}
+.btn-mini.case-cancel-confirm{margin-left:4px;padding:5px 9px;color:var(--muted);font-size:13px;line-height:1;font-weight:700}
+.btn-mini.case-cancel-confirm:hover{border-color:var(--red);background:#FFF1F2;color:var(--red)}
 
 /* Cases & Tasks — table widths and wrap behavior (prevents cramped 2-column squeeze when content area is narrow) */
 #caseTable,#myCaseTable{min-width:1080px}
@@ -4287,35 +4299,79 @@ function filterMyCases(state, btn){
 // Roster of Fellows available for reassignment (matches the Fellow filter dropdown + Scholarship Data Entry form's Fellow list).
 const FELLOW_ROSTER = ['Rahul More','Sandip K','Dhanashree O','Vaibhav D','Akshay K','Anil K','Vishwas W','Adesh G','Tanuja K','Shalmon S'];
 
-// Admin: Reassign Fellow — replaces the Fellow cell with an inline dropdown of all Fellows in the roster.
+// Admin: Reassign Fellow — inline dropdown + explicit Confirm step (reassignment is audit-logged in production; don't auto-commit on accidental selection).
 function caseReassign(btn){
   const tr = btn.closest('tr');
   const fellowCell = tr.cells[2];
   if(!fellowCell || fellowCell.querySelector('select')) return; // already editing
-  const currentFellow = fellowCell.textContent.trim();
+  const originalFellow = fellowCell.textContent.trim();
+
+  // Build the wrapper: select on top, confirm row below (initially hidden until user picks a different Fellow).
+  const wrap = document.createElement('div');
+  wrap.className = 'case-edit-wrap';
+
   const sel = document.createElement('select');
   sel.className = 'case-inline-select';
   FELLOW_ROSTER.forEach(function(f){
     const o = document.createElement('option');
     o.value = f; o.textContent = f;
-    if(f === currentFellow) o.selected = true;
+    if(f === originalFellow) o.selected = true;
     sel.appendChild(o);
   });
-  sel.addEventListener('change', function(){
+
+  const confirmRow = document.createElement('div');
+  confirmRow.className = 'case-edit-confirm';
+  confirmRow.style.display = 'none';
+
+  const promptSpan = document.createElement('span');
+  promptSpan.className = 'ce-prompt';
+  confirmRow.appendChild(promptSpan);
+
+  const confirmBtn = document.createElement('button');
+  confirmBtn.type = 'button';
+  confirmBtn.className = 'case-edit-btn confirm';
+  confirmBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Confirm';
+
+  const cancelBtn = document.createElement('button');
+  cancelBtn.type = 'button';
+  cancelBtn.className = 'case-edit-btn';
+  cancelBtn.textContent = 'Cancel';
+
+  confirmRow.appendChild(confirmBtn);
+  confirmRow.appendChild(cancelBtn);
+  wrap.appendChild(sel);
+  wrap.appendChild(confirmRow);
+
+  function restoreCell(){
+    fellowCell.textContent = originalFellow;
+  }
+  function commitReassign(){
     const newFellow = sel.value;
     fellowCell.textContent = newFellow;
     tr.dataset.caseFellow = newFellow;
     fellowCell.classList.add('case-just-saved');
     setTimeout(function(){ fellowCell.classList.remove('case-just-saved'); }, 900);
-  });
-  sel.addEventListener('blur', function(){
-    // If user tabs away without changing, restore original text.
-    if(fellowCell.querySelector('select') === sel){
-      fellowCell.textContent = sel.value;
+  }
+
+  sel.addEventListener('change', function(){
+    if(sel.value === originalFellow){
+      confirmRow.style.display = 'none';
+    } else {
+      promptSpan.textContent = '"' + originalFellow + '" → "' + sel.value + '"?';
+      confirmRow.style.display = 'flex';
     }
   });
+  confirmBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    commitReassign();
+  });
+  cancelBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    restoreCell();
+  });
+
   fellowCell.textContent = '';
-  fellowCell.appendChild(sel);
+  fellowCell.appendChild(wrap);
   sel.focus();
 }
 
@@ -4360,19 +4416,48 @@ function caseChangeState(btn){
     }
   });
 }
-// Fellow: per-row state transition (To Do → In-progress → Completed | On Hold → Discarded).
+// Fellow: per-row state transition. Terminal states (completed / discarded) require a confirm-click step;
+// routine transitions (start / hold / resume / reopen) commit immediately.
+const TERMINAL_STATES = ['completed','discarded'];
 function transitionCase(btn, nextState){
+  if(TERMINAL_STATES.includes(nextState) && btn.dataset.confirming !== '1'){
+    // First click on a terminal-state button — morph into a confirm prompt; cancel button appears next to it.
+    btn.dataset.confirming = '1';
+    btn.dataset.origLabel = btn.innerHTML;
+    btn.classList.add('confirm-pending');
+    const verb = nextState === 'completed' ? 'Complete' : 'Discard';
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Confirm ' + verb + '?';
+    const cancel = document.createElement('button');
+    cancel.type = 'button';
+    cancel.className = 'btn-mini case-cancel-confirm';
+    cancel.textContent = '✕';
+    cancel.title = 'Cancel';
+    cancel.addEventListener('click', function(e){
+      e.stopPropagation();
+      delete btn.dataset.confirming;
+      btn.classList.remove('confirm-pending');
+      btn.innerHTML = btn.dataset.origLabel;
+      cancel.remove();
+    });
+    btn.parentElement.insertBefore(cancel, btn.nextSibling);
+    return;
+  }
+  // Either a routine transition, or a second click on a terminal-state button — commit.
+  delete btn.dataset.confirming;
+  btn.classList.remove('confirm-pending');
   const tr = btn.closest('tr');
   applyCaseState(tr, nextState);
-  // After state change, rewire the row's action buttons to match the new state.
+  rewireCaseActs(tr, nextState);
+}
+// Helper: rebuild a row's action buttons after a state change.
+function rewireCaseActs(tr, state){
   const acts = tr.querySelector('.case-acts');
-  if(acts){
-    if(nextState === 'progress') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'hold\')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'completed\')">Mark Complete</button>';
-    else if(nextState === 'hold') acts.innerHTML = '<button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Resume</button><button class="btn-mini danger" onclick="event.stopPropagation();transitionCase(this,\'discarded\')">Discard</button>';
-    else if(nextState === 'completed') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Reopen</button>';
-    else if(nextState === 'discarded') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Reopen</button>';
-    else if(nextState === 'todo') acts.innerHTML = '<button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Start</button><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'discarded\')">Discard</button>';
-  }
+  if(!acts) return;
+  if(state === 'progress') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'hold\')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'completed\')">Mark Complete</button>';
+  else if(state === 'hold') acts.innerHTML = '<button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Resume</button><button class="btn-mini danger" onclick="event.stopPropagation();transitionCase(this,\'discarded\')">Discard</button>';
+  else if(state === 'completed') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Reopen</button>';
+  else if(state === 'discarded') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Reopen</button>';
+  else if(state === 'todo') acts.innerHTML = '<button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Start</button><button class="btn-mini danger" onclick="event.stopPropagation();transitionCase(this,\'discarded\')">Discard</button>';
 }
 function applyCaseState(tr, newState){
   const cls = {todo:'todo', progress:'progress', hold:'hold', completed:'completed', discarded:'discarded'};
