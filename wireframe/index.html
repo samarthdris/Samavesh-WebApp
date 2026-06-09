@@ -2716,9 +2716,17 @@ img{max-width:100%}
 
 <script>
 // ---- role-based login ----
-const ACCOUNTS = { '9800000021':{role:'student'}, '9800000011':{role:'fellow'}, '9800000001':{role:'admin'}, '9800000031':{role:'mentor'} };
+// ACCOUNTS keyed by email (lowercase). Provider = 'google' uses fake OAuth overlay; 'magic' uses email magic-link flow.
+const ACCOUNTS = {
+  'aarti.pawar@gmail.com':       {role:'student', name:'Aarti Pawar',     provider:'google'},
+  'rahul.more@samavesh.org':     {role:'fellow',  name:'Rahul More',      provider:'google'},
+  'meera.nair@samavesh.org':     {role:'admin',   name:'Meera Nair',      provider:'google'},
+  'dr.meera.joshi@gmail.com':    {role:'mentor', name:'Dr. Meera Joshi', provider:'google'},
+  // Example non-Google account to demonstrate the magic-link path:
+  'aarti.outlook@outlook.com':   {role:'student', name:'Aarti (Outlook)', provider:'magic'}
+};
 let pendingRole='student';
-function roleFor(mobile){ const k=(mobile||'').replace(/\D/g,''); return (ACCOUNTS[k]||{}).role || 'student'; }
+function roleForEmail(email){ const k=(email||'').trim().toLowerCase(); return (ACCOUNTS[k]||{}).role || 'student'; }
 function showApp(role){
   [['student','studentApp','studentBot'],['fellow','fellowApp','fellowBot'],['admin','adminApp','adminBot'],['mentor','mentorApp','mentorBot']].forEach(function(t){
     document.getElementById(t[1]).classList.toggle('hidden',role!==t[0]);
@@ -2726,19 +2734,58 @@ function showApp(role){
   });
   go(role==='fellow'?'f-home':role==='admin'?'a-home':role==='mentor'?'m-home':'home');
 }
-function getOtp(){
-  pendingRole=roleFor(document.getElementById('loginMobile').value);
-  document.getElementById('otpTo').textContent='+91 '+(document.getElementById('loginMobile').value||'');
-  document.getElementById('lstep1').classList.remove('on');
-  document.getElementById('lstep2').classList.add('on');
+// ===== SSO login handlers =====
+function doGoogleSSO(){
+  // Wireframe: show fake Google account picker. Production: redirect to Frappe Social Login Key (Google).
+  document.getElementById('googleOAuthOverlay').classList.add('on');
 }
-function backToMobile(){document.getElementById('lstep2').classList.remove('on');document.getElementById('lstep1').classList.add('on');}
-function doLogin(){showApp(pendingRole);document.getElementById('loginWrap').style.display='none';window.scrollTo(0,0);}
-function loginAs(role){pendingRole=role;showApp(role);document.getElementById('loginWrap').style.display='none';window.scrollTo(0,0);}
+function closeOAuthOverlay(){ document.getElementById('googleOAuthOverlay').classList.remove('on'); }
+function gPick(role){
+  // User picked an account in the fake Google picker — finish the sign-in.
+  closeOAuthOverlay();
+  loginAs(role);
+}
+function doMagicLink(){
+  // Wireframe: skip the email send, show the confirmation screen. Production: POST to /api/method/frappe.www.login.send_login_link.
+  const email=(document.getElementById('loginEmail').value||'').trim();
+  if(!email){ document.getElementById('loginEmail').focus(); return; }
+  document.getElementById('checkEmailAddr').textContent=email;
+  document.getElementById('loginCardSignin').style.display='none';
+  document.getElementById('checkEmailScreen').classList.add('on');
+}
+function checkEmailResend(){
+  // Wireframe: flash a "Link resent" toast for 2s. Production: re-call the magic-link endpoint.
+  const t=document.getElementById('checkEmailToast');
+  t.classList.add('on');
+  setTimeout(function(){ t.classList.remove('on'); }, 2000);
+}
+function checkEmailUseDifferent(){
+  document.getElementById('checkEmailScreen').classList.remove('on');
+  document.getElementById('loginCardSignin').style.display='';
+  setTimeout(function(){ const e=document.getElementById('loginEmail'); if(e) e.focus(); }, 50);
+}
+function simulateLinkClick(){
+  // Wireframe-only: pretend the user clicked the magic link in their email. Routes via the email's role.
+  const email=document.getElementById('checkEmailAddr').textContent;
+  loginAs(roleForEmail(email));
+}
+// ===== shared login/logout =====
+function loginAs(role){
+  pendingRole=role;
+  showApp(role);
+  document.getElementById('loginWrap').style.display='none';
+  // Reset the login surface back to the sign-in card for the next visit.
+  document.getElementById('checkEmailScreen').classList.remove('on');
+  document.getElementById('loginCardSignin').style.display='';
+  closeOAuthOverlay();
+  window.scrollTo(0,0);
+}
 function logout(){
   document.getElementById('loginWrap').style.display='flex';
-  document.getElementById('lstep2').classList.remove('on');
-  document.getElementById('lstep1').classList.add('on');
+  // Reset to the sign-in card on sign-out.
+  document.getElementById('checkEmailScreen').classList.remove('on');
+  document.getElementById('loginCardSignin').style.display='';
+  closeOAuthOverlay();
   window.scrollTo(0,0);
 }
 
