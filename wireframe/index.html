@@ -704,6 +704,21 @@ img{max-width:100%}
 .case-acts .btn-mini.primary:hover{background:var(--teal-800)}
 .case-acts .btn-mini.danger{color:var(--red)}
 .case-acts .btn-mini.danger:hover{border-color:var(--red);background:#FFF1F2;color:var(--red)}
+.case-inline-select{font-family:inherit;font-size:13px;padding:5px 10px;border:1.5px solid var(--teal-500);border-radius:7px;background:#fff;outline:none;box-shadow:0 0 0 3px var(--teal-50);min-width:150px;color:var(--ink);cursor:pointer}
+.case-inline-select:focus{border-color:var(--teal-700);box-shadow:0 0 0 3px var(--teal-100)}
+.case-just-saved{background:var(--green-50)!important;transition:background .8s ease}
+
+/* Cases & Tasks — table widths and wrap behavior (prevents cramped 2-column squeeze when content area is narrow) */
+#caseTable,#myCaseTable{min-width:1080px}
+#caseTable thead th,#myCaseTable thead th{white-space:nowrap}
+#caseTable .who,#myCaseTable .who{align-items:center}
+#caseTable .who > div,#myCaseTable .who > div{min-width:0}
+#caseTable .who b,#myCaseTable .who b{white-space:nowrap;font-size:13.5px;line-height:1.25}
+#caseTable .who small,#myCaseTable .who small{white-space:nowrap;font-size:11px;color:var(--muted);display:block;margin-top:2px}
+#caseTable .case-scheme,#myCaseTable .case-scheme{white-space:nowrap}
+#caseTable td,#myCaseTable td{vertical-align:middle}
+#caseTable .case-jstage,#myCaseTable .case-jstage{display:inline-block;white-space:normal;line-height:1.35}
+#caseTable td:nth-child(4),#myCaseTable td:nth-child(3){white-space:nowrap}
 .case-jstage{font-size:11.5px;color:var(--muted)}
 .case-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px}
 .case-summary .csum{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s;box-shadow:var(--shadow-sm)}
@@ -4269,23 +4284,81 @@ function filterMyCases(state, btn){
   const cnt = document.getElementById('myCaseCnt'); if(cnt) cnt.textContent = String(shown);
   const empty = document.getElementById('myCaseEmpty'); if(empty) empty.style.display = shown ? 'none' : 'block';
 }
-// Admin: Reassign Fellow for a case.
+// Roster of Fellows available for reassignment (matches the Fellow filter dropdown + Scholarship Data Entry form's Fellow list).
+const FELLOW_ROSTER = ['Rahul More','Sandip K','Dhanashree O','Vaibhav D','Akshay K','Anil K','Vishwas W','Adesh G','Tanuja K','Shalmon S'];
+
+// Admin: Reassign Fellow — replaces the Fellow cell with an inline dropdown of all Fellows in the roster.
 function caseReassign(btn){
   const tr = btn.closest('tr');
-  const fellow = prompt('Reassign this case to which Fellow?\n\nOptions: Rahul More · Sandip K · Dhanashree O · Vaibhav D');
-  if(!fellow) return;
-  const cell = tr.cells[2]; if(cell) cell.textContent = fellow.trim();
-  tr.dataset.caseFellow = fellow.trim();
-  alert('✅ Case reassigned to ' + fellow.trim() + '. Audit-logged.');
+  const fellowCell = tr.cells[2];
+  if(!fellowCell || fellowCell.querySelector('select')) return; // already editing
+  const currentFellow = fellowCell.textContent.trim();
+  const sel = document.createElement('select');
+  sel.className = 'case-inline-select';
+  FELLOW_ROSTER.forEach(function(f){
+    const o = document.createElement('option');
+    o.value = f; o.textContent = f;
+    if(f === currentFellow) o.selected = true;
+    sel.appendChild(o);
+  });
+  sel.addEventListener('change', function(){
+    const newFellow = sel.value;
+    fellowCell.textContent = newFellow;
+    tr.dataset.caseFellow = newFellow;
+    fellowCell.classList.add('case-just-saved');
+    setTimeout(function(){ fellowCell.classList.remove('case-just-saved'); }, 900);
+  });
+  sel.addEventListener('blur', function(){
+    // If user tabs away without changing, restore original text.
+    if(fellowCell.querySelector('select') === sel){
+      fellowCell.textContent = sel.value;
+    }
+  });
+  fellowCell.textContent = '';
+  fellowCell.appendChild(sel);
+  sel.focus();
 }
-// Admin: open a state-change menu.
+
+// Admin: Change State — replaces the State pill with an inline dropdown of the 5 work-states.
 function caseChangeState(btn){
   const tr = btn.closest('tr');
-  const next = prompt('Change case state to:\n\n  todo · progress · hold · completed · discarded');
-  if(!next) return;
-  const v = next.trim().toLowerCase();
-  if(!['todo','progress','hold','completed','discarded'].includes(v)){ alert('Invalid state. Use: todo / progress / hold / completed / discarded'); return; }
-  applyCaseState(tr, v);
+  const pill = tr.querySelector('.case-state');
+  if(!pill || pill.parentElement.querySelector('select')) return; // already editing
+  const stateCell = pill.parentElement;
+  const states = [
+    {v:'todo',      l:'To Do'},
+    {v:'progress',  l:'In-progress'},
+    {v:'hold',      l:'On Hold'},
+    {v:'completed', l:'Completed'},
+    {v:'discarded', l:'Discarded'}
+  ];
+  const sel = document.createElement('select');
+  sel.className = 'case-inline-select';
+  const current = tr.dataset.caseState;
+  states.forEach(function(s){
+    const o = document.createElement('option');
+    o.value = s.v; o.textContent = s.l;
+    if(s.v === current) o.selected = true;
+    sel.appendChild(o);
+  });
+  // Keep the pill in place but hide it; show the select alongside.
+  pill.style.display = 'none';
+  stateCell.appendChild(sel);
+  sel.focus();
+  sel.addEventListener('change', function(){
+    applyCaseState(tr, sel.value);
+    sel.remove();
+    pill.style.display = '';
+    stateCell.classList.add('case-just-saved');
+    setTimeout(function(){ stateCell.classList.remove('case-just-saved'); }, 900);
+  });
+  sel.addEventListener('blur', function(){
+    // If user dismisses without picking a different state, restore the pill.
+    if(stateCell.contains(sel)){
+      sel.remove();
+      pill.style.display = '';
+    }
+  });
 }
 // Fellow: per-row state transition (To Do → In-progress → Completed | On Hold → Discarded).
 function transitionCase(btn, nextState){
