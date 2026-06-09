@@ -3355,12 +3355,8 @@ function schInit(){
     });
     a.dataset.wired='1';
   });
-  if(!document._schSpyBound){
-    const main=document.querySelector('#fellowApp .content') || window;
-    main.addEventListener('scroll',schScrollSpy,{passive:true});
-    document._schSpyBound=true;
-  }
-  schScrollSpy();
+  // Robust scroll-spy via IntersectionObserver (container-agnostic — no scroll listener needed).
+  makeScrollSpy('schForm','schSecCur');
 }
 function schDobChange(){
   const dob=document.getElementById('schDob').value;
@@ -3388,18 +3384,40 @@ function schMobileBlur(){
     chip.classList.add('bad');
   }
 }
-function schScrollSpy(){
-  const sections=document.querySelectorAll('#schForm .dt-section:not(.hidden)');
-  const anchors=document.querySelectorAll('#schForm .dt-anchors a:not(.hidden)');
+// Generic scroll-spy via IntersectionObserver — works regardless of which element actually scrolls.
+// rootMargin defines a narrow horizontal band near the top of the viewport; sections crossing into it become "active".
+function makeScrollSpy(formId, metaId){
+  if(document['_'+formId+'_obs']) return;
+  const sections=Array.from(document.querySelectorAll('#'+formId+' .dt-section'));
   if(!sections.length) return;
-  let curIdx=0;
-  sections.forEach(function(s,i){
-    const r=s.getBoundingClientRect();
-    if(r.top<=170) curIdx=i;
-  });
-  anchors.forEach(function(a,i){ a.classList.toggle('on',i===curIdx); });
-  const meta=document.getElementById('schSecCur');
-  if(meta) meta.textContent=String(curIdx+1);
+  const anchors=document.querySelectorAll('#'+formId+' .dt-anchors a');
+  const inView=new Set();
+  function updateActive(){
+    const visible=sections.filter(function(s){ return !s.classList.contains('hidden'); });
+    if(!visible.length) return;
+    let active=null;
+    for(let i=0;i<visible.length;i++){ if(inView.has(visible[i])){ active=visible[i]; break; } }
+    if(!active){
+      // Fallback: pick the last section whose top is at/above the trigger line (we've scrolled past it).
+      for(let i=0;i<visible.length;i++){ if(visible[i].getBoundingClientRect().top<=170) active=visible[i]; }
+    }
+    if(!active) active=visible[0];
+    anchors.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+active.id); });
+    const meta=metaId && document.getElementById(metaId);
+    if(meta){
+      const visAnchors=Array.from(anchors).filter(function(a){ return !a.classList.contains('hidden'); });
+      let curIdx=0;
+      visAnchors.forEach(function(a,i){ if(a.getAttribute('href')==='#'+active.id) curIdx=i; });
+      meta.textContent=String(curIdx+1);
+    }
+  }
+  const obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) inView.add(e.target); else inView.delete(e.target); });
+    updateActive();
+  }, { rootMargin:'-140px 0px -65% 0px', threshold:0 });
+  sections.forEach(function(s){ obs.observe(s); });
+  document['_'+formId+'_obs']=true;
+  updateActive();
 }
 function schSubmit(){
   const chip=document.getElementById('schMobileVerify');
@@ -3469,13 +3487,8 @@ function onbInit(){
     });
     a.dataset.wired='1';
   });
-  // Bind scroll-spy to the Fellow content scroll container (or window as fallback).
-  if(!document._onbSpyBound){
-    const main=document.querySelector('#fellowApp .content') || window;
-    main.addEventListener('scroll',onbScrollSpy,{passive:true});
-    document._onbSpyBound=true;
-  }
-  onbScrollSpy();
+  // Robust scroll-spy via IntersectionObserver (container-agnostic — no scroll listener needed).
+  makeScrollSpy('onbForm','dtSecCur');
 }
 function onbDobChange(){
   const dob=document.getElementById('onbDob').value;
@@ -3511,19 +3524,6 @@ function onbDocStatus(e){
   const btn=tr && tr.querySelector('.doc-att .attach-btn');
   if(!btn) return;
   btn.disabled = sel.value !== 'have';
-}
-function onbScrollSpy(){
-  const sections=document.querySelectorAll('#onbForm .dt-section');
-  const anchors=document.querySelectorAll('#onbForm .dt-anchors a');
-  if(!sections.length) return;
-  let curIdx=0;
-  sections.forEach(function(s,i){
-    const r=s.getBoundingClientRect();
-    if(r.top<=170) curIdx=i;
-  });
-  anchors.forEach(function(a,i){ a.classList.toggle('on',i===curIdx); });
-  const meta=document.getElementById('dtSecCur');
-  if(meta) meta.textContent=String(curIdx+1);
 }
 function onbSubmit(){
   // Validation: consent + (if mobile entered) mobile valid.
