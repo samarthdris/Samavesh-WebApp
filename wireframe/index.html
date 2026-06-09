@@ -1103,7 +1103,7 @@ img{max-width:100%}
         <div class="hero stagger">
           <div class="greet">Good afternoon,</div>
           <h2>Welcome back, Aarti 🌿</h2>
-          <p>You have <b style="color:#fff">3 scholarship applications</b> in progress and <b style="color:#fff">8 documents</b> on file. Tap any application below to see its full journey.</p>
+          <p>You have <b style="color:#fff">4 scholarship applications</b> in progress and <b style="color:#fff">9 documents</b> on file. Tap any application below to see its full journey.</p>
           <div class="quote">“ From the margins to the mainstream. ”</div>
         </div>
 
@@ -1111,9 +1111,9 @@ img{max-width:100%}
         <div class="scholar-apps">
           <div class="sah">
             <h3>My Scholarship Applications</h3>
-            <span class="sah-meta">3 active · tap to see details</span>
+            <span class="sah-meta">4 active · tap to see details</span>
           </div>
-          <div class="sah-lead">Each scholarship has its own progress. The 6 dots show where you are in the overall journey.</div>
+          <div class="sah-lead">Each scholarship has its own progress. The 5 dots show where you are in the overall journey.</div>
 
           <div class="scholar-row" onclick="studentSelectApp('pm',event)" title="See full timeline">
             <div class="sr-head">
@@ -1162,13 +1162,29 @@ img{max-width:100%}
             </div>
             <span class="sr-step">2 of 5</span>
           </div>
+
+          <div class="scholar-row" onclick="studentSelectApp('smm',event)" title="See full timeline — Rejected, now in Re-apply">
+            <div class="sr-head">
+              <div class="sr-logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+              <div class="sr-name"><b>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</b><small>Submitted 20 May · <span style="color:var(--red);font-weight:600">Rejected 4 Jun</span> (Caste Validity not clearly legible) · your Fellow is re-uploading the document</small></div>
+            </div>
+            <span class="pill amber"><span class="pdot"></span>Re-apply</span>
+            <div class="sr-mini" title="Step 4 of 5 · was Submitted, now awaiting re-submission">
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms cur" style="background:#B91C1C;box-shadow:0 0 0 3px #FFE4E6" title="Submitted → Rejected → re-submit pending"></span><span class="ml"></span>
+              <span class="ms"></span>
+            </div>
+            <span class="sr-step">4 of 5</span>
+          </div>
         </div>
 
         <!-- Stats -->
         <div class="grid g-3 stagger">
           <div class="card stat hoverable">
             <div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div></div>
-            <div class="num">3</div><div class="cap">Scholarships identified</div>
+            <div class="num">4</div><div class="cap">Scholarships identified</div>
           </div>
           <div class="card stat hoverable">
             <div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div>
@@ -1207,7 +1223,7 @@ img{max-width:100%}
           <p>The 3 scholarships you've applied for are below, with full timelines. Further down: other schemes you also qualify for — your Fellow can apply on your behalf.</p>
         </div>
 
-        <div class="section-h" style="margin-top:8px"><h3>My Active Applications</h3><span style="font-size:13px;color:var(--muted)">3 in progress · Fellow Rahul handles submissions</span></div>
+        <div class="section-h" style="margin-top:8px"><h3>My Active Applications</h3><span style="font-size:13px;color:var(--muted)">4 in progress · Fellow Rahul handles submissions</span></div>
 
         <!-- Active application with timeline -->
         <div class="card" data-app="pm" style="margin-bottom:18px;scroll-margin-top:100px">
@@ -1255,7 +1271,7 @@ img{max-width:100%}
           </div>
         </div>
 
-        <div class="card" data-app="ab" style="scroll-margin-top:100px">
+        <div class="card" data-app="ab" style="margin-bottom:18px;scroll-margin-top:100px">
           <div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
             <div class="body">
@@ -1271,8 +1287,35 @@ img{max-width:100%}
           </div>
         </div>
 
+        <!-- SMM (Rajarshi Chhatrapati Shahu Maharaj Merit) — was Submitted, got Rejected, now in Re-apply.
+             Demonstrates the application-level Rejected → Re-apply correction loop. -->
+        <div class="card" data-app="smm" style="scroll-margin-top:100px;border-left:4px solid var(--red)">
+          <div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+                <div><h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4><div style="font-size:13px;color:var(--muted)">Merit-based · State scheme · Higher &amp; Tech Ed Dept.</div></div>
+                <span class="pill amber"><span class="pdot"></span>Re-apply</span>
+              </div>
+              <div class="meta">
+                <span><b class="amount">₹32,000</b>/year</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Application ID: MH-SM-2026-08812</span>
+                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Originally submitted 20 May</span>
+              </div>
+              <p style="font-size:13px;color:var(--ink-soft);margin-top:6px;padding:10px 14px;background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px"><b style="color:#B91C1C">Portal rejected this application on 4 Jun:</b> "Caste Validity Certificate not clearly legible — re-upload required." Your Fellow Rahul is re-procuring the document; the application will be re-submitted automatically once Accepted.</p>
+              <div class="tl">
+                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Documents Complete</div><div class="d">All required docs Accepted · 14 May</div></div>
+                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">By Fellow Rahul · 20 May · Application ID MH-SM-2026-08812</div></div>
+                <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected by portal</div><div class="d">4 Jun · Reason: "Caste Validity Certificate not clearly legible"</div></div>
+                <div class="tl-item active"><div class="knob"></div><div class="t">Re-apply in progress</div><div class="d">Caste Validity Certificate being re-procured by Fellow Rahul · re-submission expected by 14 Jun</div></div>
+                <div class="tl-item future"><div class="t">Application Approved</div><div class="d">Awaited</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Also Eligible — informational, read-only. Student doesn't apply; Fellow does. -->
-        <div class="elig-group-h" style="margin-top:24px">Also Eligible — Your Fellow Could Apply <span class="elig-count">3</span></div>
+        <div class="elig-group-h" style="margin-top:24px">Also Eligible — Your Fellow Could Apply <span class="elig-count">2</span></div>
         <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px">These schemes also match your profile. Your Fellow can apply on your behalf — talk to them at your next check-in if you're interested.</p>
 
         <div class="card" style="margin-bottom:10px">
@@ -1285,20 +1328,6 @@ img{max-width:100%}
               </div>
               <div class="meta"><span><b class="amount">₹48,000</b>/year</span></div>
               <div class="elig-criteria">You qualify because: <b>SC category</b> · <b>UG enrolled</b> · <b>Income &lt; ₹2.5L</b></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" style="margin-bottom:10px">
-          <div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">RC</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-                <div><h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4><div style="font-size:13px;color:var(--muted)">Merit-based · State scheme</div></div>
-                <span class="pill grey"><span class="pdot"></span>Not Applied</span>
-              </div>
-              <div class="meta"><span><b class="amount">₹32,000</b>/year</span></div>
-              <div class="elig-criteria">You qualify because: <b>Merit ≥ 70%</b> (you have 78%) · <b>Income &lt; ₹2.5L</b></div>
             </div>
           </div>
         </div>
@@ -2294,7 +2323,7 @@ img{max-width:100%}
         <div class="scholar-apps">
           <div class="sah">
             <h3>Scholarship Applications</h3>
-            <span class="sah-meta">3 active · 5-stage funnel (MIS-06)</span>
+            <span class="sah-meta">4 active · 5-stage funnel (MIS-06)</span>
           </div>
           <div class="sah-lead">Each application has its own status. Click into the Scholarships or Applications tabs below for details.</div>
 
@@ -2345,6 +2374,22 @@ img{max-width:100%}
             </div>
             <span class="sr-step">2 of 5</span>
           </div>
+
+          <div class="scholar-row" onclick="appSelectInTab('smm',event)" title="Rejected — re-apply in progress">
+            <div class="sr-head">
+              <div class="sr-logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+              <div class="sr-name"><b>Rajarshi Chhatrapati Shahu Maharaj Merit</b><small>Submitted 20 May · <span style="color:var(--red);font-weight:600">Portal rejected 4 Jun</span> (Caste Validity not legible) · re-procurement in progress</small></div>
+            </div>
+            <span class="pill amber"><span class="pdot"></span>Re-apply</span>
+            <div class="sr-mini" title="Step 4 of 5 · was Submitted, now awaiting re-submission">
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms cur" style="background:#B91C1C;box-shadow:0 0 0 3px #FFE4E6"></span><span class="ml"></span>
+              <span class="ms"></span>
+            </div>
+            <span class="sr-step">4 of 5</span>
+          </div>
         </div>
 
         <div class="tabs">
@@ -2380,7 +2425,7 @@ img{max-width:100%}
         <div class="tabpane" id="fp-sch">
           <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Schemes the student is <b>eligible for</b>, auto-computed from profile (SC category · Income ₹1.8L · Maharashtra domicile · B.Com Year 2 · 78% marks). Override eligibility with a reason if needed (audit-logged). Per-application <b>status lives in the Applications tab</b>.</p>
 
-          <div class="elig-group-h">Already Applied <span class="elig-count">3</span></div>
+          <div class="elig-group-h">Already Applied <span class="elig-count">4</span></div>
 
           <div class="card" style="margin-bottom:10px"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
@@ -2406,7 +2451,7 @@ img{max-width:100%}
             </div>
           </div></div>
 
-          <div class="card"><div class="sch-card">
+          <div class="card" style="margin-bottom:10px"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
             <div class="body">
               <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Dr. Babasaheb Ambedkar Scholarship</h4></div>
@@ -2418,7 +2463,19 @@ img{max-width:100%}
             </div>
           </div></div>
 
-          <div class="elig-group-h">Eligible — Not Yet Applied <span class="elig-count">3</span></div>
+          <div class="card" style="border-left:3px solid var(--red)"><div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4></div>
+              <div class="meta"><span><b class="amount">₹32,000</b>/year</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun · in Re-apply</span></div>
+              <div class="elig-criteria">Eligibility matched: <b>Merit ≥ 70%</b> · <b>Income &lt; ₹2.5L</b></div>
+              <div class="elig-actions">
+                <button class="elig-link" type="button" onclick="appSelectInTab('smm',event)">View application details<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+            </div>
+          </div></div>
+
+          <div class="elig-group-h">Eligible — Not Yet Applied <span class="elig-count">2</span></div>
 
           <div class="card" style="margin-bottom:10px"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#0a3f3a,#0e6e66)">GP</div>
@@ -2429,18 +2486,6 @@ img{max-width:100%}
               <div class="elig-actions">
                 <button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Apply for this</button>
                 <span style="font-size:11.5px;color:var(--muted)">Opens the Scholarship Data Entry form</span>
-              </div>
-            </div>
-          </div></div>
-
-          <div class="card" style="margin-bottom:10px"><div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">RC</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4></div>
-              <div class="meta"><span><b class="amount">₹32,000</b>/year</span><span>Merit-based · State scheme</span></div>
-              <div class="elig-criteria">Eligibility matched: <b>Merit ≥ 70%</b> · <b>Income &lt; ₹2.5L</b></div>
-              <div class="elig-actions">
-                <button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Apply for this</button>
               </div>
             </div>
           </div></div>
@@ -2563,7 +2608,7 @@ img{max-width:100%}
           </div>
 
           <!-- Approved (Dr. Babasaheb Ambedkar) — record disbursement, fully functional -->
-          <div class="card" data-app="ab" style="border-left:4px solid var(--marigold)">
+          <div class="card" data-app="ab" style="margin-bottom:16px;border-left:4px solid var(--marigold)">
             <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px"><h4 class="serif" style="font-size:17px">Dr. Babasaheb Ambedkar Scholarship</h4><span class="pill amber"><span class="pdot"></span>Approved</span></div>
             <p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">Record disbursement once funds reach the student's bank account.</p>
             <div class="form-grid">
@@ -2571,6 +2616,24 @@ img{max-width:100%}
               <div class="fg"><label>Disbursement Date<span class="req">*</span></label><input type="date" /></div>
             </div>
             <button class="btn btn-gold btn-sm" style="margin-top:14px" type="button" onclick="recordDisbursement(this)">Record Disbursement &amp; Close</button>
+          </div>
+
+          <!-- SMM Re-apply: Portal rejected, Fellow correcting and re-submitting -->
+          <div class="card" data-app="smm" style="border-left:4px solid var(--red)">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px"><h4 class="serif" style="font-size:17px">Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4><span class="pill amber"><span class="pdot"></span>Re-apply</span></div>
+            <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-SM-2026-08812</span><span>Originally submitted 20 May</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun</span></div>
+            <div style="background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px"><b style="color:#B91C1C">Portal rejection reason:</b> "Caste Validity Certificate not clearly legible — re-upload required." Action: re-procure the Caste Validity Certificate, get it Accepted, then re-submit on the portal with the corrected document.</div>
+            <div class="tl">
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">20 May · App ID MH-SM-2026-08812</div></div>
+              <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected by portal</div><div class="d">4 Jun · Caste Validity not clearly legible</div></div>
+              <div class="tl-item active"><div class="knob"></div><div class="t">Re-procurement in progress</div><div class="d">Documentation Application opened with the Tehsil office · expected 14 Jun</div></div>
+              <div class="tl-item future"><div class="t">Re-submit on portal</div><div class="d">Once Caste Validity is Accepted</div></div>
+            </div>
+            <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+              <button class="btn btn-primary btn-sm" type="button" data-go="f-scholarship">Correct &amp; re-submit on portal</button>
+              <button class="btn btn-ghost btn-sm" type="button" data-go="f-docapp">Open Documentation Application</button>
+              <button class="btn btn-ghost btn-sm" type="button" onclick="addCorrectionNote(this)">Add correction note</button>
+            </div>
           </div>
         </div>
             <div class="activity">
@@ -3245,7 +3308,7 @@ img{max-width:100%}
         <div class="scholar-apps">
           <div class="sah">
             <h3>Scholarship Applications</h3>
-            <span class="sah-meta">Program oversight · per-application status</span>
+            <span class="sah-meta">4 active · per-application status · 5-stage funnel</span>
           </div>
           <div class="sah-lead">Each scholarship the student has applied for is shown separately with its own funnel position and current status.</div>
 
@@ -3296,6 +3359,22 @@ img{max-width:100%}
             </div>
             <span class="sr-step">2 of 5</span>
           </div>
+
+          <div class="scholar-row" onclick="appSelectInTab('smm',event)" title="Rejected by portal — Fellow re-procuring document, re-submission pending">
+            <div class="sr-head">
+              <div class="sr-logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+              <div class="sr-name"><b>Rajarshi Chhatrapati Shahu Maharaj Merit</b><small>MH-SM-2026-08812 · Submitted 20 May · <span style="color:var(--red);font-weight:600">Portal rejected 4 Jun</span> (Caste Validity not legible) · re-procurement underway</small></div>
+            </div>
+            <span class="pill amber"><span class="pdot"></span>Re-apply</span>
+            <div class="sr-mini" title="Step 4 of 5 · Submitted → Rejected → re-submit pending">
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms cur" style="background:#B91C1C;box-shadow:0 0 0 3px #FFE4E6"></span><span class="ml"></span>
+              <span class="ms"></span>
+            </div>
+            <span class="sr-step">4 of 5</span>
+          </div>
         </div>
 
         <div class="tabs">
@@ -3332,7 +3411,7 @@ img{max-width:100%}
         <div class="tabpane" id="ap-sch">
           <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Schemes the student is <b>eligible for</b>, auto-computed from profile. Admin oversight view — submission and document handling are the assigned Fellow's actions (RBAC-05). Per-application status lives in the Applications tab.</p>
 
-          <div class="elig-group-h">Already Applied <span class="elig-count">3</span></div>
+          <div class="elig-group-h">Already Applied <span class="elig-count">4</span></div>
 
           <div class="card" style="margin-bottom:10px"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
@@ -3358,7 +3437,7 @@ img{max-width:100%}
             </div>
           </div></div>
 
-          <div class="card"><div class="sch-card">
+          <div class="card" style="margin-bottom:10px"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
             <div class="body">
               <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Dr. Babasaheb Ambedkar Scholarship</h4></div>
@@ -3370,7 +3449,19 @@ img{max-width:100%}
             </div>
           </div></div>
 
-          <div class="elig-group-h">Eligible — Not Yet Applied <span class="elig-count">3</span></div>
+          <div class="card" style="border-left:3px solid var(--red)"><div class="sch-card">
+            <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+            <div class="body">
+              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4></div>
+              <div class="meta"><span><b class="amount">₹32,000</b>/year</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun · in Re-apply</span></div>
+              <div class="elig-criteria">Eligibility matched: <b>Merit ≥ 70%</b> · <b>Income &lt; ₹2.5L</b></div>
+              <div class="elig-actions">
+                <button class="elig-link" type="button" onclick="appSelectInTab('smm',event)">View application details<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></button>
+              </div>
+            </div>
+          </div></div>
+
+          <div class="elig-group-h">Eligible — Not Yet Applied <span class="elig-count">2</span></div>
 
           <div class="card" style="margin-bottom:10px"><div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#0a3f3a,#0e6e66)">GP</div>
@@ -3378,16 +3469,6 @@ img{max-width:100%}
               <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Government of India Post-Matric Scholarship</h4></div>
               <div class="meta"><span><b class="amount">₹48,000</b>/year</span><span>Central scheme</span></div>
               <div class="elig-criteria">Eligibility matched: <b>SC category</b> · <b>UG enrolled</b> · <b>Income &lt; ₹2.5L</b></div>
-              <div class="elig-actions"><span style="font-size:11.5px;color:var(--muted)">Awaiting Fellow Rahul More to initiate the application</span></div>
-            </div>
-          </div></div>
-
-          <div class="card" style="margin-bottom:10px"><div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">RC</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4></div>
-              <div class="meta"><span><b class="amount">₹32,000</b>/year</span><span>Merit-based</span></div>
-              <div class="elig-criteria">Eligibility matched: <b>Merit ≥ 70%</b> · <b>Income &lt; ₹2.5L</b></div>
               <div class="elig-actions"><span style="font-size:11.5px;color:var(--muted)">Awaiting Fellow Rahul More to initiate the application</span></div>
             </div>
           </div></div>
@@ -3478,9 +3559,17 @@ img{max-width:100%}
             <p style="font-size:13px;color:var(--ink-soft);margin-top:8px">All documents Accepted. Awaiting Fellow Rahul More to submit on the portal and record the application details.</p>
           </div>
 
-          <div class="card" data-app="ab" style="border-left:4px solid var(--marigold)">
+          <div class="card" data-app="ab" style="margin-bottom:16px;border-left:4px solid var(--marigold)">
             <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Dr. Babasaheb Ambedkar Scholarship</h4><span class="pill amber"><span class="pdot"></span>Documents Pending</span></div>
             <p style="font-size:13px;color:var(--ink-soft);margin-top:8px">2 documents still pending (Non-Creamy Layer: Rejected, awaiting re-upload · Ration Card: Pending). Documents tab shows individual status. Fellow to upload before this can progress.</p>
+          </div>
+
+          <!-- SMM read-only oversight: rejected at portal level, Fellow correcting -->
+          <div class="card" data-app="smm" style="border-left:4px solid var(--red)">
+            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4><span class="pill amber"><span class="pdot"></span>Re-apply</span></div>
+            <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-SM-2026-08812</span><span>Originally submitted 20 May</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun</span></div>
+            <div style="background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px"><b style="color:#B91C1C">Portal rejection reason:</b> "Caste Validity Certificate not clearly legible — re-upload required." Awaiting Fellow Rahul to re-procure the document and re-submit on the portal.</div>
+            <p style="font-size:12.5px;color:var(--muted)">Admin oversight only — Fellow is responsible for correcting the document and re-submitting (RBAC-05).</p>
           </div>
         </div>
             <div class="activity">
