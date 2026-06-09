@@ -2228,15 +2228,43 @@ img{max-width:100%}
         <!-- Documents tab (FELLOW ACTIONS) -->
         <div class="tabpane" id="fp-docs">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
-            <p style="font-size:13px;color:var(--ink-soft);max-width:60ch">Procure, upload and re-upload documents here. A Program Admin reviews and Accepts/Rejects each one. Uploads: <b>PDF only · 1–2 MB</b>.</p>
+            <p style="font-size:13px;color:var(--ink-soft);max-width:60ch">Procure, upload and re-upload documents here. A Program Admin reviews and Accepts/Rejects each one. Uploads: <b>PDF only · 1–2 MB</b>. Same Must Have / Good to Have categorisation as the Onboarding form.</p>
             <button class="btn btn-gold btn-sm" data-go="f-docapp">+ Documentation Application</button>
           </div>
           <div class="card">
+            <div class="doc-group-banner">Must Have <span class="dgb-pill must">Mandatory</span></div>
             <div class="doc-row">
-              <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-              <div class="dn"><b>Non-Creamy Layer Certificate</b><small>Type: Caste · procurement needed</small></div>
-              <span class="pill amber" style="margin-right:8px"><span class="pdot"></span>Pending</span>
-              <button class="btn btn-primary btn-sm" onclick="fileAct(this,'Uploaded')">Upload</button>
+              <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Aadhaar Card</b><small>Uploaded 12 Apr · Accepted by Program Admin</small></div>
+              <span class="pill green"><span class="pdot"></span>Accepted</span>
+            </div>
+            <div class="doc-row">
+              <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Annual Income Certificate (FY 25/26)</b><small>Uploaded 15 Apr · Accepted by Program Admin</small></div>
+              <span class="pill green"><span class="pdot"></span>Accepted</span>
+            </div>
+            <div class="doc-row">
+              <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>10th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted by Program Admin</small></div>
+              <span class="pill green"><span class="pdot"></span>Accepted</span>
+            </div>
+            <div class="doc-row">
+              <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>12th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted by Program Admin</small></div>
+              <span class="pill green"><span class="pdot"></span>Accepted</span>
+            </div>
+
+            <div class="doc-group-banner">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
+            <div class="doc-row">
+              <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Caste Certificate</b><small>Uploaded 28 Apr · Accepted by Program Admin</small></div>
+              <span class="pill green"><span class="pdot"></span>Accepted</span>
+            </div>
+            <div class="doc-row">
+              <div class="di" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+              <div class="dn"><b>Non-Creamy Layer Certificate</b><small style="color:var(--red)">Rejected: "Not clearly legible" — re-upload needed</small></div>
+              <span class="pill red" style="margin-right:8px"><span class="pdot"></span>Rejected</span>
+              <button class="btn btn-gold btn-sm" onclick="fileAct(this,'Uploaded')">Re-upload</button>
             </div>
             <div class="doc-row">
               <div class="di" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
@@ -2244,15 +2272,15 @@ img{max-width:100%}
               <span class="pill blue"><span class="pdot"></span>Under Review</span>
             </div>
             <div class="doc-row">
-              <div class="di" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
-              <div class="dn"><b>Caste Validity Certificate</b><small style="color:var(--red)">Rejected: "Not clearly legible" — re-upload needed</small></div>
-              <span class="pill red" style="margin-right:8px"><span class="pdot"></span>Rejected</span>
-              <button class="btn btn-gold btn-sm" onclick="fileAct(this,'Uploaded')">Re-upload</button>
+              <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Ration Card</b><small>Procurement in progress — Documentation Application created 4 Jun</small></div>
+              <span class="pill amber" style="margin-right:8px"><span class="pdot"></span>Pending</span>
+              <button class="btn btn-primary btn-sm" onclick="fileAct(this,'Uploaded')">Upload</button>
             </div>
             <div class="doc-row">
-              <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-              <div class="dn"><b>Income Certificate · Caste · Aadhaar · 10th &amp; 12th Marksheet · Bank Passbook · Bonafide</b><small>All Accepted by Program Admin</small></div>
-              <span class="pill green"><span class="pdot"></span>6 Accepted</span>
+              <div class="di" style="background:var(--cream-2);color:var(--muted)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Orphan Certificate</b><small>Not applicable — both parents living</small></div>
+              <span class="pill grey"><span class="pdot"></span>N/A</span>
             </div>
           </div>
         </div>
@@ -3076,27 +3104,55 @@ img{max-width:100%}
 
         <!-- Documents tab (ADMIN ACTION: Accept/Reject via vAct; .vrow structure) -->
         <div class="tabpane" id="ap-docs">
-          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Review documents uploaded by the Fellow. Accept or Reject each (rejection requires a reason). Procurement and upload are the Fellow's actions — the Admin verifies.</p>
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Review documents uploaded by the Fellow. Accept or Reject each (rejection requires a reason). Procurement and upload are the Fellow's actions — the Admin verifies. Same Must Have / Good to Have categorisation as the Onboarding form.</p>
           <div class="card" style="padding:0">
-            <div class="vrow" data-vstatus="all">
-              <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-              <div class="vb"><b>Domicile Certificate</b><small>Type: Domicile · uploaded by Fellow · 2 Jun · Re-upload Version 1</small></div>
-              <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
-            </div>
+            <div class="doc-group-banner" style="margin:14px 14px 8px">Must Have <span class="dgb-pill must">Mandatory</span></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-              <div class="vb"><b>Income Certificate</b><small>Type: Income · Accepted 20 May</small></div>
+              <div class="vb"><b>Aadhaar Card</b><small>Uploaded 12 Apr · Accepted 14 Apr</small></div>
               <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
             </div>
             <div class="vrow" data-vstatus="done">
+              <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="vb"><b>Annual Income Certificate (FY 25/26)</b><small>Uploaded 15 Apr · Accepted 18 Apr</small></div>
+              <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
+            </div>
+            <div class="vrow" data-vstatus="done">
+              <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="vb"><b>10th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted 14 Apr</small></div>
+              <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
+            </div>
+            <div class="vrow" data-vstatus="done">
+              <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="vb"><b>12th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted 14 Apr</small></div>
+              <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
+            </div>
+
+            <div class="doc-group-banner" style="margin:18px 14px 8px">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
+            <div class="vrow" data-vstatus="done">
+              <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="vb"><b>Caste Certificate</b><small>Uploaded 28 Apr · Accepted 1 May</small></div>
+              <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
+            </div>
+            <div class="vrow" data-vstatus="all">
+              <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="vb"><b>Domicile Certificate</b><small>Uploaded by Fellow · 2 Jun · Re-upload Version 1 · awaiting your review</small></div>
+              <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            </div>
+            <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
-              <div class="vb"><b>Caste Validity Certificate</b><small style="color:var(--red)">Rejected: "Not clearly legible" — awaiting Fellow re-upload</small></div>
+              <div class="vb"><b>Non-Creamy Layer Certificate</b><small style="color:var(--red)">Rejected: "Not clearly legible" — awaiting Fellow re-upload</small></div>
               <div class="vacts"><span class="pill red"><span class="pdot"></span>Rejected</span></div>
             </div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-              <div class="vb"><b>Non-Creamy Layer Certificate</b><small>Type: Caste · awaiting Fellow upload (procurement in progress)</small></div>
+              <div class="vb"><b>Ration Card</b><small>Awaiting Fellow upload — procurement in progress</small></div>
               <div class="vacts"><span class="pill amber"><span class="pdot"></span>Pending</span></div>
+            </div>
+            <div class="vrow" data-vstatus="done">
+              <div class="vi" style="background:var(--cream-2);color:var(--muted)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="vb"><b>Orphan Certificate</b><small>Marked N/A — both parents living</small></div>
+              <div class="vacts"><span class="pill grey"><span class="pdot"></span>N/A</span></div>
             </div>
           </div>
         </div>
