@@ -4037,7 +4037,7 @@ function go(id){
   if(id==='f-onboard' && typeof onbInit==='function') setTimeout(onbInit,0);
   if(id==='f-scholarship' && typeof schInit==='function') setTimeout(schInit,0);
 }
-const CRUMBS={'f-home':'Home','f-students':'Students','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-profile':'My Settings'};
+const CRUMBS={'f-home':'Home','f-students':'Students','f-tasks':'Cases & Tasks','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-tasks':'Cases & Tasks','a-bulkupload':'Bulk Upload','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-profile':'My Settings'};
 function setCrumb(id){
   const txt=CRUMBS[id]; if(!txt)return;
   const el=id.indexOf('a-')===0?document.getElementById('crumbAdmin'):document.getElementById('crumbFellow');
@@ -4093,19 +4093,54 @@ function mSession(btn, action){
   const acts=btn.closest('.sess-acts');
   if(action==='done'){
     acts.innerHTML='<span class="pill green"><span class="pdot"></span>Completed</span>';
-  } else {
-    const why=prompt('Reason for cancellation (recorded; penalty-free up to 4 hours before start):');
-    if(why===null) return;
-    acts.innerHTML='<span class="pill grey"><span class="pdot"></span>Cancelled</span>';
+    return;
   }
+  // Cancellation needs a reason — inline form replaces the action row.
+  if(acts.querySelector('.inline-reason')) return; // already collecting reason
+  const card = btn.closest('.card') || acts;
+  const wrap = document.createElement('div');
+  wrap.className = 'inline-reason';
+  wrap.style.cssText = 'background:var(--cream);border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-top:6px;font-size:13px';
+  wrap.innerHTML = '<label style="display:block;font-size:11px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Cancellation reason</label>' +
+    '<input type="text" placeholder="e.g. mentee unable to attend — rescheduling next week" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;font-family:inherit;font-size:13px;outline:none;background:#fff" />' +
+    '<div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end"><button type="button" class="btn btn-ghost btn-sm" onclick="this.closest(\'.inline-reason\').remove()">Cancel</button><button type="button" class="btn btn-primary btn-sm" onclick="mSessionConfirmCancel(this)">Save cancellation</button></div>' +
+    '<div style="font-size:11.5px;color:var(--muted);margin-top:6px">Penalty-free up to 4 hours before start.</div>';
+  acts.appendChild(wrap);
+  setTimeout(function(){ const i = wrap.querySelector('input'); if(i) i.focus(); }, 50);
+}
+function mSessionConfirmCancel(btn){
+  const wrap = btn.closest('.inline-reason');
+  const reason = wrap.querySelector('input').value.trim();
+  if(!reason){ alert('Please add a brief cancellation reason — required for audit.'); wrap.querySelector('input').focus(); return; }
+  const acts = wrap.closest('.sess-acts');
+  acts.innerHTML = '<span class="pill grey"><span class="pdot"></span>Cancelled</span><span style="font-size:11.5px;color:var(--muted);margin-left:8px">Reason: ' + reason.replace(/[<>]/g,'') + '</span>';
 }
 function mNote(btn){
-  const n=prompt('Private note for this session (visible only to you and the Program Admin):');
-  if(!n) return;
   const card=btn.closest('.card');
-  let note=card.querySelector('.mnote');
-  if(!note){ note=document.createElement('div'); note.className='mnote'; note.style.cssText='margin-top:10px;font-size:12.5px;color:var(--ink-soft)'; card.appendChild(note); }
-  note.textContent='🔒 Note saved (private): '+n;
+  if(card.querySelector('.mnote-form')) return; // already editing
+  const wrap = document.createElement('div');
+  wrap.className = 'mnote-form';
+  wrap.style.cssText = 'background:var(--cream);border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-top:10px;font-size:13px';
+  wrap.innerHTML = '<label style="display:block;font-size:11px;color:var(--ink-soft);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Private note (mentor + admin only)</label>' +
+    '<textarea placeholder="e.g. Mentee considering switching from Commerce to Arts — needs follow-up next session" style="width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:7px;font-family:inherit;font-size:13px;outline:none;background:#fff;min-height:60px;resize:vertical"></textarea>' +
+    '<div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end"><button type="button" class="btn btn-ghost btn-sm" onclick="this.closest(\'.mnote-form\').remove()">Cancel</button><button type="button" class="btn btn-primary btn-sm" onclick="mNoteSave(this)">Save note</button></div>';
+  card.appendChild(wrap);
+  setTimeout(function(){ const ta = wrap.querySelector('textarea'); if(ta) ta.focus(); }, 50);
+}
+function mNoteSave(btn){
+  const wrap = btn.closest('.mnote-form');
+  const text = wrap.querySelector('textarea').value.trim();
+  if(!text){ alert('Please write your note before saving.'); wrap.querySelector('textarea').focus(); return; }
+  const card = wrap.closest('.card');
+  wrap.remove();
+  let note = card.querySelector('.mnote');
+  if(!note){
+    note = document.createElement('div');
+    note.className = 'mnote';
+    note.style.cssText = 'margin-top:10px;padding:10px 12px;background:var(--cream);border-left:3px solid var(--teal-500);border-radius:6px;font-size:12.5px;color:var(--ink-soft)';
+    card.appendChild(note);
+  }
+  note.innerHTML = '<b style="display:block;font-size:10.5px;color:var(--teal-700);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">🔒 Private note · just saved</b>' + text.replace(/[<>]/g,'');
 }
 
 // ---- booking modal ----
@@ -4234,38 +4269,38 @@ function joinSession(btn){
 }
 
 // ===== Cases & Tasks (Admin a-tasks + Fellow f-tasks) =====
-// Filter cases on Admin's full caseload table by 5 work-states.
-function filterCases(state, btn){
-  if(btn) setChip(btn);
+// Composable filter state for Admin's a-tasks (3 filters AND together: chip state + Fellow + Journey stage).
+let _caseFState = 'all', _caseFFellow = 'all', _caseFStage = 'all';
+function _applyCaseFilters(){
+  // Clear chip-bar .on, restore the chip matching the current state filter.
+  document.querySelectorAll('#caseChipBar .chip').forEach(c => c.classList.remove('on'));
+  const chipMap = {all:0, todo:1, progress:2, hold:3, completed:4, discarded:5};
+  const chipIdx = chipMap[_caseFState];
+  const chips = document.querySelectorAll('#caseChipBar .chip');
+  if(chips[chipIdx]) chips[chipIdx].classList.add('on');
+  // Clear summary-card .on, restore the one matching the current state (if not 'all').
   document.querySelectorAll('#a-tasks .case-summary .csum.on').forEach(c => c.classList.remove('on'));
-  if(btn && btn.classList.contains('csum')) btn.classList.add('on');
+  if(_caseFState !== 'all'){
+    const csumMap = {todo:0, progress:1, hold:2, completed:3, discarded:4};
+    const csums = document.querySelectorAll('#a-tasks .case-summary .csum');
+    if(csums[csumMap[_caseFState]]) csums[csumMap[_caseFState]].classList.add('on');
+  }
+  // Apply all three filters AND-composed.
   let shown = 0;
   document.querySelectorAll('#caseTable tbody tr').forEach(function(tr){
-    const vis = state === 'all' || tr.dataset.caseState === state;
+    const okS = _caseFState  === 'all' || tr.dataset.caseState  === _caseFState;
+    const okF = _caseFFellow === 'all' || tr.dataset.caseFellow === _caseFFellow;
+    const okJ = _caseFStage  === 'all' || tr.dataset.caseStage  === _caseFStage;
+    const vis = okS && okF && okJ;
     tr.style.display = vis ? '' : 'none';
     if(vis) shown++;
   });
   const cnt = document.getElementById('caseCnt'); if(cnt) cnt.textContent = String(shown);
   const empty = document.getElementById('caseEmpty'); if(empty) empty.style.display = shown ? 'none' : 'block';
 }
-function filterCasesByFellow(fellow){
-  let shown = 0;
-  document.querySelectorAll('#caseTable tbody tr').forEach(function(tr){
-    const vis = fellow === 'all' || tr.dataset.caseFellow === fellow;
-    tr.style.display = vis ? '' : 'none';
-    if(vis) shown++;
-  });
-  const cnt = document.getElementById('caseCnt'); if(cnt) cnt.textContent = String(shown);
-}
-function filterCasesByStage(stage){
-  let shown = 0;
-  document.querySelectorAll('#caseTable tbody tr').forEach(function(tr){
-    const vis = stage === 'all' || tr.dataset.caseStage === stage;
-    tr.style.display = vis ? '' : 'none';
-    if(vis) shown++;
-  });
-  const cnt = document.getElementById('caseCnt'); if(cnt) cnt.textContent = String(shown);
-}
+function filterCases(state, btn){ _caseFState = state; _applyCaseFilters(); }
+function filterCasesByFellow(fellow){ _caseFFellow = fellow; _applyCaseFilters(); }
+function filterCasesByStage(stage){ _caseFStage = stage; _applyCaseFilters(); }
 // Fellow's My Cases — same filter for the f-tasks table.
 function filterMyCases(state, btn){
   if(btn) setChip(btn);
@@ -4803,18 +4838,39 @@ function onAppStatus(sel){
 function vAct(btn,action){
   const row=btn.closest('.vrow');
   if(action==='reject'){
-    const reason=prompt('Rejection reason (the Fellow will be notified and the slot becomes re-uploadable):');
-    if(reason===null) return;
-    row.dataset.vstatus='done';
-    row.querySelector('.vacts').innerHTML='<span class="pill red"><span class="pdot"></span>Rejected</span>';
-    const sm=row.querySelector('.vb small'); sm.style.color='var(--red)'; sm.textContent='Rejected: "'+(reason||'reason recorded')+'" — Fellow notified';
-    row.querySelector('.vi').style.cssText='background:var(--red-50);color:var(--red)';
-  } else {
-    row.dataset.vstatus='done';
-    row.querySelector('.vacts').innerHTML='<span class="pill green"><span class="pdot"></span>Accepted</span>';
-    row.querySelector('.vi').style.cssText='background:var(--green-50);color:var(--green)';
+    // Inline rejection-reason form replaces the action buttons.
+    if(row.querySelector('.vrow-reason')) return; // already collecting
+    const acts = row.querySelector('.vacts');
+    const wrap = document.createElement('div');
+    wrap.className = 'vrow-reason';
+    wrap.style.cssText = 'flex:1 1 100%;background:#FFF1F2;border:1px solid #FFE4E6;border-radius:9px;padding:10px 12px;margin-top:8px;font-size:13px';
+    wrap.innerHTML = '<label style="display:block;font-size:11px;color:#B91C1C;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px">Rejection reason (will be sent to Fellow)</label>' +
+      '<input type="text" placeholder="e.g. Document not clearly legible — please re-scan and re-upload" style="width:100%;padding:8px 10px;border:1px solid #FFE4E6;border-radius:7px;font-family:inherit;font-size:13px;outline:none;background:#fff" />' +
+      '<div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end"><button type="button" class="btn btn-ghost btn-sm" onclick="this.closest(\'.vrow-reason\').remove()">Cancel</button><button type="button" class="btn btn-danger btn-sm" onclick="vRejectConfirm(this)">Reject document</button></div>';
+    row.appendChild(wrap);
+    setTimeout(function(){ const i = wrap.querySelector('input'); if(i) i.focus(); }, 50);
+    return;
   }
-  // update pending count chip
+  row.dataset.vstatus='done';
+  row.querySelector('.vacts').innerHTML='<span class="pill green"><span class="pdot"></span>Accepted</span>';
+  row.querySelector('.vi').style.cssText='background:var(--green-50);color:var(--green)';
+  vUpdatePendingChip();
+}
+function vRejectConfirm(btn){
+  const wrap = btn.closest('.vrow-reason');
+  const reason = wrap.querySelector('input').value.trim();
+  if(!reason){ alert('Please give a brief rejection reason — the Fellow needs to know what to fix.'); wrap.querySelector('input').focus(); return; }
+  const row = wrap.closest('.vrow');
+  row.dataset.vstatus='done';
+  wrap.remove();
+  row.querySelector('.vacts').innerHTML='<span class="pill red"><span class="pdot"></span>Rejected</span>';
+  const sm = row.querySelector('.vb small');
+  sm.style.color='var(--red)';
+  sm.textContent='Rejected: "'+reason.replace(/[<>]/g,'')+'" — Fellow notified';
+  row.querySelector('.vi').style.cssText='background:var(--red-50);color:var(--red)';
+  vUpdatePendingChip();
+}
+function vUpdatePendingChip(){
   const pending=[...document.querySelectorAll('#verifyList .vrow')].filter(r=>r.dataset.vstatus!=='done').length;
   const chip=document.querySelector('#a-verify .chip'); if(chip)chip.textContent='Pending review ('+pending+')';
 }
