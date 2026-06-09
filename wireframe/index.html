@@ -1724,7 +1724,7 @@ img{max-width:100%}
               <h3 style="color:#fff;font-size:19px;margin:10px 0 4px">Aarti P. · "Choosing between B.Com and BBA"</h3>
               <div style="color:#cfeae6;font-size:14px">Friday, 6 June · 4:00 PM · 45 min · Video call</div>
             </div>
-            <button class="btn btn-gold btn-sm">Join (link soon)</button>
+            <button class="btn btn-gold btn-sm" onclick="joinSession(this)">Join (link soon)</button>
           </div>
         </div>
         <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:20px">
@@ -1796,7 +1796,7 @@ img{max-width:100%}
             <div style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 4px">Topic: "Choosing between B.Com and BBA"</div>
             <div style="font-size:13px;color:var(--muted)">Fri, 6 Jun · 4:00 PM · 45 min · Video call</div>
             <div class="sess-acts" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-              <button class="btn btn-gold btn-sm">Join (link soon)</button>
+              <button class="btn btn-gold btn-sm" onclick="joinSession(this)">Join (link soon)</button>
               <button class="btn btn-primary btn-sm" onclick="mSession(this,'done')">Mark complete</button>
               <button class="btn btn-ghost btn-sm" onclick="mSession(this,'cancel')">Cancel / Reschedule</button>
               <button class="btn btn-ghost btn-sm" onclick="mNote(this)">+ Mentor note</button>
@@ -1808,7 +1808,7 @@ img{max-width:100%}
             <div style="font-size:13.5px;color:var(--ink-soft);margin:6px 0 4px">Topic: "Engineering entrance prep + scholarships"</div>
             <div style="font-size:13px;color:var(--muted)">Sun, 8 Jun · 11:00 AM · 45 min · Video call</div>
             <div class="sess-acts" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
-              <button class="btn btn-gold btn-sm">Join (link soon)</button>
+              <button class="btn btn-gold btn-sm" onclick="joinSession(this)">Join (link soon)</button>
               <button class="btn btn-primary btn-sm" onclick="mSession(this,'done')">Mark complete</button>
               <button class="btn btn-ghost btn-sm" onclick="mSession(this,'cancel')">Cancel / Reschedule</button>
               <button class="btn btn-ghost btn-sm" onclick="mNote(this)">+ Mentor note</button>
@@ -2102,7 +2102,7 @@ img{max-width:100%}
         <div class="dupbox">
           <div class="dt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>First, check for an existing profile</div>
           <p>A student can be onboarded only once. Search by <b>email</b> or <b>full name</b> — duplicates are blocked (BR-01).</p>
-          <div class="sbar"><input placeholder="Enter email or student's full name…" /><button class="btn btn-ghost btn-sm">Search</button></div>
+          <div class="sbar"><input placeholder="Enter email or student's full name…" id="dupSearchInput" /><button class="btn btn-ghost btn-sm" onclick="dupSearch()">Search</button></div>
         </div>
 
         <div class="dt-form" id="onbForm">
@@ -2368,7 +2368,7 @@ img{max-width:100%}
             <div class="dt-actions">
               <div class="dt-act-meta">Section <b id="dtSecCur">1</b> of 8 · all sections on one page</div>
               <div class="dt-act-btns">
-                <button class="btn btn-ghost btn-sm">Save draft</button>
+                <button class="btn btn-ghost btn-sm" onclick="saveDraft(this)">Save draft</button>
                 <button class="btn btn-primary" onclick="onbSubmit()">Submit Onboarding ✓</button>
               </div>
             </div>
@@ -2476,7 +2476,7 @@ img{max-width:100%}
         <!-- Profile tab -->
         <div class="tabpane on" id="fp-profile">
           <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="font-size:18px">Student Profile</h3><button class="btn btn-ghost btn-sm">Edit profile</button></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="font-size:18px">Student Profile</h3><button class="btn btn-ghost btn-sm" onclick="alert('Edit profile — opens the profiling form. Editable by the assigned Fellow and Program Admin; every edit is audit-logged (RBAC).')">Edit profile</button></div>
             <p style="font-size:12.5px;color:var(--muted);margin-bottom:6px">Editable by the assigned Fellow and Program Admin · all edits are audit-logged.</p>
             <div class="grid g-2">
               <div class="field"><div class="k">Date of Birth</div><div class="v">14 August 2005</div></div>
@@ -2762,12 +2762,12 @@ img{max-width:100%}
           <div class="card appitem" data-astatus="approved" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
             <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">S</div>
             <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Sneha Patil</b><div style="font-size:12.5px;color:var(--muted)">Dr Babasaheb Ambedkar Swadhar Yojana · ₹50,000</div></div>
-            <span class="pill teal"><span class="pdot"></span>Application Approved</span><button class="btn btn-gold btn-sm">Record disbursement</button>
+            <span class="pill teal"><span class="pdot"></span>Application Approved</span><button class="btn btn-gold btn-sm" onclick="event.stopPropagation();go('f-student');setTimeout(function(){const t=document.querySelectorAll('#f-student .tabs button');if(t[3])ftab(t[3],'fp-apps');},100)">Record disbursement</button>
           </div></div>
           <div class="card appitem" data-astatus="approved" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
             <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#2f6fd6,#1c4ea8);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">V</div>
             <div style="flex:1;min-width:160px"><b style="font-size:14.5px">Vikram Jadhav</b><div style="font-size:12.5px;color:var(--muted)">Shahu Maharaj Fee Reimbursement · ₹62,000</div></div>
-            <span class="pill teal"><span class="pdot"></span>Application Approved</span><button class="btn btn-gold btn-sm">Record disbursement</button>
+            <span class="pill teal"><span class="pdot"></span>Application Approved</span><button class="btn btn-gold btn-sm" onclick="event.stopPropagation();go('f-student');setTimeout(function(){const t=document.querySelectorAll('#f-student .tabs button');if(t[3])ftab(t[3],'fp-apps');},100)">Record disbursement</button>
           </div></div>
           <div class="card appitem" data-astatus="benefits" onclick="go('f-student')" style="cursor:pointer;margin-bottom:10px"><div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
             <div class="sa" style="width:42px;height:42px;border-radius:11px;background:linear-gradient(140deg,#2f6fd6,#1c4ea8);color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;flex:0 0 42px">P</div>
@@ -3166,7 +3166,7 @@ img{max-width:100%}
             <div class="dt-actions">
               <div class="dt-act-meta">Section <b id="schSecCur">1</b> of 7 · <span id="schBranchLbl">Path A · Scholarship Support</span></div>
               <div class="dt-act-btns">
-                <button class="btn btn-ghost btn-sm">Save draft</button>
+                <button class="btn btn-ghost btn-sm" onclick="saveDraft(this)">Save draft</button>
                 <button class="btn btn-primary" onclick="schSubmit()">Save Entry ✓</button>
               </div>
             </div>
@@ -3405,22 +3405,22 @@ img{max-width:100%}
 
         <div class="card" style="margin-bottom:12px"><div class="sch-card">
           <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
-          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Government of India Post-Matric Scholarship</h4><button class="btn btn-ghost btn-sm">Edit</button></div>
+          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Government of India Post-Matric Scholarship</h4><button class="btn btn-ghost btn-sm" onclick="editScholarship('Government of India Post-Matric Scholarship')">Edit</button></div>
           <div class="meta"><span>Category: SC</span><span>Income ≤ ₹2.5L</span><span><b class="amount">₹50,000</b>/yr</span><span>8 docs required</span></div></div>
         </div></div>
         <div class="card" style="margin-bottom:12px"><div class="sch-card">
           <div class="logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">OB</div>
-          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Post Matric Scholarship to OBC Students</h4><button class="btn btn-ghost btn-sm">Edit</button></div>
+          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Post Matric Scholarship to OBC Students</h4><button class="btn btn-ghost btn-sm" onclick="editScholarship('Post Matric Scholarship to OBC Students')">Edit</button></div>
           <div class="meta"><span>Category: OBC</span><span>Income ≤ ₹8L</span><span><b class="amount">₹38,000</b>/yr</span><span>7 docs required</span></div></div>
         </div></div>
         <div class="card" style="margin-bottom:12px"><div class="sch-card">
           <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">MS</div>
-          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>State Minority Scholarship Part II (DHE)</h4><button class="btn btn-ghost btn-sm">Edit</button></div>
+          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>State Minority Scholarship Part II (DHE)</h4><button class="btn btn-ghost btn-sm" onclick="editScholarship('State Minority Scholarship Part II (DHE)')">Edit</button></div>
           <div class="meta"><span>Category: Minority</span><span>Income ≤ ₹8L</span><span><b class="amount">₹25,000</b>/yr</span><span>6 docs required</span></div></div>
         </div></div>
         <div class="card"><div class="sch-card">
           <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">AB</div>
-          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Dr Babasaheb Ambedkar Swadhar Yojana</h4><button class="btn btn-ghost btn-sm">Edit</button></div>
+          <div class="body"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px"><h4>Dr Babasaheb Ambedkar Swadhar Yojana</h4><button class="btn btn-ghost btn-sm" onclick="editScholarship('Dr Babasaheb Ambedkar Swadhar Yojana')">Edit</button></div>
           <div class="meta"><span>Category: SC</span><span>Hostel/Maintenance</span><span><b class="amount">₹38,000</b>/yr</span><span>6 docs required</span></div></div>
         </div></div>
       </section>
@@ -4267,6 +4267,51 @@ function filterMentors(tag,btn){
 function joinSession(btn){
   alert('Your video link will appear here 1 hour before the session starts (Friday 3:00 PM). You\'ll also get it on SMS + email.');
 }
+
+// "Save draft" — DocType-form draft save. In production this would persist to the Frappe Draft state.
+function saveDraft(btn){
+  const orig = btn.textContent;
+  btn.textContent = '✓ Draft saved';
+  btn.classList.add('case-just-saved');
+  setTimeout(function(){
+    btn.textContent = orig;
+    btn.classList.remove('case-just-saved');
+  }, 1800);
+}
+
+// Admin: Edit scholarship from the catalogue. In production this opens the same form used by "+ Add Scholarship".
+function editScholarship(name){
+  alert('Edit "' + name + '" — opens the same scheme-editor form as "+ Add Scholarship", pre-filled with the current values. Changes are audit-logged. The eligibility engine re-evaluates all students on save.');
+}
+
+// Generic lb-tools helpers (the Filter / Sort / refresh icon-buttons that appear in list-view toolbars).
+function listFilter(){ alert('Filter — advanced multi-column filter (Frappe-style). For the wireframe demo, use the chip strip below to filter by status.'); }
+function listSort(){ alert('Sort — choose a column and direction. For the wireframe demo, the table sorts by Created date descending.'); }
+function listRefresh(btn){
+  const ic = btn.querySelector('svg');
+  if(ic){ ic.style.transition = 'transform .6s ease'; ic.style.transform = 'rotate(360deg)'; setTimeout(function(){ ic.style.transition='none'; ic.style.transform='none'; }, 650); }
+}
+function listAssign(){ alert('Assign — bulk-assign the currently-selected students to a chosen Fellow. Select rows first, then click Assign. Audit-logged.'); }
+function listSearch(){ alert('Search — full-text search across the visible list. For the wireframe demo, use the status chips and date filter above to narrow the list.'); }
+
+// Onboarding form duplicate-check search.
+function dupSearch(){
+  const v = (document.getElementById('dupSearchInput')||{}).value || '';
+  if(!v.trim()){ alert('Type the student\'s email or full name to check for an existing profile.'); return; }
+  alert('Searched for "' + v.trim() + '" — no existing profile found. You can proceed to fill the onboarding form below.');
+}
+
+// Wire every .lb-tools button (Filter / Sort / refresh icon / Assign) on first load — they all use shared list* helpers.
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.lb-tools button').forEach(function(b){
+    if(b.onclick) return; // already wired explicitly
+    const txt = (b.textContent || '').trim();
+    if(txt === 'Filter') b.addEventListener('click', listFilter);
+    else if(txt === 'Sort') b.addEventListener('click', listSort);
+    else if(txt === 'Assign') b.addEventListener('click', listAssign);
+    else b.addEventListener('click', function(){ listRefresh(b); }); // refresh icon (no text)
+  });
+});
 
 // ===== Cases & Tasks (Admin a-tasks + Fellow f-tasks) =====
 // Composable filter state for Admin's a-tasks (3 filters AND together: chip state + Fellow + Journey stage).
