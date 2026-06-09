@@ -911,6 +911,27 @@ img{max-width:100%}
 .fp .topbar{box-shadow:0 1px 0 rgba(0,0,0,.03)}
 .fp .portal-foot{text-align:center;padding:26px 16px 8px;color:var(--muted);font-size:12px}
 .fp .portal-foot b{color:var(--teal-700)}
+
+/* ---- Frappe Web Portal sidebar polish (mirror of .fd refinement, adapted for Portal warmth) ---- */
+.fp .rail{padding:16px 13px}
+.fp .brand{padding:6px 8px 14px;gap:11px}
+.fp .brand .mark{width:40px;height:40px;border-radius:11px;font-size:20px}
+.fp .brand .name{font-size:18px}
+.fp .brand .tag{font-size:11px;color:rgba(214,239,236,.7);letter-spacing:.04em}
+.fp .nav{gap:2px;margin-top:4px}
+.fp .nav-label{color:rgba(214,239,236,.55);font-size:10.5px;padding:13px 10px 5px;letter-spacing:.14em}
+.fp .nav a{font-size:14px;border-radius:9px;padding:9px 11px;gap:11px;font-weight:500;color:#cfe9e5}
+.fp .nav a svg{width:18px;height:18px;flex:0 0 18px;opacity:.85}
+.fp .nav a:hover{background:rgba(255,255,255,.09);color:#fff}
+.fp .nav a:hover svg{opacity:1}
+.fp .nav a.active{background:rgba(255,255,255,.16);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.fp .nav a.active svg{opacity:1;color:#fff}
+.fp .nav a.active::before{left:-13px;width:4px;height:22px;background:var(--marigold);border-radius:0 4px 4px 0}
+.fp .nav a .soon{font-size:10px;background:rgba(246,178,74,.2);color:var(--marigold-soft);padding:2px 7px}
+.fp .rail-foot{background:rgba(255,255,255,.08);border-radius:10px;padding:11px;gap:10px}
+.fp .rail-foot .av{width:36px;height:36px;font-size:15px}
+.fp .rail-foot .who{font-size:13px}
+.fp .rail-foot .who small{font-size:11.5px;color:rgba(214,239,236,.75)}
 /* ---- mentor weekly availability grid ---- */
 .availgrid{display:grid;grid-template-columns:54px repeat(7,1fr);gap:7px;margin-top:6px}
 .availgrid .day{text-align:center;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
@@ -1025,7 +1046,7 @@ img{max-width:100%}
       <div class="mark">स</div>
       <div>
         <div class="name">Samavesh</div>
-        <div class="tag">From margins to mainstream</div>
+        <div class="tag">Student Portal</div>
       </div>
     </div>
     <nav class="nav">
@@ -1589,7 +1610,7 @@ img{max-width:100%}
 <!-- ===================================================================== -->
 <div class="app hidden fp" id="mentorApp">
   <aside class="rail">
-    <div class="brand"><div class="mark">स</div><div><div class="name">Samavesh</div><div class="tag">Mentor</div></div></div>
+    <div class="brand"><div class="mark">स</div><div><div class="name">Samavesh</div><div class="tag">Mentor Portal</div></div></div>
     <nav class="nav">
       <div class="nav-label">Mentoring</div>
       <a href="#" class="nav-link active" data-go="m-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg>Home</a>
