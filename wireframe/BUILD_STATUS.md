@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — Journey funnel 6→5 stages + Rejected/Re-apply demo across all surfaces._
+_Last updated: 2026-06-09 — Final subagent review pass: composable filters, inline forms (no more prompts), all inert buttons wired._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,35 @@ _Last updated: 2026-06-09 — Journey funnel 6→5 stages + Rejected/Re-apply de
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## Final subagent review + fixes (2026-06-09) — done
+
+Three parallel subagents reviewed the whole interface for bugs, cross-surface consistency, and silent failures. Consolidated findings + applied all critical fixes.
+
+### Agent 1 (bug review) — fixed
+- [x] Admin a-tasks filters now compose: `filterCases` + `filterCasesByFellow` + `filterCasesByStage` are AND-combined via a shared `_applyCaseFilters()` driven by 3 module-scoped state vars. Picking a Fellow no longer wipes the active state filter.
+- [x] `filterCases` chip-bar `.on` class now correctly cleared when a `.csum` summary card is clicked. Both visualisations (chip bar + summary cards) stay in sync.
+- [x] `filterCasesByFellow` / `filterCasesByStage` now toggle `caseEmpty` (was latent, masked by demo data — fixed for robustness).
+- [x] `CRUMBS` map: added entries for `f-tasks`, `a-tasks`, `a-bulkupload` so breadcrumb doesn't go stale on navigation.
+
+### Agent 2 (cross-surface consistency) — verified clean
+- All 5 patterns (5-stage funnel · SMM Re-apply visibility · Must Have/Good to Have grouping · sidebar polish · status vocab) ripple correctly across all relevant surfaces. **No inconsistencies found** — first time a verification pass came back fully green.
+
+### Agent 3 (silent-failure hunt) — fixed
+- [x] 3 remaining `prompt()` instances replaced with inline forms:
+  - `mSession` cancellation → inline reason input below the action row + mSessionConfirmCancel
+  - `mNote` → inline textarea form + mNoteSave (styled saved-note view)
+  - `vAct` rejection (Admin Document Verification) → inline rejection-reason form (red-tinted) + vRejectConfirm
+- [x] All ~15 previously-inert buttons wired:
+  - 4× "Join (link soon)" mentor session buttons → joinSession
+  - 2× "Save draft" buttons → new saveDraft(btn) (green-flash confirmation)
+  - 1× Fellow's "Edit profile" → alert matching Admin's working version
+  - 4× Admin Catalogue "Edit" buttons → editScholarship(name)
+  - 1× Onboarding "Search" button → dupSearch() with input validation
+  - 2× cross-student "Record disbursement" buttons → stopPropagation + navigate + auto-open Applications tab (fixes the parent-card click bubbling)
+  - All `.lb-tools` Filter / Sort / refresh / Assign buttons across 6 list views → wired via DOM-ready delegation to listFilter / listSort / listRefresh / listAssign helpers
+
+**Net result:** every button on the wireframe is now functional per the `samavesh-no-half-baked` Rule #1.
 
 ## Cases & Tasks module + 3 placeholder tabs (2026-06-09) — done
 
