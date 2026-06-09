@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — Student journey re-wired end-to-end (multi-app status, Also Eligible, doc grouping, functional filters)._
+_Last updated: 2026-06-09 — Journey funnel 6→5 stages + Rejected/Re-apply demo across all surfaces._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,28 @@ _Last updated: 2026-06-09 — Student journey re-wired end-to-end (multi-app sta
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## Journey funnel 6→5 + Rejected visibility (2026-06-09) — done
+
+User decisions: collapse MIS-06 6 stages → **5 stages** with Disbursement as a sub-status of the terminal Decision stage. Also surface Rejected/Re-apply cases — they were missing from all demo applications.
+
+- [x] **Canonical 5-stage funnel**: Onboarded → Eligibility Identified → Documents Complete → Submitted → **Decision** (sub-statuses: Approved · funds awaited / Approved · Disbursed / Re-apply / Rejected)
+- [x] All 9 `.scholar-row .sr-mini` mini-funnels reduced from 6 to 5 dots (Student Home + Fellow f-student + Admin a-student)
+- [x] All "N of 6" step counters → "N of 5"
+- [x] `A_JOURNEY` JS array reduced to 5 entries; `STAGE_TO_STEP` mapping merges approved/disbursed/reapply/rejected all to index 4
+- [x] Admin MIS Dashboard funnel: 6 bars → 5 bars + new Decision breakdown row showing 4 sub-status counts with colored dots
+- [x] Admin All Students stage dropdown: 5 stages + Approved sub-split (funds awaited / Disbursed)
+- [x] Memory `samavesh-status-model` updated with the new canonical 5-stage model
+- [x] **4th demo application** SMM Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship in Re-apply state — visible on every surface:
+  - Student Home (4th scholar-row, red 4th-dot indicator)
+  - Student Scholarships (4th detailed card with full Rejected → Re-apply timeline, red border-left)
+  - Fellow f-student (4th scholar-row)
+  - Fellow fp-apps (full Re-apply detail card with 3 wired action buttons)
+  - Fellow fp-sch Eligible Schemes (RC moved from Not Yet Applied to Already Applied with deep-link)
+  - Admin a-student (4th scholar-row)
+  - Admin ap-apps (read-only oversight card with rejection box)
+  - Admin ap-sch Eligible Schemes (same RC move)
+- [x] Hero copy: "3 scholarship applications" → "4"; stats "3 Scholarships identified" → "4"
 
 ## Student journey re-wire (2026-06-09) — done
 
