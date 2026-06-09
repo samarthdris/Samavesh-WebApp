@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — 4 user-flagged consistency fixes (scroll-spy, radio rule, multi-app status, doc grouping ripples)._
+_Last updated: 2026-06-09 — Eligible Schemes tab, clickable scholar-rows, functional Applications buttons (no more half-baked UI)._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,22 @@ _Last updated: 2026-06-09 — 4 user-flagged consistency fixes (scroll-spy, radi
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## Consistency fixes II — Eligible Schemes + functional Applications (2026-06-09) — done
+
+Three substantial fixes flagged by user; saved `samavesh-no-half-baked` memory for next time.
+
+- [x] **Redundancy removed**: The "Scholarships" tab on student-detail no longer duplicates the top "Scholarship Applications" block. Renamed to **"Eligible Schemes"** — shows catalogue-matched schemes grouped into:
+  - **Already Applied** (3 schemes with "View application details →" deep-link)
+  - **Eligible — Not Yet Applied** (3 schemes with "+ Apply for this" CTA → opens Scholarship Data Entry form)
+  Each row shows eligibility criteria matched.
+- [x] **Top "Scholarship Applications" rows are now clickable** — clicking PM/MS/AB navigates to the Applications tab, scrolls to that app's card, briefly outlines it. Works on both `f-student` (Fellow) and `a-student` (Admin) views.
+- [x] **Applications tab buttons are now fully functional** (Fellow's view):
+  - Status dropdown (`updateAppStatus`) updates the pill in real time using the canonical form vocabulary.
+  - "Add correction note" (`addCorrectionNote`) opens an inline textarea with Save/Cancel; Save replaces the form with a styled note view.
+  - "Record Disbursement & Close" (`recordDisbursement`) validates inputs, updates the pill to "Benefits Received", replaces the form with a confirmation banner.
+  - Each card has `data-app` attribute for deep-linking.
+- [x] **Rippled to a-student** (Admin view): same Eligible Schemes structure (read-only — no Fellow CTAs), clickable scholar-rows, data-app on Applications cards. Added the previously-missing 3rd application card (Dr. Babasaheb Ambedkar) for consistency.
 
 ## Consistency fixes (2026-06-09) — done
 User flagged 4 issues that should have been caught earlier (saved as `samavesh-ripple-check` memory for next time).
