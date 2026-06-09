@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — All Fellow forms redesigned to Frappe DocType pattern._
+_Last updated: 2026-06-09 — Anchor nav moved from left sidebar to horizontal top tab bar (more form breathing room)._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,16 @@ _Last updated: 2026-06-09 — All Fellow forms redesigned to Frappe DocType patt
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## Form anchor nav → horizontal top tabs (2026-06-09) — done
+- [x] `.dt-anchors` reskinned from vertical 220px left sidebar → horizontal pill tab bar at the top of the form body
+- [x] `.dt-form` grid collapsed (no more 2-column layout for the anchors); form gets full width (~30% breathing room gain)
+- [x] Active-tab styling: teal-50 pill bg + teal-700 text + filled teal-700 numbered chip
+- [x] Sticky positioning preserved (tabs follow you as you scroll); scroll-spy + click-to-smooth-scroll unchanged
+- [x] Scroll-spy threshold bumped 140→170, section `scroll-margin-top` bumped 80→150 to account for the sticky tab bar
+- [x] Applied automatically to both Form 1 (`#onbForm`) and Form 2 (`#schForm`) — no HTML changes needed, CSS-only restyle
+- [x] Form 3 (`#docForm`) untouched — it uses `.dt-form.simple` which has no anchors
+- Skill: `frappe-dashboard-design` ("zero whitespace waste") + `frappe-doctype-skill` (real Frappe Tab Break is horizontal at top, not a side nav)
 
 ## All Fellow forms redesigned (2026-06-09) — done
 

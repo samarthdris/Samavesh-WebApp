@@ -516,17 +516,39 @@ img{max-width:100%}
 /* form nav */
 .fnav{display:flex;justify-content:space-between;gap:12px;margin-top:10px;padding-top:20px;border-top:1px solid var(--line)}
 
-/* ---------- DocType form (onboarding redesign — Frappe single-page pattern) ---------- */
-.dt-form{display:grid;grid-template-columns:220px 1fr;gap:28px;max-width:1100px;align-items:start}
-.dt-form.simple{grid-template-columns:1fr;max-width:780px}
-.dt-anchors{position:sticky;top:84px;display:flex;flex-direction:column;gap:2px;padding:14px 0;border-right:1px solid var(--line)}
-.dt-anchors a{display:flex;align-items:center;gap:10px;padding:9px 14px;font-size:13px;color:var(--ink-soft);text-decoration:none;border-left:2px solid transparent;transition:.15s;cursor:pointer}
-.dt-anchors a .anum{font-size:11px;font-weight:700;color:var(--muted);min-width:18px;text-align:center}
+/* ---------- DocType form (Frappe single-page pattern; horizontal anchor tabs above body) ---------- */
+.dt-form{display:block;max-width:1100px}
+.dt-form.simple{max-width:780px}
+.dt-anchors{
+  position:sticky;top:80px;z-index:6;
+  display:flex;flex-wrap:wrap;gap:2px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  padding:6px;
+  margin-bottom:16px;
+  box-shadow:var(--shadow-sm);
+}
+.dt-anchors a{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;font-size:13px;
+  color:var(--ink-soft);text-decoration:none;
+  border-radius:8px;
+  transition:.15s;cursor:pointer;
+  white-space:nowrap;
+}
+.dt-anchors a .anum{
+  font-size:11px;font-weight:700;color:var(--muted);
+  min-width:18px;text-align:center;
+  background:var(--cream);
+  padding:2px 7px;border-radius:20px;
+}
 .dt-anchors a:hover{color:var(--ink);background:var(--cream)}
-.dt-anchors a.on{color:var(--teal-700);border-left-color:var(--teal-700);font-weight:600;background:var(--teal-50)}
-.dt-anchors a.on .anum{color:var(--teal-700)}
+.dt-anchors a.on{color:var(--teal-700);font-weight:600;background:var(--teal-50)}
+.dt-anchors a.on .anum{background:var(--teal-700);color:#fff}
+.dt-anchors a.hidden{display:none}
 .dt-body{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm);overflow:hidden}
-.dt-section{padding:24px 28px;border-bottom:1px solid var(--line);scroll-margin-top:80px}
+.dt-section{padding:24px 28px;border-bottom:1px solid var(--line);scroll-margin-top:150px}
 .dt-section:last-of-type{border-bottom:none}
 .dt-sec-title{font-family:'Fraunces';font-size:18px;font-weight:600;color:var(--teal-700);margin-bottom:4px;display:flex;align-items:center;gap:10px}
 .dt-sec-title .anum{font-size:11px;font-weight:700;background:var(--teal-50);color:var(--teal-700);padding:3px 9px;border-radius:20px;letter-spacing:.04em}
@@ -3373,7 +3395,7 @@ function schScrollSpy(){
   let curIdx=0;
   sections.forEach(function(s,i){
     const r=s.getBoundingClientRect();
-    if(r.top<=140) curIdx=i;
+    if(r.top<=170) curIdx=i;
   });
   anchors.forEach(function(a,i){ a.classList.toggle('on',i===curIdx); });
   const meta=document.getElementById('schSecCur');
@@ -3497,7 +3519,7 @@ function onbScrollSpy(){
   let curIdx=0;
   sections.forEach(function(s,i){
     const r=s.getBoundingClientRect();
-    if(r.top<=140) curIdx=i;
+    if(r.top<=170) curIdx=i;
   });
   anchors.forEach(function(a,i){ a.classList.toggle('on',i===curIdx); });
   const meta=document.getElementById('dtSecCur');
