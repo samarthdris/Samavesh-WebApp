@@ -1082,20 +1082,67 @@ img{max-width:100%}
         <div class="hero stagger">
           <div class="greet">Good afternoon,</div>
           <h2>Welcome back, Aarti 🌿</h2>
-          <p>You're doing great. Your Post-Matric scholarship is now <b style="color:#fff">Under Scrutiny</b> — we'll let you know the moment it moves forward.</p>
+          <p>You have <b style="color:#fff">3 scholarship applications</b> in progress and <b style="color:#fff">8 documents</b> on file. Tap any application below to see its full journey.</p>
           <div class="quote">“ From the margins to the mainstream. ”</div>
         </div>
 
-        <!-- Journey path -->
-        <div class="journey">
-          <div class="jh"><h3>My Scholarship Journey</h3><span>Post-Matric Scholarship · Step 4 of 6</span></div>
-          <div class="path">
-            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Onboarded</div><div class="sub">12 Apr</div></div>
-            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Scholarship Identified</div><div class="sub">3 schemes</div></div>
-            <div class="step done"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></div><div class="lbl">Documents Complete</div><div class="sub">All Accepted</div></div>
-            <div class="step current"><div class="bub">4</div><div class="lbl">Submitted</div><div class="sub">Under Scrutiny</div></div>
-            <div class="step upcoming"><div class="bub">5</div><div class="lbl">Approved</div><div class="sub">Awaited</div></div>
-            <div class="step upcoming"><div class="bub">6</div><div class="lbl">Disbursed</div><div class="sub">—</div></div>
+        <!-- My Applications — one row per scheme with separate status (matches Fellow/Admin pattern) -->
+        <div class="scholar-apps">
+          <div class="sah">
+            <h3>My Scholarship Applications</h3>
+            <span class="sah-meta">3 active · tap to see details</span>
+          </div>
+          <div class="sah-lead">Each scholarship has its own progress. The 6 dots show where you are in the overall journey.</div>
+
+          <div class="scholar-row" onclick="studentSelectApp('pm',event)" title="See full timeline">
+            <div class="sr-head">
+              <div class="sr-logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
+              <div class="sr-name"><b>Post-Matric Scholarship for SC Students</b><small>Submitted by Fellow Rahul · 28 May · Department reviewing</small></div>
+            </div>
+            <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span>
+            <div class="sr-mini" title="Step 4 of 6">
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms cur"></span><span class="ml"></span>
+              <span class="ms"></span><span class="ml"></span>
+              <span class="ms"></span>
+            </div>
+            <span class="sr-step">4 of 6</span>
+          </div>
+
+          <div class="scholar-row" onclick="studentSelectApp('ms',event)" title="See full timeline">
+            <div class="sr-head">
+              <div class="sr-logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
+              <div class="sr-name"><b>Maharashtra State Minority Scholarship</b><small>All documents Accepted · Fellow will submit on portal soon</small></div>
+            </div>
+            <span class="pill green"><span class="pdot"></span>Ready to Submit</span>
+            <div class="sr-mini" title="Step 3 of 6">
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms cur"></span><span class="ml"></span>
+              <span class="ms"></span><span class="ml"></span>
+              <span class="ms"></span><span class="ml"></span>
+              <span class="ms"></span>
+            </div>
+            <span class="sr-step">3 of 6</span>
+          </div>
+
+          <div class="scholar-row" onclick="studentSelectApp('ab',event)" title="See full timeline">
+            <div class="sr-head">
+              <div class="sr-logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
+              <div class="sr-name"><b>Dr. Babasaheb Ambedkar Scholarship</b><small>6 of 8 documents Accepted · 2 still being arranged by your Fellow</small></div>
+            </div>
+            <span class="pill amber"><span class="pdot"></span>Documents Pending</span>
+            <div class="sr-mini" title="Step 2 of 6">
+              <span class="ms done"></span><span class="ml done"></span>
+              <span class="ms cur"></span><span class="ml"></span>
+              <span class="ms"></span><span class="ml"></span>
+              <span class="ms"></span><span class="ml"></span>
+              <span class="ms"></span><span class="ml"></span>
+              <span class="ms"></span>
+            </div>
+            <span class="sr-step">2 of 6</span>
           </div>
         </div>
 
@@ -1143,7 +1190,7 @@ img{max-width:100%}
         </div>
 
         <!-- Active application with timeline -->
-        <div class="card" style="margin-bottom:18px">
+        <div class="card" data-app="pm" style="margin-bottom:18px;scroll-margin-top:100px">
           <div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
             <div class="body">
@@ -1168,8 +1215,8 @@ img{max-width:100%}
           </div>
         </div>
 
-        <div class="section-h"><h3>Ready to apply</h3></div>
-        <div class="card" style="margin-bottom:14px">
+        <div class="section-h"><h3>Ready to submit</h3><span style="font-size:13px;color:var(--muted)">Your Fellow will submit on the portal</span></div>
+        <div class="card" data-app="ms" style="margin-bottom:14px;scroll-margin-top:100px">
           <div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
             <div class="body">
@@ -1188,7 +1235,7 @@ img{max-width:100%}
           </div>
         </div>
 
-        <div class="card">
+        <div class="card" data-app="ab" style="scroll-margin-top:100px">
           <div class="sch-card">
             <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
             <div class="body">
@@ -3675,6 +3722,20 @@ function saveCorrectionNote(btn){
   saved.innerHTML = '<b class="cn-label">Correction Note · just now</b><div class="cn-body"></div>';
   saved.querySelector('.cn-body').textContent = text;
   box.replaceWith(saved);
+}
+
+// Student-side: click a row in Home's "My Applications" → navigate to Scholarships screen + scroll to that app's card + briefly outline.
+function studentSelectApp(appKey,evt){
+  if(evt) evt.stopPropagation();
+  go('scholarships');
+  setTimeout(function(){
+    const card = document.querySelector('#scholarships [data-app="'+appKey+'"]');
+    if(card){
+      card.scrollIntoView({behavior:'smooth', block:'start'});
+      card.classList.add('app-card-target');
+      setTimeout(function(){ card.classList.remove('app-card-target'); }, 1800);
+    }
+  }, 150);
 }
 
 // Record Disbursement → validates inputs, updates status pill to "Benefits Received", replaces the form with a confirmation.
