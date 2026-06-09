@@ -627,6 +627,37 @@ img{max-width:100%}
 .doc-group-banner .dgb-pill.must{background:#FFE4E6;color:#B91C1C}
 .doc-group-banner .dgb-pill.good{background:var(--marigold-50);color:#9a5b00}
 
+/* Eligible Schemes tab — applied vs not-applied groupings */
+.elig-group-h{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-700);padding:9px 14px;background:var(--teal-50);border:1px solid var(--teal-100);border-radius:9px;margin:16px 0 10px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.elig-group-h:first-child{margin-top:0}
+.elig-group-h .elig-count{font-size:11px;font-weight:700;background:#fff;color:var(--teal-700);padding:2px 9px;border-radius:20px;border:1px solid var(--teal-200)}
+.elig-criteria{font-size:11.5px;color:var(--ink-soft);margin-top:6px}
+.elig-criteria b{color:var(--teal-700);font-weight:600}
+.elig-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.elig-link{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;color:var(--teal-700);font-weight:600;cursor:pointer;background:none;border:none;padding:6px 10px;font-family:inherit;border-radius:7px;transition:.15s}
+.elig-link:hover{background:var(--teal-50);text-decoration:none}
+.elig-link svg{width:14px;height:14px}
+
+/* Correction note inline form (Applications tab) */
+.correction-note-box{margin-top:12px;padding:14px;background:var(--amber-50);border:1px solid #f0d9a8;border-radius:9px;animation:fade .25s ease}
+.correction-note-box label{display:block;font-size:11px;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.correction-note-box textarea{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;font-family:inherit;font-size:13.5px;min-height:64px;resize:vertical;outline:none;transition:.15s}
+.correction-note-box textarea:focus{border-color:var(--teal-500);box-shadow:0 0 0 3px var(--teal-50)}
+.correction-note-box .cn-acts{display:flex;gap:8px;margin-top:8px;justify-content:flex-end}
+.correction-note-saved{margin-top:12px;padding:10px 14px;background:var(--amber-50);border-left:3px solid var(--marigold);border-radius:6px;font-size:13px;animation:fade .25s ease}
+.correction-note-saved b.cn-label{display:block;font-size:11px;color:var(--marigold);text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-bottom:4px}
+.correction-note-saved .cn-body{color:var(--ink)}
+
+/* Disbursement recorded confirmation */
+.disb-recorded{background:var(--teal-50);border:1px solid var(--teal-100);border-radius:9px;padding:12px 14px;font-size:13.5px;color:var(--teal-700);display:flex;align-items:center;gap:9px;margin-top:8px;animation:fade .25s ease}
+.disb-recorded svg{flex:0 0 18px;color:var(--teal-600)}
+.disb-recorded b{color:var(--teal-900)}
+
+/* Make scholar-row clickable + brief highlight when target of appSelectInTab */
+.scholar-row{cursor:pointer;transition:background .12s ease,outline .25s ease}
+.scholar-row:hover{background:var(--cream)}
+.app-card-target{outline:2px solid var(--teal-500) !important;outline-offset:3px !important;border-radius:11px !important}
+
 /* date filter + status filter */
 .filterbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
 .fdate{display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:8px 12px}
@@ -3438,6 +3469,104 @@ function fileAct(btn,status){
   const pill=row.querySelector('.pill');
   pill.className='pill blue';pill.style.marginRight='0';pill.innerHTML='<span class="pdot"></span>Under Review';
   const small=row.querySelector('.dn small'); if(small){small.style.color='';small.textContent='Uploaded just now — sent to Program Admin for review';}
+  btn.remove();
+}
+
+// ===== Student detail — interactive Applications + Scholarship Applications click-through =====
+// Click on a row in the top "Scholarship Applications" block → jump into the Applications tab + scroll to that app's card and briefly outline it.
+function appSelectInTab(appKey,evt){
+  if(evt) evt.stopPropagation();
+  // Determine which student-detail screen is active.
+  const isAdmin = document.querySelector('#a-student.active') !== null;
+  const screenId = isAdmin ? 'a-student' : 'f-student';
+  const targetPaneId = isAdmin ? 'ap-apps' : 'fp-apps';
+  // The 4th tab button (index 3) is Applications in both views.
+  const tabBtns = document.querySelectorAll('#'+screenId+' .tabs button');
+  if(tabBtns[3]) ftab(tabBtns[3], targetPaneId);
+  setTimeout(function(){
+    const card = document.querySelector('#'+screenId+' #'+targetPaneId+' [data-app="'+appKey+'"]');
+    if(card){
+      card.scrollIntoView({behavior:'smooth', block:'start'});
+      card.classList.add('app-card-target');
+      setTimeout(function(){ card.classList.remove('app-card-target'); }, 1800);
+    }
+  }, 150);
+}
+
+// Update the application's status pill when the Fellow picks a new status from the dropdown.
+function updateAppStatus(sel){
+  const v = sel.value;
+  if(!v) return;
+  const card = sel.closest('.card');
+  if(!card) return;
+  const pill = card.querySelector('.pill');
+  if(!pill) return;
+  const map = {
+    'Under Scrutiny':       {cls:'blue',  text:'Under Scrutiny'},
+    'Application Approved': {cls:'teal',  text:'Application Approved'},
+    'Benefits Received':    {cls:'green', text:'Benefits Received'},
+    'Re-apply':             {cls:'amber', text:'Re-apply'},
+    'Rejected':             {cls:'red',   text:'Rejected'}
+  };
+  const info = map[v];
+  if(!info) return;
+  pill.className = 'pill '+info.cls;
+  pill.innerHTML = '<span class="pdot"></span>'+info.text;
+  // Reset the dropdown to its placeholder for next time.
+  sel.value = '';
+}
+
+// Open inline correction-note form. (Per Fellow SOP: a correction note logs what the portal asked for.)
+function addCorrectionNote(btn){
+  const card = btn.closest('.card');
+  if(!card || card.querySelector('.correction-note-box')) return; // ignore double-clicks
+  const box = document.createElement('div');
+  box.className = 'correction-note-box';
+  box.innerHTML =
+    '<label>Correction Note</label>' +
+    '<textarea placeholder="e.g. Portal asked for re-upload of caste certificate with notary stamp"></textarea>' +
+    '<div class="cn-acts">' +
+      '<button class="btn btn-ghost btn-sm" type="button" onclick="this.closest(\'.correction-note-box\').remove()">Cancel</button>' +
+      '<button class="btn btn-primary btn-sm" type="button" onclick="saveCorrectionNote(this)">Save Note</button>' +
+    '</div>';
+  card.appendChild(box);
+  setTimeout(function(){ const ta = box.querySelector('textarea'); if(ta) ta.focus(); }, 50);
+}
+function saveCorrectionNote(btn){
+  const box = btn.closest('.correction-note-box');
+  if(!box) return;
+  const ta = box.querySelector('textarea');
+  const text = ta ? ta.value.trim() : '';
+  if(!text){ alert('Please enter a correction note before saving.'); ta && ta.focus(); return; }
+  const saved = document.createElement('div');
+  saved.className = 'correction-note-saved';
+  saved.innerHTML = '<b class="cn-label">Correction Note · just now</b><div class="cn-body"></div>';
+  saved.querySelector('.cn-body').textContent = text;
+  box.replaceWith(saved);
+}
+
+// Record Disbursement → validates inputs, updates status pill to "Benefits Received", replaces the form with a confirmation.
+function recordDisbursement(btn){
+  const card = btn.closest('.card');
+  if(!card) return;
+  const amountInp = card.querySelector('input[type="number"]');
+  const dateInp   = card.querySelector('input[type="date"]');
+  const amount = amountInp ? amountInp.value : '';
+  const date   = dateInp ? dateInp.value : '';
+  if(!amount){ alert('Disbursed Amount is required.'); amountInp && amountInp.focus(); return; }
+  if(!date){   alert('Disbursement Date is required.'); dateInp && dateInp.focus(); return; }
+  // Update pill.
+  const pill = card.querySelector('.pill');
+  if(pill){ pill.className='pill green'; pill.innerHTML='<span class="pdot"></span>Benefits Received'; }
+  // Replace the form-grid with a confirmation banner.
+  const formGrid = card.querySelector('.form-grid');
+  if(formGrid){
+    const conf = document.createElement('div');
+    conf.className = 'disb-recorded';
+    const formatted = Number(amount).toLocaleString('en-IN');
+    conf.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><b>Disbursement recorded</b> · ₹'+formatted+' on '+date+'. Application closed.</span>';
+    formGrid.replaceWith(conf);
+  }
   btn.remove();
 }
 function setChip(btn){ btn.parentElement.querySelectorAll('.chip').forEach(c=>c.classList.remove('on')); btn.classList.add('on'); }
