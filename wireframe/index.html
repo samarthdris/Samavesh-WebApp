@@ -1305,22 +1305,95 @@ img{max-width:100%}
         <div class="page-h">
           <div class="eyebrow">Documents</div>
           <h1>My Documents</h1>
-          <p>Your document checklist. Each document moves through <b>Pending → Uploaded → Under Review → Accepted</b>. Your Fellow procures, submits and uploads every document for you — tap any document to see its full history.</p>
+          <p>Your document checklist, grouped the same way as the onboarding form. Each document moves through <b>Pending → Uploaded → Under Review → Accepted</b>. Your Fellow procures, uploads and re-uploads every document for you — tap any document to see its full history.</p>
         </div>
 
         <div class="grid g-3 stagger" style="margin-bottom:18px">
           <div class="card stat"><div class="num" style="color:var(--amber)">1</div><div class="cap">Pending</div></div>
           <div class="card stat"><div class="num" style="color:var(--blue)">1</div><div class="cap">Under Review</div></div>
-          <div class="card stat"><div class="num" style="color:var(--green)">6</div><div class="cap">Accepted</div></div>
+          <div class="card stat"><div class="num" style="color:var(--green)">5</div><div class="cap">Accepted</div></div>
         </div>
 
-        <div class="section-h"><h3>Document checklist</h3><span style="font-size:13px;color:var(--muted)">across your 3 scholarships</span></div>
+        <!-- === Must Have / Mandatory (4 docs) === -->
+        <div class="doc-group-banner">Must Have <span class="dgb-pill must">Mandatory</span></div>
 
-        <!-- (1) Pending — procurement in progress -->
-        <div class="arr-card" id="arr1">
+        <!-- Aadhaar Card — Accepted (flat row) -->
+        <div class="card" style="margin-bottom:10px">
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Aadhaar Card</b><small>Type: Identity · Accepted by Program Admin · 14 Apr</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+        </div>
+
+        <!-- Annual Income Certificate — Accepted, rich history (rejected → re-upload → accepted) -->
+        <div class="arr-card" id="arr3" style="margin-bottom:10px">
+          <div class="arr-head" onclick="toggleArr('arr3')">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Annual Income Certificate (FY 25/26)</b><small>Accepted · Validity 31 Mar 2027 · tap to see full history (incl. a Rejected → re-upload loop)</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </div>
+          <div class="docflow">
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Pending</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under&nbsp;Review</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div></div>
+          </div>
+          <div class="arr-body">
+            <div class="proc">
+              <div class="pi"><div class="k">Verification Status</div><div class="v" style="color:var(--green)">Accepted</div></div>
+              <div class="pi"><div class="k">Document Type</div><div class="v">Income</div></div>
+              <div class="pi"><div class="k">Reviewer</div><div class="v">Program Admin</div></div>
+              <div class="pi"><div class="k">Review Date</div><div class="v">20 May 2026</div></div>
+              <div class="pi"><div class="k">Validity Date</div><div class="v">31 Mar 2027</div></div>
+            </div>
+            <div class="tl">
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div><div class="d">By Fellow Rahul · 14 May · Re-upload Version 1</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">14 May</div></div>
+              <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected</div><div class="d">Rejection Reason: "Document not clearly legible" · 16 May</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div><div class="d">Re-upload by Fellow Rahul · 18 May · Re-upload Version 2</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">18 May</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div><div class="d">By Program Admin · 20 May</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10th SLC — Accepted (flat row) -->
+        <div class="card" style="margin-bottom:10px">
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>10th School Leaving Certificate</b><small>Type: Academic · Accepted by Program Admin · 14 Apr</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+        </div>
+
+        <!-- 12th SLC — Accepted (flat row) -->
+        <div class="card">
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>12th School Leaving Certificate</b><small>Type: Academic · Accepted by Program Admin · 14 Apr</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+        </div>
+
+        <!-- === Good to Have / Scholarship-specific (5 docs) === -->
+        <div class="doc-group-banner" style="margin-top:18px">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
+
+        <!-- Caste Certificate — Accepted (flat row) -->
+        <div class="card" style="margin-bottom:10px">
+          <div class="doc-row">
+            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Caste Certificate</b><small>Type: Caste · Accepted by Program Admin · 1 May</small></div>
+            <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+        </div>
+
+        <!-- Non-Creamy Layer — Pending, expandable -->
+        <div class="arr-card" id="arr1" style="margin-bottom:10px">
           <div class="arr-head" onclick="toggleArr('arr1')">
             <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Non-Creamy Layer Certificate</b><small>Required for Dr. Babasaheb Ambedkar Scholarship</small></div>
+            <div class="dn"><b>Non-Creamy Layer Certificate</b><small>Required for Dr. Babasaheb Ambedkar Scholarship · tap to see status</small></div>
             <span class="pill amber"><span class="pdot"></span>Pending</span>
             <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
           </div>
@@ -1349,11 +1422,11 @@ img{max-width:100%}
           </div>
         </div>
 
-        <!-- (2) Under Review -->
-        <div class="arr-card" id="arr2">
+        <!-- Domicile — Under Review, expandable -->
+        <div class="arr-card" id="arr2" style="margin-bottom:10px">
           <div class="arr-head" onclick="toggleArr('arr2')">
             <div class="di" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Domicile Certificate</b><small>Uploaded by your Fellow — being verified</small></div>
+            <div class="dn"><b>Domicile Certificate</b><small>Uploaded by your Fellow — being verified · tap to see status</small></div>
             <span class="pill blue"><span class="pdot"></span>Under Review</span>
             <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
           </div>
@@ -1383,65 +1456,21 @@ img{max-width:100%}
           </div>
         </div>
 
-        <!-- (3) Accepted — full history incl. Rejected → re-upload loop -->
-        <div class="arr-card" id="arr3">
-          <div class="arr-head" onclick="toggleArr('arr3')">
-            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Income Certificate</b><small>Accepted · Validity Date 31 Mar 2027</small></div>
-            <span class="pill green"><span class="pdot"></span>Accepted</span>
-            <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-          </div>
-          <div class="docflow">
-            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Pending</div></div>
-            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div></div>
-            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under&nbsp;Review</div></div>
-            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div></div>
-          </div>
-          <div class="arr-body">
-            <div class="proc">
-              <div class="pi"><div class="k">Verification Status</div><div class="v" style="color:var(--green)">Accepted</div></div>
-              <div class="pi"><div class="k">Document Type</div><div class="v">Income</div></div>
-              <div class="pi"><div class="k">Reviewer</div><div class="v">Program Admin</div></div>
-              <div class="pi"><div class="k">Review Date</div><div class="v">20 May 2026</div></div>
-              <div class="pi"><div class="k">Validity Date</div><div class="v">31 Mar 2027</div></div>
-            </div>
-            <div class="tl">
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div><div class="d">By Fellow Rahul · 14 May · Re-upload Version 1</div></div>
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">14 May</div></div>
-              <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected</div><div class="d">Rejection Reason: "Document not clearly legible" · 16 May</div></div>
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div><div class="d">Re-upload by Fellow Rahul · 18 May · Re-upload Version 2</div></div>
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">18 May</div></div>
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div><div class="d">By Program Admin · 20 May</div></div>
-            </div>
+        <!-- Ration Card — N/A (flat row) -->
+        <div class="card" style="margin-bottom:10px">
+          <div class="doc-row">
+            <div class="di" style="background:var(--cream-2);color:var(--muted)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Ration Card</b><small>Marked N/A during onboarding — family does not hold one</small></div>
+            <span class="pill grey"><span class="pdot"></span>N/A</span>
           </div>
         </div>
 
-        <!-- remaining Accepted documents -->
-        <div class="card" style="margin-top:14px">
+        <!-- Orphan Certificate — N/A (flat row) -->
+        <div class="card">
           <div class="doc-row">
-            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Caste Certificate</b><small>Document Type: Caste · Accepted 20 May</small></div>
-            <span class="pill green"><span class="pdot"></span>Accepted</span>
-          </div>
-          <div class="doc-row">
-            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Aadhaar Card</b><small>Document Type: Identity · Accepted 18 May</small></div>
-            <span class="pill green"><span class="pdot"></span>Accepted</span>
-          </div>
-          <div class="doc-row">
-            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>10th &amp; 12th Marksheet</b><small>Document Type: Academic · Accepted 18 May</small></div>
-            <span class="pill green"><span class="pdot"></span>Accepted</span>
-          </div>
-          <div class="doc-row">
-            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Bank Passbook</b><small>Document Type: Other · Accepted 18 May</small></div>
-            <span class="pill green"><span class="pdot"></span>Accepted</span>
-          </div>
-          <div class="doc-row">
-            <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Bonafide Certificate</b><small>Document Type: Academic · Accepted 18 May</small></div>
-            <span class="pill green"><span class="pdot"></span>Accepted</span>
+            <div class="di" style="background:var(--cream-2);color:var(--muted)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Orphan Certificate</b><small>Marked N/A — both parents living</small></div>
+            <span class="pill grey"><span class="pdot"></span>N/A</span>
           </div>
         </div>
       </section>
