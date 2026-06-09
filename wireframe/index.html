@@ -1771,166 +1771,263 @@ img{max-width:100%}
 
         <div class="dupbox">
           <div class="dt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>First, check for an existing profile</div>
-          <p>A student can be onboarded only once. Search by <b>Name + DOB</b> or <b>Mobile</b> — duplicates are blocked (BR-01).</p>
-          <div class="sbar"><input placeholder="Enter name + DOB or mobile number…" /><button class="btn btn-ghost btn-sm">Search</button></div>
+          <p>A student can be onboarded only once. Search by <b>email</b> or <b>full name</b> — duplicates are blocked (BR-01).</p>
+          <div class="sbar"><input placeholder="Enter email or student's full name…" /><button class="btn btn-ghost btn-sm">Search</button></div>
         </div>
 
-        <div class="formwrap" id="onbForm">
-          <div class="stepcount">Step <b>1 of 8</b></div>
-          <div class="fprogress"><i style="width:12.5%"></i></div>
+        <div class="dt-form" id="onbForm">
 
-          <!-- STEP 1: Welcome + Support Type -->
-          <div class="fstep on" data-step="1">
-            <h2 class="steptitle">Welcome &amp; Support Type</h2>
-            <div class="steplead">आपले स्वागत आहे! — personalised support for scholarships &amp; documentation, kept confidential.</div>
-            <div class="q"><div class="qen">Email <span class="req">*</span></div><div class="qmr">ईमेल</div><input type="email" placeholder="your@email.com" /></div>
-            <div class="q"><div class="qen">Please select the support required <span class="req">*</span></div><div class="qmr">आपल्याला आवश्यक असलेले सहाय्य निवडा (एकापेक्षा जास्त निवडता येईल)</div>
-              <div class="opts">
-                <label class="opt"><input type="checkbox" name="onb_support" /> Scholarship Support (Government/Private) — शिष्यवृत्ती सहाय्य</label>
-                <label class="opt"><input type="checkbox" name="onb_support" /> Documentation Support (Legal Documents) — कायदेशीर कागदपत्रे सहाय्य</label>
+          <!-- ===== Section anchor sidebar (sticky, scroll-spy) ===== -->
+          <aside class="dt-anchors">
+            <a href="#sec-support"><span class="anum">1</span>Welcome &amp; Support</a>
+            <a href="#sec-personal"><span class="anum">2</span>Personal Details</a>
+            <a href="#sec-location"><span class="anum">3</span>Location</a>
+            <a href="#sec-college"><span class="anum">4</span>College &amp; Reference</a>
+            <a href="#sec-edu"><span class="anum">5</span>Education</a>
+            <a href="#sec-docs"><span class="anum">6</span>Documents</a>
+            <a href="#sec-socio"><span class="anum">7</span>Socio-economic</a>
+            <a href="#sec-consent"><span class="anum">8</span>Aspirations &amp; Consent</a>
+          </aside>
+
+          <!-- ===== Form body (single-scroll, no Continue buttons) ===== -->
+          <div class="dt-body">
+
+            <!-- §1 Welcome & Support Type -->
+            <section class="dt-section" id="sec-support">
+              <h3 class="dt-sec-title"><span class="anum">1</span>Welcome &amp; Support Type</h3>
+              <div class="dt-sec-lead">आपले स्वागत आहे! — personalised support for scholarships &amp; documentation, kept confidential.</div>
+              <div class="dt-grid">
+                <div class="q full"><div class="qen">Email <span class="req">*</span></div><div class="qmr">ईमेल</div><input type="email" placeholder="student@gmail.com" /><div class="qhelp">Becomes the student's sign-in identifier (Google SSO or magic link).</div></div>
+                <div class="q full"><div class="qen">Please select the support required <span class="req">*</span></div><div class="qmr">आपल्याला आवश्यक असलेले सहाय्य निवडा (एकापेक्षा जास्त निवडता येईल)</div>
+                  <div class="opts">
+                    <label class="opt"><input type="checkbox" name="onb_support" /> Scholarship Support (Government/Private) — शिष्यवृत्ती सहाय्य</label>
+                    <label class="opt"><input type="checkbox" name="onb_support" /> Documentation Support (Legal Documents) — कायदेशीर कागदपत्रे सहाय्य</label>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- §2 Personal Details -->
+            <section class="dt-section" id="sec-personal">
+              <h3 class="dt-sec-title"><span class="anum">2</span>Personal Details</h3>
+              <div class="dt-sec-lead">वैयक्तिक माहिती</div>
+              <div class="dt-grid">
+                <div class="q full"><div class="qen">Full Name (as per govt document) <span class="req">*</span></div><div class="qmr">पूर्ण नाव (शासकीय कागदपत्रानुसार)</div><input type="text" placeholder="Full name as on Govt ID" /></div>
+                <div class="q"><div class="qen">Date of Birth <span class="req">*</span></div><div class="qmr">जन्मतारीख</div>
+                  <div class="dob-inline">
+                    <input type="date" id="onbDob" />
+                    <span class="dob-age empty" id="onbAge">Age: —</span>
+                  </div>
+                  <div class="qhelp">Age in years (1 decimal) auto-calculated from DOB.</div>
+                </div>
+                <div class="q"><div class="qen">Gender <span class="req">*</span></div><div class="qmr">लिंग</div>
+                  <select id="onbGender"><option value="">Select / निवडा…</option></select>
+                  <div class="qhelp">Driven by the Gender master (Frappe Link field in production).</div>
+                </div>
+                <div class="q"><div class="qen">Contact Number (preferably WhatsApp) <span class="req">*</span></div><div class="qmr">संपर्क क्रमांक (आवडीनुसार व्हॉट्सअ‍ॅप नंबर)</div>
+                  <div class="mobile-input">
+                    <input type="tel" id="onbMobile" maxlength="10" placeholder="10-digit mobile" />
+                    <span class="mobile-verify" id="onbMobileVerify"></span>
+                  </div>
+                  <div class="qhelp">Validated as Indian 10-digit mobile (starts with 6/7/8/9). Used for SMS reminders only — login is by email.</div>
+                </div>
+                <div class="q"><div class="qen">Date of Form Submission <span class="req">*</span></div><div class="qmr">फॉर्म भरण्याची तारीख</div><input type="date" value="2026-06-09" /><div class="qhelp">Auto-filled to today — override only for back-dated entries.</div></div>
+              </div>
+            </section>
+
+            <!-- §3 Location -->
+            <section class="dt-section" id="sec-location">
+              <h3 class="dt-sec-title"><span class="anum">3</span>Location</h3>
+              <div class="dt-sec-lead">पत्ता</div>
+              <div class="dt-grid">
+                <div class="q full"><div class="qen">State <span class="req">*</span></div><div class="qmr">राज्य</div>
+                  <select onchange="onState(this)"><option value="">Select state</option><option value="Maharashtra">Maharashtra / महाराष्ट्र</option><option value="Tamil Nadu">Tamil Nadu / तमिळनाडू</option><option value="Karnataka">Karnataka / कर्नाटक</option><option value="Other">Other / इतर</option></select></div>
+                <div class="q full"><div class="qen">Permanent Address (as per govt address proof) <span class="req">*</span></div><div class="qmr">कायमचा पत्ता (शासकीय कागदपत्रांनुसार)</div><textarea id="onbPermAddr" placeholder="Full permanent address"></textarea></div>
+                <div class="q full" id="mhDistricts"><div class="qen">District — Permanent (as per Govt ID) <span class="req">*</span></div><div class="qmr">जिल्हा (कायम पत्त्यानुसार)</div>
+                  <select><option value="">Select district</option><option>Ahmednagar (Ahilyanagar)</option><option>Akola</option><option>Amravati</option><option>Chhatrapati Sambhaji Nagar (Aurangabad)</option><option>Beed</option><option>Bhandara</option><option>Buldhana</option><option>Chandrapur</option><option>Dhule</option><option>Gadchiroli</option><option>Gondia</option><option>Hingoli</option><option>Jalgaon</option><option>Jalna</option><option>Kolhapur</option><option>Latur</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Nagpur</option><option>Nanded</option><option>Nandurbar</option><option>Nashik</option><option>Dharashiv (Osmanabad)</option><option>Palghar</option><option>Parbhani</option><option>Pune</option><option>Raigad</option><option>Ratnagiri</option><option>Sangli</option><option>Satara</option><option>Sindhudurg</option><option>Solapur</option><option>Thane</option><option>Wardha</option><option>Washim</option><option>Yavatmal</option><option>Other</option></select></div>
+                <div class="q full" id="otherDistrict" style="display:none"><div class="qen">District — Permanent <span class="req">*</span></div><div class="qmr">जिल्हा</div><input type="text" placeholder="Enter your district" /></div>
+                <div class="q full"><div class="qen">Current Address of Residence <span class="req">*</span></div><div class="qmr">सध्याच्या राहण्याचा पत्ता</div>
+                  <label class="inline-cb"><input type="checkbox" onchange="sameAddr(this,'onbPermAddr','onbCurrAddr')" /> Same as permanent address / कायम पत्त्याप्रमाणेच</label>
+                  <textarea id="onbCurrAddr" placeholder="Current address"></textarea></div>
+                <div class="q full"><div class="qen">District — Current Residence <span class="req">*</span></div><div class="qmr">सध्याच्या राहण्याच्या पत्त्यानुसार जिल्हा</div>
+                  <select><option value="">Select district</option><option>Pune</option><option>Nashik</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Thane</option><option>Satara</option><option>Kolhapur</option><option>Other</option></select></div>
+              </div>
+            </section>
+
+            <!-- §4 College & Reference -->
+            <section class="dt-section" id="sec-college">
+              <h3 class="dt-sec-title"><span class="anum">4</span>College &amp; Reference</h3>
+              <div class="dt-sec-lead">महाविद्यालय व संदर्भ</div>
+              <div class="dt-grid">
+                <div class="q"><div class="qen">College Name <span class="req">*</span></div><div class="qmr">महाविद्यालयाचे नाव</div>
+                  <select><option value="">Search &amp; select college…</option><option>Fergusson College, Pune</option><option>Sir Parshurambhau (S.P.) College, Pune</option><option>Modern College, Pune</option><option>Brihan Maharashtra College of Commerce (BMCC)</option><option>Abasaheb Garware College</option><option>Nowrosjee Wadia College</option><option>MIT World Peace University</option><option>College of Engineering Pune (COEP)</option><option>Symbiosis College of Arts &amp; Commerce</option><option>D. Y. Patil College</option><option>PCCOE, Pimpri</option><option>Ness Wadia College of Commerce</option><option>Other</option></select>
+                  <div class="qhelp">Searchable dropdown — full college list maintained by Admin in production.</div></div>
+                <div class="q"><div class="qen">How did you hear about SAMAVESH? <span class="req">*</span></div><div class="qmr">तुम्हाला आमच्याबद्दल कसे समजले?</div>
+                  <select>
+                    <option value="">Select / निवडा…</option>
+                    <option>GSP Girls</option>
+                    <option>Mudita Alliance</option>
+                    <option>Chaitanya</option>
+                    <option>Forbes Marshall Kasarwadi</option>
+                    <option>College</option>
+                    <option>Eaton Employees</option>
+                    <option>Thermax Foundation</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+            </section>
+
+            <!-- §5 Education -->
+            <section class="dt-section" id="sec-edu">
+              <h3 class="dt-sec-title"><span class="anum">5</span>Educational Background</h3>
+              <div class="dt-sec-lead">शैक्षणिक माहिती</div>
+              <div class="dt-grid">
+                <div class="q"><div class="qen">Current Grade of Study <span class="req">*</span></div><div class="qmr">सध्याच्या शिक्षणाची इयत्ता/स्तर</div>
+                  <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Graduation - 5th Year</option><option>Masters - 1st Year</option><option>Masters - 2nd Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+                <div class="q"><div class="qen">Stream <span class="req">*</span></div><div class="qmr">शाखा</div>
+                  <select><option value="">Select</option><option>Arts / Humanities</option><option>Commerce &amp; Management</option><option>Science</option><option>Engineering &amp; Technology (B.Tech/B.E.)</option><option>Medical Science</option><option>Law</option><option>Design &amp; Media</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+                <div class="q full"><div class="qen">Current Marks Obtained <span class="req">*</span></div><div class="qmr">सध्याचे गुण</div><input type="text" placeholder="e.g. 72% or CGPA 7.8" /><div class="qhelp">Enter as percentage (e.g. 72%) or CGPA (e.g. 7.8).</div></div>
+                <div class="q"><div class="qen">Previous Grade of Study <span class="req">*</span></div><div class="qmr">मागील इयत्ता</div>
+                  <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+                <div class="q"><div class="qen">Marks Obtained in Previous Grade <span class="req">*</span></div><div class="qmr">मागील इयत्तेतील गुण</div><input type="text" placeholder="e.g. 68% or CGPA 7.2" /></div>
+              </div>
+            </section>
+
+            <!-- §6 Documents (child-table, Must Have / Good to Have) -->
+            <section class="dt-section" id="sec-docs">
+              <h3 class="dt-sec-title"><span class="anum">6</span>Documents</h3>
+              <div class="dt-sec-lead">कोणती कागदपत्रे आहेत व कोणत्या कागदपत्रांसाठी मदत हवी आहे हे समजून घेण्यासाठी. Mark availability and attach if you have the document in hand.</div>
+              <table class="doc-ctable">
+                <thead><tr><th>Document</th><th>Status</th><th>Attachment</th></tr></thead>
+
+                <tbody class="doc-group">
+                  <tr class="doc-group-h"><td colspan="3">Must Have <span class="doc-pill must">Mandatory</span></td></tr>
+                  <tr><td class="doc-name">Aadhar Card</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                  <tr><td class="doc-name">Annual Income Certificate (FY 25/26)</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                  <tr><td class="doc-name">10th School Leaving Certificate</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                  <tr><td class="doc-name">12th School Leaving Certificate</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option><option value="na">N/A — not yet completed 12th</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                </tbody>
+
+                <tbody class="doc-group">
+                  <tr class="doc-group-h"><td colspan="3">Good to Have <span class="doc-pill good">Scholarship-specific</span></td></tr>
+                  <tr><td class="doc-name">Caste Certificate</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option><option value="na">N/A</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                  <tr><td class="doc-name">Non-Creamy Layer Certificate</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option><option value="na">N/A</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                  <tr><td class="doc-name">Domicile Certificate</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                  <tr><td class="doc-name">Ration Card</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                  <tr><td class="doc-name">Orphan Certificate</td>
+                    <td class="doc-stat"><select><option value="">Select…</option><option value="have">Have it</option><option value="dont">Don't have</option><option value="na">N/A</option></select></td>
+                    <td class="doc-att"><button type="button" class="attach-btn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.4 11 12 20.4a5 5 0 1 1-7-7L14 4.5a3.5 3.5 0 1 1 5 5l-9 9a2 2 0 0 1-3-3l8-8"/></svg>Attach</button></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="dt-help note">Any document marked "Don't have" automatically becomes a Documentation Application task for the Fellow to procure. Must-Have items block scholarship submission until Accepted.</div>
+            </section>
+
+            <!-- §7 Socio-economic -->
+            <section class="dt-section" id="sec-socio">
+              <h3 class="dt-sec-title"><span class="anum">7</span>Socio-Economic Details</h3>
+              <div class="dt-sec-lead">सामाजिक-आर्थिक माहिती</div>
+              <div class="dt-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>The first three questions are optional / पहिले तीन प्रश्न ऐच्छिक आहेत. Shared in confidence to match the right support.</div>
+              <div class="dt-grid">
+                <div class="q"><div class="qen">Social Background</div><div class="qmr">सामाजिक प्रवर्ग (ऐच्छिक)</div>
+                  <select>
+                    <option value="">Select / निवडा…</option>
+                    <option value="">Prefer not to answer / सांगू इच्छित नाही</option>
+                    <option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>SEBC</option><option>SBC</option><option>EWS</option><option>General</option><option>Other</option>
+                  </select>
+                </div>
+                <div class="q"><div class="qen">Annual Family Income</div><div class="qmr">वार्षिक कौटुंबिक उत्पन्न (ऐच्छिक)</div>
+                  <select>
+                    <option value="">Select / निवडा…</option>
+                    <option value="">Prefer not to answer</option>
+                    <option>Less than ₹50,000</option>
+                    <option>₹50,000 – ₹1 lakh</option>
+                    <option>₹1 – 2 lakh</option>
+                    <option>₹2 – 4 lakh</option>
+                    <option>₹4 – 8 lakh</option>
+                    <option>₹8 lakh and above</option>
+                  </select>
+                </div>
+                <div class="q full"><div class="qen">Identities / Vulnerability Markers</div><div class="qmr">ओळख (ऐच्छिक, एकापेक्षा जास्त निवडता येईल)</div>
+                  <div class="opts">
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Persons with Disabilities / अपंगत्व</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Economically Disadvantaged / आर्थिकदृष्ट्या मागास</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> First Generation Learner / पहिली व्यक्ती जी उच्च शिक्षण घेत आहे</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Single Parent / एकल पालक</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Orphan / अनाथ</label>
+                    <label class="opt optout"><input type="checkbox" name="onb_vuln" /> Prefer not to answer</label>
+                  </div></div>
+                <div class="q"><div class="qen">Single Parent Child? <span class="req">*</span></div><div class="qmr">एकल पालकाचे अपत्य?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_sp" /> Yes</label><label class="opt"><input type="radio" name="onb_sp" /> No</label></div></div>
+                <div class="q"><div class="qen">Do parents have any disability? <span class="req">*</span></div><div class="qmr">पालकांना काही अपंगत्व आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_pd" /> Yes</label><label class="opt"><input type="radio" name="onb_pd" /> No</label><label class="opt"><input type="radio" name="onb_pd" /> Maybe</label></div></div>
+                <div class="q"><div class="qen">Family Occupation / Parents' Income Source <span class="req">*</span></div><div class="qmr">कौटुंबिक व्यवसाय / उत्पन्नाचा स्रोत</div>
+                  <select>
+                    <option value="">Select / निवडा…</option>
+                    <option>Farming / शेती</option>
+                    <option>Daily Wages / मजुरी</option>
+                    <option>Service / नोकरी</option>
+                    <option>Business / व्यवसाय</option>
+                    <option>Seasonal / Contract work</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="q"><div class="qen">Type of House <span class="req">*</span></div><div class="qmr">घराचा प्रकार (एकापेक्षा जास्त निवडता येईल)</div>
+                  <div class="opts row"><label class="opt"><input type="checkbox" name="onb_house" /> Own house</label><label class="opt"><input type="checkbox" name="onb_house" /> Rented house</label><label class="opt"><input type="checkbox" name="onb_house" /> Kaccha</label><label class="opt"><input type="checkbox" name="onb_house" /> Pakka</label></div></div>
+                <div class="q"><div class="qen">Any drug-addiction problem at home? <span class="req">*</span></div><div class="qmr">घरात व्यसनाची समस्या आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_drug" /> Yes</label><label class="opt"><input type="radio" name="onb_drug" /> No</label><label class="opt"><input type="radio" name="onb_drug" /> Maybe</label><label class="opt optout"><input type="radio" name="onb_drug" /> PNS</label></div></div>
+                <div class="q"><div class="qen">WiFi / Internet connection at home? <span class="req">*</span></div><div class="qmr">घरी इंटरनेट आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_net" /> Yes</label><label class="opt"><input type="radio" name="onb_net" /> No</label></div></div>
+                <div class="q"><div class="qen">Computer or Laptop at home? <span class="req">*</span></div><div class="qmr">घरी संगणक/लॅपटॉप आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_comp" /> Yes</label><label class="opt"><input type="radio" name="onb_comp" /> No</label></div></div>
+              </div>
+            </section>
+
+            <!-- §8 Aspirations + Consent -->
+            <section class="dt-section" id="sec-consent">
+              <h3 class="dt-sec-title"><span class="anum">8</span>Aspirations &amp; Consent</h3>
+              <div class="dt-sec-lead">स्वतःबद्दल थोडे अधिक सांगा! + सहमती</div>
+              <div class="dt-grid">
+                <div class="q full"><div class="qen">Immediate Goals</div><div class="qmr">तातडीची उद्दिष्टे (ऐच्छिक)</div><textarea placeholder="E.g. Pass my 12th exams, apply for scholarship…"></textarea></div>
+                <div class="q full"><div class="qen">Long-term Career Aspirations</div><div class="qmr">दीर्घकालीन ध्येय (ऐच्छिक)</div><textarea placeholder="E.g. Become a doctor, start my own business…"></textarea></div>
+                <div class="q full"><div class="qen">Anything else you'd like to share</div><div class="qmr">इतर काही (ऐच्छिक)</div><textarea placeholder="Any other information…"></textarea></div>
+                <div class="q full">
+                  <div class="consent-box" style="margin-top:8px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" style="flex:0 0 20px;color:var(--teal-700)"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                    <div class="ct"><b>Consent Declaration / सहमती:</b> I authorise SAMAVESH Action For Impact to collect this information and to act on government scholarship portals on the student's behalf, under the DPDP Act, 2023. <b>Type the student/guardian name below to give consent / सहमती देण्यासाठी खाली नाव टाका.</b></div></div>
+                </div>
+                <div class="q full"><div class="qen">Consent — type full name <span class="req">*</span></div><input type="text" id="onbConsent" placeholder="Type student / guardian full name" /></div>
+              </div>
+            </section>
+
+            <!-- Sticky bottom action bar -->
+            <div class="dt-actions">
+              <div class="dt-act-meta">Section <b id="dtSecCur">1</b> of 8 · all sections on one page</div>
+              <div class="dt-act-btns">
+                <button class="btn btn-ghost btn-sm">Save draft</button>
+                <button class="btn btn-primary" onclick="onbSubmit()">Submit Onboarding ✓</button>
               </div>
             </div>
-            <div class="fnav"><span></span><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
-          </div>
 
-          <!-- STEP 2: Personal Details -->
-          <div class="fstep" data-step="2">
-            <h2 class="steptitle">Personal Details</h2><div class="steplead">वैयक्तिक माहिती</div>
-            <div class="q"><div class="qen">Full Name (as per govt document) <span class="req">*</span></div><div class="qmr">पूर्ण नाव (शासकीय कागदपत्रानुसार)</div><input type="text" placeholder="Full name as on Govt ID" /></div>
-            <div class="q"><div class="qen">Date of Form Submission <span class="req">*</span></div><div class="qmr">फॉर्म भरण्याची तारीख</div><input type="date" value="2026-06-04" /><div class="qhelp">Auto-filled to today — override only for back-dated entries.</div></div>
-            <div class="q"><div class="qen">Age <span class="req">*</span></div><div class="qmr">वय</div>
-              <select><option value="">Select age</option><option>Below 15</option><option>15</option><option>16</option><option>17</option><option>18</option><option>19</option><option>20</option><option>21</option><option>22</option><option>23</option><option>24</option><option>25</option><option>26</option><option>27</option><option>28</option><option>29</option><option>30</option><option>30 above</option></select></div>
-            <div class="q"><div class="qen">Contact Number (preferably WhatsApp) <span class="req">*</span></div><div class="qmr">संपर्क क्रमांक (आवडीनुसार व्हॉट्सअ‍ॅप नंबर)</div><input type="tel" placeholder="10-digit mobile" /><div class="qhelp">Used to reach the student about scholarship updates &amp; reminders.</div></div>
-            <div class="q"><div class="qen">Gender <span class="req">*</span></div><div class="qmr">लिंग</div>
-              <div class="opts">
-                <label class="opt"><input type="radio" name="onb_gender" /> Male / पुरुष</label>
-                <label class="opt"><input type="radio" name="onb_gender" /> Female / स्त्री</label>
-                <label class="opt"><input type="radio" name="onb_gender" /> Non-Binary / नॉन-बायनरी</label>
-                <label class="opt"><input type="radio" name="onb_gender" /> Other / इतर</label>
-                <label class="opt optout"><input type="radio" name="onb_gender" /> Prefer not to say / सांगू इच्छित नाही</label>
-              </div>
-            </div>
-            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
-          </div>
-
-          <!-- STEP 3: Location -->
-          <div class="fstep" data-step="3">
-            <h2 class="steptitle">Location</h2><div class="steplead">पत्ता</div>
-            <div class="q"><div class="qen">State <span class="req">*</span></div><div class="qmr">राज्य</div>
-              <select onchange="onState(this)"><option value="">Select state</option><option value="Maharashtra">Maharashtra / महाराष्ट्र</option><option value="Tamil Nadu">Tamil Nadu / तमिळनाडू</option><option value="Karnataka">Karnataka / कर्नाटक</option><option value="Other">Other / इतर</option></select></div>
-            <div class="q"><div class="qen">Permanent Address (as per govt address proof) <span class="req">*</span></div><div class="qmr">कायमचा पत्ता (शासकीय कागदपत्रांनुसार)</div><textarea id="onbPermAddr" placeholder="Full permanent address"></textarea></div>
-            <div class="q" id="mhDistricts"><div class="qen">District — Permanent (as per Govt ID) <span class="req">*</span></div><div class="qmr">जिल्हा (कायम पत्त्यानुसार)</div>
-              <select><option value="">Select district</option><option>Ahmednagar (Ahilyanagar)</option><option>Akola</option><option>Amravati</option><option>Chhatrapati Sambhaji Nagar (Aurangabad)</option><option>Beed</option><option>Bhandara</option><option>Buldhana</option><option>Chandrapur</option><option>Dhule</option><option>Gadchiroli</option><option>Gondia</option><option>Hingoli</option><option>Jalgaon</option><option>Jalna</option><option>Kolhapur</option><option>Latur</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Nagpur</option><option>Nanded</option><option>Nandurbar</option><option>Nashik</option><option>Dharashiv (Osmanabad)</option><option>Palghar</option><option>Parbhani</option><option>Pune</option><option>Raigad</option><option>Ratnagiri</option><option>Sangli</option><option>Satara</option><option>Sindhudurg</option><option>Solapur</option><option>Thane</option><option>Wardha</option><option>Washim</option><option>Yavatmal</option><option>Other</option></select></div>
-            <div class="q" id="otherDistrict" style="display:none"><div class="qen">District — Permanent <span class="req">*</span></div><div class="qmr">जिल्हा</div><input type="text" placeholder="Enter your district" /></div>
-            <div class="q"><div class="qen">Current Address of Residence <span class="req">*</span></div><div class="qmr">सध्याच्या राहण्याचा पत्ता</div>
-              <label class="inline-cb"><input type="checkbox" onchange="sameAddr(this,'onbPermAddr','onbCurrAddr')" /> Same as permanent address / कायम पत्त्याप्रमाणेच</label>
-              <textarea id="onbCurrAddr" placeholder="Current address"></textarea></div>
-            <div class="q"><div class="qen">District — Current Residence <span class="req">*</span></div><div class="qmr">सध्याच्या राहण्याच्या पत्त्यानुसार जिल्हा</div>
-              <select><option value="">Select district</option><option>Pune</option><option>Nashik</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Thane</option><option>Satara</option><option>Kolhapur</option><option>Other</option></select></div>
-            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
-          </div>
-
-          <!-- STEP 4: College & Reference -->
-          <div class="fstep" data-step="4">
-            <h2 class="steptitle">College &amp; Reference</h2><div class="steplead">महाविद्यालय व संदर्भ</div>
-            <div class="q"><div class="qen">College Name <span class="req">*</span></div><div class="qmr">महाविद्यालयाचे नाव</div>
-              <select><option value="">Search &amp; select college…</option><option>Fergusson College, Pune</option><option>Sir Parshurambhau (S.P.) College, Pune</option><option>Modern College, Pune</option><option>Brihan Maharashtra College of Commerce (BMCC)</option><option>Abasaheb Garware College</option><option>Nowrosjee Wadia College</option><option>MIT World Peace University</option><option>College of Engineering Pune (COEP)</option><option>Symbiosis College of Arts &amp; Commerce</option><option>D. Y. Patil College</option><option>PCCOE, Pimpri</option><option>Ness Wadia College of Commerce</option><option>Other</option></select>
-              <div class="qhelp">Searchable dropdown — full college list maintained by Admin in production.</div></div>
-            <div class="q"><div class="qen">How did you hear about SAMAVESH? <span class="req">*</span></div><div class="qmr">तुम्हाला आमच्याबद्दल कसे समजले?</div>
-              <div class="opts">
-                <label class="opt"><input type="radio" name="onb_ref" /> GSP Girls</label>
-                <label class="opt"><input type="radio" name="onb_ref" /> Mudita Alliance</label>
-                <label class="opt"><input type="radio" name="onb_ref" /> Chaitanya</label>
-                <label class="opt"><input type="radio" name="onb_ref" /> Forbes Marshall Kasarwadi</label>
-                <label class="opt"><input type="radio" name="onb_ref" /> College</label>
-                <label class="opt"><input type="radio" name="onb_ref" /> Eaton Employees</label>
-                <label class="opt"><input type="radio" name="onb_ref" /> Thermax Foundation</label>
-                <label class="opt"><input type="radio" name="onb_ref" /> Other</label>
-              </div>
-            </div>
-            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
-          </div>
-
-          <!-- STEP 5: Education -->
-          <div class="fstep" data-step="5">
-            <h2 class="steptitle">Educational Background</h2><div class="steplead">शैक्षणिक माहिती</div>
-            <div class="q"><div class="qen">Current Grade of Study <span class="req">*</span></div><div class="qmr">सध्याच्या शिक्षणाची इयत्ता/स्तर</div>
-              <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Graduation - 5th Year</option><option>Masters - 1st Year</option><option>Masters - 2nd Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
-            <div class="q"><div class="qen">Stream <span class="req">*</span></div><div class="qmr">शाखा</div>
-              <select><option value="">Select</option><option>Arts / Humanities</option><option>Commerce &amp; Management</option><option>Science</option><option>Engineering &amp; Technology (B.Tech/B.E.)</option><option>Medical Science</option><option>Law</option><option>Design &amp; Media</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
-            <div class="q"><div class="qen">Current Marks Obtained <span class="req">*</span></div><div class="qmr">सध्याचे गुण</div><input type="text" placeholder="e.g. 72% or CGPA 7.8" /><div class="qhelp">Enter as percentage (e.g. 72%) or CGPA (e.g. 7.8).</div></div>
-            <div class="q"><div class="qen">Previous Grade of Study <span class="req">*</span></div><div class="qmr">मागील इयत्ता</div>
-              <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
-            <div class="q"><div class="qen">Marks Obtained in Previous Grade <span class="req">*</span></div><div class="qmr">मागील इयत्तेतील गुण</div><input type="text" placeholder="e.g. 68% or CGPA 7.2" /></div>
-            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
-          </div>
-
-          <!-- STEP 6: Documents matrix -->
-          <div class="fstep" data-step="6">
-            <h2 class="steptitle">Documents (Eligibility &amp; Applicability)</h2><div class="steplead">कोणती कागदपत्रे आहेत व कोणत्या कागदपत्रांसाठी मदत हवी आहे हे समजून घेण्यासाठी.</div>
-            <div class="matrix-wrap"><table class="matrix">
-              <thead><tr><th>Document / कागदपत्र</th><th>Have it<span class="mr">आहे</span></th><th>Don't have<span class="mr">नाही</span></th><th>N/A</th></tr></thead>
-              <tbody>
-                <tr><td>Aadhar Card</td><td class="cc"><input type="radio" name="d_aadhar"/></td><td class="cc"><input type="radio" name="d_aadhar"/></td><td class="cc">—</td></tr>
-                <tr><td>Caste Certificate</td><td class="cc"><input type="radio" name="d_caste"/></td><td class="cc"><input type="radio" name="d_caste"/></td><td class="cc"><input type="radio" name="d_caste"/></td></tr>
-                <tr><td>Domicile Certificate</td><td class="cc"><input type="radio" name="d_dom"/></td><td class="cc"><input type="radio" name="d_dom"/></td><td class="cc">—</td></tr>
-                <tr><td>Annual Income Certificate (FY 25/26)</td><td class="cc"><input type="radio" name="d_inc"/></td><td class="cc"><input type="radio" name="d_inc"/></td><td class="cc">—</td></tr>
-                <tr><td>Non-Creamy Layer Certificate</td><td class="cc"><input type="radio" name="d_ncl"/></td><td class="cc"><input type="radio" name="d_ncl"/></td><td class="cc"><input type="radio" name="d_ncl"/></td></tr>
-                <tr><td>Ration Card</td><td class="cc"><input type="radio" name="d_rat"/></td><td class="cc"><input type="radio" name="d_rat"/></td><td class="cc">—</td></tr>
-                <tr><td>10th School Leaving Certificate</td><td class="cc"><input type="radio" name="d_10"/></td><td class="cc"><input type="radio" name="d_10"/></td><td class="cc">—</td></tr>
-                <tr><td>12th School Leaving Certificate</td><td class="cc"><input type="radio" name="d_12"/></td><td class="cc"><input type="radio" name="d_12"/></td><td class="cc">—</td></tr>
-                <tr><td>Orphan Certificate</td><td class="cc"><input type="radio" name="d_orp"/></td><td class="cc"><input type="radio" name="d_orp"/></td><td class="cc"><input type="radio" name="d_orp"/></td></tr>
-              </tbody>
-            </table></div>
-            <div class="qhelp" style="margin-top:12px">Any document marked "Don't have" becomes a Documentation Application task for the Fellow to procure.</div>
-            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
-          </div>
-
-          <!-- STEP 7: Socio-economic -->
-          <div class="fstep" data-step="7">
-            <h2 class="steptitle">Socio-Economic Details</h2><div class="steplead">सामाजिक-आर्थिक माहिती</div>
-            <div class="optbanner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>The first three questions are optional / पहिले तीन प्रश्न ऐच्छिक आहेत. Shared in confidence to match the right support.</div>
-            <div class="q"><div class="qen">Social Background</div><div class="qmr">सामाजिक प्रवर्ग (ऐच्छिक)</div>
-              <div class="opts">
-                <label class="opt optout"><input type="radio" name="onb_caste" /> Prefer not to answer / सांगू इच्छित नाही</label>
-                <label class="opt"><input type="radio" name="onb_caste" /> SC</label><label class="opt"><input type="radio" name="onb_caste" /> ST</label><label class="opt"><input type="radio" name="onb_caste" /> OBC</label><label class="opt"><input type="radio" name="onb_caste" /> VJNT</label><label class="opt"><input type="radio" name="onb_caste" /> SEBC</label><label class="opt"><input type="radio" name="onb_caste" /> SBC</label><label class="opt"><input type="radio" name="onb_caste" /> EWS</label><label class="opt"><input type="radio" name="onb_caste" /> General</label><label class="opt"><input type="radio" name="onb_caste" /> Other</label>
-              </div></div>
-            <div class="q"><div class="qen">Identities / Vulnerability Markers</div><div class="qmr">ओळख (ऐच्छिक, एकापेक्षा जास्त निवडता येईल)</div>
-              <div class="opts">
-                <label class="opt"><input type="checkbox" name="onb_vuln" /> Persons with Disabilities / अपंगत्व</label>
-                <label class="opt"><input type="checkbox" name="onb_vuln" /> Economically Disadvantaged / आर्थिकदृष्ट्या मागास</label>
-                <label class="opt"><input type="checkbox" name="onb_vuln" /> First Generation Learner / पहिली व्यक्ती जी उच्च शिक्षण घेत आहे</label>
-                <label class="opt"><input type="checkbox" name="onb_vuln" /> Single Parent / एकल पालक</label>
-                <label class="opt"><input type="checkbox" name="onb_vuln" /> Orphan / अनाथ</label>
-                <label class="opt optout"><input type="checkbox" name="onb_vuln" /> Prefer not to answer</label>
-              </div></div>
-            <div class="q"><div class="qen">Annual Family Income</div><div class="qmr">वार्षिक कौटुंबिक उत्पन्न (ऐच्छिक)</div>
-              <div class="opts">
-                <label class="opt optout"><input type="radio" name="onb_income" /> Prefer not to answer</label>
-                <label class="opt"><input type="radio" name="onb_income" /> Less than ₹50,000</label><label class="opt"><input type="radio" name="onb_income" /> ₹50,000 – ₹1 lakh</label><label class="opt"><input type="radio" name="onb_income" /> ₹1 – 2 lakh</label><label class="opt"><input type="radio" name="onb_income" /> ₹2 – 4 lakh</label><label class="opt"><input type="radio" name="onb_income" /> ₹4 – 8 lakh</label><label class="opt"><input type="radio" name="onb_income" /> ₹8 lakh and above</label>
-              </div></div>
-            <div class="q"><div class="qen">Single Parent Child? <span class="req">*</span></div><div class="qmr">एकल पालकाचे अपत्य?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_sp" /> Yes</label><label class="opt"><input type="radio" name="onb_sp" /> No</label></div></div>
-            <div class="q"><div class="qen">Do parents have any disability? <span class="req">*</span></div><div class="qmr">पालकांना काही अपंगत्व आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_pd" /> Yes</label><label class="opt"><input type="radio" name="onb_pd" /> No</label><label class="opt"><input type="radio" name="onb_pd" /> Maybe</label></div></div>
-            <div class="q"><div class="qen">Family Occupation / Parents' Income Source <span class="req">*</span></div><div class="qmr">कौटुंबिक व्यवसाय / उत्पन्नाचा स्रोत</div>
-              <div class="opts"><label class="opt"><input type="radio" name="onb_occ" /> Farming / शेती</label><label class="opt"><input type="radio" name="onb_occ" /> Daily Wages / मजुरी</label><label class="opt"><input type="radio" name="onb_occ" /> Service / नोकरी</label><label class="opt"><input type="radio" name="onb_occ" /> Business / व्यवसाय</label><label class="opt"><input type="radio" name="onb_occ" /> Seasonal / Contract work</label><label class="opt"><input type="radio" name="onb_occ" /> Other</label></div></div>
-            <div class="q"><div class="qen">Type of House <span class="req">*</span></div><div class="qmr">घराचा प्रकार (एकापेक्षा जास्त निवडता येईल)</div>
-              <div class="opts row"><label class="opt"><input type="checkbox" name="onb_house" /> Own house</label><label class="opt"><input type="checkbox" name="onb_house" /> Rented house</label><label class="opt"><input type="checkbox" name="onb_house" /> Kaccha house / कच्चे घर</label><label class="opt"><input type="checkbox" name="onb_house" /> Pakka house / पक्के घर</label></div></div>
-            <div class="q"><div class="qen">Any drug-addiction problem at home? <span class="req">*</span></div><div class="qmr">घरात व्यसनाची समस्या आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_drug" /> Yes</label><label class="opt"><input type="radio" name="onb_drug" /> No</label><label class="opt"><input type="radio" name="onb_drug" /> Maybe</label><label class="opt optout"><input type="radio" name="onb_drug" /> Prefer not to answer</label></div></div>
-            <div class="q"><div class="qen">WiFi / Internet connection at home? <span class="req">*</span></div><div class="qmr">घरी इंटरनेट आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_net" /> Yes</label><label class="opt"><input type="radio" name="onb_net" /> No</label></div></div>
-            <div class="q"><div class="qen">Computer or Laptop at home? <span class="req">*</span></div><div class="qmr">घरी संगणक/लॅपटॉप आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_comp" /> Yes</label><label class="opt"><input type="radio" name="onb_comp" /> No</label></div></div>
-            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Continue / पुढे जा →</button></div>
-          </div>
-
-          <!-- STEP 8: Aspirations + Consent -->
-          <div class="fstep" data-step="8">
-            <h2 class="steptitle">Aspirations &amp; Consent</h2><div class="steplead">स्वतःबद्दल थोडे अधिक सांगा! + सहमती</div>
-            <div class="q"><div class="qen">Immediate Goals</div><div class="qmr">तातडीची उद्दिष्टे (ऐच्छिक)</div><textarea placeholder="E.g. Pass my 12th exams, apply for scholarship…"></textarea></div>
-            <div class="q"><div class="qen">Long-term Career Aspirations</div><div class="qmr">दीर्घकालीन ध्येय (ऐच्छिक)</div><textarea placeholder="E.g. Become a doctor, start my own business…"></textarea></div>
-            <div class="q"><div class="qen">Anything else you'd like to share</div><div class="qmr">इतर काही (ऐच्छिक)</div><textarea placeholder="Any other information…"></textarea></div>
-            <div class="consent-box" style="margin-top:8px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" style="flex:0 0 20px;color:var(--teal-700)"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-              <div class="ct"><b>Consent Declaration / सहमती:</b> I authorise SAMAVESH Action For Impact to collect this information and to act on government scholarship portals on the student's behalf, under the DPDP Act, 2023. <b>Type the student/guardian name below to give consent / सहमती देण्यासाठी खाली नाव टाका.</b></div></div>
-            <div class="q"><div class="qen">Consent — type full name <span class="req">*</span></div><input type="text" id="onbConsent" placeholder="Type student / guardian full name" /></div>
-            <div class="fnav"><button class="btn btn-ghost" onclick="formGo('onbForm',-1)">← Back / मागे</button><button class="btn btn-primary" onclick="formGo('onbForm',1)">Submit / सबमिट करा ✓</button></div>
           </div>
         </div>
       </section>
