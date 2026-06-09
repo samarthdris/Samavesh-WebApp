@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — SSO login redesign (Google + magic link)._
+_Last updated: 2026-06-09 — Onboarding form redesign (Frappe DocType pattern)._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,22 @@ _Last updated: 2026-06-09 — SSO login redesign (Google + magic link)._
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## Onboarding form redesign (2026-06-09) — done
+- [x] Single-page Frappe DocType form replaces the 8-step "Continue" wizard
+- [x] Left sticky **anchor sidebar with scroll-spy** (8 sections preserved as anchors, not steps)
+- [x] **DOB picker** → auto-calculated **age in years (1 decimal)** displayed inline (replaces old Age dropdown)
+- [x] **Mobile validated** as Indian 10-digit (regex `/^[6-9]\d{9}$/`); shows ✓ Valid / ✗ Invalid chip on blur
+- [x] **Gender as master** — dropdown driven by `GENDER_MASTER` array (5 entries, codes M/F/NB/O/PNS); same array will become the future Frappe Gender DocType, reusable across all forms
+- [x] **Documents child-table** — grouped Must Have / Mandatory (4 docs) and Good to Have / Scholarship-specific (5 docs); each row has Status dropdown + Attach button (enabled only when status="Have it")
+- [x] All radio lists with ≥4 options converted to **dropdowns** (Social Background, Annual Income, Family Occupation, How heard, etc.)
+- [x] **Duplicate-check changed**: Name+DOB-or-Mobile → **Email OR full Name** (matches SSO email-as-primary-identifier)
+- [x] **Sticky bottom action bar**: Save draft (secondary) + Submit Onboarding (primary)
+- [x] No "Continue" buttons anywhere; user scrolls the whole form on a single page
+- [x] Form section 2-column grid layout (Frappe Column Break equivalent) — Personal section uses (Full Name full-width) → (DOB+age, Gender) → (Mobile, Form Date) etc.
+- [x] **Forms 2 (Scholarship Data Entry) and 3 (Documentation Application) untouched** — they keep the `.fstep`/`formGo` wizard for now
+- Spec+plan: `docs/superpowers/specs/2026-06-09-onboarding-form-redesign.md`, `docs/superpowers/plans/2026-06-09-onboarding-form-redesign.md`
+- Skills applied: `frappe-doctype-skill` (Date / Phone-validated Data / Link-to-master / Select / Table child-table fieldtypes; Section Break + Column Break form layout), `frappe-dashboard-design` (Inter type scale, light theme, 4px spacing, button hierarchy, status-chip palette). `frappe-custom-html-block` not applicable here (form is not a CHB).
 
 ## SSO login (2026-06-09) — done
 - [x] `wireframe/index.html` login redesigned: mobile-number/OTP → unified email-based sign-in
