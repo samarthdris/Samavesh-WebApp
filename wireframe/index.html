@@ -2954,6 +2954,7 @@ function go(id){
   document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.dataset.go===id));
   setCrumb(id);
   window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='f-onboard' && typeof onbInit==='function') setTimeout(onbInit,0);
 }
 const CRUMBS={'f-home':'Home','f-students':'Students','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-profile':'My Settings'};
 function setCrumb(id){
@@ -3135,6 +3136,130 @@ function onState(sel){
   if(sel.value==='Maharashtra'){mh.style.display='';if(other)other.style.display='none';}
   else{mh.style.display='none';if(other)other.style.display='';}
 }
+
+// ===== Onboarding form (Frappe DocType pattern) =====
+// Gender master — mock of the production Gender DocType. Other forms will Link to the same codes.
+const GENDER_MASTER = [
+  {code:'M',   en:'Male',           mr:'पुरुष'},
+  {code:'F',   en:'Female',         mr:'स्त्री'},
+  {code:'NB',  en:'Non-Binary',     mr:'नॉन-बायनरी'},
+  {code:'O',   en:'Other',          mr:'इतर'},
+  {code:'PNS', en:'Prefer not to say', mr:'सांगू इच्छित नाही'}
+];
+function onbInit(){
+  // Populate gender dropdown from master (matches future Frappe Link → Gender DocType).
+  const sel=document.getElementById('onbGender');
+  if(sel && !sel.dataset.populated){
+    sel.innerHTML='<option value="">Select / निवडा…</option>' +
+      GENDER_MASTER.map(g=>'<option value="'+g.code+'">'+g.en+' / '+g.mr+'</option>').join('');
+    sel.dataset.populated='1';
+  }
+  // Wire DOB → age recompute.
+  const dob=document.getElementById('onbDob');
+  if(dob && !dob.dataset.wired){ dob.addEventListener('change',onbDobChange); dob.dataset.wired='1'; }
+  // Wire mobile blur + live-revalidate.
+  const mob=document.getElementById('onbMobile');
+  if(mob && !mob.dataset.wired){
+    mob.addEventListener('blur',onbMobileBlur);
+    mob.addEventListener('input',function(){
+      const chip=document.getElementById('onbMobileVerify');
+      if(chip && (chip.classList.contains('ok') || chip.classList.contains('bad'))) onbMobileBlur();
+    });
+    mob.dataset.wired='1';
+  }
+  // Wire document status selects (Attach button enable/disable).
+  document.querySelectorAll('#onbForm .doc-ctable td.doc-stat select').forEach(function(s){
+    if(s.dataset.wired) return;
+    s.addEventListener('change',onbDocStatus);
+    s.dataset.wired='1';
+  });
+  // Wire anchor smooth-scroll.
+  document.querySelectorAll('#onbForm .dt-anchors a').forEach(function(a){
+    if(a.dataset.wired) return;
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      const id=a.getAttribute('href').slice(1);
+      const sec=document.getElementById(id);
+      if(sec) sec.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+    a.dataset.wired='1';
+  });
+  // Bind scroll-spy to the Fellow content scroll container (or window as fallback).
+  if(!document._onbSpyBound){
+    const main=document.querySelector('#fellowApp .content') || window;
+    main.addEventListener('scroll',onbScrollSpy,{passive:true});
+    document._onbSpyBound=true;
+  }
+  onbScrollSpy();
+}
+function onbDobChange(){
+  const dob=document.getElementById('onbDob').value;
+  const out=document.getElementById('onbAge');
+  if(!out) return;
+  if(!dob){ out.textContent='Age: —'; out.classList.add('empty'); return; }
+  const ms=new Date().getTime()-new Date(dob).getTime();
+  const years=ms/(365.25*24*3600*1000);
+  if(years<0 || years>120){ out.textContent='Age: invalid date'; out.classList.add('empty'); return; }
+  out.textContent='Age: '+years.toFixed(1)+' years';
+  out.classList.remove('empty');
+}
+function onbMobileBlur(){
+  const inp=document.getElementById('onbMobile');
+  const v=(inp.value||'').replace(/\D/g,'');
+  const chip=document.getElementById('onbMobileVerify');
+  if(!chip) return;
+  chip.classList.remove('ok','bad');
+  if(!v){ return; } // empty = no chip
+  const valid=/^[6-9]\d{9}$/.test(v);
+  if(valid){
+    chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Valid';
+    chip.classList.add('ok');
+  } else {
+    chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>Invalid';
+    chip.classList.add('bad');
+  }
+}
+function onbDocStatus(e){
+  // Enable/disable the Attach button next to this status select.
+  const sel=e.target;
+  const tr=sel.closest('tr');
+  const btn=tr && tr.querySelector('.doc-att .attach-btn');
+  if(!btn) return;
+  btn.disabled = sel.value !== 'have';
+}
+function onbScrollSpy(){
+  const sections=document.querySelectorAll('#onbForm .dt-section');
+  const anchors=document.querySelectorAll('#onbForm .dt-anchors a');
+  if(!sections.length) return;
+  let curIdx=0;
+  sections.forEach(function(s,i){
+    const r=s.getBoundingClientRect();
+    if(r.top<=140) curIdx=i;
+  });
+  anchors.forEach(function(a,i){ a.classList.toggle('on',i===curIdx); });
+  const meta=document.getElementById('dtSecCur');
+  if(meta) meta.textContent=String(curIdx+1);
+}
+function onbSubmit(){
+  // Validation: consent + (if mobile entered) mobile valid.
+  const c=document.getElementById('onbConsent');
+  if(c && !c.value.trim()){
+    alert('Consent is required — please type the student/guardian name to give consent (BR-02).');
+    const sec=document.getElementById('sec-consent'); if(sec) sec.scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  const chip=document.getElementById('onbMobileVerify');
+  if(chip && chip.classList.contains('bad')){
+    alert('Mobile number is invalid — please correct it before submitting.');
+    const sec=document.getElementById('sec-personal'); if(sec) sec.scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  alert('✅ Onboarding submitted. A unique Student ID is generated and the eligibility engine has matched scholarships automatically.');
+  go('f-student');
+}
+// Initialise on first paint if the form is already in the DOM (covers reload-on-onboarding case).
+document.addEventListener('DOMContentLoaded',function(){ if(document.getElementById('onbDob')) setTimeout(onbInit,0); });
+
 // app status conditional (scholarship form)
 function onAppStatus(sel){
   const up=document.getElementById('uploadPdfQ'), proof=document.getElementById('benefitsProofQ');
