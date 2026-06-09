@@ -55,7 +55,14 @@ img{max-width:100%}
   background:linear-gradient(180deg,var(--teal-900),var(--teal-700));
   color:#eaf6f4;padding:26px 18px;display:flex;flex-direction:column;gap:8px;
   border-right:1px solid rgba(255,255,255,.06);
+  overflow:hidden;
 }
+.rail .nav{flex:1 1 auto;overflow-y:auto;min-height:0;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent}
+.rail .nav::-webkit-scrollbar{width:6px}
+.rail .nav::-webkit-scrollbar-track{background:transparent}
+.rail .nav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:3px}
+.rail .nav::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.28)}
+.rail .brand,.rail .rail-foot{flex-shrink:0}
 .brand{display:flex;align-items:center;gap:12px;padding:6px 8px 18px}
 .brand .mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));
   display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-weight:700;font-size:22px;box-shadow:0 6px 16px rgba(232,130,30,.4)}
@@ -3251,9 +3258,6 @@ img{max-width:100%}
       <a href="#" class="nav-link" data-go="a-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>All Students</a>
       <a href="#" class="nav-link" data-go="a-fellows"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>Fellows &amp; Users</a>
       <a href="#" class="nav-link" data-go="a-bulkupload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v14M6 9l6-6 6 6"/><path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/></svg>Bulk Upload<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">Soon</span></a>
-      <div class="nav-label">Configuration</div>
-      <a href="#" class="nav-link" data-go="a-campaigns"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l16-8v18l-16-8z"/><path d="M3 11v6"/></svg>Campaigns<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">Soon</span></a>
-      <a href="#" class="nav-link" data-go="a-forms"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Form Builder<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">Soon</span></a>
       <div class="nav-label">Account</div>
       <a href="#" class="nav-link" data-go="a-profile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>My Profile</a>
       <a href="#" class="nav-link" onclick="logout();return false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>Sign out</a>
@@ -3897,28 +3901,6 @@ img{max-width:100%}
           <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v14M6 9l6-6 6 6"/><path d="M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/></svg></div>
           <h2>Bulk Upload — Coming Soon</h2>
           <p>Import historical student records (and later applications + documents) from CSV / Excel. The flow: upload file → map columns to onboarding fields → validate against duplicates → preview → commit in batch with full audit log. Builds on Frappe's Data Import tool.</p>
-          <div class="chip">🚧 Configuration · Phase 4</div>
-        </div>
-      </section>
-
-      <!-- ===== CAMPAIGNS (placeholder) ===== -->
-      <section class="screen" id="a-campaigns">
-        <div class="page-h"><div class="eyebrow">Configuration · Campaigns</div><h1>Campaigns</h1></div>
-        <div class="placeholder">
-          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l16-8v18l-16-8z"/><path d="M3 11v6"/></svg></div>
-          <h2>Campaigns — Coming Soon</h2>
-          <p>Create and manage outreach, deadline pushes, and communication initiatives. Target a filtered student segment (by category, college, geography, journey stage), pick a channel (SMS · email · in-app), schedule the send, monitor open / response / conversion rates.</p>
-          <div class="chip">🚧 Configuration · Awaiting product context</div>
-        </div>
-      </section>
-
-      <!-- ===== FORM BUILDER (placeholder) ===== -->
-      <section class="screen" id="a-forms">
-        <div class="page-h"><div class="eyebrow">Configuration · Form Builder</div><h1>Form Builder</h1></div>
-        <div class="placeholder">
-          <div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></div>
-          <h2>Form Builder — Coming Soon</h2>
-          <p>Edit the 3 existing forms (Onboarding · Scholarship Data Entry · Documentation Application) and publish new versions: tweak questions, change labels, add/remove fields, set conditional visibility (`depends_on`), manage versions. Builds on Frappe's Web Form / Custom Field mechanism.</p>
           <div class="chip">🚧 Configuration · Phase 4</div>
         </div>
       </section>
