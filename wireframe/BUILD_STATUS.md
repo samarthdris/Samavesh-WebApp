@@ -5,7 +5,7 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-05 — added client workflow diagram (workflow.html)._
+_Last updated: 2026-06-09 — Final subagent review pass: composable filters, inline forms (no more prompts), all inert buttons wired._
 
 ## Legend
 - [x] done & in file
@@ -51,6 +51,200 @@ _Last updated: 2026-06-05 — added client workflow diagram (workflow.html)._
 - [x] Deep-link handler in index.html: `index.html?role=&screen=` auto-logs-in + navigates (6-line on-load reader; uses existing loginAs/go)
 - [x] Cross-links: login screen → "View the role workflows" link to workflow.html; workflow footer → back to wireframe
 - Spec+plan: docs/superpowers/*2026-06-05-workflow-diagram*.
+
+## Final subagent review + fixes (2026-06-09) — done
+
+Three parallel subagents reviewed the whole interface for bugs, cross-surface consistency, and silent failures. Consolidated findings + applied all critical fixes.
+
+### Agent 1 (bug review) — fixed
+- [x] Admin a-tasks filters now compose: `filterCases` + `filterCasesByFellow` + `filterCasesByStage` are AND-combined via a shared `_applyCaseFilters()` driven by 3 module-scoped state vars. Picking a Fellow no longer wipes the active state filter.
+- [x] `filterCases` chip-bar `.on` class now correctly cleared when a `.csum` summary card is clicked. Both visualisations (chip bar + summary cards) stay in sync.
+- [x] `filterCasesByFellow` / `filterCasesByStage` now toggle `caseEmpty` (was latent, masked by demo data — fixed for robustness).
+- [x] `CRUMBS` map: added entries for `f-tasks`, `a-tasks`, `a-bulkupload` so breadcrumb doesn't go stale on navigation.
+
+### Agent 2 (cross-surface consistency) — verified clean
+- All 5 patterns (5-stage funnel · SMM Re-apply visibility · Must Have/Good to Have grouping · sidebar polish · status vocab) ripple correctly across all relevant surfaces. **No inconsistencies found** — first time a verification pass came back fully green.
+
+### Agent 3 (silent-failure hunt) — fixed
+- [x] 3 remaining `prompt()` instances replaced with inline forms:
+  - `mSession` cancellation → inline reason input below the action row + mSessionConfirmCancel
+  - `mNote` → inline textarea form + mNoteSave (styled saved-note view)
+  - `vAct` rejection (Admin Document Verification) → inline rejection-reason form (red-tinted) + vRejectConfirm
+- [x] All ~15 previously-inert buttons wired:
+  - 4× "Join (link soon)" mentor session buttons → joinSession
+  - 2× "Save draft" buttons → new saveDraft(btn) (green-flash confirmation)
+  - 1× Fellow's "Edit profile" → alert matching Admin's working version
+  - 4× Admin Catalogue "Edit" buttons → editScholarship(name)
+  - 1× Onboarding "Search" button → dupSearch() with input validation
+  - 2× cross-student "Record disbursement" buttons → stopPropagation + navigate + auto-open Applications tab (fixes the parent-card click bubbling)
+  - All `.lb-tools` Filter / Sort / refresh / Assign buttons across 6 list views → wired via DOM-ready delegation to listFilter / listSort / listRefresh / listAssign helpers
+
+**Net result:** every button on the wireframe is now functional per the `samavesh-no-half-baked` Rule #1.
+
+## Cases & Tasks module + 3 placeholder tabs (2026-06-09) — done
+
+New module + 3 deferred-feature placeholders, completing the user's "new admin flow features" scope.
+
+### Cases & Tasks (NEW module — fully functional)
+- [x] Admin `#a-tasks` — full caseload (10 demo cases across 4 Fellows) · 5-state summary cards + chip-bar filter · secondary filters (Fellow dropdown + Journey-stage dropdown) · per-row Reassign + Change-State actions wired
+- [x] Fellow `#f-tasks` ("My Cases") — Fellow's assigned cases (6 demo for Rahul) · same 5-state filter chips · per-row state-aware action buttons (Start / Hold / Mark Complete / Resume / Discard / Reopen)
+- [x] Fellow Dashboard updated: "Tasks needing your attention" → "My Cases inbox" with 4 clickable summary cards (To Do · In-progress · On Hold · Discarded counts) — each navigates to f-tasks pre-filtered
+- [x] New CSS: `.case-state` pills (5 colors mapped to canonical states) · `.case-scheme` logo+name · `.case-acts` mini-button row · `.case-summary` clickable summary cards
+- [x] JS handlers: filterCases, filterCasesByFellow, filterCasesByStage, filterMyCases, caseReassign, caseChangeState, transitionCase, applyCaseState — all genuinely functional (no inert UI)
+- [x] Admin rail nav: new "Cases & Tasks" entry in WORKSPACE group (with count badge "10")
+- [x] Fellow rail nav: new "My Cases" entry between My Students and Applications (with count badge "6")
+- [x] Memory: new `samavesh-cases-tasks` documenting the two-axis status model + full DocType spec for production
+
+### Placeholder screens (Admin nav surfaces, real screens deferred per user)
+- [x] **Bulk Upload** (`#a-bulkupload`) — placeholder in MANAGE group, "Soon" badge
+- [x] **Campaigns** (`#a-campaigns`) — placeholder in new CONFIGURATION group, "Soon" badge, "Awaiting product context" annotation
+- [x] **Form Builder** (`#a-forms`) — placeholder in CONFIGURATION group, "Soon" badge
+- [x] Each placeholder uses the existing `.placeholder` pattern (same as Student's Learning placeholder) with a one-paragraph description of the planned scope so a future developer / Director knows what each tab will become
+
+### Admin rail final structure
+- **WORKSPACE**: MIS Dashboard · Document Verification · **Cases & Tasks** · Scholarship Catalogue
+- **MANAGE**: All Students · Fellows & Users · **Bulk Upload** *(placeholder)*
+- **CONFIGURATION** *(new group)*: **Campaigns** *(placeholder)* · **Form Builder** *(placeholder)*
+- **ACCOUNT**: My Profile · Sign out
+
+## Journey funnel 6→5 + Rejected visibility (2026-06-09) — done
+
+User decisions: collapse MIS-06 6 stages → **5 stages** with Disbursement as a sub-status of the terminal Decision stage. Also surface Rejected/Re-apply cases — they were missing from all demo applications.
+
+- [x] **Canonical 5-stage funnel**: Onboarded → Eligibility Identified → Documents Complete → Submitted → **Decision** (sub-statuses: Approved · funds awaited / Approved · Disbursed / Re-apply / Rejected)
+- [x] All 9 `.scholar-row .sr-mini` mini-funnels reduced from 6 to 5 dots (Student Home + Fellow f-student + Admin a-student)
+- [x] All "N of 6" step counters → "N of 5"
+- [x] `A_JOURNEY` JS array reduced to 5 entries; `STAGE_TO_STEP` mapping merges approved/disbursed/reapply/rejected all to index 4
+- [x] Admin MIS Dashboard funnel: 6 bars → 5 bars + new Decision breakdown row showing 4 sub-status counts with colored dots
+- [x] Admin All Students stage dropdown: 5 stages + Approved sub-split (funds awaited / Disbursed)
+- [x] Memory `samavesh-status-model` updated with the new canonical 5-stage model
+- [x] **4th demo application** SMM Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship in Re-apply state — visible on every surface:
+  - Student Home (4th scholar-row, red 4th-dot indicator)
+  - Student Scholarships (4th detailed card with full Rejected → Re-apply timeline, red border-left)
+  - Fellow f-student (4th scholar-row)
+  - Fellow fp-apps (full Re-apply detail card with 3 wired action buttons)
+  - Fellow fp-sch Eligible Schemes (RC moved from Not Yet Applied to Already Applied with deep-link)
+  - Admin a-student (4th scholar-row)
+  - Admin ap-apps (read-only oversight card with rejection box)
+  - Admin ap-sch Eligible Schemes (same RC move)
+- [x] Hero copy: "3 scholarship applications" → "4"; stats "3 Scholarships identified" → "4"
+
+## Student journey re-wire (2026-06-09) — done
+
+All the patterns proven in the Fellow iteration applied to the Student section. No new UX inventions — every pattern is now exercised on at least three surfaces (Fellow / Admin / Student).
+
+- [x] **Home** — single "My Scholarship Journey" 6-step bar replaced with **multi-application status block** (same `.scholar-apps` pattern as f-student/a-student). Each scholar-row is clickable → navigates to Scholarships screen + scrolls + outlines the matching card (`studentSelectApp`). Hero copy updated from singular ("Your Post-Matric scholarship is Under Scrutiny") to plural ("You have 3 scholarship applications").
+- [x] **Scholarships** — restructured into two clearly-distinct sections (no redundancy with Home):
+  - **My Active Applications** (3 detailed cards with timelines + status, the 3 `data-app` deep-link targets)
+  - **Also Eligible — Your Fellow Could Apply** (3 info cards — GoI Post-Matric / RC Shahu Maharaj Merit / EBC Tuition Fees — read-only with eligibility criteria, no Apply CTA since students don't apply per BR-05)
+- [x] **Documents** — **Must Have / Good to Have grouping** rippled from the Fellow's Documents tab. Same `.doc-group-banner` + `.dgb-pill` styling. 4 Must Have (Aadhaar/Income/10th SLC/12th SLC) + 5 Good to Have (Caste/Non-Creamy Layer/Domicile/Ration/Orphan). Rich expandable cards retained for Pending + Under Review + a rich rejected-then-accepted Income Cert history. Stats grid updated to match the canonical 9-doc list (1/1/5).
+- [x] **Mentorship** — filter chips (Career / Higher Studies / Engineering / Scholarships / Commerce / Marathi / All) are now **functional**. Each mentor card has `data-tags`; `filterMentors()` toggles visibility with a chip-on highlight and empty state. "Join (link soon)" button no longer inert — explains video-link delivery timing.
+- [x] **Login** — unified login (Google SSO + magic link) already serves all roles cleanly; no student-specific changes needed (students have compulsory Gmail at onboarding per [[samavesh-brd-discrepancies]] so Google SSO is the natural primary CTA).
+- All patterns now consistent across Fellow / Admin / Student surfaces. No new memory needed — `samavesh-form-pattern`, `samavesh-ripple-check`, `samavesh-no-half-baked` already cover the rules applied this round.
+
+## Consistency fixes II — Eligible Schemes + functional Applications (2026-06-09) — done
+
+Three substantial fixes flagged by user; saved `samavesh-no-half-baked` memory for next time.
+
+- [x] **Redundancy removed**: The "Scholarships" tab on student-detail no longer duplicates the top "Scholarship Applications" block. Renamed to **"Eligible Schemes"** — shows catalogue-matched schemes grouped into:
+  - **Already Applied** (3 schemes with "View application details →" deep-link)
+  - **Eligible — Not Yet Applied** (3 schemes with "+ Apply for this" CTA → opens Scholarship Data Entry form)
+  Each row shows eligibility criteria matched.
+- [x] **Top "Scholarship Applications" rows are now clickable** — clicking PM/MS/AB navigates to the Applications tab, scrolls to that app's card, briefly outlines it. Works on both `f-student` (Fellow) and `a-student` (Admin) views.
+- [x] **Applications tab buttons are now fully functional** (Fellow's view):
+  - Status dropdown (`updateAppStatus`) updates the pill in real time using the canonical form vocabulary.
+  - "Add correction note" (`addCorrectionNote`) opens an inline textarea with Save/Cancel; Save replaces the form with a styled note view.
+  - "Record Disbursement & Close" (`recordDisbursement`) validates inputs, updates the pill to "Benefits Received", replaces the form with a confirmation banner.
+  - Each card has `data-app` attribute for deep-linking.
+- [x] **Rippled to a-student** (Admin view): same Eligible Schemes structure (read-only — no Fellow CTAs), clickable scholar-rows, data-app on Applications cards. Added the previously-missing 3rd application card (Dr. Babasaheb Ambedkar) for consistency.
+
+## Consistency fixes (2026-06-09) — done
+User flagged 4 issues that should have been caught earlier (saved as `samavesh-ripple-check` memory for next time).
+
+- [x] **Scroll-spy bug fixed** — `IntersectionObserver`-based generic `makeScrollSpy()` replaces the brittle scroll-listener-on-guessed-container approach. Container-agnostic. Filters `.hidden` sections (path A/B). Works on both Form 1 and Form 2.
+- [x] **Radio rule sharpened** — "ONLY 2 options stay as radios". 3+ → dropdown. Applied to Onboarding §7 ("Do parents have any disability?", "Any drug-addiction problem at home?"). Form 2 already conformed.
+- [x] **Multi-scholarship per-app status** — single "Scholarship Journey" replaced with "Scholarship Applications" block on both `f-student` (Fellow view) and `a-student` (Admin oversight). One row per scheme: logo + name + App ID + status pill + 6-dot mini-funnel + "N of 6" step. Demo shows Aarti's 3 applications at different stages.
+- [x] **Documents Must Have / Good to Have grouping** rippled to `f-student` Documents tab and `a-student` Documents tab — same 4+5 categorisation as the Onboarding form §6 child-table. New `.doc-group-banner` styling reused.
+
+## Form anchor nav → horizontal top tabs (2026-06-09) — done
+- [x] `.dt-anchors` reskinned from vertical 220px left sidebar → horizontal pill tab bar at the top of the form body
+- [x] `.dt-form` grid collapsed (no more 2-column layout for the anchors); form gets full width (~30% breathing room gain)
+- [x] Active-tab styling: teal-50 pill bg + teal-700 text + filled teal-700 numbered chip
+- [x] Sticky positioning preserved (tabs follow you as you scroll); scroll-spy + click-to-smooth-scroll unchanged
+- [x] Scroll-spy threshold bumped 140→170, section `scroll-margin-top` bumped 80→150 to account for the sticky tab bar
+- [x] Applied automatically to both Form 1 (`#onbForm`) and Form 2 (`#schForm`) — no HTML changes needed, CSS-only restyle
+- [x] Form 3 (`#docForm`) untouched — it uses `.dt-form.simple` which has no anchors
+- Skill: `frappe-dashboard-design` ("zero whitespace waste") + `frappe-doctype-skill` (real Frappe Tab Break is horizontal at top, not a side nav)
+
+## All Fellow forms redesigned (2026-06-09) — done
+
+The same Frappe DocType pattern is now applied to ALL three Fellow forms (Forms 1, 2, 3). No multi-step "Continue" wizards left in the Fellow section.
+
+### Form 2 — Scholarship Data Entry (#schForm)
+- [x] 7-step wizard → single-page with left anchor sidebar (7 sections); branch sections (Path A/B) toggle by `pickBranch`
+- [x] **DOB picker + auto-age** (replaces old Age dropdown)
+- [x] **Mobile validate chip** (Indian 10-digit regex)
+- [x] **Gender dropdown** populated from the **same `GENDER_MASTER`** as the onboarding form — proves the master-DocType pattern (one source of truth, multiple consumers)
+- [x] **26-scheme grouped radio list** → Frappe **`<select>` with `<optgroup>`** (categorised, single dropdown — huge vertical-space win)
+- [x] All other radio lists ≥4 options → dropdowns (Category, Annual Income, Marks, Reference, College Area, etc.)
+- [x] Branch selection (Scholarship Support vs Technical Support) hides/shows the relevant sections + anchor links
+- [x] Sticky bottom Save bar with branch label
+
+### Form 3 — Documentation Application (#docForm)
+- [x] Reskinned to `.dt-form.simple` (single-column variant) for visual consistency with Forms 1 & 2
+- [x] `.form-card` → `.dt-section` with numbered anum chips
+- [x] Save/Cancel → sticky `.dt-actions` footer
+- [x] Already single-page (no stepper); just visual consistency this round
+- [x] Activity timeline (`.tl`) preserved — already Frappe-credible
+
+### Form 1 — Student Onboarding (#onbForm) — already done earlier this session
+- [x] Single-page Frappe DocType form replaces the 8-step "Continue" wizard
+- [x] Left sticky **anchor sidebar with scroll-spy** (8 sections preserved as anchors, not steps)
+- [x] **DOB picker** → auto-calculated **age in years (1 decimal)** displayed inline (replaces old Age dropdown)
+- [x] **Mobile validated** as Indian 10-digit (regex `/^[6-9]\d{9}$/`); shows ✓ Valid / ✗ Invalid chip on blur
+- [x] **Gender as master** — dropdown driven by `GENDER_MASTER` array (5 entries, codes M/F/NB/O/PNS)
+- [x] **Documents child-table** — grouped Must Have / Mandatory (4 docs) and Good to Have / Scholarship-specific (5 docs); status dropdown + attach button (enabled only when status="Have it")
+- [x] All radio lists with ≥4 options converted to **dropdowns** (Social Background, Annual Income, Family Occupation, How heard)
+- [x] **Duplicate-check changed**: Name+DOB-or-Mobile → **Email OR full Name**
+- [x] Sticky bottom Save/Submit bar
+- Spec+plan: `docs/superpowers/specs/2026-06-09-onboarding-form-redesign.md`, `docs/superpowers/plans/2026-06-09-onboarding-form-redesign.md`
+
+### Shared infrastructure
+- New CSS scope: `.dt-form` / `.dt-anchors` / `.dt-section` / `.dt-grid` / `.dt-actions` / `.dob-inline` / `.dob-age` / `.mobile-input` / `.mobile-verify` / `.doc-ctable` — all introduced this session, reused across forms.
+- Old `.formwrap` / `.fstep` / `.stepcount` / `.fprogress` / `.fnav` / `.matrix` CSS still present but no longer used by any Fellow form. Safe to clean up later when no form uses them.
+- `formGo` engine still exists but is now orphaned (Forms 1/2 don't use it; Form 3 never did). Can be removed in a future cleanup.
+
+### Skills applied
+- `frappe-doctype-skill` — Date / Phone-validated Data / Link-to-master / Select / Table child-table / Select-with-optgroup fieldtypes; Section Break + Column Break form layout; branch as `depends_on` (sections show/hide by data attribute).
+- `frappe-dashboard-design` — Inter type scale, light theme, 4px spacing, button hierarchy, status-chip palette.
+
+## Onboarding form redesign (2026-06-09) — superseded by "All Fellow forms" above
+- [x] Single-page Frappe DocType form replaces the 8-step "Continue" wizard
+- [x] Left sticky **anchor sidebar with scroll-spy** (8 sections preserved as anchors, not steps)
+- [x] **DOB picker** → auto-calculated **age in years (1 decimal)** displayed inline (replaces old Age dropdown)
+- [x] **Mobile validated** as Indian 10-digit (regex `/^[6-9]\d{9}$/`); shows ✓ Valid / ✗ Invalid chip on blur
+- [x] **Gender as master** — dropdown driven by `GENDER_MASTER` array (5 entries, codes M/F/NB/O/PNS); same array will become the future Frappe Gender DocType, reusable across all forms
+- [x] **Documents child-table** — grouped Must Have / Mandatory (4 docs) and Good to Have / Scholarship-specific (5 docs); each row has Status dropdown + Attach button (enabled only when status="Have it")
+- [x] All radio lists with ≥4 options converted to **dropdowns** (Social Background, Annual Income, Family Occupation, How heard, etc.)
+- [x] **Duplicate-check changed**: Name+DOB-or-Mobile → **Email OR full Name** (matches SSO email-as-primary-identifier)
+- [x] **Sticky bottom action bar**: Save draft (secondary) + Submit Onboarding (primary)
+- [x] No "Continue" buttons anywhere; user scrolls the whole form on a single page
+- [x] Form section 2-column grid layout (Frappe Column Break equivalent) — Personal section uses (Full Name full-width) → (DOB+age, Gender) → (Mobile, Form Date) etc.
+- [x] **Forms 2 (Scholarship Data Entry) and 3 (Documentation Application) untouched** — they keep the `.fstep`/`formGo` wizard for now
+- Spec+plan: `docs/superpowers/specs/2026-06-09-onboarding-form-redesign.md`, `docs/superpowers/plans/2026-06-09-onboarding-form-redesign.md`
+- Skills applied: `frappe-doctype-skill` (Date / Phone-validated Data / Link-to-master / Select / Table child-table fieldtypes; Section Break + Column Break form layout), `frappe-dashboard-design` (Inter type scale, light theme, 4px spacing, button hierarchy, status-chip palette). `frappe-custom-html-block` not applicable here (form is not a CHB).
+
+## SSO login (2026-06-09) — done
+- [x] `wireframe/index.html` login redesigned: mobile-number/OTP → unified email-based sign-in
+- [x] **Continue with Google** (primary) + **magic-link** for non-Google emails (secondary)
+- [x] All 4 roles use the same login surface; role derived from the User's Role Profile post-auth (production model documented in spec)
+- [x] Fake Google OAuth picker overlay (wireframe-only) for client demo realism
+- [x] `ACCOUNTS` re-keyed to lowercase email (4 Google + 1 magic-link demo for the non-Google path)
+- [x] Demo shortcuts kept, restyled as a tertiary section labelled "Demo shortcuts (this wireframe)"
+- [x] Pitch panel (left teal/marigold) kept — brand surface, not a dashboard surface
+- [x] Deep-link handler `?role=&screen=` unchanged — workflow.html links continue to work
+- Spec+plan: `docs/superpowers/specs/2026-06-09-sso-login-design.md`, `docs/superpowers/plans/2026-06-09-sso-login.md`
+- Skills applied: `frappe-doctype-skill` (data-model doc), `frappe-dashboard-design` (tokens/light theme/button hierarchy). `frappe-custom-html-block` not applicable here (login isn't a CHB).
 
 ## Verification audit (2026-06-05) — done
 - [x] Full audit vs workflow PDF + BRD. Confirmed aligned: roles, RBAC (student view-only), doc lifecycle, eligibility, masking, dup-check, MIS, forms (onboarding 8-step/9-doc/bilingual; scholarship branched).
