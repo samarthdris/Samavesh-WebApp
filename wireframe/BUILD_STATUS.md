@@ -5,12 +5,43 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-09 — Final subagent review pass: composable filters, inline forms (no more prompts), all inert buttons wired._
+_Last updated: 2026-06-10 — UI refinement (7 rounds) + end-to-end 3-agent audit; merged dev → main._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-06-10 — UI refinement pass + end-to-end subagent audit — done
+
+Seven rounds of UI polish on `wireframe/index.html`, then a 3-agent read-only audit (bugs · cross-surface consistency · inert-UI/silent-failures) with all confirmed findings fixed.
+
+### Student-detail restructure (Fellow `f-student` + Admin `a-student`, kept symmetric)
+- [x] Right record sidebar (Assigned-To/Tags/Details) removed → folded into a `.prof-meta` strip inside the header card; detail view now full-width single column
+- [x] Section tabs moved directly under the header card
+- [x] Old `.scholar-apps` status block → per-scholarship ACCORDION inside the Applications tab (`.app-accordion` / `.app-acc-item[data-app]` / `toggleAppAcc`); one open at a time, first (PM) open by default; `appSelectInTab` opens the target item; `updateAppStatus`/`recordDisbursement`/`addCorrectionNote` retargeted from `.card` to `.app-acc-item`/`.app-acc-body`
+
+### Density pass (compact, less scrolling — shared CSS tokens)
+- [x] Base font 15px / line-height 1.45; reduced page-h/hero/section-h; `.card` padding 20→16; grid gaps 18→14/12; rail width 264→232 + smaller nav fonts
+- [x] `.stat` KPI cards compacted; Fellow dashboard KPI grid `repeat(4,1fr)` → full-width, no trailing blank
+- [x] `.sch-card` compacted; `.sch-card:has(.elig-actions) .body` 2-col grid pins the action to the otherwise-blank right side (eligible-scheme cards only — timeline/catalogue/info cards untouched)
+
+### Targeted fixes
+- [x] Login: `.login-form{overflow-y:auto}` + `.login-card{margin:auto}` — over-tall card no longer clips at 100% (centers when it fits, scrolls when not)
+- [x] Admin Document Verification card: removed `padding:0` hack → rows align with the group banner at the standard inset
+- [x] Form section-tab bar `.dt-anchors` `top:80→56px` — docks flush under the Desk topbar (no see-through gap)
+- [x] Scroll-spy `makeScrollSpy` rewritten: single trigger-line (170px) + bottom-of-page guard + rAF scroll listener — fixes the "highlight one behind" off-by-one and makes the last section-tab selectable; `pickBranch` now refreshes it
+
+### Audit fixes (3 parallel subagents → consolidated)
+- [x] `goStudent` no longer prepends the avatar initial to the name ("SSuresh" → "Suresh")
+- [x] Wired previously-inert controls: MIS **Export**, 6 MIS **filter dropdowns** (live "Filtered by…" note), 5 **"View file"** buttons, **notification bell** (×4 shells), Fellow-home **Suresh recent-row**, **language pill**
+- [x] Removed dead `onboardSave()` (referenced non-existent `consentChk`); scoped `ftab` pane-toggle to the active screen
+- Consistency agent: restructure verified symmetric across Fellow/Admin; `:has` grid correctly scoped; workflow.html deep-link targets intact
+
+### Deferred (await user decision — NOT done)
+- [ ] **AB (Ambedkar) status reconciliation**: currently "Approved" in Fellow view vs "Documents Pending" in Admin view — each view internally consistent; cross-view differs by design pending a call on which status is canonical for AB
+- [ ] Dead `.rec-side` CSS left in place (harmless; `.av2` is shared with the activity feed)
+- [ ] KPI-card drill-down navigation (enhancement, opt-in)
 
 ## Student section
 - [x] Login (role-based, demo creds 9800000021=student / 9800000011=fellow + quick buttons)

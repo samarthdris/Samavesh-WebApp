@@ -25,7 +25,7 @@
   --shadow-md:0 6px 22px rgba(27,43,41,.10);
   --shadow-lg:0 18px 48px rgba(14,110,102,.16);
   --r-sm:10px; --r-md:16px; --r-lg:24px; --r-xl:30px;
-  --rail:264px;
+  --rail:232px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -37,7 +37,8 @@ body{
     var(--cream);
   color:var(--ink);
   -webkit-font-smoothing:antialiased;
-  line-height:1.5;
+  font-size:15px;
+  line-height:1.45;
   min-height:100vh;
 }
 h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:600;line-height:1.15;letter-spacing:-.01em;color:var(--ink)}
@@ -66,12 +67,12 @@ img{max-width:100%}
 .brand{display:flex;align-items:center;gap:12px;padding:6px 8px 18px}
 .brand .mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));
   display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-weight:700;font-size:22px;box-shadow:0 6px 16px rgba(232,130,30,.4)}
-.brand .name{font-family:'Fraunces';font-weight:600;font-size:20px;color:#fff;line-height:1}
+.brand .name{font-family:'Fraunces';font-weight:600;font-size:18px;color:#fff;line-height:1}
 .brand .tag{font-size:11.5px;color:var(--teal-100);letter-spacing:.02em;opacity:.85}
 .nav{display:flex;flex-direction:column;gap:4px;margin-top:6px}
 .nav-label{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:rgba(214,239,236,.5);padding:14px 12px 6px}
-.nav a{display:flex;align-items:center;gap:13px;padding:11px 13px;border-radius:12px;color:#d3ebe8;font-weight:500;font-size:15px;transition:.18s;position:relative}
-.nav a svg{width:20px;height:20px;flex:0 0 20px;opacity:.92}
+.nav a{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:12px;color:#d3ebe8;font-weight:500;font-size:13.5px;transition:.18s;position:relative}
+.nav a svg{width:18px;height:18px;flex:0 0 18px;opacity:.92}
 .nav a:hover{background:rgba(255,255,255,.08);color:#fff}
 .nav a.active{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
 .nav a.active::before{content:"";position:absolute;left:-18px;top:50%;transform:translateY(-50%);width:4px;height:24px;border-radius:0 4px 4px 0;background:var(--marigold)}
@@ -114,8 +115,8 @@ img{max-width:100%}
 /* ---------- Headers ---------- */
 .page-h{margin-bottom:22px}
 .page-h .eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-600);margin-bottom:7px}
-.page-h h1{font-size:32px}
-.page-h p{color:var(--ink-soft);font-size:15.5px;margin-top:6px;max-width:60ch}
+.page-h h1{font-size:27px}
+.page-h p{color:var(--ink-soft);font-size:14px;margin-top:6px;max-width:64ch}
 
 /* ---------- Hero / greeting ---------- */
 .hero{
@@ -126,9 +127,9 @@ img{max-width:100%}
   background:radial-gradient(circle at 30% 30%,rgba(246,178,74,.5),transparent 65%)}
 .hero::before{content:"";position:absolute;right:40px;bottom:-80px;width:200px;height:200px;border-radius:50%;border:1.5px solid rgba(255,255,255,.12)}
 .hero .greet{font-size:13.5px;color:var(--teal-100);letter-spacing:.04em}
-.hero h2{color:#fff;font-size:28px;margin:4px 0 10px}
-.hero p{color:#cfeae6;max-width:46ch;font-size:15px}
-.hero .quote{margin-top:16px;display:inline-flex;align-items:center;gap:9px;font-family:'Fraunces';font-style:italic;font-size:15px;color:var(--marigold-soft)}
+.hero h2{color:#fff;font-size:24px;margin:3px 0 8px}
+.hero p{color:#cfeae6;max-width:52ch;font-size:14px}
+.hero .quote{margin-top:12px;display:inline-flex;align-items:center;gap:9px;font-family:'Fraunces';font-style:italic;font-size:14px;color:var(--marigold-soft)}
 
 /* ---------- Journey path (signature) ---------- */
 .journey{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px 28px;box-shadow:var(--shadow-sm);margin-bottom:22px}
@@ -150,22 +151,23 @@ img{max-width:100%}
 .step.upcoming .lbl,.step.upcoming .sub{color:var(--ink-faint);opacity:.55}
 
 /* ---------- Grid + cards ---------- */
-.grid{display:grid;gap:18px}
+.grid{display:grid;gap:14px}
 .g-2{grid-template-columns:repeat(2,1fr)}
 .g-3{grid-template-columns:repeat(3,1fr)}
-.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:20px;box-shadow:var(--shadow-sm);transition:.2s}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:16px;box-shadow:var(--shadow-sm);transition:.2s}
 .card.hoverable:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
 .stat .top{display:flex;align-items:center;justify-content:space-between}
-.stat .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center}
-.stat .num{font-family:'Fraunces';font-size:30px;font-weight:600;margin-top:14px;line-height:1}
-.stat .cap{font-size:13.5px;color:var(--ink-soft);margin-top:3px}
+.stat .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+.stat .ic svg{width:19px;height:19px}
+.stat .num{font-family:'Fraunces';font-size:24px;font-weight:600;margin-top:8px;line-height:1}
+.stat .cap{font-size:12.5px;color:var(--ink-soft);margin-top:3px}
 .ic.teal{background:var(--teal-50);color:var(--teal-700)}
 .ic.gold{background:var(--marigold-50);color:var(--marigold)}
 .ic.green{background:var(--green-50);color:var(--green)}
 .ic.blue{background:var(--blue-50);color:var(--blue)}
 
-.section-h{display:flex;align-items:center;justify-content:space-between;margin:30px 0 14px}
-.section-h h3{font-size:21px}
+.section-h{display:flex;align-items:center;justify-content:space-between;margin:22px 0 10px}
+.section-h h3{font-size:18px}
 .section-h a{font-size:13.5px;font-weight:600;color:var(--teal-700);display:inline-flex;gap:5px;align-items:center}
 
 /* ---------- Pills / status ---------- */
@@ -179,14 +181,22 @@ img{max-width:100%}
 .pill.grey{background:var(--cream-2);color:var(--muted)}
 
 /* ---------- Scholarship cards ---------- */
-.sch{display:flex;flex-direction:column;gap:14px}
-.sch-card{display:flex;gap:18px;align-items:flex-start}
-.sch-card .logo{width:54px;height:54px;border-radius:14px;flex:0 0 54px;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;font-size:20px;color:#fff}
+.sch{display:flex;flex-direction:column;gap:10px}
+.sch-card{display:flex;gap:14px;align-items:flex-start}
+.sch-card .logo{width:44px;height:44px;border-radius:12px;flex:0 0 44px;display:grid;place-items:center;font-family:'Fraunces';font-weight:700;font-size:17px;color:#fff}
 .sch-card .body{flex:1;min-width:0}
-.sch-card h4{font-size:17px;margin-bottom:3px}
-.sch-card .meta{display:flex;flex-wrap:wrap;gap:14px;color:var(--ink-soft);font-size:13px;margin:8px 0 12px}
+.sch-card h4{font-size:15px;margin-bottom:2px}
+.sch-card .meta{display:flex;flex-wrap:wrap;gap:12px;color:var(--ink-soft);font-size:12.5px;margin:5px 0 8px}
 .sch-card .meta span{display:inline-flex;align-items:center;gap:6px}
-.sch-card .meta svg{width:15px;height:15px;color:var(--teal-600)}
+.sch-card .meta svg{width:14px;height:14px;color:var(--teal-600)}
+
+/* Eligible-scheme cards (those with an action): compact 2-col layout — text left, action pinned to the otherwise-blank right side, vertically centred */
+.sch-card:has(.elig-actions){align-items:center}
+.sch-card:has(.elig-actions) .body{display:grid;grid-template-columns:1fr auto;grid-template-areas:"title action" "meta action" "crit action";column-gap:18px;row-gap:2px;align-items:center}
+.sch-card:has(.elig-actions) .body>div:first-child{grid-area:title;margin:0}
+.sch-card:has(.elig-actions) .body .meta{grid-area:meta;margin:2px 0 0}
+.sch-card:has(.elig-actions) .body .elig-criteria{grid-area:crit;margin-top:4px}
+.sch-card:has(.elig-actions) .body .elig-actions{grid-area:action;align-self:center;justify-content:flex-end;text-align:right;margin:0;flex-direction:column;align-items:flex-end;gap:6px;max-width:220px}
 .amount{font-family:'Fraunces';font-weight:600;color:var(--teal-700)}
 .progress{height:8px;border-radius:20px;background:var(--cream-2);overflow:hidden;margin-top:4px}
 .progress i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--teal-500),var(--teal-600))}
@@ -285,6 +295,15 @@ img{max-width:100%}
 /* ---------- Profile ---------- */
 .prof-head{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
 .prof-head .pa{width:84px;height:84px;border-radius:24px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-size:34px;font-weight:700}
+/* Merged record meta (Assigned-To / Tags / Details) folded into the student header card */
+.prof-meta{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:16px;padding-top:15px;border-top:1px solid var(--line)}
+.prof-meta .pm-item{display:flex;flex-direction:column;gap:5px;min-width:0}
+.prof-meta .pm-k{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+.prof-meta .pm-v{font-size:13px;color:var(--ink);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.prof-meta .pm-av{width:24px;height:24px;border-radius:50%;background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700;flex:0 0 24px}
+.prof-meta .tagchip{font-size:11px;background:var(--teal-50);color:var(--teal-700);padding:3px 9px;border-radius:20px;font-weight:500}
+.prof-meta .pm-reassign{font-size:11.5px;color:var(--teal-700);font-weight:600;background:none;border:none;cursor:pointer;font-family:inherit;padding:0;text-decoration:underline;text-underline-offset:2px}
+.prof-meta .pm-reassign:hover{color:var(--teal-900)}
 .readonly-note{display:inline-flex;align-items:center;gap:8px;background:var(--teal-50);color:var(--teal-700);font-size:13px;font-weight:500;padding:9px 14px;border-radius:12px;margin:18px 0}
 .readonly-note svg{width:16px;height:16px}
 .field{padding:13px 0;border-bottom:1px solid var(--line)}
@@ -321,13 +340,13 @@ img{max-width:100%}
 .login-art .pts{display:flex;flex-direction:column;gap:13px;position:relative;z-index:1}
 .login-art .pts div{display:flex;align-items:center;gap:11px;font-size:14.5px;color:#d4ebe8}
 .login-art .pts svg{width:20px;height:20px;flex:0 0 20px;color:var(--marigold-soft)}
-.login-form{width:460px;max-width:100%;display:flex;align-items:center;justify-content:center;padding:40px 36px}
-.login-card{width:100%;max-width:360px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:32px 28px;box-shadow:var(--shadow-sm);transition:box-shadow .2s ease}
+.login-form{width:398px;max-width:100%;display:flex;padding:24px 30px;overflow-y:auto}
+.login-card{width:100%;max-width:336px;margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:26px;box-shadow:var(--shadow-sm);transition:box-shadow .2s ease}
 .login-card:focus-within{box-shadow:var(--shadow-md)}
 .login-card .mobile-mark{display:none;align-items:center;gap:11px;margin-bottom:20px}
 .login-card .mobile-mark .mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(140deg,var(--marigold),var(--marigold-soft));display:grid;place-items:center;color:#3a2400;font-family:'Fraunces';font-weight:700;font-size:22px}
-.login-card .lhead{margin-bottom:24px}
-.login-card h1{font-size:28px}
+.login-card .lhead{margin-bottom:14px}
+.login-card h1{font-size:23px}
 .login-card .lsub{color:var(--ink-soft);font-size:14px;margin-top:6px}
 
 /* Continue with Google — Google brand guideline (white bg, gray border, official G logo) */
@@ -335,10 +354,10 @@ img{max-width:100%}
 .btn-google:hover{box-shadow:var(--shadow-md);border-color:#c8bca8;transform:translateY(-1px)}
 .btn-google svg{width:18px;height:18px;flex:0 0 18px}
 
-.divider-or{display:flex;align-items:center;gap:12px;margin:20px 0;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.divider-or{display:flex;align-items:center;gap:12px;margin:13px 0;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
 .divider-or::before,.divider-or::after{content:"";flex:1;height:1px;background:var(--line)}
 
-.lfield{margin-bottom:16px}
+.lfield{margin-bottom:12px}
 .lfield label{display:block;font-size:11px;font-weight:600;color:var(--ink-soft);margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}
 .lfield .inp{display:flex;align-items:center;gap:10px;background:var(--paper);border:1.5px solid var(--line);border-radius:8px;padding:11px 14px;transition:.15s}
 .lfield .inp:focus-within{border-color:var(--teal-500);box-shadow:0 0 0 4px var(--teal-50)}
@@ -350,18 +369,18 @@ img{max-width:100%}
 .btn-block{width:100%;justify-content:center;padding:14px}
 
 /* demo shortcuts — re-styled tertiary chips */
-.demo-shortcuts{margin-top:32px;padding-top:20px;border-top:1px dashed var(--line)}
-.demo-shortcuts .dsh-label{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.demo-shortcuts{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line)}
+.demo-shortcuts .dsh-label{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:var(--muted);margin-bottom:9px;display:flex;align-items:center;gap:8px}
 .demo-shortcuts .dsh-label::before{content:"\26A1";font-size:13px}
 .demo-shortcuts .dsh-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .demo-shortcuts button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;border:1px solid var(--line);background:var(--cream);border-radius:8px;padding:8px 10px;text-align:left;cursor:pointer;transition:.15s;font-family:inherit}
 .demo-shortcuts button:hover{border-color:var(--teal-500);background:var(--teal-50);transform:translateY(-1px)}
 .demo-shortcuts button b{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.15}
 .demo-shortcuts button small{font-size:10.5px;color:var(--muted);line-height:1.2;word-break:break-all}
-.login-foot-link{display:block;text-align:center;margin-top:20px;font-size:13px;font-weight:600;color:var(--teal-700);text-decoration:none}
+.login-foot-link{display:block;text-align:center;margin-top:14px;font-size:13px;font-weight:600;color:var(--teal-700);text-decoration:none}
 
 /* "Check your email" confirmation screen — sibling of .login-card, hidden by default */
-.check-email-screen{display:none;width:100%;max-width:360px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:36px 28px;box-shadow:var(--shadow-sm);text-align:center}
+.check-email-screen{display:none;width:100%;max-width:360px;margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:28px;box-shadow:var(--shadow-sm);text-align:center}
 .check-email-screen.on{display:block;animation:fade .35s ease}
 .check-email-screen .cei{width:64px;height:64px;margin:0 auto 16px;color:var(--teal-500);background:var(--teal-50);border-radius:50%;display:grid;place-items:center}
 .check-email-screen .cei svg{width:30px;height:30px}
@@ -527,7 +546,7 @@ img{max-width:100%}
 .dt-form{display:block;max-width:1100px}
 .dt-form.simple{max-width:780px}
 .dt-anchors{
-  position:sticky;top:80px;z-index:6;
+  position:sticky;top:56px;z-index:6;
   display:flex;flex-wrap:wrap;gap:2px;
   background:var(--paper);
   border:1px solid var(--line);
@@ -614,18 +633,18 @@ img{max-width:100%}
 .scholar-apps .sah-lead{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px}
 .scholar-row{display:grid;grid-template-columns:1fr auto auto;gap:18px;padding:13px 0;border-top:1px solid var(--line);align-items:center}
 .scholar-row:first-of-type{border-top:none;padding-top:6px}
-.scholar-row .sr-head{display:flex;align-items:center;gap:12px;min-width:0}
-.scholar-row .sr-logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:14px;flex:0 0 38px}
-.scholar-row .sr-name{min-width:0}
-.scholar-row .sr-name b{font-size:14px;display:block;line-height:1.25;color:var(--ink)}
-.scholar-row .sr-name small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
-.scholar-row .sr-mini{display:flex;align-items:center;gap:0}
-.scholar-row .sr-mini .ms{width:9px;height:9px;border-radius:50%;background:var(--cream-2);flex:0 0 9px}
-.scholar-row .sr-mini .ms.done{background:var(--teal-600)}
-.scholar-row .sr-mini .ms.cur{background:var(--teal-700);box-shadow:0 0 0 3px var(--teal-50)}
-.scholar-row .sr-mini .ml{width:14px;height:2px;background:var(--cream-2);flex:0 0 14px}
-.scholar-row .sr-mini .ml.done{background:var(--teal-600)}
-.scholar-row .sr-step{font-size:11px;color:var(--muted);min-width:46px;text-align:right;white-space:nowrap}
+.sr-head{display:flex;align-items:center;gap:12px;min-width:0}
+.sr-logo{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:14px;flex:0 0 38px}
+.sr-name{min-width:0}
+.sr-name b{font-size:14px;display:block;line-height:1.25;color:var(--ink)}
+.sr-name small{display:block;color:var(--muted);font-size:11.5px;margin-top:2px}
+.sr-mini{display:flex;align-items:center;gap:0}
+.sr-mini .ms{width:9px;height:9px;border-radius:50%;background:var(--cream-2);flex:0 0 9px}
+.sr-mini .ms.done{background:var(--teal-600)}
+.sr-mini .ms.cur{background:var(--teal-700);box-shadow:0 0 0 3px var(--teal-50)}
+.sr-mini .ml{width:14px;height:2px;background:var(--cream-2);flex:0 0 14px}
+.sr-mini .ml.done{background:var(--teal-600)}
+.sr-step{font-size:11px;color:var(--muted);min-width:46px;text-align:right;white-space:nowrap}
 
 /* Documents tab — group banner (Must Have / Good to Have, same categorisation as Onboarding form §6) */
 .doc-group-banner{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-700);padding:9px 14px;background:var(--teal-50);border:1px solid var(--teal-100);border-radius:9px;margin:14px 0 8px;display:flex;align-items:center;gap:10px}
@@ -664,6 +683,21 @@ img{max-width:100%}
 .scholar-row{cursor:pointer;transition:background .12s ease,outline .25s ease}
 .scholar-row:hover{background:var(--cream)}
 .app-card-target{outline:2px solid var(--teal-500) !important;outline-offset:3px !important;border-radius:11px !important}
+
+/* Applications tab — per-scholarship accordion (status row → click opens that application's detail) */
+.app-accordion{margin-top:2px}
+.app-acc-item{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm);margin-bottom:12px;overflow:hidden;transition:box-shadow .15s ease}
+.app-acc-item.open{box-shadow:var(--shadow-md)}
+.app-acc-head{display:flex;align-items:center;gap:16px;padding:14px 18px;cursor:pointer;transition:background .12s ease}
+.app-acc-head:hover{background:var(--cream)}
+.app-acc-head .sr-head{flex:1 1 auto}
+.app-acc-head .sr-mini,.app-acc-head .sr-step,.app-acc-head .pill{flex:0 0 auto}
+.app-acc-chev{flex:0 0 auto;color:var(--muted);display:grid;place-items:center;transition:transform .2s ease}
+.app-acc-chev svg{width:18px;height:18px;display:block}
+.app-acc-item.open .app-acc-chev{transform:rotate(90deg)}
+.app-acc-item.open .app-acc-head{background:var(--cream);border-bottom:1px solid var(--line)}
+.app-acc-body{display:none;padding:18px}
+.app-acc-item.open .app-acc-body{display:block;animation:fade .2s ease}
 
 /* date filter + status filter */
 .filterbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
@@ -803,10 +837,10 @@ img{max-width:100%}
 .fd .rail{background:linear-gradient(185deg,#0e6e66,#0a3f3a);border-right:none;color:#eaf6f4;padding:16px 13px}
 .fd .brand{padding:4px 8px 16px}
 .fd .brand .mark{background:linear-gradient(140deg,#f6b24a,#e8821e);color:#3a2400;border-radius:10px;box-shadow:0 6px 16px rgba(232,130,30,.35);font-family:'Inter';font-size:19px}
-.fd .brand .name{color:#fff;font-family:'Inter';font-weight:700;font-size:17px}
+.fd .brand .name{color:#fff;font-family:'Inter';font-weight:700;font-size:16px}
 .fd .brand .tag{color:#b9e1db}
 .fd .nav-label{color:rgba(214,239,236,.5);font-size:10.5px;padding:13px 10px 5px}
-.fd .nav a{color:#cfe9e5;font-weight:500;font-size:13.5px;border-radius:9px;padding:9px 11px;gap:11px;position:relative}
+.fd .nav a{color:#cfe9e5;font-weight:500;font-size:13px;border-radius:9px;padding:8px 10px;gap:11px;position:relative}
 .fd .nav a svg{opacity:.85;width:17px;height:17px}
 .fd .nav a:hover{background:rgba(255,255,255,.09);color:#fff}
 .fd .nav a:hover svg{opacity:1}
@@ -858,7 +892,7 @@ img{max-width:100%}
 .fd .pill.grey{color:#8d99a6!important}.fd .pill.grey .pdot{background:#c0c6cc}
 /* stat -> Frappe number card */
 .fd .stat .ic{border-radius:8px}
-.fd .stat .num{font-family:'Inter';font-weight:600;font-size:25px}
+.fd .stat .num{font-family:'Inter';font-weight:600;font-size:22px}
 .fd .stat .cap{color:var(--fd-sub)}
 /* list rows (My Students = Frappe List View) */
 .fd #stuList{background:#fff;border:1px solid var(--fd-border);border-radius:10px;overflow:hidden}
@@ -1149,8 +1183,8 @@ img{max-width:100%}
         <input placeholder="Search scholarships, documents, mentors…" />
       </div>
       <div class="spacer"></div>
-      <div class="lang">🌐 English</div>
-      <button class="icon-btn" title="Notifications"><span class="dot"></span>
+      <div class="lang" style="cursor:pointer" onclick="alert('Interface language is English in Phase 1. Student-facing forms (e.g. Onboarding) are bilingual — English + मराठी.')">🌐 English</div>
+      <button class="icon-btn" title="Notifications" onclick="showNotifications()"><span class="dot"></span>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
       </button>
     </header>
@@ -1712,8 +1746,8 @@ img{max-width:100%}
       <div class="mobile-brand"><div class="mark">स</div><b class="serif" style="font-size:18px">Samavesh</b></div>
       <div class="search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg><input placeholder="Search sessions, mentees…" /></div>
       <div class="spacer"></div>
-      <div class="lang">🌐 English</div>
-      <button class="icon-btn" title="Notifications"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+      <div class="lang" style="cursor:pointer" onclick="alert('Interface language is English in Phase 1. Student-facing forms (e.g. Onboarding) are bilingual — English + मराठी.')">🌐 English</div>
+      <button class="icon-btn" title="Notifications" onclick="showNotifications()"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
     </header>
     <main class="content">
       <section class="screen" id="m-home"><div class="page-h"><div class="eyebrow">Mentoring</div><h1>Welcome, Dr. Meera Joshi</h1><p>Your mentoring home — upcoming sessions and this month at a glance.</p></div>
@@ -1727,7 +1761,7 @@ img{max-width:100%}
             <button class="btn btn-gold btn-sm" onclick="joinSession(this)">Join (link soon)</button>
           </div>
         </div>
-        <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:20px">
+        <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px">
           <div class="card stat hoverable"><div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 10l5-3v10l-5-3v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2Z"/></svg></div></div><div class="num">6</div><div class="cap">Sessions this month</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div></div><div class="num">4.5 / 8 h</div><div class="cap">Hours used / monthly cap</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 16.9 6.7 19.2l1-5.8L3.5 9.2l5.9-.9Z"/></svg></div></div><div class="num">4.9</div><div class="cap">My average rating</div></div>
@@ -1909,7 +1943,7 @@ img{max-width:100%}
       </div>
       <div class="spacer"></div>
       <button class="btn btn-primary btn-sm" data-go="f-onboard" style="margin-right:4px">+ Onboard Student</button>
-      <button class="icon-btn" title="Notifications"><span class="dot"></span>
+      <button class="icon-btn" title="Notifications" onclick="showNotifications()"><span class="dot"></span>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
       </button>
     </header>
@@ -1927,7 +1961,7 @@ img{max-width:100%}
         </div>
 
         <!-- KPIs (MIS-03 fellow performance) -->
-        <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:8px">
+        <div class="grid stagger" style="grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px">
           <div class="card stat hoverable"><div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg></div></div><div class="num">24</div><div class="cap">My students</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div></div><div class="num">7</div><div class="cap">Documents Pending</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div></div><div class="num">12</div><div class="cap">Applications Submitted</div></div>
@@ -1985,7 +2019,7 @@ img{max-width:100%}
             <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
           </div>
         </div>
-        <div class="stu-row">
+        <div class="stu-row" onclick="go('f-student')" style="cursor:pointer">
           <div class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">S</div>
           <div class="si"><b>Suresh Jadhav</b><small>Class 12 · Nashik</small></div>
           <div class="smeta"><span class="pill amber"><span class="pdot"></span>Documents Pending</span><span class="sc">2 scholarships</span></div>
@@ -2388,83 +2422,18 @@ img{max-width:100%}
             <div style="flex:1">
               <h3 style="font-size:23px">Aarti Ramesh Pawar</h3>
               <div style="color:var(--ink-soft);font-size:14px">SMV-2026-01182 · B.Com Year 2 · Fergusson College, Pune</div>
-              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><span class="pill blue"><span class="pdot"></span>Submitted</span><span class="pill grey">Assigned to you</span></div>
+              <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><span class="pill blue"><span class="pdot"></span>Submitted</span></div>
             </div>
+          </div>
+          <div class="prof-meta">
+            <div class="pm-item"><span class="pm-k">Assigned to</span><span class="pm-v"><span class="pm-av">R</span>Rahul More (you)</span></div>
+            <div class="pm-item"><span class="pm-k">Tags</span><span class="pm-v"><span class="tagchip">SC</span><span class="tagchip">Pune</span><span class="tagchip">Post-Matric</span></span></div>
+            <div class="pm-item"><span class="pm-k">Created</span><span class="pm-v">12 Apr 2026</span></div>
+            <div class="pm-item"><span class="pm-k">Last modified</span><span class="pm-v">2 Jun 2026</span></div>
           </div>
         </div>
 
-        <!-- Multi-scholarship status (replaces single Scholarship Journey) — one row per application, separate status & journey position -->
-        <div class="scholar-apps">
-          <div class="sah">
-            <h3>Scholarship Applications</h3>
-            <span class="sah-meta">4 active · 5-stage funnel (MIS-06)</span>
-          </div>
-          <div class="sah-lead">Each application has its own status. Click into the Scholarships or Applications tabs below for details.</div>
-
-          <div class="scholar-row" onclick="appSelectInTab('pm',event)" title="Click to open this application's details">
-            <div class="sr-head">
-              <div class="sr-logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
-              <div class="sr-name"><b>Post-Matric Scholarship for SC Students</b><small>PMS-2026-0042 · Submitted 18 May · Under Scrutiny</small></div>
-            </div>
-            <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span>
-            <div class="sr-mini" title="Step 4 of 5">
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms cur"></span><span class="ml"></span>
-              <span class="ms"></span>
-            </div>
-            <span class="sr-step">4 of 5</span>
-          </div>
-
-          <div class="scholar-row" onclick="appSelectInTab('ms',event)" title="Click to open this application's details">
-            <div class="sr-head">
-              <div class="sr-logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
-              <div class="sr-name"><b>Maharashtra State Minority Scholarship</b><small>Eligibility matched · Docs 100% Accepted · Ready to Submit</small></div>
-            </div>
-            <span class="pill green"><span class="pdot"></span>Ready to Submit</span>
-            <div class="sr-mini" title="Step 3 of 5">
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms cur"></span><span class="ml"></span>
-              <span class="ms"></span><span class="ml"></span>
-              <span class="ms"></span>
-            </div>
-            <span class="sr-step">3 of 5</span>
-          </div>
-
-          <div class="scholar-row" onclick="appSelectInTab('ab',event)" title="Click to open this application's details">
-            <div class="sr-head">
-              <div class="sr-logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
-              <div class="sr-name"><b>Dr. Babasaheb Ambedkar Scholarship</b><small>Eligibility matched · Docs 6/8 Accepted · 2 pending</small></div>
-            </div>
-            <span class="pill amber"><span class="pdot"></span>Documents Pending</span>
-            <div class="sr-mini" title="Step 2 of 5">
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms cur"></span><span class="ml"></span>
-              <span class="ms"></span><span class="ml"></span>
-              <span class="ms"></span><span class="ml"></span>
-              <span class="ms"></span>
-            </div>
-            <span class="sr-step">2 of 5</span>
-          </div>
-
-          <div class="scholar-row" onclick="appSelectInTab('smm',event)" title="Rejected — re-apply in progress">
-            <div class="sr-head">
-              <div class="sr-logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
-              <div class="sr-name"><b>Rajarshi Chhatrapati Shahu Maharaj Merit</b><small>Submitted 20 May · <span style="color:var(--red);font-weight:600">Portal rejected 4 Jun</span> (Caste Validity not legible) · re-procurement in progress</small></div>
-            </div>
-            <span class="pill amber"><span class="pdot"></span>Re-apply</span>
-            <div class="sr-mini" title="Step 4 of 5 · was Submitted, now awaiting re-submission">
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms cur" style="background:#B91C1C;box-shadow:0 0 0 3px #FFE4E6"></span><span class="ml"></span>
-              <span class="ms"></span>
-            </div>
-            <span class="sr-step">4 of 5</span>
-          </div>
-        </div>
+        <!-- Scholarship-wise status now lives inside the Applications tab as a per-scholarship accordion -->
 
         <div class="tabs">
           <button class="on" onclick="ftab(this,'fp-profile')">Profile</button>
@@ -2637,77 +2606,150 @@ img{max-width:100%}
           </div>
         </div>
 
-        <!-- Applications tab (FELLOW ACTIONS — §10.3). Each card has data-app for deep-link from the top "Scholarship Applications" block. -->
+        <!-- Applications tab — per-scholarship status accordion (FELLOW ACTIONS — §10.3). Click a row to open that application's details. -->
         <div class="tabpane" id="fp-apps">
-          <div style="display:flex;justify-content:flex-end;margin-bottom:14px"><button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Scholarship Data Entry</button></div>
-
-          <!-- Ready to Submit (Maharashtra State Minority) → submit & record -->
-          <div class="card" data-app="ms" style="margin-bottom:16px;border-left:4px solid var(--green)">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px">
-              <h4 class="serif" style="font-size:17px">Maharashtra State Minority Scholarship</h4><span class="pill green"><span class="pdot"></span>Ready to Submit</span>
-            </div>
-            <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">All documents Accepted. Submit on the government portal, then record the details below (the submitted PDF is mandatory proof).</p>
-            <div class="form-grid">
-              <div class="fg"><label>Application Portal<span class="req">*</span></label><input value="National Scholarship Portal" /></div>
-              <div class="fg"><label>Application Submission Date<span class="req">*</span></label><input type="date" /><span class="hint">Cannot be future-dated</span></div>
-              <div class="fg"><label>Government Application ID<span class="req">*</span></label><input placeholder="As shown on the portal" /></div>
-              <div class="fg"><label>Sanctioned / Expected Amount (₹)<span class="req">*</span></label><input type="number" value="25000" /></div>
-              <div class="fg"><label>Bank Account (for disbursal)<span class="req">*</span></label><input placeholder="As per student profile" /></div>
-              <div class="fg"><label>IFSC<span class="req">*</span></label><input placeholder="e.g. SBIN0001234" /></div>
-              <div class="fg full"><label>Submitted Application PDF<span class="req">*</span></label><input type="file" /><span class="hint">Final submitted PDF · mandatory proof per Fellow SOP</span></div>
-            </div>
-            <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="this.outerHTML='<span class=&quot;pill green&quot;><span class=&quot;pdot&quot;></span>Submitted &amp; recorded</span>'">Submit &amp; Record Application</button>
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+            <p style="font-size:13px;color:var(--ink-soft);margin:0">Each scholarship application with its current status · 5-stage funnel (MIS-06). Click a row to open its details and actions.</p>
+            <button class="btn btn-primary btn-sm" data-go="f-scholarship">+ Scholarship Data Entry</button>
           </div>
 
-          <!-- Under Scrutiny (Post-Matric) → status dropdown + correction loop, both functional -->
-          <div class="card" data-app="pm" style="margin-bottom:16px">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Post-Matric Scholarship for SC Students</h4><span class="pill blue"><span class="pdot"></span>Under Scrutiny</span></div>
-            <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-PM-2026-44871</span><span>Submitted 28 May</span><span>Last status check: 2 Jun</span></div>
-            <div class="tl">
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">28 May</div></div>
-              <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
-              <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
-            </div>
-            <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-              <select class="btn btn-ghost btn-sm" style="font-weight:600" onchange="updateAppStatus(this)">
-                <option value="">Update status…</option>
-                <option>Under Scrutiny</option>
-                <option>Application Approved</option>
-                <option>Benefits Received</option>
-                <option>Re-apply</option>
-                <option>Rejected</option>
-              </select>
-              <button class="btn btn-ghost btn-sm" type="button" onclick="addCorrectionNote(this)">Add correction note</button>
-            </div>
-          </div>
+          <div class="app-accordion">
 
-          <!-- Approved (Dr. Babasaheb Ambedkar) — record disbursement, fully functional -->
-          <div class="card" data-app="ab" style="margin-bottom:16px;border-left:4px solid var(--marigold)">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px"><h4 class="serif" style="font-size:17px">Dr. Babasaheb Ambedkar Scholarship</h4><span class="pill amber"><span class="pdot"></span>Approved</span></div>
-            <p style="font-size:13px;color:var(--ink-soft);margin-bottom:12px">Record disbursement once funds reach the student's bank account.</p>
-            <div class="form-grid">
-              <div class="fg"><label>Disbursed Amount (₹)<span class="req">*</span></label><input type="number" placeholder="38000" /></div>
-              <div class="fg"><label>Disbursement Date<span class="req">*</span></label><input type="date" /></div>
+            <!-- PM · Under Scrutiny → status dropdown + correction loop -->
+            <div class="app-acc-item open" data-app="pm">
+              <div class="app-acc-head" onclick="toggleAppAcc(this)">
+                <div class="sr-head">
+                  <div class="sr-logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
+                  <div class="sr-name"><b>Post-Matric Scholarship for SC Students</b><small>PMS-2026-0042 · Submitted 18 May · Under Scrutiny</small></div>
+                </div>
+                <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span>
+                <div class="sr-mini" title="Step 4 of 5">
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms cur"></span><span class="ml"></span>
+                  <span class="ms"></span>
+                </div>
+                <span class="sr-step">4 of 5</span>
+                <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+              </div>
+              <div class="app-acc-body">
+                <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:0 0 12px"><span>Application ID: MH-PM-2026-44871</span><span>Submitted 28 May</span><span>Last status check: 2 Jun</span></div>
+                <div class="tl">
+                  <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">28 May</div></div>
+                  <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
+                  <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
+                </div>
+                <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+                  <select class="btn btn-ghost btn-sm" style="font-weight:600" onchange="updateAppStatus(this)">
+                    <option value="">Update status…</option>
+                    <option>Under Scrutiny</option>
+                    <option>Application Approved</option>
+                    <option>Benefits Received</option>
+                    <option>Re-apply</option>
+                    <option>Rejected</option>
+                  </select>
+                  <button class="btn btn-ghost btn-sm" type="button" onclick="addCorrectionNote(this)">Add correction note</button>
+                </div>
+              </div>
             </div>
-            <button class="btn btn-gold btn-sm" style="margin-top:14px" type="button" onclick="recordDisbursement(this)">Record Disbursement &amp; Close</button>
-          </div>
 
-          <!-- SMM Re-apply: Portal rejected, Fellow correcting and re-submitting -->
-          <div class="card" data-app="smm" style="border-left:4px solid var(--red)">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:6px"><h4 class="serif" style="font-size:17px">Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4><span class="pill amber"><span class="pdot"></span>Re-apply</span></div>
-            <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-SM-2026-08812</span><span>Originally submitted 20 May</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun</span></div>
-            <div style="background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px"><b style="color:#B91C1C">Portal rejection reason:</b> "Caste Validity Certificate not clearly legible — re-upload required." Action: re-procure the Caste Validity Certificate, get it Accepted, then re-submit on the portal with the corrected document.</div>
-            <div class="tl">
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">20 May · App ID MH-SM-2026-08812</div></div>
-              <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected by portal</div><div class="d">4 Jun · Caste Validity not clearly legible</div></div>
-              <div class="tl-item active"><div class="knob"></div><div class="t">Re-procurement in progress</div><div class="d">Documentation Application opened with the Tehsil office · expected 14 Jun</div></div>
-              <div class="tl-item future"><div class="t">Re-submit on portal</div><div class="d">Once Caste Validity is Accepted</div></div>
+            <!-- MS · Ready to Submit → submit & record -->
+            <div class="app-acc-item" data-app="ms">
+              <div class="app-acc-head" onclick="toggleAppAcc(this)">
+                <div class="sr-head">
+                  <div class="sr-logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
+                  <div class="sr-name"><b>Maharashtra State Minority Scholarship</b><small>Eligibility matched · Docs 100% Accepted · Ready to Submit</small></div>
+                </div>
+                <span class="pill green"><span class="pdot"></span>Ready to Submit</span>
+                <div class="sr-mini" title="Step 3 of 5">
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms cur"></span><span class="ml"></span>
+                  <span class="ms"></span><span class="ml"></span>
+                  <span class="ms"></span>
+                </div>
+                <span class="sr-step">3 of 5</span>
+                <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+              </div>
+              <div class="app-acc-body">
+                <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">All documents Accepted. Submit on the government portal, then record the details below (the submitted PDF is mandatory proof).</p>
+                <div class="form-grid">
+                  <div class="fg"><label>Application Portal<span class="req">*</span></label><input value="National Scholarship Portal" /></div>
+                  <div class="fg"><label>Application Submission Date<span class="req">*</span></label><input type="date" /><span class="hint">Cannot be future-dated</span></div>
+                  <div class="fg"><label>Government Application ID<span class="req">*</span></label><input placeholder="As shown on the portal" /></div>
+                  <div class="fg"><label>Sanctioned / Expected Amount (₹)<span class="req">*</span></label><input type="number" value="25000" /></div>
+                  <div class="fg"><label>Bank Account (for disbursal)<span class="req">*</span></label><input placeholder="As per student profile" /></div>
+                  <div class="fg"><label>IFSC<span class="req">*</span></label><input placeholder="e.g. SBIN0001234" /></div>
+                  <div class="fg full"><label>Submitted Application PDF<span class="req">*</span></label><input type="file" /><span class="hint">Final submitted PDF · mandatory proof per Fellow SOP</span></div>
+                </div>
+                <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="this.outerHTML='<span class=&quot;pill green&quot;><span class=&quot;pdot&quot;></span>Submitted &amp; recorded</span>'">Submit &amp; Record Application</button>
+              </div>
             </div>
-            <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-              <button class="btn btn-primary btn-sm" type="button" data-go="f-scholarship">Correct &amp; re-submit on portal</button>
-              <button class="btn btn-ghost btn-sm" type="button" data-go="f-docapp">Open Documentation Application</button>
-              <button class="btn btn-ghost btn-sm" type="button" onclick="addCorrectionNote(this)">Add correction note</button>
+
+            <!-- AB · Approved → record disbursement -->
+            <div class="app-acc-item" data-app="ab">
+              <div class="app-acc-head" onclick="toggleAppAcc(this)">
+                <div class="sr-head">
+                  <div class="sr-logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
+                  <div class="sr-name"><b>Dr. Babasaheb Ambedkar Scholarship</b><small>Application Approved · awaiting disbursement</small></div>
+                </div>
+                <span class="pill amber"><span class="pdot"></span>Approved</span>
+                <div class="sr-mini" title="Step 5 of 5 · Decision">
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms cur"></span>
+                </div>
+                <span class="sr-step">5 of 5</span>
+                <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+              </div>
+              <div class="app-acc-body">
+                <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px">Record disbursement once funds reach the student's bank account.</p>
+                <div class="form-grid">
+                  <div class="fg"><label>Disbursed Amount (₹)<span class="req">*</span></label><input type="number" placeholder="38000" /></div>
+                  <div class="fg"><label>Disbursement Date<span class="req">*</span></label><input type="date" /></div>
+                </div>
+                <button class="btn btn-gold btn-sm" style="margin-top:14px" type="button" onclick="recordDisbursement(this)">Record Disbursement &amp; Close</button>
+              </div>
             </div>
+
+            <!-- SMM · Re-apply → portal rejected, correcting & re-submitting -->
+            <div class="app-acc-item" data-app="smm">
+              <div class="app-acc-head" onclick="toggleAppAcc(this)">
+                <div class="sr-head">
+                  <div class="sr-logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+                  <div class="sr-name"><b>Rajarshi Chhatrapati Shahu Maharaj Merit</b><small>Submitted 20 May · <span style="color:var(--red);font-weight:600">Portal rejected 4 Jun</span> · re-procurement in progress</small></div>
+                </div>
+                <span class="pill amber"><span class="pdot"></span>Re-apply</span>
+                <div class="sr-mini" title="Step 4 of 5 · was Submitted, now awaiting re-submission">
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms cur" style="background:#B91C1C;box-shadow:0 0 0 3px #FFE4E6"></span><span class="ml"></span>
+                  <span class="ms"></span>
+                </div>
+                <span class="sr-step">4 of 5</span>
+                <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+              </div>
+              <div class="app-acc-body">
+                <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:0 0 12px"><span>Application ID: MH-SM-2026-08812</span><span>Originally submitted 20 May</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun</span></div>
+                <div style="background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px"><b style="color:#B91C1C">Portal rejection reason:</b> "Caste Validity Certificate not clearly legible — re-upload required." Action: re-procure the Caste Validity Certificate, get it Accepted, then re-submit on the portal with the corrected document.</div>
+                <div class="tl">
+                  <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">20 May · App ID MH-SM-2026-08812</div></div>
+                  <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected by portal</div><div class="d">4 Jun · Caste Validity not clearly legible</div></div>
+                  <div class="tl-item active"><div class="knob"></div><div class="t">Re-procurement in progress</div><div class="d">Documentation Application opened with the Tehsil office · expected 14 Jun</div></div>
+                  <div class="tl-item future"><div class="t">Re-submit on portal</div><div class="d">Once Caste Validity is Accepted</div></div>
+                </div>
+                <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+                  <button class="btn btn-primary btn-sm" type="button" data-go="f-scholarship">Correct &amp; re-submit on portal</button>
+                  <button class="btn btn-ghost btn-sm" type="button" data-go="f-docapp">Open Documentation Application</button>
+                  <button class="btn btn-ghost btn-sm" type="button" onclick="addCorrectionNote(this)">Add correction note</button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
             <div class="activity">
@@ -2718,11 +2760,7 @@ img{max-width:100%}
               <div class="act-item"><div class="ai-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></div><div><div class="ai-t"><b>Rahul More</b> onboarded this student</div><div class="ai-d">12 Apr, 10:20 AM</div></div></div>
             </div>
           </div>
-          <aside class="rec-side">
-            <div class="side-card"><h5>Assigned To</h5><div class="assignee"><span class="av2">R</span><small>Rahul More (you)</small></div></div>
-            <div class="side-card"><h5>Tags</h5><div class="tagchips"><span class="tagchip">SC</span><span class="tagchip">Pune</span><span class="tagchip">Post-Matric</span></div></div>
-            <div class="side-card"><h5>Details</h5><div class="meta-line">Created <b>12 Apr 2026</b></div><div class="meta-line">Last modified <b>2 Jun 2026</b></div><div class="meta-line">Student ID <b>SMV-2026-01182</b></div></div>
-          </aside>
+          <!-- Right record sidebar removed — Assigned-To / Tags / Details folded into the student header card -->
         </div>
       </section>
 
@@ -3270,7 +3308,7 @@ img{max-width:100%}
       <div class="mobile-brand"><div class="mark">स</div><b class="serif" style="font-size:18px">Admin</b></div>
       <div class="search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg><input placeholder="Search students, fellows, scholarships…" /></div>
       <div class="spacer"></div>
-      <button class="icon-btn" title="Notifications"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
+      <button class="icon-btn" title="Notifications" onclick="showNotifications()"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
     </header>
     <div class="crumbs" id="crumbAdmin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg><b>Home</b></div>
 
@@ -3280,19 +3318,20 @@ img{max-width:100%}
       <section class="screen active" id="a-home">
         <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
           <div><div class="eyebrow">Phase 4 · MIS</div><h1>Program Dashboard</h1><p>Real-time view across all Fellows, scholarships and geographies.</p></div>
-          <button class="btn btn-ghost"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2"/></svg> Export Excel / CSV</button>
+          <button class="btn btn-ghost" onclick="alert('Export — downloads the current MIS view (respecting active filters) as Excel/CSV. Wireframe stub; audit-logged in production.')"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M4 17v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2"/></svg> Export Excel / CSV</button>
         </div>
 
         <div class="misfilters">
-          <select><option>Date range: This FY (25-26)</option><option>Last 30 days</option><option>This quarter</option><option>Custom…</option></select>
-          <select><option>All States</option><option>Maharashtra</option></select>
-          <select><option>All Districts</option><option>Pune</option><option>Nashik</option><option>Satara</option></select>
-          <select><option>All Fellows</option><option>Rahul More</option><option>Sandip K</option><option>Dhanashree O</option></select>
-          <select><option>All Scholarships</option><option>GoI Post-Matric</option><option>OBC Post-Matric</option></select>
-          <select><option>All Categories</option><option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>Minority</option></select>
+          <select onchange="misFilter()"><option>Date range: This FY (25-26)</option><option>Last 30 days</option><option>This quarter</option><option>Custom…</option></select>
+          <select onchange="misFilter()"><option>All States</option><option>Maharashtra</option></select>
+          <select onchange="misFilter()"><option>All Districts</option><option>Pune</option><option>Nashik</option><option>Satara</option></select>
+          <select onchange="misFilter()"><option>All Fellows</option><option>Rahul More</option><option>Sandip K</option><option>Dhanashree O</option></select>
+          <select onchange="misFilter()"><option>All Scholarships</option><option>GoI Post-Matric</option><option>OBC Post-Matric</option></select>
+          <select onchange="misFilter()"><option>All Categories</option><option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>Minority</option></select>
+          <span id="misFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
         </div>
 
-        <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:18px;margin-bottom:20px">
+        <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px">
           <div class="card stat hoverable"><div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg></div></div><div class="num">480</div><div class="cap">Students onboarded</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/></svg></div></div><div class="num">1,240</div><div class="cap">Scholarships identified</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div></div><div class="num">264</div><div class="cap">Applications submitted</div></div>
@@ -3359,22 +3398,22 @@ img{max-width:100%}
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Domicile Certificate — Aarti Pawar</b><small>Type: Domicile · uploaded by Fellow Rahul · 2 Jun · Re-upload Version 1</small></div>
-            <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
           </div>
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Income Certificate — Kavya Deshmukh</b><small>Type: Income · uploaded by Fellow Rahul · 30 May</small></div>
-            <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
           </div>
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Caste Validity Certificate — Imran Shaikh</b><small>Type: Caste · uploaded by Fellow Sandip K · 1 Jun</small></div>
-            <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
           </div>
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Bonafide Certificate — Ganesh Pawar</b><small>Type: Academic · uploaded by Fellow Dhanashree O · 3 Jun</small></div>
-            <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
           </div>
           <div class="empty" id="verifyEmpty" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg><div>Nothing pending — all caught up.</div></div>
         </div>
@@ -3461,80 +3500,15 @@ img{max-width:100%}
               <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap" id="asStagePill"><span class="pill blue"><span class="pdot"></span>Submitted</span></div>
             </div>
           </div>
-        </div>
-
-        <!-- Multi-scholarship status (Program oversight) — separate status for each application -->
-        <div class="scholar-apps">
-          <div class="sah">
-            <h3>Scholarship Applications</h3>
-            <span class="sah-meta">4 active · per-application status · 5-stage funnel</span>
-          </div>
-          <div class="sah-lead">Each scholarship the student has applied for is shown separately with its own funnel position and current status.</div>
-
-          <div class="scholar-row" onclick="appSelectInTab('pm',event)" title="Click to open this application's details">
-            <div class="sr-head">
-              <div class="sr-logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
-              <div class="sr-name"><b>Post-Matric Scholarship for SC Students</b><small>PMS-2026-0042 · Submitted 18 May · Under Scrutiny on portal</small></div>
-            </div>
-            <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span>
-            <div class="sr-mini" title="Step 4 of 5">
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms cur"></span><span class="ml"></span>
-              <span class="ms"></span>
-            </div>
-            <span class="sr-step">4 of 5</span>
-          </div>
-
-          <div class="scholar-row" onclick="appSelectInTab('ms',event)" title="Click to open this application's details">
-            <div class="sr-head">
-              <div class="sr-logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
-              <div class="sr-name"><b>Maharashtra State Minority Scholarship</b><small>Eligibility matched · Docs 100% Accepted · Ready to Submit</small></div>
-            </div>
-            <span class="pill green"><span class="pdot"></span>Ready to Submit</span>
-            <div class="sr-mini" title="Step 3 of 5">
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms cur"></span><span class="ml"></span>
-              <span class="ms"></span><span class="ml"></span>
-              <span class="ms"></span>
-            </div>
-            <span class="sr-step">3 of 5</span>
-          </div>
-
-          <div class="scholar-row" onclick="appSelectInTab('ab',event)" title="Click to open this application's details">
-            <div class="sr-head">
-              <div class="sr-logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
-              <div class="sr-name"><b>Dr. Babasaheb Ambedkar Scholarship</b><small>Eligibility matched · Docs 6/8 Accepted · 2 pending</small></div>
-            </div>
-            <span class="pill amber"><span class="pdot"></span>Documents Pending</span>
-            <div class="sr-mini" title="Step 2 of 5">
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms cur"></span><span class="ml"></span>
-              <span class="ms"></span><span class="ml"></span>
-              <span class="ms"></span><span class="ml"></span>
-              <span class="ms"></span>
-            </div>
-            <span class="sr-step">2 of 5</span>
-          </div>
-
-          <div class="scholar-row" onclick="appSelectInTab('smm',event)" title="Rejected by portal — Fellow re-procuring document, re-submission pending">
-            <div class="sr-head">
-              <div class="sr-logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
-              <div class="sr-name"><b>Rajarshi Chhatrapati Shahu Maharaj Merit</b><small>MH-SM-2026-08812 · Submitted 20 May · <span style="color:var(--red);font-weight:600">Portal rejected 4 Jun</span> (Caste Validity not legible) · re-procurement underway</small></div>
-            </div>
-            <span class="pill amber"><span class="pdot"></span>Re-apply</span>
-            <div class="sr-mini" title="Step 4 of 5 · Submitted → Rejected → re-submit pending">
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms done"></span><span class="ml done"></span>
-              <span class="ms cur" style="background:#B91C1C;box-shadow:0 0 0 3px #FFE4E6"></span><span class="ml"></span>
-              <span class="ms"></span>
-            </div>
-            <span class="sr-step">4 of 5</span>
+          <div class="prof-meta">
+            <div class="pm-item"><span class="pm-k">Assigned Fellow</span><span class="pm-v"><span class="pm-av" id="asFellowAv">R</span><span id="asFellow">Rahul More</span><button class="pm-reassign" type="button" onclick="alert('Reassign Fellow — pick another Fellow to take over this caseload. The change is audit-logged (RBAC).')">Reassign</button></span></div>
+            <div class="pm-item"><span class="pm-k">Tags</span><span class="pm-v"><span class="tagchip">SC</span><span class="tagchip">Pune</span><span class="tagchip">Post-Matric</span></span></div>
+            <div class="pm-item"><span class="pm-k">Created</span><span class="pm-v">12 Apr 2026</span></div>
+            <div class="pm-item"><span class="pm-k">Last modified</span><span class="pm-v">2 Jun 2026</span></div>
           </div>
         </div>
+
+        <!-- Scholarship-wise status now lives inside the Applications tab as a per-scholarship accordion -->
 
         <div class="tabs">
           <button class="on" onclick="ftab(this,'ap-profile')">Profile</button>
@@ -3646,8 +3620,8 @@ img{max-width:100%}
         <!-- Documents tab (ADMIN ACTION: Accept/Reject via vAct; .vrow structure) -->
         <div class="tabpane" id="ap-docs">
           <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Review documents uploaded by the Fellow. Accept or Reject each (rejection requires a reason). Procurement and upload are the Fellow's actions — the Admin verifies. Same Must Have / Good to Have categorisation as the Onboarding form.</p>
-          <div class="card" style="padding:0">
-            <div class="doc-group-banner" style="margin:14px 14px 8px">Must Have <span class="dgb-pill must">Mandatory</span></div>
+          <div class="card">
+            <div class="doc-group-banner">Must Have <span class="dgb-pill must">Mandatory</span></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>Aadhaar Card</b><small>Uploaded 12 Apr · Accepted 14 Apr</small></div>
@@ -3669,7 +3643,7 @@ img{max-width:100%}
               <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
             </div>
 
-            <div class="doc-group-banner" style="margin:18px 14px 8px">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
+            <div class="doc-group-banner" style="margin:18px 0 8px">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>Caste Certificate</b><small>Uploaded 28 Apr · Accepted 1 May</small></div>
@@ -3678,7 +3652,7 @@ img{max-width:100%}
             <div class="vrow" data-vstatus="all">
               <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>Domicile Certificate</b><small>Uploaded by Fellow · 2 Jun · Re-upload Version 1 · awaiting your review</small></div>
-              <div class="vacts"><button class="btn btn-ghost btn-sm">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+              <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
             </div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
@@ -3698,37 +3672,111 @@ img{max-width:100%}
           </div>
         </div>
 
-        <!-- Applications tab (READ-ONLY tracking; no operator actions) -->
-        <!-- Applications tab (Admin read-only oversight). Each card has data-app for deep-link from the top "Scholarship Applications" block. -->
+        <!-- Applications tab — per-scholarship status accordion (Admin read-only oversight). Click a row to open its details. -->
         <div class="tabpane" id="ap-apps">
-          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Read-only oversight. Submission on the government portal, status updates and disbursement recording are performed by the assigned Fellow (RBAC-05).</p>
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Read-only oversight · 5-stage funnel (MIS-06). Click a row to open its details. Submission on the government portal, status updates and disbursement recording are performed by the assigned Fellow (RBAC-05).</p>
 
-          <div class="card" data-app="pm" style="margin-bottom:16px">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Post-Matric Scholarship for SC Students</h4><span class="pill blue"><span class="pdot"></span>Under Scrutiny</span></div>
-            <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-PM-2026-44871</span><span>Submitted 28 May</span><span>Last status check: 2 Jun</span></div>
-            <div class="tl">
-              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">28 May</div></div>
-              <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
-              <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
+          <div class="app-accordion">
+
+            <!-- PM · Under Scrutiny -->
+            <div class="app-acc-item open" data-app="pm">
+              <div class="app-acc-head" onclick="toggleAppAcc(this)">
+                <div class="sr-head">
+                  <div class="sr-logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
+                  <div class="sr-name"><b>Post-Matric Scholarship for SC Students</b><small>PMS-2026-0042 · Submitted 18 May · Under Scrutiny on portal</small></div>
+                </div>
+                <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span>
+                <div class="sr-mini" title="Step 4 of 5">
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms cur"></span><span class="ml"></span>
+                  <span class="ms"></span>
+                </div>
+                <span class="sr-step">4 of 5</span>
+                <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+              </div>
+              <div class="app-acc-body">
+                <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:0 0 12px"><span>Application ID: MH-PM-2026-44871</span><span>Submitted 28 May</span><span>Last status check: 2 Jun</span></div>
+                <div class="tl">
+                  <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">28 May</div></div>
+                  <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
+                  <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div class="card" data-app="ms" style="margin-bottom:16px;border-left:4px solid var(--green)">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Maharashtra State Minority Scholarship</h4><span class="pill green"><span class="pdot"></span>Ready to Submit</span></div>
-            <p style="font-size:13px;color:var(--ink-soft);margin-top:8px">All documents Accepted. Awaiting Fellow Rahul More to submit on the portal and record the application details.</p>
-          </div>
+            <!-- MS · Ready to Submit -->
+            <div class="app-acc-item" data-app="ms">
+              <div class="app-acc-head" onclick="toggleAppAcc(this)">
+                <div class="sr-head">
+                  <div class="sr-logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
+                  <div class="sr-name"><b>Maharashtra State Minority Scholarship</b><small>Eligibility matched · Docs 100% Accepted · Ready to Submit</small></div>
+                </div>
+                <span class="pill green"><span class="pdot"></span>Ready to Submit</span>
+                <div class="sr-mini" title="Step 3 of 5">
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms cur"></span><span class="ml"></span>
+                  <span class="ms"></span><span class="ml"></span>
+                  <span class="ms"></span>
+                </div>
+                <span class="sr-step">3 of 5</span>
+                <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+              </div>
+              <div class="app-acc-body">
+                <p style="font-size:13px;color:var(--ink-soft);margin:0">All documents Accepted. Awaiting Fellow Rahul More to submit on the portal and record the application details.</p>
+              </div>
+            </div>
 
-          <div class="card" data-app="ab" style="margin-bottom:16px;border-left:4px solid var(--marigold)">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Dr. Babasaheb Ambedkar Scholarship</h4><span class="pill amber"><span class="pdot"></span>Documents Pending</span></div>
-            <p style="font-size:13px;color:var(--ink-soft);margin-top:8px">2 documents still pending (Non-Creamy Layer: Rejected, awaiting re-upload · Ration Card: Pending). Documents tab shows individual status. Fellow to upload before this can progress.</p>
-          </div>
+            <!-- AB · Documents Pending -->
+            <div class="app-acc-item" data-app="ab">
+              <div class="app-acc-head" onclick="toggleAppAcc(this)">
+                <div class="sr-head">
+                  <div class="sr-logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
+                  <div class="sr-name"><b>Dr. Babasaheb Ambedkar Scholarship</b><small>Eligibility matched · Docs 6/8 Accepted · 2 pending</small></div>
+                </div>
+                <span class="pill amber"><span class="pdot"></span>Documents Pending</span>
+                <div class="sr-mini" title="Step 2 of 5">
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms cur"></span><span class="ml"></span>
+                  <span class="ms"></span><span class="ml"></span>
+                  <span class="ms"></span><span class="ml"></span>
+                  <span class="ms"></span>
+                </div>
+                <span class="sr-step">2 of 5</span>
+                <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+              </div>
+              <div class="app-acc-body">
+                <p style="font-size:13px;color:var(--ink-soft);margin:0">2 documents still pending (Non-Creamy Layer: Rejected, awaiting re-upload · Ration Card: Pending). Documents tab shows individual status. Fellow to upload before this can progress.</p>
+              </div>
+            </div>
 
-          <!-- SMM read-only oversight: rejected at portal level, Fellow correcting -->
-          <div class="card" data-app="smm" style="border-left:4px solid var(--red)">
-            <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:center"><h4 class="serif" style="font-size:17px">Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4><span class="pill amber"><span class="pdot"></span>Re-apply</span></div>
-            <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:8px 0 12px"><span>Application ID: MH-SM-2026-08812</span><span>Originally submitted 20 May</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun</span></div>
-            <div style="background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px"><b style="color:#B91C1C">Portal rejection reason:</b> "Caste Validity Certificate not clearly legible — re-upload required." Awaiting Fellow Rahul to re-procure the document and re-submit on the portal.</div>
-            <p style="font-size:12.5px;color:var(--muted)">Admin oversight only — Fellow is responsible for correcting the document and re-submitting (RBAC-05).</p>
+            <!-- SMM · Re-apply (read-only oversight) -->
+            <div class="app-acc-item" data-app="smm">
+              <div class="app-acc-head" onclick="toggleAppAcc(this)">
+                <div class="sr-head">
+                  <div class="sr-logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+                  <div class="sr-name"><b>Rajarshi Chhatrapati Shahu Maharaj Merit</b><small>MH-SM-2026-08812 · Submitted 20 May · <span style="color:var(--red);font-weight:600">Portal rejected 4 Jun</span> · re-procurement underway</small></div>
+                </div>
+                <span class="pill amber"><span class="pdot"></span>Re-apply</span>
+                <div class="sr-mini" title="Step 4 of 5 · Submitted → Rejected → re-submit pending">
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms done"></span><span class="ml done"></span>
+                  <span class="ms cur" style="background:#B91C1C;box-shadow:0 0 0 3px #FFE4E6"></span><span class="ml"></span>
+                  <span class="ms"></span>
+                </div>
+                <span class="sr-step">4 of 5</span>
+                <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+              </div>
+              <div class="app-acc-body">
+                <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:0 0 12px"><span>Application ID: MH-SM-2026-08812</span><span>Originally submitted 20 May</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun</span></div>
+                <div style="background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px"><b style="color:#B91C1C">Portal rejection reason:</b> "Caste Validity Certificate not clearly legible — re-upload required." Awaiting Fellow Rahul to re-procure the document and re-submit on the portal.</div>
+                <p style="font-size:12.5px;color:var(--muted);margin:0">Admin oversight only — Fellow is responsible for correcting the document and re-submitting (RBAC-05).</p>
+              </div>
+            </div>
+
           </div>
         </div>
             <div class="activity">
@@ -3739,11 +3787,7 @@ img{max-width:100%}
               <div class="act-item"><div class="ai-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg></div><div><div class="ai-t"><b>Fellow</b> onboarded this student</div><div class="ai-d">12 Apr, 10:20 AM</div></div></div>
             </div>
           </div>
-          <aside class="rec-side">
-            <div class="side-card"><h5>Assigned Fellow</h5><div class="assignee"><span class="av2" id="asFellowAv">R</span><small id="asFellow">Rahul More</small></div><button class="btn btn-ghost btn-sm" style="margin-top:10px;width:100%;justify-content:center" onclick="alert('Reassign Fellow — pick another Fellow to take over this caseload. The change is audit-logged (RBAC).')">Reassign Fellow</button></div>
-            <div class="side-card"><h5>Tags</h5><div class="tagchips"><span class="tagchip">SC</span><span class="tagchip">Pune</span><span class="tagchip">Post-Matric</span></div></div>
-            <div class="side-card"><h5>Details</h5><div class="meta-line">Created <b>12 Apr 2026</b></div><div class="meta-line">Last modified <b>2 Jun 2026</b></div><div class="meta-line">Student ID <b>SMV-2026-01182</b></div></div>
-          </aside>
+          <!-- Right record sidebar removed — Assigned-Fellow / Tags / Details folded into the student header card -->
         </div>
       </section>
 
@@ -4053,7 +4097,11 @@ function setCrumb(id){
 const A_JOURNEY=['Onboarded','Eligibility Identified','Documents Complete','Submitted','Decision'];
 const STAGE_TO_STEP={onboarded:0,eligibility:1,documents:2,submitted:3,approved:4,disbursed:4,reapply:4,rejected:4,decision:4};
 function goStudent(row){
-  const name=row.querySelector('.who').textContent.trim();
+  // Read just the name text — the .who cell also holds the avatar initial span (and sometimes a sub-line),
+  // so textContent on the whole cell would prepend the initial (e.g. "SSuresh Jadhav").
+  const whoEl=row.querySelector('.who');
+  const nameEl=whoEl.querySelector('b');
+  const name=(nameEl?nameEl.textContent:whoEl.lastChild.textContent).trim();
   const av=row.querySelector('.sa');
   const stage=row.dataset.stage, fellow=row.dataset.fellow||'Unassigned';
   // identity header
@@ -4160,13 +4208,20 @@ function toggleArr(id){document.getElementById(id).classList.toggle('open')}
 function ftab(btn,id){
   btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
-  document.querySelectorAll('.tabpane').forEach(p=>p.classList.toggle('on',p.id===id));
+  // Scope pane toggling to the current screen so switching tabs never clears panes in another role's shell.
+  (btn.closest('.screen')||document).querySelectorAll('.tabpane').forEach(p=>p.classList.toggle('on',p.id===id));
   window.scrollTo({top:0,behavior:'smooth'});
 }
-function onboardSave(){
-  if(!document.getElementById('consentChk').checked){alert('DPDP consent is mandatory — the profile cannot be saved without consent (BR-02).');return;}
-  alert('Profile saved with a unique Student ID. The eligibility engine has run automatically and matched eligible scholarships.');
-  go('f-student');
+// Notifications bell (wireframe stub) — shared by all role shells.
+function showNotifications(){
+  alert('Notifications — opens the notification centre: email + SMS reminders, document status changes, and mentoring-session reminders. Wireframe stub.');
+}
+// MIS dashboard filter strip — reflects the active selection (wireframe stub; production re-queries funnel/cards/tables).
+function misFilter(){
+  const active=[];
+  document.querySelectorAll('#a-home .misfilters select').forEach(function(s){ if(s.selectedIndex>0) active.push(s.value); });
+  const note=document.getElementById('misFilterNote');
+  if(note) note.textContent = active.length ? ('Filtered by: '+active.join(' · ')) : '';
 }
 function fileAct(btn,status){
   const row=btn.closest('.doc-row');
@@ -4188,20 +4243,35 @@ function appSelectInTab(appKey,evt){
   const tabBtns = document.querySelectorAll('#'+screenId+' .tabs button');
   if(tabBtns[3]) ftab(tabBtns[3], targetPaneId);
   setTimeout(function(){
-    const card = document.querySelector('#'+screenId+' #'+targetPaneId+' [data-app="'+appKey+'"]');
-    if(card){
-      card.scrollIntoView({behavior:'smooth', block:'start'});
-      card.classList.add('app-card-target');
-      setTimeout(function(){ card.classList.remove('app-card-target'); }, 1800);
+    const item = document.querySelector('#'+screenId+' #'+targetPaneId+' .app-acc-item[data-app="'+appKey+'"]');
+    if(item){
+      // Open this scholarship's accordion item, collapse the others, then scroll + highlight.
+      const acc = item.closest('.app-accordion');
+      if(acc) acc.querySelectorAll('.app-acc-item.open').forEach(function(i){ i.classList.remove('open'); });
+      item.classList.add('open');
+      item.scrollIntoView({behavior:'smooth', block:'start'});
+      item.classList.add('app-card-target');
+      setTimeout(function(){ item.classList.remove('app-card-target'); }, 1800);
     }
   }, 150);
+}
+
+// Applications tab accordion: open the clicked scholarship's detail, collapse the rest (one open at a time).
+function toggleAppAcc(head){
+  const item = head.closest('.app-acc-item');
+  if(!item) return;
+  const wasOpen = item.classList.contains('open');
+  const acc = item.closest('.app-accordion');
+  if(acc) acc.querySelectorAll('.app-acc-item.open').forEach(function(i){ i.classList.remove('open'); });
+  if(!wasOpen) item.classList.add('open');
 }
 
 // Update the application's status pill when the Fellow picks a new status from the dropdown.
 function updateAppStatus(sel){
   const v = sel.value;
   if(!v) return;
-  const card = sel.closest('.card');
+  // Pill lives in the accordion header; fall back to a plain card if used outside the accordion.
+  const card = sel.closest('.app-acc-item') || sel.closest('.card');
   if(!card) return;
   const pill = card.querySelector('.pill');
   if(!pill) return;
@@ -4222,7 +4292,8 @@ function updateAppStatus(sel){
 
 // Open inline correction-note form. (Per Fellow SOP: a correction note logs what the portal asked for.)
 function addCorrectionNote(btn){
-  const card = btn.closest('.card');
+  // Append the inline note form inside the accordion body (or a plain card if used elsewhere).
+  const card = btn.closest('.app-acc-body') || btn.closest('.card');
   if(!card || card.querySelector('.correction-note-box')) return; // ignore double-clicks
   const box = document.createElement('div');
   box.className = 'correction-note-box';
@@ -4550,7 +4621,8 @@ function studentSelectApp(appKey,evt){
 
 // Record Disbursement → validates inputs, updates status pill to "Benefits Received", replaces the form with a confirmation.
 function recordDisbursement(btn){
-  const card = btn.closest('.card');
+  // Use the accordion item so the status pill (in the header) and the form (in the body) are both reachable.
+  const card = btn.closest('.app-acc-item') || btn.closest('.card');
   if(!card) return;
   const amountInp = card.querySelector('input[type="number"]');
   const dateInp   = card.querySelector('input[type="date"]');
@@ -4645,6 +4717,8 @@ function pickBranch(el,which){
   // Update the bottom-bar label.
   const lbl=document.getElementById('schBranchLbl');
   if(lbl) lbl.textContent = which==='A' ? 'Path A · Scholarship Support' : 'Path B · Technical Support';
+  // A now-hidden section may have been the active one — refresh the scroll-spy so no stale tab stays lit.
+  if(document['_schForm_spy']) document['_schForm_spy']();
 }
 
 // ===== Scholarship Data Entry form (Frappe DocType pattern) =====
@@ -4716,17 +4790,22 @@ function makeScrollSpy(formId, metaId){
   const sections=Array.from(document.querySelectorAll('#'+formId+' .dt-section'));
   if(!sections.length) return;
   const anchors=document.querySelectorAll('#'+formId+' .dt-anchors a');
-  const inView=new Set();
   function updateActive(){
+    if(sections[0] && sections[0].offsetParent===null) return; // this form isn't the visible screen — skip
     const visible=sections.filter(function(s){ return !s.classList.contains('hidden'); });
     if(!visible.length) return;
-    let active=null;
-    for(let i=0;i<visible.length;i++){ if(inView.has(visible[i])){ active=visible[i]; break; } }
-    if(!active){
-      // Fallback: pick the last section whose top is at/above the trigger line (we've scrolled past it).
-      for(let i=0;i<visible.length;i++){ if(visible[i].getBoundingClientRect().top<=170) active=visible[i]; }
+    // Active = the LAST section whose top has scrolled above a single trigger line (the section being
+    // read, just under the sticky topbar + tabs). A single line avoids the off-by-one a tall detection
+    // band caused: the outgoing section's bottom edge could still graze the band, so "first in band"
+    // wrongly highlighted the previous tab.
+    const LINE=170;
+    let active=visible[0];
+    for(let i=0;i<visible.length;i++){ if(visible[i].getBoundingClientRect().top<=LINE) active=visible[i]; }
+    // At the very bottom of the page the last (often short) section can't reach the trigger line — force
+    // it active so the final tab (e.g. section 7) selects correctly.
+    if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2){
+      active=visible[visible.length-1];
     }
-    if(!active) active=visible[0];
     anchors.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+active.id); });
     const meta=metaId && document.getElementById(metaId);
     if(meta){
@@ -4736,12 +4815,16 @@ function makeScrollSpy(formId, metaId){
       meta.textContent=String(curIdx+1);
     }
   }
-  const obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting) inView.add(e.target); else inView.delete(e.target); });
-    updateActive();
-  }, { rootMargin:'-140px 0px -65% 0px', threshold:0 });
+  // IntersectionObserver fires the initial pass + section-boundary crossings; a rAF-throttled scroll
+  // listener keeps the trigger-line and bottom-of-page checks live (the page scrolls on window).
+  let _ticking=false;
+  function onScroll(){ if(_ticking) return; _ticking=true; requestAnimationFrame(function(){ _ticking=false; updateActive(); }); }
+  const obs=new IntersectionObserver(function(){ updateActive(); }, { rootMargin:'-170px 0px -60% 0px', threshold:0 });
   sections.forEach(function(s){ obs.observe(s); });
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
   document['_'+formId+'_obs']=true;
+  document['_'+formId+'_spy']=updateActive; // expose so branch toggles can force a refresh
   updateActive();
 }
 function schSubmit(){
