@@ -5,12 +5,24 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-06-10 — UI refinement (7 rounds) + end-to-end 3-agent audit; merged dev → main._
+_Last updated: 2026-07-03 — Feedback Batch 1 (client tracker Feedbacks.xlsx: IDs 1,3,4,5) built on `dev`. Awaiting visual review._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-07-03 — Feedback Batch 1 (client tracker `Feedbacks.xlsx`: IDs 1, 3, 4, 5) — built on `dev`, awaiting visual review
+
+Student-facing surfaces only (login + Home + Scholarships + Documents + Fellow's view of student docs). Plan: `docs/superpowers/plans/2026-07-03-feedback-batch-1.md`. Structurally verified (div/section/details balance + JS brace balance); not yet browser-run.
+
+- [x] **ID 1 — Sign in / Sign up + email OTP** (`#loginCardSignin`): segmented Sign in / Sign up toggle; Sign up = email → `Send OTP` → 6-box code → Verify → account created (any provider). `showAuthMode` / `sendSignupOtp` / `verifySignupOtp`; logout resets to sign-in.
+- [x] **ID 3 — Student Home** (`#home`): 3 stat tiles moved above "My Scholarship Applications"; new WhatsApp reach-out card with two `wa.me` buttons (assigned Fellow/IP + central helpline). `.wa-cta` style.
+- [x] **ID 4 — Student Scholarships** (`#scholarships`): removed "Ready to submit" + "Also Eligible" sections → one unified "My Scholarships" list of all 6 eligible schemes; each card 2-column (`.sch2` — details left, status/stage right); not-applied schemes show grey "Eligible — Not Applied". `studentSelectApp` deep-link (data-app) preserved.
+- [x] **ID 5a — Student Documents** (`#documents`): "Don't have" toggle unlocks a sub-document dropdown on Ration/Caste/Domicile/Income (6/9/7/11 items from `SUBDOCS`); per-row Attach→file+Replace/Delete, "X/N" counter, blue helper banner. Ration seeded as the "Don't have" example (1/6 attached, mirrors client screenshot). Kept all existing docs + our status vocab. `renderSubdocList`/`toggleDontHave`/`attachSubdoc`/`removeSubdoc`/`initSubdocs`.
+- [x] **ID 5b — Fellow student-detail** (`#fp-docs`): each of the 4 docs gets a collapsible "Sub-documents from student" panel (fellow mode = Download / "Not attached"); shares the same `SUBDOCS` source as the student side. `initFellowSubdocs`.
+- ID 2 (role buttons on login) intentionally untouched — dev-time removal per user.
+- Not done (flagged): Admin `a-student` did NOT get sub-doc parity (only Student + Fellow requested). Production WhatsApp IP number must resolve to the assigned Fellow.
 
 ## 2026-06-10 — UI refinement pass + end-to-end subagent audit — done
 
