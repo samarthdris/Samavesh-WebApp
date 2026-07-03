@@ -395,6 +395,15 @@ img{max-width:100%}
 .wa-cta.alt{background:#fff;color:#0b6b3a;border:1.5px solid #25D366}
 .wa-cta svg{width:17px;height:17px}
 
+/* Unified scholarship card — details left, status right (ID 4) */
+.sch2{display:grid;grid-template-columns:1fr 232px;gap:0;align-items:stretch}
+.sch2-main{padding:16px 18px;min-width:0}
+.sch2-side{border-left:1px solid var(--line);background:var(--cream);padding:16px 16px;display:flex;flex-direction:column;gap:8px;justify-content:center}
+.sch2-side .s-stage{font-size:12px;color:var(--ink-soft)}
+.sch2-side .s-step{font-size:12px;font-weight:600;color:var(--ink)}
+.sch2-side .s-next{font-size:12px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:8px;margin-top:2px}
+@media(max-width:640px){.sch2{grid-template-columns:1fr}.sch2-side{border-left:none;border-top:1px solid var(--line)}}
+
 /* "Check your email" confirmation screen — sibling of .login-card, hidden by default */
 .check-email-screen{display:none;width:100%;max-width:360px;margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:28px;box-shadow:var(--shadow-sm);text-align:center}
 .check-email-screen.on{display:block;animation:fade .35s ease}
@@ -1370,129 +1379,126 @@ img{max-width:100%}
         <div class="page-h">
           <div class="eyebrow">My Applications &amp; Eligibility</div>
           <h1>My Scholarships</h1>
-          <p>The 3 scholarships you've applied for are below, with full timelines. Further down: other schemes you also qualify for — your Fellow can apply on your behalf.</p>
+          <p>Every scholarship you qualify for, with its current status. Your Fellow applies and submits on your behalf.</p>
         </div>
 
-        <div class="section-h" style="margin-top:8px"><h3>My Active Applications</h3><span style="font-size:13px;color:var(--muted)">4 in progress · Fellow Rahul handles submissions</span></div>
+        <div class="section-h" style="margin-top:8px"><h3>My Scholarships</h3><span style="font-size:13px;color:var(--muted)">6 schemes you qualify for · Fellow Rahul handles submissions</span></div>
 
-        <!-- Active application with timeline -->
-        <div class="card" data-app="pm" style="margin-bottom:18px;scroll-margin-top:100px">
-          <div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-                <div><h4>Post-Matric Scholarship for SC Students</h4>
-                <div style="font-size:13px;color:var(--muted)">Govt. of Maharashtra · National Scholarship Portal</div></div>
-                <span class="pill blue"><span class="pdot"></span>Under Scrutiny</span>
-              </div>
-              <div class="meta">
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg><b class="amount">₹50,000</b>/year</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Application ID: MH-PM-2026-44871</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Submitted 28 May</span>
-              </div>
-              <div class="tl">
-                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Documents Complete</div><div class="d">All documents Accepted · 24 May</div></div>
-                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">By Fellow Rahul · 28 May</div></div>
-                <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">In progress · last checked 2 Jun</div></div>
-                <div class="tl-item future"><div class="t">Application Approved</div><div class="d">Awaited</div></div>
-                <div class="tl-item future"><div class="t">Benefits Received</div><div class="d">—</div></div>
+        <!-- PM — Under Scrutiny -->
+        <div class="card sch2" data-app="pm" style="margin-bottom:14px;padding:0;scroll-margin-top:100px">
+          <div class="sch2-main">
+            <div class="sch-card" style="padding:0">
+              <div class="logo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</div>
+              <div class="body">
+                <h4>Post-Matric Scholarship for SC Students</h4>
+                <div style="font-size:13px;color:var(--muted)">Govt. of Maharashtra · National Scholarship Portal</div>
+                <div class="meta"><span><b class="amount">₹50,000</b>/year</span><span>Application ID: MH-PM-2026-44871</span></div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="section-h"><h3>Ready to submit</h3><span style="font-size:13px;color:var(--muted)">Your Fellow will submit on the portal</span></div>
-        <div class="card" data-app="ms" style="margin-bottom:14px;scroll-margin-top:100px">
-          <div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-                <div><h4>Maharashtra State Minority Scholarship</h4><div style="font-size:13px;color:var(--muted)">Minority Dept., Govt. of Maharashtra</div></div>
-                <span class="pill green"><span class="pdot"></span>Ready to submit</span>
-              </div>
-              <div class="meta">
-                <span><b class="amount">₹25,000</b>/year</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Deadline: 30 Jun 2026</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:4px"><span style="color:var(--ink-soft)">Documents</span><b style="color:var(--green)">100% Accepted</b></div>
-              <div class="progress"><i style="width:100%"></i></div>
-              <p style="font-size:13px;color:var(--ink-soft);margin-top:12px">✅ All documents Accepted. Your Fellow will submit this on the portal shortly.</p>
-            </div>
+          <div class="sch2-side">
+            <span class="pill blue" style="align-self:flex-start"><span class="pdot"></span>Under Scrutiny</span>
+            <div class="s-stage">Stage 4 of 5 · Submitted 28 May</div>
+            <div class="s-step">Department reviewing since 2 Jun</div>
+            <div class="s-next">Next: await portal decision</div>
           </div>
         </div>
 
-        <div class="card" data-app="ab" style="margin-bottom:18px;scroll-margin-top:100px">
-          <div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-                <div><h4>Dr. Babasaheb Ambedkar Scholarship</h4><div style="font-size:13px;color:var(--muted)">Social Justice Dept., Govt. of Maharashtra</div></div>
-                <span class="pill amber"><span class="pdot"></span>Documents Pending</span>
-              </div>
-              <div class="meta"><span><b class="amount">₹38,000</b>/year</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Deadline: 15 Jul 2026</span></div>
-              <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:4px"><span style="color:var(--ink-soft)">Documents</span><b style="color:var(--marigold)">6 of 8 Accepted · 1 Pending, 1 Under Review</b></div>
-              <div class="progress gold"><i style="width:75%"></i></div>
-              <button class="btn btn-gold btn-sm" style="margin-top:14px" data-go="documents">View documents</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- SMM (Rajarshi Chhatrapati Shahu Maharaj Merit) — was Submitted, got Rejected, now in Re-apply.
-             Demonstrates the application-level Rejected → Re-apply correction loop. -->
-        <div class="card" data-app="smm" style="scroll-margin-top:100px;border-left:4px solid var(--red)">
-          <div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-                <div><h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4><div style="font-size:13px;color:var(--muted)">Merit-based · State scheme · Higher &amp; Tech Ed Dept.</div></div>
-                <span class="pill amber"><span class="pdot"></span>Re-apply</span>
-              </div>
-              <div class="meta">
-                <span><b class="amount">₹32,000</b>/year</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Application ID: MH-SM-2026-08812</span>
-                <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Originally submitted 20 May</span>
-              </div>
-              <p style="font-size:13px;color:var(--ink-soft);margin-top:6px;padding:10px 14px;background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px"><b style="color:#B91C1C">Portal rejected this application on 4 Jun:</b> "Caste Validity Certificate not clearly legible — re-upload required." Your Fellow Rahul is re-procuring the document; the application will be re-submitted automatically once Accepted.</p>
-              <div class="tl">
-                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Documents Complete</div><div class="d">All required docs Accepted · 14 May</div></div>
-                <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Submitted</div><div class="d">By Fellow Rahul · 20 May · Application ID MH-SM-2026-08812</div></div>
-                <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected by portal</div><div class="d">4 Jun · Reason: "Caste Validity Certificate not clearly legible"</div></div>
-                <div class="tl-item active"><div class="knob"></div><div class="t">Re-apply in progress</div><div class="d">Caste Validity Certificate being re-procured by Fellow Rahul · re-submission expected by 14 Jun</div></div>
-                <div class="tl-item future"><div class="t">Application Approved</div><div class="d">Awaited</div></div>
+        <!-- MS — Ready to Submit -->
+        <div class="card sch2" data-app="ms" style="margin-bottom:14px;padding:0;scroll-margin-top:100px">
+          <div class="sch2-main">
+            <div class="sch-card" style="padding:0">
+              <div class="logo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</div>
+              <div class="body">
+                <h4>Maharashtra State Minority Scholarship</h4>
+                <div style="font-size:13px;color:var(--muted)">Minority Dept., Govt. of Maharashtra</div>
+                <div class="meta"><span><b class="amount">₹25,000</b>/year</span><span>Deadline: 30 Jun 2026</span></div>
               </div>
             </div>
           </div>
-        </div>
-
-        <!-- Also Eligible — informational, read-only. Student doesn't apply; Fellow does. -->
-        <div class="elig-group-h" style="margin-top:24px">Also Eligible — Your Fellow Could Apply <span class="elig-count">2</span></div>
-        <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px">These schemes also match your profile. Your Fellow can apply on your behalf — talk to them at your next check-in if you're interested.</p>
-
-        <div class="card" style="margin-bottom:10px">
-          <div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#0a3f3a,#0e6e66)">GP</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-                <div><h4>Government of India Post-Matric Scholarship</h4><div style="font-size:13px;color:var(--muted)">Ministry of Social Justice · Central scheme</div></div>
-                <span class="pill grey"><span class="pdot"></span>Not Applied</span>
-              </div>
-              <div class="meta"><span><b class="amount">₹48,000</b>/year</span></div>
-              <div class="elig-criteria">You qualify because: <b>SC category</b> · <b>UG enrolled</b> · <b>Income &lt; ₹2.5L</b></div>
-            </div>
+          <div class="sch2-side">
+            <span class="pill green" style="align-self:flex-start"><span class="pdot"></span>Ready to Submit</span>
+            <div class="s-stage">Stage 3 of 5 · Documents 100% Accepted</div>
+            <div class="s-next">Next: Fellow submits on the portal</div>
           </div>
         </div>
 
-        <div class="card">
-          <div class="sch-card">
-            <div class="logo" style="background:linear-gradient(140deg,#d97706,#92400e);color:#fff">EBC</div>
-            <div class="body">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
-                <div><h4>EBC Tuition Fees &amp; Examination Fees Reimbursement</h4><div style="font-size:13px;color:var(--muted)">Higher &amp; Tech Ed Dept. · State scheme</div></div>
-                <span class="pill grey"><span class="pdot"></span>Not Applied</span>
+        <!-- AB — Documents Pending -->
+        <div class="card sch2" data-app="ab" style="margin-bottom:14px;padding:0;scroll-margin-top:100px">
+          <div class="sch2-main">
+            <div class="sch-card" style="padding:0">
+              <div class="logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
+              <div class="body">
+                <h4>Dr. Babasaheb Ambedkar Scholarship</h4>
+                <div style="font-size:13px;color:var(--muted)">Social Justice Dept., Govt. of Maharashtra</div>
+                <div class="meta"><span><b class="amount">₹38,000</b>/year</span><span>Deadline: 15 Jul 2026</span></div>
               </div>
-              <div class="meta"><span><b class="amount">₹18,000</b>/year</span><span>Fee reimbursement only</span></div>
-              <div class="elig-criteria">You qualify because: <b>Income &lt; ₹2L</b> · <b>UG enrolled</b></div>
             </div>
+          </div>
+          <div class="sch2-side">
+            <span class="pill amber" style="align-self:flex-start"><span class="pdot"></span>Documents Pending</span>
+            <div class="s-stage">Stage 2 of 5 · 6 of 8 Accepted</div>
+            <div class="s-step">1 Pending · 1 Under Review</div>
+            <button class="btn btn-gold btn-sm" data-go="documents">View documents</button>
+          </div>
+        </div>
+
+        <!-- SMM (Shahu Maharaj Merit) — Rejected → Re-apply loop -->
+        <div class="card sch2" data-app="smm" style="margin-bottom:14px;padding:0;scroll-margin-top:100px;border-left:4px solid var(--red)">
+          <div class="sch2-main">
+            <div class="sch-card" style="padding:0">
+              <div class="logo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</div>
+              <div class="body">
+                <h4>Rajarshi Chhatrapati Shahu Maharaj Merit Scholarship</h4>
+                <div style="font-size:13px;color:var(--muted)">Merit-based · State scheme · Higher &amp; Tech Ed Dept.</div>
+                <div class="meta"><span><b class="amount">₹32,000</b>/year</span><span>Application ID: MH-SM-2026-08812</span></div>
+                <p style="font-size:12.5px;color:var(--ink-soft);margin:8px 0 0;padding:8px 12px;background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px"><b style="color:#B91C1C">Rejected 4 Jun:</b> "Caste Validity Certificate not clearly legible." Your Fellow is re-procuring it; re-submits automatically once Accepted.</p>
+              </div>
+            </div>
+          </div>
+          <div class="sch2-side">
+            <span class="pill amber" style="align-self:flex-start"><span class="pdot"></span>Re-apply</span>
+            <div class="s-stage">Stage 4 of 5 · was Submitted</div>
+            <div class="s-step" style="color:var(--red)">Rejected 4 Jun</div>
+            <div class="s-next">Next: re-submission expected by 14 Jun</div>
+          </div>
+        </div>
+
+        <!-- GP — Eligible, not yet applied -->
+        <div class="card sch2" style="margin-bottom:14px;padding:0">
+          <div class="sch2-main">
+            <div class="sch-card" style="padding:0">
+              <div class="logo" style="background:linear-gradient(140deg,#0a3f3a,#0e6e66)">GP</div>
+              <div class="body">
+                <h4>Government of India Post-Matric Scholarship</h4>
+                <div style="font-size:13px;color:var(--muted)">Ministry of Social Justice · Central scheme</div>
+                <div class="meta"><span><b class="amount">₹48,000</b>/year</span></div>
+                <div class="elig-criteria">You qualify because: <b>SC category</b> · <b>UG enrolled</b> · <b>Income &lt; ₹2.5L</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="sch2-side">
+            <span class="pill grey" style="align-self:flex-start"><span class="pdot"></span>Eligible — Not Applied</span>
+            <div class="s-next">Your Fellow can apply on your behalf</div>
+          </div>
+        </div>
+
+        <!-- EBC — Eligible, not yet applied -->
+        <div class="card sch2" style="padding:0">
+          <div class="sch2-main">
+            <div class="sch-card" style="padding:0">
+              <div class="logo" style="background:linear-gradient(140deg,#d97706,#92400e);color:#fff">EBC</div>
+              <div class="body">
+                <h4>EBC Tuition Fees &amp; Examination Fees Reimbursement</h4>
+                <div style="font-size:13px;color:var(--muted)">Higher &amp; Tech Ed Dept. · State scheme</div>
+                <div class="meta"><span><b class="amount">₹18,000</b>/year</span><span>Fee reimbursement only</span></div>
+                <div class="elig-criteria">You qualify because: <b>Income &lt; ₹2L</b> · <b>UG enrolled</b></div>
+              </div>
+            </div>
+          </div>
+          <div class="sch2-side">
+            <span class="pill grey" style="align-self:flex-start"><span class="pdot"></span>Eligible — Not Applied</span>
+            <div class="s-next">Your Fellow can apply on your behalf</div>
           </div>
         </div>
       </section>
