@@ -5,12 +5,25 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-07-03 — Feedback Batch 1 (client tracker Feedbacks.xlsx: IDs 1,3,4,5) built on `dev`. Awaiting visual review._
+_Last updated: 2026-07-03 — Feedback Batches 1 & 2 COMPLETE (client tracker `Feedbacks.xlsx`), render-verified with headless Chrome, committed + pushed to `dev` (live on Pages)._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-07-03 — Feedback Batch 2 (IDs 7, 10, 12 + English-only) + all review fixes — DONE, render-verified, on `dev`
+
+Client tracker `Feedbacks.xlsx`. Built inline, **each screen render-verified via headless Chrome** (see memory `samavesh-render-verify`). Specs/plans: `docs/superpowers/{specs,plans}/2026-07-03-feedback-batch-2*`.
+
+- [x] **Global English-only** — stripped all Marathi (`.qmr`, section leads, `X / मराठी` options, gender-master `mr`, consent/banner) + the 🌐 language pill. Only the brand `स` monogram remains.
+- [x] **ID 7 Attendance** — Fellow: Log In/Out card on Home (time+date+geolocation) + dedicated **My Attendance** screen (date/status filters + Clear, scrollable history; NO supervisory tiles). Admin: **Attendance** screen with **"Working now"** live panel + **working filters** (fellow/date/status, actually filter rows) + Export.
+- [x] **ID 12 Notes** — Fellow adds notes (type/date-time) on student Profile tab; student sees them read-only on My Profile.
+- [x] **ID 10 self-onboarding** — Sign up → **gated portal** (`#s-gate`, only "Fill Onboarding Form", rail hidden) → **student fills the EXACT Fellow onboarding form** (cloned from `#onbForm` at runtime with `s_`-prefixed ids — one source of truth, `buildStudentOnboard()`) → Submit → "pending review" → **Fellow Onboarding Approvals** inbox (`#f-approvals`, badge + "Pending Approval" on My Students) → edit/Approve → unlock. Demo: Sign up = new gated student; Student login (Aarti) = approved.
+- [x] **ID 10 documents** — search box (`docSearch`); **Have it / Don't have** MUTUALLY EXCLUSIVE on outstanding docs (Have→main attach enabled, no sub-docs; Don't have→attach faded + sub-docs) via `setHave()`; **Fellow downloads any doc on record, always** (`downloadDoc`); to-and-fro: student upload → "Recently uploaded" strip floats to top with **Accept / Request re-upload** (`fellowDocAction`); **notifications** dropdown per role (`showNotifications`/`NOTIF`); **whose-turn chips** on each doc (`initTurnPills`: Complete/With reviewer/Action needed).
+- [x] **Review fixes (all render-verified):** dead Admin filter → real filter; missing Fellow Download on Accepted docs → added to all filed docs; missing student direct upload → added; Fellow attendance supervisory tiles → removed; "Don't have" wrongly on Accepted docs → only on outstanding (Ration); Home "6/8"→"5/8" doc count; **NCL aligned to "Rejected" across student/Fellow/Admin**; whose-turn chips added.
+- ID 2 (hide role buttons) = dev-time removal, untouched. ID 11 (Scholarship Data Entry on student view) = **parked** for a later batch.
+- Reference inputs (not committed): `Sub-Documents List/` (ID 5 screenshots), `Login Logout Fellow/` (HRMS attendance screenshots).
 
 ## 2026-07-03 — Feedback Batch 1 (client tracker `Feedbacks.xlsx`: IDs 1, 3, 4, 5) — built on `dev`, awaiting visual review
 
