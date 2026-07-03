@@ -379,6 +379,16 @@ img{max-width:100%}
 .demo-shortcuts button small{font-size:10.5px;color:var(--muted);line-height:1.2;word-break:break-all}
 .login-foot-link{display:block;text-align:center;margin-top:14px;font-size:13px;font-weight:600;color:var(--teal-700);text-decoration:none}
 
+/* Sign in / Sign up toggle + OTP (ID 1) */
+.auth-tabs{display:flex;gap:6px;background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:4px;margin-bottom:18px}
+.auth-tabs button{flex:1;padding:8px 10px;border:none;background:transparent;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink-soft);border-radius:7px;cursor:pointer;transition:.15s}
+.auth-tabs button.on{background:#fff;color:var(--teal-700);box-shadow:var(--shadow-sm)}
+.otp-row{display:flex;gap:8px;justify-content:space-between;margin:12px 0}
+.otp-row input{width:44px;height:52px;text-align:center;font-size:20px;font-weight:600;border:1.5px solid var(--line);border-radius:9px;font-family:inherit;outline:none;transition:.15s}
+.otp-row input:focus{border-color:var(--teal-500);box-shadow:0 0 0 3px var(--teal-50)}
+.otp-sent-note{font-size:12.5px;color:var(--ink-soft);margin:2px 0 4px}
+.auth-ok{display:none;align-items:center;gap:8px;background:var(--green-50);color:var(--green);font-weight:600;font-size:13.5px;padding:10px 14px;border-radius:10px;margin-top:10px}
+
 /* "Check your email" confirmation screen — sibling of .login-card, hidden by default */
 .check-email-screen{display:none;width:100%;max-width:360px;margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:28px;box-shadow:var(--shadow-sm);text-align:center}
 .check-email-screen.on{display:block;animation:fade .35s ease}
@@ -1058,6 +1068,12 @@ img{max-width:100%}
       <div class="mobile-mark"><div class="mark">स</div><b class="serif" style="font-size:21px">Samavesh</b></div>
       <div class="lhead"><h1>Welcome to Samavesh</h1><div class="lsub">Sign in to continue.</div></div>
 
+      <div class="auth-tabs" id="authTabs">
+        <button class="on" id="tabSignin" onclick="showAuthMode('signin')">Sign in</button>
+        <button id="tabSignup" onclick="showAuthMode('signup')">Sign up</button>
+      </div>
+
+      <div id="signinPane">
       <!-- Primary: Continue with Google -->
       <button class="btn-google" onclick="doGoogleSSO()">
         <svg viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 0 1-1.796 2.716v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z"/><path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z"/><path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/></svg>
@@ -1086,6 +1102,24 @@ img{max-width:100%}
           <button onclick="loginAs('mentor')"><b>Mentor</b><small>dr.meera.joshi@gmail.com</small></button>
         </div>
         <a href="workflow.html" target="_blank" class="login-foot-link">📊 View the role workflows →</a>
+      </div>
+      </div><!-- /signinPane -->
+
+      <div id="signupPane" style="display:none">
+        <div class="lfield">
+          <label>Email</label>
+          <div class="inp"><input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com" /></div>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin:-4px 0 12px">We'll email a one-time code to confirm you own this address. Works with Gmail, Outlook or any provider.</div>
+        <button class="btn-magic" onclick="sendSignupOtp()">Send OTP</button>
+        <div id="otpBlock" style="display:none">
+          <div class="otp-sent-note">Enter the 6-digit code sent to <b id="otpTo"></b></div>
+          <div class="otp-row" id="otpRow">
+            <input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric"><input maxlength="1" inputmode="numeric">
+          </div>
+          <button class="btn-google" style="justify-content:center" onclick="verifySignupOtp()">Verify &amp; create account</button>
+        </div>
+        <div class="auth-ok" id="authOk"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Email verified — account created</div>
       </div>
     </div>
 
@@ -4051,6 +4085,29 @@ function simulateLinkClick(){
   const email=document.getElementById('checkEmailAddr').textContent;
   loginAs(roleForEmail(email));
 }
+// ===== Sign in / Sign up toggle + email OTP at account creation (ID 1) =====
+function showAuthMode(mode){
+  var si = mode==='signin';
+  document.getElementById('tabSignin').classList.toggle('on', si);
+  document.getElementById('tabSignup').classList.toggle('on', !si);
+  document.getElementById('signinPane').style.display = si ? '' : 'none';
+  document.getElementById('signupPane').style.display = si ? 'none' : '';
+}
+function sendSignupOtp(){
+  var e = (document.getElementById('signupEmail').value||'').trim();
+  if(!/^\S+@\S+\.\S+$/.test(e)){ alert('Enter a valid email address.'); return; }
+  document.getElementById('otpTo').textContent = e;
+  document.getElementById('otpBlock').style.display = '';
+  var boxes = document.querySelectorAll('#otpRow input');
+  boxes.forEach(function(b,i){ b.value=''; b.oninput=function(){ if(b.value && i<5) boxes[i+1].focus(); }; });
+  boxes[0].focus();
+}
+function verifySignupOtp(){
+  var code = Array.prototype.map.call(document.querySelectorAll('#otpRow input'), function(b){return b.value;}).join('');
+  if(code.replace(/\D/g,'').length < 6){ alert('Enter all 6 digits (any digits work in this demo).'); return; }
+  document.getElementById('authOk').style.display='flex';
+  setTimeout(function(){ loginAs('student'); }, 900);
+}
 // ===== shared login/logout =====
 function loginAs(role){
   pendingRole=role;
@@ -4067,6 +4124,7 @@ function logout(){
   // Reset to the sign-in card on sign-out.
   document.getElementById('checkEmailScreen').classList.remove('on');
   document.getElementById('loginCardSignin').style.display='';
+  if(typeof showAuthMode==='function') showAuthMode('signin');
   closeOAuthOverlay();
   window.scrollTo(0,0);
 }
