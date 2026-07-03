@@ -404,6 +404,30 @@ img{max-width:100%}
 .sch2-side .s-next{font-size:12px;color:var(--ink-soft);border-top:1px dashed var(--line);padding-top:8px;margin-top:2px}
 @media(max-width:640px){.sch2{grid-template-columns:1fr}.sch2-side{border-left:none;border-top:1px solid var(--line)}}
 
+/* Sub-documents behind a "Don't have" main doc (ID 5) */
+.subdoc-host{margin-top:12px}
+.dont-have-btn{font-family:inherit;font-size:12px;font-weight:600;color:var(--ink-soft);background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:5px 12px;cursor:pointer;transition:.15s}
+.dont-have-btn:hover{border-color:var(--amber);color:var(--amber)}
+.dont-have-btn.on{background:var(--amber-50);border-color:var(--amber);color:#9a5b00}
+.subdoc-panel{display:none;margin-top:10px;border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.subdoc-banner{background:var(--blue-50);padding:11px 14px;border-bottom:1px solid var(--line)}
+.subdoc-banner b{display:block;color:var(--blue);font-size:13px}
+.subdoc-banner span{font-size:12px;color:var(--ink-soft)}
+.subdoc-count{font-size:11.5px;font-weight:600;color:var(--ink-soft);padding:8px 14px;background:var(--cream);border-bottom:1px solid var(--line)}
+.subdoc-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.subdoc-row:last-child{border-bottom:none}
+.subdoc-label{font-size:13px;color:var(--ink)}
+.subdoc-done{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--teal-700)}
+.subdoc-done svg{color:var(--green)}
+.subdoc-mini{font-family:inherit;font-size:11px;border:1px solid var(--line);background:#fff;border-radius:6px;padding:3px 8px;cursor:pointer;color:var(--ink-soft)}
+.subdoc-mini.danger{color:var(--red);border-color:#f2c0c0}
+.subdoc-dl{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--teal-700);font-weight:600;text-decoration:none}
+.subdoc-none{font-size:12px;color:var(--muted)}
+.subdoc-row .attach-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;border:1.5px dashed var(--line);border-radius:7px;font-size:12px;color:var(--ink-soft);cursor:pointer;background:#fff;font-family:inherit;transition:.15s}
+.subdoc-row .attach-btn:hover{border-color:var(--teal-500);color:var(--teal-700);background:var(--teal-50)}
+.subdoc-row .attach-btn svg{width:13px;height:13px}
+.subdoc-fellow summary{font-size:12.5px;font-weight:600;color:var(--teal-700);cursor:pointer;padding:6px 0}
+
 /* "Check your email" confirmation screen — sibling of .login-card, hidden by default */
 .check-email-screen{display:none;width:100%;max-width:360px;margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:28px;box-shadow:var(--shadow-sm);text-align:center}
 .check-email-screen.on{display:block;animation:fade .35s ease}
@@ -1508,11 +1532,11 @@ img{max-width:100%}
         <div class="page-h">
           <div class="eyebrow">Documents</div>
           <h1>My Documents</h1>
-          <p>Your document checklist, grouped the same way as the onboarding form. Each document moves through <b>Pending → Uploaded → Under Review → Accepted</b>. Your Fellow procures, uploads and re-uploads every document for you — tap any document to see its full history.</p>
+          <p>Your document checklist, grouped the same way as the onboarding form. Each document moves through <b>Pending → Uploaded → Under Review → Accepted</b>. Your Fellow procures, uploads and re-uploads every document for you — tap any document to see its full history. For a document you <b>don't have</b>, attach any supporting sub-documents so your Fellow can procure it.</p>
         </div>
 
         <div class="grid g-3 stagger" style="margin-bottom:18px">
-          <div class="card stat"><div class="num" style="color:var(--amber)">1</div><div class="cap">Pending</div></div>
+          <div class="card stat"><div class="num" style="color:var(--amber)">2</div><div class="cap">Pending</div></div>
           <div class="card stat"><div class="num" style="color:var(--blue)">1</div><div class="cap">Under Review</div></div>
           <div class="card stat"><div class="num" style="color:var(--green)">5</div><div class="cap">Accepted</div></div>
         </div>
@@ -1559,6 +1583,10 @@ img{max-width:100%}
               <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">18 May</div></div>
               <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div><div class="d">By Program Admin · 20 May</div></div>
             </div>
+            <div class="subdoc-host">
+              <button class="dont-have-btn" data-key="income" onclick="toggleDontHave('income',this)">Don't have</button>
+              <div class="subdoc-panel"></div>
+            </div>
           </div>
         </div>
 
@@ -1583,12 +1611,16 @@ img{max-width:100%}
         <!-- === Good to Have / Scholarship-specific (5 docs) === -->
         <div class="doc-group-banner" style="margin-top:18px">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
 
-        <!-- Caste Certificate — Accepted (flat row) -->
+        <!-- Caste Certificate — Accepted (flat row) + sub-doc capability (locked until "Don't have") -->
         <div class="card" style="margin-bottom:10px">
           <div class="doc-row">
             <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="dn"><b>Caste Certificate</b><small>Type: Caste · Accepted by Program Admin · 1 May</small></div>
             <span class="pill green"><span class="pdot"></span>Accepted</span>
+          </div>
+          <div class="subdoc-host">
+            <button class="dont-have-btn" data-key="caste" onclick="toggleDontHave('caste',this)">Don't have</button>
+            <div class="subdoc-panel"></div>
           </div>
         </div>
 
@@ -1656,15 +1688,23 @@ img{max-width:100%}
               <div class="fa">R</div>
               <div><b>Submitted for verification.</b> You'll be notified the moment it's Accepted.</div>
             </div>
+            <div class="subdoc-host">
+              <button class="dont-have-btn" data-key="domicile" onclick="toggleDontHave('domicile',this)">Don't have</button>
+              <div class="subdoc-panel"></div>
+            </div>
           </div>
         </div>
 
-        <!-- Ration Card — N/A (flat row) -->
+        <!-- Ration Card — "Don't have" example: sub-docs unlocked so the Fellow can procure it -->
         <div class="card" style="margin-bottom:10px">
           <div class="doc-row">
-            <div class="di" style="background:var(--cream-2);color:var(--muted)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Ration Card</b><small>Marked N/A during onboarding — family does not hold one</small></div>
-            <span class="pill grey"><span class="pdot"></span>N/A</span>
+            <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="dn"><b>Ration Card</b><small>You marked "Don't have" — attach any sub-documents below so your Fellow can procure it</small></div>
+            <span class="pill amber"><span class="pdot"></span>Pending</span>
+          </div>
+          <div class="subdoc-host">
+            <button class="dont-have-btn on" data-key="ration" onclick="toggleDontHave('ration',this)">Don't have ✓</button>
+            <div class="subdoc-panel" style="display:block"></div>
           </div>
         </div>
 
@@ -4291,6 +4331,75 @@ bm.addEventListener('click',e=>{if(e.target===bm)closeBook()});
 // ---- document detail expand (status only — no student actions) ----
 function toggleArr(id){document.getElementById(id).classList.toggle('open')}
 
+// ===== Sub-documents behind a "Don't have" main doc (ID 5) =====
+var SUBDOCS = {
+  ration: ["Aadhaar Card (Student and Father)","Electricity Bill","Income Certificate","Salary Slip / Employer Certificate","Passport-size Photographs of all family members","Aadhaar Card of all Family Members"],
+  caste: ["1950 Identity Proof SC (Grandfather/mother) — Birth or School Leaving Cert.","1960 Identity Proof ST (Grandfather/mother) — Birth or School Leaving Cert.","1970 Identity Proof OBC (Grandfather/mother) — Birth or School Leaving Cert.","Aadhaar Card (Student and Father)","Ration Card","Electricity / Water Bill","Birth Certificate (Student and Father)","School Leaving Certificate (Student and Father)","Passport-size Photograph (Student and Father)"],
+  domicile: ["Ration Card","Electricity Bill / Water Bill (last 10 years)","Aadhaar Card (Student and Father)","Birth Certificate / School Leaving Cert. (Student and Father)","Affidavit (self-declaration of residence duration)","Passport-size Photograph (Student and Father)","Parent's Domicile Certificate (if minor)"],
+  income: ["Aadhaar Card (Student and Father)","Ration Card","Electricity / Water Bill","Rent Agreement","Salary Slip (for salaried individuals)","Employer Certificate (if employed)","Affidavit / Self Declaration stating income details","Bank Passbook Copy","Passport-size Photograph (Student and Father)","Income Tax Return (ITR or Form 16)","Agricultural Income Proof (if farmer)"]
+};
+var SUBDOC_LABEL = { ration:"Ration Card", caste:"Caste Certificate", domicile:"Domicile Certificate", income:"Income Certificate" };
+var SUBDOC_PRESET = { ration:[4], caste:[], domicile:[], income:[] }; // indices already attached (demo realism)
+var SUBDOC_ATTACH_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/><path d="M14 3v5h5M12 11v6M9 14h6"/></svg>';
+function subdocAttachBtn(){ return '<button class="attach-btn" onclick="attachSubdoc(this)">'+SUBDOC_ATTACH_ICON+'Attach</button>'; }
+function subdocDoneHtml(){ return '<span class="subdoc-done"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><b>document.pdf</b><button class="subdoc-mini" onclick="attachSubdoc(this)">Replace</button><button class="subdoc-mini danger" onclick="removeSubdoc(this)">Delete</button></span>'; }
+function subdocRowHtml(label, attached, mode){
+  var right;
+  if(mode==='fellow'){
+    right = attached
+      ? '<a class="subdoc-dl" href="#" onclick="event.preventDefault();alert(\'Downloading (demo)\')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</a>'
+      : '<span class="subdoc-none">Not attached</span>';
+  } else {
+    right = attached ? subdocDoneHtml() : subdocAttachBtn();
+  }
+  return '<div class="subdoc-row"><span class="subdoc-label">'+label+'</span>'+right+'</div>';
+}
+function renderSubdocList(mainKey, mode){
+  var items = SUBDOCS[mainKey]||[], pre = SUBDOC_PRESET[mainKey]||[];
+  var rows = items.map(function(label,i){ return subdocRowHtml(label, pre.indexOf(i)>-1, mode); }).join('');
+  var banner = '<div class="subdoc-banner"><b>Sub-documents required to procure '+SUBDOC_LABEL[mainKey]+'</b><span>Attach each sub-document you have. Your Fellow will use these to apply for the main document on your behalf.</span></div>';
+  var counter = '<div class="subdoc-count">'+pre.length+' / '+items.length+' sub-docs attached</div>';
+  return banner + counter + rows;
+}
+function toggleDontHave(mainKey, btn){
+  var host = btn.closest('.subdoc-host'), panel = host.querySelector('.subdoc-panel');
+  var on = btn.classList.toggle('on');
+  btn.textContent = on ? "Don't have ✓" : "Don't have";
+  if(on && !panel.dataset.filled){ panel.innerHTML = renderSubdocList(mainKey,'student'); panel.dataset.filled='1'; }
+  panel.style.display = on ? 'block' : 'none';
+}
+function attachSubdoc(btn){
+  var row = btn.closest('.subdoc-row');
+  var done = btn.closest('.subdoc-done');
+  if(done){ done.outerHTML = subdocDoneHtml(); }   // Replace: swap in a fresh attached row, count unchanged
+  else { btn.outerHTML = subdocDoneHtml(); bumpSubdocCount(row, +1); }
+}
+function removeSubdoc(btn){
+  var row = btn.closest('.subdoc-row');
+  btn.closest('.subdoc-done').outerHTML = subdocAttachBtn();
+  bumpSubdocCount(row, -1);
+}
+function bumpSubdocCount(row, delta){
+  var panel = row.closest('.subdoc-panel'); if(!panel) return;
+  var c = panel.querySelector('.subdoc-count'); if(!c) return;
+  var m = c.textContent.match(/(\d+)\s*\/\s*(\d+)/);
+  if(m){ var n=parseInt(m[2]); var got=Math.max(0,Math.min(n,parseInt(m[1])+delta)); c.textContent = got+' / '+n+' sub-docs attached'; }
+}
+function initSubdocs(){
+  document.querySelectorAll('#documents .subdoc-host').forEach(function(host){
+    var btn = host.querySelector('.dont-have-btn'), panel = host.querySelector('.subdoc-panel');
+    if(btn && panel && btn.classList.contains('on') && !panel.dataset.filled){
+      panel.innerHTML = renderSubdocList(btn.getAttribute('data-key'),'student');
+      panel.dataset.filled='1'; panel.style.display='block';
+    }
+  });
+}
+function initFellowSubdocs(){
+  document.querySelectorAll('#fp-docs .subdoc-panel[data-subkey]').forEach(function(p){
+    if(!p.dataset.filled){ p.innerHTML = renderSubdocList(p.getAttribute('data-subkey'),'fellow'); p.dataset.filled='1'; }
+  });
+}
+
 // ---- fellow interactions ----
 function ftab(btn,id){
   btn.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));
@@ -5109,6 +5218,8 @@ function filterAStu(){
 }
 // ---- deep-link from workflow.html (?role=&screen=) ----
 (function(){
+  if(typeof initSubdocs==='function') initSubdocs();
+  if(typeof initFellowSubdocs==='function') initFellowSubdocs();
   const p=new URLSearchParams(location.search);
   const role=p.get('role'); const screen=p.get('screen');
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
