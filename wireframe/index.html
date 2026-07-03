@@ -409,6 +409,30 @@ img{max-width:100%}
 .dont-have-btn{font-family:inherit;font-size:12px;font-weight:600;color:var(--ink-soft);background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:5px 12px;cursor:pointer;transition:.15s}
 .dont-have-btn:hover{border-color:var(--amber);color:var(--amber)}
 .dont-have-btn.on{background:var(--amber-50);border-color:var(--amber);color:#9a5b00}
+/* Have it / Don't have — mutually exclusive main-doc attach vs sub-docs */
+.have-choice{display:flex;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.hc-label{font-size:12.5px;color:var(--ink-soft);font-weight:600}
+.have-seg{display:inline-flex;border:1.5px solid var(--line);border-radius:8px;overflow:hidden}
+.have-seg .hc-opt{font-family:inherit;font-size:12.5px;font-weight:600;padding:6px 14px;border:none;background:#fff;color:var(--ink-soft);cursor:pointer;transition:.15s}
+.have-seg .hc-opt+.hc-opt{border-left:1.5px solid var(--line)}
+.have-seg .hc-opt.on{background:var(--teal-700);color:#fff}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+/* Document search + notifications + whose-turn (Task 8/9) */
+.doc-search-wrap{display:flex;align-items:center;gap:10px;background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:16px}
+.doc-search-wrap svg{width:18px;height:18px;color:var(--muted);flex:0 0 auto}
+.doc-search{border:none;outline:none;background:none;font-family:inherit;font-size:14px;width:100%;color:var(--ink)}
+.notif-panel{display:none;position:fixed;top:64px;right:24px;width:330px;max-width:92vw;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.18);z-index:300;overflow:hidden}
+.notif-head{font-weight:700;font-size:13px;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--cream)}
+.notif-item{display:flex;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line)}
+.notif-item:last-child{border-bottom:none}
+.ni-dot{width:8px;height:8px;border-radius:50%;background:var(--teal-500);margin-top:5px;flex:0 0 8px}
+.ni-t{font-size:13px;color:var(--ink);line-height:1.35}
+.ni-s{font-size:11.5px;color:var(--muted);margin-top:2px}
+.notif-empty{padding:16px 14px;font-size:13px;color:var(--muted)}
+.turn-pill{display:inline-block;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px}
+.turn-pill.need{background:var(--amber-50);color:#9a5b00}
+.turn-pill.fellow{background:var(--blue-50);color:var(--blue)}
+.turn-pill.done{background:var(--green-50);color:var(--green)}
 .subdoc-panel{display:none;margin-top:10px;border:1px solid var(--line);border-radius:11px;overflow:hidden}
 .subdoc-banner{background:var(--blue-50);padding:11px 14px;border-bottom:1px solid var(--line)}
 .subdoc-banner b{display:block;color:var(--blue);font-size:13px}
@@ -427,6 +451,35 @@ img{max-width:100%}
 .subdoc-row .attach-btn:hover{border-color:var(--teal-500);color:var(--teal-700);background:var(--teal-50)}
 .subdoc-row .attach-btn svg{width:13px;height:13px}
 .subdoc-fellow summary{font-size:12.5px;font-weight:600;color:var(--teal-700);cursor:pointer;padding:6px 0}
+
+/* ID 7 attendance — Fellow Log In/Out card */
+.att-card{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-left:4px solid var(--teal-500)}
+.att-state{font-size:13.5px;color:var(--ink-soft)}
+.att-state b{color:var(--ink)}
+.att-btn{font-family:inherit;font-weight:700;font-size:14px;border:none;border-radius:9px;padding:12px 22px;cursor:pointer;transition:.15s}
+.att-btn.in{background:var(--green);color:#fff}
+.att-btn.out{background:var(--red);color:#fff}
+.att-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.wn-list{display:grid;gap:10px}
+.wn-row{display:flex;align-items:center;gap:12px}
+.wn-row .sa{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;flex:0 0 36px}
+.wn-row b{font-size:14px}
+.wn-row small{display:block;color:var(--muted);font-size:12px}
+
+/* ID 12 Fellow notes (student-visible) */
+.note-form{background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:14px;margin-bottom:14px}
+.note-form .nf-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.note-form select,.note-form input,.note-form textarea{font-family:inherit;font-size:13.5px;border:1.5px solid var(--line);border-radius:8px;padding:9px 12px;background:#fff;outline:none}
+.note-form textarea{width:100%;min-height:70px;resize:vertical}
+.note-form .nf-acts{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.note-item{padding:12px 0;border-top:1px solid var(--line)}
+.note-item:first-of-type{border-top:none}
+.note-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted);margin-bottom:5px}
+.note-type{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:20px}
+.note-type.call{background:var(--blue-50);color:var(--blue)}
+.note-type.inperson{background:var(--green-50);color:var(--green)}
+.note-type.virtual{background:var(--marigold-50);color:#9a5b00}
+.note-body{font-size:13.5px;color:var(--ink);line-height:1.5}
 
 /* "Check your email" confirmation screen — sibling of .login-card, hidden by default */
 .check-email-screen{display:none;width:100%;max-width:360px;margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:28px;box-shadow:var(--shadow-sm);text-align:center}
@@ -1256,13 +1309,49 @@ img{max-width:100%}
         <input placeholder="Search scholarships, documents, mentors…" />
       </div>
       <div class="spacer"></div>
-      <div class="lang" style="cursor:pointer" onclick="alert('Interface language is English in Phase 1. Student-facing forms (e.g. Onboarding) are bilingual — English + मराठी.')">🌐 English</div>
+      
       <button class="icon-btn" title="Notifications" onclick="showNotifications()"><span class="dot"></span>
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
       </button>
     </header>
 
     <main class="content">
+
+      <!-- ========== GATED ONBOARDING STEP (ID 10 — shown to a signed-up, not-yet-approved student) ========== -->
+      <section class="screen" id="s-gate">
+        <div style="max-width:640px;margin:32px auto 0">
+          <div class="hero stagger" style="margin-bottom:22px">
+            <div class="greet">Welcome to Samavesh</div>
+            <h2>Let's get you started 🌿</h2>
+            <p>You're signed up. Your first step is the <b style="color:#fff">onboarding form</b> — once you submit it, your Fellow reviews it and your full portal (scholarships, documents &amp; more) unlocks.</p>
+          </div>
+          <div class="card" id="sGateFill" style="text-align:center;padding:32px 24px">
+            <div style="font-size:38px;line-height:1;margin-bottom:10px">📝</div>
+            <h3 class="serif" style="font-size:20px;margin-bottom:8px">Fill your Onboarding Form</h3>
+            <p style="color:var(--ink-soft);font-size:14px;margin:0 auto 20px;max-width:44ch">A one-time form so we can match you to the right scholarships. You can save a draft and resume anytime.</p>
+            <button class="btn btn-primary btn-block" id="sGateBtn" data-go="s-onboard">Fill Onboarding Form</button>
+          </div>
+          <div class="card" id="sGatePending" style="display:none;text-align:center;padding:32px 24px;border-left:4px solid var(--marigold)">
+            <div style="font-size:38px;line-height:1;margin-bottom:10px">⏳</div>
+            <h3 class="serif" style="font-size:20px;margin-bottom:8px">Your form is with your Fellow for review</h3>
+            <p style="color:var(--ink-soft);font-size:14px;margin:0 auto;max-width:48ch">Thanks! Your Fellow will review your details and approve your onboarding. Your full portal unlocks once approved — we'll notify you.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== STUDENT SELF-FILL ONBOARDING FORM (ID 10 · Task 6) ========== -->
+            <section class="screen" id="s-onboard">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Onboarding</div><h1>Your Onboarding Form</h1><p>Fill this once so we can match you to the right scholarships. Save a draft and resume anytime — your Fellow reviews it after you submit.</p></div>
+          <span class="backlink" data-go="s-gate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back</span>
+        </div>
+        <div id="sOnbHost"></div>
+        <div class="dt-actions">
+          <span id="sOnbSaved" style="display:none;color:var(--green);font-size:13px;align-self:center;margin-right:auto">✓ Draft saved — you can resume anytime</span>
+          <button class="btn btn-ghost" onclick="saveOnbDraft()">Save draft</button>
+          <button class="btn btn-primary" onclick="submitStudentOnboarding()">Submit for review</button>
+        </div>
+      </section>
 
       <!-- ========== HOME ========== -->
       <section class="screen active" id="home">
@@ -1281,7 +1370,7 @@ img{max-width:100%}
           </div>
           <div class="card stat hoverable">
             <div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div>
-            <div class="num">6/8</div><div class="cap">Documents Accepted</div>
+            <div class="num">5/8</div><div class="cap">Documents Accepted</div>
           </div>
           <div class="card stat hoverable">
             <div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div></div>
@@ -1535,8 +1624,13 @@ img{max-width:100%}
           <p>Your document checklist, grouped the same way as the onboarding form. Each document moves through <b>Pending → Uploaded → Under Review → Accepted</b>. Your Fellow procures, uploads and re-uploads every document for you — tap any document to see its full history. For a document you <b>don't have</b>, attach any supporting sub-documents so your Fellow can procure it.</p>
         </div>
 
+        <div class="doc-search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          <input class="doc-search" oninput="docSearch(this.value)" placeholder="Search a document by name…" />
+        </div>
+
         <div class="grid g-3 stagger" style="margin-bottom:18px">
-          <div class="card stat"><div class="num" style="color:var(--amber)">2</div><div class="cap">Pending</div></div>
+          <div class="card stat"><div class="num" style="color:var(--amber)">1</div><div class="cap">Pending</div></div>
           <div class="card stat"><div class="num" style="color:var(--blue)">1</div><div class="cap">Under Review</div></div>
           <div class="card stat"><div class="num" style="color:var(--green)">5</div><div class="cap">Accepted</div></div>
         </div>
@@ -1583,10 +1677,6 @@ img{max-width:100%}
               <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">18 May</div></div>
               <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div><div class="d">By Program Admin · 20 May</div></div>
             </div>
-            <div class="subdoc-host">
-              <button class="dont-have-btn" data-key="income" onclick="toggleDontHave('income',this)">Don't have</button>
-              <div class="subdoc-panel"></div>
-            </div>
           </div>
         </div>
 
@@ -1618,41 +1708,38 @@ img{max-width:100%}
             <div class="dn"><b>Caste Certificate</b><small>Type: Caste · Accepted by Program Admin · 1 May</small></div>
             <span class="pill green"><span class="pdot"></span>Accepted</span>
           </div>
-          <div class="subdoc-host">
-            <button class="dont-have-btn" data-key="caste" onclick="toggleDontHave('caste',this)">Don't have</button>
-            <div class="subdoc-panel"></div>
-          </div>
         </div>
 
-        <!-- Non-Creamy Layer — Pending, expandable -->
+        <!-- Non-Creamy Layer — Rejected, re-upload in progress (aligned with Fellow/Admin views) -->
         <div class="arr-card" id="arr1" style="margin-bottom:10px">
           <div class="arr-head" onclick="toggleArr('arr1')">
-            <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Non-Creamy Layer Certificate</b><small>Required for Dr. Babasaheb Ambedkar Scholarship · tap to see status</small></div>
-            <span class="pill amber"><span class="pdot"></span>Pending</span>
+            <div class="di" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
+            <div class="dn"><b>Non-Creamy Layer Certificate</b><small style="color:var(--red)">Rejected — "not clearly legible." Being re-done; upload a clearer copy if you have one.</small></div>
+            <span class="pill red" style="margin-right:8px"><span class="pdot"></span>Rejected</span>
+            <button class="btn btn-gold btn-sm" onclick="event.stopPropagation();uploadMainDoc(this,'Non-Creamy Layer Certificate')">Upload</button>
             <svg class="chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
           </div>
           <div class="docflow">
-            <div class="df cur"><div class="d"></div><div class="t">Pending</div></div>
-            <div class="df"><div class="d"></div><div class="t">Uploaded</div></div>
-            <div class="df"><div class="d"></div><div class="t">Under&nbsp;Review</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Pending</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div></div>
+            <div class="df done"><div class="d"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under&nbsp;Review</div></div>
             <div class="df"><div class="d"></div><div class="t">Accepted</div></div>
           </div>
           <div class="arr-body">
             <div class="proc">
-              <div class="pi"><div class="k">Verification Status</div><div class="v" style="color:var(--amber)">Pending</div></div>
+              <div class="pi"><div class="k">Verification Status</div><div class="v" style="color:var(--red)">Rejected</div></div>
               <div class="pi"><div class="k">Document Type</div><div class="v">Caste</div></div>
               <div class="pi"><div class="k">Required for</div><div class="v">Ambedkar Scholarship</div></div>
             </div>
             <div class="tl">
-              <div class="tl-item active"><div class="knob"></div><div class="t">Pending — procurement in progress</div><div class="d">Your Fellow is arranging this document · added to checklist 22 May</div></div>
-              <div class="tl-item future"><div class="t">Uploaded</div><div class="d">—</div></div>
-              <div class="tl-item future"><div class="t">Under Review</div><div class="d">—</div></div>
+              <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Uploaded</div><div class="d">By Fellow Rahul · 10 May</div></div>
+              <div class="tl-item done"><div class="knob" style="background:var(--red);border-color:var(--red)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6 6 18M6 6l12 12"/></svg></div><div class="t" style="color:var(--red)">Rejected</div><div class="d">Rejection Reason: "Not clearly legible" · 16 May</div></div>
+              <div class="tl-item active"><div class="knob"></div><div class="t">Re-upload in progress</div><div class="d">Your Fellow is re-procuring a clearer copy</div></div>
               <div class="tl-item future"><div class="t">Accepted</div><div class="d">—</div></div>
             </div>
             <div class="fellow-help">
               <div class="fa">R</div>
-              <div><b>Fellow Rahul is arranging this for you.</b> You'll get an SMS as the status changes — nothing for you to do.</div>
+              <div><b>Fellow Rahul is re-doing this for you.</b> You'll get an SMS as the status changes.</div>
             </div>
           </div>
         </div>
@@ -1688,22 +1775,25 @@ img{max-width:100%}
               <div class="fa">R</div>
               <div><b>Submitted for verification.</b> You'll be notified the moment it's Accepted.</div>
             </div>
-            <div class="subdoc-host">
-              <button class="dont-have-btn" data-key="domicile" onclick="toggleDontHave('domicile',this)">Don't have</button>
-              <div class="subdoc-panel"></div>
-            </div>
           </div>
         </div>
 
-        <!-- Ration Card — "Don't have" example: sub-docs unlocked so the Fellow can procure it -->
+        <!-- Ration Card — Have it (attach main doc) vs Don't have (attach sub-docs). Mutually exclusive. -->
         <div class="card" style="margin-bottom:10px">
           <div class="doc-row">
             <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
-            <div class="dn"><b>Ration Card</b><small>You marked "Don't have" — attach any sub-documents below so your Fellow can procure it</small></div>
-            <span class="pill amber"><span class="pdot"></span>Pending</span>
+            <div class="dn"><b>Ration Card</b><small id="ration-small">You don't have this — attach sub-documents below so your Fellow can procure it.</small></div>
+            <span class="pill amber" style="margin-right:8px"><span class="pdot"></span>Pending</span>
+            <button class="btn btn-gold btn-sm" id="ration-upbtn" onclick="uploadMainDoc(this,'Ration Card')" disabled>Attach document</button>
           </div>
-          <div class="subdoc-host">
-            <button class="dont-have-btn on" data-key="ration" onclick="toggleDontHave('ration',this)">Don't have ✓</button>
+          <div class="have-choice">
+            <span class="hc-label">Do you have this document?</span>
+            <div class="have-seg" data-key="ration">
+              <button class="hc-opt" onclick="setHave('ration',true)">Have it</button>
+              <button class="hc-opt on" onclick="setHave('ration',false)">Don't have</button>
+            </div>
+          </div>
+          <div class="subdoc-host" id="ration-subdocs">
             <div class="subdoc-panel" style="display:block"></div>
           </div>
         </div>
@@ -1811,6 +1901,14 @@ img{max-width:100%}
             <div class="field"><div class="k">Guardian</div><div class="v">Ramesh Pawar (Father)</div></div>
           </div>
         </div>
+
+        <!-- ID 12: notes from the Fellow (read-only for the student) -->
+        <div class="card">
+          <h3 style="font-size:18px;margin-bottom:4px">Notes from your Fellow</h3>
+          <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px">Points your Fellow noted after calls or meetings. Something missing? Message your Fellow on WhatsApp.</p>
+          <div class="note-item"><div class="note-meta"><span class="note-type call">Call</span><span>2 Jul 2026, 4:30 PM · Fellow Rahul</span></div><div class="note-body">Explained the Post-Matric documents pending. You'll ask your father for the income certificate this week. Follow up after 10 Jul.</div></div>
+          <div class="note-item"><div class="note-meta"><span class="note-type inperson">In-person</span><span>24 Jun 2026, 11:00 AM · Fellow Rahul</span></div><div class="note-body">Met at the college camp. Confirmed SC category and B.Com Year 2. Interested in higher-studies mentorship.</div></div>
+        </div>
       </section>
 
     </main>
@@ -1849,7 +1947,7 @@ img{max-width:100%}
       <div class="mobile-brand"><div class="mark">स</div><b class="serif" style="font-size:18px">Samavesh</b></div>
       <div class="search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg><input placeholder="Search sessions, mentees…" /></div>
       <div class="spacer"></div>
-      <div class="lang" style="cursor:pointer" onclick="alert('Interface language is English in Phase 1. Student-facing forms (e.g. Onboarding) are bilingual — English + मराठी.')">🌐 English</div>
+      
       <button class="icon-btn" title="Notifications" onclick="showNotifications()"><span class="dot"></span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button>
     </header>
     <main class="content">
@@ -2017,8 +2115,14 @@ img{max-width:100%}
       <a href="#" class="nav-link" data-go="f-students">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>My Students
       </a>
+      <a href="#" class="nav-link" data-go="f-approvals">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Onboarding Approvals<span class="soon" style="background:rgba(246,178,74,.2);color:var(--marigold-soft)" id="fApprovalBadge">2</span>
+      </a>
       <a href="#" class="nav-link" data-go="f-tasks">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2M14 17h2"/></svg>My Cases<span class="soon" style="background:rgba(246,178,74,.2);color:var(--marigold-soft)">6</span>
+      </a>
+      <a href="#" class="nav-link" data-go="f-attendance">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>My Attendance
       </a>
       <a href="#" class="nav-link" data-go="f-applications">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Applications
@@ -2061,6 +2165,16 @@ img{max-width:100%}
           <h2>Namaste, Rahul 🙏</h2>
           <p>You're supporting <b style="color:#fff">24 students</b> through their scholarship journey. <b style="color:#fff">11 tasks</b> need your attention today.</p>
           <div class="quote">“ One student, one journey, end to end. ”</div>
+        </div>
+
+        <!-- ID 7 attendance: Log In / Log Out (captures time + date + browser location) -->
+        <div class="card att-card" id="fAttCard">
+          <div>
+            <div class="eyebrow">Attendance</div>
+            <div class="att-state" id="fAttState">You're <b>logged out</b>. Log in to start your day.</div>
+            <a href="#" data-go="f-attendance" style="display:inline-block;margin-top:6px;font-size:12.5px;color:var(--teal-700);font-weight:600;text-decoration:none">View my attendance history →</a>
+          </div>
+          <button class="att-btn in" id="fAttBtn" onclick="fellowPunch(this)">Log In</button>
         </div>
 
         <!-- KPIs (MIS-03 fellow performance) -->
@@ -2128,6 +2242,7 @@ img{max-width:100%}
           <div class="smeta"><span class="pill amber"><span class="pdot"></span>Documents Pending</span><span class="sc">2 scholarships</span></div>
           <svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
         </div>
+
       </section>
 
       <!-- ===== MY STUDENTS ===== -->
@@ -2155,6 +2270,7 @@ img{max-width:100%}
         <!-- working status tabs -->
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px">
           <span class="tagk chip on" style="padding:8px 14px" onclick="filterStu('all',this)">All (10)</span>
+          <span class="tagk chip" id="fPendingChip" style="padding:8px 14px" onclick="go('f-approvals')">Pending Approval (2)</span>
           <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('onboarded',this)">Onboarded (2)</span>
           <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('documents',this)">Documents Pending (2)</span>
           <span class="tagk chip" style="padding:8px 14px" onclick="filterStu('submitted',this)">Submitted (2)</span>
@@ -2231,10 +2347,56 @@ img{max-width:100%}
         </div>
       </section>
 
-      <!-- ===== ONBOARD STUDENT (Student Onboarding Form — 42 Q, bilingual, 8 steps) ===== -->
+      <!-- ===== ONBOARDING APPROVALS (ID 10 · Task 7) — self-registered students awaiting Fellow approval ===== -->
+      <section class="screen" id="f-approvals">
+        <div class="page-h"><div class="eyebrow">Workspace</div><h1>Onboarding Approvals</h1><p>Students who signed up and submitted their onboarding form. Review, correct any discrepancy (edit the fields), then approve — approval unlocks the student's full portal and adds them to your caseload.</p></div>
+        <div id="approvalList">
+          <div class="card approval-card" style="margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+              <div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">R</span><div><b>Ravi Deshmukh</b><div style="font-size:12px;color:var(--muted)">Submitted 3 Jul 2026 · self-registered · ravi.deshmukh@gmail.com</div></div></div>
+              <span class="pill amber"><span class="pdot"></span>Pending Approval</span>
+            </div>
+            <p style="font-size:12.5px;color:var(--ink-soft);margin-bottom:10px">Review the submitted details. Edit any field to correct a discrepancy before approving (audit-logged).</p>
+            <div class="grid g-2">
+              <div class="field"><div class="k">Full Name</div><input class="v" type="text" value="Ravi Deshmukh" /></div>
+              <div class="field"><div class="k">Date of Birth</div><input class="v" type="date" value="2006-03-12" /></div>
+              <div class="field"><div class="k">Course / Class</div><input class="v" type="text" value="B.A Year 1" /></div>
+              <div class="field"><div class="k">Category</div><input class="v" type="text" value="OBC" /></div>
+              <div class="field"><div class="k">Mobile</div><input class="v" type="tel" value="9812345678" /></div>
+              <div class="field"><div class="k">District</div><input class="v" type="text" value="Pune" /></div>
+            </div>
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
+              <button class="btn btn-ghost btn-sm" onclick="alert('Coordinate with the student over WhatsApp about any discrepancy, edit the field above, then approve. (Wireframe stub.)')">Message student</button>
+              <button class="btn btn-primary btn-sm" onclick="approveOnboarding(this)">Approve onboarding</button>
+            </div>
+          </div>
+          <div class="card approval-card" style="margin-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
+              <div class="who"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">S</span><div><b>Sneha Kale</b><div style="font-size:12px;color:var(--muted)">Submitted 2 Jul 2026 · self-registered · sneha.kale@gmail.com</div></div></div>
+              <span class="pill amber"><span class="pdot"></span>Pending Approval</span>
+            </div>
+            <p style="font-size:12.5px;color:var(--ink-soft);margin-bottom:10px">Review the submitted details. Edit any field to correct a discrepancy before approving (audit-logged).</p>
+            <div class="grid g-2">
+              <div class="field"><div class="k">Full Name</div><input class="v" type="text" value="Sneha Kale" /></div>
+              <div class="field"><div class="k">Date of Birth</div><input class="v" type="date" value="2005-11-27" /></div>
+              <div class="field"><div class="k">Course / Class</div><input class="v" type="text" value="B.Sc Year 2" /></div>
+              <div class="field"><div class="k">Category</div><input class="v" type="text" value="SC" /></div>
+              <div class="field"><div class="k">Mobile</div><input class="v" type="tel" value="9898989898" /></div>
+              <div class="field"><div class="k">District</div><input class="v" type="text" value="Nashik" /></div>
+            </div>
+            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
+              <button class="btn btn-ghost btn-sm" onclick="alert('Coordinate with the student over WhatsApp about any discrepancy, edit the field above, then approve. (Wireframe stub.)')">Message student</button>
+              <button class="btn btn-primary btn-sm" onclick="approveOnboarding(this)">Approve onboarding</button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="approvalEmpty" style="display:none">All caught up — no onboarding submissions pending approval.</div>
+      </section>
+
+      <!-- ===== ONBOARD STUDENT (Fellow direct-onboard path — Student Onboarding Form) ===== -->
       <section class="screen" id="f-onboard">
         <span class="backlink" data-go="f-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to My Students</span>
-        <div class="page-h" style="margin-bottom:10px"><div class="eyebrow">Phase 1 · Student Onboarding Form / विद्यार्थी नोंदणी फॉर्म</div><h1>Onboard New Student</h1><p>Filled by the Fellow on behalf of the student. Every label is shown in English &amp; Marathi.</p></div>
+        <div class="page-h" style="margin-bottom:10px"><div class="eyebrow">Phase 1 · Student Onboarding Form</div><h1>Onboard New Student</h1><p>Filled by the Fellow on behalf of the student.</p></div>
 
         <div class="dupbox">
           <div class="dt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>First, check for an existing profile</div>
@@ -2262,13 +2424,13 @@ img{max-width:100%}
             <!-- §1 Welcome & Support Type -->
             <section class="dt-section" id="sec-support">
               <h3 class="dt-sec-title"><span class="anum">1</span>Welcome &amp; Support Type</h3>
-              <div class="dt-sec-lead">आपले स्वागत आहे! — personalised support for scholarships &amp; documentation, kept confidential.</div>
+              <div class="dt-sec-lead">Personalised support for scholarships &amp; documentation, kept confidential.</div>
               <div class="dt-grid">
-                <div class="q full"><div class="qen">Email <span class="req">*</span></div><div class="qmr">ईमेल</div><input type="email" placeholder="student@gmail.com" /><div class="qhelp">Becomes the student's sign-in identifier (Google SSO or magic link).</div></div>
-                <div class="q full"><div class="qen">Please select the support required <span class="req">*</span></div><div class="qmr">आपल्याला आवश्यक असलेले सहाय्य निवडा (एकापेक्षा जास्त निवडता येईल)</div>
+                <div class="q full"><div class="qen">Email <span class="req">*</span></div><input type="email" placeholder="student@gmail.com" /><div class="qhelp">Becomes the student's sign-in identifier (Google SSO or magic link).</div></div>
+                <div class="q full"><div class="qen">Please select the support required <span class="req">*</span></div>
                   <div class="opts">
-                    <label class="opt"><input type="checkbox" name="onb_support" /> Scholarship Support (Government/Private) — शिष्यवृत्ती सहाय्य</label>
-                    <label class="opt"><input type="checkbox" name="onb_support" /> Documentation Support (Legal Documents) — कायदेशीर कागदपत्रे सहाय्य</label>
+                    <label class="opt"><input type="checkbox" name="onb_support" /> Scholarship Support (Government/Private)</label>
+                    <label class="opt"><input type="checkbox" name="onb_support" /> Documentation Support (Legal Documents)</label>
                   </div>
                 </div>
               </div>
@@ -2277,46 +2439,46 @@ img{max-width:100%}
             <!-- §2 Personal Details -->
             <section class="dt-section" id="sec-personal">
               <h3 class="dt-sec-title"><span class="anum">2</span>Personal Details</h3>
-              <div class="dt-sec-lead">वैयक्तिक माहिती</div>
+              
               <div class="dt-grid">
-                <div class="q full"><div class="qen">Full Name (as per govt document) <span class="req">*</span></div><div class="qmr">पूर्ण नाव (शासकीय कागदपत्रानुसार)</div><input type="text" placeholder="Full name as on Govt ID" /></div>
-                <div class="q"><div class="qen">Date of Birth <span class="req">*</span></div><div class="qmr">जन्मतारीख</div>
+                <div class="q full"><div class="qen">Full Name (as per govt document) <span class="req">*</span></div><input type="text" placeholder="Full name as on Govt ID" /></div>
+                <div class="q"><div class="qen">Date of Birth <span class="req">*</span></div>
                   <div class="dob-inline">
                     <input type="date" id="onbDob" />
                     <span class="dob-age empty" id="onbAge">Age: —</span>
                   </div>
                   <div class="qhelp">Age in years (1 decimal) auto-calculated from DOB.</div>
                 </div>
-                <div class="q"><div class="qen">Gender <span class="req">*</span></div><div class="qmr">लिंग</div>
-                  <select id="onbGender"><option value="">Select / निवडा…</option></select>
+                <div class="q"><div class="qen">Gender <span class="req">*</span></div>
+                  <select id="onbGender"><option value="">Select</option></select>
                   <div class="qhelp">Driven by the Gender master (Frappe Link field in production).</div>
                 </div>
-                <div class="q"><div class="qen">Contact Number (preferably WhatsApp) <span class="req">*</span></div><div class="qmr">संपर्क क्रमांक (आवडीनुसार व्हॉट्सअ‍ॅप नंबर)</div>
+                <div class="q"><div class="qen">Contact Number (preferably WhatsApp) <span class="req">*</span></div>
                   <div class="mobile-input">
                     <input type="tel" id="onbMobile" maxlength="10" placeholder="10-digit mobile" />
                     <span class="mobile-verify" id="onbMobileVerify"></span>
                   </div>
                   <div class="qhelp">Validated as Indian 10-digit mobile (starts with 6/7/8/9). Used for SMS reminders only — login is by email.</div>
                 </div>
-                <div class="q"><div class="qen">Date of Form Submission <span class="req">*</span></div><div class="qmr">फॉर्म भरण्याची तारीख</div><input type="date" value="2026-06-09" /><div class="qhelp">Auto-filled to today — override only for back-dated entries.</div></div>
+                <div class="q"><div class="qen">Date of Form Submission <span class="req">*</span></div><input type="date" value="2026-06-09" /><div class="qhelp">Auto-filled to today — override only for back-dated entries.</div></div>
               </div>
             </section>
 
             <!-- §3 Location -->
             <section class="dt-section" id="sec-location">
               <h3 class="dt-sec-title"><span class="anum">3</span>Location</h3>
-              <div class="dt-sec-lead">पत्ता</div>
+              
               <div class="dt-grid">
-                <div class="q full"><div class="qen">State <span class="req">*</span></div><div class="qmr">राज्य</div>
-                  <select onchange="onState(this)"><option value="">Select state</option><option value="Maharashtra">Maharashtra / महाराष्ट्र</option><option value="Tamil Nadu">Tamil Nadu / तमिळनाडू</option><option value="Karnataka">Karnataka / कर्नाटक</option><option value="Other">Other / इतर</option></select></div>
-                <div class="q full"><div class="qen">Permanent Address (as per govt address proof) <span class="req">*</span></div><div class="qmr">कायमचा पत्ता (शासकीय कागदपत्रांनुसार)</div><textarea id="onbPermAddr" placeholder="Full permanent address"></textarea></div>
-                <div class="q full" id="mhDistricts"><div class="qen">District — Permanent (as per Govt ID) <span class="req">*</span></div><div class="qmr">जिल्हा (कायम पत्त्यानुसार)</div>
+                <div class="q full"><div class="qen">State <span class="req">*</span></div>
+                  <select onchange="onState(this)"><option value="">Select state</option><option value="Maharashtra">Maharashtra</option><option value="Tamil Nadu">Tamil Nadu</option><option value="Karnataka">Karnataka</option><option value="Other">Other</option></select></div>
+                <div class="q full"><div class="qen">Permanent Address (as per govt address proof) <span class="req">*</span></div><textarea id="onbPermAddr" placeholder="Full permanent address"></textarea></div>
+                <div class="q full" id="mhDistricts"><div class="qen">District — Permanent (as per Govt ID) <span class="req">*</span></div>
                   <select><option value="">Select district</option><option>Ahmednagar (Ahilyanagar)</option><option>Akola</option><option>Amravati</option><option>Chhatrapati Sambhaji Nagar (Aurangabad)</option><option>Beed</option><option>Bhandara</option><option>Buldhana</option><option>Chandrapur</option><option>Dhule</option><option>Gadchiroli</option><option>Gondia</option><option>Hingoli</option><option>Jalgaon</option><option>Jalna</option><option>Kolhapur</option><option>Latur</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Nagpur</option><option>Nanded</option><option>Nandurbar</option><option>Nashik</option><option>Dharashiv (Osmanabad)</option><option>Palghar</option><option>Parbhani</option><option>Pune</option><option>Raigad</option><option>Ratnagiri</option><option>Sangli</option><option>Satara</option><option>Sindhudurg</option><option>Solapur</option><option>Thane</option><option>Wardha</option><option>Washim</option><option>Yavatmal</option><option>Other</option></select></div>
-                <div class="q full" id="otherDistrict" style="display:none"><div class="qen">District — Permanent <span class="req">*</span></div><div class="qmr">जिल्हा</div><input type="text" placeholder="Enter your district" /></div>
-                <div class="q full"><div class="qen">Current Address of Residence <span class="req">*</span></div><div class="qmr">सध्याच्या राहण्याचा पत्ता</div>
-                  <label class="inline-cb"><input type="checkbox" onchange="sameAddr(this,'onbPermAddr','onbCurrAddr')" /> Same as permanent address / कायम पत्त्याप्रमाणेच</label>
+                <div class="q full" id="otherDistrict" style="display:none"><div class="qen">District — Permanent <span class="req">*</span></div><input type="text" placeholder="Enter your district" /></div>
+                <div class="q full"><div class="qen">Current Address of Residence <span class="req">*</span></div>
+                  <label class="inline-cb"><input type="checkbox" onchange="sameAddr(this,'onbPermAddr','onbCurrAddr')" /> Same as permanent address</label>
                   <textarea id="onbCurrAddr" placeholder="Current address"></textarea></div>
-                <div class="q full"><div class="qen">District — Current Residence <span class="req">*</span></div><div class="qmr">सध्याच्या राहण्याच्या पत्त्यानुसार जिल्हा</div>
+                <div class="q full"><div class="qen">District — Current Residence <span class="req">*</span></div>
                   <select><option value="">Select district</option><option>Pune</option><option>Nashik</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Thane</option><option>Satara</option><option>Kolhapur</option><option>Other</option></select></div>
               </div>
             </section>
@@ -2324,14 +2486,14 @@ img{max-width:100%}
             <!-- §4 College & Reference -->
             <section class="dt-section" id="sec-college">
               <h3 class="dt-sec-title"><span class="anum">4</span>College &amp; Reference</h3>
-              <div class="dt-sec-lead">महाविद्यालय व संदर्भ</div>
+              
               <div class="dt-grid">
-                <div class="q"><div class="qen">College Name <span class="req">*</span></div><div class="qmr">महाविद्यालयाचे नाव</div>
+                <div class="q"><div class="qen">College Name <span class="req">*</span></div>
                   <select><option value="">Search &amp; select college…</option><option>Fergusson College, Pune</option><option>Sir Parshurambhau (S.P.) College, Pune</option><option>Modern College, Pune</option><option>Brihan Maharashtra College of Commerce (BMCC)</option><option>Abasaheb Garware College</option><option>Nowrosjee Wadia College</option><option>MIT World Peace University</option><option>College of Engineering Pune (COEP)</option><option>Symbiosis College of Arts &amp; Commerce</option><option>D. Y. Patil College</option><option>PCCOE, Pimpri</option><option>Ness Wadia College of Commerce</option><option>Other</option></select>
                   <div class="qhelp">Searchable dropdown — full college list maintained by Admin in production.</div></div>
-                <div class="q"><div class="qen">How did you hear about SAMAVESH? <span class="req">*</span></div><div class="qmr">तुम्हाला आमच्याबद्दल कसे समजले?</div>
+                <div class="q"><div class="qen">How did you hear about SAMAVESH? <span class="req">*</span></div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option>GSP Girls</option>
                     <option>Mudita Alliance</option>
                     <option>Chaitanya</option>
@@ -2348,23 +2510,23 @@ img{max-width:100%}
             <!-- §5 Education -->
             <section class="dt-section" id="sec-edu">
               <h3 class="dt-sec-title"><span class="anum">5</span>Educational Background</h3>
-              <div class="dt-sec-lead">शैक्षणिक माहिती</div>
+              
               <div class="dt-grid">
-                <div class="q"><div class="qen">Current Grade of Study <span class="req">*</span></div><div class="qmr">सध्याच्या शिक्षणाची इयत्ता/स्तर</div>
+                <div class="q"><div class="qen">Current Grade of Study <span class="req">*</span></div>
                   <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Graduation - 5th Year</option><option>Masters - 1st Year</option><option>Masters - 2nd Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
-                <div class="q"><div class="qen">Stream <span class="req">*</span></div><div class="qmr">शाखा</div>
+                <div class="q"><div class="qen">Stream <span class="req">*</span></div>
                   <select><option value="">Select</option><option>Arts / Humanities</option><option>Commerce &amp; Management</option><option>Science</option><option>Engineering &amp; Technology (B.Tech/B.E.)</option><option>Medical Science</option><option>Law</option><option>Design &amp; Media</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
-                <div class="q full"><div class="qen">Current Marks Obtained <span class="req">*</span></div><div class="qmr">सध्याचे गुण</div><input type="text" placeholder="e.g. 72% or CGPA 7.8" /><div class="qhelp">Enter as percentage (e.g. 72%) or CGPA (e.g. 7.8).</div></div>
-                <div class="q"><div class="qen">Previous Grade of Study <span class="req">*</span></div><div class="qmr">मागील इयत्ता</div>
+                <div class="q full"><div class="qen">Current Marks Obtained <span class="req">*</span></div><input type="text" placeholder="e.g. 72% or CGPA 7.8" /><div class="qhelp">Enter as percentage (e.g. 72%) or CGPA (e.g. 7.8).</div></div>
+                <div class="q"><div class="qen">Previous Grade of Study <span class="req">*</span></div>
                   <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
-                <div class="q"><div class="qen">Marks Obtained in Previous Grade <span class="req">*</span></div><div class="qmr">मागील इयत्तेतील गुण</div><input type="text" placeholder="e.g. 68% or CGPA 7.2" /></div>
+                <div class="q"><div class="qen">Marks Obtained in Previous Grade <span class="req">*</span></div><input type="text" placeholder="e.g. 68% or CGPA 7.2" /></div>
               </div>
             </section>
 
             <!-- §6 Documents (child-table, Must Have / Good to Have) -->
             <section class="dt-section" id="sec-docs">
               <h3 class="dt-sec-title"><span class="anum">6</span>Documents</h3>
-              <div class="dt-sec-lead">कोणती कागदपत्रे आहेत व कोणत्या कागदपत्रांसाठी मदत हवी आहे हे समजून घेण्यासाठी. Mark availability and attach if you have the document in hand.</div>
+              <div class="dt-sec-lead">Mark availability and attach if you have the document in hand.</div>
               <table class="doc-ctable">
                 <thead><tr><th>Document</th><th>Status</th><th>Attachment</th></tr></thead>
 
@@ -2418,19 +2580,19 @@ img{max-width:100%}
             <!-- §7 Socio-economic -->
             <section class="dt-section" id="sec-socio">
               <h3 class="dt-sec-title"><span class="anum">7</span>Socio-Economic Details</h3>
-              <div class="dt-sec-lead">सामाजिक-आर्थिक माहिती</div>
-              <div class="dt-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>The first three questions are optional / पहिले तीन प्रश्न ऐच्छिक आहेत. Shared in confidence to match the right support.</div>
+              
+              <div class="dt-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>The first three questions are optional. Shared in confidence to match the right support.</div>
               <div class="dt-grid">
-                <div class="q"><div class="qen">Social Background</div><div class="qmr">सामाजिक प्रवर्ग (ऐच्छिक)</div>
+                <div class="q"><div class="qen">Social Background</div>
                   <select>
-                    <option value="">Select / निवडा…</option>
-                    <option value="">Prefer not to answer / सांगू इच्छित नाही</option>
+                    <option value="">Select</option>
+                    <option value="">Prefer not to answer</option>
                     <option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>SEBC</option><option>SBC</option><option>EWS</option><option>General</option><option>Other</option>
                   </select>
                 </div>
-                <div class="q"><div class="qen">Annual Family Income</div><div class="qmr">वार्षिक कौटुंबिक उत्पन्न (ऐच्छिक)</div>
+                <div class="q"><div class="qen">Annual Family Income</div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option value="">Prefer not to answer</option>
                     <option>Less than ₹50,000</option>
                     <option>₹50,000 – ₹1 lakh</option>
@@ -2440,62 +2602,62 @@ img{max-width:100%}
                     <option>₹8 lakh and above</option>
                   </select>
                 </div>
-                <div class="q full"><div class="qen">Identities / Vulnerability Markers</div><div class="qmr">ओळख (ऐच्छिक, एकापेक्षा जास्त निवडता येईल)</div>
+                <div class="q full"><div class="qen">Identities / Vulnerability Markers</div>
                   <div class="opts">
-                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Persons with Disabilities / अपंगत्व</label>
-                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Economically Disadvantaged / आर्थिकदृष्ट्या मागास</label>
-                    <label class="opt"><input type="checkbox" name="onb_vuln" /> First Generation Learner / पहिली व्यक्ती जी उच्च शिक्षण घेत आहे</label>
-                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Single Parent / एकल पालक</label>
-                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Orphan / अनाथ</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Persons with Disabilities</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Economically Disadvantaged</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> First Generation Learner</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Single Parent</label>
+                    <label class="opt"><input type="checkbox" name="onb_vuln" /> Orphan</label>
                     <label class="opt optout"><input type="checkbox" name="onb_vuln" /> Prefer not to answer</label>
                   </div></div>
-                <div class="q"><div class="qen">Single Parent Child? <span class="req">*</span></div><div class="qmr">एकल पालकाचे अपत्य?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_sp" /> Yes</label><label class="opt"><input type="radio" name="onb_sp" /> No</label></div></div>
-                <div class="q"><div class="qen">Do parents have any disability? <span class="req">*</span></div><div class="qmr">पालकांना काही अपंगत्व आहे का?</div>
+                <div class="q"><div class="qen">Single Parent Child? <span class="req">*</span></div><div class="opts row"><label class="opt"><input type="radio" name="onb_sp" /> Yes</label><label class="opt"><input type="radio" name="onb_sp" /> No</label></div></div>
+                <div class="q"><div class="qen">Do parents have any disability? <span class="req">*</span></div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option>Yes</option>
                     <option>No</option>
                     <option>Maybe</option>
                   </select>
                 </div>
-                <div class="q"><div class="qen">Family Occupation / Parents' Income Source <span class="req">*</span></div><div class="qmr">कौटुंबिक व्यवसाय / उत्पन्नाचा स्रोत</div>
+                <div class="q"><div class="qen">Family Occupation / Parents' Income Source <span class="req">*</span></div>
                   <select>
-                    <option value="">Select / निवडा…</option>
-                    <option>Farming / शेती</option>
-                    <option>Daily Wages / मजुरी</option>
-                    <option>Service / नोकरी</option>
-                    <option>Business / व्यवसाय</option>
+                    <option value="">Select</option>
+                    <option>Farming</option>
+                    <option>Daily Wages</option>
+                    <option>Service</option>
+                    <option>Business</option>
                     <option>Seasonal / Contract work</option>
                     <option>Other</option>
                   </select>
                 </div>
-                <div class="q"><div class="qen">Type of House <span class="req">*</span></div><div class="qmr">घराचा प्रकार (एकापेक्षा जास्त निवडता येईल)</div>
+                <div class="q"><div class="qen">Type of House <span class="req">*</span></div>
                   <div class="opts row"><label class="opt"><input type="checkbox" name="onb_house" /> Own house</label><label class="opt"><input type="checkbox" name="onb_house" /> Rented house</label><label class="opt"><input type="checkbox" name="onb_house" /> Kaccha</label><label class="opt"><input type="checkbox" name="onb_house" /> Pakka</label></div></div>
-                <div class="q"><div class="qen">Any drug-addiction problem at home? <span class="req">*</span></div><div class="qmr">घरात व्यसनाची समस्या आहे का?</div>
+                <div class="q"><div class="qen">Any drug-addiction problem at home? <span class="req">*</span></div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option>Yes</option>
                     <option>No</option>
                     <option>Maybe</option>
                     <option>Prefer not to answer</option>
                   </select>
                 </div>
-                <div class="q"><div class="qen">WiFi / Internet connection at home? <span class="req">*</span></div><div class="qmr">घरी इंटरनेट आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_net" /> Yes</label><label class="opt"><input type="radio" name="onb_net" /> No</label></div></div>
-                <div class="q"><div class="qen">Computer or Laptop at home? <span class="req">*</span></div><div class="qmr">घरी संगणक/लॅपटॉप आहे का?</div><div class="opts row"><label class="opt"><input type="radio" name="onb_comp" /> Yes</label><label class="opt"><input type="radio" name="onb_comp" /> No</label></div></div>
+                <div class="q"><div class="qen">WiFi / Internet connection at home? <span class="req">*</span></div><div class="opts row"><label class="opt"><input type="radio" name="onb_net" /> Yes</label><label class="opt"><input type="radio" name="onb_net" /> No</label></div></div>
+                <div class="q"><div class="qen">Computer or Laptop at home? <span class="req">*</span></div><div class="opts row"><label class="opt"><input type="radio" name="onb_comp" /> Yes</label><label class="opt"><input type="radio" name="onb_comp" /> No</label></div></div>
               </div>
             </section>
 
             <!-- §8 Aspirations + Consent -->
             <section class="dt-section" id="sec-consent">
               <h3 class="dt-sec-title"><span class="anum">8</span>Aspirations &amp; Consent</h3>
-              <div class="dt-sec-lead">स्वतःबद्दल थोडे अधिक सांगा! + सहमती</div>
+              
               <div class="dt-grid">
-                <div class="q full"><div class="qen">Immediate Goals</div><div class="qmr">तातडीची उद्दिष्टे (ऐच्छिक)</div><textarea placeholder="E.g. Pass my 12th exams, apply for scholarship…"></textarea></div>
-                <div class="q full"><div class="qen">Long-term Career Aspirations</div><div class="qmr">दीर्घकालीन ध्येय (ऐच्छिक)</div><textarea placeholder="E.g. Become a doctor, start my own business…"></textarea></div>
-                <div class="q full"><div class="qen">Anything else you'd like to share</div><div class="qmr">इतर काही (ऐच्छिक)</div><textarea placeholder="Any other information…"></textarea></div>
+                <div class="q full"><div class="qen">Immediate Goals</div><textarea placeholder="E.g. Pass my 12th exams, apply for scholarship…"></textarea></div>
+                <div class="q full"><div class="qen">Long-term Career Aspirations</div><textarea placeholder="E.g. Become a doctor, start my own business…"></textarea></div>
+                <div class="q full"><div class="qen">Anything else you'd like to share</div><textarea placeholder="Any other information…"></textarea></div>
                 <div class="q full">
                   <div class="consent-box" style="margin-top:8px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" style="flex:0 0 20px;color:var(--teal-700)"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-                    <div class="ct"><b>Consent Declaration / सहमती:</b> I authorise SAMAVESH Action For Impact to collect this information and to act on government scholarship portals on the student's behalf, under the DPDP Act, 2023. <b>Type the student/guardian name below to give consent / सहमती देण्यासाठी खाली नाव टाका.</b></div></div>
+                    <div class="ct"><b>Consent Declaration:</b> I authorise SAMAVESH Action For Impact to collect this information and to act on government scholarship portals on the student's behalf, under the DPDP Act, 2023. <b>Type the student/guardian name below to give consent.</b></div></div>
                 </div>
                 <div class="q full"><div class="qen">Consent — type full name <span class="req">*</span></div><input type="text" id="onbConsent" placeholder="Type student / guardian full name" /></div>
               </div>
@@ -2563,6 +2725,24 @@ img{max-width:100%}
               <div class="field"><div class="k">Aadhaar</div><div class="v mask">xxxx xxxx 4821</div></div>
               <div class="field"><div class="k">Guardian</div><div class="v">Ramesh Pawar (Father)</div></div>
               <div class="field"><div class="k">Consent</div><div class="v" style="color:var(--green)">Captured · 12 Apr 2026</div></div>
+            </div>
+          </div>
+
+          <!-- ID 12: Fellow notes (shown read-only to the student on their profile) -->
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:6px"><h3 style="font-size:18px">Notes</h3><button class="btn btn-primary btn-sm" id="addNoteBtn" onclick="showNoteForm(this)">+ Add note</button></div>
+            <p style="font-size:12.5px;color:var(--muted);margin-bottom:12px">Notes from calls or meetings. These are <b>visible to the student</b> (read-only) on their profile.</p>
+            <div id="noteForm" class="note-form" style="display:none">
+              <div class="nf-row">
+                <select id="noteType"><option value="Call">Call</option><option value="In-person">In-person</option><option value="Virtual">Virtual</option></select>
+                <input type="datetime-local" id="noteWhen" />
+              </div>
+              <textarea id="noteText" placeholder="Key points from the conversation…"></textarea>
+              <div class="nf-acts"><button class="btn btn-ghost btn-sm" onclick="hideNoteForm()">Cancel</button><button class="btn btn-primary btn-sm" onclick="saveNote()">Save note</button></div>
+            </div>
+            <div id="noteList">
+              <div class="note-item"><div class="note-meta"><span class="note-type call">Call</span><span>2 Jul 2026, 4:30 PM · Fellow Rahul</span></div><div class="note-body">Explained the Post-Matric documents pending. Student will ask father for the income certificate this week. Follow up after 10 Jul.</div></div>
+              <div class="note-item"><div class="note-meta"><span class="note-type inperson">In-person</span><span>24 Jun 2026, 11:00 AM · Fellow Rahul</span></div><div class="note-body">Met at the college camp. Confirmed SC category and B.Com Year 2. Motivated; interested in higher-studies mentorship.</div></div>
             </div>
           </div>
         </div>
@@ -2655,44 +2835,52 @@ img{max-width:100%}
             <p style="font-size:13px;color:var(--ink-soft);max-width:60ch">Procure, upload and re-upload documents here. A Program Admin reviews and Accepts/Rejects each one. Uploads: <b>PDF only · 1–2 MB</b>. Same Must Have / Good to Have categorisation as the Onboarding form.</p>
             <button class="btn btn-gold btn-sm" data-go="f-docapp">+ Documentation Application</button>
           </div>
+          <!-- To-and-fro: a doc the student just uploaded floats to the top for the Fellow to review (Task 9) -->
+          <div class="card" style="border-left:4px solid var(--marigold);margin-bottom:14px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px"><h3 style="font-size:15px;margin:0">Recently uploaded by student</h3><span class="soon" style="background:var(--marigold-50);color:#9a5b00">New</span></div>
+            <div class="review-row doc-row">
+              <div class="di" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
+              <div class="dn"><b>Ration Card</b><small>Uploaded by Aarti just now — pending your review</small></div>
+              <div class="review-acts" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <a class="subdoc-dl" href="#" onclick="event.preventDefault();downloadDoc('Ration Card')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</a>
+                <button class="btn btn-ghost btn-sm" onclick="fellowDocAction(this,'reupload')">Request re-upload</button>
+                <button class="btn btn-primary btn-sm" onclick="fellowDocAction(this,'accept')">Accept</button>
+              </div>
+            </div>
+          </div>
           <div class="card">
             <div class="doc-group-banner">Must Have <span class="dgb-pill must">Mandatory</span></div>
             <div class="doc-row">
               <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Aadhaar Card</b><small>Uploaded 12 Apr · Accepted by Program Admin</small></div>
-              <span class="pill green"><span class="pdot"></span>Accepted</span>
+              <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
+              <button class="btn btn-ghost btn-sm" onclick="downloadDoc('Aadhaar Card')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
             <div class="doc-row">
               <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Annual Income Certificate (FY 25/26)</b><small>Uploaded 15 Apr · Accepted by Program Admin</small></div>
-              <span class="pill green"><span class="pdot"></span>Accepted</span>
-            </div>
-            <div class="subdoc-host" style="margin:0 0 6px 58px">
-              <details class="subdoc-fellow"><summary>Sub-documents from student</summary>
-                <div class="subdoc-panel" data-subkey="income" style="display:block"></div>
-              </details>
+              <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
+              <button class="btn btn-ghost btn-sm" onclick="downloadDoc('Annual Income Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
             <div class="doc-row">
               <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>10th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted by Program Admin</small></div>
-              <span class="pill green"><span class="pdot"></span>Accepted</span>
+              <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
+              <button class="btn btn-ghost btn-sm" onclick="downloadDoc('10th School Leaving Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
             <div class="doc-row">
               <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>12th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted by Program Admin</small></div>
-              <span class="pill green"><span class="pdot"></span>Accepted</span>
+              <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
+              <button class="btn btn-ghost btn-sm" onclick="downloadDoc('12th School Leaving Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
 
             <div class="doc-group-banner">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
             <div class="doc-row">
               <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Caste Certificate</b><small>Uploaded 28 Apr · Accepted by Program Admin</small></div>
-              <span class="pill green"><span class="pdot"></span>Accepted</span>
-            </div>
-            <div class="subdoc-host" style="margin:0 0 6px 58px">
-              <details class="subdoc-fellow"><summary>Sub-documents from student</summary>
-                <div class="subdoc-panel" data-subkey="caste" style="display:block"></div>
-              </details>
+              <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
+              <button class="btn btn-ghost btn-sm" onclick="downloadDoc('Caste Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
             <div class="doc-row">
               <div class="di" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
@@ -2703,12 +2891,8 @@ img{max-width:100%}
             <div class="doc-row">
               <div class="di" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Domicile Certificate</b><small>Uploaded 2 Jun · Re-upload Version 1</small></div>
-              <span class="pill blue"><span class="pdot"></span>Under Review</span>
-            </div>
-            <div class="subdoc-host" style="margin:0 0 6px 58px">
-              <details class="subdoc-fellow"><summary>Sub-documents from student</summary>
-                <div class="subdoc-panel" data-subkey="domicile" style="display:block"></div>
-              </details>
+              <span class="pill blue" style="margin-right:8px"><span class="pdot"></span>Under Review</span>
+              <button class="btn btn-ghost btn-sm" onclick="downloadDoc('Domicile Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
             <div class="doc-row">
               <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
@@ -3040,6 +3224,41 @@ img{max-width:100%}
         <div class="empty" id="myCaseEmpty" style="display:none;margin-top:12px"><div>No cases match the current filter.</div></div>
       </section>
 
+      <!-- ===== FELLOW MY ATTENDANCE (ID 7) ===== -->
+      <section class="screen" id="f-attendance">
+        <div class="page-h"><div class="eyebrow">Attendance</div><h1>My Attendance</h1><p>Your login/logout history. Log in or out from the button on your Home dashboard. Leaves &amp; holidays are managed by Admin.</p></div>
+
+        <div class="misfilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+          <input class="fatt-date" type="date" onchange="fAttFilter()" />
+          <select class="fatt-status" onchange="fAttFilter()"><option value="">All statuses</option><option>Present</option><option>On Leave</option><option>Absent</option></select>
+          <button class="btn btn-ghost btn-sm" onclick="fAttClear()">Clear</button>
+          <span id="fAttFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
+        </div>
+
+        <div class="dtable-wrap" style="max-height:520px;overflow:auto"><table class="dtable" id="fAttTable">
+          <thead><tr><th>Date</th><th>In</th><th>Out</th><th>Gross Hrs</th><th>Status</th><th>Location</th></tr></thead>
+          <tbody>
+            <tr data-date="2026-07-02" data-status="Present"><td>02 Jul 2026</td><td>10:13 AM</td><td>06:47 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH · 18.51, 73.85</td></tr>
+            <tr data-date="2026-07-01" data-status="Present"><td>01 Jul 2026</td><td>09:58 AM</td><td>06:31 PM</td><td>8.5</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
+            <tr data-date="2026-06-30" data-status="On Leave"><td>30 Jun 2026</td><td>—</td><td>—</td><td>0.0</td><td><span class="pill amber"><span class="pdot"></span>On Leave</span></td><td>—</td></tr>
+            <tr data-date="2026-06-29" data-status="Present"><td>29 Jun 2026</td><td>10:22 AM</td><td>07:05 PM</td><td>8.7</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>PCMC, MH</td></tr>
+            <tr data-date="2026-06-28" data-status="Absent"><td>28 Jun 2026</td><td>—</td><td>—</td><td>—</td><td><span class="pill grey"><span class="pdot"></span>Absent</span></td><td>—</td></tr>
+            <tr data-date="2026-06-27" data-status="Present"><td>27 Jun 2026</td><td>09:47 AM</td><td>07:12 PM</td><td>9.1</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
+            <tr data-date="2026-06-26" data-status="Present"><td>26 Jun 2026</td><td>10:05 AM</td><td>06:40 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
+            <tr data-date="2026-06-25" data-status="Present"><td>25 Jun 2026</td><td>09:52 AM</td><td>06:30 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Nashik, MH</td></tr>
+            <tr data-date="2026-06-24" data-status="Present"><td>24 Jun 2026</td><td>10:10 AM</td><td>06:55 PM</td><td>8.7</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
+            <tr data-date="2026-06-23" data-status="On Leave"><td>23 Jun 2026</td><td>—</td><td>—</td><td>0.0</td><td><span class="pill amber"><span class="pdot"></span>On Leave</span></td><td>—</td></tr>
+            <tr data-date="2026-06-20" data-status="Present"><td>20 Jun 2026</td><td>09:40 AM</td><td>06:20 PM</td><td>8.7</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
+            <tr data-date="2026-06-19" data-status="Present"><td>19 Jun 2026</td><td>10:15 AM</td><td>07:00 PM</td><td>8.8</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
+            <tr data-date="2026-06-18" data-status="Present"><td>18 Jun 2026</td><td>09:58 AM</td><td>06:35 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>PCMC, MH</td></tr>
+            <tr data-date="2026-06-17" data-status="Present"><td>17 Jun 2026</td><td>10:02 AM</td><td>06:45 PM</td><td>8.7</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
+            <tr data-date="2026-06-16" data-status="Present"><td>16 Jun 2026</td><td>09:50 AM</td><td>06:28 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
+          </tbody>
+        </table>
+        <div class="empty" id="fAttEmpty" style="display:none;padding:18px;text-align:center;color:var(--muted)">No records match this filter.</div>
+        </div>
+      </section>
+
       <!-- ===== FELLOW PROFILE ===== -->
       <section class="screen" id="f-profile">
         <div class="page-h"><div class="eyebrow">Account</div><h1>My Profile</h1></div>
@@ -3105,7 +3324,7 @@ img{max-width:100%}
                   <div class="qhelp">Auto-calculated in years.</div>
                 </div>
                 <div class="q"><div class="qen">Gender <span class="req">*</span></div>
-                  <select id="schGender"><option value="">Select / निवडा…</option></select>
+                  <select id="schGender"><option value="">Select</option></select>
                   <div class="qhelp">Same Gender master as the onboarding form.</div>
                 </div>
                 <div class="q"><div class="qen">Contact No <span class="req">*</span></div>
@@ -3117,13 +3336,13 @@ img{max-width:100%}
                 </div>
                 <div class="q"><div class="qen">Category <span class="req">*</span></div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option>ST</option><option>SC</option><option>VJNT</option><option>OBC</option><option>Minority</option><option>SBC</option><option>SEBC</option><option>EWS</option><option>General</option><option>Other</option>
                   </select>
                 </div>
                 <div class="q"><div class="qen">Annual Income <span class="req">*</span></div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option>Less than ₹50,000</option>
                     <option>₹50,000 – ₹1 lakh</option>
                     <option>₹1 – 2 lakh</option>
@@ -3157,7 +3376,7 @@ img{max-width:100%}
                 <div class="q"><div class="qen">State <span class="req">*</span></div><div class="opts row"><label class="opt"><input type="radio" name="sch_state" checked /> Maharashtra</label><label class="opt"><input type="radio" name="sch_state" /> Other</label></div></div>
                 <div class="q full"><div class="qen">Reference (if any)</div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option>Astitva</option>
                     <option>Ajeevika</option>
                     <option>Ashta No Kai</option>
@@ -3180,7 +3399,7 @@ img{max-width:100%}
               <div class="dt-grid">
                 <div class="q"><div class="qen">Marks Obtained in Previous Year (%) <span class="req">*</span></div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option>90% and above</option>
                     <option>80% – 89%</option>
                     <option>70% – 79%</option>
@@ -3196,7 +3415,7 @@ img{max-width:100%}
                 <div class="q"><div class="qen">Course Fees (₹) <span class="req">*</span></div><input type="number" placeholder="Annual fee in rupees" /><div class="qhelp">Numbers only — no commas or symbols.</div></div>
                 <div class="q"><div class="qen">College Geographical Area <span class="req">*</span></div>
                   <select>
-                    <option value="">Select / निवडा…</option>
+                    <option value="">Select</option>
                     <option>Pune</option>
                     <option>PCMC</option>
                     <option>Khed / Rajgurunagar / Chakan</option>
@@ -3414,6 +3633,7 @@ img{max-width:100%}
       <a href="#" class="nav-link active" data-go="a-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13h4v8H3zM10 3h4v18h-4zM17 9h4v12h-4z"/></svg>MIS Dashboard</a>
       <a href="#" class="nav-link" data-go="a-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>Document Verification<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">4</span></a>
       <a href="#" class="nav-link" data-go="a-tasks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2M14 17h2"/></svg>Cases &amp; Tasks<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">10</span></a>
+      <a href="#" class="nav-link" data-go="a-attendance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Attendance</a>
       <a href="#" class="nav-link" data-go="a-catalogue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Scholarship Catalogue</a>
       <div class="nav-label">Manage</div>
       <a href="#" class="nav-link" data-go="a-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>All Students</a>
@@ -4072,6 +4292,54 @@ img{max-width:100%}
         </div>
       </section>
 
+      <!-- ===== ADMIN ATTENDANCE (ID 7) ===== -->
+      <section class="screen" id="a-attendance">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Workspace</div><h1>Attendance</h1><p>Who's working now, plus each Fellow's daily login/logout record. Leaves &amp; holidays are managed manually.</p></div>
+          <button class="btn btn-ghost" onclick="alert('Export — downloads the filtered attendance as Excel (wireframe stub).')"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Export</button>
+        </div>
+
+        <!-- Working now — the live view that removes the "call each Fellow to check" problem -->
+        <div class="card" style="border-left:4px solid var(--green);margin-bottom:18px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span class="att-dot" style="background:var(--green);width:10px;height:10px"></span><h3 style="font-size:17px;margin:0">Working now · <b style="color:var(--green)">3</b> logged in</h3></div>
+          <div class="wn-list">
+            <div class="wn-row"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span><div><b>Rahul More</b><small>in since 10:06 AM · Pune, MH</small></div></div>
+            <div class="wn-row"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">P</span><div><b>Priya Kulkarni</b><small>in since 09:42 AM · Nashik, MH</small></div></div>
+            <div class="wn-row"><span class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">S</span><div><b>Sunil Kadam</b><small>in since 10:21 AM · PCMC, MH</small></div></div>
+          </div>
+        </div>
+
+        <div class="grid g-3 stagger" style="margin-bottom:18px">
+          <div class="card stat"><div class="num" style="color:var(--green)">3</div><div class="cap">Present today</div></div>
+          <div class="card stat"><div class="num" style="color:var(--amber)">1</div><div class="cap">On leave</div></div>
+          <div class="card stat"><div class="num" style="color:var(--blue)">8.6</div><div class="cap">Avg hrs (7 days)</div></div>
+        </div>
+
+        <div class="misfilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+          <select class="att-fellow" onchange="attFilter()"><option value="">All Fellows</option><option>Rahul More</option><option>Priya Kulkarni</option><option>Sunil Kadam</option></select>
+          <input class="att-date" type="date" onchange="attFilter()" />
+          <select class="att-status" onchange="attFilter()"><option value="">All statuses</option><option>Present</option><option>On Leave</option><option>Absent</option></select>
+          <button class="btn btn-ghost btn-sm" onclick="attClear()">Clear</button>
+          <span id="attFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
+        </div>
+
+        <div class="dtable-wrap"><table class="dtable" id="attTable">
+          <thead><tr><th>Fellow</th><th>Date</th><th>Status</th><th>In</th><th>Out</th><th>Gross Hrs</th><th>Location</th></tr></thead>
+          <tbody>
+            <tr data-fellow="Rahul More" data-date="2026-07-02" data-status="Present"><td>Rahul More</td><td>02 Jul 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>10:13 AM</td><td>06:47 PM</td><td>8.6</td><td>Pune, MH</td></tr>
+            <tr data-fellow="Priya Kulkarni" data-date="2026-07-02" data-status="Present"><td>Priya Kulkarni</td><td>02 Jul 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>09:40 AM</td><td>06:15 PM</td><td>8.6</td><td>Nashik, MH</td></tr>
+            <tr data-fellow="Sunil Kadam" data-date="2026-07-02" data-status="On Leave"><td>Sunil Kadam</td><td>02 Jul 2026</td><td><span class="pill amber"><span class="pdot"></span>On Leave</span></td><td>—</td><td>—</td><td>0.0</td><td>—</td></tr>
+            <tr data-fellow="Rahul More" data-date="2026-07-01" data-status="Present"><td>Rahul More</td><td>01 Jul 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>09:58 AM</td><td>06:31 PM</td><td>8.5</td><td>Pune, MH</td></tr>
+            <tr data-fellow="Priya Kulkarni" data-date="2026-07-01" data-status="Absent"><td>Priya Kulkarni</td><td>01 Jul 2026</td><td><span class="pill grey"><span class="pdot"></span>Absent</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr data-fellow="Sunil Kadam" data-date="2026-07-01" data-status="Present"><td>Sunil Kadam</td><td>01 Jul 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>10:21 AM</td><td>07:02 PM</td><td>8.7</td><td>PCMC, MH</td></tr>
+            <tr data-fellow="Rahul More" data-date="2026-06-30" data-status="On Leave"><td>Rahul More</td><td>30 Jun 2026</td><td><span class="pill amber"><span class="pdot"></span>On Leave</span></td><td>—</td><td>—</td><td>0.0</td><td>—</td></tr>
+            <tr data-fellow="Priya Kulkarni" data-date="2026-06-30" data-status="Present"><td>Priya Kulkarni</td><td>30 Jun 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>09:35 AM</td><td>06:20 PM</td><td>8.8</td><td>Nashik, MH</td></tr>
+          </tbody>
+        </table>
+        <div class="empty" id="attEmpty" style="display:none;padding:18px;text-align:center;color:var(--muted)">No attendance records match this filter.</div>
+        </div>
+      </section>
+
       <!-- ===== ADMIN PROFILE ===== -->
       <section class="screen" id="a-profile">
         <div class="page-h"><div class="eyebrow">Account</div><h1>My Profile</h1></div>
@@ -4195,17 +4463,71 @@ function verifySignupOtp(){
   var code = Array.prototype.map.call(document.querySelectorAll('#otpRow input'), function(b){return b.value;}).join('');
   if(code.replace(/\D/g,'').length < 6){ alert('Enter all 6 digits (any digits work in this demo).'); return; }
   document.getElementById('authOk').style.display='flex';
-  setTimeout(function(){ loginAs('student'); }, 900);
+  setTimeout(function(){ loginAs('student','new'); }, 900);  // fresh sign-up lands on the gated onboarding step
+}
+// ===== ID 10: gated student journey (new → submitted → approved) =====
+var STUDENT_STAGE = 'approved'; // demo student (Aarti) is already approved; fresh sign-ups start 'new'
+function applyStudentGate(){
+  var gated = (STUDENT_STAGE !== 'approved');
+  document.querySelectorAll('#studentApp .rail .nav-link, #studentBot .nav-link').forEach(function(a){
+    if(a.getAttribute('data-go')) a.style.display = gated ? 'none' : '';   // hide full-portal links when gated; keep Sign out (no data-go)
+  });
+  document.querySelectorAll('#studentApp .rail .nav-label').forEach(function(l){ l.style.display = gated ? 'none' : ''; });
+  if(gated){
+    go('s-gate');
+    var submitted = (STUDENT_STAGE==='submitted');
+    var fill=document.getElementById('sGateFill'), pend=document.getElementById('sGatePending');
+    if(fill) fill.style.display = submitted ? 'none' : '';
+    if(pend) pend.style.display = submitted ? '' : 'none';
+  }
+}
+function startAsNewStudent(){ loginAs('student','new'); }
+function submitOnboarding(){ STUDENT_STAGE='submitted'; applyStudentGate(); window.scrollTo(0,0); }
+function saveOnbDraft(){
+  var b=document.getElementById('sGateBtn'); if(b) b.textContent='Resume Onboarding Form';
+  var note=document.getElementById('sOnbSaved'); if(note){ note.style.display='inline'; setTimeout(function(){ note.style.display='none'; }, 2800); }
+}
+function submitStudentOnboarding(){ submitOnboarding(); }   // Submit for review → gate switches to "with your Fellow for review"
+// Clone the EXACT Fellow onboarding form (#onbForm) into the student portal — one source of truth, no duplicate markup.
+function buildStudentOnboard(){
+  var host=document.getElementById('sOnbHost'); if(!host || host.dataset.built) return;
+  var src=document.getElementById('onbForm'); if(!src) return;
+  var clone=src.cloneNode(true); clone.id='sOnbForm';
+  clone.querySelectorAll('[id]').forEach(function(el){ el.id='s_'+el.id; });                                  // avoid id collisions with the Fellow copy
+  clone.querySelectorAll('.dt-anchors a[href^="#"]').forEach(function(a){ a.setAttribute('href','#s_'+a.getAttribute('href').slice(1)); });
+  host.appendChild(clone); host.dataset.built='1';
+  var g=clone.querySelector('#s_onbGender'); if(g) g.innerHTML='<option value="">Select</option>'+GENDER_MASTER.map(function(x){return '<option value="'+x.code+'">'+x.en+'</option>';}).join('');
+  var dob=clone.querySelector('#s_onbDob'), age=clone.querySelector('#s_onbAge');
+  if(dob&&age) dob.addEventListener('change',function(){ var v=dob.value; if(!v){age.textContent='Age: —';age.classList.add('empty');return;} var y=(new Date().getTime()-new Date(v).getTime())/(365.25*864e5); if(y<0||y>120){age.textContent='Age: invalid date';age.classList.add('empty');return;} age.textContent='Age: '+y.toFixed(1)+' years'; age.classList.remove('empty'); });
+  var mob=clone.querySelector('#s_onbMobile'), chip=clone.querySelector('#s_onbMobileVerify');
+  if(mob&&chip){ var chk=function(){ var v=(mob.value||'').replace(/\D/g,''); chip.classList.remove('ok','bad'); if(!v)return; if(/^[6-9]\d{9}$/.test(v)){chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Valid';chip.classList.add('ok');}else{chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>Invalid';chip.classList.add('bad');} }; mob.addEventListener('blur',chk); mob.addEventListener('input',function(){ if(chip.classList.contains('ok')||chip.classList.contains('bad'))chk(); }); }
+  clone.querySelectorAll('.doc-ctable td.doc-stat select').forEach(function(s){ s.addEventListener('change',onbDocStatus); });
+  clone.querySelectorAll('.dt-anchors a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); var sec=document.getElementById(a.getAttribute('href').slice(1)); if(sec) sec.scrollIntoView({behavior:'smooth',block:'start'}); }); });
+}
+// Fellow approves a self-registered student's onboarding (Task 7)
+function approveOnboarding(btn){
+  var card = btn.closest('.approval-card');
+  var name = (card.querySelector('.who b')||{}).textContent || 'The student';
+  card.innerHTML = '<div style="display:flex;align-items:center;gap:10px;color:var(--green);font-weight:600;padding:6px 0"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Approved — '+name+"'s portal is now unlocked and they're added to your caseload.</div>";
+  var badge=document.getElementById('fApprovalBadge');
+  if(badge){
+    var n=Math.max(0,(parseInt(badge.textContent)||0)-1);
+    badge.textContent=n; if(n===0) badge.style.display='none';
+    var chip=document.getElementById('fPendingChip'); if(chip) chip.textContent='Pending Approval ('+n+')';
+    if(n===0){ var e=document.getElementById('approvalEmpty'); if(e) e.style.display=''; }
+  }
 }
 // ===== shared login/logout =====
-function loginAs(role){
+function loginAs(role, studentStage){
   pendingRole=role;
+  if(role==='student') STUDENT_STAGE = studentStage || 'approved';
   showApp(role);
   document.getElementById('loginWrap').style.display='none';
   // Reset the login surface back to the sign-in card for the next visit.
   document.getElementById('checkEmailScreen').classList.remove('on');
   document.getElementById('loginCardSignin').style.display='';
   closeOAuthOverlay();
+  if(role==='student') applyStudentGate();
   window.scrollTo(0,0);
 }
 function logout(){
@@ -4227,8 +4549,9 @@ function go(id){
   window.scrollTo({top:0,behavior:'smooth'});
   if(id==='f-onboard' && typeof onbInit==='function') setTimeout(onbInit,0);
   if(id==='f-scholarship' && typeof schInit==='function') setTimeout(schInit,0);
+  if(id==='s-onboard' && typeof buildStudentOnboard==='function') setTimeout(buildStudentOnboard,0);
 }
-const CRUMBS={'f-home':'Home','f-students':'Students','f-tasks':'Cases & Tasks','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-tasks':'Cases & Tasks','a-bulkupload':'Bulk Upload','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-profile':'My Settings'};
+const CRUMBS={'f-home':'Home','f-students':'Students','f-tasks':'Cases & Tasks','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-approvals':'Onboarding Approvals','f-attendance':'My Attendance','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-tasks':'Cases & Tasks','a-bulkupload':'Bulk Upload','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-attendance':'Attendance','a-profile':'My Settings'};
 function setCrumb(id){
   const txt=CRUMBS[id]; if(!txt)return;
   const el=id.indexOf('a-')===0?document.getElementById('crumbAdmin'):document.getElementById('crumbFellow');
@@ -4406,18 +4729,145 @@ function bumpSubdocCount(row, delta){
   if(m){ var n=parseInt(m[2]); var got=Math.max(0,Math.min(n,parseInt(m[1])+delta)); c.textContent = got+' / '+n+' sub-docs attached'; }
 }
 function initSubdocs(){
-  document.querySelectorAll('#documents .subdoc-host').forEach(function(host){
-    var btn = host.querySelector('.dont-have-btn'), panel = host.querySelector('.subdoc-panel');
-    if(btn && panel && btn.classList.contains('on') && !panel.dataset.filled){
-      panel.innerHTML = renderSubdocList(btn.getAttribute('data-key'),'student');
-      panel.dataset.filled='1'; panel.style.display='block';
-    }
-  });
+  // Ration defaults to "Don't have" → fill + show its sub-doc list on load.
+  var p = document.querySelector('#ration-subdocs .subdoc-panel');
+  if(p && !p.dataset.filled){ p.innerHTML = renderSubdocList('ration','student'); p.dataset.filled='1'; }
+}
+// Have it / Don't have — mutually exclusive. Have it → main-doc attach enabled, sub-docs hidden. Don't have → attach faded/disabled, sub-docs shown.
+function setHave(key, hasIt){
+  var seg = document.querySelector('.have-seg[data-key="'+key+'"]');
+  if(seg){ seg.querySelectorAll('.hc-opt').forEach(function(b,i){ b.classList.toggle('on', (i===0)===hasIt); }); }
+  var btn = document.getElementById(key+'-upbtn');
+  if(btn) btn.disabled = !hasIt;
+  var sub = document.getElementById(key+'-subdocs');
+  if(sub){
+    sub.style.display = hasIt ? 'none' : '';
+    if(!hasIt){ var p=sub.querySelector('.subdoc-panel'); if(p && !p.dataset.filled){ p.innerHTML=renderSubdocList(key,'student'); p.dataset.filled='1'; } }
+  }
+  var small = document.getElementById(key+'-small');
+  if(small) small.textContent = hasIt ? 'You have it — attach the document using the button above.' : "You don't have this — attach sub-documents below so your Fellow can procure it.";
 }
 function initFellowSubdocs(){
   document.querySelectorAll('#fp-docs .subdoc-panel[data-subkey]').forEach(function(p){
     if(!p.dataset.filled){ p.innerHTML = renderSubdocList(p.getAttribute('data-subkey'),'fellow'); p.dataset.filled='1'; }
   });
+}
+
+// ===== ID 7 attendance (Fellow Log In / Log Out) =====
+var FELLOW_LOGGED_IN = false;
+function getGeo(cb){
+  // Wireframe: try the browser, fall back to a static Pune location if denied/unavailable.
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      function(p){ cb('Pune, MH · '+p.coords.latitude.toFixed(2)+', '+p.coords.longitude.toFixed(2)); },
+      function(){ cb('Pune, MH · 18.51, 73.85'); }, {timeout:2000});
+  } else cb('Pune, MH · 18.51, 73.85');
+}
+function fellowPunch(btn){
+  getGeo(function(loc){
+    var now = new Date();
+    var t = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    var st = document.getElementById('fAttState');
+    if(!FELLOW_LOGGED_IN){
+      FELLOW_LOGGED_IN = true;
+      btn.className='att-btn out'; btn.textContent='Log Out';
+      st.innerHTML='<span class="att-dot" style="background:var(--green)"></span>Logged in <b>'+t+'</b> · '+loc;
+    } else {
+      FELLOW_LOGGED_IN = false;
+      btn.className='att-btn in'; btn.textContent='Log In';
+      st.innerHTML='Logged out <b>'+t+'</b> · thanks for today.';
+    }
+  });
+}
+function attFilter(){
+  var host=document.getElementById('a-attendance');
+  var f=host.querySelector('.att-fellow').value;
+  var d=host.querySelector('.att-date').value;   // yyyy-mm-dd
+  var s=host.querySelector('.att-status').value;
+  var shown=0;
+  host.querySelectorAll('#attTable tbody tr').forEach(function(r){
+    var ok=(!f||r.dataset.fellow===f)&&(!d||r.dataset.date===d)&&(!s||r.dataset.status===s);
+    r.style.display=ok?'':'none'; if(ok)shown++;
+  });
+  var empty=document.getElementById('attEmpty'); if(empty) empty.style.display=shown?'none':'';
+  var active=[]; if(f)active.push(f); if(d)active.push(d); if(s)active.push(s);
+  var note=document.getElementById('attFilterNote');
+  if(note) note.textContent=active.length?('Filtered by: '+active.join(' · ')+' · '+shown+' record'+(shown===1?'':'s')):'';
+}
+function attClear(){
+  var host=document.getElementById('a-attendance');
+  host.querySelector('.att-fellow').value='';
+  host.querySelector('.att-date').value='';
+  host.querySelector('.att-status').value='';
+  attFilter();
+}
+function fAttFilter(){
+  var host=document.getElementById('f-attendance');
+  var d=host.querySelector('.fatt-date').value;
+  var s=host.querySelector('.fatt-status').value;
+  var shown=0;
+  host.querySelectorAll('#fAttTable tbody tr').forEach(function(r){
+    var ok=(!d||r.dataset.date===d)&&(!s||r.dataset.status===s);
+    r.style.display=ok?'':'none'; if(ok)shown++;
+  });
+  var empty=document.getElementById('fAttEmpty'); if(empty) empty.style.display=shown?'none':'';
+  var active=[]; if(d)active.push(d); if(s)active.push(s);
+  var note=document.getElementById('fAttFilterNote');
+  if(note) note.textContent=active.length?('Filtered by: '+active.join(' · ')+' · '+shown+' record'+(shown===1?'':'s')):'';
+}
+function fAttClear(){
+  var host=document.getElementById('f-attendance');
+  host.querySelector('.fatt-date').value='';
+  host.querySelector('.fatt-status').value='';
+  fAttFilter();
+}
+// Fellow downloads any document the student has on record (Accepted / Under Review / Uploaded) — available at all times to fill the government portal.
+function downloadDoc(name){ alert('Downloading: '+name+' (demo)\n\nThe student\'s uploaded PDF is pulled from secure storage. Fellows can download any document on record here at any time — used to fill the government scholarship portal.'); }
+// Fellow reviews a student-uploaded doc: Accept, or Request re-upload with a reason (Task 9 to-and-fro).
+function fellowDocAction(btn, mode){
+  var acts = btn.closest('.review-acts');
+  if(mode==='accept'){
+    acts.innerHTML='<span class="pill green"><span class="pdot"></span>Accepted</span>';
+    NOTIF.student.unshift({t:'Ration Card was accepted by your Fellow', s:'just now'});
+  } else {
+    acts.innerHTML='<input class="reupload-reason" placeholder="Reason (e.g. not clearly legible)" style="font-family:inherit;font-size:12.5px;padding:6px 10px;border:1.5px solid var(--line);border-radius:7px;outline:none;width:200px" /><button class="btn btn-primary btn-sm" onclick="fellowReuploadConfirm(this)">Send</button>';
+    var inp=acts.querySelector('.reupload-reason'); if(inp) inp.focus();
+  }
+}
+function fellowReuploadConfirm(btn){
+  var acts = btn.closest('.review-acts');
+  var reason = ((acts.querySelector('.reupload-reason')||{}).value||'').trim() || 'not clearly legible';
+  acts.innerHTML='<span class="pill red"><span class="pdot"></span>Re-upload requested</span>';
+  var row=acts.closest('.review-row'); var small=row&&row.querySelector('.dn small'); if(small){ small.textContent='Re-upload requested: "'+reason+'"'; small.style.color='var(--red)'; }
+  NOTIF.student.unshift({t:'Re-upload requested for Ration Card: "'+reason+'"', s:'just now'});
+}
+// Student uploads the actual main document directly (available even if "Don't have" was set — they may have obtained it since onboarding)
+function uploadMainDoc(btn, name){
+  var card = btn.closest('.card, .arr-card');
+  var pill = card.querySelector('.pill');
+  if(pill){ pill.className='pill blue'; pill.style.marginRight='8px'; pill.innerHTML='<span class="pdot"></span>Uploaded'; }
+  var small = card.querySelector('.dn small');
+  if(small){ small.textContent='Uploaded just now — sent to your Fellow for review.'; small.style.color=''; }
+  // Doc is now provided → the Have/Don't-have choice + sub-docs no longer apply.
+  var hc = card.querySelector('.have-choice'); if(hc) hc.style.display='none';
+  var host = card.querySelector('.subdoc-host'); if(host) host.style.display='none';
+  btn.outerHTML='<span class="subdoc-done" style="margin-left:2px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><b>'+(name||'document')+'.pdf</b><button class="subdoc-mini" onclick="alert(\'Replace file (demo)\')">Replace</button></span>';
+}
+
+// ===== ID 12 Fellow notes =====
+function showNoteForm(btn){ document.getElementById('noteForm').style.display='block'; btn.style.display='none'; }
+function hideNoteForm(){ document.getElementById('noteForm').style.display='none'; var b=document.getElementById('addNoteBtn'); if(b) b.style.display=''; }
+function saveNote(){
+  var type=document.getElementById('noteType').value;
+  var when=document.getElementById('noteWhen').value;
+  var text=(document.getElementById('noteText').value||'').trim();
+  if(!text){ alert('Write the note before saving.'); return; }
+  var whenTxt = when ? new Date(when).toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}) : 'just now';
+  var cls = type==='In-person' ? 'inperson' : (type==='Virtual' ? 'virtual' : 'call');
+  var html='<div class="note-item"><div class="note-meta"><span class="note-type '+cls+'">'+type+'</span><span>'+whenTxt+' · Fellow Rahul</span></div><div class="note-body">'+text.replace(/</g,'&lt;')+'</div></div>';
+  document.getElementById('noteList').insertAdjacentHTML('afterbegin', html);
+  document.getElementById('noteText').value='';
+  hideNoteForm();
 }
 
 // ---- fellow interactions ----
@@ -4428,9 +4878,58 @@ function ftab(btn,id){
   (btn.closest('.screen')||document).querySelectorAll('.tabpane').forEach(p=>p.classList.toggle('on',p.id===id));
   window.scrollTo({top:0,behavior:'smooth'});
 }
-// Notifications bell (wireframe stub) — shared by all role shells.
+// Document search — filter the student's document cards by name (Task 8).
+function docSearch(q){
+  q=(q||'').toLowerCase().trim();
+  document.querySelectorAll('#documents .card, #documents .arr-card').forEach(function(c){
+    var b=c.querySelector('.dn b, .arr-head b'); if(!b) return;   // skip the summary stat cards (no doc name)
+    c.style.display = (!q || b.textContent.toLowerCase().indexOf(q)>-1) ? '' : 'none';
+  });
+}
+// Whose-turn chips on each student doc, derived from its status (Task 9).
+function initTurnPills(){
+  document.querySelectorAll('#documents .card, #documents .arr-card').forEach(function(c){
+    var pill=c.querySelector('.doc-row .pill, .arr-head .pill'); if(!pill) return;
+    if(pill.parentNode.querySelector('.turn-pill')) return;
+    var st=pill.textContent.trim().toLowerCase(), cls, txt;
+    if(st.indexOf('accepted')>-1){ cls='done'; txt='Complete'; }
+    else if(st.indexOf('under review')>-1){ cls='fellow'; txt='With reviewer'; }
+    else if(st.indexOf('n/a')>-1){ return; }
+    else { cls='need'; txt='Action needed'; }   // Pending / Rejected
+    var tp=document.createElement('span'); tp.className='turn-pill '+cls; tp.textContent=txt; tp.style.marginLeft='6px';
+    pill.insertAdjacentElement('afterend', tp);
+  });
+}
+// Notifications — real dropdown, per-role items (Task 9 loop-closer).
+var NOTIF = {
+  student:[
+    {t:'Your onboarding was approved — full portal unlocked', s:'2 Jul'},
+    {t:'Income Certificate was accepted by Program Admin', s:'20 May'},
+    {t:'Domicile Certificate is under review', s:'2 Jun'}
+  ],
+  fellow:[
+    {t:'Ravi Deshmukh submitted their onboarding form — awaiting your approval', s:'today'},
+    {t:'Aarti uploaded a Ration Card — pending your review', s:'today'},
+    {t:'Sneha Kale submitted their onboarding form', s:'2 Jul'}
+  ],
+  admin:[
+    {t:'3 documents are awaiting verification', s:'today'},
+    {t:'Fellow Rahul More logged in · Pune', s:'today'}
+  ],
+  mentor:[{t:'Session with Aarti Pawar tomorrow, 4 PM', s:'today'}]
+};
+function currentRole(){
+  var m={studentApp:'student',fellowApp:'fellow',adminApp:'admin',mentorApp:'mentor'};
+  for(var id in m){ var el=document.getElementById(id); if(el && !el.classList.contains('hidden')) return m[id]; }
+  return 'student';
+}
 function showNotifications(){
-  alert('Notifications — opens the notification centre: email + SMS reminders, document status changes, and mentoring-session reminders. Wireframe stub.');
+  var panel=document.getElementById('notifPanel');
+  if(!panel){ panel=document.createElement('div'); panel.id='notifPanel'; panel.className='notif-panel'; document.body.appendChild(panel); }
+  if(panel.style.display==='block'){ panel.style.display='none'; return; }
+  var items=NOTIF[currentRole()]||[];
+  panel.innerHTML='<div class="notif-head">Notifications</div>'+(items.length?items.map(function(n){return '<div class="notif-item"><div class="ni-dot"></div><div><div class="ni-t">'+n.t+'</div><div class="ni-s">'+n.s+'</div></div></div>';}).join(''):'<div class="notif-empty">No new notifications.</div>');
+  panel.style.display='block';
 }
 // MIS dashboard filter strip — reflects the active selection (wireframe stub; production re-queries funnel/cards/tables).
 function misFilter(){
@@ -4942,8 +5441,8 @@ function schInit(){
   // Reuse the gender master populated for onboarding (same DocType in production).
   const sel=document.getElementById('schGender');
   if(sel && !sel.dataset.populated && typeof GENDER_MASTER!=='undefined'){
-    sel.innerHTML='<option value="">Select / निवडा…</option>' +
-      GENDER_MASTER.map(g=>'<option value="'+g.code+'">'+g.en+' / '+g.mr+'</option>').join('');
+    sel.innerHTML='<option value="">Select</option>' +
+      GENDER_MASTER.map(g=>'<option value="'+g.code+'">'+g.en+'</option>').join('');
     sel.dataset.populated='1';
   }
   // DOB.
@@ -5067,18 +5566,18 @@ function onState(sel){
 // ===== Onboarding form (Frappe DocType pattern) =====
 // Gender master — mock of the production Gender DocType. Other forms will Link to the same codes.
 const GENDER_MASTER = [
-  {code:'M',   en:'Male',           mr:'पुरुष'},
-  {code:'F',   en:'Female',         mr:'स्त्री'},
-  {code:'NB',  en:'Non-Binary',     mr:'नॉन-बायनरी'},
-  {code:'O',   en:'Other',          mr:'इतर'},
-  {code:'PNS', en:'Prefer not to say', mr:'सांगू इच्छित नाही'}
+  {code:'M',   en:'Male'},
+  {code:'F',   en:'Female'},
+  {code:'NB',  en:'Non-Binary'},
+  {code:'O',   en:'Other'},
+  {code:'PNS', en:'Prefer not to say'}
 ];
 function onbInit(){
   // Populate gender dropdown from master (matches future Frappe Link → Gender DocType).
   const sel=document.getElementById('onbGender');
   if(sel && !sel.dataset.populated){
-    sel.innerHTML='<option value="">Select / निवडा…</option>' +
-      GENDER_MASTER.map(g=>'<option value="'+g.code+'">'+g.en+' / '+g.mr+'</option>').join('');
+    sel.innerHTML='<option value="">Select</option>' +
+      GENDER_MASTER.map(g=>'<option value="'+g.code+'">'+g.en+'</option>').join('');
     sel.dataset.populated='1';
   }
   // Wire DOB → age recompute.
@@ -5240,6 +5739,7 @@ function filterAStu(){
 (function(){
   if(typeof initSubdocs==='function') initSubdocs();
   if(typeof initFellowSubdocs==='function') initFellowSubdocs();
+  if(typeof initTurnPills==='function') initTurnPills();
   const p=new URLSearchParams(location.search);
   const role=p.get('role'); const screen=p.get('screen');
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
