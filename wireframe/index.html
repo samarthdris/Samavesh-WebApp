@@ -389,6 +389,12 @@ img{max-width:100%}
 .otp-sent-note{font-size:12.5px;color:var(--ink-soft);margin:2px 0 4px}
 .auth-ok{display:none;align-items:center;gap:8px;background:var(--green-50);color:var(--green);font-weight:600;font-size:13.5px;padding:10px 14px;border-radius:10px;margin-top:10px}
 
+/* WhatsApp reach-out buttons (ID 3) */
+.wa-cta{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#062e16;border:none;border-radius:9px;padding:11px 16px;font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;text-decoration:none;transition:.15s}
+.wa-cta:hover{filter:brightness(.96)}
+.wa-cta.alt{background:#fff;color:#0b6b3a;border:1.5px solid #25D366}
+.wa-cta svg{width:17px;height:17px}
+
 /* "Check your email" confirmation screen — sibling of .login-card, hidden by default */
 .check-email-screen{display:none;width:100%;max-width:360px;margin:auto;background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:28px;box-shadow:var(--shadow-sm);text-align:center}
 .check-email-screen.on{display:block;animation:fade .35s ease}
@@ -1234,6 +1240,39 @@ img{max-width:100%}
           <div class="quote">“ From the margins to the mainstream. ”</div>
         </div>
 
+        <!-- Stats (moved above applications per ID 3) -->
+        <div class="grid g-3 stagger">
+          <div class="card stat hoverable">
+            <div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div></div>
+            <div class="num">4</div><div class="cap">Scholarships identified</div>
+          </div>
+          <div class="card stat hoverable">
+            <div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div>
+            <div class="num">6/8</div><div class="cap">Documents Accepted</div>
+          </div>
+          <div class="card stat hoverable">
+            <div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div></div>
+            <div class="num">₹50,000</div><div class="cap">Expected amount</div>
+          </div>
+        </div>
+
+        <!-- WhatsApp reach-out (ID 3) — two channels: assigned Fellow (IP) + central helpline -->
+        <div class="card" style="margin:14px 0;border-left:4px solid #25D366">
+          <h4 class="serif" style="font-size:17px;margin:0 0 4px">Have a question? Reach out on WhatsApp</h4>
+          <p style="color:var(--ink-soft);font-size:13.5px;margin:0 0 12px">Message your Fellow for anything about your scholarships or documents, or the Samavesh helpline for general help.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <!-- Production: IP number resolves to the student's assigned Fellow (dynamic). -->
+            <a class="wa-cta" href="https://wa.me/919800000011?text=Hi%20Rahul%2C%20I%20have%20a%20question%20about%20my%20scholarship" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.3.6-.6.8-.8 1-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.4.3.1.1.1.6-.1 1.2Z"/></svg>
+              Message my Fellow (IP)
+            </a>
+            <a class="wa-cta alt" href="https://wa.me/919800000000?text=Hi%20Samavesh%2C%20I%20need%20some%20help" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.4 5 5.1-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.3.6-.6.8-.8 1-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.4.3.1.1.1.6-.1 1.2Z"/></svg>
+              Samavesh helpline
+            </a>
+          </div>
+        </div>
+
         <!-- My Applications — one row per scheme with separate status (matches Fellow/Admin pattern) -->
         <div class="scholar-apps">
           <div class="sah">
@@ -1304,22 +1343,6 @@ img{max-width:100%}
               <span class="ms"></span>
             </div>
             <span class="sr-step">4 of 5</span>
-          </div>
-        </div>
-
-        <!-- Stats -->
-        <div class="grid g-3 stagger">
-          <div class="card stat hoverable">
-            <div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div></div>
-            <div class="num">4</div><div class="cap">Scholarships identified</div>
-          </div>
-          <div class="card stat hoverable">
-            <div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div>
-            <div class="num">6/8</div><div class="cap">Documents Accepted</div>
-          </div>
-          <div class="card stat hoverable">
-            <div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div></div>
-            <div class="num">₹50,000</div><div class="cap">Expected amount</div>
           </div>
         </div>
 
