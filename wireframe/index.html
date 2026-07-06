@@ -545,6 +545,8 @@ img{max-width:100%}
 
 /* ---------- Student list rows (Fellow) ---------- */
 .stu-row{display:flex;align-items:center;gap:15px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--paper);margin-bottom:10px;cursor:pointer;transition:.15s}
+.stu-row.just-approved{background:var(--green-50);box-shadow:inset 3px 0 0 var(--green);animation:flashRow 2.4s ease-out 1}
+@keyframes flashRow{0%{background:#d6f5e3}100%{background:var(--green-50)}}
 .stu-row:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
 .stu-row .sa{width:46px;height:46px;border-radius:13px;flex:0 0 46px;display:grid;place-items:center;color:#fff;font-family:'Fraunces';font-weight:700;font-size:18px}
 .stu-row .si{flex:1;min-width:0}
@@ -4571,6 +4573,35 @@ function openApproval(id){
   var wa=document.getElementById('faWhatsapp'); if(wa) wa.href='https://wa.me/91'+(s.mobile||'').replace(/\D/g,'')+'?text='+encodeURIComponent('Hi '+s.name+', this is your Samavesh Fellow about your onboarding form — ');
   document.getElementById('faActionBar').dataset.aid=id;
   go('f-approval-detail');
+}
+function incChipCount(el){ if(el) el.innerHTML=el.innerHTML.replace(/\((\d+)\)/,function(m,n){return '('+(parseInt(n)+1)+')';}); }
+function bumpStudentCounts(){
+  document.querySelectorAll('#f-students .chip').forEach(function(c){ var t=c.textContent; if(/^All /.test(t)||/^Onboarded/.test(t)) incChipCount(c); });
+  var cnt=document.querySelector('#f-students .listbar .cnt b'); if(cnt) cnt.textContent=(parseInt(cnt.textContent)||0)+1;
+  var p=document.querySelector('#f-students .page-h p'); if(p) p.innerHTML=p.innerHTML.replace(/^\d+/,function(n){return (parseInt(n)+1);});
+}
+function viewNewStudent(){ go('f-students'); var r=document.querySelector('#stuList .just-approved'); if(r){ r.scrollIntoView({behavior:'smooth',block:'center'}); } }
+// Fellow approves a self-registered onboarding → student enters the caseload as Onboarded (B1).
+function approveOnboarding(id){
+  var s=PENDING_ONBOARDINGS[id]; if(!s) return;
+  var list=document.getElementById('stuList');
+  if(list){
+    var row=document.createElement('div');
+    row.className='stu-row just-approved'; row.setAttribute('data-status','onboarded'); row.setAttribute('data-date', s.dateIso||'2026-07-03');
+    row.setAttribute('onclick',"go('f-student')");
+    row.innerHTML='<div class="sa" style="'+s.avatarStyle+'">'+s.avatarChar+'</div>'+
+      '<div class="si"><b>'+s.name+'</b><small>New · '+(s.fields.onbGrade||'')+' · '+(s.fields.onbDistrict||'')+' · Onboarded '+s.submitted+'</small></div>'+
+      '<div class="smeta"><span class="pill amber"><span class="pdot"></span>Onboarded</span><span class="sc">Eligibility pending · docs pending</span></div>'+
+      '<svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>';
+    list.insertBefore(row, list.firstChild);
+  }
+  bumpStudentCounts();
+  delete PENDING_ONBOARDINGS[id];
+  renderApprovalList();
+  var bar=document.getElementById('faActionBar');
+  bar.innerHTML='<div style="display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;flex-wrap:wrap">'+
+    '<span style="display:flex;align-items:center;gap:8px;color:var(--green);font-weight:600"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Approved — '+s.name+' added to your caseload as Onboarded.</span>'+
+    '<button class="btn btn-primary btn-sm" onclick="viewNewStudent()">View in My Students</button></div>';
 }
 // ===== shared login/logout =====
 function loginAs(role, studentStage){
