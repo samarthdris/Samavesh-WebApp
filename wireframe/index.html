@@ -1392,7 +1392,7 @@ img{max-width:100%}
           </div>
           <div class="card stat hoverable">
             <div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div>
-            <div class="num">5/8</div><div class="cap">Documents Accepted</div>
+            <div class="num">5 of 9</div><div class="cap">Documents Accepted</div>
           </div>
           <div class="card stat hoverable">
             <div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div></div>
@@ -2993,31 +2993,30 @@ img{max-width:100%}
               </div>
             </div>
 
-            <!-- AB · Approved → record disbursement -->
+            <!-- AB · Documents Pending -->
             <div class="app-acc-item" data-app="ab">
               <div class="app-acc-head" onclick="toggleAppAcc(this)">
                 <div class="sr-head">
                   <div class="sr-logo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</div>
-                  <div class="sr-name"><b>Dr. Babasaheb Ambedkar Scholarship</b><small>Application Approved · awaiting disbursement</small></div>
+                  <div class="sr-name"><b>Dr. Babasaheb Ambedkar Scholarship</b><small>Eligibility matched · Docs 6/8 Accepted · 2 pending</small></div>
                 </div>
-                <span class="pill amber"><span class="pdot"></span>Approved</span>
-                <div class="sr-mini" title="Step 5 of 5 · Decision">
+                <span class="pill amber"><span class="pdot"></span>Documents Pending</span>
+                <div class="sr-mini" title="Step 2 of 5">
                   <span class="ms done"></span><span class="ml done"></span>
-                  <span class="ms done"></span><span class="ml done"></span>
-                  <span class="ms done"></span><span class="ml done"></span>
-                  <span class="ms done"></span><span class="ml done"></span>
-                  <span class="ms cur"></span>
+                  <span class="ms cur"></span><span class="ml"></span>
+                  <span class="ms"></span><span class="ml"></span>
+                  <span class="ms"></span><span class="ml"></span>
+                  <span class="ms"></span>
                 </div>
-                <span class="sr-step">5 of 5</span>
+                <span class="sr-step">2 of 5</span>
                 <span class="app-acc-chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
               </div>
               <div class="app-acc-body">
-                <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px">Record disbursement once funds reach the student's bank account.</p>
-                <div class="form-grid">
-                  <div class="fg"><label>Disbursed Amount (₹)<span class="req">*</span></label><input type="number" placeholder="38000" /></div>
-                  <div class="fg"><label>Disbursement Date<span class="req">*</span></label><input type="date" /></div>
+                <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px">6 of 8 documents Accepted · 2 still being arranged (Caste Validity, Income proof). Submit on the portal once all mandatory documents are Accepted.</p>
+                <div class="btnrow" style="display:flex;gap:10px;flex-wrap:wrap">
+                  <button class="btn btn-primary btn-sm" type="button" data-go="f-docapp">Open Documentation Application</button>
+                  <button class="btn btn-ghost btn-sm" type="button" onclick="event.stopPropagation();go('f-student');setTimeout(function(){var t=document.querySelectorAll('#f-student .tabs button');if(t[2])ftab(t[2],'fp-docs');},100)">View documents</button>
                 </div>
-                <button class="btn btn-gold btn-sm" style="margin-top:14px" type="button" onclick="recordDisbursement(this)">Record Disbursement &amp; Close</button>
               </div>
             </div>
 
@@ -4284,13 +4283,13 @@ function lockOnbClone(clone){
 // The logged-in student's submitted onboarding answers (demo: Aarti). Same shape as the approval submissions.
 var MY_ONBOARDING = {
   name:'Aarti Ramesh Pawar', submitted:'12 Apr 2026', approvedBy:'Rahul More', approvedDate:'14 Apr 2026',
-  fields:{ onbEmail:'aarti.pawar@gmail.com', onbFullName:'Aarti Ramesh Pawar', onbDob:'2005-06-18', onbGender:'F',
+  fields:{ onbEmail:'aarti.pawar@gmail.com', onbFullName:'Aarti Ramesh Pawar', onbDob:'2005-08-14', onbGender:'F',
            onbMobile:'9800000021', onbFormDate:'2026-04-12', onbState:'Maharashtra',
            onbPermAddr:'23 Shanti Nagar, Kothrud, Pune 411038', onbDistrict:'Pune',
            onbCurrAddr:'23 Shanti Nagar, Kothrud, Pune 411038', onbCurrDistrict:'Pune',
            onbCollege:'Fergusson College, Pune', onbHeard:'College',
-           onbGrade:'Graduation - 2nd Year', onbStream:'Commerce & Management', onbMarks:'76%',
-           onbPrevGrade:'Graduation - 1st Year', onbPrevMarks:'72%',
+           onbGrade:'Graduation - 2nd Year', onbStream:'Commerce & Management', onbMarks:'78%',
+           onbPrevGrade:'Graduation - 1st Year', onbPrevMarks:'74%',
            onbSocial:'SC', onbIncome:'₹1 – 2 lakh', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
            onbGoals:'Complete my B.Com and qualify for a government scholarship.', onbCareer:'Become a chartered accountant.',
            onbShare:'Mother is the sole earner; fee support needed this year.', onbConsent:'Aarti Ramesh Pawar' },
@@ -4756,7 +4755,7 @@ var CASES = [
   {id:'CASE-2026-005', student:'Sneha Patil', av:'S', avStyle:'background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff', scheme:'Ambedkar Swadhar Yojana', appId:'MH-AB-2026-11902', fellow:'Rahul More', status:'Application Approved · funds awaited', onHold:false, onHoldReason:'', discarded:false, discardedReason:'', updated:'3 Jun'},
   {id:'CASE-2026-006', student:'Priya Sonawane', av:'P', avStyle:'background:linear-gradient(140deg,#2f6fd6,#1c4ea8);color:#fff', scheme:'GoI Post-Matric', appId:'MH-PM-2026-20551', fellow:'Rahul More', status:'Benefits Received', onHold:false, onHoldReason:'', discarded:false, discardedReason:'', updated:'20 Mar'},
   {id:'CASE-2026-007', student:'Suresh Jadhav', av:'S', avStyle:'background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff', scheme:'OBC Post-Matric', appId:'—', fellow:'Rahul More', status:'Ready to Submit', onHold:true, onHoldReason:'Family unreachable since 22 May', discarded:false, discardedReason:'', updated:'1 Mar'},
-  {id:'CASE-2026-008', student:'Suresh Jadhav', av:'S', avStyle:'background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff', scheme:'Shahu Maharaj Merit', appId:'MH-SM-2026-77120', fellow:'Rahul More', status:'Re-apply', onHold:false, onHoldReason:'', discarded:false, discardedReason:'', updated:'4 Jun'},
+  {id:'CASE-2026-008', student:'Aarti Pawar', av:'A', avStyle:'background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400', scheme:'Shahu Maharaj Merit', appId:'MH-SM-2026-77120', fellow:'Rahul More', status:'Re-apply', onHold:false, onHoldReason:'', discarded:false, discardedReason:'', updated:'4 Jun'},
   {id:'CASE-2026-009', student:'Imran Shaikh', av:'I', avStyle:'background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400', scheme:'VJNT Post-Matric', appId:'MH-VJ-2026-51004', fellow:'Rahul More', status:'Rejected', onHold:false, onHoldReason:'', discarded:false, discardedReason:'', updated:'6 Jun'},
   {id:'CASE-2026-010', student:'Ravi Khade', av:'R', avStyle:'background:linear-gradient(140deg,#9ca3af,#6b7280);color:#fff', scheme:'Aadhar Seeding (KYC)', appId:'—', fellow:'Rahul More', status:'Eligibility Identified', onHold:false, onHoldReason:'', discarded:true, discardedReason:'Student dropped out 14 May', updated:'12 May'},
   {id:'CASE-2026-011', student:'Sneha Patil', av:'S', avStyle:'background:linear-gradient(140deg,#0f857a,#0a3f3a);color:#fff', scheme:'Post-Matric SC', appId:'MH-PM-2026-33471', fellow:'Sandip K', status:'Benefits Received', onHold:false, onHoldReason:'', discarded:false, discardedReason:'', updated:'10 Feb'},
