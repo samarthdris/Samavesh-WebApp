@@ -2350,47 +2350,28 @@ img{max-width:100%}
       <!-- ===== ONBOARDING APPROVALS (ID 10 · Task 7) — self-registered students awaiting Fellow approval ===== -->
       <section class="screen" id="f-approvals">
         <div class="page-h"><div class="eyebrow">Workspace</div><h1>Onboarding Approvals</h1><p>Students who signed up and submitted their onboarding form. Review, correct any discrepancy (edit the fields), then approve — approval unlocks the student's full portal and adds them to your caseload.</p></div>
-        <div id="approvalList">
-          <div class="card approval-card" style="margin-bottom:14px">
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
-              <div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">R</span><div><b>Ravi Deshmukh</b><div style="font-size:12px;color:var(--muted)">Submitted 3 Jul 2026 · self-registered · ravi.deshmukh@gmail.com</div></div></div>
-              <span class="pill amber"><span class="pdot"></span>Pending Approval</span>
-            </div>
-            <p style="font-size:12.5px;color:var(--ink-soft);margin-bottom:10px">Review the submitted details. Edit any field to correct a discrepancy before approving (audit-logged).</p>
-            <div class="grid g-2">
-              <div class="field"><div class="k">Full Name</div><input class="v" type="text" value="Ravi Deshmukh" /></div>
-              <div class="field"><div class="k">Date of Birth</div><input class="v" type="date" value="2006-03-12" /></div>
-              <div class="field"><div class="k">Course / Class</div><input class="v" type="text" value="B.A Year 1" /></div>
-              <div class="field"><div class="k">Category</div><input class="v" type="text" value="OBC" /></div>
-              <div class="field"><div class="k">Mobile</div><input class="v" type="tel" value="9812345678" /></div>
-              <div class="field"><div class="k">District</div><input class="v" type="text" value="Pune" /></div>
-            </div>
-            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
-              <button class="btn btn-ghost btn-sm" onclick="alert('Coordinate with the student over WhatsApp about any discrepancy, edit the field above, then approve. (Wireframe stub.)')">Message student</button>
-              <button class="btn btn-primary btn-sm" onclick="approveOnboarding(this)">Approve onboarding</button>
-            </div>
+        <div id="approvalList"></div>
+        <div class="empty" id="approvalEmpty" style="display:none">All caught up — no onboarding submissions pending approval.</div>
+      </section>
+
+      <!-- ===== ONBOARDING APPROVAL — full-submission review (form view) ===== -->
+      <section class="screen" id="f-approval-detail">
+        <span class="backlink" data-go="f-approvals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to Onboarding Approvals</span>
+        <div class="card" style="margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+            <div class="who"><span class="sa" id="faAvatar">R</span><div><b id="faName">Student</b><div style="font-size:12px;color:var(--muted)" id="faMeta"></div></div></div>
+            <span class="pill amber"><span class="pdot"></span>Pending Approval</span>
           </div>
-          <div class="card approval-card" style="margin-bottom:14px">
-            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:10px">
-              <div class="who"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">S</span><div><b>Sneha Kale</b><div style="font-size:12px;color:var(--muted)">Submitted 2 Jul 2026 · self-registered · sneha.kale@gmail.com</div></div></div>
-              <span class="pill amber"><span class="pdot"></span>Pending Approval</span>
-            </div>
-            <p style="font-size:12.5px;color:var(--ink-soft);margin-bottom:10px">Review the submitted details. Edit any field to correct a discrepancy before approving (audit-logged).</p>
-            <div class="grid g-2">
-              <div class="field"><div class="k">Full Name</div><input class="v" type="text" value="Sneha Kale" /></div>
-              <div class="field"><div class="k">Date of Birth</div><input class="v" type="date" value="2005-11-27" /></div>
-              <div class="field"><div class="k">Course / Class</div><input class="v" type="text" value="B.Sc Year 2" /></div>
-              <div class="field"><div class="k">Category</div><input class="v" type="text" value="SC" /></div>
-              <div class="field"><div class="k">Mobile</div><input class="v" type="tel" value="9898989898" /></div>
-              <div class="field"><div class="k">District</div><input class="v" type="text" value="Nashik" /></div>
-            </div>
-            <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">
-              <button class="btn btn-ghost btn-sm" onclick="alert('Coordinate with the student over WhatsApp about any discrepancy, edit the field above, then approve. (Wireframe stub.)')">Message student</button>
-              <button class="btn btn-primary btn-sm" onclick="approveOnboarding(this)">Approve onboarding</button>
-            </div>
+          <p style="font-size:12.5px;color:var(--ink-soft);margin:10px 0 0">Review the student's <b>full onboarding submission</b> below. Edit any field to correct a discrepancy (audit-logged), then approve — approval unlocks the student's portal and adds them to your caseload.</p>
+        </div>
+        <div id="fApprovalHost"></div>
+        <div class="dt-actions" id="faActionBar" style="position:sticky;bottom:0;z-index:5">
+          <div class="dt-act-meta">Reviewing self-registered onboarding submission</div>
+          <div class="dt-act-btns">
+            <a class="btn btn-ghost btn-sm" id="faWhatsapp" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Z"/></svg>Message student</a>
+            <button class="btn btn-primary" onclick="approveOnboarding(document.getElementById('faActionBar').dataset.aid)">Approve onboarding</button>
           </div>
         </div>
-        <div class="empty" id="approvalEmpty" style="display:none">All caught up — no onboarding submissions pending approval.</div>
       </section>
 
       <!-- ===== ONBOARD STUDENT (Fellow direct-onboard path — Student Onboarding Form) ===== -->
@@ -4525,18 +4506,71 @@ function buildStudentOnboard(){
   host.appendChild(clone); host.dataset.built='1';
   wireOnbClone(clone,'s_');
 }
-// Fellow approves a self-registered student's onboarding (Task 7)
-function approveOnboarding(btn){
-  var card = btn.closest('.approval-card');
-  var name = (card.querySelector('.who b')||{}).textContent || 'The student';
-  card.innerHTML = '<div style="display:flex;align-items:center;gap:10px;color:var(--green);font-weight:600;padding:6px 0"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Approved — '+name+"'s portal is now unlocked and they're added to your caseload.</div>";
-  var badge=document.getElementById('fApprovalBadge');
-  if(badge){
-    var n=Math.max(0,(parseInt(badge.textContent)||0)-1);
-    badge.textContent=n; if(n===0) badge.style.display='none';
-    var chip=document.getElementById('fPendingChip'); if(chip) chip.textContent='Pending Approval ('+n+')';
-    if(n===0){ var e=document.getElementById('approvalEmpty'); if(e) e.style.display=''; }
+// Self-registered students awaiting Fellow onboarding approval. Each holds the FULL submitted answer set.
+var PENDING_ONBOARDINGS = {
+  'onb-ravi': {
+    name:'Ravi Deshmukh', email:'ravi.deshmukh@gmail.com', mobile:'9812345678',
+    submitted:'3 Jul 2026', dateIso:'2026-07-03',
+    avatarChar:'R', avatarStyle:'background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400',
+    fields:{ onbEmail:'ravi.deshmukh@gmail.com', onbFullName:'Ravi Deshmukh', onbDob:'2006-03-12', onbGender:'M',
+             onbMobile:'9812345678', onbFormDate:'2026-07-03', onbState:'Maharashtra',
+             onbPermAddr:'12 Shivaji Nagar, Near Zilla Parishad, Pune 411005', onbDistrict:'Pune',
+             onbCurrAddr:'12 Shivaji Nagar, Near Zilla Parishad, Pune 411005', onbCurrDistrict:'Pune',
+             onbCollege:'Fergusson College, Pune', onbHeard:'College',
+             onbGrade:'Graduation - 1st Year', onbStream:'Arts / Humanities', onbMarks:'74%',
+             onbPrevGrade:'12th', onbPrevMarks:'78%',
+             onbSocial:'OBC', onbIncome:'₹1 – 2 lakh', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
+             onbGoals:'Complete my B.A and secure a government scholarship.', onbCareer:'Become a school teacher.',
+             onbShare:'Father is the sole earner; needs fee support this semester.', onbConsent:'Ravi Deshmukh' },
+    docs:['have','dont','have','have','dont','na','have','have','na'],
+    checks:{ onb_support:[0], onb_vuln:[1,2], onb_sp:[1], onb_house:[0], onb_net:[1], onb_comp:[1] }
+  },
+  'onb-sneha': {
+    name:'Sneha Kale', email:'sneha.kale@gmail.com', mobile:'9898989898',
+    submitted:'2 Jul 2026', dateIso:'2026-07-02',
+    avatarChar:'S', avatarStyle:'background:linear-gradient(140deg,#2f6fd6,#1c4ea8);color:#fff',
+    fields:{ onbEmail:'sneha.kale@gmail.com', onbFullName:'Sneha Kale', onbDob:'2005-11-27', onbGender:'F',
+             onbMobile:'9898989898', onbFormDate:'2026-07-02', onbState:'Maharashtra',
+             onbPermAddr:'44 Gangapur Road, Nashik 422013', onbDistrict:'Nashik',
+             onbCurrAddr:'Hostel Block C, Nashik 422005', onbCurrDistrict:'Nashik',
+             onbCollege:'Other', onbHeard:'Mudita Alliance',
+             onbGrade:'Graduation - 2nd Year', onbStream:'Science', onbMarks:'CGPA 8.1',
+             onbPrevGrade:'Graduation - 1st Year', onbPrevMarks:'CGPA 7.9',
+             onbSocial:'SC', onbIncome:'₹50,000 – ₹1 lakh', onbParentDis:'No', onbOccupation:'Farming', onbDrug:'No',
+             onbGoals:'Clear my B.Sc with distinction.', onbCareer:'Pursue a Masters in Microbiology.',
+             onbShare:'First-generation learner in the family.', onbConsent:'Sneha Kale' },
+    docs:['have','have','have','have','dont','dont','dont','dont','na'],
+    checks:{ onb_support:[0,1], onb_vuln:[2], onb_sp:[1], onb_house:[2], onb_net:[0], onb_comp:[0] }
   }
+};
+function renderApprovalList(){
+  var host=document.getElementById('approvalList'); if(!host) return;
+  var ids=Object.keys(PENDING_ONBOARDINGS);
+  host.innerHTML = ids.map(function(id){ var s=PENDING_ONBOARDINGS[id];
+    return '<div class="stu-row" style="cursor:pointer" onclick="openApproval(\''+id+'\')">'+
+      '<div class="sa" style="'+s.avatarStyle+'">'+s.avatarChar+'</div>'+
+      '<div class="si"><b>'+s.name+'</b><small>Submitted '+s.submitted+' · self-registered · '+s.email+'</small></div>'+
+      '<div class="smeta"><span class="pill amber"><span class="pdot"></span>Pending Approval</span></div>'+
+      '<svg class="chev2" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>'+
+    '</div>'; }).join('');
+  var empty=document.getElementById('approvalEmpty'); if(empty) empty.style.display = ids.length ? 'none' : '';
+  var badge=document.getElementById('fApprovalBadge'); if(badge){ badge.textContent=ids.length; badge.style.display = ids.length ? '' : 'none'; }
+  var chip=document.getElementById('fPendingChip'); if(chip) chip.textContent='Pending Approval ('+ids.length+')';
+}
+function openApproval(id){
+  var s=PENDING_ONBOARDINGS[id]; if(!s) return;
+  var host=document.getElementById('fApprovalHost'); if(!host) return;
+  host.innerHTML='';
+  var clone=cloneOnbForm('rev_'); if(!clone) return;
+  var acts=clone.querySelector('.dt-actions'); if(acts) acts.style.display='none';   // hide the form's own submit bar; we use faActionBar
+  host.appendChild(clone);
+  wireOnbClone(clone,'rev_'); prefillOnbClone(clone,'rev_',s);
+  document.getElementById('faName').textContent=s.name;
+  document.getElementById('faMeta').textContent='Submitted '+s.submitted+' · self-registered · '+s.email;
+  var av=document.getElementById('faAvatar'); av.textContent=s.avatarChar; av.style.cssText=s.avatarStyle;
+  var wa=document.getElementById('faWhatsapp'); if(wa) wa.href='https://wa.me/91'+(s.mobile||'').replace(/\D/g,'')+'?text='+encodeURIComponent('Hi '+s.name+', this is your Samavesh Fellow about your onboarding form — ');
+  document.getElementById('faActionBar').dataset.aid=id;
+  go('f-approval-detail');
 }
 // ===== shared login/logout =====
 function loginAs(role, studentStage){
@@ -4572,7 +4606,7 @@ function go(id){
   if(id==='f-scholarship' && typeof schInit==='function') setTimeout(schInit,0);
   if(id==='s-onboard' && typeof buildStudentOnboard==='function') setTimeout(buildStudentOnboard,0);
 }
-const CRUMBS={'f-home':'Home','f-students':'Students','f-tasks':'Cases & Tasks','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-approvals':'Onboarding Approvals','f-attendance':'My Attendance','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-tasks':'Cases & Tasks','a-bulkupload':'Bulk Upload','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-attendance':'Attendance','a-profile':'My Settings'};
+const CRUMBS={'f-home':'Home','f-students':'Students','f-tasks':'Cases & Tasks','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-approvals':'Onboarding Approvals','f-approval-detail':'Onboarding Approvals › Review','f-attendance':'My Attendance','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-tasks':'Cases & Tasks','a-bulkupload':'Bulk Upload','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-attendance':'Attendance','a-profile':'My Settings'};
 function setCrumb(id){
   const txt=CRUMBS[id]; if(!txt)return;
   const el=id.indexOf('a-')===0?document.getElementById('crumbAdmin'):document.getElementById('crumbFellow');
@@ -5687,7 +5721,7 @@ function onbSubmit(){
   go('f-student');
 }
 // Initialise on first paint if the form is already in the DOM (covers reload-on-onboarding case).
-document.addEventListener('DOMContentLoaded',function(){ if(document.getElementById('onbDob')) setTimeout(onbInit,0); });
+document.addEventListener('DOMContentLoaded',function(){ if(document.getElementById('onbDob')) setTimeout(onbInit,0); if(document.getElementById('approvalList')) renderApprovalList(); });
 
 // app status conditional (scholarship form)
 function onAppStatus(sel){
