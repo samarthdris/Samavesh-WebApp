@@ -5,14 +5,14 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-07-06 — Student read-only onboarding view built + render-verified (on `dev`, **NOT pushed yet**). Earlier today (pushed, live on Pages): Unified Applications caseload + Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1). Prior: Feedback Batches 1 & 2._
+_Last updated: 2026-07-06 — Student read-only onboarding view COMPLETE, render-verified, **pushed to `dev` (live on Pages)**. Same day: Unified Applications caseload + Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1). Prior: Feedback Batches 1 & 2._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
 
-## 2026-07-06 — Student read-only onboarding view — DONE, render-verified, on `dev` (NOT pushed)
+## 2026-07-06 — Student read-only onboarding view — DONE, render-verified, pushed to `dev` (live)
 
 Student can now view their own submitted onboarding form read-only. Spec/plan: `docs/superpowers/{specs,plans}/2026-07-06-student-onboarding-readonly-view*`. Commits `39faf7e`, `134f3c4` + this heartbeat. Render-verified with headless Chrome.
 
