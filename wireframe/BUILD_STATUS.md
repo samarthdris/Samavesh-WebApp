@@ -5,12 +5,23 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-07-06 — Student read-only onboarding view COMPLETE, render-verified, **pushed to `dev` (live on Pages)**. Same day: Unified Applications caseload + Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1). Prior: Feedback Batches 1 & 2._
+_Last updated: 2026-07-06 — Consistency + polish batch (audit fixes A1–A5, B2–B6) built + render-verified (on `dev`, **NOT pushed yet**). Same day (pushed, live): Student read-only onboarding, Unified caseload, Onboarding-Approval + Doc-Preview cluster. Prior: Feedback Batches 1 & 2._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-07-06 — Consistency + polish batch (audit A1–A5, B2–B6) — DONE, render-verified, on `dev` (NOT pushed)
+
+From an end-to-end Student+Fellow audit. Spec/plan: `docs/superpowers/{specs,plans}/2026-07-06-consistency-polish-batch*`. Commits `3d49cae`, `434686a`, `045bb97`, `7e200e6` + this heartbeat.
+
+- [x] **A1–A3 data value-alignment:** **Aarti is the single canonical demo student** across every surface — caseload shows her 4 apps (Shahu-Maharaj Re-apply retargeted to her), the `fp-apps` AB accordion flipped "Approved" → **Documents Pending** (matches student + caseload + admin), onboarding read-only DOB → **14 Aug 2005** + marks 78/74, Home doc tile **"5 of 9"**.
+- [x] **A4:** My Students reads **"Showing N of 24"** (bump targets `#fStuShown`, so approvals still increment it).
+- [x] **A5/B2:** real **inline Edit profile** — generic `editProfile`/`saveProfile`/`cancelProfile` (skips `.mask` + `[data-noedit]`) on **both** Fellow and Admin student-detail; Save + "audit-logged" flash.
+- [x] **B5:** Fellow My Profile hub — email/joined/focus + editable Region/Mobile (reuses editProfile).
+- [x] **B6:** Home onboarding card sub-text — "view the form you filled **or request a change**".
+- ⚠️ **WATCH-ITEM (value-align-only):** the wireframe still holds each student's data in multiple places (static HTML + JS arrays). We aligned the *values*, not the architecture — a future feature could re-introduce drift. If it recurs, single-source per student.
 
 ## 2026-07-06 — Student read-only onboarding view — DONE, render-verified, pushed to `dev` (live)
 
