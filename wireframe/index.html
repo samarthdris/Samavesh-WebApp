@@ -2426,7 +2426,7 @@ img{max-width:100%}
               <h3 class="dt-sec-title"><span class="anum">1</span>Welcome &amp; Support Type</h3>
               <div class="dt-sec-lead">Personalised support for scholarships &amp; documentation, kept confidential.</div>
               <div class="dt-grid">
-                <div class="q full"><div class="qen">Email <span class="req">*</span></div><input type="email" placeholder="student@gmail.com" /><div class="qhelp">Becomes the student's sign-in identifier (Google SSO or magic link).</div></div>
+                <div class="q full"><div class="qen">Email <span class="req">*</span></div><input type="email" id="onbEmail" placeholder="student@gmail.com" /><div class="qhelp">Becomes the student's sign-in identifier (Google SSO or magic link).</div></div>
                 <div class="q full"><div class="qen">Please select the support required <span class="req">*</span></div>
                   <div class="opts">
                     <label class="opt"><input type="checkbox" name="onb_support" /> Scholarship Support (Government/Private)</label>
@@ -2441,7 +2441,7 @@ img{max-width:100%}
               <h3 class="dt-sec-title"><span class="anum">2</span>Personal Details</h3>
               
               <div class="dt-grid">
-                <div class="q full"><div class="qen">Full Name (as per govt document) <span class="req">*</span></div><input type="text" placeholder="Full name as on Govt ID" /></div>
+                <div class="q full"><div class="qen">Full Name (as per govt document) <span class="req">*</span></div><input type="text" id="onbFullName" placeholder="Full name as on Govt ID" /></div>
                 <div class="q"><div class="qen">Date of Birth <span class="req">*</span></div>
                   <div class="dob-inline">
                     <input type="date" id="onbDob" />
@@ -2460,7 +2460,7 @@ img{max-width:100%}
                   </div>
                   <div class="qhelp">Validated as Indian 10-digit mobile (starts with 6/7/8/9). Used for SMS reminders only — login is by email.</div>
                 </div>
-                <div class="q"><div class="qen">Date of Form Submission <span class="req">*</span></div><input type="date" value="2026-06-09" /><div class="qhelp">Auto-filled to today — override only for back-dated entries.</div></div>
+                <div class="q"><div class="qen">Date of Form Submission <span class="req">*</span></div><input type="date" id="onbFormDate" value="2026-06-09" /><div class="qhelp">Auto-filled to today — override only for back-dated entries.</div></div>
               </div>
             </section>
 
@@ -2470,16 +2470,16 @@ img{max-width:100%}
               
               <div class="dt-grid">
                 <div class="q full"><div class="qen">State <span class="req">*</span></div>
-                  <select onchange="onState(this)"><option value="">Select state</option><option value="Maharashtra">Maharashtra</option><option value="Tamil Nadu">Tamil Nadu</option><option value="Karnataka">Karnataka</option><option value="Other">Other</option></select></div>
+                  <select id="onbState" onchange="onState(this)"><option value="">Select state</option><option value="Maharashtra">Maharashtra</option><option value="Tamil Nadu">Tamil Nadu</option><option value="Karnataka">Karnataka</option><option value="Other">Other</option></select></div>
                 <div class="q full"><div class="qen">Permanent Address (as per govt address proof) <span class="req">*</span></div><textarea id="onbPermAddr" placeholder="Full permanent address"></textarea></div>
                 <div class="q full" id="mhDistricts"><div class="qen">District — Permanent (as per Govt ID) <span class="req">*</span></div>
-                  <select><option value="">Select district</option><option>Ahmednagar (Ahilyanagar)</option><option>Akola</option><option>Amravati</option><option>Chhatrapati Sambhaji Nagar (Aurangabad)</option><option>Beed</option><option>Bhandara</option><option>Buldhana</option><option>Chandrapur</option><option>Dhule</option><option>Gadchiroli</option><option>Gondia</option><option>Hingoli</option><option>Jalgaon</option><option>Jalna</option><option>Kolhapur</option><option>Latur</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Nagpur</option><option>Nanded</option><option>Nandurbar</option><option>Nashik</option><option>Dharashiv (Osmanabad)</option><option>Palghar</option><option>Parbhani</option><option>Pune</option><option>Raigad</option><option>Ratnagiri</option><option>Sangli</option><option>Satara</option><option>Sindhudurg</option><option>Solapur</option><option>Thane</option><option>Wardha</option><option>Washim</option><option>Yavatmal</option><option>Other</option></select></div>
+                  <select id="onbDistrict"><option value="">Select district</option><option>Ahmednagar (Ahilyanagar)</option><option>Akola</option><option>Amravati</option><option>Chhatrapati Sambhaji Nagar (Aurangabad)</option><option>Beed</option><option>Bhandara</option><option>Buldhana</option><option>Chandrapur</option><option>Dhule</option><option>Gadchiroli</option><option>Gondia</option><option>Hingoli</option><option>Jalgaon</option><option>Jalna</option><option>Kolhapur</option><option>Latur</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Nagpur</option><option>Nanded</option><option>Nandurbar</option><option>Nashik</option><option>Dharashiv (Osmanabad)</option><option>Palghar</option><option>Parbhani</option><option>Pune</option><option>Raigad</option><option>Ratnagiri</option><option>Sangli</option><option>Satara</option><option>Sindhudurg</option><option>Solapur</option><option>Thane</option><option>Wardha</option><option>Washim</option><option>Yavatmal</option><option>Other</option></select></div>
                 <div class="q full" id="otherDistrict" style="display:none"><div class="qen">District — Permanent <span class="req">*</span></div><input type="text" placeholder="Enter your district" /></div>
                 <div class="q full"><div class="qen">Current Address of Residence <span class="req">*</span></div>
                   <label class="inline-cb"><input type="checkbox" onchange="sameAddr(this,'onbPermAddr','onbCurrAddr')" /> Same as permanent address</label>
                   <textarea id="onbCurrAddr" placeholder="Current address"></textarea></div>
                 <div class="q full"><div class="qen">District — Current Residence <span class="req">*</span></div>
-                  <select><option value="">Select district</option><option>Pune</option><option>Nashik</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Thane</option><option>Satara</option><option>Kolhapur</option><option>Other</option></select></div>
+                  <select id="onbCurrDistrict"><option value="">Select district</option><option>Pune</option><option>Nashik</option><option>Mumbai City</option><option>Mumbai Suburban</option><option>Thane</option><option>Satara</option><option>Kolhapur</option><option>Other</option></select></div>
               </div>
             </section>
 
@@ -2489,10 +2489,10 @@ img{max-width:100%}
               
               <div class="dt-grid">
                 <div class="q"><div class="qen">College Name <span class="req">*</span></div>
-                  <select><option value="">Search &amp; select college…</option><option>Fergusson College, Pune</option><option>Sir Parshurambhau (S.P.) College, Pune</option><option>Modern College, Pune</option><option>Brihan Maharashtra College of Commerce (BMCC)</option><option>Abasaheb Garware College</option><option>Nowrosjee Wadia College</option><option>MIT World Peace University</option><option>College of Engineering Pune (COEP)</option><option>Symbiosis College of Arts &amp; Commerce</option><option>D. Y. Patil College</option><option>PCCOE, Pimpri</option><option>Ness Wadia College of Commerce</option><option>Other</option></select>
+                  <select id="onbCollege"><option value="">Search &amp; select college…</option><option>Fergusson College, Pune</option><option>Sir Parshurambhau (S.P.) College, Pune</option><option>Modern College, Pune</option><option>Brihan Maharashtra College of Commerce (BMCC)</option><option>Abasaheb Garware College</option><option>Nowrosjee Wadia College</option><option>MIT World Peace University</option><option>College of Engineering Pune (COEP)</option><option>Symbiosis College of Arts &amp; Commerce</option><option>D. Y. Patil College</option><option>PCCOE, Pimpri</option><option>Ness Wadia College of Commerce</option><option>Other</option></select>
                   <div class="qhelp">Searchable dropdown — full college list maintained by Admin in production.</div></div>
                 <div class="q"><div class="qen">How did you hear about SAMAVESH? <span class="req">*</span></div>
-                  <select>
+                  <select id="onbHeard">
                     <option value="">Select</option>
                     <option>GSP Girls</option>
                     <option>Mudita Alliance</option>
@@ -2513,13 +2513,13 @@ img{max-width:100%}
               
               <div class="dt-grid">
                 <div class="q"><div class="qen">Current Grade of Study <span class="req">*</span></div>
-                  <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Graduation - 5th Year</option><option>Masters - 1st Year</option><option>Masters - 2nd Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+                  <select id="onbGrade"><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Graduation - 5th Year</option><option>Masters - 1st Year</option><option>Masters - 2nd Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
                 <div class="q"><div class="qen">Stream <span class="req">*</span></div>
-                  <select><option value="">Select</option><option>Arts / Humanities</option><option>Commerce &amp; Management</option><option>Science</option><option>Engineering &amp; Technology (B.Tech/B.E.)</option><option>Medical Science</option><option>Law</option><option>Design &amp; Media</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
-                <div class="q full"><div class="qen">Current Marks Obtained <span class="req">*</span></div><input type="text" placeholder="e.g. 72% or CGPA 7.8" /><div class="qhelp">Enter as percentage (e.g. 72%) or CGPA (e.g. 7.8).</div></div>
+                  <select id="onbStream"><option value="">Select</option><option>Arts / Humanities</option><option>Commerce &amp; Management</option><option>Science</option><option>Engineering &amp; Technology (B.Tech/B.E.)</option><option>Medical Science</option><option>Law</option><option>Design &amp; Media</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+                <div class="q full"><div class="qen">Current Marks Obtained <span class="req">*</span></div><input type="text" id="onbMarks" placeholder="e.g. 72% or CGPA 7.8" /><div class="qhelp">Enter as percentage (e.g. 72%) or CGPA (e.g. 7.8).</div></div>
                 <div class="q"><div class="qen">Previous Grade of Study <span class="req">*</span></div>
-                  <select><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
-                <div class="q"><div class="qen">Marks Obtained in Previous Grade <span class="req">*</span></div><input type="text" placeholder="e.g. 68% or CGPA 7.2" /></div>
+                  <select id="onbPrevGrade"><option value="">Select</option><option>10th</option><option>11th</option><option>12th</option><option>Graduation - 1st Year</option><option>Graduation - 2nd Year</option><option>Graduation - 3rd Year</option><option>Graduation - 4th Year</option><option>Diploma</option><option>ITI</option><option>Other</option></select></div>
+                <div class="q"><div class="qen">Marks Obtained in Previous Grade <span class="req">*</span></div><input type="text" id="onbPrevMarks" placeholder="e.g. 68% or CGPA 7.2" /></div>
               </div>
             </section>
 
@@ -2584,14 +2584,14 @@ img{max-width:100%}
               <div class="dt-banner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>The first three questions are optional. Shared in confidence to match the right support.</div>
               <div class="dt-grid">
                 <div class="q"><div class="qen">Social Background</div>
-                  <select>
+                  <select id="onbSocial">
                     <option value="">Select</option>
                     <option value="">Prefer not to answer</option>
                     <option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>SEBC</option><option>SBC</option><option>EWS</option><option>General</option><option>Other</option>
                   </select>
                 </div>
                 <div class="q"><div class="qen">Annual Family Income</div>
-                  <select>
+                  <select id="onbIncome">
                     <option value="">Select</option>
                     <option value="">Prefer not to answer</option>
                     <option>Less than ₹50,000</option>
@@ -2613,7 +2613,7 @@ img{max-width:100%}
                   </div></div>
                 <div class="q"><div class="qen">Single Parent Child? <span class="req">*</span></div><div class="opts row"><label class="opt"><input type="radio" name="onb_sp" /> Yes</label><label class="opt"><input type="radio" name="onb_sp" /> No</label></div></div>
                 <div class="q"><div class="qen">Do parents have any disability? <span class="req">*</span></div>
-                  <select>
+                  <select id="onbParentDis">
                     <option value="">Select</option>
                     <option>Yes</option>
                     <option>No</option>
@@ -2621,7 +2621,7 @@ img{max-width:100%}
                   </select>
                 </div>
                 <div class="q"><div class="qen">Family Occupation / Parents' Income Source <span class="req">*</span></div>
-                  <select>
+                  <select id="onbOccupation">
                     <option value="">Select</option>
                     <option>Farming</option>
                     <option>Daily Wages</option>
@@ -2634,7 +2634,7 @@ img{max-width:100%}
                 <div class="q"><div class="qen">Type of House <span class="req">*</span></div>
                   <div class="opts row"><label class="opt"><input type="checkbox" name="onb_house" /> Own house</label><label class="opt"><input type="checkbox" name="onb_house" /> Rented house</label><label class="opt"><input type="checkbox" name="onb_house" /> Kaccha</label><label class="opt"><input type="checkbox" name="onb_house" /> Pakka</label></div></div>
                 <div class="q"><div class="qen">Any drug-addiction problem at home? <span class="req">*</span></div>
-                  <select>
+                  <select id="onbDrug">
                     <option value="">Select</option>
                     <option>Yes</option>
                     <option>No</option>
@@ -2652,9 +2652,9 @@ img{max-width:100%}
               <h3 class="dt-sec-title"><span class="anum">8</span>Aspirations &amp; Consent</h3>
               
               <div class="dt-grid">
-                <div class="q full"><div class="qen">Immediate Goals</div><textarea placeholder="E.g. Pass my 12th exams, apply for scholarship…"></textarea></div>
-                <div class="q full"><div class="qen">Long-term Career Aspirations</div><textarea placeholder="E.g. Become a doctor, start my own business…"></textarea></div>
-                <div class="q full"><div class="qen">Anything else you'd like to share</div><textarea placeholder="Any other information…"></textarea></div>
+                <div class="q full"><div class="qen">Immediate Goals</div><textarea id="onbGoals" placeholder="E.g. Pass my 12th exams, apply for scholarship…"></textarea></div>
+                <div class="q full"><div class="qen">Long-term Career Aspirations</div><textarea id="onbCareer" placeholder="E.g. Become a doctor, start my own business…"></textarea></div>
+                <div class="q full"><div class="qen">Anything else you'd like to share</div><textarea id="onbShare" placeholder="Any other information…"></textarea></div>
                 <div class="q full">
                   <div class="consent-box" style="margin-top:8px"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" style="flex:0 0 20px;color:var(--teal-700)"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
                     <div class="ct"><b>Consent Declaration:</b> I authorise SAMAVESH Action For Impact to collect this information and to act on government scholarship portals on the student's behalf, under the DPDP Act, 2023. <b>Type the student/guardian name below to give consent.</b></div></div>
@@ -4488,21 +4488,42 @@ function saveOnbDraft(){
   var note=document.getElementById('sOnbSaved'); if(note){ note.style.display='inline'; setTimeout(function(){ note.style.display='none'; }, 2800); }
 }
 function submitStudentOnboarding(){ submitOnboarding(); }   // Submit for review → gate switches to "with your Fellow for review"
-// Clone the EXACT Fellow onboarding form (#onbForm) into the student portal — one source of truth, no duplicate markup.
-function buildStudentOnboard(){
-  var host=document.getElementById('sOnbHost'); if(!host || host.dataset.built) return;
-  var src=document.getElementById('onbForm'); if(!src) return;
-  var clone=src.cloneNode(true); clone.id='sOnbForm';
-  clone.querySelectorAll('[id]').forEach(function(el){ el.id='s_'+el.id; });                                  // avoid id collisions with the Fellow copy
-  clone.querySelectorAll('.dt-anchors a[href^="#"]').forEach(function(a){ a.setAttribute('href','#s_'+a.getAttribute('href').slice(1)); });
-  host.appendChild(clone); host.dataset.built='1';
-  var g=clone.querySelector('#s_onbGender'); if(g) g.innerHTML='<option value="">Select</option>'+GENDER_MASTER.map(function(x){return '<option value="'+x.code+'">'+x.en+'</option>';}).join('');
-  var dob=clone.querySelector('#s_onbDob'), age=clone.querySelector('#s_onbAge');
+// Clone the ONE onboarding form (#onbForm) with an id/name prefix so multiple copies coexist.
+function cloneOnbForm(prefix){
+  var src=document.getElementById('onbForm'); if(!src) return null;
+  var clone=src.cloneNode(true); clone.id=prefix+'onbForm';
+  clone.querySelectorAll('[id]').forEach(function(el){ el.id=prefix+el.id; });
+  clone.querySelectorAll('[name]').forEach(function(el){ el.name=prefix+el.name; });   // isolate radio/checkbox groups from other copies
+  clone.querySelectorAll('.dt-anchors a[href^="#"]').forEach(function(a){ a.setAttribute('href','#'+prefix+a.getAttribute('href').slice(1)); });
+  return clone;
+}
+// Wire the interactive bits of a cloned onboarding form (gender master, DOB age, mobile chip, doc-status, anchor scroll).
+function wireOnbClone(clone, prefix){
+  var g=clone.querySelector('#'+prefix+'onbGender'); if(g) g.innerHTML='<option value="">Select</option>'+GENDER_MASTER.map(function(x){return '<option value="'+x.code+'">'+x.en+'</option>';}).join('');
+  var dob=clone.querySelector('#'+prefix+'onbDob'), age=clone.querySelector('#'+prefix+'onbAge');
   if(dob&&age) dob.addEventListener('change',function(){ var v=dob.value; if(!v){age.textContent='Age: —';age.classList.add('empty');return;} var y=(new Date().getTime()-new Date(v).getTime())/(365.25*864e5); if(y<0||y>120){age.textContent='Age: invalid date';age.classList.add('empty');return;} age.textContent='Age: '+y.toFixed(1)+' years'; age.classList.remove('empty'); });
-  var mob=clone.querySelector('#s_onbMobile'), chip=clone.querySelector('#s_onbMobileVerify');
+  var mob=clone.querySelector('#'+prefix+'onbMobile'), chip=clone.querySelector('#'+prefix+'onbMobileVerify');
   if(mob&&chip){ var chk=function(){ var v=(mob.value||'').replace(/\D/g,''); chip.classList.remove('ok','bad'); if(!v)return; if(/^[6-9]\d{9}$/.test(v)){chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Valid';chip.classList.add('ok');}else{chip.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 6l12 12M18 6 6 18"/></svg>Invalid';chip.classList.add('bad');} }; mob.addEventListener('blur',chk); mob.addEventListener('input',function(){ if(chip.classList.contains('ok')||chip.classList.contains('bad'))chk(); }); }
   clone.querySelectorAll('.doc-ctable td.doc-stat select').forEach(function(s){ s.addEventListener('change',onbDocStatus); });
   clone.querySelectorAll('.dt-anchors a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); var sec=document.getElementById(a.getAttribute('href').slice(1)); if(sec) sec.scrollIntoView({behavior:'smooth',block:'start'}); }); });
+}
+// Pre-fill a cloned onboarding form from a submission's answer map.
+function prefillOnbClone(clone, prefix, sub){
+  sub=sub||{};
+  Object.keys(sub.fields||{}).forEach(function(id){ var el=clone.querySelector('#'+prefix+id); if(el) el.value=sub.fields[id]; });
+  var stats=clone.querySelectorAll('.doc-ctable td.doc-stat select');
+  (sub.docs||[]).forEach(function(v,i){ if(stats[i]){ stats[i].value=v; stats[i].dispatchEvent(new Event('change')); } });
+  Object.keys(sub.checks||{}).forEach(function(nm){ var opts=clone.querySelectorAll('[name="'+prefix+nm+'"]'); (sub.checks[nm]||[]).forEach(function(i){ if(opts[i]) opts[i].checked=true; }); });
+  var dob=clone.querySelector('#'+prefix+'onbDob'); if(dob) dob.dispatchEvent(new Event('change'));
+  var mob=clone.querySelector('#'+prefix+'onbMobile'); if(mob) mob.dispatchEvent(new Event('blur'));
+}
+// Clone the EXACT Fellow onboarding form (#onbForm) into the student portal — one source of truth, no duplicate markup.
+function buildStudentOnboard(){
+  var host=document.getElementById('sOnbHost'); if(!host || host.dataset.built) return;
+  var clone=cloneOnbForm('s_'); if(!clone) return;
+  clone.id='sOnbForm';                       // preserve the original container id for backward-compat
+  host.appendChild(clone); host.dataset.built='1';
+  wireOnbClone(clone,'s_');
 }
 // Fellow approves a self-registered student's onboarding (Task 7)
 function approveOnboarding(btn){
