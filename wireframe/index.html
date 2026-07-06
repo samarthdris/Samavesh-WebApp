@@ -1419,7 +1419,7 @@ img{max-width:100%}
 
         <!-- Onboarding submission (read-only record) -->
         <div class="card" style="margin:14px 0;border-left:4px solid var(--teal-700);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
-          <div><h4 class="serif" style="font-size:17px;margin:0 0 2px">Your onboarding submission</h4><p style="color:var(--ink-soft);font-size:13px;margin:0">Submitted 12 Apr · Approved by Rahul More on 14 Apr — view the form you filled.</p></div>
+          <div><h4 class="serif" style="font-size:17px;margin:0 0 2px">Your onboarding submission</h4><p style="color:var(--ink-soft);font-size:13px;margin:0">Submitted 12 Apr · Approved by Rahul More on 14 Apr — view the form you filled or request a change.</p></div>
           <button class="btn btn-ghost btn-sm" data-go="s-my-onboarding">View my onboarding form →</button>
         </div>
 
@@ -2265,7 +2265,7 @@ img{max-width:100%}
       <!-- ===== MY STUDENTS ===== -->
       <section class="screen" id="f-students">
         <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
-          <div><div class="eyebrow">Caseload</div><h1>My Students</h1><p>10 students assigned to you. You can only see students assigned to you (RBAC).</p></div>
+          <div><div class="eyebrow">Caseload</div><h1>My Students</h1><p>Showing <span id="fStuShown">10</span> of 24 students assigned to you (rest paginated) · you only see your own students (RBAC).</p></div>
           <button class="btn btn-primary" data-go="f-onboard">+ Onboard New Student</button>
         </div>
 
@@ -4409,7 +4409,7 @@ function incChipCount(el){ if(el) el.innerHTML=el.innerHTML.replace(/\((\d+)\)/,
 function bumpStudentCounts(){
   document.querySelectorAll('#f-students .chip').forEach(function(c){ var t=c.textContent; if(/^All /.test(t)||/^Onboarded/.test(t)) incChipCount(c); });
   var cnt=document.querySelector('#f-students .listbar .cnt b'); if(cnt) cnt.textContent=(parseInt(cnt.textContent)||0)+1;
-  var p=document.querySelector('#f-students .page-h p'); if(p) p.innerHTML=p.innerHTML.replace(/^\d+/,function(n){return (parseInt(n)+1);});
+  var sh=document.getElementById('fStuShown'); if(sh) sh.textContent=(parseInt(sh.textContent)||0)+1;
 }
 function viewNewStudent(){ go('f-students'); var r=document.querySelector('#stuList .just-approved'); if(r){ r.scrollIntoView({behavior:'smooth',block:'center'}); } }
 // Fellow approves a self-registered onboarding → student enters the caseload as Onboarded (B1).
