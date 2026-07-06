@@ -5,12 +5,23 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-07-03 — Feedback Batches 1 & 2 COMPLETE (client tracker `Feedbacks.xlsx`), render-verified with headless Chrome, committed + pushed to `dev` (live on Pages)._
+_Last updated: 2026-07-06 — Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1) COMPLETE, render-verified with headless Chrome, committed to `dev` (4 commits, NOT pushed yet — awaiting push approval + visual review). Prior: Feedback Batches 1 & 2 (pushed, live on Pages)._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-07-06 — Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1) — DONE, render-verified, on `dev` (NOT pushed)
+
+Spec/plan: `docs/superpowers/{specs,plans}/2026-07-03-onboarding-approval-review*`. 4 commits on `dev` (`3800d5c`, `aa5d21f`, `ffb389e`, `9c14bff`). Each task render-verified with headless Chrome (per `samavesh-render-verify`). Awaiting push approval + visual review.
+
+- [x] **Task 1 — onbForm IDs + shared clone helpers.** Added ~21 stable field IDs to `#onbForm`; extracted `cloneOnbForm`/`wireOnbClone`/`prefillOnbClone` (now also prefixes `name` attrs → isolates radio/checkbox groups across form copies, fixing a latent shared-group bug). `buildStudentOnboard` refactored onto them (student self-onboard render-verified unchanged).
+- [x] **A1 — full-form review gate.** `#f-approvals` is now a JS-rendered list (`PENDING_ONBOARDINGS`, `renderApprovalList`); clicking a submission opens `#f-approval-detail` = the ENTIRE 42-Q form cloned (`rev_` prefix), pre-filled + editable (`openApproval`). Verified: DOB→age, mobile ✓Valid, gender, docs child-table, checkboxes all pre-fill.
+- [x] **C1 — real WhatsApp.** "Message student" = `wa.me/91<mobile>?text=…` deep-link (verified href).
+- [x] **B1 — approval completes the flow.** `approveOnboarding(id)` inserts the student at the top of My Students (highlighted `.just-approved`), bumps All/Onboarded chips + listbar + header counts, removes from pending, swaps action bar to success + "View in My Students". Verified: All 10→11, Onboarded 2→3, Pending 2→1, nav badge 2→1.
+- [x] **A2 — real document preview modal.** Shared `#docPreviewModal` (faux certificate + title/meta, close via X/Esc/backdrop) replaces all 5 `alert('View file…')` (4 in a-verify + 1 in a-student) + adds a **View** before Accept in the Fellow's "Recently uploaded by student" strip. 0 alerts remain; 6 call sites.
+- Out of scope (unchanged): real PDF rendering; Admin `a-student` sub-doc parity; Frappe amend/re-open-after-approve (blocked on client). Still parked: **ID 11** (Scholarship Data Entry on student view).
 
 ## 2026-07-03 — Feedback Batch 2 (IDs 7, 10, 12 + English-only) + all review fixes — DONE, render-verified, on `dev`
 
