@@ -2143,14 +2143,11 @@ img{max-width:100%}
       <a href="#" class="nav-link" data-go="f-approvals">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Onboarding Approvals<span class="soon" style="background:rgba(246,178,74,.2);color:var(--marigold-soft)" id="fApprovalBadge">2</span>
       </a>
-      <a href="#" class="nav-link" data-go="f-tasks">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2M14 17h2"/></svg>My Cases<span class="soon" style="background:rgba(246,178,74,.2);color:var(--marigold-soft)">6</span>
-      </a>
       <a href="#" class="nav-link" data-go="f-attendance">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>My Attendance
       </a>
       <a href="#" class="nav-link" data-go="f-applications">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Applications
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Applications<span class="soon" style="background:rgba(246,178,74,.2);color:var(--marigold-soft)" id="fApplicationsBadge">0</span>
       </a>
       <div class="nav-label">Account</div>
       <a href="#" class="nav-link" data-go="f-profile">
@@ -2210,21 +2207,13 @@ img{max-width:100%}
           <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="num">5</div><div class="cap">Approved</div></div>
         </div>
 
-        <!-- My Cases inbox summary (drives Tasks needing your attention) -->
-        <div class="section-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px"><h3>My Cases inbox</h3><a href="#" data-go="f-tasks" style="font-size:13px;color:var(--teal-700);font-weight:600;text-decoration:none">Open My Cases →</a></div>
+        <!-- Caseload triage summary (derived from the unified Applications caseload) -->
+        <div class="section-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px"><h3>My caseload</h3><a href="#" data-go="f-applications" style="font-size:13px;color:var(--teal-700);font-weight:600;text-decoration:none">Open Applications →</a></div>
         <div class="case-summary">
-          <div class="csum" onclick="go('f-tasks');setTimeout(function(){const c=document.querySelectorAll('#myCaseChipBar .chip')[1];if(c)filterMyCases('todo',c);},150)">
-            <div class="num"><span class="dot" style="background:#1D4ED8"></span>1</div><div class="cap">To Do · ready to start</div>
-          </div>
-          <div class="csum" onclick="go('f-tasks');setTimeout(function(){const c=document.querySelectorAll('#myCaseChipBar .chip')[2];if(c)filterMyCases('progress',c);},150)">
-            <div class="num"><span class="dot" style="background:#B45309"></span>3</div><div class="cap">In-progress · actively working</div>
-          </div>
-          <div class="csum" onclick="go('f-tasks');setTimeout(function(){const c=document.querySelectorAll('#myCaseChipBar .chip')[3];if(c)filterMyCases('hold',c);},150)">
-            <div class="num"><span class="dot" style="background:#374151"></span>1</div><div class="cap">On Hold · blocked</div>
-          </div>
-          <div class="csum" onclick="go('f-tasks');setTimeout(function(){const c=document.querySelectorAll('#myCaseChipBar .chip')[5];if(c)filterMyCases('discarded',c);},150)">
-            <div class="num"><span class="dot" style="background:#B91C1C"></span>1</div><div class="cap">Discarded · closed</div>
-          </div>
+          <div class="csum" onclick="go('f-applications');setTimeout(function(){var c=document.querySelectorAll('#fCaseChips .chip')[1];if(c)filterCaseList('fellow','action',c);},150)"><div class="num"><span class="dot" style="background:#B45309"></span><span id="fhAction">0</span></div><div class="cap">Action needed</div></div>
+          <div class="csum" onclick="go('f-applications');setTimeout(function(){var c=document.querySelectorAll('#fCaseChips .chip')[2];if(c)filterCaseList('fellow','awaiting',c);},150)"><div class="num"><span class="dot" style="background:#1D4ED8"></span><span id="fhAwaiting">0</span></div><div class="cap">Awaiting</div></div>
+          <div class="csum" onclick="go('f-applications');setTimeout(function(){var c=document.querySelectorAll('#fCaseChips .chip')[3];if(c)filterCaseList('fellow','hold',c);},150)"><div class="num"><span class="dot" style="background:#374151"></span><span id="fhHold">0</span></div><div class="cap">On Hold</div></div>
+          <div class="csum" onclick="go('f-applications');setTimeout(function(){var c=document.querySelectorAll('#fCaseChips .chip')[4];if(c)filterCaseList('fellow','done',c);},150)"><div class="num"><span class="dot" style="background:#15803D"></span><span id="fhDone">0</span></div><div class="cap">Done</div></div>
         </div>
 
         <!-- Workflow-specific shortcuts (still useful for one-click action targeting the most-common workflow next-steps) -->
@@ -3094,89 +3083,6 @@ img{max-width:100%}
         <div class="listbar"><span class="lbsel"></span><span class="cnt"><b id="fCaseCnt">0</b> Applications</span><div class="lb-tools"><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Filter</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13M3 12h9M3 18h5M18 9l3 3-3 3"/></svg>Sort</button></div></div>
         <div id="caseListFellow"></div>
         <div class="empty" id="fCaseEmpty" style="display:none">No applications in this view.</div>
-      </section>
-
-      <!-- ===== MY CASES (Fellow's inbox: assigned cases with 5-state work tracking) ===== -->
-      <section class="screen" id="f-tasks">
-        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
-          <div><div class="eyebrow">Workspace · Cases</div><h1>My Cases</h1><p>Your assigned cases. Each is one student × one scholarship. Move cases through the 5 work-states as you make progress.</p></div>
-          <div style="font-size:13px;color:var(--ink-soft)">6 cases assigned · last updated 4 Jun</div>
-        </div>
-
-        <!-- 5-state summary cards (clickable filters) -->
-        <div class="case-summary">
-          <div class="csum" onclick="filterMyCases('todo',this)"><div class="num"><span class="dot" style="background:#1D4ED8"></span>1</div><div class="cap">To Do</div></div>
-          <div class="csum" onclick="filterMyCases('progress',this)"><div class="num"><span class="dot" style="background:#B45309"></span>3</div><div class="cap">In-progress</div></div>
-          <div class="csum" onclick="filterMyCases('hold',this)"><div class="num"><span class="dot" style="background:#374151"></span>1</div><div class="cap">On Hold</div></div>
-          <div class="csum" onclick="filterMyCases('completed',this)"><div class="num"><span class="dot" style="background:#15803D"></span>0</div><div class="cap">Completed</div></div>
-          <div class="csum" onclick="filterMyCases('discarded',this)"><div class="num"><span class="dot" style="background:#B91C1C"></span>1</div><div class="cap">Discarded</div></div>
-        </div>
-
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px" id="myCaseChipBar">
-          <span class="tagk chip on" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('all',this)">All (6)</span>
-          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('todo',this)">To Do (1)</span>
-          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('progress',this)">In-progress (3)</span>
-          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('hold',this)">On Hold (1)</span>
-          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('completed',this)">Completed (0)</span>
-          <span class="tagk chip" style="padding:8px 14px;cursor:pointer" onclick="filterMyCases('discarded',this)">Discarded (1)</span>
-        </div>
-
-        <div class="listbar"><span class="lbsel"></span><span class="cnt"><b id="myCaseCnt">6</b> Cases</span><div class="lb-tools"><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18M6 12h12M10 19h4"/></svg>Filter</button><button><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h13M3 12h9M3 18h5M18 9l3 3-3 3"/></svg>Sort</button></div></div>
-
-        <div class="dtable-wrap" style="border-radius:0 0 11px 11px;border-top:none"><table class="dtable" id="myCaseTable">
-          <thead><tr><th>Case</th><th>Scholarship</th><th>State</th><th>Journey Stage</th><th>Created</th><th style="text-align:right">Action</th></tr></thead>
-          <tbody>
-            <tr data-case-state="progress" onclick="go('f-student')" style="cursor:pointer">
-              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-001</div></div></div></td>
-              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">PM</span>Post-Matric SC</div></td>
-              <td><span class="case-state progress">In-progress</span></td>
-              <td><span class="case-jstage">Submitted · Under Scrutiny</span></td>
-              <td><span style="font-size:12px;color:var(--ink-soft)">12 Apr</span></td>
-              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'hold')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'completed')">Mark Complete</button></div></td>
-            </tr>
-            <tr data-case-state="todo" onclick="go('f-student')" style="cursor:pointer">
-              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-002</div></div></div></td>
-              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">MS</span>Maharashtra State Minority</div></td>
-              <td><span class="case-state todo">To Do</span></td>
-              <td><span class="case-jstage">Documents Complete · Ready to Submit</span></td>
-              <td><span style="font-size:12px;color:var(--ink-soft)">28 Apr</span></td>
-              <td><div class="case-acts"><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'progress')">Start</button><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'discarded')">Discard</button></div></td>
-            </tr>
-            <tr data-case-state="progress" onclick="go('f-student')" style="cursor:pointer">
-              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-003</div></div></div></td>
-              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">AB</span>Dr. Babasaheb Ambedkar</div></td>
-              <td><span class="case-state progress">In-progress</span></td>
-              <td><span class="case-jstage">Eligibility Identified · 2 docs pending</span></td>
-              <td><span style="font-size:12px;color:var(--ink-soft)">22 May</span></td>
-              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'hold')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'completed')">Mark Complete</button></div></td>
-            </tr>
-            <tr data-case-state="progress" onclick="go('f-student')" style="cursor:pointer">
-              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">A</span><div><b>Aarti Pawar</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-004</div></div></div></td>
-              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">SM</span>Shahu Maharaj Merit</div></td>
-              <td><span class="case-state progress">In-progress</span></td>
-              <td><span class="case-jstage" style="color:var(--red)">Decision · Re-apply (rejected 4 Jun)</span></td>
-              <td><span style="font-size:12px;color:var(--ink-soft)">14 May</span></td>
-              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'hold')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'completed')">Mark Complete</button></div></td>
-            </tr>
-            <tr data-case-state="hold" onclick="go('f-students')" style="cursor:pointer">
-              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">S</span><div><b>Suresh Jadhav</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-005</div></div></div></td>
-              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">OB</span>OBC Post-Matric</div></td>
-              <td><span class="case-state hold">On Hold</span></td>
-              <td><span class="case-jstage">Documents Complete · Family unreachable since 22 May</span></td>
-              <td><span style="font-size:12px;color:var(--ink-soft)">1 Mar</span></td>
-              <td><div class="case-acts"><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,'progress')">Resume</button><button class="btn-mini danger" onclick="event.stopPropagation();transitionCase(this,'discarded')">Discard</button></div></td>
-            </tr>
-            <tr data-case-state="discarded" onclick="go('f-students')" style="cursor:pointer">
-              <td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#9ca3af,#6b7280)">R</span><div><b>Ravi Khade</b><div style="font-size:11.5px;color:var(--muted)">CASE-2026-010</div></div></div></td>
-              <td><div class="case-scheme"><span class="sclogo" style="background:linear-gradient(140deg,#374151,#1f2937)">AS</span>Aadhar Seeding (KYC)</div></td>
-              <td><span class="case-state discarded">Discarded</span></td>
-              <td><span class="case-jstage">Student dropped out 14 May · case closed</span></td>
-              <td><span style="font-size:12px;color:var(--ink-soft)">12 May</span></td>
-              <td><div class="case-acts"><button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,'progress')">Reopen</button></div></td>
-            </tr>
-          </tbody>
-        </table></div>
-        <div class="empty" id="myCaseEmpty" style="display:none;margin-top:12px"><div>No cases match the current filter.</div></div>
       </section>
 
       <!-- ===== FELLOW MY ATTENDANCE (ID 7) ===== -->
@@ -4609,7 +4515,7 @@ function go(id){
   if(id==='f-scholarship' && typeof schInit==='function') setTimeout(schInit,0);
   if(id==='s-onboard' && typeof buildStudentOnboard==='function') setTimeout(buildStudentOnboard,0);
 }
-const CRUMBS={'f-home':'Home','f-students':'Students','f-tasks':'Cases & Tasks','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-approvals':'Onboarding Approvals','f-approval-detail':'Onboarding Approvals › Review','f-attendance':'My Attendance','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-tasks':'Cases & Tasks','a-bulkupload':'Bulk Upload','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-attendance':'Attendance','a-profile':'My Settings'};
+const CRUMBS={'f-home':'Home','f-students':'Students','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-approvals':'Onboarding Approvals','f-approval-detail':'Onboarding Approvals › Review','f-attendance':'My Attendance','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-tasks':'Cases & Tasks','a-bulkupload':'Bulk Upload','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-attendance':'Attendance','a-profile':'My Settings'};
 function setCrumb(id){
   const txt=CRUMBS[id]; if(!txt)return;
   const el=id.indexOf('a-')===0?document.getElementById('crumbAdmin'):document.getElementById('crumbFellow');
@@ -5302,17 +5208,6 @@ function filterCases(state, btn){ _caseFState = state; _applyCaseFilters(); }
 function filterCasesByFellow(fellow){ _caseFFellow = fellow; _applyCaseFilters(); }
 function filterCasesByStage(stage){ _caseFStage = stage; _applyCaseFilters(); }
 // Fellow's My Cases — same filter for the f-tasks table.
-function filterMyCases(state, btn){
-  if(btn) setChip(btn);
-  let shown = 0;
-  document.querySelectorAll('#myCaseTable tbody tr').forEach(function(tr){
-    const vis = state === 'all' || tr.dataset.caseState === state;
-    tr.style.display = vis ? '' : 'none';
-    if(vis) shown++;
-  });
-  const cnt = document.getElementById('myCaseCnt'); if(cnt) cnt.textContent = String(shown);
-  const empty = document.getElementById('myCaseEmpty'); if(empty) empty.style.display = shown ? 'none' : 'block';
-}
 // Roster of Fellows available for reassignment (matches the Fellow filter dropdown + Scholarship Data Entry form's Fellow list).
 const FELLOW_ROSTER = ['Rahul More','Sandip K','Dhanashree O','Vaibhav D','Akshay K','Anil K','Vishwas W','Adesh G','Tanuja K','Shalmon S'];
 
@@ -5544,14 +5439,6 @@ function applyStu(){
   document.getElementById('stuEmpty').style.display=shown?'none':'block';
 }
 // Applications: status filter
-function filterApp(status,btn){
-  setChip(btn); let shown=0;
-  document.querySelectorAll('#appList .appitem').forEach(a=>{
-    const vis=status==='all'||a.dataset.astatus===status; a.style.display=vis?'':'none'; if(vis)shown++;
-  });
-  document.getElementById('appEmpty').style.display=shown?'none':'block';
-}
-
 // Multi-step form engine
 function formGo(formId,dir){
   const f=document.getElementById(formId);
