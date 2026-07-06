@@ -1138,6 +1138,17 @@ img{max-width:100%}
 .slot-cell.on{background:var(--teal-50);border-color:var(--teal-500);color:var(--teal-700)}
 .slot-cell.booked{background:var(--amber-50);border-color:var(--amber);color:var(--amber);cursor:not-allowed}
 @media(max-width:640px){.availgrid{grid-template-columns:40px repeat(7,1fr);gap:4px}.slot-cell{padding:6px 2px;font-size:10px}.availgrid .time{font-size:10px}}
+.doc-modal{position:fixed;inset:0;background:rgba(15,23,32,.55);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}
+.doc-modal.on{display:flex}
+.doc-modal-card{background:#fff;border-radius:14px;max-width:620px;width:100%;max-height:90vh;overflow:auto;box-shadow:0 24px 60px rgba(0,0,0,.3)}
+.doc-modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.doc-modal-x{border:none;background:none;font-size:18px;cursor:pointer;color:var(--muted);line-height:1}
+.doc-modal-page{margin:18px;padding:28px;border:1px solid var(--line);border-radius:8px;background:#fcfcfa;position:relative;min-height:340px}
+.dmp-title{font-weight:700;letter-spacing:.14em;text-align:center;color:#334;margin-bottom:22px}
+.dmp-line{height:11px;border-radius:4px;background:#e7e9ee;margin:12px 0}
+.dmp-seal{position:absolute;right:36px;bottom:70px;width:74px;height:74px;border:2px dashed #b9bfca;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#9aa1ad;font-size:11px;letter-spacing:.1em}
+.dmp-sign{position:absolute;left:36px;bottom:44px;border-top:1px solid #99a;padding-top:4px;font-size:11px;color:#889}
+.doc-modal-note{padding:0 18px 18px;font-size:12px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -2825,6 +2836,7 @@ img{max-width:100%}
               <div class="di" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Ration Card</b><small>Uploaded by Aarti just now — pending your review</small></div>
               <div class="review-acts" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+                <button class="btn btn-ghost btn-sm" onclick="openDocPreview('Ration Card','Uploaded by Aarti just now — pending your review')">View</button>
                 <a class="subdoc-dl" href="#" onclick="event.preventDefault();downloadDoc('Ration Card')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</a>
                 <button class="btn btn-ghost btn-sm" onclick="fellowDocAction(this,'reupload')">Request re-upload</button>
                 <button class="btn btn-primary btn-sm" onclick="fellowDocAction(this,'accept')">Accept</button>
@@ -3724,22 +3736,22 @@ img{max-width:100%}
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Domicile Certificate — Aarti Pawar</b><small>Type: Domicile · uploaded by Fellow Rahul · 2 Jun · Re-upload Version 1</small></div>
-            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="openDocPreview('Domicile Certificate — Aarti Pawar','Type: Domicile · uploaded by Fellow Rahul · 2 Jun · Re-upload Version 1')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
           </div>
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Income Certificate — Kavya Deshmukh</b><small>Type: Income · uploaded by Fellow Rahul · 30 May</small></div>
-            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="openDocPreview('Income Certificate — Kavya Deshmukh','Type: Income · uploaded by Fellow Rahul · 30 May')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
           </div>
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Caste Validity Certificate — Imran Shaikh</b><small>Type: Caste · uploaded by Fellow Sandip K · 1 Jun</small></div>
-            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="openDocPreview('Caste Validity Certificate — Imran Shaikh','Type: Caste · uploaded by Fellow Sandip K · 1 Jun')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
           </div>
           <div class="vrow" data-vstatus="all">
             <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
             <div class="vb"><b>Bonafide Certificate — Ganesh Pawar</b><small>Type: Academic · uploaded by Fellow Dhanashree O · 3 Jun</small></div>
-            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+            <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="openDocPreview('Bonafide Certificate — Ganesh Pawar','Type: Academic · uploaded by Fellow Dhanashree O · 3 Jun')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
           </div>
           <div class="empty" id="verifyEmpty" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg><div>Nothing pending — all caught up.</div></div>
         </div>
@@ -3978,7 +3990,7 @@ img{max-width:100%}
             <div class="vrow" data-vstatus="all">
               <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>Domicile Certificate</b><small>Uploaded by Fellow · 2 Jun · Re-upload Version 1 · awaiting your review</small></div>
-              <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="alert('View file — opens the uploaded document (PDF · 1–2 MB) in a preview. Wireframe stub.')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
+              <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="openDocPreview('Domicile Certificate','Uploaded by Fellow · 2 Jun · Re-upload Version 1 · awaiting your review')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
             </div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
@@ -4910,6 +4922,9 @@ function fAttClear(){
 // Fellow downloads any document the student has on record (Accepted / Under Review / Uploaded) — available at all times to fill the government portal.
 function downloadDoc(name){ alert('Downloading: '+name+' (demo)\n\nThe student\'s uploaded PDF is pulled from secure storage. Fellows can download any document on record here at any time — used to fill the government scholarship portal.'); }
 // Fellow reviews a student-uploaded doc: Accept, or Request re-upload with a reason (Task 9 to-and-fro).
+function openDocPreview(title, meta){ document.getElementById('dpTitle').textContent=title||'Document'; document.getElementById('dpMeta').textContent=meta||''; document.getElementById('docPreviewModal').classList.add('on'); }
+function closeDocPreview(){ document.getElementById('docPreviewModal').classList.remove('on'); }
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeDocPreview(); });
 function fellowDocAction(btn, mode){
   var acts = btn.closest('.review-acts');
   if(mode==='accept'){
@@ -5831,5 +5846,18 @@ function filterAStu(){
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
 })();
 </script>
+<div class="doc-modal" id="docPreviewModal" onclick="if(event.target===this)closeDocPreview()">
+  <div class="doc-modal-card">
+    <div class="doc-modal-head"><div><b id="dpTitle">Document</b><div id="dpMeta" style="font-size:12px;color:var(--muted)"></div></div><button class="doc-modal-x" onclick="closeDocPreview()" aria-label="Close">&#10005;</button></div>
+    <div class="doc-modal-page">
+      <div class="dmp-title">CERTIFICATE</div>
+      <div class="dmp-line" style="width:70%"></div><div class="dmp-line" style="width:88%"></div><div class="dmp-line" style="width:60%"></div>
+      <div class="dmp-line" style="width:82%"></div><div class="dmp-line" style="width:48%"></div>
+      <div class="dmp-seal">SEAL</div>
+      <div class="dmp-sign">Authorised Signatory</div>
+    </div>
+    <div class="doc-modal-note">Sample preview (wireframe) — production renders the actual uploaded PDF (1&ndash;2 MB) from secure storage.</div>
+  </div>
+</div>
 </body>
 </html>
