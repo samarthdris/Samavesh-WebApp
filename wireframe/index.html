@@ -865,18 +865,6 @@ img{max-width:100%}
 .btn-mini.case-cancel-confirm{margin-left:4px;padding:5px 9px;color:var(--muted);font-size:13px;line-height:1;font-weight:700}
 .btn-mini.case-cancel-confirm:hover{border-color:var(--red);background:#FFF1F2;color:var(--red)}
 
-/* Cases & Tasks — table widths and wrap behavior (prevents cramped 2-column squeeze when content area is narrow) */
-#caseTable,#myCaseTable{min-width:1080px}
-#caseTable thead th,#myCaseTable thead th{white-space:nowrap}
-#caseTable .who,#myCaseTable .who{align-items:center}
-#caseTable .who > div,#myCaseTable .who > div{min-width:0}
-#caseTable .who b,#myCaseTable .who b{white-space:nowrap;font-size:13.5px;line-height:1.25}
-#caseTable .who small,#myCaseTable .who small{white-space:nowrap;font-size:11px;color:var(--muted);display:block;margin-top:2px}
-#caseTable .case-scheme,#myCaseTable .case-scheme{white-space:nowrap}
-#caseTable td,#myCaseTable td{vertical-align:middle}
-#caseTable .case-jstage,#myCaseTable .case-jstage{display:inline-block;white-space:normal;line-height:1.35}
-#caseTable td:nth-child(4),#myCaseTable td:nth-child(3){white-space:nowrap}
-.case-jstage{font-size:11.5px;color:var(--muted)}
 .case-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:18px}
 .case-summary .csum{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;transition:.15s;box-shadow:var(--shadow-sm)}
 .case-summary .csum:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);border-color:var(--teal-500)}
@@ -1071,8 +1059,6 @@ img{max-width:100%}
 .fd .listbar .lb-tools svg{width:13px;height:13px}
 .fd .listbar ~ #stuList,.fd .listbar + #appList,.fd .listbar + .dtable-wrap,.fd .listbar + .card{border-top-left-radius:0;border-top-right-radius:0;border-top:none}
 .fd #stuList,.fd #appList{border:1px solid var(--fd-border);border-radius:0 0 11px 11px;overflow:hidden}
-.fd #appList .appitem{border:none;border-bottom:1px solid var(--fd-line);border-radius:0;margin:0;box-shadow:none}
-.fd #appList .appitem:last-of-type{border-bottom:none}
 /* ---- Higher-fidelity Desk: record form layout + right sidebar + activity ---- */
 .rec-layout{display:flex;gap:20px;align-items:flex-start}
 .rec-main{flex:1;min-width:0}
@@ -3878,7 +3864,7 @@ img{max-width:100%}
 
         <!-- Applications tab — per-scholarship status accordion (Admin read-only oversight). Click a row to open its details. -->
         <div class="tabpane" id="ap-apps">
-          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Read-only oversight · 5-stage funnel (MIS-06). Click a row to open its details. Submission on the government portal, status updates and disbursement recording are performed by the assigned Fellow (RBAC-05).</p>
+          <p style="font-size:13px;color:var(--ink-soft);margin-bottom:14px">Read-only oversight of each application's status. Click a row for details. Submission, status updates, disbursement, and any On Hold / Discard are performed by the assigned Fellow (RBAC-05).</p>
 
           <div class="app-accordion">
 
@@ -4960,7 +4946,7 @@ function updateAppStatus(sel){
   if(!pill) return;
   const map = {
     'Under Scrutiny':       {cls:'blue',  text:'Under Scrutiny'},
-    'Application Approved': {cls:'teal',  text:'Application Approved'},
+    'Application Approved · funds awaited': {cls:'teal',  text:'Application Approved · funds awaited'},
     'Benefits Received':    {cls:'green', text:'Benefits Received'},
     'Re-apply':             {cls:'amber', text:'Re-apply'},
     'Rejected':             {cls:'red',   text:'Rejected'}
@@ -5067,181 +5053,6 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 
-// Roster of Fellows available for reassignment (matches the Fellow filter dropdown + Scholarship Data Entry form's Fellow list).
-const FELLOW_ROSTER = ['Rahul More','Sandip K','Dhanashree O','Vaibhav D','Akshay K','Anil K','Vishwas W','Adesh G','Tanuja K','Shalmon S'];
-
-// Admin: Reassign Fellow — inline dropdown + explicit Confirm step (reassignment is audit-logged in production; don't auto-commit on accidental selection).
-function caseReassign(btn){
-  const tr = btn.closest('tr');
-  const fellowCell = tr.cells[2];
-  if(!fellowCell || fellowCell.querySelector('select')) return; // already editing
-  const originalFellow = fellowCell.textContent.trim();
-
-  // Build the wrapper: select on top, confirm row below (initially hidden until user picks a different Fellow).
-  const wrap = document.createElement('div');
-  wrap.className = 'case-edit-wrap';
-
-  const sel = document.createElement('select');
-  sel.className = 'case-inline-select';
-  FELLOW_ROSTER.forEach(function(f){
-    const o = document.createElement('option');
-    o.value = f; o.textContent = f;
-    if(f === originalFellow) o.selected = true;
-    sel.appendChild(o);
-  });
-
-  const confirmRow = document.createElement('div');
-  confirmRow.className = 'case-edit-confirm';
-  confirmRow.style.display = 'none';
-
-  const promptSpan = document.createElement('span');
-  promptSpan.className = 'ce-prompt';
-  confirmRow.appendChild(promptSpan);
-
-  const confirmBtn = document.createElement('button');
-  confirmBtn.type = 'button';
-  confirmBtn.className = 'case-edit-btn confirm';
-  confirmBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Confirm';
-
-  const cancelBtn = document.createElement('button');
-  cancelBtn.type = 'button';
-  cancelBtn.className = 'case-edit-btn';
-  cancelBtn.textContent = 'Cancel';
-
-  confirmRow.appendChild(confirmBtn);
-  confirmRow.appendChild(cancelBtn);
-  wrap.appendChild(sel);
-  wrap.appendChild(confirmRow);
-
-  function restoreCell(){
-    fellowCell.textContent = originalFellow;
-  }
-  function commitReassign(){
-    const newFellow = sel.value;
-    fellowCell.textContent = newFellow;
-    tr.dataset.caseFellow = newFellow;
-    fellowCell.classList.add('case-just-saved');
-    setTimeout(function(){ fellowCell.classList.remove('case-just-saved'); }, 900);
-  }
-
-  sel.addEventListener('change', function(){
-    if(sel.value === originalFellow){
-      confirmRow.style.display = 'none';
-    } else {
-      promptSpan.textContent = '"' + originalFellow + '" → "' + sel.value + '"?';
-      confirmRow.style.display = 'flex';
-    }
-  });
-  confirmBtn.addEventListener('click', function(e){
-    e.stopPropagation();
-    commitReassign();
-  });
-  cancelBtn.addEventListener('click', function(e){
-    e.stopPropagation();
-    restoreCell();
-  });
-
-  fellowCell.textContent = '';
-  fellowCell.appendChild(wrap);
-  sel.focus();
-}
-
-// Admin: Change State — replaces the State pill with an inline dropdown of the 5 work-states.
-function caseChangeState(btn){
-  const tr = btn.closest('tr');
-  const pill = tr.querySelector('.case-state');
-  if(!pill || pill.parentElement.querySelector('select')) return; // already editing
-  const stateCell = pill.parentElement;
-  const states = [
-    {v:'todo',      l:'To Do'},
-    {v:'progress',  l:'In-progress'},
-    {v:'hold',      l:'On Hold'},
-    {v:'completed', l:'Completed'},
-    {v:'discarded', l:'Discarded'}
-  ];
-  const sel = document.createElement('select');
-  sel.className = 'case-inline-select';
-  const current = tr.dataset.caseState;
-  states.forEach(function(s){
-    const o = document.createElement('option');
-    o.value = s.v; o.textContent = s.l;
-    if(s.v === current) o.selected = true;
-    sel.appendChild(o);
-  });
-  // Keep the pill in place but hide it; show the select alongside.
-  pill.style.display = 'none';
-  stateCell.appendChild(sel);
-  sel.focus();
-  sel.addEventListener('change', function(){
-    applyCaseState(tr, sel.value);
-    sel.remove();
-    pill.style.display = '';
-    stateCell.classList.add('case-just-saved');
-    setTimeout(function(){ stateCell.classList.remove('case-just-saved'); }, 900);
-  });
-  sel.addEventListener('blur', function(){
-    // If user dismisses without picking a different state, restore the pill.
-    if(stateCell.contains(sel)){
-      sel.remove();
-      pill.style.display = '';
-    }
-  });
-}
-// Fellow: per-row state transition. Terminal states (completed / discarded) require a confirm-click step;
-// routine transitions (start / hold / resume / reopen) commit immediately.
-const TERMINAL_STATES = ['completed','discarded'];
-function transitionCase(btn, nextState){
-  if(TERMINAL_STATES.includes(nextState) && btn.dataset.confirming !== '1'){
-    // First click on a terminal-state button — morph into a confirm prompt; cancel button appears next to it.
-    btn.dataset.confirming = '1';
-    btn.dataset.origLabel = btn.innerHTML;
-    btn.classList.add('confirm-pending');
-    const verb = nextState === 'completed' ? 'Complete' : 'Discard';
-    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Confirm ' + verb + '?';
-    const cancel = document.createElement('button');
-    cancel.type = 'button';
-    cancel.className = 'btn-mini case-cancel-confirm';
-    cancel.textContent = '✕';
-    cancel.title = 'Cancel';
-    cancel.addEventListener('click', function(e){
-      e.stopPropagation();
-      delete btn.dataset.confirming;
-      btn.classList.remove('confirm-pending');
-      btn.innerHTML = btn.dataset.origLabel;
-      cancel.remove();
-    });
-    btn.parentElement.insertBefore(cancel, btn.nextSibling);
-    return;
-  }
-  // Either a routine transition, or a second click on a terminal-state button — commit.
-  delete btn.dataset.confirming;
-  btn.classList.remove('confirm-pending');
-  const tr = btn.closest('tr');
-  applyCaseState(tr, nextState);
-  rewireCaseActs(tr, nextState);
-}
-// Helper: rebuild a row's action buttons after a state change.
-function rewireCaseActs(tr, state){
-  const acts = tr.querySelector('.case-acts');
-  if(!acts) return;
-  if(state === 'progress') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'hold\')">Hold</button><button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'completed\')">Mark Complete</button>';
-  else if(state === 'hold') acts.innerHTML = '<button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Resume</button><button class="btn-mini danger" onclick="event.stopPropagation();transitionCase(this,\'discarded\')">Discard</button>';
-  else if(state === 'completed') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Reopen</button>';
-  else if(state === 'discarded') acts.innerHTML = '<button class="btn-mini" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Reopen</button>';
-  else if(state === 'todo') acts.innerHTML = '<button class="btn-mini primary" onclick="event.stopPropagation();transitionCase(this,\'progress\')">Start</button><button class="btn-mini danger" onclick="event.stopPropagation();transitionCase(this,\'discarded\')">Discard</button>';
-}
-function applyCaseState(tr, newState){
-  const cls = {todo:'todo', progress:'progress', hold:'hold', completed:'completed', discarded:'discarded'};
-  const labels = {todo:'To Do', progress:'In-progress', hold:'On Hold', completed:'Completed', discarded:'Discarded'};
-  if(!cls[newState]) return;
-  tr.dataset.caseState = newState;
-  // Update the State pill (3rd or 4th cell depending on which table).
-  const pill = tr.querySelector('.case-state');
-  if(pill){
-    pill.className = 'case-state ' + cls[newState];
-    pill.textContent = labels[newState];
-  }
-}
 
 // Student-side: click a row in Home's "My Applications" → navigate to Scholarships screen + scroll to that app's card + briefly outline.
 function studentSelectApp(appKey,evt){

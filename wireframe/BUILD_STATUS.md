@@ -5,12 +5,24 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-07-06 — Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1) COMPLETE, render-verified with headless Chrome, committed to `dev` (4 commits, NOT pushed yet — awaiting push approval + visual review). Prior: Feedback Batches 1 & 2 (pushed, live on Pages)._
+_Last updated: 2026-07-06 — Unified Applications caseload (Fellow + Admin) COMPLETE + render-verified; earlier same day: Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1). ALL committed to `dev`, NOT pushed yet — awaiting push approval + visual review. Prior: Feedback Batches 1 & 2 (pushed, live on Pages)._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-07-06 — Unified Applications caseload (Fellow + Admin) — DONE, render-verified, on `dev` (NOT pushed)
+
+Collapsed the duplicate **Applications** + **My Cases** into ONE data-driven caseload, so a Fellow updates **one** status (advanced by real work) instead of maintaining two. Spec/plan: `docs/superpowers/{specs,plans}/2026-07-06-unified-applications-caseload*`. 5 commits on `dev` (`33e898f`, `5898312`, `bfb0a01`, `2c692eb`, + this heartbeat). Each task render-verified with headless Chrome.
+
+- [x] **One status ladder (single source of truth):** Eligibility Identified → Documents Pending → Ready to Submit → Under Scrutiny → Application Approved · funds awaited → Benefits Received / Re-apply / Rejected. All existing vocab; no new terms.
+- [x] **Two manual exception flags** (the only hand-set states): **On Hold** (+reason) and **Discarded** (+reason), rendered as badges with inline reason forms (no `prompt()`). To Do / In-progress / Completed removed as manual states.
+- [x] **Derived triage** (replaces work-state, as a *filter* not a field): **Action needed / Awaiting / Done / On Hold** (echoes the doc whose-turn chips). Drives the Applications filter chips + the Fellow dashboard cards + the rail badge (actionable count).
+- [x] **Data-driven engine:** one `CASES` array + `caseAttention`/`casePill`/`renderCaseList(scope)`/`filterCaseList` + `caseAdvance`/`caseSetStatus`/`caseHold`/`caseResume`/`caseDiscard`/`caseReopen`/`caseReassign2`. Rendered into both Fellow `#f-applications` (operator: one context-action per status + ⋯ hold/discard) and Admin `#a-tasks` → **"Applications"** (oversight: cross-Fellow, read-only status, **Reassign** only, Fellow filter).
+- [x] **Retired:** `#f-tasks` (My Cases) screen + rail entry; static `#caseTable`/`appList` markup; dead JS (`filterMyCases`, `filterApp`, `filterCases*`, `caseReassign`, `caseChangeState`, `transitionCase`, `rewireCaseActs`, `applyCaseState`, `TERMINAL_STATES`, `FELLOW_ROSTER`) + dead CSS. Dashboard "My Cases inbox" → triage cards; CRUMBS updated.
+- [x] **Aligned** the per-student Applications tabs (Fellow `fp-apps`, Admin `ap-apps`) to the ladder; fixed `updateAppStatus` map key to the aligned status.
+- Known minor: the Scholarship Data Entry form's `onAppStatus` dropdown still says "Application Approved" (separate data-entry surface, out of this feature's scope).
 
 ## 2026-07-06 — Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1) — DONE, render-verified, on `dev` (NOT pushed)
 
