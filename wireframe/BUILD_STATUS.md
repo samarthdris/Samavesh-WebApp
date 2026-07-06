@@ -5,12 +5,22 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-07-06 — Unified Applications caseload (Fellow + Admin) + Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1) COMPLETE, render-verified, and **pushed to `dev` (live on Pages)**. Prior: Feedback Batches 1 & 2._
+_Last updated: 2026-07-06 — Student read-only onboarding view built + render-verified (on `dev`, **NOT pushed yet**). Earlier today (pushed, live on Pages): Unified Applications caseload + Onboarding-Approval Review + Doc-Preview cluster (A1/B1/A2/C1). Prior: Feedback Batches 1 & 2._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-07-06 — Student read-only onboarding view — DONE, render-verified, on `dev` (NOT pushed)
+
+Student can now view their own submitted onboarding form read-only. Spec/plan: `docs/superpowers/{specs,plans}/2026-07-06-student-onboarding-readonly-view*`. Commits `39faf7e`, `134f3c4` + this heartbeat. Render-verified with headless Chrome.
+
+- [x] **Third render mode of the onboarding form:** new `lockOnbClone(clone)` disables the reused clone (inputs/selects/textareas) + hides the Save bar. The 42-Q form now renders 3 ways off ONE markup — student self-fill (`s_`), Fellow review (`rev_`), student read-only (`myonb_`).
+- [x] **`#s-my-onboarding` screen** — `buildMyOnboarding` clones + prefills from `MY_ONBOARDING` (Aarti's seeded submission) + locks it; **context-aware stamp**: "Approved by <Fellow> on <date>" (approved) vs "⏳ Submitted <date> · under review" (submitted); back-link → home / gate accordingly.
+- [x] **Entry points:** Home card "Your onboarding submission → View my onboarding form" (post-approval record); pending-gate "Review what you submitted →" (peek while under review).
+- [x] **Request a change** (RBAC-safe): inline reason form → confirmation + pushes a notification into the Fellow's `NOTIF` list (student stays view-only; Fellow edits via the approval screen).
+- Verified: readonly=true + saveBarHidden=true, request-change confirmation + Fellow notif, under-review stamp + back-to-gate.
 
 ## 2026-07-06 — Unified Applications caseload (Fellow + Admin) — DONE, render-verified, pushed to `dev` (live)
 
