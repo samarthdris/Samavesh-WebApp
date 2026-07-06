@@ -1148,6 +1148,9 @@ img{max-width:100%}
 .case-reason input{flex:1;min-width:160px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px}
 .cl-row .smeta{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
 .onb-readonly input:disabled,.onb-readonly select:disabled,.onb-readonly textarea:disabled{opacity:1;-webkit-text-fill-color:var(--ink);color:var(--ink);background:#f6f7f8;cursor:default}
+.v-in{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:7px;font-family:inherit;font-size:14px;box-sizing:border-box}
+.prof-edit-acts{display:inline-flex;gap:8px}
+.prof-saved{margin-left:10px;color:var(--green);font-size:12.5px;font-weight:600}
 </style>
 </head>
 <body>
@@ -2708,7 +2711,7 @@ img{max-width:100%}
         <!-- Profile tab -->
         <div class="tabpane on" id="fp-profile">
           <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="font-size:18px">Student Profile</h3><button class="btn btn-ghost btn-sm" onclick="alert('Edit profile — opens the profiling form. Editable by the assigned Fellow and Program Admin; every edit is audit-logged (RBAC).')">Edit profile</button></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="font-size:18px">Student Profile</h3><button class="btn btn-ghost btn-sm" onclick="editProfile(this)">Edit profile</button></div>
             <p style="font-size:12.5px;color:var(--muted);margin-bottom:6px">Editable by the assigned Fellow and Program Admin · all edits are audit-logged.</p>
             <div class="grid g-2">
               <div class="field"><div class="k">Date of Birth</div><div class="v">14 August 2005</div></div>
@@ -2722,7 +2725,7 @@ img{max-width:100%}
               <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx21</div></div>
               <div class="field"><div class="k">Aadhaar</div><div class="v mask">xxxx xxxx 4821</div></div>
               <div class="field"><div class="k">Guardian</div><div class="v">Ramesh Pawar (Father)</div></div>
-              <div class="field"><div class="k">Consent</div><div class="v" style="color:var(--green)">Captured · 12 Apr 2026</div></div>
+              <div class="field"><div class="k">Consent</div><div class="v" data-noedit style="color:var(--green)">Captured · 12 Apr 2026</div></div>
             </div>
           </div>
 
@@ -3726,7 +3729,7 @@ img{max-width:100%}
         <!-- Profile tab (admin can edit; audit-logged) -->
         <div class="tabpane on" id="ap-profile">
           <div class="card">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="font-size:18px">Student Profile</h3><button class="btn btn-ghost btn-sm" onclick="alert('Edit profile — opens the profiling form. Editable by the assigned Fellow and Program Admin; every edit is audit-logged (RBAC).')">Edit profile</button></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px"><h3 style="font-size:18px">Student Profile</h3><button class="btn btn-ghost btn-sm" onclick="editProfile(this)">Edit profile</button></div>
             <p style="font-size:12.5px;color:var(--muted);margin-bottom:6px">Editable by the assigned Fellow and Program Admin · all edits are audit-logged.</p>
             <div class="grid g-2">
               <div class="field"><div class="k">Date of Birth</div><div class="v">14 August 2005</div></div>
@@ -3740,7 +3743,7 @@ img{max-width:100%}
               <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx21</div></div>
               <div class="field"><div class="k">Aadhaar</div><div class="v mask">xxxx xxxx 4821</div></div>
               <div class="field"><div class="k">Guardian</div><div class="v">Ramesh Pawar (Father)</div></div>
-              <div class="field"><div class="k">Consent</div><div class="v" style="color:var(--green)">Captured · 12 Apr 2026</div></div>
+              <div class="field"><div class="k">Consent</div><div class="v" data-noedit style="color:var(--green)">Captured · 12 Apr 2026</div></div>
             </div>
           </div>
         </div>
@@ -4951,6 +4954,31 @@ function currentRole(){
   var m={studentApp:'student',fellowApp:'fellow',adminApp:'admin',mentorApp:'mentor'};
   for(var id in m){ var el=document.getElementById(id); if(el && !el.classList.contains('hidden')) return m[id]; }
   return 'student';
+}
+// Generic inline profile edit — flips a card's .field values to inputs (skips .mask + [data-noedit]).
+function editProfile(btn){
+  var card=btn.closest('.card'); if(!card) return;
+  card.querySelectorAll('.field .v:not(.mask):not([data-noedit])').forEach(function(v){
+    var txt=v.textContent.trim(); v.dataset.orig=txt;
+    var inp=document.createElement('input'); inp.className='v-in'; inp.value=txt;
+    v.textContent=''; v.appendChild(inp);
+  });
+  btn.outerHTML='<span class="prof-edit-acts"><button class="btn btn-ghost btn-sm" onclick="cancelProfile(this)">Cancel</button><button class="btn btn-primary btn-sm" onclick="saveProfile(this)">Save</button></span>';
+}
+function saveProfile(btn){
+  var card=btn.closest('.card'); if(!card) return;
+  card.querySelectorAll('.field .v').forEach(function(v){ var i=v.querySelector('input.v-in'); if(i){ v.textContent=i.value; delete v.dataset.orig; } });
+  restoreProfileBtn(btn, card, true);
+}
+function cancelProfile(btn){
+  var card=btn.closest('.card'); if(!card) return;
+  card.querySelectorAll('.field .v').forEach(function(v){ if(v.dataset.orig!==undefined){ v.textContent=v.dataset.orig; delete v.dataset.orig; } });
+  restoreProfileBtn(btn, card, false);
+}
+function restoreProfileBtn(btn, card, saved){
+  var acts=btn.closest('.prof-edit-acts'); if(!acts) return;
+  acts.outerHTML='<button class="btn btn-ghost btn-sm" onclick="editProfile(this)">Edit profile</button>'+(saved?'<span class="prof-saved">✓ Saved · audit-logged</span>':'');
+  if(saved){ var s=card.querySelector('.prof-saved'); if(s) setTimeout(function(){ if(s&&s.parentNode) s.parentNode.removeChild(s); }, 2600); }
 }
 function showNotifications(){
   var panel=document.getElementById('notifPanel');
