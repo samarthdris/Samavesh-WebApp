@@ -1147,6 +1147,7 @@ img{max-width:100%}
 .case-reason{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px;width:100%}
 .case-reason input{flex:1;min-width:160px;padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px}
 .cl-row .smeta{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
+.onb-readonly input:disabled,.onb-readonly select:disabled,.onb-readonly textarea:disabled{opacity:1;-webkit-text-fill-color:var(--ink);color:var(--ink);background:#f6f7f8;cursor:default}
 </style>
 </head>
 <body>
@@ -1362,6 +1363,15 @@ img{max-width:100%}
           <button class="btn btn-ghost" onclick="saveOnbDraft()">Save draft</button>
           <button class="btn btn-primary" onclick="submitStudentOnboarding()">Submit for review</button>
         </div>
+      </section>
+
+      <!-- ========== STUDENT — MY ONBOARDING (read-only view of their submitted form) ========== -->
+      <section class="screen" id="s-my-onboarding">
+        <span class="backlink" id="myOnbBack" data-go="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back</span>
+        <div class="page-h" style="margin-bottom:10px"><div class="eyebrow">Onboarding</div><h1>My Onboarding Form</h1><p>This is the form you submitted. It's view-only — need a correction? Use “Request a change” below and your Fellow will update it.</p></div>
+        <div class="card" id="myOnbStamp" style="margin-bottom:14px"></div>
+        <div id="sMyOnbHost"></div>
+        <div class="card" id="myOnbChange" style="margin-top:14px"></div>
       </section>
 
       <!-- ========== HOME ========== -->
@@ -4257,6 +4267,64 @@ function prefillOnbClone(clone, prefix, sub){
   var dob=clone.querySelector('#'+prefix+'onbDob'); if(dob) dob.dispatchEvent(new Event('change'));
   var mob=clone.querySelector('#'+prefix+'onbMobile'); if(mob) mob.dispatchEvent(new Event('blur'));
 }
+// Make a cloned onboarding form read-only (student view of their own submission).
+function lockOnbClone(clone){
+  clone.querySelectorAll('input, select, textarea').forEach(function(el){ el.disabled = true; });
+  var acts = clone.querySelector('.dt-actions'); if(acts) acts.style.display='none';
+  clone.querySelectorAll('.doc-ctable .attach-btn').forEach(function(b){ b.style.display='none'; });
+  clone.classList.add('onb-readonly');
+}
+// The logged-in student's submitted onboarding answers (demo: Aarti). Same shape as the approval submissions.
+var MY_ONBOARDING = {
+  name:'Aarti Ramesh Pawar', submitted:'12 Apr 2026', approvedBy:'Rahul More', approvedDate:'14 Apr 2026',
+  fields:{ onbEmail:'aarti.pawar@gmail.com', onbFullName:'Aarti Ramesh Pawar', onbDob:'2005-06-18', onbGender:'F',
+           onbMobile:'9800000021', onbFormDate:'2026-04-12', onbState:'Maharashtra',
+           onbPermAddr:'23 Shanti Nagar, Kothrud, Pune 411038', onbDistrict:'Pune',
+           onbCurrAddr:'23 Shanti Nagar, Kothrud, Pune 411038', onbCurrDistrict:'Pune',
+           onbCollege:'Fergusson College, Pune', onbHeard:'College',
+           onbGrade:'Graduation - 2nd Year', onbStream:'Commerce & Management', onbMarks:'76%',
+           onbPrevGrade:'Graduation - 1st Year', onbPrevMarks:'72%',
+           onbSocial:'SC', onbIncome:'₹1 – 2 lakh', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
+           onbGoals:'Complete my B.Com and qualify for a government scholarship.', onbCareer:'Become a chartered accountant.',
+           onbShare:'Mother is the sole earner; fee support needed this year.', onbConsent:'Aarti Ramesh Pawar' },
+  docs:['have','have','have','have','have','dont','have','dont','na'],
+  checks:{ onb_support:[0], onb_vuln:[1,2], onb_sp:[1], onb_house:[0], onb_net:[0], onb_comp:[0] }
+};
+// Build the student's read-only view of their submission; re-set the stamp/back-link/request box on every visit.
+function buildMyOnboarding(){
+  var host=document.getElementById('sMyOnbHost');
+  if(host && !host.dataset.built){
+    var clone=cloneOnbForm('myonb_');
+    if(clone){ clone.id='myOnbForm'; host.appendChild(clone); host.dataset.built='1'; wireOnbClone(clone,'myonb_'); prefillOnbClone(clone,'myonb_',MY_ONBOARDING); lockOnbClone(clone); }
+  }
+  var approved=(STUDENT_STAGE==='approved');
+  var stamp=document.getElementById('myOnbStamp');
+  if(stamp){
+    stamp.innerHTML = approved
+      ? '<div style="display:flex;align-items:center;gap:10px;color:var(--green);font-weight:600"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Approved by '+MY_ONBOARDING.approvedBy+' on '+MY_ONBOARDING.approvedDate+'</div><div style="font-size:12.5px;color:var(--muted);margin-top:4px">Submitted '+MY_ONBOARDING.submitted+'</div>'
+      : '<div style="display:flex;align-items:center;gap:10px;color:#9a5b00;font-weight:600">⏳ Submitted '+MY_ONBOARDING.submitted+' · under review by your Fellow</div><div style="font-size:12.5px;color:var(--muted);margin-top:4px">Your full portal unlocks once approved — we\'ll notify you.</div>';
+  }
+  var back=document.getElementById('myOnbBack'); if(back) back.setAttribute('data-go', approved ? 'home' : 's-gate');
+  renderOnbChangeStart();
+}
+// Request-a-change (student is view-only; the request routes to the Fellow).
+function renderOnbChangeStart(){
+  var box=document.getElementById('myOnbChange'); if(!box) return;
+  box.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><div><b>Spotted something to fix?</b><div style="font-size:12.5px;color:var(--muted)">You can\'t edit directly — send the change to your Fellow.</div></div><button class="btn btn-ghost btn-sm" onclick="startOnbChange()">Request a change</button></div>';
+}
+function startOnbChange(){
+  var box=document.getElementById('myOnbChange'); if(!box) return;
+  box.innerHTML='<div><b>Request a change</b><div style="font-size:12.5px;color:var(--muted);margin:2px 0 8px">Describe what needs correcting — your Fellow will review and update your form.</div>'+
+    '<textarea id="onbChangeText" placeholder="e.g. My current address has changed / a mark was entered wrong" style="width:100%;min-height:72px;padding:10px 12px;border:1px solid var(--line);border-radius:9px;font-family:inherit;font-size:13.5px;box-sizing:border-box"></textarea>'+
+    '<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px"><button class="btn btn-ghost btn-sm" onclick="renderOnbChangeStart()">Cancel</button><button class="btn btn-primary btn-sm" onclick="sendOnbChange()">Send to my Fellow</button></div></div>';
+  var t=document.getElementById('onbChangeText'); if(t) t.focus();
+}
+function sendOnbChange(){
+  var v=((document.getElementById('onbChangeText')||{}).value||'').trim();
+  var first=MY_ONBOARDING.name.split(' ')[0];
+  NOTIF.fellow.unshift({t:first+' requested a change to her onboarding form'+(v?(': “'+v+'”'):''), s:'today'});
+  var box=document.getElementById('myOnbChange'); if(box) box.innerHTML='<div style="display:flex;align-items:center;gap:10px;color:var(--green);font-weight:600"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Sent to your Fellow — they\'ll review and update your form.</div>';
+}
 // Clone the EXACT Fellow onboarding form (#onbForm) into the student portal — one source of truth, no duplicate markup.
 function buildStudentOnboard(){
   var host=document.getElementById('sOnbHost'); if(!host || host.dataset.built) return;
@@ -4393,6 +4461,7 @@ function go(id){
   if(id==='f-onboard' && typeof onbInit==='function') setTimeout(onbInit,0);
   if(id==='f-scholarship' && typeof schInit==='function') setTimeout(schInit,0);
   if(id==='s-onboard' && typeof buildStudentOnboard==='function') setTimeout(buildStudentOnboard,0);
+  if(id==='s-my-onboarding' && typeof buildMyOnboarding==='function') setTimeout(buildMyOnboarding,0);
 }
 const CRUMBS={'f-home':'Home','f-students':'Students','f-onboard':'Students › New Student','f-student':'Students › Aarti Pawar','f-applications':'Applications','f-scholarship':'Applications › New Entry','f-docapp':'Students › Aarti Pawar › Documentation','f-approvals':'Onboarding Approvals','f-approval-detail':'Onboarding Approvals › Review','f-attendance':'My Attendance','f-profile':'My Settings','a-home':'Home','a-verify':'Document Verification','a-tasks':'Applications','a-bulkupload':'Bulk Upload','a-catalogue':'Scholarship Catalogue','a-students':'Students','a-student':'Students › Student','a-fellows':'Users','a-attendance':'Attendance','a-profile':'My Settings'};
 function setCrumb(id){
