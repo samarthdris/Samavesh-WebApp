@@ -41,9 +41,9 @@ Active development on the **`dev`** branch. Tech target: Frappe Framework v15 + 
 
 ## Contributing
 
-Read [`CLAUDE.md`](CLAUDE.md) first — it carries the client-locked rules and the branch workflow. Fuller domain context is in [`docs/CONTEXT.md`](docs/CONTEXT.md); what shipped when is in [`wireframe/BUILD_STATUS.md`](wireframe/BUILD_STATUS.md).
+Read [`CLAUDE.md`](CLAUDE.md) first — it carries the client-locked rules, the branch workflow, and the required way of working. Fuller domain context is in [`docs/CONTEXT.md`](docs/CONTEXT.md); what shipped when is in [`wireframe/BUILD_STATUS.md`](wireframe/BUILD_STATUS.md).
 
-`dev` is the live branch and is protected. Work on a `feature/*` branch and open a PR into `dev`; it deploys to GitHub Pages once merged.
+`dev` is the live branch and is **protected**. Work on a `feature/*` branch and open a PR into `dev`; it deploys to GitHub Pages once merged and approved.
 
 ```bash
 git checkout dev && git pull
@@ -51,3 +51,40 @@ git checkout -b feature/<short-name>
 # ...work, then...
 gh pr create --base dev
 ```
+
+### First-time setup
+
+```bash
+# 1. Accept the collaborator invite at github.com/samarthdris/Samavesh-WebApp
+
+# 2. Authenticate the GitHub CLI (needed to open PRs)
+gh auth login
+
+# 3. Clone and get on dev
+git clone https://github.com/samarthdris/Samavesh-WebApp.git
+cd Samavesh-WebApp
+git checkout dev
+
+# 4. Install the superpowers plugin (brainstorming / planning / TDD skills)
+claude
+/plugin install superpowers@claude-plugins-official
+```
+
+Then open the live wireframe once to see what you're working on:
+**https://samarthdris.github.io/Samavesh-WebApp/wireframe/**
+
+### Starting a session
+
+`CLAUDE.md` loads automatically, so the rules are already in context. Open with an orientation pass before touching anything:
+
+> Read `CLAUDE.md`, then `docs/CONTEXT.md`, then `wireframe/BUILD_STATUS.md`, then open `Feedbacks.xlsx`. Follow the working agreement in `CLAUDE.md` exactly, especially the "How to work" section.
+>
+> I'm picking up the Samavesh wireframe to work through client feedback. Before any code: tell me in your own words what this project is, what has already shipped, what is parked, and what the hard rules are — so I can confirm you have it right. Then list every open question you have, and flag anything in the repo that looks inconsistent or out of date.
+>
+> Do not write any code yet, and do not assume anything — ask me.
+
+For each piece of work after that:
+
+> Feedback item `<ID>` from `Feedbacks.xlsx`: `<paste the item>`.
+>
+> Brainstorm this with me first — restate what's being asked, the options, and what you recommend. Do not assume which screen or which behaviour is meant; ask. Once I agree on the approach, write a spec + plan under `docs/superpowers/`, get my yes, then implement, render-verify, and ask before committing.

@@ -43,8 +43,25 @@ Avoid two pushes within ~a minute: GitHub Pages allows one active deployment, so
 Never read, reference, or surface these — permanently out of scope:
 `CERE_UAP_BRD_v3 5.md` · `SAMAVESH_BRD_GENERATION_PROMPT.md` · `SAMAVESH_BRD_v1.0.md` · `wireframe/frappe-desk.html` · `Samavesh_Wireframe_Feedback_Tracker.xlsx` (the *empty* old tracker — **not** `Feedbacks.xlsx`, which is the real one).
 
-## Process
+## How to work (this part is not optional)
 
-Brainstorm → write a spec + plan under `docs/superpowers/` → implement → render-verify → ask to commit. Existing specs and plans there are the worked examples; match their shape.
+**Brainstorm → plan → execute.** Never jump straight to code.
 
-**Confirm scope before building anything.** Propose the approach and wait for an explicit yes — don't kick off implementation off the back of a discussion.
+1. **Brainstorm.** Restate what's being asked, in your own words. Surface the open questions and the options, with a recommendation. Get agreement on the *approach* before designing.
+2. **Write a spec + plan** under `docs/superpowers/specs/` and `docs/superpowers/plans/`, dated, matching the shape of the existing ones there — those are the worked examples, read one before writing yours.
+3. **Get an explicit yes**, then implement.
+4. **Render-verify** (see rule 5 and `docs/CONTEXT.md` § Verifying), then ask before committing.
+
+**Ask. Do not assume.** If a requirement is ambiguous, if you can't tell which of two screens is meant, if a client comment could be read two ways — **stop and ask**. A wrong assumption that reaches the client costs far more than a question. Never silently pick an interpretation and build on it. If you must proceed, state the assumption out loud in your reply, clearly labelled, so it can be corrected.
+
+**Never invent. Verify against the file.** This wireframe is one 465 KB file — do not answer from memory or guess at what a function, id, or status label is. `grep` it and read it first. If you catch yourself writing "it probably…" or "this should be…", that's the signal to go and check. Every claim about what the wireframe currently does must come from having just read that code. Same for the client documents: quote them, don't paraphrase from recall.
+
+**Say when you don't know.** "I couldn't find this — where should I look?" is a good answer. A confident wrong answer is the worst one.
+
+**Suggest improvements.** If you spot a bug, an inconsistency, a screen the ripple check missed, a simpler approach than the one asked for — say so. Raise it, recommend, and let Samarth decide. Don't quietly widen the scope and build it, and don't stay silent about a problem because it wasn't in the ticket.
+
+**Report honestly.** If something didn't work, or you skipped part of the task, or you couldn't verify it — say that plainly, with the evidence. Never claim done without having actually checked.
+
+**Keep the docs current.** When a decision gets locked or a rule changes, update `CLAUDE.md` / `docs/CONTEXT.md` / `wireframe/BUILD_STATUS.md` **in the same commit** as the change. Drift between the code and these files is treated as a defect.
+
+> These practices are the same ones used to build everything already in this repo. The rework in this project has come almost entirely from skipping them — assuming instead of asking, and declaring done without clicking.
