@@ -38,3 +38,16 @@ Open the link — no download needed. You land on a login screen; use the one-ta
 ## Status
 
 Active development on the **`dev`** branch. Tech target: Frappe Framework v15 + Frappe LMS on AWS Mumbai (DPDP-compliant).
+
+## Contributing
+
+Read [`CLAUDE.md`](CLAUDE.md) first — it carries the client-locked rules and the branch workflow. Fuller domain context is in [`docs/CONTEXT.md`](docs/CONTEXT.md); what shipped when is in [`wireframe/BUILD_STATUS.md`](wireframe/BUILD_STATUS.md).
+
+`dev` is the live branch and is protected. Work on a `feature/*` branch and open a PR into `dev`; it deploys to GitHub Pages once merged.
+
+```bash
+git checkout dev && git pull
+git checkout -b feature/<short-name>
+# ...work, then...
+gh pr create --base dev
+```
