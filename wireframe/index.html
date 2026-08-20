@@ -165,6 +165,7 @@ img{max-width:100%}
 .ic.gold{background:var(--marigold-50);color:var(--marigold)}
 .ic.green{background:var(--green-50);color:var(--green)}
 .ic.blue{background:var(--blue-50);color:var(--blue)}
+.ic.red{background:var(--red-50);color:var(--red)}
 
 .section-h{display:flex;align-items:center;justify-content:space-between;margin:22px 0 10px}
 .section-h h3{font-size:18px}
@@ -1177,6 +1178,35 @@ img{max-width:100%}
 .fin-line{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px}
 .fin-line .flh{color:var(--muted)}
 .fin-line .flr{margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* fellow dashboard cards (12-card workload grid) */
+.fdash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin-bottom:8px}
+.fdash-grid .card.stat .cap{min-height:32px}
+.fdash-thr{margin-top:8px;width:100%;border:1px solid var(--line);border-radius:8px;padding:5px 7px;font-family:inherit;font-size:11.5px;background:var(--cream);outline:none}
+.fdash-mini{display:flex;align-items:flex-end;gap:5px;height:34px;margin-top:8px}
+.fdash-mini .mb{flex:1;background:linear-gradient(180deg,var(--teal-600),var(--teal-700));border-radius:3px 3px 0 0;min-height:2px}
+.fdash-mini .mbw{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;height:100%}
+.fdash-mini .mbl{font-size:9.5px;color:var(--muted)}
+/* MIS sub-sections + generic bar charts */
+.mis-sec{margin-bottom:20px}
+.mis-sec > .msh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.mis-sec > .msh h3{font-size:17px;margin:0}
+.mis-sec > .msh .mss{font-size:12.5px;color:var(--muted)}
+.mis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.mis-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mis-card h4{font-size:13.5px;margin:0 0 12px;color:var(--ink)}
+.mis-note{font-size:11.5px;color:var(--muted);margin-top:10px;font-style:italic}
+.misbars{display:flex;flex-direction:column;gap:8px}
+.misbars .mb-row{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.misbars .mb-lbl{flex:0 0 118px;width:118px;color:var(--ink-soft);text-align:right;font-weight:600;font-size:11.5px}
+.misbars .mb-track{display:block;flex:1;background:var(--cream-2);border-radius:6px;height:20px;overflow:hidden}
+.misbars .mb-fill{display:block;height:100%;min-width:3px;border-radius:6px;background:linear-gradient(90deg,var(--teal-700),var(--teal-600))}
+.misbars .mb-val{flex:0 0 66px;width:66px;font-weight:700;font-size:12px}
+.mis-figs{display:flex;gap:12px;flex-wrap:wrap}
+.mis-fig{flex:1;min-width:132px;background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.mis-fig .mfv{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.mis-fig .mfl{font-size:11.5px;color:var(--muted);margin-top:3px}
+.mis-chip{background:var(--teal-50);color:var(--teal-700);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600}
+.funnel .fdrop{flex:0 0 104px;width:104px;font-size:11.5px;color:var(--muted);font-weight:600}
 </style>
 </head>
 <body>
@@ -1969,7 +1999,7 @@ img{max-width:100%}
             <div class="field"><div class="k">Course</div><div class="v">B.Com · Year 2</div></div>
             <div class="field"><div class="k">Institution</div><div class="v">Fergusson College, Pune</div></div>
             <div class="field"><div class="k">State / District</div><div class="v">Maharashtra · Pune</div></div>
-            <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div>
+            <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div><div class="field"><div class="k">Migrant Family</div><div class="v">Non-migrant</div></div>
             <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx21</div></div>
             <div class="field"><div class="k">Aadhaar</div><div class="v mask">xxxx xxxx 4821</div></div>
             <div class="field"><div class="k">Guardian</div><div class="v">Ramesh Pawar (Father)</div></div>
@@ -2248,13 +2278,9 @@ img{max-width:100%}
           <button class="att-btn in" id="fAttBtn" onclick="fellowPunch(this)">Log In</button>
         </div>
 
-        <!-- KPIs (MIS-03 fellow performance) -->
-        <div class="grid stagger" style="grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px">
-          <div class="card stat hoverable"><div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg></div></div><div class="num">24</div><div class="cap">My students</div></div>
-          <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div></div><div class="num">7</div><div class="cap">Documents Pending</div></div>
-          <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div></div><div class="num">12</div><div class="cap">Applications Submitted</div></div>
-          <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="num">5</div><div class="cap">Approved</div></div>
-        </div>
+        <!-- Workload cards (12, per New Feedbacks/Point_08_Fellow_Interface_Cards.md). Eight figures are
+             computed live from CASES + FIN; document-support and history figures come from FDASH. -->
+        <div class="fdash-grid stagger" id="fDashCards"></div>
 
         <!-- Caseload triage summary (derived from the unified Applications caseload) -->
         <div class="section-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px"><h3>My caseload</h3><a href="#" data-go="f-applications" style="font-size:13px;color:var(--teal-700);font-weight:600;text-decoration:none">Open Applications →</a></div>
@@ -2634,6 +2660,14 @@ img{max-width:100%}
                     <option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>SEBC</option><option>SBC</option><option>EWS</option><option>General</option><option>Other</option>
                   </select>
                 </div>
+                <div class="q"><div class="qen">Migrant Family?</div>
+                  <select id="onbMigrant">
+                    <option value="">Select</option>
+                    <option value="">Prefer not to answer</option>
+                    <option>Migrant</option>
+                    <option>Non-migrant</option>
+                  </select>
+                </div>
                 <div class="q"><div class="qen">Annual Family Income</div>
                   <select id="onbIncome">
                     <option value="">Select</option>
@@ -2762,7 +2796,7 @@ img{max-width:100%}
               <div class="field"><div class="k">Gender</div><div class="v">Female</div></div>
               <div class="field"><div class="k">Caste / Category</div><div class="v">SC</div></div>
               <div class="field"><div class="k">Religion</div><div class="v">Buddhist</div></div>
-              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div>
+              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div><div class="field"><div class="k">Migrant Family</div><div class="v">Non-migrant</div></div>
               <div class="field"><div class="k">State / District</div><div class="v">Maharashtra · Pune</div></div>
               <div class="field"><div class="k">Course / Year</div><div class="v">B.Com · Year 2</div></div>
               <div class="field"><div class="k">Last Exam %</div><div class="v">78%</div></div>
@@ -3599,13 +3633,17 @@ img{max-width:100%}
         </div>
 
         <div class="misfilters">
-          <select onchange="misFilter()"><option>Date range: This FY (25-26)</option><option>Last 30 days</option><option>This quarter</option><option>Custom…</option></select>
-          <select onchange="misFilter()"><option>All States</option><option>Maharashtra</option></select>
-          <select onchange="misFilter()"><option>All Districts</option><option>Pune</option><option>Nashik</option><option>Satara</option></select>
-          <select onchange="misFilter()"><option>All Fellows</option><option>Rahul More</option><option>Sandip K</option><option>Dhanashree O</option></select>
-          <select onchange="misFilter()"><option>All Scholarships</option><option>GoI Post-Matric</option><option>OBC Post-Matric</option></select>
-          <select onchange="misFilter()"><option>All Categories</option><option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>Minority</option></select>
+          <select onchange="misFilter(this,'Period')"><option>Date range: This FY (25-26)</option><option>Last 30 days</option><option>This quarter</option><option>Custom…</option></select>
+          <select onchange="misFilter(this,'State')"><option>All States</option><option>Maharashtra</option></select>
+          <select onchange="misFilter(this,'District')"><option>All Districts</option><option>Pune</option><option>Nashik</option><option>Satara</option></select>
+          <select onchange="misFilter(this,'Fellow')"><option>All Fellows</option><option>Rahul More</option><option>Sandip K</option><option>Dhanashree O</option></select>
+          <select onchange="misFilter(this,'Scholarship')"><option>All Scholarships</option><option>GoI Post-Matric</option><option>OBC Post-Matric</option></select>
+          <select onchange="misFilter(this,'Category')"><option>All Categories</option><option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>Minority</option></select>
+          <select onchange="misFilter(this,'Student')"><option>All Students</option><option>Aarti Ramesh Pawar</option><option>Kavya Deshmukh</option><option>Sneha Patil</option></select>
+          <select onchange="misFilter(this,'College')"><option>All Colleges</option><option>Fergusson College, Pune</option><option>SP College, Pune</option><option>KTHM College, Nashik</option></select>
+          <select onchange="misFilter(this,'Migrant')"><option>Migrant status: All</option><option>Migrant</option><option>Non-migrant</option></select>
           <span id="misFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
+          <span class="mis-chip" id="misChip" style="display:none"></span>
         </div>
 
         <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px">
@@ -3614,6 +3652,7 @@ img{max-width:100%}
           <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div></div><div class="num">264</div><div class="cap">Applications submitted</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="num">182</div><div class="cap">Applications approved</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div></div><div class="num">₹74.2L</div><div class="cap">Total disbursed</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></div></div><div class="num" id="misFigTapped">18</div><div class="cap">Schemes tapped</div></div>
         </div>
 
         <div class="card" style="margin-bottom:20px">
@@ -3635,6 +3674,35 @@ img{max-width:100%}
           </div>
         </div>
 
+        <div class="mis-sec">
+          <div class="msh"><h3>Overview</h3><span class="mss">Applications submitted per month, current filter</span></div>
+          <div class="mis-card"><h4>Month-wise applications submitted</h4><div id="mis-months"></div></div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Demographics</h3><span class="mss">Who the programme is reaching</span></div>
+          <div class="mis-grid">
+            <div class="mis-card"><h4>Gender-wise</h4><div id="mis-gender"></div></div>
+            <div class="mis-card"><h4>Caste category-wise</h4><div id="mis-caste"></div></div>
+            <div class="mis-card"><h4>Annual family income-wise</h4><div id="mis-income"></div></div>
+            <div class="mis-card"><h4>Education stream-wise</h4><div id="mis-stream"></div></div>
+            <div class="mis-card"><h4>Grade / year-wise</h4><div id="mis-grade"></div></div>
+            <div class="mis-card"><h4>Institutions covered</h4>
+              <div class="mis-figs"><div class="mis-fig"><div class="mfv" id="misFigColleges">62</div><div class="mfl">Total colleges</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Geography</h3><span class="mss">Where students are, including migration status</span></div>
+          <div class="mis-grid">
+            <div class="mis-card"><h4>District-wise</h4><div id="mis-geo"></div></div>
+            <div class="mis-card"><h4>Migrant / non-migrant</h4><div id="mis-migrant"></div><div class="mis-note">Reads the Migrant Family field now collected in onboarding.</div></div>
+          </div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Fellow &amp; Scheme Performance</h3><span class="mss">Per-Fellow delivery and per-scheme uptake</span></div>
         <div class="grid g-2" style="align-items:start">
           <div class="card">
             <div class="section-h" style="margin:0 0 12px"><h3 style="font-size:17px">Fellow-wise performance</h3></div>
@@ -3661,6 +3729,29 @@ img{max-width:100%}
             </table></div>
           </div>
         </div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Scheme Utilisation &amp; Document Support</h3><span class="mss">How much of each scheme is used, and where documents stand</span></div>
+          <div class="mis-grid">
+            <div class="mis-card"><h4>Scheme utilisation</h4><div id="mis-schemeUtil"></div><div class="mis-note">Mock capacity — the Scholarship master has no capacity/budget field yet; it would need to be added.</div></div>
+            <div class="mis-card"><h4>Documents support dashboard</h4><div id="mis-docSupport"></div></div>
+          </div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Process Efficiency</h3><span class="mss">How long things take, and where they stall</span></div>
+          <div class="mis-grid">
+            <div class="mis-card"><h4>Average time to approval</h4><div id="mis-ttApproval"></div><div class="mis-note">Needs status-change history (Frappe track_changes) to be real; mock here.</div></div>
+            <div class="mis-card"><h4>Average time to disbursement</h4><div id="mis-ttDisburse"></div><div class="mis-note">Needs status-change history (Frappe track_changes) to be real; mock here.</div></div>
+            <div class="mis-card"><h4>Document friction — longest in follow-up</h4><div id="mis-docFriction"></div><div class="mis-note">Needs status-change history (Frappe track_changes) to be real; mock here.</div></div>
+            <div class="mis-card"><h4>Headline efficiency</h4>
+              <div class="mis-figs"><div class="mis-fig"><div class="mfv" id="misFigApproval">34 days</div><div class="mfl">Avg time to approval</div></div><div class="mis-fig"><div class="mfv" id="misFigDisburse">21 days</div><div class="mfl">Avg time to disbursement</div></div><div class="mis-fig"><div class="mfv" id="misFigRenewal">27%</div><div class="mfl">Repeat / renewal rate</div></div></div>
+              <div class="mis-note">Renewal rate needs a stable cross-year student identifier (Module 9 migration); mock here.</div>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <!-- ===== DOCUMENT VERIFICATION ===== -->
@@ -3805,7 +3896,7 @@ img{max-width:100%}
               <div class="field"><div class="k">Gender</div><div class="v">Female</div></div>
               <div class="field"><div class="k">Caste / Category</div><div class="v">SC</div></div>
               <div class="field"><div class="k">Religion</div><div class="v">Buddhist</div></div>
-              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div>
+              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div><div class="field"><div class="k">Migrant Family</div><div class="v">Non-migrant</div></div>
               <div class="field"><div class="k">State / District</div><div class="v">Maharashtra · Pune</div></div>
               <div class="field"><div class="k">Course / Year</div><div class="v">B.Com · Year 2</div></div>
               <div class="field"><div class="k">Last Exam %</div><div class="v">78%</div></div>
@@ -4384,7 +4475,7 @@ var MY_ONBOARDING = {
            onbCollege:'Fergusson College, Pune', onbHeard:'College',
            onbGrade:'Graduation - 2nd Year', onbStream:'Commerce & Management', onbMarks:'78%',
            onbPrevGrade:'Graduation - 1st Year', onbPrevMarks:'74%',
-           onbSocial:'SC', onbIncome:'₹1 – 2 lakh', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
+           onbSocial:'SC', onbIncome:'₹1 – 2 lakh', onbMigrant:'Non-migrant', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
            onbGoals:'Complete my B.Com and qualify for a government scholarship.', onbCareer:'Become a chartered accountant.',
            onbShare:'Mother is the sole earner; fee support needed this year.', onbConsent:'Aarti Ramesh Pawar' },
   docs:['have','have','have','have','have','dont','have','dont','na'],
@@ -4446,7 +4537,7 @@ var PENDING_ONBOARDINGS = {
              onbCollege:'Fergusson College, Pune', onbHeard:'College',
              onbGrade:'Graduation - 1st Year', onbStream:'Arts / Humanities', onbMarks:'74%',
              onbPrevGrade:'12th', onbPrevMarks:'78%',
-             onbSocial:'OBC', onbIncome:'₹1 – 2 lakh', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
+             onbSocial:'OBC', onbIncome:'₹1 – 2 lakh', onbMigrant:'Migrant', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
              onbGoals:'Complete my B.A and secure a government scholarship.', onbCareer:'Become a school teacher.',
              onbShare:'Father is the sole earner; needs fee support this semester.', onbConsent:'Ravi Deshmukh' },
     docs:['have','dont','have','have','dont','na','have','have','na'],
@@ -4463,7 +4554,7 @@ var PENDING_ONBOARDINGS = {
              onbCollege:'Other', onbHeard:'Mudita Alliance',
              onbGrade:'Graduation - 2nd Year', onbStream:'Science', onbMarks:'CGPA 8.1',
              onbPrevGrade:'Graduation - 1st Year', onbPrevMarks:'CGPA 7.9',
-             onbSocial:'SC', onbIncome:'₹50,000 – ₹1 lakh', onbParentDis:'No', onbOccupation:'Farming', onbDrug:'No',
+             onbSocial:'SC', onbIncome:'₹50,000 – ₹1 lakh', onbMigrant:'Non-migrant', onbParentDis:'No', onbOccupation:'Farming', onbDrug:'No',
              onbGoals:'Clear my B.Sc with distinction.', onbCareer:'Pursue a Masters in Microbiology.',
              onbShare:'First-generation learner in the family.', onbConsent:'Sneha Kale' },
     docs:['have','have','have','have','dont','dont','dont','dont','na'],
@@ -4938,7 +5029,8 @@ function filterCaseList(scope, bucket, btn){
   renderCaseList(scope);
 }
 function adminCaseFellow(f){ _caseAdminFellow=f; renderCaseList('admin'); }
-function _rerenderAll(){ renderCaseList('fellow'); if(document.getElementById('caseListAdmin')) renderCaseList('admin'); }
+// Every caseload mutation routes through here, so the Fellow's workload cards re-render from one hook.
+function _rerenderAll(){ renderCaseList('fellow'); if(document.getElementById('caseListAdmin')) renderCaseList('admin'); if(typeof renderFellowCards==='function') renderFellowCards(); }
 function caseAdvance(id){ var c=caseById(id); if(!c) return; var i=CASE_STATUS.indexOf(c.status); if(i>=0&&i<3) c.status=CASE_STATUS[i+1]; else if(c.status==='Application Approved · funds awaited') c.status='Benefits Received'; _rerenderAll(); }
 function caseSetStatus(id,status){ var c=caseById(id); if(!c) return; c.status=status; _rerenderAll(); }
 function casePendReason(id,type){ var c=caseById(id); if(!c) return; c._pend=type; _rerenderAll(); setTimeout(function(){ var el=document.getElementById('cr_'+id); if(el) el.focus(); },0); }
@@ -5249,8 +5341,182 @@ function saveFinInstallment(btn, key, num){
   var msg = recorded
     ? '✓ '+label+' saved — visible to the Program Admin and the student.'
     : label+' left empty — nothing recorded (this installment is optional).';
+  if(typeof renderFellowCards==='function') renderFellowCards();   // card 8 (funds unlocked) reads FIN
   var actions = document.querySelector('#fp-fin .fin-host[data-app="'+key+'"] .fin-actions');
   if(actions) actions.insertAdjacentHTML('beforeend','<span class="fin-saved">'+msg+'</span>');
+}
+// ---- MIS dashboard indicators (Program Admin) ----
+// Mock figures, deliberately consistent with the headline cards already on this screen
+// (480 onboarded, 264 submitted, 182 approved, ₹74.2L disbursed) so no chart contradicts a card.
+// unit: 'count' figures respond to the filter strip; 'pct' and 'days' do not.
+var MIS = {
+  months:      {unit:'count', rows:[{l:'Apr',v:12},{l:'May',v:19},{l:'Jun',v:31},{l:'Jul',v:38},{l:'Aug',v:34},{l:'Sep',v:22},{l:'Oct',v:18},{l:'Nov',v:16},{l:'Dec',v:14},{l:'Jan',v:21},{l:'Feb',v:24},{l:'Mar',v:15}]},
+  gender:      {unit:'count', rows:[{l:'Female',v:268},{l:'Male',v:210},{l:'Not disclosed',v:2}]},
+  caste:       {unit:'count', rows:[{l:'SC',v:186},{l:'OBC',v:128},{l:'ST',v:62},{l:'VJNT',v:54},{l:'Minority',v:38},{l:'EWS',v:12}]},
+  income:      {unit:'count', rows:[{l:'Below ₹50,000',v:96},{l:'₹50,000 – ₹1L',v:132},{l:'₹1 – 2L',v:141},{l:'₹2 – 4L',v:78},{l:'₹4 – 8L',v:28},{l:'₹8L and above',v:5}]},
+  stream:      {unit:'count', rows:[{l:'Arts',v:148},{l:'Science',v:132},{l:'Commerce',v:121},{l:'Engineering',v:52},{l:'Diploma / ITI',v:27}]},
+  grade:       {unit:'count', rows:[{l:'UG Year 1',v:142},{l:'UG Year 2',v:128},{l:'UG Year 3',v:96},{l:'Post Graduate',v:71},{l:'Diploma',v:43}]},
+  geo:         {unit:'count', rows:[{l:'Pune',v:168},{l:'Nashik',v:96},{l:'Satara',v:74},{l:'Ahmednagar',v:62},{l:'Solapur',v:48},{l:'Other',v:32}]},
+  migrant:     {unit:'count', rows:[{l:'Non-migrant',v:391},{l:'Migrant',v:82},{l:'Not disclosed',v:7}]},
+  schemeUtil:  {unit:'pct',   rows:[{l:'Post-Matric SC',v:78},{l:'OBC Post-Matric',v:64},{l:'VJNT Post-Matric',v:52},{l:'Minority Scholarship',v:41},{l:'Ambedkar Swadhar',v:36}]},
+  docSupport:  {unit:'count', rows:[{l:'Accepted',v:1046},{l:'Under Review',v:118},{l:'Pending',v:78},{l:'Rejected',v:42}]},
+  ttApproval:  {unit:'days',  rows:[{l:'Post-Matric SC',v:31},{l:'OBC Post-Matric',v:34},{l:'VJNT Post-Matric',v:39},{l:'Minority Scholarship',v:44},{l:'Ambedkar Swadhar',v:47}]},
+  ttDisburse:  {unit:'days',  rows:[{l:'Post-Matric SC',v:18},{l:'OBC Post-Matric',v:21},{l:'VJNT Post-Matric',v:24},{l:'Minority Scholarship',v:29},{l:'Ambedkar Swadhar',v:33}]},
+  docFriction: {unit:'days',  rows:[{l:'Caste Validity',v:26},{l:'Non-Creamy Layer',v:21},{l:'Income Certificate',v:14},{l:'Domicile',v:9},{l:'Bonafide',v:6}]},
+  figures: { colleges:62, schemesTapped:18, renewal:27, avgApproval:34, avgDisburse:21 }
+};
+// Filter strip state. Changing any filter narrows the population, so 'count' figures scale down by a
+// deterministic factor. STATED SIMPLIFICATION: this is not real filtering — in the Frappe build each
+// widget re-queries with the filter values. See the design doc.
+var MIS_FILTER = {};
+function misScale(){
+  var n = Object.keys(MIS_FILTER).filter(function(k){ return MIS_FILTER[k]; }).length;
+  return n===0 ? 1 : Math.max(0.18, 1 - (0.22*n));
+}
+function misVal(v, unit){
+  if(unit!=='count') return v;
+  return Math.max(0, Math.round(v * misScale()));
+}
+function renderMisBars(hostId, key){
+  var host = document.getElementById(hostId);
+  if(!host) return;
+  var spec = MIS[key], unit = spec.unit;
+  var vals = spec.rows.map(function(r){ return misVal(r.v, unit); });
+  var max = Math.max.apply(null, vals) || 1;
+  var suffix = unit==='pct' ? '%' : (unit==='days' ? ' days' : '');
+  host.innerHTML = '<div class="misbars">'+spec.rows.map(function(r,i){
+    return '<div class="mb-row"><span class="mb-lbl">'+r.l+'</span>'+
+      '<span class="mb-track"><span class="mb-fill" style="width:'+Math.round((vals[i]/max)*100)+'%"></span></span>'+
+      '<span class="mb-val">'+vals[i].toLocaleString('en-IN')+suffix+'</span></div>';
+  }).join('')+'</div>';
+}
+// Drop-off rate per funnel stage, computed from the stage counts already in the markup so the
+// percentages can never contradict the bars. (This is the client's requested conversion funnel,
+// folded into the existing 5-stage funnel rather than added as a second one.)
+function initFunnelDropoff(){
+  var rows = document.querySelectorAll('#a-home .funnel .frow');
+  var prev = null;
+  rows.forEach(function(row){
+    var bar = row.querySelector('.fbar');
+    var n = Number((bar ? bar.textContent : '0').replace(/[^0-9]/g,''));
+    var old = row.querySelector('.fdrop');
+    if(old) old.remove();
+    var span = document.createElement('span');
+    span.className = 'fdrop';
+    span.textContent = (prev===null || !prev) ? 'entry stage' : '−'+Math.round(((prev-n)/prev)*100)+'% drop-off';
+    row.appendChild(span);
+    prev = n;
+  });
+}
+function renderMisAll(){
+  ['months','gender','caste','income','stream','grade','geo','migrant','schemeUtil','docSupport','ttApproval','ttDisburse','docFriction']
+    .forEach(function(k){ renderMisBars('mis-'+k, k); });
+  var f = MIS.figures, s = misScale();
+  var set = function(id, txt){ var el=document.getElementById(id); if(el) el.textContent = txt; };
+  set('misFigColleges', Math.round(f.colleges*s).toLocaleString('en-IN'));
+  set('misFigSchemes', Math.round(f.schemesTapped*s));
+  set('misFigRenewal', f.renewal+'%');
+  set('misFigApproval', f.avgApproval+' days');
+  set('misFigDisburse', f.avgDisburse+' days');
+  set('misFigTapped', Math.round(f.schemesTapped*s));
+  var chip = document.getElementById('misChip');
+  if(chip){
+    var active = Object.keys(MIS_FILTER).filter(function(k){ return MIS_FILTER[k]; }).map(function(k){ return MIS_FILTER[k]; });
+    chip.style.display = active.length ? '' : 'none';
+    chip.textContent = active.length ? 'Filtered view: '+active.join(' · ') : '';
+  }
+  initFunnelDropoff();
+}
+// ---- Fellow dashboard cards (12-card workload grid) ----
+// 8 cards are computed live from CASES (scoped to CASE_FELLOW) and from FIN; the document-support
+// figures and the day-ages/monthly history are mock, since the wireframe holds no document-case
+// array and records no status-change timestamps. Mock values are chosen to agree with figures
+// already on screen (24 students, the "2 documents Pending" alert, the ">15 days" alert).
+var FDASH = {
+  students: 24,                 // matches "Showing N of 24" on My Students
+  docAssigned: 9, docCompleted: 7, docInProcess: 2, docsSupported: 26,
+  fundsBaseline: 620000,        // this Fellow's other students, outside the 4 demo applications
+  caseAges: {                   // days each case has been sitting, for the aging card
+    'CASE-2026-001':22,'CASE-2026-002':9,'CASE-2026-003':12,'CASE-2026-004':6,'CASE-2026-005':4,
+    'CASE-2026-006':3,'CASE-2026-007':11,'CASE-2026-008':5,'CASE-2026-009':7,'CASE-2026-010':2
+  },
+  months: [{m:'Mar',v:1},{m:'Apr',v:0},{m:'May',v:2},{m:'Jun',v:1},{m:'Jul',v:3},{m:'Aug',v:2}]
+};
+var FDASH_THRESHOLD = 15;       // days; configurable on the card, never hardcoded into the count
+var FDASH_INPROCESS = ['Ready to Submit','Under Scrutiny','Application Approved · funds awaited'];
+function fdashMyCases(){
+  return (typeof CASES==='undefined') ? [] : CASES.filter(function(c){ return c.fellow===CASE_FELLOW; });
+}
+function fdashFunds(){
+  var total = FDASH.fundsBaseline;
+  if(typeof FIN!=='undefined'){
+    Object.keys(FIN).forEach(function(k){
+      ['s1','i1','s2','i2'].forEach(function(ek){
+        var d = FIN[k][ek];
+        if(d && d.status==='Funds Disbursed' && d.amount) total += Number(d.amount);
+      });
+    });
+  }
+  return total;
+}
+function fdashCounts(){
+  var mine = fdashMyCases();
+  var by = function(st){ return mine.filter(function(c){ return c.status===st; }).length; };
+  return {
+    students: FDASH.students,
+    appsAssigned: mine.length,
+    docAssigned: FDASH.docAssigned,
+    appsCompleted: by('Benefits Received'),
+    docCompleted: FDASH.docCompleted,
+    appsInProcess: mine.filter(function(c){ return FDASH_INPROCESS.indexOf(c.status)>-1; }).length,
+    docInProcess: FDASH.docInProcess,
+    funds: fdashFunds(),
+    docsSupported: FDASH.docsSupported,
+    rejected: by('Rejected'),
+    aging: mine.filter(function(c){ return (FDASH.caseAges[c.id]||0) > FDASH_THRESHOLD; }).length
+  };
+}
+var FDASH_ICONS = {
+  people:'<circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/>',
+  file:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/>',
+  check:'<path d="M20 6 9 17l-5-5"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  money:'<path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+  cross:'<path d="M18 6 6 18M6 6l12 12"/>',
+  trend:'<path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/>'
+};
+function fdashCard(icon, tone, num, cap, extra){
+  return '<div class="card stat hoverable"><div class="top"><div class="ic '+tone+'">'+
+    '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">'+FDASH_ICONS[icon]+'</svg>'+
+    '</div></div><div class="num">'+num+'</div><div class="cap">'+cap+'</div>'+(extra||'')+'</div>';
+}
+function renderFellowCards(){
+  var host = document.getElementById('fDashCards');
+  if(!host) return;
+  var c = fdashCounts();
+  var thrOpts = [7,15,30].map(function(d){ return '<option value="'+d+'"'+(FDASH_THRESHOLD===d?' selected':'')+'>beyond '+d+' days</option>'; }).join('');
+  var maxM = Math.max.apply(null, FDASH.months.map(function(m){ return m.v; })) || 1;
+  var trend = '<div class="fdash-mini">'+FDASH.months.map(function(m){
+    return '<div class="mbw"><div class="mb" style="height:'+Math.round((m.v/maxM)*100)+'%" title="'+m.m+': '+m.v+'"></div><div class="mbl">'+m.m+'</div></div>';
+  }).join('')+'</div>';
+  host.innerHTML =
+    fdashCard('people','teal',  c.students,      'Students assigned') +
+    fdashCard('file','gold',    c.appsAssigned,  'Applications assigned') +
+    fdashCard('file','blue',    c.docAssigned,   'Document support cases assigned') +
+    fdashCard('check','green',  c.appsCompleted, 'Applications completed') +
+    fdashCard('check','green',  c.docCompleted,  'Document cases completed') +
+    fdashCard('clock','gold',   c.appsInProcess, 'Applications in process') +
+    fdashCard('clock','blue',   c.docInProcess,  'Document cases in process') +
+    fdashCard('money','teal',   '₹'+Number(c.funds).toLocaleString('en-IN'), 'Total funds unlocked') +
+    fdashCard('file','teal',    c.docsSupported, 'Total documents supported') +
+    fdashCard('cross','red',    c.rejected,      'Rejected applications') +
+    fdashCard('clock','red',    c.aging,         'Pending beyond threshold',
+      '<select class="fdash-thr" onchange="setFdashThreshold(this)">'+thrOpts+'</select>') +
+    fdashCard('trend','gold',   FDASH.months[FDASH.months.length-1].v, 'Completions this month', trend);
+}
+function setFdashThreshold(sel){
+  FDASH_THRESHOLD = Number(sel.value);
+  renderFellowCards();
 }
 // Data Entry form §7 grid — same four numbers as the Financial Tracking tab, one shared source
 // so the two views can never disagree. Demo targets 'pm' (same stated simplification as the PDF field).
@@ -5319,11 +5585,17 @@ function showNotifications(){
   panel.style.display='block';
 }
 // MIS dashboard filter strip — reflects the active selection (wireframe stub; production re-queries funnel/cards/tables).
-function misFilter(){
+function misFilter(sel, label){
   const active=[];
   document.querySelectorAll('#a-home .misfilters select').forEach(function(s){ if(s.selectedIndex>0) active.push(s.value); });
   const note=document.getElementById('misFilterNote');
   if(note) note.textContent = active.length ? ('Filtered by: '+active.join(' · ')) : '';
+  // Every filter narrows the population, so re-render the indicator charts (see design doc's
+  // stated simplification — 'count' figures scale, they are not really re-queried).
+  if(sel && label){
+    if(sel.selectedIndex>0) MIS_FILTER[label] = sel.value; else delete MIS_FILTER[label];
+  }
+  if(typeof renderMisAll==='function') renderMisAll();
 }
 function fileAct(btn,status){
   const row=btn.closest('.doc-row');
@@ -5906,6 +6178,8 @@ function filterAStu(){
   if(typeof initDocNotesAll==='function') initDocNotesAll();
   if(typeof initAppPdfAll==='function') initAppPdfAll();
   if(typeof initFinAll==='function') initFinAll();
+  if(typeof renderFellowCards==='function') renderFellowCards();
+  if(typeof renderMisAll==='function') renderMisAll();
   const p=new URLSearchParams(location.search);
   const role=p.get('role'); const screen=p.get('screen');
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
