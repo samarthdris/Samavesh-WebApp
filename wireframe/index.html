@@ -1160,6 +1160,23 @@ img{max-width:100%}
 .doc-note-form textarea{width:100%;min-height:56px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:13px;box-sizing:border-box;margin-top:8px}
 .app-pdf-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px}
 .app-pdf-row .apn{color:var(--muted)}
+/* financial tracking (installment-wise disbursement) */
+.fin-block{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px;background:var(--paper)}
+.fin-bh{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fin-bh b{font-size:14px}
+.fin-locked{font-size:13px;color:var(--muted);margin-top:8px}
+.fin-req{color:var(--red);font-weight:700}
+.fin-empty{font-size:13px;color:var(--muted);margin-top:8px}
+.fin-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.fin-saved{color:var(--teal-700);font-weight:600;font-size:12.5px}
+.fin-note{font-size:12px;color:var(--muted);margin-top:8px}
+.instgrid td input[type=date]{margin-top:6px}
+.instgrid td .fin-proof{display:block;margin-top:6px;font-size:12px}
+.instgrid td .fin-ro{font-size:13px}
+.instgrid td .fin-ro .fk{color:var(--muted)}
+.fin-line{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px}
+.fin-line .flh{color:var(--muted)}
+.fin-line .flr{margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 </style>
 </head>
 <body>
@@ -1555,6 +1572,7 @@ img{max-width:100%}
             <div class="s-step">Department reviewing since 2 Jun</div>
             <div class="s-next">Next: await portal decision</div>
             <div class="app-pdf-host" data-app="pm"></div>
+            <div class="fin-host" data-app="pm" data-mode="line"></div>
           </div>
         </div>
 
@@ -1575,6 +1593,7 @@ img{max-width:100%}
             <div class="s-stage">Stage 3 of 5 · Documents 100% Accepted</div>
             <div class="s-next">Next: Fellow submits on the portal</div>
             <div class="app-pdf-host" data-app="ms"></div>
+            <div class="fin-host" data-app="ms" data-mode="line"></div>
           </div>
         </div>
 
@@ -1596,6 +1615,7 @@ img{max-width:100%}
             <div class="s-step">1 Pending · 1 Under Review</div>
             <button class="btn btn-gold btn-sm" data-go="documents">View documents</button>
             <div class="app-pdf-host" data-app="ab"></div>
+            <div class="fin-host" data-app="ab" data-mode="line"></div>
           </div>
         </div>
 
@@ -1618,6 +1638,7 @@ img{max-width:100%}
             <div class="s-step" style="color:var(--red)">Rejected 4 Jun</div>
             <div class="s-next">Next: re-submission expected by 14 Jun</div>
             <div class="app-pdf-host" data-app="smm"></div>
+            <div class="fin-host" data-app="smm" data-mode="line"></div>
           </div>
         </div>
 
@@ -2728,6 +2749,7 @@ img{max-width:100%}
           <button onclick="ftab(this,'fp-sch')">Eligible Schemes</button>
           <button onclick="ftab(this,'fp-docs')">Documents</button>
           <button onclick="ftab(this,'fp-apps')">Applications</button>
+          <button onclick="ftab(this,'fp-fin')">Financial Tracking</button>
         </div>
 
         <!-- Profile tab -->
@@ -3093,6 +3115,15 @@ img{max-width:100%}
 
           </div>
         </div>
+
+        <!-- Financial Tracking tab — installment-wise disbursement per application (Module 5). Fellow enters; Admin and student read. -->
+        <div class="tabpane" id="fp-fin">
+          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">Installment-wise disbursement per application — amount, status, date and proof of benefit received, tracked separately for the student and the institute. A section opens once its application is Approved.</p>
+          <div class="fin-host" data-app="pm" data-mode="edit"></div>
+          <div class="fin-host" data-app="ms" data-mode="edit"></div>
+          <div class="fin-host" data-app="ab" data-mode="edit"></div>
+          <div class="fin-host" data-app="smm" data-mode="edit"></div>
+        </div>
             <div class="activity">
               <h3>Activity</h3>
               <div class="comment-box"><span class="av2">R</span><input placeholder="Add a comment…" /></div>
@@ -3416,11 +3447,11 @@ img{max-width:100%}
                 <thead><tr><th></th><th>First Installment</th><th>Second Installment</th></tr></thead>
                 <tbody>
                   <tr><td class="rowh">Student</td>
-                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
-                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
+                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin-entry="s1" data-fin-field="amount" onchange="saveSchFinCell(this)" /></div><select data-fin-entry="s1" data-fin-field="status" onchange="saveSchFinCell(this)"><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
+                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin-entry="s2" data-fin-field="amount" onchange="saveSchFinCell(this)" /></div><select data-fin-entry="s2" data-fin-field="status" onchange="saveSchFinCell(this)"><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
                   <tr><td class="rowh">Institute</td>
-                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
-                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
+                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin-entry="i1" data-fin-field="amount" onchange="saveSchFinCell(this)" /></div><select data-fin-entry="i1" data-fin-field="status" onchange="saveSchFinCell(this)"><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
+                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin-entry="i2" data-fin-field="amount" onchange="saveSchFinCell(this)" /></div><select data-fin-entry="i2" data-fin-field="status" onchange="saveSchFinCell(this)"><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
                 </tbody>
               </table>
             </section>
@@ -3761,6 +3792,7 @@ img{max-width:100%}
           <button onclick="ftab(this,'ap-sch')">Eligible Schemes</button>
           <button onclick="ftab(this,'ap-docs')">Documents</button>
           <button onclick="ftab(this,'ap-apps')">Applications</button>
+          <button onclick="ftab(this,'ap-fin')">Financial Tracking</button>
         </div>
 
         <!-- Profile tab (admin can edit; audit-logged) -->
@@ -4037,6 +4069,15 @@ img{max-width:100%}
             </div>
 
           </div>
+        </div>
+
+        <!-- Financial Tracking tab — Admin oversight, read-only (RBAC-05: Fellow records, Admin reviews). -->
+        <div class="tabpane" id="ap-fin">
+          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">Installment-wise disbursement recorded by the assigned Fellow — student and institute levels, with proof of benefit received. Oversight only; disbursement is recorded by the Fellow.</p>
+          <div class="fin-host" data-app="pm" data-mode="view"></div>
+          <div class="fin-host" data-app="ms" data-mode="view"></div>
+          <div class="fin-host" data-app="ab" data-mode="view"></div>
+          <div class="fin-host" data-app="smm" data-mode="view"></div>
         </div>
             <div class="activity">
               <h3>Activity</h3>
@@ -5054,6 +5095,174 @@ function saveSchFormPdf(input){
   APP_PDF.pm = {name:input.files[0].name, on:'today'};
   refreshAppPdf('pm');
 }
+// ---- Financial Tracking — installment-wise disbursement per application ----
+// 4 applications x 4 entries. s/i = Student/Institute level, 1/2 = First/Second Installment.
+// Vocabulary is the client-locked set (Installment, Institute, and the three form statuses) —
+// the feedback doc's "Tranche / Institution / Pending" wording is deliberately not used.
+var FIN_APPS = [
+  {key:'pm',  name:'Post-Matric Scholarship for SC Students'},
+  {key:'ms',  name:'Maharashtra State Minority Scholarship'},
+  {key:'ab',  name:'Dr. Babasaheb Ambedkar Scholarship'},
+  {key:'smm', name:'Rajarshi Chhatrapati Shahu Maharaj Merit'}
+];
+var FIN_STATUSES = ['Awaiting Approval','Fund Disbursement in Process','Funds Disbursed'];
+var FIN = {};
+FIN_APPS.forEach(function(a){ FIN[a.key] = {s1:{},i1:{},s2:{},i2:{}}; });
+function finName(key){ for(var i=0;i<FIN_APPS.length;i++){ if(FIN_APPS[i].key===key) return FIN_APPS[i].name; } return key; }
+function finLabel(ek){
+  return (ek.charAt(0)==='s' ? 'Student' : 'Institute')+' · '+(ek.charAt(1)==='1' ? 'First' : 'Second')+' Installment';
+}
+function finMoney(v){ return (v===''||v==null) ? '' : '₹'+Number(v).toLocaleString('en-IN'); }
+function finDate(v){
+  if(!v) return '';
+  var p = String(v).split('-'); if(p.length!==3) return v;
+  var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return Number(p[2])+' '+m[Number(p[1])-1]+' '+p[0];
+}
+// The live application status is read from its pill in the Fellow Applications accordion — the same
+// element updateAppStatus() rewrites — so the gate can never disagree with what is on screen.
+function finAppStatus(key){
+  var pill = document.querySelector('#fp-apps .app-acc-item[data-app="'+key+'"] .pill');
+  return pill ? pill.textContent.trim() : '';
+}
+function finUnlocked(key){
+  var s = finAppStatus(key);
+  return s==='Application Approved · funds awaited' || s==='Benefits Received';
+}
+function finHasAny(key){
+  var f = FIN[key]; if(!f) return false;
+  return ['s1','i1','s2','i2'].some(function(ek){ return f[ek] && f[ek].amount!=='' && f[ek].amount!=null; });
+}
+function finCellEdit(key, ek){
+  var d = FIN[key][ek] || {};
+  var opts = FIN_STATUSES.map(function(s){ return '<option'+(d.status===s?' selected':'')+'>'+s+'</option>'; }).join('');
+  return '<td>'+
+    '<div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin="amount" data-entry="'+ek+'" value="'+(d.amount||'')+'" /></div>'+
+    '<select data-fin="status" data-entry="'+ek+'"><option value="">Status…</option>'+opts+'</select>'+
+    '<input type="date" data-fin="date" data-entry="'+ek+'" value="'+(d.date||'')+'" />'+
+    (d.proof ? '<a class="fin-proof" href="#" onclick="event.preventDefault();downloadDoc(\''+d.proof+'\')">View proof · '+d.proof+'</a>' : '')+
+    '<input class="fin-proof" type="file" accept="application/pdf,image/*" data-fin="proof" data-entry="'+ek+'" />'+
+    '</td>';
+}
+// A zero amount is a deliberate "this level receives nothing" record, not a pending disbursement.
+function finStatusText(d){
+  if(Number(d.amount)===0) return 'Not applicable';
+  return d.status || 'Awaiting Approval';
+}
+function finCellView(key, ek){
+  var d = FIN[key][ek] || {};
+  if(d.amount==='' || d.amount==null) return '<td><span class="fin-ro fk">Not recorded</span></td>';
+  return '<td><div class="fin-ro"><b>'+finMoney(d.amount)+'</b><br /><span class="fk">'+finStatusText(d)+'</span>'+
+    (d.date ? '<br /><span class="fk">'+finDate(d.date)+'</span>' : '')+
+    (d.proof ? '<br /><a href="#" onclick="event.preventDefault();downloadDoc(\''+d.proof+'\')">View proof</a>' : '')+
+    '</div></td>';
+}
+function finGrid(key, mode){
+  var cell = (mode==='edit') ? finCellEdit : finCellView;
+  return '<table class="instgrid">'+
+    '<thead><tr><th></th><th>First Installment'+(mode==='edit'?' <span class="fin-req">*</span>':'')+'</th><th>Second Installment</th></tr></thead>'+
+    '<tbody>'+
+      '<tr><td class="rowh">Student</td>'+cell(key,'s1')+cell(key,'s2')+'</tr>'+
+      '<tr><td class="rowh">Institute</td>'+cell(key,'i1')+cell(key,'i2')+'</tr>'+
+    '</tbody></table>';
+}
+// Match the pill colours used everywhere else for these same statuses.
+function finPillCls(status){
+  var map = {
+    'Under Scrutiny':'blue', 'Application Approved · funds awaited':'teal', 'Benefits Received':'green',
+    'Ready to Submit':'amber', 'Documents Pending':'amber', 'Re-apply':'amber', 'Rejected':'red'
+  };
+  return map[status] || 'grey';
+}
+function renderFinBlock(key, mode){
+  var st = finAppStatus(key);
+  var head = '<div class="fin-bh"><b>'+finName(key)+'</b><span class="pill '+finPillCls(st)+'"><span class="pdot"></span>'+(st||'Status unknown')+'</span></div>';
+  if(!finUnlocked(key)){
+    // The student's compact view sits inside a card that already shows this scheme's name and status —
+    // repeating them in a locked block would duplicate on-screen data, so it renders nothing at all.
+    if(mode==='line') return '';
+    return '<div class="fin-block">'+head+'<div class="fin-locked">Financial Tracking unlocks once this application is Approved.</div></div>';
+  }
+  if(mode==='line'){
+    if(!finHasAny(key)) return '';
+    var rows = ['s1','i1','s2','i2'].filter(function(ek){ var d=FIN[key][ek]; return d && d.amount!=='' && d.amount!=null; })
+      .map(function(ek){
+        var d = FIN[key][ek];
+        return '<div class="flr"><span>'+finLabel(ek)+': <b>'+finMoney(d.amount)+'</b></span>'+
+          '<span class="flh">'+finStatusText(d)+(d.date?' · '+finDate(d.date):'')+'</span>'+
+          (d.proof ? '<a href="#" onclick="event.preventDefault();downloadDoc(\''+d.proof+'\')">View proof</a>' : '')+'</div>';
+      }).join('');
+    return '<div class="fin-line"><span class="flh">💰 Disbursement</span>'+rows+'</div>';
+  }
+  if(mode==='edit'){
+    return '<div class="fin-block">'+head+finGrid(key,'edit')+
+      '<div class="fin-actions">'+
+        '<button class="btn btn-primary btn-sm" type="button" onclick="saveFinInstallment(this,\''+key+'\',1)">Save First Installment</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" onclick="saveFinInstallment(this,\''+key+'\',2)">Save Second Installment</button>'+
+      '</div>'+
+      '<div class="fin-note">First Installment is mandatory: an amount is required for both levels, and any amount above 0 also needs a disbursement date and proof. Second Installment is optional — leave it empty for single-installment schemes.</div></div>';
+  }
+  return '<div class="fin-block">'+head+finGrid(key,'view')+
+    (finHasAny(key) ? '' : '<div class="fin-empty">No disbursement recorded yet.</div>')+'</div>';
+}
+function refreshFin(key){
+  document.querySelectorAll('.fin-host[data-app="'+key+'"]').forEach(function(h){
+    h.innerHTML = renderFinBlock(key, h.getAttribute('data-mode')||'view');
+  });
+}
+function initFinAll(){
+  document.querySelectorAll('.fin-host').forEach(function(h){
+    h.innerHTML = renderFinBlock(h.getAttribute('data-app'), h.getAttribute('data-mode')||'view');
+  });
+}
+// Save one installment column (both levels). num 1 = First (mandatory), 2 = Second (optional).
+function saveFinInstallment(btn, key, num){
+  var block = btn.closest('.fin-block');
+  if(!block) return;
+  var eks = (num===1) ? ['s1','i1'] : ['s2','i2'];
+  var staged = {};
+  for(var i=0;i<eks.length;i++){
+    var ek = eks[i];
+    var amountEl = block.querySelector('[data-fin="amount"][data-entry="'+ek+'"]');
+    var statusEl = block.querySelector('[data-fin="status"][data-entry="'+ek+'"]');
+    var dateEl   = block.querySelector('[data-fin="date"][data-entry="'+ek+'"]');
+    var proofEl  = block.querySelector('[data-fin="proof"][data-entry="'+ek+'"]');
+    var amount = amountEl ? amountEl.value.trim() : '';
+    var date   = dateEl ? dateEl.value : '';
+    var proof  = (proofEl && proofEl.files && proofEl.files[0]) ? proofEl.files[0].name : (FIN[key][ek].proof || '');
+    if(num===1){
+      if(amount===''){ alert(finLabel(ek)+': amount is required. Enter 0 if this level receives nothing.'); amountEl && amountEl.focus(); return; }
+      if(Number(amount)>0 && !date){ alert(finLabel(ek)+': disbursement date is required once an amount is entered.'); dateEl && dateEl.focus(); return; }
+      if(Number(amount)>0 && !proof){ alert(finLabel(ek)+': proof of benefit received is required once an amount is entered (PDF or image).'); proofEl && proofEl.focus(); return; }
+    }
+    staged[ek] = {
+      amount: amount,
+      date: date,
+      proof: proof,
+      status: (statusEl && statusEl.value) ? statusEl.value : (Number(amount)>0 ? 'Awaiting Approval' : '')
+    };
+  }
+  var recorded = 0;
+  eks.forEach(function(ek){ if(staged[ek].amount!==''){ FIN[key][ek] = staged[ek]; recorded++; } });
+  refreshFin(key);
+  var label = (num===1?'First':'Second')+' Installment';
+  var msg = recorded
+    ? '✓ '+label+' saved — visible to the Program Admin and the student.'
+    : label+' left empty — nothing recorded (this installment is optional).';
+  var actions = document.querySelector('#fp-fin .fin-host[data-app="'+key+'"] .fin-actions');
+  if(actions) actions.insertAdjacentHTML('beforeend','<span class="fin-saved">'+msg+'</span>');
+}
+// Data Entry form §7 grid — same four numbers as the Financial Tracking tab, one shared source
+// so the two views can never disagree. Demo targets 'pm' (same stated simplification as the PDF field).
+function saveSchFinCell(el){
+  var ek = el.getAttribute('data-fin-entry'), field = el.getAttribute('data-fin-field');
+  if(!ek || !field) return;
+  var v = (field==='proof') ? ((el.files && el.files[0]) ? el.files[0].name : '') : el.value;
+  if(field==='status' && v.indexOf('Status')===0) v = '';   // the form's placeholder option carries no value attribute
+  FIN.pm[ek] = FIN.pm[ek] || {};
+  FIN.pm[ek][field] = v;
+  refreshFin('pm');
+}
 var NOTIF = {
   student:[
     {t:'Your onboarding was approved — full portal unlocked', s:'2 Jul'},
@@ -5179,6 +5388,10 @@ function updateAppStatus(sel){
   if(!info) return;
   pill.className = 'pill '+info.cls;
   pill.innerHTML = '<span class="pdot"></span>'+info.text;
+  // Financial Tracking is gated on this status — re-render that application's blocks so the tab
+  // unlocks (or re-locks) the moment the status changes, on every surface at once.
+  const appKey = card.getAttribute('data-app');
+  if(appKey && typeof refreshFin==='function') refreshFin(appKey);
   // Reset the dropdown to its placeholder for next time.
   sel.value = '';
 }
@@ -5692,6 +5905,7 @@ function filterAStu(){
   if(typeof initTurnPills==='function') initTurnPills();
   if(typeof initDocNotesAll==='function') initDocNotesAll();
   if(typeof initAppPdfAll==='function') initAppPdfAll();
+  if(typeof initFinAll==='function') initFinAll();
   const p=new URLSearchParams(location.search);
   const role=p.get('role'); const screen=p.get('screen');
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
