@@ -5,12 +5,22 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-07-06 — Consistency + polish batch (audit fixes A1–A5, B2–B6) COMPLETE, render-verified, **pushed to `dev` (live on Pages)**. Same day (also live): Student read-only onboarding, Unified caseload, Onboarding-Approval + Doc-Preview cluster. Prior: Feedback Batches 1 & 2._
+_Last updated: 2026-08-20 — Fellow-to-Student Document Notes COMPLETE, render-verified, on branch `feature/fellow-document-notes` (not yet merged to `dev`). Prior: Consistency + polish batch (2026-07-06), Student read-only onboarding, Unified caseload, Onboarding-Approval + Doc-Preview cluster, Feedback Batches 1 & 2._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-08-20 — Fellow-to-Student Document Notes — DONE, render-verified, on `feature/fellow-document-notes` (not yet merged)
+
+New client feedback (`New Feedbacks/Module_02_Fellow_Document_Revert_Communication.md` — marked out-of-scope in its own header, scoped back in by Shweta on 2026-08-18). Spec/plan: `docs/superpowers/{specs,plans}/2026-08-18-fellow-document-note*`. Each task render-verified with headless Chrome (screenshots + a live click-through of the Add-note flow, including cross-surface propagation).
+
+- [x] **Engine:** `DOC_NOTES` (keyed by exact document display name) + `renderDocNotes`/`refreshDocNotes`/`initDocNotesAll`/`renderAddDocNote`/`sendDocNote`. One note pushes exactly one `NOTIF.student` entry; no `prompt()`.
+- [x] **Student `#documents` (9/9 documents):** read-only thread under each document — seeded with an existing note on Non-Creamy Layer Certificate (from Rahul More, matching its existing rejection reason). Zero-note documents show nothing extra.
+- [x] **Fellow `#fp-docs` (8/9 — Orphan Certificate intentionally skipped, N/A for this student):** "Add note" + thread on every applicable document. Verified live: adding a note on Domicile Certificate immediately updates the thread, re-appears identically on the Student's own screen (same underlying `DOC_NOTES` object), and queues a Fellow→Student notification.
+- [x] **Admin `#ap-docs` (9/9 documents):** same read-only thread as Student — no add/edit control, matching Admin's existing read-only posture on Document Verification.
+- Not done: no Frappe build (wireframe mock only) — production data model (child table "Document Communication Log" + Frappe `Notification Log`) is documented in the design doc, not built.
 
 ## 2026-07-06 — Consistency + polish batch (audit A1–A5, B2–B6) — DONE, render-verified, pushed to `dev` (live)
 
