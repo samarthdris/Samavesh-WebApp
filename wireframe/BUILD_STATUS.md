@@ -5,12 +5,25 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-08-20 — Fellow-to-Student Document Notes COMPLETE, render-verified, on branch `feature/fellow-document-notes` (not yet merged to `dev`). Prior: Consistency + polish batch (2026-07-06), Student read-only onboarding, Unified caseload, Onboarding-Approval + Doc-Preview cluster, Feedback Batches 1 & 2._
+_Last updated: 2026-08-20 — Scholarship Application PDF COMPLETE, render-verified, on branch `feature/scholarship-application-pdf` (not yet merged to `dev`). Also unmerged: Fellow-to-Student Document Notes on `feature/fellow-document-notes` (the PDF branch sits on top of it). Prior: Consistency + polish batch (2026-07-06), Student read-only onboarding, Unified caseload, Onboarding-Approval + Doc-Preview cluster, Feedback Batches 1 & 2._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-08-20 — Scholarship Application PDF — DONE, render-verified, on `feature/scholarship-application-pdf` (not yet merged)
+
+New client feedback (`New Feedbacks/Module 3.md` — "Point 2: Complete PDF Upload and Download Option in Scholarship Data Entry Form", Module 4 in the master FRD, In Scope / Medium). Spec/plan: `docs/superpowers/{specs,plans}/2026-08-19-scholarship-application-pdf*`. Render-verified with headless Chrome using a DOM probe over all 12 insertion points plus a live replace-the-file click-through.
+
+- [x] **Engine:** `APP_PDF` (keyed by the 4 existing `data-app` values `pm`/`ms`/`ab`/`smm`) + `renderAppPdf`/`refreshAppPdf`/`initAppPdfAll`/`saveSchFormPdf`, and a `.app-pdf-row` style. One file per application, seeded on PM only (`PMS-2026-0042-submitted.pdf`) so both the filled and the empty state are visible in the demo.
+- [x] **Single upload point:** the Scholarship Data Entry form's previously inert "Upload Submitted PDF" field is now wired (`onchange="saveSchFormPdf(this)"`) and is the *only* attach control in the wireframe. The second, redundant file input in the Fellow's MS record-submission mini-form was removed and replaced by that application's PDF host.
+- [x] **Fellow `#fp-apps` (4/4):** filled state shows filename + upload date + **Download** + **Replace** (jumps to the Data Entry form); empty state shows "Not yet uploaded" plus a clickable "Attach it via the Scholarship Data Entry form" link to the same form — no inert text, per hard rule 2.
+- [x] **Student `#scholarships` (4/4):** Download only, on the `.sch2-side` of each application card. No attach control. The GP/EBC "eligible, not applied" cards carry no `data-app` and correctly get nothing.
+- [x] **Admin `#ap-apps` (4/4):** Download only, read-only oversight posture — no Replace, and the Fellow-facing "attach it via…" wording is suppressed.
+- [x] **Cross-surface propagation verified live:** replacing the file updates the PM row on all three surfaces from the one in-memory `APP_PDF` object, with no page reload.
+- Stated simplification (also flagged in the design doc): the Data Entry form always writes to `APP_PDF.pm`, since the demo form isn't bound to a selected scholarship.
+- Not done: no Frappe build — the production data model (a single `Attach` field `application_pdf` on Scholarship Application, re-upload overwrites, no version history) is documented in the design doc, not built.
 
 ## 2026-08-20 — Fellow-to-Student Document Notes — DONE, render-verified, on `feature/fellow-document-notes` (not yet merged)
 

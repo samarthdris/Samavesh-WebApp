@@ -1158,6 +1158,8 @@ img{max-width:100%}
 .doc-note-text{color:var(--ink-soft);margin-top:2px}
 .doc-note-form{margin-top:6px}
 .doc-note-form textarea{width:100%;min-height:56px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:13px;box-sizing:border-box;margin-top:8px}
+.app-pdf-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px}
+.app-pdf-row .apn{color:var(--muted)}
 </style>
 </head>
 <body>
@@ -1552,6 +1554,7 @@ img{max-width:100%}
             <div class="s-stage">Stage 4 of 5 · Submitted 28 May</div>
             <div class="s-step">Department reviewing since 2 Jun</div>
             <div class="s-next">Next: await portal decision</div>
+            <div class="app-pdf-host" data-app="pm"></div>
           </div>
         </div>
 
@@ -1571,6 +1574,7 @@ img{max-width:100%}
             <span class="pill green" style="align-self:flex-start"><span class="pdot"></span>Ready to Submit</span>
             <div class="s-stage">Stage 3 of 5 · Documents 100% Accepted</div>
             <div class="s-next">Next: Fellow submits on the portal</div>
+            <div class="app-pdf-host" data-app="ms"></div>
           </div>
         </div>
 
@@ -1591,6 +1595,7 @@ img{max-width:100%}
             <div class="s-stage">Stage 2 of 5 · 6 of 8 Accepted</div>
             <div class="s-step">1 Pending · 1 Under Review</div>
             <button class="btn btn-gold btn-sm" data-go="documents">View documents</button>
+            <div class="app-pdf-host" data-app="ab"></div>
           </div>
         </div>
 
@@ -1612,6 +1617,7 @@ img{max-width:100%}
             <div class="s-stage">Stage 4 of 5 · was Submitted</div>
             <div class="s-step" style="color:var(--red)">Rejected 4 Jun</div>
             <div class="s-next">Next: re-submission expected by 14 Jun</div>
+            <div class="app-pdf-host" data-app="smm"></div>
           </div>
         </div>
 
@@ -2973,6 +2979,7 @@ img{max-width:100%}
                   <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
                   <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
                 </div>
+                <div class="app-pdf-host" data-app="pm" data-can-replace></div>
                 <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
                   <select class="btn btn-ghost btn-sm" style="font-weight:600" onchange="updateAppStatus(this)">
                     <option value="">Update status…</option>
@@ -3014,7 +3021,7 @@ img{max-width:100%}
                   <div class="fg"><label>Sanctioned / Expected Amount (₹)<span class="req">*</span></label><input type="number" value="25000" /></div>
                   <div class="fg"><label>Bank Account (for disbursal)<span class="req">*</span></label><input placeholder="As per student profile" /></div>
                   <div class="fg"><label>IFSC<span class="req">*</span></label><input placeholder="e.g. SBIN0001234" /></div>
-                  <div class="fg full"><label>Submitted Application PDF<span class="req">*</span></label><input type="file" /><span class="hint">Final submitted PDF · mandatory proof per Fellow SOP</span></div>
+                  <div class="fg full"><label>Submitted Application PDF<span class="req">*</span></label><div class="app-pdf-host" data-app="ms" data-can-replace></div><span class="hint">One PDF per application — the same file shown on Applications and to the student.</span></div>
                 </div>
                 <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="this.outerHTML='<span class=&quot;pill green&quot;><span class=&quot;pdot&quot;></span>Submitted &amp; recorded</span>'">Submit &amp; Record Application</button>
               </div>
@@ -3040,6 +3047,7 @@ img{max-width:100%}
               </div>
               <div class="app-acc-body">
                 <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px">6 of 8 documents Accepted · 2 still being arranged (Caste Validity, Income proof). Submit on the portal once all mandatory documents are Accepted.</p>
+                <div class="app-pdf-host" data-app="ab" data-can-replace></div>
                 <div class="btnrow" style="display:flex;gap:10px;flex-wrap:wrap">
                   <button class="btn btn-primary btn-sm" type="button" data-go="f-docapp">Open Documentation Application</button>
                   <button class="btn btn-ghost btn-sm" type="button" onclick="event.stopPropagation();go('f-student');setTimeout(function(){var t=document.querySelectorAll('#f-student .tabs button');if(t[2])ftab(t[2],'fp-docs');},100)">View documents</button>
@@ -3074,6 +3082,7 @@ img{max-width:100%}
                   <div class="tl-item active"><div class="knob"></div><div class="t">Re-procurement in progress</div><div class="d">Documentation Application opened with the Tehsil office · expected 14 Jun</div></div>
                   <div class="tl-item future"><div class="t">Re-submit on portal</div><div class="d">Once Caste Validity is Accepted</div></div>
                 </div>
+                <div class="app-pdf-host" data-app="smm" data-can-replace></div>
                 <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
                   <button class="btn btn-primary btn-sm" type="button" data-go="f-scholarship">Correct &amp; re-submit on portal</button>
                   <button class="btn btn-ghost btn-sm" type="button" data-go="f-docapp">Open Documentation Application</button>
@@ -3394,7 +3403,7 @@ img{max-width:100%}
                   <select onchange="onAppStatus(this)"><option value="">Select status</option><option>Under Scrutiny</option><option>Application Approved · funds awaited</option><option>Benefits Received</option><option>Rejected</option><option>Re-apply</option></select></div>
                 <div class="q full"><div class="qen">Total Benefits <span class="req">*</span></div><div class="qhelp" style="margin-top:0">Split across the student and the institute.</div>
                   <div class="form-grid" style="margin-top:10px"><div class="fg"><label>For Student (₹)</label><input type="number" placeholder="0" /></div><div class="fg"><label>For Institute (₹)</label><input type="number" placeholder="0" /></div></div></div>
-                <div class="q full" id="uploadPdfQ"><div class="qen">Upload Submitted PDF <span class="req">*</span></div><input type="file" accept="application/pdf" /><div class="qhelp">Final submitted application PDF (proof). PDF, max 10 MB.</div></div>
+                <div class="q full" id="uploadPdfQ"><div class="qen">Upload Submitted PDF <span class="req">*</span></div><input type="file" accept="application/pdf" onchange="saveSchFormPdf(this)" /><div class="qhelp">Final submitted application PDF (proof). PDF, max 10 MB. This becomes the one file downloadable from Applications and the student's Scholarships screen.</div></div>
                 <div class="q full" id="benefitsProofQ" style="display:none"><div class="qen">Proof of Benefits Received <span class="req">*</span></div><input type="file" accept="application/pdf,image/*" /><div class="qhelp">Screenshot/document showing funds received. PDF/JPG/PNG, max 10 MB.</div></div>
               </div>
             </section>
@@ -3949,6 +3958,7 @@ img{max-width:100%}
                   <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
                   <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
                 </div>
+                <div class="app-pdf-host" data-app="pm"></div>
               </div>
             </div>
 
@@ -3972,6 +3982,7 @@ img{max-width:100%}
               </div>
               <div class="app-acc-body">
                 <p style="font-size:13px;color:var(--ink-soft);margin:0">All documents Accepted. Awaiting Fellow Rahul More to submit on the portal and record the application details.</p>
+                <div class="app-pdf-host" data-app="ms"></div>
               </div>
             </div>
 
@@ -3995,6 +4006,7 @@ img{max-width:100%}
               </div>
               <div class="app-acc-body">
                 <p style="font-size:13px;color:var(--ink-soft);margin:0">2 documents still pending (Non-Creamy Layer: Rejected, awaiting re-upload · Ration Card: Pending). Documents tab shows individual status. Fellow to upload before this can progress.</p>
+                <div class="app-pdf-host" data-app="ab"></div>
               </div>
             </div>
 
@@ -4019,6 +4031,7 @@ img{max-width:100%}
               <div class="app-acc-body">
                 <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:0 0 12px"><span>Application ID: MH-SM-2026-08812</span><span>Originally submitted 20 May</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun</span></div>
                 <div style="background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px"><b style="color:#B91C1C">Portal rejection reason:</b> "Caste Validity Certificate not clearly legible — re-upload required." Awaiting Fellow Rahul to re-procure the document and re-submit on the portal.</div>
+                <div class="app-pdf-host" data-app="smm"></div>
                 <p style="font-size:12.5px;color:var(--muted);margin:0">Admin oversight only — Fellow is responsible for correcting the document and re-submitting (RBAC-05).</p>
               </div>
             </div>
@@ -5009,6 +5022,38 @@ function sendDocNote(sendBtn, key){
   var addBtn = document.querySelector('.doc-note-add[data-doc="'+key.replace(/"/g,'\\"')+'"]');
   if(addBtn) addBtn.style.display='';
 }
+// Scholarship Application PDF — one file per application (pm/ms/ab/smm), Fellow-attached via the Data Entry form.
+var APP_PDF = {
+  pm: {name:'PMS-2026-0042-submitted.pdf', on:'28 May'}
+};
+function renderAppPdf(key, canReplace){
+  var f = APP_PDF[key];
+  if(!f){
+    return '<div class="app-pdf-row"><span class="apn">📄 Application PDF: Not yet uploaded</span>'+
+      (canReplace ? '<a href="#" onclick="event.preventDefault();go(\'f-scholarship\')">Attach it via the Scholarship Data Entry form</a>' : '')+
+      '</div>';
+  }
+  return '<div class="app-pdf-row"><span>📄 Application PDF: <b>'+f.name+'</b></span><span class="apn">Uploaded '+f.on+'</span>'+
+    '<a href="#" onclick="event.preventDefault();downloadDoc(\''+f.name+'\')">Download</a>'+
+    (canReplace ? ' <a href="#" onclick="event.preventDefault();go(\'f-scholarship\')">Replace</a>' : '')+
+    '</div>';
+}
+function refreshAppPdf(key){
+  document.querySelectorAll('.app-pdf-host[data-app="'+key+'"]').forEach(function(host){
+    host.innerHTML = renderAppPdf(key, host.hasAttribute('data-can-replace'));
+  });
+}
+function initAppPdfAll(){
+  document.querySelectorAll('.app-pdf-host').forEach(function(host){
+    host.innerHTML = renderAppPdf(host.getAttribute('data-app'), host.hasAttribute('data-can-replace'));
+  });
+}
+// Called from the Scholarship Data Entry form's Upload field (demo always targets 'pm' — see design doc's stated simplification).
+function saveSchFormPdf(input){
+  if(!input.files || !input.files[0]) return;
+  APP_PDF.pm = {name:input.files[0].name, on:'today'};
+  refreshAppPdf('pm');
+}
 var NOTIF = {
   student:[
     {t:'Your onboarding was approved — full portal unlocked', s:'2 Jul'},
@@ -5646,6 +5691,7 @@ function filterAStu(){
   if(typeof initFellowSubdocs==='function') initFellowSubdocs();
   if(typeof initTurnPills==='function') initTurnPills();
   if(typeof initDocNotesAll==='function') initDocNotesAll();
+  if(typeof initAppPdfAll==='function') initAppPdfAll();
   const p=new URLSearchParams(location.search);
   const role=p.get('role'); const screen=p.get('screen');
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
