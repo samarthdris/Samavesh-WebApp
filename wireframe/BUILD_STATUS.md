@@ -5,12 +5,26 @@ Single file: `wireframe/index.html`. Role-based login (Student / Fellow / Progra
 **Live (GitHub Pages, served from `dev` root):** https://samarthdris.github.io/Samavesh-WebApp/wireframe/
 **Instant fallback (htmlpreview):** https://htmlpreview.github.io/?https://github.com/samarthdris/Samavesh-WebApp/blob/dev/wireframe/index.html
 
-_Last updated: 2026-08-20 — MIS Dashboard + Fellow workload cards COMPLETE, render-verified, on branch `feature/scholarship-application-pdf`. Same branch also carries Financial Tracking, Scholarship Application PDF and Fellow-to-Student Document Notes. Same branch also carries Scholarship Application PDF and Fellow-to-Student Document Notes (none of the three merged to `dev` yet). Also unmerged: Fellow-to-Student Document Notes on `feature/fellow-document-notes` (the PDF branch sits on top of it). Prior: Consistency + polish batch (2026-07-06), Student read-only onboarding, Unified caseload, Onboarding-Approval + Doc-Preview cluster, Feedback Batches 1 & 2._
+_Last updated: 2026-08-21 — Fellow Target Assignment COMPLETE, render-verified, on branch `feature/scholarship-application-pdf`. Prior on the same branch: MIS Dashboard + Fellow workload cards, render-verified, on branch `feature/scholarship-application-pdf`. Same branch also carries Financial Tracking, Scholarship Application PDF and Fellow-to-Student Document Notes. Same branch also carries Scholarship Application PDF and Fellow-to-Student Document Notes (none of the three merged to `dev` yet). Also unmerged: Fellow-to-Student Document Notes on `feature/fellow-document-notes` (the PDF branch sits on top of it). Prior: Consistency + polish batch (2026-07-06), Student read-only onboarding, Unified caseload, Onboarding-Approval + Doc-Preview cluster, Feedback Batches 1 & 2._
 
 ## Legend
 - [x] done & in file
 - [~] in progress
 - [ ] not started
+
+## 2026-08-21 — Fellow Target Assignment — DONE, render-verified, on `feature/scholarship-application-pdf` (not yet merged)
+
+Source: `New Feedbacks/Point_06_Target_Assign_to_Fellow_Flow.md` ("Point 6", Module 12 in the master FRD). ⚠️ The document marks itself **Out of Scope / Low, "do not begin until scoped in"** — built on Shweta's standing instruction that every `New Feedbacks/` document gets implemented. Spec/plan: `docs/superpowers/{specs,plans}/2026-08-21-fellow-targets*`.
+
+- [x] **Its "Not built" claim is accurate** — unlike the last three documents, no target concept existed anywhere in the wireframe.
+- [x] **Admin sets targets on Fellows & Users** (Shweta's choice — no new nav item): a Targets button per fellow opens an inline panel row with a period selector (Jul / Aug / Sep 2026) and one row per metric — target input · computed actual · progress bar · shortfall — plus Save and per-metric Clear.
+- [x] **One record per fellow × period × metric**, as the document specifies rather than one record holding every metric. Verified: switching period loads that period's own values and switching back preserves them.
+- [x] **"No target set" is rendered distinctly from a target of 0** — the document's stated edge case. Seed data deliberately leaves Dhanashree's Documents Collected unset so the state is visible on first load without the reviewer having to create it. A blank input stays unset on save; `0` is stored as a real zero.
+- [x] **Fellow sees their own target-vs-actual** — a "My targets — <period>" strip under the 12 workload cards, same three metrics, same numbers, **zero editable controls** (verified).
+- [x] **Actuals are computed, never entered** (per the document). *Applications Submitted* is **live**: this fellow's `CASES` rows carrying a real application ID — an ID exists only once submitted on the portal — plus a per-fellow baseline for cases outside the demo sample. The baselines are set so each fellow's total **matches the Submitted column already in the MIS Fellow-wise table** (Rahul reads 12 both places); without the baseline a live-only count would have read 6 against the table's 12. Verified live: giving one more case an application ID moved the actual 12 → 13 on both surfaces.
+- Mock (declared): *Documents Collected* and *Students Onboarded* actuals — the wireframe holds no per-fellow document-case array. Students are seeded to the values already in the Fellows & Users table (24 / 19 / 22 / 17), so no figure contradicts what's on screen.
+- Deliberately **not** added to the MIS Fellow-wise table as extra columns — that would put the same target numbers on a third surface (hard rule 2).
+- Not done: no Frappe build. Production model documented in the design doc — Master-type DocType "Fellow Target" (`fellow`, `period`, `metric_type`, `target_value`), `actual_value` computed on read and branching to a different source table per metric, Admin-only write, no workflow.
 
 ## 2026-08-20 — Fellow workload cards (12) — DONE, render-verified, on `feature/scholarship-application-pdf` (not yet merged)
 
