@@ -1186,6 +1186,32 @@ img{max-width:100%}
 .fdash-mini .mb{flex:1;background:linear-gradient(180deg,var(--teal-600),var(--teal-700));border-radius:3px 3px 0 0;min-height:2px}
 .fdash-mini .mbw{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;height:100%}
 .fdash-mini .mbl{font-size:9.5px;color:var(--muted)}
+/* HRMS — leave & holidays */
+.hr-sec{margin-top:22px}
+.hr-sec > .hrh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.hr-sec > .hrh h3{font-size:17px;margin:0}
+.hr-sec > .hrh span{font-size:12.5px;color:var(--muted)}
+.leave-bal{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.lb-tile{flex:1;min-width:150px;background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.lb-tile .lbt{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.lb-tile .lbv{font-size:21px;font-weight:700;margin-top:4px}
+.lb-tile .lbs{font-size:11.5px;color:var(--muted);margin-top:2px}
+.lb-tile input{width:64px;border:1.5px solid var(--line);border-radius:8px;padding:5px 7px;font-family:inherit;font-size:12.5px;background:var(--paper)}
+.leave-form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:14px}
+.leave-form label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:4px;font-weight:600}
+.leave-form select,.leave-form input{border:1.5px solid var(--line);border-radius:8px;padding:7px 9px;font-family:inherit;font-size:12.5px;background:var(--paper)}
+.leave-form .lf-reason{flex:1;min-width:180px}
+.leave-form .lf-reason input{width:100%;box-sizing:border-box}
+.lreq{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:10px 0;border-top:1px dashed var(--line);font-size:12.5px}
+.lreq .lrw{flex:0 0 128px;width:128px;font-weight:600}
+.lreq .lrd{flex:0 0 190px;width:190px;color:var(--ink-soft)}
+.lreq .lrr{flex:1;min-width:140px;color:var(--muted)}
+.lreq .lra{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lreq .lra input{border:1.5px solid var(--line);border-radius:8px;padding:6px 8px;font-family:inherit;font-size:12px;background:var(--paper);width:150px}
+.hol-row{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px dashed var(--line);font-size:12.5px}
+.hol-row .hd{flex:0 0 120px;width:120px;font-weight:600}
+.sample-tag{background:var(--marigold-50);color:#8a6212;border:1px solid #f0d9a8;border-radius:999px;padding:3px 9px;font-size:11px;font-weight:600}
+.att-status-sel{border:1.5px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:12.5px;background:var(--paper);margin-right:10px}
 /* fellow targets (target vs actual) */
 .tgt-panel td{background:var(--cream);padding:14px 16px !important}
 .tgt-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
@@ -2294,7 +2320,7 @@ img{max-width:100%}
             <div class="att-state" id="fAttState">You're <b>logged out</b>. Log in to start your day.</div>
             <a href="#" data-go="f-attendance" style="display:inline-block;margin-top:6px;font-size:12.5px;color:var(--teal-700);font-weight:600;text-decoration:none">View my attendance history →</a>
           </div>
-          <button class="att-btn in" id="fAttBtn" onclick="fellowPunch(this)">Log In</button>
+          <div style="display:flex;align-items:center;flex-wrap:wrap"><select class="att-status-sel" id="fAttStatusSel" title="Your work status for today"><option>Present</option><option>Work From Home</option><option>Absent</option></select><button class="att-btn in" id="fAttBtn" onclick="fellowPunch(this)">Log In</button></div>
         </div>
 
         <!-- Workload cards (12, per New Feedbacks/Point_08_Fellow_Interface_Cards.md). Eight figures are
@@ -3212,11 +3238,11 @@ img{max-width:100%}
 
       <!-- ===== FELLOW MY ATTENDANCE (ID 7) ===== -->
       <section class="screen" id="f-attendance">
-        <div class="page-h"><div class="eyebrow">Attendance</div><h1>My Attendance</h1><p>Your login/logout history. Log in or out from the button on your Home dashboard. Leaves &amp; holidays are managed by Admin.</p></div>
+        <div class="page-h"><div class="eyebrow">Attendance</div><h1>My Attendance</h1><p>Your login/logout history — pick your work status when you log in. Apply for leave and see your balance and your state's holiday list below.</p></div>
 
         <div class="misfilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
           <input class="fatt-date" type="date" onchange="fAttFilter()" />
-          <select class="fatt-status" onchange="fAttFilter()"><option value="">All statuses</option><option>Present</option><option>On Leave</option><option>Absent</option></select>
+          <select class="fatt-status" onchange="fAttFilter()"><option value="">All statuses</option><option>Present</option><option>Work From Home</option><option>On Leave</option><option>Absent</option></select>
           <button class="btn btn-ghost btn-sm" onclick="fAttClear()">Clear</button>
           <span id="fAttFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
         </div>
@@ -3242,7 +3268,11 @@ img{max-width:100%}
           </tbody>
         </table>
         <div class="empty" id="fAttEmpty" style="display:none;padding:18px;text-align:center;color:var(--muted)">No records match this filter.</div>
+
         </div>
+
+        <!-- Leave (Point 9): balance, application, own-state holidays. -->
+        <div id="myLeave"></div>
       </section>
 
       <!-- ===== FELLOW PROFILE ===== -->
@@ -4258,7 +4288,7 @@ img{max-width:100%}
       <!-- ===== ADMIN ATTENDANCE (ID 7) ===== -->
       <section class="screen" id="a-attendance">
         <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
-          <div><div class="eyebrow">Workspace</div><h1>Attendance</h1><p>Who's working now, plus each Fellow's daily login/logout record. Leaves &amp; holidays are managed manually.</p></div>
+          <div><div class="eyebrow">Workspace</div><h1>Attendance</h1><p>Who's working now, plus each Fellow's daily login/logout record. Approve leave, adjust balances and schedule state-wise holidays below.</p></div>
           <button class="btn btn-ghost" onclick="alert('Export — downloads the filtered attendance as Excel (wireframe stub).')"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Export</button>
         </div>
 
@@ -4281,7 +4311,7 @@ img{max-width:100%}
         <div class="misfilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
           <select class="att-fellow" onchange="attFilter()"><option value="">All Fellows</option><option>Rahul More</option><option>Priya Kulkarni</option><option>Sunil Kadam</option></select>
           <input class="att-date" type="date" onchange="attFilter()" />
-          <select class="att-status" onchange="attFilter()"><option value="">All statuses</option><option>Present</option><option>On Leave</option><option>Absent</option></select>
+          <select class="att-status" onchange="attFilter()"><option value="">All statuses</option><option>Present</option><option>Work From Home</option><option>On Leave</option><option>Absent</option></select>
           <button class="btn btn-ghost btn-sm" onclick="attClear()">Clear</button>
           <span id="attFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
         </div>
@@ -4300,7 +4330,11 @@ img{max-width:100%}
           </tbody>
         </table>
         <div class="empty" id="attEmpty" style="display:none;padding:18px;text-align:center;color:var(--muted)">No attendance records match this filter.</div>
+
         </div>
+
+        <!-- Leave approval, balance adjustment and the state holiday calendar (Point 9). -->
+        <div id="adminLeave"></div>
       </section>
 
       <!-- ===== ADMIN PROFILE ===== -->
@@ -4893,15 +4927,59 @@ function fellowPunch(btn){
     var now = new Date();
     var t = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
     var st = document.getElementById('fAttState');
+    // Work status is chosen by the Fellow at check-in (Point 9) — never inferred from location.
+    var sel = document.getElementById('fAttStatusSel');
+    var status = sel ? sel.value : 'Present';
     if(!FELLOW_LOGGED_IN){
       FELLOW_LOGGED_IN = true;
       btn.className='att-btn out'; btn.textContent='Log Out';
-      st.innerHTML='<span class="att-dot" style="background:var(--green)"></span>Logged in <b>'+t+'</b> · '+loc;
+      st.innerHTML='<span class="att-dot" style="background:var(--green)"></span>Logged in <b>'+t+'</b> · <b>'+status+'</b> · '+loc;
+      punchAttendanceRow(status, t, loc);
+      if(sel) sel.disabled = true;                      // the day's status is fixed once you check in
     } else {
       FELLOW_LOGGED_IN = false;
       btn.className='att-btn in'; btn.textContent='Log In';
-      st.innerHTML='Logged out <b>'+t+'</b> · thanks for today.';
+      st.innerHTML='Logged out <b>'+t+'</b> · recorded as <b>'+status+'</b> · thanks for today.';
+      punchAttendanceRow(status, null, loc, t);
+      if(sel) sel.disabled = false;
     }
+  });
+}
+// Checking in writes today's row into both attendance tables; checking out fills Out and gross hours,
+// so a punch produces a visible record rather than only changing the card's label.
+function punchAttendanceRow(status, inTime, loc, outTime){
+  var now = new Date();
+  var iso = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  var fellow = (typeof hrFellow==='function') ? hrFellow() : 'Rahul More';
+  var pill = (typeof statusPill==='function') ? statusPill(status)
+           : '<span class="pill green"><span class="pdot"></span>'+status+'</span>';
+  var pretty = (typeof hrDate==='function') ? hrDate(iso) : iso;
+  var hours = function(a,b){
+    if(!a||!b) return '0.0';
+    var p=function(x){ var m=x.match(/(\d+):(\d+)\s*(AM|PM)/i); if(!m) return 0;
+      var h=Number(m[1])%12 + (/PM/i.test(m[3])?12:0); return h+Number(m[2])/60; };
+    return Math.max(0, p(b)-p(a)).toFixed(1);
+  };
+  [{tb:document.querySelector('#fAttTable tbody'), admin:false},
+   {tb:document.querySelector('#attTable tbody'),  admin:true}].forEach(function(t){
+    if(!t.tb) return;
+    var sel = t.admin ? 'tr[data-fellow="'+fellow+'"][data-date="'+iso+'"]' : 'tr[data-date="'+iso+'"]';
+    var row = t.tb.querySelector(sel);
+    if(!row){
+      row = document.createElement('tr');
+      row.setAttribute('data-date', iso);
+      if(t.admin) row.setAttribute('data-fellow', fellow);
+      t.tb.insertBefore(row, t.tb.firstChild);
+    }
+    row.setAttribute('data-status', status);
+    var inT  = inTime  || row.getAttribute('data-in')  || '—';
+    var outT = outTime || row.getAttribute('data-out') || '—';
+    if(inTime)  row.setAttribute('data-in', inTime);
+    if(outTime) row.setAttribute('data-out', outTime);
+    var h = hours(row.getAttribute('data-in'), row.getAttribute('data-out'));
+    row.innerHTML = t.admin
+      ? '<td>'+fellow+'</td><td>'+pretty+'</td><td>'+pill+'</td><td>'+inT+'</td><td>'+outT+'</td><td>'+h+'</td><td>'+(loc||'—')+'</td>'
+      : '<td>'+pretty+'</td><td>'+inT+'</td><td>'+outT+'</td><td>'+h+'</td><td>'+pill+'</td><td>'+(loc||'—')+'</td>';
   });
 }
 function attFilter(){
@@ -5464,6 +5542,233 @@ var FDASH = {
   },
   months: [{m:'Mar',v:1},{m:'Apr',v:0},{m:'May',v:2},{m:'Jun',v:1},{m:'Jul',v:3},{m:'Aug',v:2}]
 };
+// ---- HRMS: attendance status, leave and holidays (Point 9 / Module 13) ----
+// Check-in choices are the client's three. "On Leave" is NOT a check-in choice — it is written only by
+// an approved leave request, which is already what it means in the existing attendance tables.
+var ATT_STATUS_CHOICES = ['Present','Work From Home','Absent'];
+var LEAVE_TYPES = ['Casual','Sick','Earned'];
+// Covers BOTH fellow rosters that already exist in this file — Fellows & Users lists Rahul / Sandip /
+// Dhanashree / Vaibhav, while the Attendance screen's own records also carry Priya Kulkarni and Sunil
+// Kadam. Everyone visible on either screen therefore has a balance; the roster split itself is a
+// pre-existing drift recorded as a watch-item in BUILD_STATUS, not something this module invented.
+var LEAVE_BALANCE = {
+  'Rahul More':     {Casual:{total:12,used:4}, Sick:{total:8,used:2}, Earned:{total:15,used:6}},
+  'Sandip K':       {Casual:{total:12,used:6}, Sick:{total:8,used:1}, Earned:{total:15,used:9}},
+  'Dhanashree O':   {Casual:{total:12,used:2}, Sick:{total:8,used:4}, Earned:{total:15,used:3}},
+  'Vaibhav D':      {Casual:{total:12,used:5}, Sick:{total:8,used:0}, Earned:{total:15,used:7}},
+  'Priya Kulkarni': {Casual:{total:12,used:3}, Sick:{total:8,used:3}, Earned:{total:15,used:4}},
+  'Sunil Kadam':    {Casual:{total:12,used:7}, Sick:{total:8,used:2}, Earned:{total:15,used:5}}
+};
+// Seeded so both a Pending and an already-Approved request are visible on first load. The approved Sick
+// day is 30 Jun 2026 — the same date the Fellow's attendance table already shows as "On Leave".
+var LEAVE_REQUESTS = [
+  {id:'LV-2026-004', fellow:'Rahul More', type:'Casual', from:'2026-08-24', to:'2026-08-25', days:2, reason:'Family function at home town', status:'Pending', note:''},
+  {id:'LV-2026-003', fellow:'Sandip K',   type:'Casual', from:'2026-08-27', to:'2026-08-27', days:1, reason:'Ganesh Chaturthi travel', status:'Pending', note:''},
+  {id:'LV-2026-002', fellow:'Rahul More', type:'Sick',   from:'2026-06-30', to:'2026-06-30', days:1, reason:'Fever', status:'Approved', note:'Approved — get well.'}
+];
+// State-specific holiday lists. The second entry is a clearly-marked sample placeholder: the wireframe's
+// source documents only ever reference Maharashtra, so a second real state would be invented vocabulary.
+var HOLIDAYS = {
+  'Maharashtra': [
+    {date:'2026-05-01', name:'Maharashtra Day'},
+    {date:'2026-08-15', name:'Independence Day'},
+    {date:'2026-08-27', name:'Ganesh Chaturthi'},
+    {date:'2026-10-02', name:'Gandhi Jayanti'}
+  ],
+  'Sample State (placeholder)': [
+    {date:'2026-08-15', name:'Independence Day'},
+    {date:'2026-10-02', name:'Gandhi Jayanti'}
+  ]
+};
+var HOLIDAY_STATE_SEL = 'Maharashtra';
+var FELLOW_STATE = {'Rahul More':'Maharashtra','Sandip K':'Maharashtra','Dhanashree O':'Maharashtra','Vaibhav D':'Maharashtra','Priya Kulkarni':'Maharashtra','Sunil Kadam':'Maharashtra'};
+function hrFellow(){ return (typeof CASE_FELLOW!=='undefined') ? CASE_FELLOW : 'Rahul More'; }
+function hrDate(iso){
+  if(!iso) return '—';
+  var p = String(iso).split('-'); if(p.length!==3) return iso;
+  var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return Number(p[2])+' '+m[Number(p[1])-1]+' '+p[0];
+}
+function hrDayCount(from, to){
+  var a = new Date(from), b = new Date(to);
+  return Math.round((b-a)/86400000) + 1;
+}
+function hrDateRange(from, to){
+  var out=[], a=new Date(from), b=new Date(to);
+  while(a<=b){ out.push(a.toISOString().slice(0,10)); a=new Date(a.getTime()+86400000); }
+  return out;
+}
+function leaveRemaining(fellow, type){
+  var b = (LEAVE_BALANCE[fellow]||{})[type] || {total:0,used:0};
+  return b.total - b.used;
+}
+function statusPill(status){
+  var cls = status==='Approved' ? 'green' : (status==='Rejected' ? 'red' : 'amber');
+  return '<span class="pill '+cls+'"><span class="pdot"></span>'+status+'</span>';
+}
+// Write attendance rows for a date range — used when a leave is approved, which is the only way a row
+// can read "On Leave". Writes into the Fellow's own table (if it is their leave) and the Admin table.
+function addAttendanceRows(fellow, dates, status){
+  dates.forEach(function(iso){
+    if(fellow===hrFellow()){
+      var fb = document.querySelector('#fAttTable tbody');
+      if(fb && !fb.querySelector('tr[data-date="'+iso+'"][data-status="'+status+'"]')){
+        var tr = document.createElement('tr');
+        tr.setAttribute('data-date', iso); tr.setAttribute('data-status', status);
+        tr.innerHTML = '<td>'+hrDate(iso)+'</td><td>—</td><td>—</td><td>0.0</td><td>'+statusPill(status)+'</td><td>—</td>';
+        fb.insertBefore(tr, fb.firstChild);
+      }
+    }
+    var ab = document.querySelector('#attTable tbody');
+    if(ab && !ab.querySelector('tr[data-fellow="'+fellow+'"][data-date="'+iso+'"][data-status="'+status+'"]')){
+      var tr2 = document.createElement('tr');
+      tr2.setAttribute('data-fellow', fellow); tr2.setAttribute('data-date', iso); tr2.setAttribute('data-status', status);
+      tr2.innerHTML = '<td>'+fellow+'</td><td>'+hrDate(iso)+'</td><td>'+statusPill(status)+'</td><td>—</td><td>—</td><td>0.0</td><td>—</td>';
+      ab.insertBefore(tr2, ab.firstChild);
+    }
+  });
+}
+// ---- Fellow: balance, apply, my requests, my state's holidays ----
+function renderMyLeave(){
+  var host = document.getElementById('myLeave');
+  if(!host) return;
+  var f = hrFellow(), state = FELLOW_STATE[f] || 'Maharashtra';
+  var tiles = LEAVE_TYPES.map(function(t){
+    var b = (LEAVE_BALANCE[f]||{})[t] || {total:0,used:0};
+    return '<div class="lb-tile"><div class="lbt">'+t+' leave</div><div class="lbv">'+(b.total-b.used)+'</div>'+
+      '<div class="lbs">of '+b.total+' · '+b.used+' used</div></div>';
+  }).join('');
+  var mine = LEAVE_REQUESTS.filter(function(r){ return r.fellow===f; });
+  var reqs = mine.length ? mine.map(function(r){
+    return '<div class="lreq"><span class="lrw">'+r.type+'</span>'+
+      '<span class="lrd">'+hrDate(r.from)+(r.from!==r.to?' – '+hrDate(r.to):'')+' · '+r.days+' day'+(r.days===1?'':'s')+'</span>'+
+      '<span class="lrr">'+r.reason+(r.note?' — <i>'+r.note+'</i>':'')+'</span>'+statusPill(r.status)+'</div>';
+  }).join('') : '<div class="lreq" style="color:var(--muted)">No leave applied for yet.</div>';
+  var hols = (HOLIDAYS[state]||[]).map(function(h){
+    return '<div class="hol-row"><span class="hd">'+hrDate(h.date)+'</span><span>'+h.name+'</span></div>';
+  }).join('');
+  host.innerHTML =
+    '<div class="hr-sec"><div class="hrh"><h3>My leave</h3><span>Balance, applications and your state\'s holiday list</span></div>'+
+      '<div class="leave-bal">'+tiles+'</div>'+
+      '<div class="leave-form">'+
+        '<div><label>Leave type</label><select id="lvType">'+LEAVE_TYPES.map(function(t){return '<option>'+t+'</option>';}).join('')+'</select></div>'+
+        '<div><label>From</label><input type="date" id="lvFrom" /></div>'+
+        '<div><label>To</label><input type="date" id="lvTo" /></div>'+
+        '<div class="lf-reason"><label>Reason</label><input type="text" id="lvReason" placeholder="Why you need the leave" /></div>'+
+        '<button class="btn btn-primary btn-sm" type="button" onclick="applyLeave(this)">Apply for leave</button>'+
+      '</div>'+
+      '<div style="font-size:13px;font-weight:600;margin-bottom:2px">My requests</div>'+reqs+
+      '<div style="font-size:13px;font-weight:600;margin:14px 0 2px">Holidays · '+state+
+        (state.indexOf('placeholder')>-1 ? ' <span class="sample-tag">sample</span>' : '')+'</div>'+hols+
+    '</div>';
+}
+function applyLeave(btn){
+  var type = document.getElementById('lvType').value;
+  var from = document.getElementById('lvFrom').value;
+  var to   = document.getElementById('lvTo').value;
+  var reason = document.getElementById('lvReason').value.trim();
+  if(!from){ alert('From date is required.'); return; }
+  if(!to){ alert('To date is required.'); return; }
+  if(new Date(to) < new Date(from)){ alert('The To date cannot be before the From date.'); return; }
+  if(!reason){ alert('A reason is required — the Program Admin sees it when approving.'); return; }
+  var days = hrDayCount(from, to);
+  var f = hrFellow();
+  if(days > leaveRemaining(f, type)){
+    alert(days+' day'+(days===1?'':'s')+' requested but only '+leaveRemaining(f,type)+' '+type+' leave remaining. Applying anyway is not allowed.');
+    return;
+  }
+  LEAVE_REQUESTS.unshift({id:'LV-2026-'+(100+LEAVE_REQUESTS.length), fellow:f, type:type, from:from, to:to,
+    days:days, reason:reason, status:'Pending', note:''});
+  renderMyLeave();                       // balance deliberately untouched — only approval moves it
+  if(typeof renderAdminLeave==='function') renderAdminLeave();
+  alert('Leave applied — '+days+' day'+(days===1?'':'s')+' of '+type+' leave sent to the Program Admin. Your balance changes only once it is approved.');
+}
+// ---- Admin: request queue, balance adjustment, holiday calendar ----
+function renderAdminLeave(){
+  var host = document.getElementById('adminLeave');
+  if(!host) return;
+  var pending = LEAVE_REQUESTS.filter(function(r){ return r.status==='Pending'; });
+  var decided = LEAVE_REQUESTS.filter(function(r){ return r.status!=='Pending'; });
+  var row = function(r, actions){
+    return '<div class="lreq"><span class="lrw">'+r.fellow+'</span>'+
+      '<span class="lrd">'+r.type+' · '+hrDate(r.from)+(r.from!==r.to?' – '+hrDate(r.to):'')+' · '+r.days+'d</span>'+
+      '<span class="lrr">'+r.reason+(r.note?' — <i>'+r.note+'</i>':'')+'</span>'+
+      (actions
+        ? '<span class="lra"><input type="text" placeholder="Note (optional)" data-note="'+r.id+'" />'+
+          '<button class="btn btn-primary btn-sm" type="button" onclick="decideLeave(\''+r.id+'\',\'approve\')">Approve</button>'+
+          '<button class="btn btn-ghost btn-sm" type="button" onclick="decideLeave(\''+r.id+'\',\'reject\')">Reject</button></span>'
+        : statusPill(r.status))+'</div>';
+  };
+  var grid = Object.keys(LEAVE_BALANCE).map(function(f){
+    return '<div class="lb-tile"><div class="lbt">'+f+'</div>'+
+      LEAVE_TYPES.map(function(t){
+        var b = LEAVE_BALANCE[f][t];
+        return '<div class="lbs" style="margin-top:6px">'+t+': <input type="number" min="0" value="'+b.total+'" '+
+          'onchange="adjustBalance(\''+f+'\',\''+t+'\',this.value)" /> total · '+b.used+' used</div>';
+      }).join('')+'</div>';
+  }).join('');
+  host.innerHTML =
+    '<div class="hr-sec"><div class="hrh"><h3>Leave requests</h3><span>Approving deducts the balance and marks those dates On Leave</span></div>'+
+      (pending.length ? pending.map(function(r){ return row(r,true); }).join('') : '<div class="lreq" style="color:var(--muted)">No pending requests.</div>')+
+      (decided.length ? '<div style="font-size:13px;font-weight:600;margin:14px 0 2px">Decided</div>'+decided.map(function(r){ return row(r,false); }).join('') : '')+
+    '</div>'+
+    '<div class="hr-sec"><div class="hrh"><h3>Leave balances</h3><span>Adjustable by the Program Admin</span></div>'+
+      '<div class="leave-bal">'+grid+'</div></div>'+
+    '<div class="hr-sec"><div class="hrh"><h3>Holiday calendar</h3><span>State-specific — a Fellow sees the list for their own state</span></div>'+
+      '<div id="holHost"></div></div>';
+  renderHolidays();
+}
+function decideLeave(id, action){
+  var r = LEAVE_REQUESTS.filter(function(x){ return x.id===id; })[0];
+  if(!r) return;
+  var noteEl = document.querySelector('[data-note="'+id+'"]');
+  r.note = noteEl && noteEl.value.trim() ? noteEl.value.trim() : (action==='approve' ? 'Approved.' : 'Rejected.');
+  if(action==='approve'){
+    r.status = 'Approved';
+    var b = (LEAVE_BALANCE[r.fellow]||{})[r.type];
+    if(b) b.used += r.days;                                  // the only place a balance is deducted
+    addAttendanceRows(r.fellow, hrDateRange(r.from, r.to), 'On Leave');
+  } else {
+    r.status = 'Rejected';                                   // rejection never touches the balance
+  }
+  renderAdminLeave();
+  if(typeof renderMyLeave==='function') renderMyLeave();
+}
+function adjustBalance(fellow, type, value){
+  var b = (LEAVE_BALANCE[fellow]||{})[type];
+  if(!b) return;
+  b.total = Math.max(0, Number(value)||0);
+  renderAdminLeave();
+  if(typeof renderMyLeave==='function') renderMyLeave();
+}
+function renderHolidays(){
+  var host = document.getElementById('holHost');
+  if(!host) return;
+  var states = Object.keys(HOLIDAYS);
+  var opts = states.map(function(s){ return '<option'+(s===HOLIDAY_STATE_SEL?' selected':'')+'>'+s+'</option>'; }).join('');
+  var list = (HOLIDAYS[HOLIDAY_STATE_SEL]||[]).map(function(h){
+    return '<div class="hol-row"><span class="hd">'+hrDate(h.date)+'</span><span>'+h.name+'</span></div>';
+  }).join('');
+  host.innerHTML = '<div class="leave-form">'+
+      '<div><label>State</label><select onchange="setHolidayState(this)">'+opts+'</select></div>'+
+      '<div><label>Holiday date</label><input type="date" id="holDate" /></div>'+
+      '<div class="lf-reason"><label>Holiday name</label><input type="text" id="holName" placeholder="e.g. Diwali" /></div>'+
+      '<button class="btn btn-primary btn-sm" type="button" onclick="addHoliday(this)">Add holiday</button>'+
+    '</div>'+
+    (HOLIDAY_STATE_SEL.indexOf('placeholder')>-1 ? '<div style="margin-bottom:8px"><span class="sample-tag">Sample state — placeholder, not client-confirmed</span></div>' : '')+
+    (list || '<div class="hol-row" style="color:var(--muted)">No holidays scheduled for this state yet.</div>');
+}
+function setHolidayState(sel){ HOLIDAY_STATE_SEL = sel.value; renderHolidays(); }
+function addHoliday(btn){
+  var d = document.getElementById('holDate').value, n = document.getElementById('holName').value.trim();
+  if(!d){ alert('Holiday date is required.'); return; }
+  if(!n){ alert('Holiday name is required.'); return; }
+  HOLIDAYS[HOLIDAY_STATE_SEL] = HOLIDAYS[HOLIDAY_STATE_SEL] || [];
+  HOLIDAYS[HOLIDAY_STATE_SEL].push({date:d, name:n});
+  HOLIDAYS[HOLIDAY_STATE_SEL].sort(function(a,b){ return a.date<b.date?-1:1; });
+  renderHolidays();
+  if(typeof renderMyLeave==='function') renderMyLeave();
+}
 // ---- Fellow targets (Point 6 / Module 12) ----
 // One target per fellow x period x metric, exactly as the client doc specifies. A metric missing from
 // the object means "no target set", which renders differently from a target of 0 — the doc's edge case.
@@ -6330,6 +6635,8 @@ function filterAStu(){
   if(typeof renderFellowCards==='function') renderFellowCards();
   if(typeof renderMisAll==='function') renderMisAll();
   if(typeof renderMyTargets==='function') renderMyTargets();
+  if(typeof renderMyLeave==='function') renderMyLeave();
+  if(typeof renderAdminLeave==='function') renderAdminLeave();
   const p=new URLSearchParams(location.search);
   const role=p.get('role'); const screen=p.get('screen');
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
