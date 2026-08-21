@@ -1186,6 +1186,38 @@ img{max-width:100%}
 .fdash-mini .mb{flex:1;background:linear-gradient(180deg,var(--teal-600),var(--teal-700));border-radius:3px 3px 0 0;min-height:2px}
 .fdash-mini .mbw{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;height:100%}
 .fdash-mini .mbl{font-size:9.5px;color:var(--muted)}
+/* camps (campaign creation & camp management) */
+.camp-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;justify-content:space-between;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin-bottom:16px}
+.camp-head h2{font-size:20px;margin:0 0 4px}
+.camp-head .chm{font-size:12.5px;color:var(--ink-soft);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.camp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;margin-bottom:18px}
+.camp-card{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:15px 17px}
+.camp-card h4{font-size:12px;margin:0 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.camp-card .cv{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.camp-card .cs{font-size:12.5px;color:var(--muted);margin-top:4px}
+.camp-card .cacts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.camp-prog{height:8px;background:var(--cream-2);border-radius:99px;overflow:hidden;margin-top:10px;display:block}
+.camp-prog span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal-700),var(--teal-600))}
+.camp-tl-row{display:flex;align-items:center;gap:9px;font-size:12.5px;padding:4px 0}
+.camp-tl-row .tk{width:17px;height:17px;border-radius:50%;flex:0 0 17px;display:grid;place-items:center;font-size:10px;font-weight:700}
+.camp-tl-row .tk.on{background:var(--green-50);color:var(--green)}
+.camp-tl-row .tk.off{background:var(--cream-2);color:var(--muted)}
+.camp-tl-row.done{color:var(--ink)}
+.camp-tl-row.todo{color:var(--muted)}
+.qr-box{display:flex;gap:12px;align-items:flex-start;margin-top:10px}
+.qr-box .qrl{font-size:10.5px;color:var(--muted);font-style:italic;max-width:118px;line-height:1.35}
+.camp-link{font-family:'Courier New',monospace;font-size:12px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:7px 9px;word-break:break-all;display:block;margin-bottom:4px}
+.camp-sec{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin-bottom:14px}
+.camp-sec h3{font-size:15px;margin:0 0 4px}
+.camp-sec .csl{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.camp-ro{background:var(--cream-2);color:var(--ink-soft);font-weight:600}
+.camp-banner{background:var(--teal-50);border:1px solid #bfe3de;border-left:3px solid var(--teal-600);border-radius:10px;padding:11px 14px;font-size:13px;color:var(--teal-700);margin-bottom:16px}
+.assign-hist{margin-top:10px;font-size:12.5px}
+.assign-hist .ah{display:flex;gap:10px;flex-wrap:wrap;padding:7px 0;border-top:1px dashed var(--line);color:var(--ink-soft)}
+.assign-hist .ah .ahw{font-weight:600;flex:0 0 168px}
+.reassign-form{display:flex;gap:9px;flex-wrap:wrap;align-items:flex-end;margin-top:10px;background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.reassign-form label{display:block;font-size:11.5px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.reassign-form select,.reassign-form input{border:1.5px solid var(--line);border-radius:8px;padding:7px 9px;font-family:inherit;font-size:12.5px;background:var(--paper)}
 /* HRMS — leave & holidays */
 .hr-sec{margin-top:22px}
 .hr-sec > .hrh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
@@ -2270,6 +2302,7 @@ img{max-width:100%}
       <a href="#" class="nav-link" data-go="f-attendance">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>My Attendance
       </a>
+      <a href="#" class="nav-link" data-go="f-camps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M12 3 4 12h16Z"/><path d="M12 12v9"/></svg>My Camps</a>
       <a href="#" class="nav-link" data-go="f-applications">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Applications<span class="soon" style="background:rgba(246,178,74,.2);color:var(--marigold-soft)" id="fApplicationsBadge">0</span>
       </a>
@@ -2523,6 +2556,9 @@ img{max-width:100%}
         </div>
 
         <div class="dt-form" id="onbForm">
+
+          <!-- Camp context (Point 5, Track 1) — shown only when reached via a camp link. -->
+          <div class="camp-banner" id="onbCampBanner" style="display:none"></div>
 
           <!-- ===== Section anchor sidebar (sticky, scroll-spy) ===== -->
           <aside class="dt-anchors">
@@ -2786,6 +2822,19 @@ img{max-width:100%}
                     <div class="ct"><b>Consent Declaration:</b> I authorise SAMAVESH Action For Impact to collect this information and to act on government scholarship portals on the student's behalf, under the DPDP Act, 2023. <b>Type the student/guardian name below to give consent.</b></div></div>
                 </div>
                 <div class="q full"><div class="qen">Consent — type full name <span class="req">*</span></div><input type="text" id="onbConsent" placeholder="Type student / guardian full name" /></div>
+              </div>
+            </section>
+
+            <!-- Fellow assignment (Point 5): full org list on the regular form; scoped to the camp's fellows
+                 when the form is reached through a camp link. -->
+            <section class="dt-section" id="sec-assign">
+              <h3 class="dt-sec-title"><span class="anum">9</span>Fellow assignment</h3>
+              <div class="dt-sec-lead" id="onbAssignLead">Choose the Fellow who will own this student's caseload.</div>
+              <div class="dt-grid">
+                <div class="q full"><div class="qen">Assign Fellow <span class="req">*</span></div>
+                  <select id="onbAssignFellow"></select>
+                  <div class="qhelp" id="onbAssignHelp">A Fellow onboarding a student can simply select their own name.</div>
+                </div>
               </div>
             </section>
 
@@ -3628,6 +3677,13 @@ img{max-width:100%}
         </div>
       </section>
 
+
+      <!-- ===== MY CAMPS (Fellow view — deliberately lighter than Admin's) ===== -->
+      <section class="screen" id="f-camps">
+        <div class="page-h"><div class="eyebrow">Operations</div><h1>My Camps</h1><p>Camps you are assigned to. Open one for venue, timing and its onboarding link.</p></div>
+        <div id="myCamps"></div>
+      </section>
+
     </main>
   </div>
 </div>
@@ -3654,6 +3710,7 @@ img{max-width:100%}
       <a href="#" class="nav-link" data-go="a-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>Document Verification<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">4</span></a>
       <a href="#" class="nav-link" data-go="a-tasks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2M14 17h2"/></svg>Applications<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)" id="aApplicationsBadge">0</span></a>
       <a href="#" class="nav-link" data-go="a-attendance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Attendance</a>
+      <a href="#" class="nav-link" data-go="a-camps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M12 3 4 12h16Z"/><path d="M12 12v9"/></svg>Camps</a>
       <a href="#" class="nav-link" data-go="a-catalogue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Scholarship Catalogue</a>
       <div class="nav-label">Manage</div>
       <a href="#" class="nav-link" data-go="a-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>All Students</a>
@@ -3921,7 +3978,7 @@ img{max-width:100%}
             </div>
           </div>
           <div class="prof-meta">
-            <div class="pm-item"><span class="pm-k">Assigned Fellow</span><span class="pm-v"><span class="pm-av" id="asFellowAv">R</span><span id="asFellow">Rahul More</span><button class="pm-reassign" type="button" onclick="alert('Reassign Fellow — pick another Fellow to take over this caseload. The change is audit-logged (RBAC).')">Reassign</button></span></div>
+            <div class="pm-item"><span class="pm-k">Assigned Fellow</span><span class="pm-v"><span class="pm-av" id="asFellowAv">R</span><span id="asFellow">Rahul More</span><button class="pm-reassign" type="button" onclick="openReassign(this)">Reassign</button><span id="asAssignStatus" style="margin-left:8px"></span></span><div id="asReassignHost"></div></div>
             <div class="pm-item"><span class="pm-k">Tags</span><span class="pm-v"><span class="tagchip">SC</span><span class="tagchip">Pune</span><span class="tagchip">Post-Matric</span></span></div>
             <div class="pm-item"><span class="pm-k">Created</span><span class="pm-v">12 Apr 2026</span></div>
             <div class="pm-item"><span class="pm-k">Last modified</span><span class="pm-v">2 Jun 2026</span></div>
@@ -4350,6 +4407,30 @@ img{max-width:100%}
           <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx01</div></div>
           <div class="field"><div class="k">Documents verified (FY)</div><div class="v">1,210</div></div>
         </div></div>
+      </section>
+
+
+      <!-- ===== CAMPS: program-level overview (Point 5 / Module 11) ===== -->
+      <section class="screen" id="a-camps">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Operations</div><h1>Camps</h1><p>All onboarding drives across programs. Open a camp for its live dashboard.</p></div>
+          <button class="btn btn-primary" data-go="a-camp-new">+ Create Camp</button>
+        </div>
+        <div id="campTotals"></div>
+        <div id="campTable"></div>
+      </section>
+
+      <!-- ===== CAMPS: single camp dashboard ===== -->
+      <section class="screen" id="a-camp">
+        <span class="backlink" data-go="a-camps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to Camps</span>
+        <div id="campDash"></div>
+      </section>
+
+      <!-- ===== CAMPS: creation form ===== -->
+      <section class="screen" id="a-camp-new">
+        <span class="backlink" data-go="a-camps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to Camps</span>
+        <div class="page-h"><div class="eyebrow">Operations</div><h1>Create Camp</h1><p>Duration is calculated from the dates, excluding Sundays. A camp cannot be published without a Primary Fellow.</p></div>
+        <div id="campForm"></div>
       </section>
 
     </main>
@@ -5542,6 +5623,494 @@ var FDASH = {
   },
   months: [{m:'Mar',v:1},{m:'Apr',v:0},{m:'May',v:2},{m:'Jun',v:1},{m:'Jul',v:3},{m:'Aug',v:2}]
 };
+// ---- Camps / Campaign management (Point 5 / Module 11) ----
+// "Campaign" and "Camp" are the same entity per the client documents — modelled once as Camp.
+// Duration, camp ID and the timeline are all DERIVED, never stored or hand-entered.
+var CAMP_PROGRAMS = ['Scholarship','Documentation','Mentoring'];
+var CAMP_STATUSES = ['Draft','Scheduled','Active','Completed','Closed'];
+var CAMP_FELLOWS  = ['Rahul More','Sandip K','Dhanashree O','Vaibhav D'];
+var CAMPS = [
+  {id:'FER-12/08/26-001', name:'Fergusson College Scholarship Drive', program:'Scholarship',
+   start:'2026-08-12', end:'2026-08-22', owner:'Meera Nair', status:'Active', target:120,
+   description:'Post-Matric and OBC drive across UG streams.',
+   venueType:'College', institution:'Fergusson College, Pune', address:'FC Road, Shivajinagar',
+   city:'Pune', district:'Pune', state:'Maharashtra', venueContact:'Prof. S. Kulkarni', venuePhone:'98220 11234',
+   hasPartner:true, partnerName:'Vidya Poshak Trust', partnerContact:'Anil Deshmukh', partnerPhone:'98230 55671',
+   partnershipType:'Outreach partner', partnerNotes:'Provides volunteers and refreshments.',
+   primaryFellow:'Rahul More', supportingFellows:['Dhanashree O'],
+   registered:86, completed:71, draft:9, docSupport:4, today:12},
+  {id:'SPC-02/09/26-002', name:'S.P. College Documentation Camp', program:'Documentation',
+   start:'2026-09-02', end:'2026-09-05', owner:'Meera Nair', status:'Scheduled', target:60,
+   description:'Caste validity and income certificate support.',
+   venueType:'College', institution:'Sir Parshurambhau (S.P.) College, Pune', address:'Tilak Road',
+   city:'Pune', district:'Pune', state:'Maharashtra', venueContact:'Dr. A. Joshi', venuePhone:'98221 33445',
+   hasPartner:false, partnerName:'', partnerContact:'', partnerPhone:'', partnershipType:'', partnerNotes:'',
+   primaryFellow:'Sandip K', supportingFellows:[],
+   registered:0, completed:0, draft:0, docSupport:0, today:0},
+  {id:'MOD-14/07/26-003', name:'Modern College Onboarding Camp', program:'Scholarship',
+   start:'2026-07-14', end:'2026-07-18', owner:'Meera Nair', status:'Completed', target:80,
+   description:'Completed drive — follow-up closed.',
+   venueType:'College', institution:'Modern College, Pune', address:'Shivajinagar',
+   city:'Pune', district:'Pune', state:'Maharashtra', venueContact:'Prof. R. Pawar', venuePhone:'98225 77889',
+   hasPartner:false, partnerName:'', partnerContact:'', partnerPhone:'', partnershipType:'', partnerNotes:'',
+   primaryFellow:'Dhanashree O', supportingFellows:['Vaibhav D'],
+   registered:78, completed:76, draft:0, docSupport:1, today:0}
+];
+var CAMP_SEQ = 3;
+// Student -> fellow/camp assignment. One student is deliberately left Not Assigned so that state is
+// visible on first load (the source document requires unassigned students to be identifiable).
+var STUDENT_ASSIGN = {
+  'Aarti Ramesh Pawar': {fellow:'Rahul More',   camp:'FER-12/08/26-001', status:'Assigned'},
+  'Kavya Deshmukh':     {fellow:'Rahul More',   camp:'FER-12/08/26-001', status:'Assigned'},
+  'Sneha Patil':        {fellow:'Dhanashree O', camp:'MOD-14/07/26-003', status:'Reassigned'},
+  'Suresh Jadhav':      {fellow:'',             camp:'',                status:'Not Assigned'}
+};
+var ASSIGN_LOG = {
+  'Sneha Patil': [{from:'Vaibhav D', to:'Dhanashree O', by:'Meera Nair', on:'18 Jul 2026', reason:'Fellow region change'}]
+};
+function campById(id){ for(var i=0;i<CAMPS.length;i++){ if(CAMPS[i].id===id) return CAMPS[i]; } return null; }
+function campFellows(c){ return [c.primaryFellow].concat(c.supportingFellows||[]).filter(Boolean); }
+// Calendar days between two dates, EXCLUDING Sundays — confirmed in the client document. Never entered.
+function campDuration(start, end){
+  if(!start || !end) return 0;
+  var a = new Date(start), b = new Date(end), n = 0;
+  if(b < a) return 0;
+  while(a <= b){ if(a.getDay() !== 0) n++; a = new Date(a.getTime()+86400000); }
+  return n;
+}
+// Camp ID: first 3 letters of the institution + dd/mm/yy + sequence.
+function campIdFor(institution, startDate, seq){
+  var pre = (institution||'CMP').replace(/[^A-Za-z]/g,'').slice(0,3).toUpperCase() || 'CMP';
+  var p = String(startDate||'').split('-');
+  var dt = (p.length===3) ? (p[2]+'/'+p[1]+'/'+p[0].slice(2)) : '00/00/00';
+  return pre+'-'+dt+'-'+String(seq).padStart(3,'0');
+}
+function campLink(c){ return 'samavesh.org/onboard/'+c.id.replace(/[^A-Za-z0-9]/g,''); }
+// The timeline is computed from the camp's own fields, so it can never disagree with its state.
+function campTimeline(c){
+  var si = CAMP_STATUSES.indexOf(c.status);
+  return [
+    {label:'Camp Created',      on:true},
+    {label:'Fellow Assigned',   on:!!c.primaryFellow},
+    {label:'Link Generated',    on:!!c.primaryFellow},
+    {label:'Camp Published',    on:si >= CAMP_STATUSES.indexOf('Scheduled')},
+    {label:'Camp Live',         on:si >= CAMP_STATUSES.indexOf('Active')},
+    {label:'Camp Completed',    on:si >= CAMP_STATUSES.indexOf('Completed')},
+    {label:'Follow-up Closed',  on:si >= CAMP_STATUSES.indexOf('Closed')}
+  ];
+}
+// Institution names in the demo data often already include the city ("Fergusson College, Pune"),
+// so only append it when it isn't already there.
+function campVenueLabel(c){
+  var inst = c.institution || '';
+  if(!c.city) return inst;
+  return (inst.toLowerCase().indexOf(c.city.toLowerCase())>-1) ? inst : (inst+', '+c.city);
+}
+function campStatusCls(s){
+  return {Draft:'grey', Scheduled:'blue', Active:'green', Completed:'teal', Closed:'grey'}[s] || 'grey';
+}
+// A drawn placeholder QR — no external library, and labelled so nobody mistakes it for scannable.
+function qrBox(link){
+  var seed = 0; for(var i=0;i<link.length;i++) seed += link.charCodeAt(i);
+  var cells = '';
+  for(var y=0;y<9;y++) for(var x=0;x<9;x++){
+    var corner = (x<3&&y<3)||(x>5&&y<3)||(x<3&&y>5);
+    var on = corner ? ((x===0||x===2||y===0||y===2||(x===1&&y===1)) ? 1 : 0)
+                    : (((x*7 + y*13 + seed) % 3) ? 1 : 0);
+    if(on) cells += '<rect x="'+(x*8+2)+'" y="'+(y*8+2)+'" width="8" height="8" />';
+  }
+  return '<div class="qr-box"><svg width="78" height="78" viewBox="0 0 78 78" role="img" aria-label="Sample QR code">'+
+    '<rect width="78" height="78" fill="#fff" stroke="var(--line)"/><g fill="var(--ink)">'+cells+'</g></svg>'+
+    '<span class="qrl">Sample QR — generated server-side from the camp link in production.</span></div>';
+}
+// ---- Camps: program overview ----
+function renderCampList(){
+  var host = document.getElementById('campTotals');
+  if(!host) return;
+  var sum = function(k){ return CAMPS.reduce(function(a,c){ return a + (c[k]||0); }, 0); };
+  var figs = [
+    {v:CAMPS.length, l:'Total camps'}, {v:sum('target'), l:'Overall target'},
+    {v:sum('registered'), l:'Students registered'}, {v:sum('completed'), l:'Onboarding completed'},
+    {v:sum('draft'), l:'Forms in draft'}, {v:sum('docSupport'), l:'Need document support'}
+  ];
+  host.innerHTML = '<div class="mis-figs" style="margin-bottom:18px">'+figs.map(function(f){
+    return '<div class="mis-fig"><div class="mfv">'+f.v.toLocaleString('en-IN')+'</div><div class="mfl">'+f.l+'</div></div>';
+  }).join('')+'</div>';
+  var tbl = document.getElementById('campTable');
+  if(!tbl) return;
+  tbl.innerHTML = '<div class="dtable-wrap"><table class="dtable">'+
+    '<thead><tr><th>Camp</th><th>Dates</th><th>Duration</th><th>Venue</th><th>Primary Fellow</th>'+
+    '<th class="num">Onboarded</th><th class="num">Completed</th><th>Status</th></tr></thead><tbody>'+
+    CAMPS.map(function(c){
+      return '<tr style="cursor:pointer" onclick="openCamp(\''+c.id+'\')">'+
+        '<td><b>'+c.name+'</b><br /><small style="color:var(--muted)">'+c.id+' · '+c.program+'</small></td>'+
+        '<td>'+hrDate(c.start)+' – '+hrDate(c.end)+'</td>'+
+        '<td>'+campDuration(c.start,c.end)+' days</td>'+
+        '<td>'+c.institution+'</td><td>'+(c.primaryFellow||'—')+'</td>'+
+        '<td class="num">'+c.registered+' / '+c.target+'</td><td class="num">'+c.completed+'</td>'+
+        '<td><span class="pill '+campStatusCls(c.status)+'"><span class="pdot"></span>'+c.status+'</span></td></tr>';
+    }).join('')+'</tbody></table></div>';
+}
+var CAMP_OPEN = null;
+function openCamp(id){ CAMP_OPEN = id; renderCampDash(id); go('a-camp'); }
+// ---- Camps: single camp dashboard (7 cards + student table) ----
+function renderCampDash(id){
+  var host = document.getElementById('campDash');
+  var c = campById(id || CAMP_OPEN);
+  if(!host || !c) return;
+  var pct = c.target ? Math.round((c.registered/c.target)*100) : 0;
+  var link = campLink(c);
+  var fellows = campFellows(c);
+  var students = Object.keys(STUDENT_ASSIGN).filter(function(n){ return STUDENT_ASSIGN[n].camp===c.id; });
+  var card = function(title, body){ return '<div class="camp-card"><h4>'+title+'</h4>'+body+'</div>'; };
+  var tl = campTimeline(c).map(function(t){
+    return '<div class="camp-tl-row '+(t.on?'done':'todo')+'"><span class="tk '+(t.on?'on':'off')+'">'+(t.on?'✓':'')+'</span>'+t.label+'</div>';
+  }).join('');
+  host.innerHTML =
+    '<div class="camp-head"><div><h2>'+c.name+'</h2>'+
+      '<span class="pill '+campStatusCls(c.status)+'"><span class="pdot"></span>'+c.status+'</span>'+
+      '<div class="chm"><span>'+c.id+'</span><span>'+c.program+'</span>'+
+        '<span>'+hrDate(c.start)+' – '+hrDate(c.end)+' · '+campDuration(c.start,c.end)+' days (Sundays excluded)</span>'+
+        '<span>'+campVenueLabel(c)+'</span><span>Fellows: '+fellows.join(', ')+'</span></div></div>'+
+      '<select class="btn btn-ghost btn-sm" style="font-weight:600" onchange="setCampStatus(this,\''+c.id+'\')">'+
+        '<option value="">Update status…</option>'+CAMP_STATUSES.map(function(st){return '<option>'+st+'</option>';}).join('')+
+      '</select></div>'+
+    '<div class="camp-grid">'+
+      card('Student registrations','<div class="cv">'+c.registered+' <span style="font-size:14px;color:var(--muted)">/ '+c.target+'</span></div>'+
+        '<div class="cs">'+pct+'% of target</div><span class="camp-prog"><span style="width:'+Math.min(100,pct)+'%"></span></span>')+
+      card('Onboarding completed','<div class="cv">'+c.completed+'</div><div class="cs">'+c.draft+' saved as draft / pending</div>')+
+      card("Today's registrations",'<div class="cv">'+c.today+'</div><div class="cs">'+(c.status==='Active'?'Camp is live':'Camp not live')+'</div>')+
+      card('Fellow','<div class="cv" style="font-size:17px">'+(c.primaryFellow||'Not assigned')+'</div>'+
+        '<div class="cs">'+(FDASH.students||24)+' students onboarded · '+(fdashCounts?fdashCounts().appsAssigned:0)+' applications · '+FDASH.docAssigned+' document cases</div>'+
+        '<div class="cs" style="font-style:italic;font-size:11.5px">Applications and document counts read from the Fellow\'s caseload; camp-scoped figures need Point 7 eligibility matching.</div>'+
+        '<div class="cacts"><button class="btn btn-ghost btn-sm" type="button" data-go="a-fellows">View Fellow</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" data-go="a-students">View Students</button></div>')+
+      card('Camp link','<span class="camp-link">'+link+'</span><div class="cs">'+c.registered+' registrations through this link</div>'+
+        qrBox(link)+
+        '<div class="cacts"><button class="btn btn-primary btn-sm" type="button" onclick="openCampLink(\''+c.id+'\')">Open onboarding link</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" onclick="campCopy(\''+link+'\')">Copy</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" onclick="campQr(\''+c.id+'\')">Download QR</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" onclick="campShare(\''+c.id+'\')">Share</button></div>')+
+      card('Camp timeline', tl)+
+      card('Pending actions','<div class="cs" style="font-size:13px;line-height:1.9">'+
+        '• <b>'+c.draft+'</b> student forms saved as draft<br />'+
+        '• <b>'+c.docSupport+'</b> students require document support</div>'+
+        '<div class="cacts"><button class="btn btn-ghost btn-sm" type="button" data-go="a-verify">View pending actions</button></div>')+
+    '</div>'+
+    '<div class="dtable-wrap"><table class="dtable"><thead><tr><th>Student</th><th>Mobile</th><th>Onboarding Date</th>'+
+      '<th>Documents</th><th class="num">Scholarships Mapped</th><th>Application Status</th><th>Final Status</th><th>Assigned Fellow</th></tr></thead><tbody>'+
+      (students.length ? students.map(function(n,i){
+        var a = STUDENT_ASSIGN[n];
+        return '<tr><td><b>'+n+'</b></td><td>98'+(220+i)+' 1'+(1000+i*7)+'</td><td>'+hrDate(c.start)+'</td>'+
+          '<td>'+(i===0?'5 of 9 Accepted':'Complete')+'</td><td class="num">'+(i===0?4:2)+'</td>'+
+          '<td>'+(i===0?'Under Scrutiny':'Benefits Received')+'</td>'+
+          '<td><span class="pill '+(i===0?'amber':'green')+'"><span class="pdot"></span>'+(i===0?'In progress':'Completed')+'</span></td>'+
+          '<td>'+(a.fellow||'—')+'</td></tr>';
+      }).join('') : '<tr><td colspan="8" style="color:var(--muted)">No students onboarded through this camp yet.</td></tr>')+
+    '</tbody></table></div>';
+}
+function setCampStatus(sel, id){
+  if(!sel.value) return;
+  var c = campById(id); if(!c) return;
+  c.status = sel.value;
+  renderCampDash(id); renderCampList(); renderMyCamps();
+}
+function campCopy(link){ alert('Copied to clipboard (demo):\n\n'+link); }
+function campQr(id){ alert('Download QR — saves the camp\'s QR code as a PNG.\n\nIn the wireframe the QR is a drawn sample; production generates it server-side from the camp link.'); }
+function campShare(id){ var c=campById(id); alert('Share camp link (demo)\n\n'+c.name+'\n'+campLink(c)+'\n\nShared with the assigned Fellow(s): '+campFellows(c).join(', ')); }
+// ---- Camps: creation form ----
+function fellowWorkload(f){
+  var active = CAMPS.filter(function(c){ return campFellows(c).indexOf(f)>-1 && (c.status==='Active'||c.status==='Scheduled'); }).length;
+  var students = (TARGETS_ACTUAL[f]||{}).students || 0;
+  return f+' · '+active+' active camp'+(active===1?'':'s')+' · '+students+' students';
+}
+function renderCampForm(){
+  var host = document.getElementById('campForm');
+  if(!host) return;
+  var colleges = ['Fergusson College, Pune','Sir Parshurambhau (S.P.) College, Pune','Modern College, Pune',
+    'Brihan Maharashtra College of Commerce (BMCC)','Abasaheb Garware College','Nowrosjee Wadia College'];
+  host.innerHTML =
+    '<div class="camp-sec"><h3>Basic information</h3><div class="csl">Duration is calculated for you — Sundays are excluded.</div>'+
+      '<div class="form-grid">'+
+        '<div class="fg"><label>Camp name<span class="req">*</span></label><input id="cfName" placeholder="e.g. Fergusson College Scholarship Drive" /></div>'+
+        '<div class="fg"><label>Program<span class="req">*</span></label><select id="cfProgram">'+CAMP_PROGRAMS.map(function(p){return '<option>'+p+'</option>';}).join('')+'</select></div>'+
+        '<div class="fg"><label>Start date<span class="req">*</span></label><input type="date" id="cfStart" onchange="campRecalcDuration()" /></div>'+
+        '<div class="fg"><label>End date<span class="req">*</span></label><input type="date" id="cfEnd" onchange="campRecalcDuration()" /></div>'+
+        '<div class="fg"><label>Duration (auto)</label><input id="cfDuration" class="camp-ro" value="—" readonly title="Calculated from the dates, excluding Sundays" /></div>'+
+        '<div class="fg"><label>Camp owner</label><select id="cfOwner"><option>Meera Nair (Program Admin)</option><option>Program Manager</option></select></div>'+
+        '<div class="fg"><label>Overall student target<span class="req">*</span></label><input type="number" id="cfTarget" placeholder="0" /></div>'+
+        '<div class="fg full"><label>Description</label><input id="cfDesc" placeholder="Optional" /></div>'+
+      '</div></div>'+
+    '<div class="camp-sec"><h3>Venue &amp; institution</h3><div class="csl">Pick the institution, or type a new one if it is not listed.</div>'+
+      '<div class="form-grid">'+
+        '<div class="fg"><label>Venue type</label><select id="cfVenueType"><option>College</option><option>Partner Org</option></select></div>'+
+        '<div class="fg"><label>Institution / partner name<span class="req">*</span></label><input id="cfInstitution" list="cfInstList" placeholder="Search or type…" />'+
+          '<datalist id="cfInstList">'+colleges.map(function(c){return '<option>'+c+'</option>';}).join('')+'</datalist></div>'+
+        '<div class="fg full"><label>Address</label><input id="cfAddress" placeholder="Street / area" /></div>'+
+        '<div class="fg"><label>City</label><input id="cfCity" value="Pune" /></div>'+
+        '<div class="fg"><label>District</label><input id="cfDistrict" value="Pune" /></div>'+
+        '<div class="fg"><label>State</label><input id="cfState" value="Maharashtra" /></div>'+
+        '<div class="fg"><label>Venue contact person</label><input id="cfVContact" /></div>'+
+        '<div class="fg"><label>Venue contact number</label><input id="cfVPhone" placeholder="10-digit mobile" /></div>'+
+      '</div></div>'+
+    '<div class="camp-sec"><h3>Partner organisation</h3>'+
+      '<div class="opts row" style="margin-bottom:10px"><label class="opt"><input type="radio" name="cfPartner" onchange="campTogglePartner(false)" checked /> No partner</label>'+
+        '<label class="opt"><input type="radio" name="cfPartner" onchange="campTogglePartner(true)" /> Yes, there is a partner</label></div>'+
+      '<div id="cfPartnerBlock" style="display:none"><div class="form-grid">'+
+        '<div class="fg"><label>Partner name</label><input id="cfPName" /></div>'+
+        '<div class="fg"><label>Partnership type</label><select id="cfPType"><option>Outreach partner</option><option>Venue partner</option><option>Funding partner</option></select></div>'+
+        '<div class="fg"><label>Contact person</label><input id="cfPContact" /></div>'+
+        '<div class="fg"><label>Contact number</label><input id="cfPPhone" /></div>'+
+        '<div class="fg full"><label>Notes</label><input id="cfPNotes" /></div>'+
+      '</div></div></div>'+
+    '<div class="camp-sec"><h3>Fellow assignment</h3><div class="csl">A camp cannot be published without a Primary Fellow. Workload is shown so you can assign fairly.</div>'+
+      '<div class="form-grid">'+
+        '<div class="fg full"><label>Primary Fellow<span class="req">*</span></label><select id="cfPrimary"><option value="">Select a Fellow…</option>'+
+          CAMP_FELLOWS.map(function(f){return '<option value="'+f+'">'+fellowWorkload(f)+'</option>';}).join('')+'</select></div>'+
+        '<div class="fg full"><label>Supporting Fellows (optional)</label><div class="opts">'+
+          CAMP_FELLOWS.map(function(f){return '<label class="opt"><input type="checkbox" name="cfSupport" value="'+f+'" /> '+f+'</label>';}).join('')+
+        '</div></div>'+
+      '</div></div>'+
+    '<div class="camp-sec"><h3>Summary</h3><div class="csl">Review before publishing. The link and QR are generated on save.</div>'+
+      '<div id="cfSummary" style="font-size:13px;color:var(--ink-soft)">Fill the form above to see the summary.</div>'+
+      '<div class="cacts" style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">'+
+        '<button class="btn btn-ghost" type="button" onclick="campSummary()">Refresh summary</button>'+
+        '<button class="btn btn-ghost" type="button" onclick="saveCamp(\'draft\')">Save as Draft</button>'+
+        '<button class="btn btn-primary" type="button" onclick="saveCamp(\'publish\')">Publish Camp</button>'+
+      '</div></div>';
+}
+function campTogglePartner(on){
+  var b = document.getElementById('cfPartnerBlock');
+  if(b) b.style.display = on ? '' : 'none';
+}
+function campRecalcDuration(){
+  var s = (document.getElementById('cfStart')||{}).value, e = (document.getElementById('cfEnd')||{}).value;
+  var out = document.getElementById('cfDuration');
+  if(!out) return;
+  var d = campDuration(s,e);
+  out.value = (s && e) ? (d + ' days (Sundays excluded)') : '—';
+  campSummary();
+}
+function campFormValues(){
+  var v = function(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; };
+  var support = Array.from(document.querySelectorAll('[name="cfSupport"]:checked')).map(function(x){ return x.value; });
+  return {name:v('cfName'), program:v('cfProgram'), start:v('cfStart'), end:v('cfEnd'), target:Number(v('cfTarget'))||0,
+    owner:v('cfOwner'), description:v('cfDesc'), venueType:v('cfVenueType'), institution:v('cfInstitution'),
+    address:v('cfAddress'), city:v('cfCity'), district:v('cfDistrict'), state:v('cfState'),
+    venueContact:v('cfVContact'), venuePhone:v('cfVPhone'),
+    hasPartner:document.getElementById('cfPartnerBlock').style.display!=='none',
+    partnerName:v('cfPName'), partnerContact:v('cfPContact'), partnerPhone:v('cfPPhone'),
+    partnershipType:v('cfPType'), partnerNotes:v('cfPNotes'),
+    primaryFellow:v('cfPrimary'), supportingFellows:support};
+}
+function campSummary(){
+  var host = document.getElementById('cfSummary');
+  if(!host) return;
+  var f = campFormValues();
+  if(!f.name && !f.institution){ host.textContent = 'Fill the form above to see the summary.'; return; }
+  var rows = [
+    ['Camp name', f.name || '—'], ['Program', f.program],
+    ['Dates', (f.start && f.end) ? (hrDate(f.start)+' – '+hrDate(f.end)) : '—'],
+    ['Duration', (f.start && f.end) ? (campDuration(f.start,f.end)+' days (Sundays excluded)') : '—'],
+    ['Venue', f.institution ? (f.institution+(f.city?', '+f.city:'')) : '—'],
+    ['Partner', f.hasPartner ? (f.partnerName||'Yes — name not entered') : 'None'],
+    ['Student target', f.target || '—'],
+    ['Primary Fellow', f.primaryFellow || '⚠ not assigned — required to publish'],
+    ['Supporting Fellows', f.supportingFellows.length ? f.supportingFellows.join(', ') : 'None'],
+    ['Link &amp; QR', f.primaryFellow ? 'Will be generated on save' : 'Blocked until a Primary Fellow is assigned']
+  ];
+  host.innerHTML = rows.map(function(r){
+    return '<div style="display:flex;gap:10px;padding:5px 0;border-top:1px dashed var(--line)"><span style="flex:0 0 168px;color:var(--muted)">'+r[0]+'</span><span>'+r[1]+'</span></div>';
+  }).join('');
+}
+function saveCamp(mode){
+  var f = campFormValues();
+  if(!f.name){ alert('Camp name is required.'); return; }
+  if(!f.start || !f.end){ alert('Start and end dates are required — the duration is calculated from them.'); return; }
+  if(!f.institution){ alert('Institution / partner name is required.'); return; }
+  if(mode==='publish' && !f.primaryFellow){
+    alert('This camp cannot be published without a Primary Fellow assigned.\n\nAssign one under Fellow assignment, or use Save as Draft.');
+    return;
+  }
+  CAMP_SEQ++;
+  var camp = f;
+  camp.id = campIdFor(f.institution, f.start, CAMP_SEQ);
+  camp.status = (mode==='publish') ? 'Scheduled' : 'Draft';
+  camp.registered = 0; camp.completed = 0; camp.draft = 0; camp.docSupport = 0; camp.today = 0;
+  CAMPS.push(camp);
+  renderCampList(); renderMyCamps();
+  alert((mode==='publish' ? 'Camp published' : 'Saved as draft')+'\n\n'+camp.id+
+    (mode==='publish' ? '\nOnboarding link: '+campLink(camp)+'\nQR code generated.' : '\nNo link generated yet — publish to generate it.'));
+  openCamp(camp.id);
+}
+// ---- Camps: the Fellow's own view ----
+function renderMyCamps(){
+  var host = document.getElementById('myCamps');
+  if(!host) return;
+  var f = hrFellow();
+  var mine = CAMPS.filter(function(c){ return campFellows(c).indexOf(f)>-1; });
+  if(!mine.length){ host.innerHTML = '<div class="empty" style="padding:18px;color:var(--muted)">You have no camps assigned yet.</div>'; return; }
+  host.innerHTML = mine.map(function(c){
+    var link = campLink(c);
+    return '<div class="camp-sec"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start">'+
+      '<div><h3>'+c.name+'</h3><div class="csl">'+hrDate(c.start)+' – '+hrDate(c.end)+' · '+campDuration(c.start,c.end)+' days · target '+c.target+'</div></div>'+
+      '<span class="pill '+campStatusCls(c.status)+'"><span class="pdot"></span>'+c.status+'</span></div>'+
+      '<div class="form-grid" style="margin-top:6px">'+
+        '<div class="fg"><label>Venue &amp; directions</label><div style="font-size:13px">'+campVenueLabel(c)+'<br />'+c.address+'</div></div>'+
+        '<div class="fg"><label>Timing</label><div style="font-size:13px">'+hrDate(c.start)+' – '+hrDate(c.end)+'<br />Venue contact: '+(c.venueContact||'—')+' · '+(c.venuePhone||'—')+'</div></div>'+
+        '<div class="fg"><label>Partner contact</label><div style="font-size:13px">'+(c.hasPartner ? (c.partnerName+'<br />'+c.partnerContact+' · '+c.partnerPhone) : 'No partner organisation')+'</div></div>'+
+        '<div class="fg"><label>Progress</label><div style="font-size:13px">'+c.registered+' onboarded · '+c.completed+' completed · '+c.draft+' pending</div></div>'+
+      '</div>'+
+      '<div style="margin-top:12px"><span class="camp-link">'+link+'</span>'+qrBox(link)+
+        '<div class="cacts" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">'+
+          '<button class="btn btn-primary btn-sm" type="button" onclick="openCampLink(\''+c.id+'\')">Open camp &amp; onboard a student</button>'+
+          '<button class="btn btn-ghost btn-sm" type="button" onclick="campCopy(\''+link+'\')">Copy link</button>'+
+          '<button class="btn btn-ghost btn-sm" type="button" onclick="campQr(\''+c.id+'\')">Download QR</button>'+
+        '</div></div></div>';
+  }).join('');
+}
+// ---- Camps: fellow reassignment with assignment status + audit trail ----
+// Replaces the alert-only "Reassign" stub that used to sit on the Admin student-detail.
+function asStudentName(){
+  var el = document.getElementById('asName');
+  return el ? el.textContent.trim() : 'Aarti Ramesh Pawar';
+}
+function assignStatusPill(status){
+  var cls = {Assigned:'green', Reassigned:'blue', 'Not Assigned':'amber', 'Inactive-Closed':'grey'}[status] || 'grey';
+  return '<span class="pill '+cls+'"><span class="pdot"></span>'+status+'</span>';
+}
+function renderReassign(){
+  var pill = document.getElementById('asAssignStatus');
+  var host = document.getElementById('asReassignHost');
+  if(!pill || !host) return;
+  var name = asStudentName();
+  var a = STUDENT_ASSIGN[name] || {fellow:'', camp:'', status:'Not Assigned'};
+  pill.innerHTML = assignStatusPill(a.status);
+  var fellowEl = document.getElementById('asFellow');
+  if(fellowEl && a.fellow) fellowEl.textContent = a.fellow;
+  var log = ASSIGN_LOG[name] || [];
+  host.innerHTML = (a.camp ? '<div style="font-size:12.5px;color:var(--muted);margin-top:6px">Onboarded through camp <b>'+a.camp+'</b></div>' : '')+
+    (log.length
+      ? '<div class="assign-hist"><div style="font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em">Assignment history</div>'+
+        log.map(function(e){
+          return '<div class="ah"><span class="ahw">'+e.from+' → '+e.to+'</span><span>'+e.by+' · '+e.on+
+            (e.reason?' · '+e.reason:'')+'</span></div>';
+        }).join('')+'</div>'
+      : '');
+}
+function openReassign(btn){
+  var host = document.getElementById('asReassignHost');
+  if(!host) return;
+  if(document.getElementById('reassignForm')){ renderReassign(); return; }
+  var name = asStudentName();
+  var cur = (STUDENT_ASSIGN[name]||{}).fellow || '';
+  var opts = CAMP_FELLOWS.filter(function(f){ return f!==cur; }).map(function(f){ return '<option>'+f+'</option>'; }).join('');
+  host.insertAdjacentHTML('afterbegin',
+    '<div class="reassign-form" id="reassignForm">'+
+      '<div><label>New Fellow</label><select id="raFellow"><option value="">Select…</option>'+opts+'</select></div>'+
+      '<div style="flex:1;min-width:170px"><label>Reason (optional)</label><input id="raReason" placeholder="e.g. Fellow region change" style="width:100%;box-sizing:border-box" /></div>'+
+      '<button class="btn btn-primary btn-sm" type="button" onclick="saveReassign()">Save</button>'+
+      '<button class="btn btn-ghost btn-sm" type="button" onclick="document.getElementById(\'reassignForm\').remove()">Cancel</button>'+
+    '</div>');
+}
+function saveReassign(){
+  var name = asStudentName();
+  var sel = document.getElementById('raFellow');
+  var reason = (document.getElementById('raReason')||{}).value || '';
+  if(!sel || !sel.value){ alert('Pick the Fellow who should take over this student.'); return; }
+  var a = STUDENT_ASSIGN[name] || {fellow:'', camp:'', status:'Not Assigned'};
+  var from = a.fellow || 'Unassigned';
+  ASSIGN_LOG[name] = ASSIGN_LOG[name] || [];
+  ASSIGN_LOG[name].unshift({from:from, to:sel.value, by:'Meera Nair', on:hrDate(new Date().toISOString().slice(0,10)), reason:reason.trim()});
+  a.fellow = sel.value;
+  a.status = 'Reassigned';                     // current assignment stays active; history keeps the trail
+  STUDENT_ASSIGN[name] = a;
+  var form = document.getElementById('reassignForm'); if(form) form.remove();
+  renderReassign();
+  if(typeof renderCampDash==='function' && CAMP_OPEN) renderCampDash(CAMP_OPEN);
+}
+// ---- Camps: the two student-assignment tracks ----
+// Track 1 = reached through a camp link (?camp=<ID>, or the dashboard button): camp, venue and
+// institution are pre-set and hidden, and the fellow list is scoped to that camp.
+// Track 2 = the regular form: nothing pre-filled, full org fellow list.
+var CAMP_CONTEXT = null;
+function openCampLink(id){
+  CAMP_CONTEXT = id;
+  go('f-onboard');
+  setTimeout(applyCampContext, 0);
+}
+function clearCampContext(){ CAMP_CONTEXT = null; applyCampContext(); }
+function applyCampContext(){
+  var banner = document.getElementById('onbCampBanner');
+  var sel    = document.getElementById('onbAssignFellow');
+  var lead   = document.getElementById('onbAssignLead');
+  var help   = document.getElementById('onbAssignHelp');
+  if(!sel) return;
+  var c = CAMP_CONTEXT ? campById(CAMP_CONTEXT) : null;
+  // These three are pre-set and hidden on Track 1 — the student never picks a camp or venue.
+  var collegeQ  = (document.getElementById('onbCollege')  || {}).closest ? document.getElementById('onbCollege').closest('.q')  : null;
+  var districtQ = (document.getElementById('onbDistrict') || {}).closest ? document.getElementById('onbDistrict').closest('.q') : null;
+  if(!c){
+    if(banner){ banner.style.display='none'; banner.innerHTML=''; }
+    if(collegeQ)  collegeQ.style.display='';
+    if(districtQ) districtQ.style.display='';
+    sel.innerHTML = '<option value="">Select a Fellow…</option>'+CAMP_FELLOWS.map(function(f){ return '<option>'+f+'</option>'; }).join('');
+    sel.disabled = false;
+    if(lead) lead.textContent = "Choose the Fellow who will own this student's caseload.";
+    if(help) help.textContent = 'A Fellow onboarding a student can simply select their own name.';
+    return;
+  }
+  var fellows = campFellows(c);
+  if(banner){
+    banner.style.display = '';
+    banner.innerHTML = '<b>Onboarding through a camp link.</b> '+c.name+' · '+c.id+' · '+
+      hrDate(c.start)+' – '+hrDate(c.end)+' · '+c.institution+', '+c.city+
+      '<br />Camp, venue and institution are set from the link — no manual selection. '+
+      '<a href="#" onclick="event.preventDefault();clearCampContext()">Onboard outside this camp instead</a>';
+  }
+  if(document.getElementById('onbCollege'))  document.getElementById('onbCollege').value  = c.institution;
+  if(document.getElementById('onbDistrict')) document.getElementById('onbDistrict').value = c.district;
+  if(collegeQ)  collegeQ.style.display  = 'none';
+  if(districtQ) districtQ.style.display = 'none';
+  if(fellows.length === 1){
+    sel.innerHTML = '<option>'+fellows[0]+'</option>';
+    sel.disabled = true;
+    if(lead) lead.textContent = 'This camp has one Fellow — the student is assigned automatically.';
+    if(help) help.textContent = 'Auto-assigned to '+fellows[0]+' because they are the only Fellow on this camp.';
+  } else {
+    sel.disabled = false;
+    sel.innerHTML = fellows.map(function(f){ return '<option>'+f+'</option>'; }).join('');
+    if(lead) lead.textContent = 'This camp has '+fellows.length+' Fellows — pick who takes this student.';
+    if(help) help.textContent = "Only this camp's Fellows are listed (Primary and Supporting), not the full organisation.";
+  }
+}
+// Called from onbSubmit() once its own validation has passed.
+function campRecordAssignment(){
+  var sel = document.getElementById('onbAssignFellow');
+  var nameEl = document.getElementById('onbName') || document.getElementById('onbFullName');
+  var student = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : 'New student';
+  var fellow = sel ? sel.value : '';
+  var c = CAMP_CONTEXT ? campById(CAMP_CONTEXT) : null;
+  if(!fellow){
+    STUDENT_ASSIGN[student] = {fellow:'', camp:c?c.id:'', status:'Not Assigned'};
+  } else {
+    STUDENT_ASSIGN[student] = {fellow:fellow, camp:c?c.id:'', status:'Assigned'};
+  }
+  if(c){
+    c.registered++; c.today++;
+    renderCampList(); renderCampDash(c.id); renderMyCamps();
+  }
+  return {student:student, fellow:fellow, camp:c};
+}
+function campAssignmentConfirmation(a){
+  if(a.camp){
+    return '\n\nAssignment confirmed\n· Student: '+a.student+'\n· Camp: '+a.camp.name+' ('+a.camp.id+')'+
+      '\n· Camp dates: '+hrDate(a.camp.start)+' – '+hrDate(a.camp.end)+
+      '\n· Assigned Fellow: '+(a.fellow||'Not assigned')+
+      '\n· Onboarding status: Submitted for approval\n· Application status: Eligibility Identified';
+  }
+  return '\n\nAssigned Fellow: '+(a.fellow || 'Not assigned — this student will show as unassigned.');
+}
 // ---- HRMS: attendance status, leave and holidays (Point 9 / Module 13) ----
 // Check-in choices are the client's three. "On Leave" is NOT a check-in choice — it is written only by
 // an approved leave request, which is already what it means in the existing attendance tables.
@@ -6551,8 +7120,17 @@ function onbSubmit(){
     const sec=document.getElementById('sec-personal'); if(sec) sec.scrollIntoView({behavior:'smooth'});
     return;
   }
-  alert('✅ Onboarding submitted. A unique Student ID is generated and the eligibility engine has matched scholarships automatically.');
-  go('f-student');
+  // Fellow assignment is required on both tracks (Point 5) — a student must never be silently unassigned.
+  const asg = document.getElementById('onbAssignFellow');
+  if(asg && !asg.value){
+    alert('Assign Fellow is required — pick the Fellow who will own this student, or your own name if that is you.');
+    const sec=document.getElementById('sec-assign'); if(sec) sec.scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  const a = (typeof campRecordAssignment==='function') ? campRecordAssignment() : null;
+  alert('✅ Onboarding submitted. A unique Student ID is generated and the eligibility engine has matched scholarships automatically.'+
+    (a && typeof campAssignmentConfirmation==='function' ? campAssignmentConfirmation(a) : ''));
+  go(CAMP_CONTEXT ? 'a-camp' : 'f-student');
 }
 // Initialise on first paint if the form is already in the DOM (covers reload-on-onboarding case).
 document.addEventListener('DOMContentLoaded',function(){ if(document.getElementById('onbDob')) setTimeout(onbInit,0); if(document.getElementById('approvalList')) renderApprovalList(); if(document.getElementById('caseListFellow')) renderCaseList('fellow'); if(document.getElementById('caseListAdmin')) renderCaseList('admin'); });
@@ -6637,9 +7215,20 @@ function filterAStu(){
   if(typeof renderMyTargets==='function') renderMyTargets();
   if(typeof renderMyLeave==='function') renderMyLeave();
   if(typeof renderAdminLeave==='function') renderAdminLeave();
+  if(typeof renderCampList==='function') renderCampList();
+  if(typeof renderCampForm==='function') renderCampForm();
+  if(typeof renderMyCamps==='function') renderMyCamps();
+  if(typeof renderReassign==='function') renderReassign();
   const p=new URLSearchParams(location.search);
   const role=p.get('role'); const screen=p.get('screen');
+  const campParam=p.get('camp');
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
+  // ?camp=<CAMP-ID> is the camp's onboarding link (Point 5, Track 1): log in as the Fellow if no role
+  // was given, then open the onboarding form with the camp's details pre-set.
+  if(campParam && typeof campById==='function' && campById(campParam)){
+    if(!role) loginAs('fellow');
+    setTimeout(function(){ openCampLink(campParam); }, 30);
+  }
 })();
 </script>
 <div class="doc-modal" id="docPreviewModal" onclick="if(event.target===this)closeDocPreview()">
