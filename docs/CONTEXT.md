@@ -98,10 +98,45 @@ Validated 2026-06-09 across all three Fellow forms. The multi-step "Continue" wi
 
 Structural checks (tag/brace balance) pass on broken features — a filter that only updates a note, a screen built on a stale tab. Render it and click it.
 
-Headless Chrome recipe (PowerShell, verified on this project):
+> ## ⛔ NEVER kill Chrome by name
+>
+> Do **not** run `pkill -f "Google Chrome"`, `killall Chrome`, `taskkill /IM chrome.exe`, or any other
+> kill-by-name. On a working machine that closes the developer's **own browser window and tabs** — it
+> happened repeatedly on 2026-08-21 and Shweta had to restart Chrome each time.
+>
+> Kill **only the PID you launched yourself**, and always pass a throwaway `--user-data-dir` so the real
+> profile is never touched. The macOS recipe below does both.
+
+### macOS recipe (verified 2026-08-21 — use this one on a Mac)
+
+```bash
+SP=/tmp/samavesh-render                    # scratch dir outside the repo
+mkdir -p "$SP" && rm -rf "$SP/prof"
+cp "wireframe/index.html" "$SP/swf.html"   # repo path has spaces, which breaks file:// URLs
+
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless=new --disable-gpu --no-sandbox --hide-scrollbars \
+  --user-data-dir="$SP/prof" --window-size=1440,2200 --virtual-time-budget=8000 \
+  --dump-dom "file://$SP/swf.html?role=fellow&screen=f-attendance" > "$SP/dom.html" 2>/dev/null &
+CHROME_PID=$!                              # <- the only process you may kill
+
+until grep -q "PROBE|" "$SP/dom.html" 2>/dev/null; do sleep 2; done
+kill "$CHROME_PID" 2>/dev/null             # never pkill, never killall
+grep -o 'PROBE|[^<]*' "$SP/dom.html"
+```
+
+Swap `--dump-dom … > dom.html` for `--screenshot="$SP/shot.png"` and poll with `until [ -s "$SP/shot.png" ]`
+when you want a picture instead of a probe. `--headless=new` does not always exit on its own, which is why
+the PID is captured — not a reason to reach for a broad kill.
+
+**One more macOS gotcha:** `getGeo()` (used by `fellowPunch`) waits on `navigator.geolocation` with a
+**2-second** timeout before falling back to a static Pune location, so anything asserting on a check-in
+must wait **> 2.5 s** after the click. A shorter wait reports a working punch as broken.
+
+### PowerShell recipe (Windows, verified earlier on this project)
 
 1. `Copy-Item wireframe/index.html C:\Temp\swf.html -Force` — the repo path has spaces, which breaks `file://` URLs.
-2. Kill lingering Chrome: `try { Get-Process chrome -ErrorAction Stop | Stop-Process -Force } catch {}`
+2. Close only Chrome instances you started yourself — see the warning above; do not blanket-kill.
 3. Render:
 
 ```powershell

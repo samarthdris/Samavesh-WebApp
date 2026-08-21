@@ -165,6 +165,7 @@ img{max-width:100%}
 .ic.gold{background:var(--marigold-50);color:var(--marigold)}
 .ic.green{background:var(--green-50);color:var(--green)}
 .ic.blue{background:var(--blue-50);color:var(--blue)}
+.ic.red{background:var(--red-50);color:var(--red)}
 
 .section-h{display:flex;align-items:center;justify-content:space-between;margin:22px 0 10px}
 .section-h h3{font-size:18px}
@@ -1151,6 +1152,138 @@ img{max-width:100%}
 .v-in{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:7px;font-family:inherit;font-size:14px;box-sizing:border-box}
 .prof-edit-acts{display:inline-flex;gap:8px}
 .prof-saved{margin-left:10px;color:var(--green);font-size:12.5px;font-weight:600}
+.doc-notes{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.doc-note{padding:6px 0;font-size:12.5px}
+.doc-note b{color:var(--ink)}
+.doc-note-date{color:var(--muted);margin-left:6px;font-size:11.5px}
+.doc-note-text{color:var(--ink-soft);margin-top:2px}
+.doc-note-form{margin-top:6px}
+.doc-note-form textarea{width:100%;min-height:56px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:13px;box-sizing:border-box;margin-top:8px}
+.app-pdf-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px}
+.app-pdf-row .apn{color:var(--muted)}
+/* financial tracking (installment-wise disbursement) */
+.fin-block{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px;background:var(--paper)}
+.fin-bh{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.fin-bh b{font-size:14px}
+.fin-locked{font-size:13px;color:var(--muted);margin-top:8px}
+.fin-req{color:var(--red);font-weight:700}
+.fin-empty{font-size:13px;color:var(--muted);margin-top:8px}
+.fin-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.fin-saved{color:var(--teal-700);font-weight:600;font-size:12.5px}
+.fin-note{font-size:12px;color:var(--muted);margin-top:8px}
+.instgrid td input[type=date]{margin-top:6px}
+.instgrid td .fin-proof{display:block;margin-top:6px;font-size:12px}
+.instgrid td .fin-ro{font-size:13px}
+.instgrid td .fin-ro .fk{color:var(--muted)}
+.fin-line{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px}
+.fin-line .flh{color:var(--muted)}
+.fin-line .flr{margin-top:5px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+/* fellow dashboard cards (12-card workload grid) */
+.fdash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin-bottom:8px}
+.fdash-grid .card.stat .cap{min-height:32px}
+.fdash-thr{margin-top:8px;width:100%;border:1px solid var(--line);border-radius:8px;padding:5px 7px;font-family:inherit;font-size:11.5px;background:var(--cream);outline:none}
+.fdash-mini{display:flex;align-items:flex-end;gap:5px;height:34px;margin-top:8px}
+.fdash-mini .mb{flex:1;background:linear-gradient(180deg,var(--teal-600),var(--teal-700));border-radius:3px 3px 0 0;min-height:2px}
+.fdash-mini .mbw{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;height:100%}
+.fdash-mini .mbl{font-size:9.5px;color:var(--muted)}
+/* camps (campaign creation & camp management) */
+.camp-head{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap;justify-content:space-between;background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin-bottom:16px}
+.camp-head h2{font-size:20px;margin:0 0 4px}
+.camp-head .chm{font-size:12.5px;color:var(--ink-soft);display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.camp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px;margin-bottom:18px}
+.camp-card{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:15px 17px}
+.camp-card h4{font-size:12px;margin:0 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.camp-card .cv{font-size:26px;font-weight:700;letter-spacing:-.02em}
+.camp-card .cs{font-size:12.5px;color:var(--muted);margin-top:4px}
+.camp-card .cacts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.camp-prog{height:8px;background:var(--cream-2);border-radius:99px;overflow:hidden;margin-top:10px;display:block}
+.camp-prog span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--teal-700),var(--teal-600))}
+.camp-tl-row{display:flex;align-items:center;gap:9px;font-size:12.5px;padding:4px 0}
+.camp-tl-row .tk{width:17px;height:17px;border-radius:50%;flex:0 0 17px;display:grid;place-items:center;font-size:10px;font-weight:700}
+.camp-tl-row .tk.on{background:var(--green-50);color:var(--green)}
+.camp-tl-row .tk.off{background:var(--cream-2);color:var(--muted)}
+.camp-tl-row.done{color:var(--ink)}
+.camp-tl-row.todo{color:var(--muted)}
+.qr-box{display:flex;gap:12px;align-items:flex-start;margin-top:10px}
+.qr-box .qrl{font-size:10.5px;color:var(--muted);font-style:italic;max-width:118px;line-height:1.35}
+.camp-link{font-family:'Courier New',monospace;font-size:12px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:7px 9px;word-break:break-all;display:block;margin-bottom:4px}
+.camp-sec{background:var(--paper);border:1px solid var(--line);border-radius:13px;padding:16px 18px;margin-bottom:14px}
+.camp-sec h3{font-size:15px;margin:0 0 4px}
+.camp-sec .csl{font-size:12.5px;color:var(--muted);margin-bottom:12px}
+.camp-ro{background:var(--cream-2);color:var(--ink-soft);font-weight:600}
+.camp-banner{background:var(--teal-50);border:1px solid #bfe3de;border-left:3px solid var(--teal-600);border-radius:10px;padding:11px 14px;font-size:13px;color:var(--teal-700);margin-bottom:16px}
+.assign-hist{margin-top:10px;font-size:12.5px}
+.assign-hist .ah{display:flex;gap:10px;flex-wrap:wrap;padding:7px 0;border-top:1px dashed var(--line);color:var(--ink-soft)}
+.assign-hist .ah .ahw{font-weight:600;flex:0 0 168px}
+.reassign-form{display:flex;gap:9px;flex-wrap:wrap;align-items:flex-end;margin-top:10px;background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.reassign-form label{display:block;font-size:11.5px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.reassign-form select,.reassign-form input{border:1.5px solid var(--line);border-radius:8px;padding:7px 9px;font-family:inherit;font-size:12.5px;background:var(--paper)}
+/* HRMS — leave & holidays */
+.hr-sec{margin-top:22px}
+.hr-sec > .hrh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.hr-sec > .hrh h3{font-size:17px;margin:0}
+.hr-sec > .hrh span{font-size:12.5px;color:var(--muted)}
+.leave-bal{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.lb-tile{flex:1;min-width:150px;background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.lb-tile .lbt{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+.lb-tile .lbv{font-size:21px;font-weight:700;margin-top:4px}
+.lb-tile .lbs{font-size:11.5px;color:var(--muted);margin-top:2px}
+.lb-tile input{width:64px;border:1.5px solid var(--line);border-radius:8px;padding:5px 7px;font-family:inherit;font-size:12.5px;background:var(--paper)}
+.leave-form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:14px}
+.leave-form label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:4px;font-weight:600}
+.leave-form select,.leave-form input{border:1.5px solid var(--line);border-radius:8px;padding:7px 9px;font-family:inherit;font-size:12.5px;background:var(--paper)}
+.leave-form .lf-reason{flex:1;min-width:180px}
+.leave-form .lf-reason input{width:100%;box-sizing:border-box}
+.lreq{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:10px 0;border-top:1px dashed var(--line);font-size:12.5px}
+.lreq .lrw{flex:0 0 128px;width:128px;font-weight:600}
+.lreq .lrd{flex:0 0 190px;width:190px;color:var(--ink-soft)}
+.lreq .lrr{flex:1;min-width:140px;color:var(--muted)}
+.lreq .lra{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.lreq .lra input{border:1.5px solid var(--line);border-radius:8px;padding:6px 8px;font-family:inherit;font-size:12px;background:var(--paper);width:150px}
+.hol-row{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px dashed var(--line);font-size:12.5px}
+.hol-row .hd{flex:0 0 120px;width:120px;font-weight:600}
+.sample-tag{background:var(--marigold-50);color:#8a6212;border:1px solid #f0d9a8;border-radius:999px;padding:3px 9px;font-size:11px;font-weight:600}
+.att-status-sel{border:1.5px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:12.5px;background:var(--paper);margin-right:10px}
+/* fellow targets (target vs actual) */
+.tgt-panel td{background:var(--cream);padding:14px 16px !important}
+.tgt-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.tgt-head b{font-size:13.5px}
+.tgt-head select{border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-family:inherit;font-size:12px;background:var(--paper)}
+.tgt-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:8px 0;border-top:1px dashed var(--line);font-size:12.5px}
+.tgt-row .tgl{flex:0 0 150px;width:150px;font-weight:600;color:var(--ink-soft)}
+.tgt-row input{width:78px;border:1.5px solid var(--line);border-radius:8px;padding:6px 8px;font-family:inherit;font-size:12.5px;background:var(--paper)}
+.tgt-bar{flex:1;min-width:120px;background:var(--cream-2);border-radius:6px;height:16px;overflow:hidden;display:block}
+.tgt-fill{display:block;height:100%;min-width:3px;border-radius:6px;background:linear-gradient(90deg,var(--teal-700),var(--teal-600))}
+.tgt-fill.over{background:linear-gradient(90deg,#268a55,var(--green))}
+.tgt-num{flex:0 0 116px;width:116px;font-weight:700}
+.tgt-gap{flex:0 0 132px;width:132px;color:var(--muted);font-size:11.5px}
+.tgt-none{color:var(--muted);font-style:italic}
+.tgt-acts{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.tgt-strip{margin-bottom:18px}
+.tgt-strip .tsh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.tgt-strip .tsh h3{font-size:15px;margin:0}
+.tgt-strip .tsh span{font-size:12px;color:var(--muted)}
+/* MIS sub-sections + generic bar charts */
+.mis-sec{margin-bottom:20px}
+.mis-sec > .msh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 12px}
+.mis-sec > .msh h3{font-size:17px;margin:0}
+.mis-sec > .msh .mss{font-size:12.5px;color:var(--muted)}
+.mis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
+.mis-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.mis-card h4{font-size:13.5px;margin:0 0 12px;color:var(--ink)}
+.mis-note{font-size:11.5px;color:var(--muted);margin-top:10px;font-style:italic}
+.misbars{display:flex;flex-direction:column;gap:8px}
+.misbars .mb-row{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.misbars .mb-lbl{flex:0 0 118px;width:118px;color:var(--ink-soft);text-align:right;font-weight:600;font-size:11.5px}
+.misbars .mb-track{display:block;flex:1;background:var(--cream-2);border-radius:6px;height:20px;overflow:hidden}
+.misbars .mb-fill{display:block;height:100%;min-width:3px;border-radius:6px;background:linear-gradient(90deg,var(--teal-700),var(--teal-600))}
+.misbars .mb-val{flex:0 0 66px;width:66px;font-weight:700;font-size:12px}
+.mis-figs{display:flex;gap:12px;flex-wrap:wrap}
+.mis-fig{flex:1;min-width:132px;background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.mis-fig .mfv{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.mis-fig .mfl{font-size:11.5px;color:var(--muted);margin-top:3px}
+.mis-chip{background:var(--teal-50);color:var(--teal-700);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600}
+.funnel .fdrop{flex:0 0 104px;width:104px;font-size:11.5px;color:var(--muted);font-weight:600}
 </style>
 </head>
 <body>
@@ -1545,6 +1678,8 @@ img{max-width:100%}
             <div class="s-stage">Stage 4 of 5 · Submitted 28 May</div>
             <div class="s-step">Department reviewing since 2 Jun</div>
             <div class="s-next">Next: await portal decision</div>
+            <div class="app-pdf-host" data-app="pm"></div>
+            <div class="fin-host" data-app="pm" data-mode="line"></div>
           </div>
         </div>
 
@@ -1564,6 +1699,8 @@ img{max-width:100%}
             <span class="pill green" style="align-self:flex-start"><span class="pdot"></span>Ready to Submit</span>
             <div class="s-stage">Stage 3 of 5 · Documents 100% Accepted</div>
             <div class="s-next">Next: Fellow submits on the portal</div>
+            <div class="app-pdf-host" data-app="ms"></div>
+            <div class="fin-host" data-app="ms" data-mode="line"></div>
           </div>
         </div>
 
@@ -1584,6 +1721,8 @@ img{max-width:100%}
             <div class="s-stage">Stage 2 of 5 · 6 of 8 Accepted</div>
             <div class="s-step">1 Pending · 1 Under Review</div>
             <button class="btn btn-gold btn-sm" data-go="documents">View documents</button>
+            <div class="app-pdf-host" data-app="ab"></div>
+            <div class="fin-host" data-app="ab" data-mode="line"></div>
           </div>
         </div>
 
@@ -1605,6 +1744,8 @@ img{max-width:100%}
             <div class="s-stage">Stage 4 of 5 · was Submitted</div>
             <div class="s-step" style="color:var(--red)">Rejected 4 Jun</div>
             <div class="s-next">Next: re-submission expected by 14 Jun</div>
+            <div class="app-pdf-host" data-app="smm"></div>
+            <div class="fin-host" data-app="smm" data-mode="line"></div>
           </div>
         </div>
 
@@ -1676,6 +1817,7 @@ img{max-width:100%}
             <div class="dn"><b>Aadhaar Card</b><small>Type: Identity · Accepted by Program Admin · 14 Apr</small></div>
             <span class="pill green"><span class="pdot"></span>Accepted</span>
           </div>
+          <div class="doc-notes-host" data-doc="Aadhaar Card"></div>
         </div>
 
         <!-- Annual Income Certificate — Accepted, rich history (rejected → re-upload → accepted) -->
@@ -1708,6 +1850,7 @@ img{max-width:100%}
               <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Under Review</div><div class="d">18 May</div></div>
               <div class="tl-item done"><div class="knob"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div><div class="t">Accepted</div><div class="d">By Program Admin · 20 May</div></div>
             </div>
+            <div class="doc-notes-host" data-doc="Annual Income Certificate"></div>
           </div>
         </div>
 
@@ -1718,6 +1861,7 @@ img{max-width:100%}
             <div class="dn"><b>10th School Leaving Certificate</b><small>Type: Academic · Accepted by Program Admin · 14 Apr</small></div>
             <span class="pill green"><span class="pdot"></span>Accepted</span>
           </div>
+          <div class="doc-notes-host" data-doc="10th School Leaving Certificate"></div>
         </div>
 
         <!-- 12th SLC — Accepted (flat row) -->
@@ -1727,6 +1871,7 @@ img{max-width:100%}
             <div class="dn"><b>12th School Leaving Certificate</b><small>Type: Academic · Accepted by Program Admin · 14 Apr</small></div>
             <span class="pill green"><span class="pdot"></span>Accepted</span>
           </div>
+          <div class="doc-notes-host" data-doc="12th School Leaving Certificate"></div>
         </div>
 
         <!-- === Good to Have / Scholarship-specific (5 docs) === -->
@@ -1739,6 +1884,7 @@ img{max-width:100%}
             <div class="dn"><b>Caste Certificate</b><small>Type: Caste · Accepted by Program Admin · 1 May</small></div>
             <span class="pill green"><span class="pdot"></span>Accepted</span>
           </div>
+          <div class="doc-notes-host" data-doc="Caste Certificate"></div>
         </div>
 
         <!-- Non-Creamy Layer — Rejected, re-upload in progress (aligned with Fellow/Admin views) -->
@@ -1772,6 +1918,7 @@ img{max-width:100%}
               <div class="fa">R</div>
               <div><b>Fellow Rahul is re-doing this for you.</b> You'll get an SMS as the status changes.</div>
             </div>
+            <div class="doc-notes-host" data-doc="Non-Creamy Layer Certificate"></div>
           </div>
         </div>
 
@@ -1806,6 +1953,7 @@ img{max-width:100%}
               <div class="fa">R</div>
               <div><b>Submitted for verification.</b> You'll be notified the moment it's Accepted.</div>
             </div>
+            <div class="doc-notes-host" data-doc="Domicile Certificate"></div>
           </div>
         </div>
 
@@ -1827,6 +1975,7 @@ img{max-width:100%}
           <div class="subdoc-host" id="ration-subdocs">
             <div class="subdoc-panel" style="display:block"></div>
           </div>
+          <div class="doc-notes-host" data-doc="Ration Card"></div>
         </div>
 
         <!-- Orphan Certificate — N/A (flat row) -->
@@ -1836,6 +1985,7 @@ img{max-width:100%}
             <div class="dn"><b>Orphan Certificate</b><small>Marked N/A — both parents living</small></div>
             <span class="pill grey"><span class="pdot"></span>N/A</span>
           </div>
+          <div class="doc-notes-host" data-doc="Orphan Certificate"></div>
         </div>
       </section>
 
@@ -1926,7 +2076,7 @@ img{max-width:100%}
             <div class="field"><div class="k">Course</div><div class="v">B.Com · Year 2</div></div>
             <div class="field"><div class="k">Institution</div><div class="v">Fergusson College, Pune</div></div>
             <div class="field"><div class="k">State / District</div><div class="v">Maharashtra · Pune</div></div>
-            <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div>
+            <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div><div class="field"><div class="k">Migrant Family</div><div class="v">Non-migrant</div></div>
             <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx21</div></div>
             <div class="field"><div class="k">Aadhaar</div><div class="v mask">xxxx xxxx 4821</div></div>
             <div class="field"><div class="k">Guardian</div><div class="v">Ramesh Pawar (Father)</div></div>
@@ -2152,6 +2302,7 @@ img{max-width:100%}
       <a href="#" class="nav-link" data-go="f-attendance">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>My Attendance
       </a>
+      <a href="#" class="nav-link" data-go="f-camps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M12 3 4 12h16Z"/><path d="M12 12v9"/></svg>My Camps</a>
       <a href="#" class="nav-link" data-go="f-applications">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>Applications<span class="soon" style="background:rgba(246,178,74,.2);color:var(--marigold-soft)" id="fApplicationsBadge">0</span>
       </a>
@@ -2202,16 +2353,15 @@ img{max-width:100%}
             <div class="att-state" id="fAttState">You're <b>logged out</b>. Log in to start your day.</div>
             <a href="#" data-go="f-attendance" style="display:inline-block;margin-top:6px;font-size:12.5px;color:var(--teal-700);font-weight:600;text-decoration:none">View my attendance history →</a>
           </div>
-          <button class="att-btn in" id="fAttBtn" onclick="fellowPunch(this)">Log In</button>
+          <div style="display:flex;align-items:center;flex-wrap:wrap"><select class="att-status-sel" id="fAttStatusSel" title="Your work status for today"><option>Present</option><option>Work From Home</option><option>Absent</option></select><button class="att-btn in" id="fAttBtn" onclick="fellowPunch(this)">Log In</button></div>
         </div>
 
-        <!-- KPIs (MIS-03 fellow performance) -->
-        <div class="grid stagger" style="grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:8px">
-          <div class="card stat hoverable"><div class="top"><div class="ic teal"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/></svg></div></div><div class="num">24</div><div class="cap">My students</div></div>
-          <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div></div><div class="num">7</div><div class="cap">Documents Pending</div></div>
-          <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div></div><div class="num">12</div><div class="cap">Applications Submitted</div></div>
-          <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="num">5</div><div class="cap">Approved</div></div>
-        </div>
+        <!-- Workload cards (12, per New Feedbacks/Point_08_Fellow_Interface_Cards.md). Eight figures are
+             computed live from CASES + FIN; document-support and history figures come from FDASH. -->
+        <div class="fdash-grid stagger" id="fDashCards"></div>
+
+        <!-- My targets (Point 6): the same figures the Admin sets on Fellows & Users. -->
+        <div id="myTargets"></div>
 
         <!-- Caseload triage summary (derived from the unified Applications caseload) -->
         <div class="section-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:8px"><h3>My caseload</h3><a href="#" data-go="f-applications" style="font-size:13px;color:var(--teal-700);font-weight:600;text-decoration:none">Open Applications →</a></div>
@@ -2407,6 +2557,9 @@ img{max-width:100%}
 
         <div class="dt-form" id="onbForm">
 
+          <!-- Camp context (Point 5, Track 1) — shown only when reached via a camp link. -->
+          <div class="camp-banner" id="onbCampBanner" style="display:none"></div>
+
           <!-- ===== Section anchor sidebar (sticky, scroll-spy) ===== -->
           <aside class="dt-anchors">
             <a href="#sec-support"><span class="anum">1</span>Welcome &amp; Support</a>
@@ -2591,6 +2744,14 @@ img{max-width:100%}
                     <option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>SEBC</option><option>SBC</option><option>EWS</option><option>General</option><option>Other</option>
                   </select>
                 </div>
+                <div class="q"><div class="qen">Migrant Family?</div>
+                  <select id="onbMigrant">
+                    <option value="">Select</option>
+                    <option value="">Prefer not to answer</option>
+                    <option>Migrant</option>
+                    <option>Non-migrant</option>
+                  </select>
+                </div>
                 <div class="q"><div class="qen">Annual Family Income</div>
                   <select id="onbIncome">
                     <option value="">Select</option>
@@ -2664,6 +2825,19 @@ img{max-width:100%}
               </div>
             </section>
 
+            <!-- Fellow assignment (Point 5): full org list on the regular form; scoped to the camp's fellows
+                 when the form is reached through a camp link. -->
+            <section class="dt-section" id="sec-assign">
+              <h3 class="dt-sec-title"><span class="anum">9</span>Fellow assignment</h3>
+              <div class="dt-sec-lead" id="onbAssignLead">Choose the Fellow who will own this student's caseload.</div>
+              <div class="dt-grid">
+                <div class="q full"><div class="qen">Assign Fellow <span class="req">*</span></div>
+                  <select id="onbAssignFellow"></select>
+                  <div class="qhelp" id="onbAssignHelp">A Fellow onboarding a student can simply select their own name.</div>
+                </div>
+              </div>
+            </section>
+
             <!-- Sticky bottom action bar -->
             <div class="dt-actions">
               <div class="dt-act-meta">Section <b id="dtSecCur">1</b> of 8 · all sections on one page</div>
@@ -2706,6 +2880,7 @@ img{max-width:100%}
           <button onclick="ftab(this,'fp-sch')">Eligible Schemes</button>
           <button onclick="ftab(this,'fp-docs')">Documents</button>
           <button onclick="ftab(this,'fp-apps')">Applications</button>
+          <button onclick="ftab(this,'fp-fin')">Financial Tracking</button>
         </div>
 
         <!-- Profile tab -->
@@ -2718,7 +2893,7 @@ img{max-width:100%}
               <div class="field"><div class="k">Gender</div><div class="v">Female</div></div>
               <div class="field"><div class="k">Caste / Category</div><div class="v">SC</div></div>
               <div class="field"><div class="k">Religion</div><div class="v">Buddhist</div></div>
-              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div>
+              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div><div class="field"><div class="k">Migrant Family</div><div class="v">Non-migrant</div></div>
               <div class="field"><div class="k">State / District</div><div class="v">Maharashtra · Pune</div></div>
               <div class="field"><div class="k">Course / Year</div><div class="v">B.Com · Year 2</div></div>
               <div class="field"><div class="k">Last Exam %</div><div class="v">78%</div></div>
@@ -2858,24 +3033,28 @@ img{max-width:100%}
               <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
               <button class="btn btn-ghost btn-sm" onclick="downloadDoc('Aadhaar Card')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
+            <div style="margin:0 0 10px 58px"><button class="btn btn-ghost btn-sm doc-note-add" type="button" data-doc="Aadhaar Card" onclick="renderAddDocNote(this)">Add note</button><div class="doc-notes-host" data-doc="Aadhaar Card"></div></div>
             <div class="doc-row">
               <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Annual Income Certificate (FY 25/26)</b><small>Uploaded 15 Apr · Accepted by Program Admin</small></div>
               <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
               <button class="btn btn-ghost btn-sm" onclick="downloadDoc('Annual Income Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
+            <div style="margin:0 0 10px 58px"><button class="btn btn-ghost btn-sm doc-note-add" type="button" data-doc="Annual Income Certificate" onclick="renderAddDocNote(this)">Add note</button><div class="doc-notes-host" data-doc="Annual Income Certificate"></div></div>
             <div class="doc-row">
               <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>10th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted by Program Admin</small></div>
               <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
               <button class="btn btn-ghost btn-sm" onclick="downloadDoc('10th School Leaving Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
+            <div style="margin:0 0 10px 58px"><button class="btn btn-ghost btn-sm doc-note-add" type="button" data-doc="10th School Leaving Certificate" onclick="renderAddDocNote(this)">Add note</button><div class="doc-notes-host" data-doc="10th School Leaving Certificate"></div></div>
             <div class="doc-row">
               <div class="di" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>12th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted by Program Admin</small></div>
               <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
               <button class="btn btn-ghost btn-sm" onclick="downloadDoc('12th School Leaving Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
+            <div style="margin:0 0 10px 58px"><button class="btn btn-ghost btn-sm doc-note-add" type="button" data-doc="12th School Leaving Certificate" onclick="renderAddDocNote(this)">Add note</button><div class="doc-notes-host" data-doc="12th School Leaving Certificate"></div></div>
 
             <div class="doc-group-banner">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
             <div class="doc-row">
@@ -2884,18 +3063,21 @@ img{max-width:100%}
               <span class="pill green" style="margin-right:8px"><span class="pdot"></span>Accepted</span>
               <button class="btn btn-ghost btn-sm" onclick="downloadDoc('Caste Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
+            <div style="margin:0 0 10px 58px"><button class="btn btn-ghost btn-sm doc-note-add" type="button" data-doc="Caste Certificate" onclick="renderAddDocNote(this)">Add note</button><div class="doc-notes-host" data-doc="Caste Certificate"></div></div>
             <div class="doc-row">
               <div class="di" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
               <div class="dn"><b>Non-Creamy Layer Certificate</b><small style="color:var(--red)">Rejected: "Not clearly legible" — re-upload needed</small></div>
               <span class="pill red" style="margin-right:8px"><span class="pdot"></span>Rejected</span>
               <button class="btn btn-gold btn-sm" onclick="fileAct(this,'Uploaded')">Re-upload</button>
             </div>
+            <div style="margin:0 0 10px 58px"><button class="btn btn-ghost btn-sm doc-note-add" type="button" data-doc="Non-Creamy Layer Certificate" onclick="renderAddDocNote(this)">Add note</button><div class="doc-notes-host" data-doc="Non-Creamy Layer Certificate"></div></div>
             <div class="doc-row">
               <div class="di" style="background:var(--blue-50);color:var(--blue)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Domicile Certificate</b><small>Uploaded 2 Jun · Re-upload Version 1</small></div>
               <span class="pill blue" style="margin-right:8px"><span class="pdot"></span>Under Review</span>
               <button class="btn btn-ghost btn-sm" onclick="downloadDoc('Domicile Certificate')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-2px;margin-right:5px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Download</button>
             </div>
+            <div style="margin:0 0 10px 58px"><button class="btn btn-ghost btn-sm doc-note-add" type="button" data-doc="Domicile Certificate" onclick="renderAddDocNote(this)">Add note</button><div class="doc-notes-host" data-doc="Domicile Certificate"></div></div>
             <div class="doc-row">
               <div class="di" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Ration Card</b><small>Procurement in progress — Documentation Application created 4 Jun</small></div>
@@ -2907,6 +3089,7 @@ img{max-width:100%}
                 <div class="subdoc-panel" data-subkey="ration" style="display:block"></div>
               </details>
             </div>
+            <div style="margin:0 0 10px 58px"><button class="btn btn-ghost btn-sm doc-note-add" type="button" data-doc="Ration Card" onclick="renderAddDocNote(this)">Add note</button><div class="doc-notes-host" data-doc="Ration Card"></div></div>
             <div class="doc-row">
               <div class="di" style="background:var(--cream-2);color:var(--muted)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="dn"><b>Orphan Certificate</b><small>Not applicable — both parents living</small></div>
@@ -2949,6 +3132,7 @@ img{max-width:100%}
                   <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
                   <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
                 </div>
+                <div class="app-pdf-host" data-app="pm" data-can-replace></div>
                 <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
                   <select class="btn btn-ghost btn-sm" style="font-weight:600" onchange="updateAppStatus(this)">
                     <option value="">Update status…</option>
@@ -2990,7 +3174,7 @@ img{max-width:100%}
                   <div class="fg"><label>Sanctioned / Expected Amount (₹)<span class="req">*</span></label><input type="number" value="25000" /></div>
                   <div class="fg"><label>Bank Account (for disbursal)<span class="req">*</span></label><input placeholder="As per student profile" /></div>
                   <div class="fg"><label>IFSC<span class="req">*</span></label><input placeholder="e.g. SBIN0001234" /></div>
-                  <div class="fg full"><label>Submitted Application PDF<span class="req">*</span></label><input type="file" /><span class="hint">Final submitted PDF · mandatory proof per Fellow SOP</span></div>
+                  <div class="fg full"><label>Submitted Application PDF<span class="req">*</span></label><div class="app-pdf-host" data-app="ms" data-can-replace></div><span class="hint">One PDF per application — the same file shown on Applications and to the student.</span></div>
                 </div>
                 <button class="btn btn-primary btn-sm" style="margin-top:14px" onclick="this.outerHTML='<span class=&quot;pill green&quot;><span class=&quot;pdot&quot;></span>Submitted &amp; recorded</span>'">Submit &amp; Record Application</button>
               </div>
@@ -3016,6 +3200,7 @@ img{max-width:100%}
               </div>
               <div class="app-acc-body">
                 <p style="font-size:13px;color:var(--ink-soft);margin:0 0 12px">6 of 8 documents Accepted · 2 still being arranged (Caste Validity, Income proof). Submit on the portal once all mandatory documents are Accepted.</p>
+                <div class="app-pdf-host" data-app="ab" data-can-replace></div>
                 <div class="btnrow" style="display:flex;gap:10px;flex-wrap:wrap">
                   <button class="btn btn-primary btn-sm" type="button" data-go="f-docapp">Open Documentation Application</button>
                   <button class="btn btn-ghost btn-sm" type="button" onclick="event.stopPropagation();go('f-student');setTimeout(function(){var t=document.querySelectorAll('#f-student .tabs button');if(t[2])ftab(t[2],'fp-docs');},100)">View documents</button>
@@ -3050,6 +3235,7 @@ img{max-width:100%}
                   <div class="tl-item active"><div class="knob"></div><div class="t">Re-procurement in progress</div><div class="d">Documentation Application opened with the Tehsil office · expected 14 Jun</div></div>
                   <div class="tl-item future"><div class="t">Re-submit on portal</div><div class="d">Once Caste Validity is Accepted</div></div>
                 </div>
+                <div class="app-pdf-host" data-app="smm" data-can-replace></div>
                 <div class="btnrow" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center">
                   <button class="btn btn-primary btn-sm" type="button" data-go="f-scholarship">Correct &amp; re-submit on portal</button>
                   <button class="btn btn-ghost btn-sm" type="button" data-go="f-docapp">Open Documentation Application</button>
@@ -3059,6 +3245,15 @@ img{max-width:100%}
             </div>
 
           </div>
+        </div>
+
+        <!-- Financial Tracking tab — installment-wise disbursement per application (Module 5). Fellow enters; Admin and student read. -->
+        <div class="tabpane" id="fp-fin">
+          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">Installment-wise disbursement per application — amount, status, date and proof of benefit received, tracked separately for the student and the institute. A section opens once its application is Approved.</p>
+          <div class="fin-host" data-app="pm" data-mode="edit"></div>
+          <div class="fin-host" data-app="ms" data-mode="edit"></div>
+          <div class="fin-host" data-app="ab" data-mode="edit"></div>
+          <div class="fin-host" data-app="smm" data-mode="edit"></div>
         </div>
             <div class="activity">
               <h3>Activity</h3>
@@ -3092,11 +3287,11 @@ img{max-width:100%}
 
       <!-- ===== FELLOW MY ATTENDANCE (ID 7) ===== -->
       <section class="screen" id="f-attendance">
-        <div class="page-h"><div class="eyebrow">Attendance</div><h1>My Attendance</h1><p>Your login/logout history. Log in or out from the button on your Home dashboard. Leaves &amp; holidays are managed by Admin.</p></div>
+        <div class="page-h"><div class="eyebrow">Attendance</div><h1>My Attendance</h1><p>Your login/logout history — pick your work status when you log in. Apply for leave and see your balance and your state's holiday list below.</p></div>
 
         <div class="misfilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
           <input class="fatt-date" type="date" onchange="fAttFilter()" />
-          <select class="fatt-status" onchange="fAttFilter()"><option value="">All statuses</option><option>Present</option><option>On Leave</option><option>Absent</option></select>
+          <select class="fatt-status" onchange="fAttFilter()"><option value="">All statuses</option><option>Present</option><option>Work From Home</option><option>On Leave</option><option>Absent</option></select>
           <button class="btn btn-ghost btn-sm" onclick="fAttClear()">Clear</button>
           <span id="fAttFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
         </div>
@@ -3122,7 +3317,11 @@ img{max-width:100%}
           </tbody>
         </table>
         <div class="empty" id="fAttEmpty" style="display:none;padding:18px;text-align:center;color:var(--muted)">No records match this filter.</div>
+
         </div>
+
+        <!-- Leave (Point 9): balance, application, own-state holidays. -->
+        <div id="myLeave"></div>
       </section>
 
       <!-- ===== FELLOW PROFILE ===== -->
@@ -3370,7 +3569,7 @@ img{max-width:100%}
                   <select onchange="onAppStatus(this)"><option value="">Select status</option><option>Under Scrutiny</option><option>Application Approved · funds awaited</option><option>Benefits Received</option><option>Rejected</option><option>Re-apply</option></select></div>
                 <div class="q full"><div class="qen">Total Benefits <span class="req">*</span></div><div class="qhelp" style="margin-top:0">Split across the student and the institute.</div>
                   <div class="form-grid" style="margin-top:10px"><div class="fg"><label>For Student (₹)</label><input type="number" placeholder="0" /></div><div class="fg"><label>For Institute (₹)</label><input type="number" placeholder="0" /></div></div></div>
-                <div class="q full" id="uploadPdfQ"><div class="qen">Upload Submitted PDF <span class="req">*</span></div><input type="file" accept="application/pdf" /><div class="qhelp">Final submitted application PDF (proof). PDF, max 10 MB.</div></div>
+                <div class="q full" id="uploadPdfQ"><div class="qen">Upload Submitted PDF <span class="req">*</span></div><input type="file" accept="application/pdf" onchange="saveSchFormPdf(this)" /><div class="qhelp">Final submitted application PDF (proof). PDF, max 10 MB. This becomes the one file downloadable from Applications and the student's Scholarships screen.</div></div>
                 <div class="q full" id="benefitsProofQ" style="display:none"><div class="qen">Proof of Benefits Received <span class="req">*</span></div><input type="file" accept="application/pdf,image/*" /><div class="qhelp">Screenshot/document showing funds received. PDF/JPG/PNG, max 10 MB.</div></div>
               </div>
             </section>
@@ -3383,11 +3582,11 @@ img{max-width:100%}
                 <thead><tr><th></th><th>First Installment</th><th>Second Installment</th></tr></thead>
                 <tbody>
                   <tr><td class="rowh">Student</td>
-                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
-                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
+                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin-entry="s1" data-fin-field="amount" onchange="saveSchFinCell(this)" /></div><select data-fin-entry="s1" data-fin-field="status" onchange="saveSchFinCell(this)"><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
+                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin-entry="s2" data-fin-field="amount" onchange="saveSchFinCell(this)" /></div><select data-fin-entry="s2" data-fin-field="status" onchange="saveSchFinCell(this)"><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
                   <tr><td class="rowh">Institute</td>
-                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
-                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" /></div><select><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
+                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin-entry="i1" data-fin-field="amount" onchange="saveSchFinCell(this)" /></div><select data-fin-entry="i1" data-fin-field="status" onchange="saveSchFinCell(this)"><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td>
+                    <td><div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin-entry="i2" data-fin-field="amount" onchange="saveSchFinCell(this)" /></div><select data-fin-entry="i2" data-fin-field="status" onchange="saveSchFinCell(this)"><option>Status…</option><option>Funds Disbursed</option><option>Fund Disbursement in Process</option><option>Awaiting Approval</option></select></td></tr>
                 </tbody>
               </table>
             </section>
@@ -3478,6 +3677,13 @@ img{max-width:100%}
         </div>
       </section>
 
+
+      <!-- ===== MY CAMPS (Fellow view — deliberately lighter than Admin's) ===== -->
+      <section class="screen" id="f-camps">
+        <div class="page-h"><div class="eyebrow">Operations</div><h1>My Camps</h1><p>Camps you are assigned to. Open one for venue, timing and its onboarding link.</p></div>
+        <div id="myCamps"></div>
+      </section>
+
     </main>
   </div>
 </div>
@@ -3504,6 +3710,7 @@ img{max-width:100%}
       <a href="#" class="nav-link" data-go="a-verify"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3 8-8"/><path d="M21 12v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11"/></svg>Document Verification<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)">4</span></a>
       <a href="#" class="nav-link" data-go="a-tasks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18M8 14h2M14 14h2M8 17h2M14 17h2"/></svg>Applications<span class="soon" style="background:rgba(246,178,74,.18);color:var(--marigold-soft)" id="aApplicationsBadge">0</span></a>
       <a href="#" class="nav-link" data-go="a-attendance"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Attendance</a>
+      <a href="#" class="nav-link" data-go="a-camps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><path d="M12 3 4 12h16Z"/><path d="M12 12v9"/></svg>Camps</a>
       <a href="#" class="nav-link" data-go="a-catalogue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>Scholarship Catalogue</a>
       <div class="nav-label">Manage</div>
       <a href="#" class="nav-link" data-go="a-students"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 8.5a3 3 0 0 1 0 5"/><path d="M18 20a5.2 5.2 0 0 0-3-4.7"/></svg>All Students</a>
@@ -3535,13 +3742,17 @@ img{max-width:100%}
         </div>
 
         <div class="misfilters">
-          <select onchange="misFilter()"><option>Date range: This FY (25-26)</option><option>Last 30 days</option><option>This quarter</option><option>Custom…</option></select>
-          <select onchange="misFilter()"><option>All States</option><option>Maharashtra</option></select>
-          <select onchange="misFilter()"><option>All Districts</option><option>Pune</option><option>Nashik</option><option>Satara</option></select>
-          <select onchange="misFilter()"><option>All Fellows</option><option>Rahul More</option><option>Sandip K</option><option>Dhanashree O</option></select>
-          <select onchange="misFilter()"><option>All Scholarships</option><option>GoI Post-Matric</option><option>OBC Post-Matric</option></select>
-          <select onchange="misFilter()"><option>All Categories</option><option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>Minority</option></select>
+          <select onchange="misFilter(this,'Period')"><option>Date range: This FY (25-26)</option><option>Last 30 days</option><option>This quarter</option><option>Custom…</option></select>
+          <select onchange="misFilter(this,'State')"><option>All States</option><option>Maharashtra</option></select>
+          <select onchange="misFilter(this,'District')"><option>All Districts</option><option>Pune</option><option>Nashik</option><option>Satara</option></select>
+          <select onchange="misFilter(this,'Fellow')"><option>All Fellows</option><option>Rahul More</option><option>Sandip K</option><option>Dhanashree O</option></select>
+          <select onchange="misFilter(this,'Scholarship')"><option>All Scholarships</option><option>GoI Post-Matric</option><option>OBC Post-Matric</option></select>
+          <select onchange="misFilter(this,'Category')"><option>All Categories</option><option>SC</option><option>ST</option><option>OBC</option><option>VJNT</option><option>Minority</option></select>
+          <select onchange="misFilter(this,'Student')"><option>All Students</option><option>Aarti Ramesh Pawar</option><option>Kavya Deshmukh</option><option>Sneha Patil</option></select>
+          <select onchange="misFilter(this,'College')"><option>All Colleges</option><option>Fergusson College, Pune</option><option>SP College, Pune</option><option>KTHM College, Nashik</option></select>
+          <select onchange="misFilter(this,'Migrant')"><option>Migrant status: All</option><option>Migrant</option><option>Non-migrant</option></select>
           <span id="misFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
+          <span class="mis-chip" id="misChip" style="display:none"></span>
         </div>
 
         <div class="grid stagger" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px">
@@ -3550,6 +3761,7 @@ img{max-width:100%}
           <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div></div><div class="num">264</div><div class="cap">Applications submitted</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic green"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6 9 17l-5-5"/></svg></div></div><div class="num">182</div><div class="cap">Applications approved</div></div>
           <div class="card stat hoverable"><div class="top"><div class="ic gold"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div></div><div class="num">₹74.2L</div><div class="cap">Total disbursed</div></div>
+          <div class="card stat hoverable"><div class="top"><div class="ic blue"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 7l9 5 9-5-9-5Z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></div></div><div class="num" id="misFigTapped">18</div><div class="cap">Schemes tapped</div></div>
         </div>
 
         <div class="card" style="margin-bottom:20px">
@@ -3571,6 +3783,35 @@ img{max-width:100%}
           </div>
         </div>
 
+        <div class="mis-sec">
+          <div class="msh"><h3>Overview</h3><span class="mss">Applications submitted per month, current filter</span></div>
+          <div class="mis-card"><h4>Month-wise applications submitted</h4><div id="mis-months"></div></div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Demographics</h3><span class="mss">Who the programme is reaching</span></div>
+          <div class="mis-grid">
+            <div class="mis-card"><h4>Gender-wise</h4><div id="mis-gender"></div></div>
+            <div class="mis-card"><h4>Caste category-wise</h4><div id="mis-caste"></div></div>
+            <div class="mis-card"><h4>Annual family income-wise</h4><div id="mis-income"></div></div>
+            <div class="mis-card"><h4>Education stream-wise</h4><div id="mis-stream"></div></div>
+            <div class="mis-card"><h4>Grade / year-wise</h4><div id="mis-grade"></div></div>
+            <div class="mis-card"><h4>Institutions covered</h4>
+              <div class="mis-figs"><div class="mis-fig"><div class="mfv" id="misFigColleges">62</div><div class="mfl">Total colleges</div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Geography</h3><span class="mss">Where students are, including migration status</span></div>
+          <div class="mis-grid">
+            <div class="mis-card"><h4>District-wise</h4><div id="mis-geo"></div></div>
+            <div class="mis-card"><h4>Migrant / non-migrant</h4><div id="mis-migrant"></div><div class="mis-note">Reads the Migrant Family field now collected in onboarding.</div></div>
+          </div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Fellow &amp; Scheme Performance</h3><span class="mss">Per-Fellow delivery and per-scheme uptake</span></div>
         <div class="grid g-2" style="align-items:start">
           <div class="card">
             <div class="section-h" style="margin:0 0 12px"><h3 style="font-size:17px">Fellow-wise performance</h3></div>
@@ -3597,6 +3838,29 @@ img{max-width:100%}
             </table></div>
           </div>
         </div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Scheme Utilisation &amp; Document Support</h3><span class="mss">How much of each scheme is used, and where documents stand</span></div>
+          <div class="mis-grid">
+            <div class="mis-card"><h4>Scheme utilisation</h4><div id="mis-schemeUtil"></div><div class="mis-note">Mock capacity — the Scholarship master has no capacity/budget field yet; it would need to be added.</div></div>
+            <div class="mis-card"><h4>Documents support dashboard</h4><div id="mis-docSupport"></div></div>
+          </div>
+        </div>
+
+        <div class="mis-sec">
+          <div class="msh"><h3>Process Efficiency</h3><span class="mss">How long things take, and where they stall</span></div>
+          <div class="mis-grid">
+            <div class="mis-card"><h4>Average time to approval</h4><div id="mis-ttApproval"></div><div class="mis-note">Needs status-change history (Frappe track_changes) to be real; mock here.</div></div>
+            <div class="mis-card"><h4>Average time to disbursement</h4><div id="mis-ttDisburse"></div><div class="mis-note">Needs status-change history (Frappe track_changes) to be real; mock here.</div></div>
+            <div class="mis-card"><h4>Document friction — longest in follow-up</h4><div id="mis-docFriction"></div><div class="mis-note">Needs status-change history (Frappe track_changes) to be real; mock here.</div></div>
+            <div class="mis-card"><h4>Headline efficiency</h4>
+              <div class="mis-figs"><div class="mis-fig"><div class="mfv" id="misFigApproval">34 days</div><div class="mfl">Avg time to approval</div></div><div class="mis-fig"><div class="mfv" id="misFigDisburse">21 days</div><div class="mfl">Avg time to disbursement</div></div><div class="mis-fig"><div class="mfv" id="misFigRenewal">27%</div><div class="mfl">Repeat / renewal rate</div></div></div>
+              <div class="mis-note">Renewal rate needs a stable cross-year student identifier (Module 9 migration); mock here.</div>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       <!-- ===== DOCUMENT VERIFICATION ===== -->
@@ -3714,7 +3978,7 @@ img{max-width:100%}
             </div>
           </div>
           <div class="prof-meta">
-            <div class="pm-item"><span class="pm-k">Assigned Fellow</span><span class="pm-v"><span class="pm-av" id="asFellowAv">R</span><span id="asFellow">Rahul More</span><button class="pm-reassign" type="button" onclick="alert('Reassign Fellow — pick another Fellow to take over this caseload. The change is audit-logged (RBAC).')">Reassign</button></span></div>
+            <div class="pm-item"><span class="pm-k">Assigned Fellow</span><span class="pm-v"><span class="pm-av" id="asFellowAv">R</span><span id="asFellow">Rahul More</span><button class="pm-reassign" type="button" onclick="openReassign(this)">Reassign</button><span id="asAssignStatus" style="margin-left:8px"></span></span><div id="asReassignHost"></div></div>
             <div class="pm-item"><span class="pm-k">Tags</span><span class="pm-v"><span class="tagchip">SC</span><span class="tagchip">Pune</span><span class="tagchip">Post-Matric</span></span></div>
             <div class="pm-item"><span class="pm-k">Created</span><span class="pm-v">12 Apr 2026</span></div>
             <div class="pm-item"><span class="pm-k">Last modified</span><span class="pm-v">2 Jun 2026</span></div>
@@ -3728,6 +3992,7 @@ img{max-width:100%}
           <button onclick="ftab(this,'ap-sch')">Eligible Schemes</button>
           <button onclick="ftab(this,'ap-docs')">Documents</button>
           <button onclick="ftab(this,'ap-apps')">Applications</button>
+          <button onclick="ftab(this,'ap-fin')">Financial Tracking</button>
         </div>
 
         <!-- Profile tab (admin can edit; audit-logged) -->
@@ -3740,7 +4005,7 @@ img{max-width:100%}
               <div class="field"><div class="k">Gender</div><div class="v">Female</div></div>
               <div class="field"><div class="k">Caste / Category</div><div class="v">SC</div></div>
               <div class="field"><div class="k">Religion</div><div class="v">Buddhist</div></div>
-              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div>
+              <div class="field"><div class="k">Annual Family Income</div><div class="v">₹1,80,000</div></div><div class="field"><div class="k">Migrant Family</div><div class="v">Non-migrant</div></div>
               <div class="field"><div class="k">State / District</div><div class="v">Maharashtra · Pune</div></div>
               <div class="field"><div class="k">Course / Year</div><div class="v">B.Com · Year 2</div></div>
               <div class="field"><div class="k">Last Exam %</div><div class="v">78%</div></div>
@@ -3840,21 +4105,25 @@ img{max-width:100%}
               <div class="vb"><b>Aadhaar Card</b><small>Uploaded 12 Apr · Accepted 14 Apr</small></div>
               <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
             </div>
+            <div class="doc-notes-host" data-doc="Aadhaar Card" style="margin-left:58px"></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>Annual Income Certificate (FY 25/26)</b><small>Uploaded 15 Apr · Accepted 18 Apr</small></div>
               <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
             </div>
+            <div class="doc-notes-host" data-doc="Annual Income Certificate" style="margin-left:58px"></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>10th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted 14 Apr</small></div>
               <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
             </div>
+            <div class="doc-notes-host" data-doc="10th School Leaving Certificate" style="margin-left:58px"></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--green-50);color:var(--green)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>12th School Leaving Certificate</b><small>Uploaded 12 Apr · Accepted 14 Apr</small></div>
               <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
             </div>
+            <div class="doc-notes-host" data-doc="12th School Leaving Certificate" style="margin-left:58px"></div>
 
             <div class="doc-group-banner" style="margin:18px 0 8px">Good to Have <span class="dgb-pill good">Scholarship-specific</span></div>
             <div class="vrow" data-vstatus="done">
@@ -3862,26 +4131,31 @@ img{max-width:100%}
               <div class="vb"><b>Caste Certificate</b><small>Uploaded 28 Apr · Accepted 1 May</small></div>
               <div class="vacts"><span class="pill green"><span class="pdot"></span>Accepted</span></div>
             </div>
+            <div class="doc-notes-host" data-doc="Caste Certificate" style="margin-left:58px"></div>
             <div class="vrow" data-vstatus="all">
               <div class="vi"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>Domicile Certificate</b><small>Uploaded by Fellow · 2 Jun · Re-upload Version 1 · awaiting your review</small></div>
               <div class="vacts"><button class="btn btn-ghost btn-sm" onclick="openDocPreview('Domicile Certificate','Uploaded by Fellow · 2 Jun · Re-upload Version 1 · awaiting your review')">View file</button><button class="btn btn-danger btn-sm" onclick="vAct(this,'reject')">Reject</button><button class="btn btn-accept btn-sm" onclick="vAct(this,'accept')">Accept</button></div>
             </div>
+            <div class="doc-notes-host" data-doc="Domicile Certificate" style="margin-left:58px"></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--red-50);color:var(--red)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg></div>
               <div class="vb"><b>Non-Creamy Layer Certificate</b><small style="color:var(--red)">Rejected: "Not clearly legible" — awaiting Fellow re-upload</small></div>
               <div class="vacts"><span class="pill red"><span class="pdot"></span>Rejected</span></div>
             </div>
+            <div class="doc-notes-host" data-doc="Non-Creamy Layer Certificate" style="margin-left:58px"></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--amber-50);color:var(--amber)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>Ration Card</b><small>Awaiting Fellow upload — procurement in progress</small></div>
               <div class="vacts"><span class="pill amber"><span class="pdot"></span>Pending</span></div>
             </div>
+            <div class="doc-notes-host" data-doc="Ration Card" style="margin-left:58px"></div>
             <div class="vrow" data-vstatus="done">
               <div class="vi" style="background:var(--cream-2);color:var(--muted)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/></svg></div>
               <div class="vb"><b>Orphan Certificate</b><small>Marked N/A — both parents living</small></div>
               <div class="vacts"><span class="pill grey"><span class="pdot"></span>N/A</span></div>
             </div>
+            <div class="doc-notes-host" data-doc="Orphan Certificate" style="margin-left:58px"></div>
           </div>
         </div>
 
@@ -3916,6 +4190,7 @@ img{max-width:100%}
                   <div class="tl-item active"><div class="knob"></div><div class="t">Under Scrutiny</div><div class="d">Department processing</div></div>
                   <div class="tl-item future"><div class="t">Application Approved → Benefits Received</div><div class="d">—</div></div>
                 </div>
+                <div class="app-pdf-host" data-app="pm"></div>
               </div>
             </div>
 
@@ -3939,6 +4214,7 @@ img{max-width:100%}
               </div>
               <div class="app-acc-body">
                 <p style="font-size:13px;color:var(--ink-soft);margin:0">All documents Accepted. Awaiting Fellow Rahul More to submit on the portal and record the application details.</p>
+                <div class="app-pdf-host" data-app="ms"></div>
               </div>
             </div>
 
@@ -3962,6 +4238,7 @@ img{max-width:100%}
               </div>
               <div class="app-acc-body">
                 <p style="font-size:13px;color:var(--ink-soft);margin:0">2 documents still pending (Non-Creamy Layer: Rejected, awaiting re-upload · Ration Card: Pending). Documents tab shows individual status. Fellow to upload before this can progress.</p>
+                <div class="app-pdf-host" data-app="ab"></div>
               </div>
             </div>
 
@@ -3986,11 +4263,21 @@ img{max-width:100%}
               <div class="app-acc-body">
                 <div class="meta" style="display:flex;gap:16px;flex-wrap:wrap;color:var(--ink-soft);font-size:13px;margin:0 0 12px"><span>Application ID: MH-SM-2026-08812</span><span>Originally submitted 20 May</span><span style="color:var(--red);font-weight:600">Rejected 4 Jun</span></div>
                 <div style="background:#FFF1F2;border:1px solid #FFE4E6;border-left:3px solid var(--red);border-radius:8px;padding:10px 14px;font-size:13px;color:var(--ink-soft);margin-bottom:12px"><b style="color:#B91C1C">Portal rejection reason:</b> "Caste Validity Certificate not clearly legible — re-upload required." Awaiting Fellow Rahul to re-procure the document and re-submit on the portal.</div>
+                <div class="app-pdf-host" data-app="smm"></div>
                 <p style="font-size:12.5px;color:var(--muted);margin:0">Admin oversight only — Fellow is responsible for correcting the document and re-submitting (RBAC-05).</p>
               </div>
             </div>
 
           </div>
+        </div>
+
+        <!-- Financial Tracking tab — Admin oversight, read-only (RBAC-05: Fellow records, Admin reviews). -->
+        <div class="tabpane" id="ap-fin">
+          <p style="font-size:13px;color:var(--ink-soft);margin:0 0 14px">Installment-wise disbursement recorded by the assigned Fellow — student and institute levels, with proof of benefit received. Oversight only; disbursement is recorded by the Fellow.</p>
+          <div class="fin-host" data-app="pm" data-mode="view"></div>
+          <div class="fin-host" data-app="ms" data-mode="view"></div>
+          <div class="fin-host" data-app="ab" data-mode="view"></div>
+          <div class="fin-host" data-app="smm" data-mode="view"></div>
         </div>
             <div class="activity">
               <h3>Activity</h3>
@@ -4011,12 +4298,12 @@ img{max-width:100%}
           <button class="btn btn-primary" onclick="alert('Add User: create a Student, Fellow, Mentor, Program Admin or Super Admin account with the matching role profile (RBAC).')">+ Add User</button>
         </div>
         <div class="dtable-wrap"><table class="dtable">
-          <thead><tr><th>Fellow</th><th>Region</th><th class="num">Students</th><th class="num">Approved</th><th class="num">₹ Unlocked</th></tr></thead>
+          <thead><tr><th>Fellow</th><th>Region</th><th class="num">Students</th><th class="num">Approved</th><th class="num">₹ Unlocked</th><th>Targets</th></tr></thead>
           <tbody>
-            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span>Rahul More</div></td><td>Pune</td><td class="num">24</td><td class="num">5</td><td class="num">₹2.6L</td></tr>
-            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">S</span>Sandip K</div></td><td>Nashik</td><td class="num">19</td><td class="num">6</td><td class="num">₹3.1L</td></tr>
-            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">D</span>Dhanashree O</div></td><td>Pune</td><td class="num">22</td><td class="num">4</td><td class="num">₹2.2L</td></tr>
-            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">V</span>Vaibhav D</div></td><td>Satara</td><td class="num">17</td><td class="num">3</td><td class="num">₹1.7L</td></tr>
+            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span>Rahul More</div></td><td>Pune</td><td class="num">24</td><td class="num">5</td><td class="num">₹2.6L</td><td><button class="btn btn-ghost btn-sm" type="button" onclick="toggleTargetPanel(this,'Rahul More')">Targets</button></td></tr>
+            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#e8821e,#f6b24a);color:#3a2400">S</span>Sandip K</div></td><td>Nashik</td><td class="num">19</td><td class="num">6</td><td class="num">₹3.1L</td><td><button class="btn btn-ghost btn-sm" type="button" onclick="toggleTargetPanel(this,'Sandip K')">Targets</button></td></tr>
+            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">D</span>Dhanashree O</div></td><td>Pune</td><td class="num">22</td><td class="num">4</td><td class="num">₹2.2L</td><td><button class="btn btn-ghost btn-sm" type="button" onclick="toggleTargetPanel(this,'Dhanashree O')">Targets</button></td></tr>
+            <tr><td><div class="who"><span class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">V</span>Vaibhav D</div></td><td>Satara</td><td class="num">17</td><td class="num">3</td><td class="num">₹1.7L</td><td><button class="btn btn-ghost btn-sm" type="button" onclick="toggleTargetPanel(this,'Vaibhav D')">Targets</button></td></tr>
           </tbody>
         </table></div>
       </section>
@@ -4058,7 +4345,7 @@ img{max-width:100%}
       <!-- ===== ADMIN ATTENDANCE (ID 7) ===== -->
       <section class="screen" id="a-attendance">
         <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
-          <div><div class="eyebrow">Workspace</div><h1>Attendance</h1><p>Who's working now, plus each Fellow's daily login/logout record. Leaves &amp; holidays are managed manually.</p></div>
+          <div><div class="eyebrow">Workspace</div><h1>Attendance</h1><p>Who's working now, plus each Fellow's daily login/logout record. Approve leave, adjust balances and schedule state-wise holidays below.</p></div>
           <button class="btn btn-ghost" onclick="alert('Export — downloads the filtered attendance as Excel (wireframe stub).')"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Export</button>
         </div>
 
@@ -4081,7 +4368,7 @@ img{max-width:100%}
         <div class="misfilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
           <select class="att-fellow" onchange="attFilter()"><option value="">All Fellows</option><option>Rahul More</option><option>Priya Kulkarni</option><option>Sunil Kadam</option></select>
           <input class="att-date" type="date" onchange="attFilter()" />
-          <select class="att-status" onchange="attFilter()"><option value="">All statuses</option><option>Present</option><option>On Leave</option><option>Absent</option></select>
+          <select class="att-status" onchange="attFilter()"><option value="">All statuses</option><option>Present</option><option>Work From Home</option><option>On Leave</option><option>Absent</option></select>
           <button class="btn btn-ghost btn-sm" onclick="attClear()">Clear</button>
           <span id="attFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
         </div>
@@ -4100,7 +4387,11 @@ img{max-width:100%}
           </tbody>
         </table>
         <div class="empty" id="attEmpty" style="display:none;padding:18px;text-align:center;color:var(--muted)">No attendance records match this filter.</div>
+
         </div>
+
+        <!-- Leave approval, balance adjustment and the state holiday calendar (Point 9). -->
+        <div id="adminLeave"></div>
       </section>
 
       <!-- ===== ADMIN PROFILE ===== -->
@@ -4116,6 +4407,30 @@ img{max-width:100%}
           <div class="field"><div class="k">Mobile</div><div class="v">+91 98xxx xxx01</div></div>
           <div class="field"><div class="k">Documents verified (FY)</div><div class="v">1,210</div></div>
         </div></div>
+      </section>
+
+
+      <!-- ===== CAMPS: program-level overview (Point 5 / Module 11) ===== -->
+      <section class="screen" id="a-camps">
+        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
+          <div><div class="eyebrow">Operations</div><h1>Camps</h1><p>All onboarding drives across programs. Open a camp for its live dashboard.</p></div>
+          <button class="btn btn-primary" data-go="a-camp-new">+ Create Camp</button>
+        </div>
+        <div id="campTotals"></div>
+        <div id="campTable"></div>
+      </section>
+
+      <!-- ===== CAMPS: single camp dashboard ===== -->
+      <section class="screen" id="a-camp">
+        <span class="backlink" data-go="a-camps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to Camps</span>
+        <div id="campDash"></div>
+      </section>
+
+      <!-- ===== CAMPS: creation form ===== -->
+      <section class="screen" id="a-camp-new">
+        <span class="backlink" data-go="a-camps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>Back to Camps</span>
+        <div class="page-h"><div class="eyebrow">Operations</div><h1>Create Camp</h1><p>Duration is calculated from the dates, excluding Sundays. A camp cannot be published without a Primary Fellow.</p></div>
+        <div id="campForm"></div>
       </section>
 
     </main>
@@ -4297,7 +4612,7 @@ var MY_ONBOARDING = {
            onbCollege:'Fergusson College, Pune', onbHeard:'College',
            onbGrade:'Graduation - 2nd Year', onbStream:'Commerce & Management', onbMarks:'78%',
            onbPrevGrade:'Graduation - 1st Year', onbPrevMarks:'74%',
-           onbSocial:'SC', onbIncome:'₹1 – 2 lakh', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
+           onbSocial:'SC', onbIncome:'₹1 – 2 lakh', onbMigrant:'Non-migrant', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
            onbGoals:'Complete my B.Com and qualify for a government scholarship.', onbCareer:'Become a chartered accountant.',
            onbShare:'Mother is the sole earner; fee support needed this year.', onbConsent:'Aarti Ramesh Pawar' },
   docs:['have','have','have','have','have','dont','have','dont','na'],
@@ -4359,7 +4674,7 @@ var PENDING_ONBOARDINGS = {
              onbCollege:'Fergusson College, Pune', onbHeard:'College',
              onbGrade:'Graduation - 1st Year', onbStream:'Arts / Humanities', onbMarks:'74%',
              onbPrevGrade:'12th', onbPrevMarks:'78%',
-             onbSocial:'OBC', onbIncome:'₹1 – 2 lakh', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
+             onbSocial:'OBC', onbIncome:'₹1 – 2 lakh', onbMigrant:'Migrant', onbParentDis:'No', onbOccupation:'Daily Wages', onbDrug:'No',
              onbGoals:'Complete my B.A and secure a government scholarship.', onbCareer:'Become a school teacher.',
              onbShare:'Father is the sole earner; needs fee support this semester.', onbConsent:'Ravi Deshmukh' },
     docs:['have','dont','have','have','dont','na','have','have','na'],
@@ -4376,7 +4691,7 @@ var PENDING_ONBOARDINGS = {
              onbCollege:'Other', onbHeard:'Mudita Alliance',
              onbGrade:'Graduation - 2nd Year', onbStream:'Science', onbMarks:'CGPA 8.1',
              onbPrevGrade:'Graduation - 1st Year', onbPrevMarks:'CGPA 7.9',
-             onbSocial:'SC', onbIncome:'₹50,000 – ₹1 lakh', onbParentDis:'No', onbOccupation:'Farming', onbDrug:'No',
+             onbSocial:'SC', onbIncome:'₹50,000 – ₹1 lakh', onbMigrant:'Non-migrant', onbParentDis:'No', onbOccupation:'Farming', onbDrug:'No',
              onbGoals:'Clear my B.Sc with distinction.', onbCareer:'Pursue a Masters in Microbiology.',
              onbShare:'First-generation learner in the family.', onbConsent:'Sneha Kale' },
     docs:['have','have','have','have','dont','dont','dont','dont','na'],
@@ -4693,15 +5008,59 @@ function fellowPunch(btn){
     var now = new Date();
     var t = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
     var st = document.getElementById('fAttState');
+    // Work status is chosen by the Fellow at check-in (Point 9) — never inferred from location.
+    var sel = document.getElementById('fAttStatusSel');
+    var status = sel ? sel.value : 'Present';
     if(!FELLOW_LOGGED_IN){
       FELLOW_LOGGED_IN = true;
       btn.className='att-btn out'; btn.textContent='Log Out';
-      st.innerHTML='<span class="att-dot" style="background:var(--green)"></span>Logged in <b>'+t+'</b> · '+loc;
+      st.innerHTML='<span class="att-dot" style="background:var(--green)"></span>Logged in <b>'+t+'</b> · <b>'+status+'</b> · '+loc;
+      punchAttendanceRow(status, t, loc);
+      if(sel) sel.disabled = true;                      // the day's status is fixed once you check in
     } else {
       FELLOW_LOGGED_IN = false;
       btn.className='att-btn in'; btn.textContent='Log In';
-      st.innerHTML='Logged out <b>'+t+'</b> · thanks for today.';
+      st.innerHTML='Logged out <b>'+t+'</b> · recorded as <b>'+status+'</b> · thanks for today.';
+      punchAttendanceRow(status, null, loc, t);
+      if(sel) sel.disabled = false;
     }
+  });
+}
+// Checking in writes today's row into both attendance tables; checking out fills Out and gross hours,
+// so a punch produces a visible record rather than only changing the card's label.
+function punchAttendanceRow(status, inTime, loc, outTime){
+  var now = new Date();
+  var iso = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+  var fellow = (typeof hrFellow==='function') ? hrFellow() : 'Rahul More';
+  var pill = (typeof statusPill==='function') ? statusPill(status)
+           : '<span class="pill green"><span class="pdot"></span>'+status+'</span>';
+  var pretty = (typeof hrDate==='function') ? hrDate(iso) : iso;
+  var hours = function(a,b){
+    if(!a||!b) return '0.0';
+    var p=function(x){ var m=x.match(/(\d+):(\d+)\s*(AM|PM)/i); if(!m) return 0;
+      var h=Number(m[1])%12 + (/PM/i.test(m[3])?12:0); return h+Number(m[2])/60; };
+    return Math.max(0, p(b)-p(a)).toFixed(1);
+  };
+  [{tb:document.querySelector('#fAttTable tbody'), admin:false},
+   {tb:document.querySelector('#attTable tbody'),  admin:true}].forEach(function(t){
+    if(!t.tb) return;
+    var sel = t.admin ? 'tr[data-fellow="'+fellow+'"][data-date="'+iso+'"]' : 'tr[data-date="'+iso+'"]';
+    var row = t.tb.querySelector(sel);
+    if(!row){
+      row = document.createElement('tr');
+      row.setAttribute('data-date', iso);
+      if(t.admin) row.setAttribute('data-fellow', fellow);
+      t.tb.insertBefore(row, t.tb.firstChild);
+    }
+    row.setAttribute('data-status', status);
+    var inT  = inTime  || row.getAttribute('data-in')  || '—';
+    var outT = outTime || row.getAttribute('data-out') || '—';
+    if(inTime)  row.setAttribute('data-in', inTime);
+    if(outTime) row.setAttribute('data-out', outTime);
+    var h = hours(row.getAttribute('data-in'), row.getAttribute('data-out'));
+    row.innerHTML = t.admin
+      ? '<td>'+fellow+'</td><td>'+pretty+'</td><td>'+pill+'</td><td>'+inT+'</td><td>'+outT+'</td><td>'+h+'</td><td>'+(loc||'—')+'</td>'
+      : '<td>'+pretty+'</td><td>'+inT+'</td><td>'+outT+'</td><td>'+h+'</td><td>'+pill+'</td><td>'+(loc||'—')+'</td>';
   });
 }
 function attFilter(){
@@ -4851,7 +5210,8 @@ function filterCaseList(scope, bucket, btn){
   renderCaseList(scope);
 }
 function adminCaseFellow(f){ _caseAdminFellow=f; renderCaseList('admin'); }
-function _rerenderAll(){ renderCaseList('fellow'); if(document.getElementById('caseListAdmin')) renderCaseList('admin'); }
+// Every caseload mutation routes through here, so the Fellow's workload cards re-render from one hook.
+function _rerenderAll(){ renderCaseList('fellow'); if(document.getElementById('caseListAdmin')) renderCaseList('admin'); if(typeof renderFellowCards==='function') renderFellowCards(); if(typeof renderMyTargets==='function') renderMyTargets(); }
 function caseAdvance(id){ var c=caseById(id); if(!c) return; var i=CASE_STATUS.indexOf(c.status); if(i>=0&&i<3) c.status=CASE_STATUS[i+1]; else if(c.status==='Application Approved · funds awaited') c.status='Benefits Received'; _rerenderAll(); }
 function caseSetStatus(id,status){ var c=caseById(id); if(!c) return; c.status=status; _rerenderAll(); }
 function casePendReason(id,type){ var c=caseById(id); if(!c) return; c._pend=type; _rerenderAll(); setTimeout(function(){ var el=document.getElementById('cr_'+id); if(el) el.focus(); },0); }
@@ -4937,6 +5297,1261 @@ function initTurnPills(){
   });
 }
 // Notifications — real dropdown, per-role items (Task 9 loop-closer).
+// Fellow-to-Student document notes. Keyed by exact document display name. Fellow writes, Student + Admin read.
+var DOC_NOTES = {
+  'Non-Creamy Layer Certificate': [
+    {by:'Rahul More', on:'16 May', text:"Sent back for a clearer scan — the caste-category line wasn't legible. Re-uploading a fresh copy now."}
+  ]
+};
+function renderDocNotes(key){
+  var notes = DOC_NOTES[key];
+  if(!notes || !notes.length) return '';
+  return '<div class="doc-notes">'+notes.map(function(n){
+    return '<div class="doc-note"><b>'+n.by+'</b><span class="doc-note-date">'+n.on+'</span><div class="doc-note-text">'+n.text+'</div></div>';
+  }).join('')+'</div>';
+}
+function refreshDocNotes(key){
+  document.querySelectorAll('.doc-notes-host[data-doc="'+key+'"]').forEach(function(host){ host.innerHTML = renderDocNotes(key); });
+}
+function initDocNotesAll(){
+  document.querySelectorAll('.doc-notes-host').forEach(function(host){ host.innerHTML = renderDocNotes(host.getAttribute('data-doc')); });
+}
+function renderAddDocNote(btn){
+  var key = btn.getAttribute('data-doc');
+  var wrap = document.createElement('div'); wrap.className='doc-note-form';
+  wrap.innerHTML = '<textarea placeholder="Add a note for the student…"></textarea><div style="display:flex;gap:8px;justify-content:flex-end;margin-top:6px"><button class="btn btn-ghost btn-sm" type="button" onclick="this.closest(\'.doc-note-form\').remove()">Cancel</button><button class="btn btn-primary btn-sm" type="button" onclick="sendDocNote(this,\''+key+'\')">Send</button></div>';
+  btn.insertAdjacentElement('afterend', wrap);
+  btn.style.display='none';
+}
+function sendDocNote(sendBtn, key){
+  var form = sendBtn.closest('.doc-note-form');
+  var ta = form.querySelector('textarea');
+  var text = (ta.value||'').trim();
+  if(!text){ ta.focus(); return; }
+  DOC_NOTES[key] = DOC_NOTES[key] || [];
+  DOC_NOTES[key].push({by:'Rahul More', on:'today', text:text});
+  refreshDocNotes(key);
+  NOTIF.student.unshift({t:'Rahul More added a note on your '+key, s:'today'});
+  form.remove();
+  var addBtn = document.querySelector('.doc-note-add[data-doc="'+key.replace(/"/g,'\\"')+'"]');
+  if(addBtn) addBtn.style.display='';
+}
+// Scholarship Application PDF — one file per application (pm/ms/ab/smm), Fellow-attached via the Data Entry form.
+var APP_PDF = {
+  pm: {name:'PMS-2026-0042-submitted.pdf', on:'28 May'}
+};
+function renderAppPdf(key, canReplace){
+  var f = APP_PDF[key];
+  if(!f){
+    return '<div class="app-pdf-row"><span class="apn">📄 Application PDF: Not yet uploaded</span>'+
+      (canReplace ? '<a href="#" onclick="event.preventDefault();go(\'f-scholarship\')">Attach it via the Scholarship Data Entry form</a>' : '')+
+      '</div>';
+  }
+  return '<div class="app-pdf-row"><span>📄 Application PDF: <b>'+f.name+'</b></span><span class="apn">Uploaded '+f.on+'</span>'+
+    '<a href="#" onclick="event.preventDefault();downloadDoc(\''+f.name+'\')">Download</a>'+
+    (canReplace ? ' <a href="#" onclick="event.preventDefault();go(\'f-scholarship\')">Replace</a>' : '')+
+    '</div>';
+}
+function refreshAppPdf(key){
+  document.querySelectorAll('.app-pdf-host[data-app="'+key+'"]').forEach(function(host){
+    host.innerHTML = renderAppPdf(key, host.hasAttribute('data-can-replace'));
+  });
+}
+function initAppPdfAll(){
+  document.querySelectorAll('.app-pdf-host').forEach(function(host){
+    host.innerHTML = renderAppPdf(host.getAttribute('data-app'), host.hasAttribute('data-can-replace'));
+  });
+}
+// Called from the Scholarship Data Entry form's Upload field (demo always targets 'pm' — see design doc's stated simplification).
+function saveSchFormPdf(input){
+  if(!input.files || !input.files[0]) return;
+  APP_PDF.pm = {name:input.files[0].name, on:'today'};
+  refreshAppPdf('pm');
+}
+// ---- Financial Tracking — installment-wise disbursement per application ----
+// 4 applications x 4 entries. s/i = Student/Institute level, 1/2 = First/Second Installment.
+// Vocabulary is the client-locked set (Installment, Institute, and the three form statuses) —
+// the feedback doc's "Tranche / Institution / Pending" wording is deliberately not used.
+var FIN_APPS = [
+  {key:'pm',  name:'Post-Matric Scholarship for SC Students'},
+  {key:'ms',  name:'Maharashtra State Minority Scholarship'},
+  {key:'ab',  name:'Dr. Babasaheb Ambedkar Scholarship'},
+  {key:'smm', name:'Rajarshi Chhatrapati Shahu Maharaj Merit'}
+];
+var FIN_STATUSES = ['Awaiting Approval','Fund Disbursement in Process','Funds Disbursed'];
+var FIN = {};
+FIN_APPS.forEach(function(a){ FIN[a.key] = {s1:{},i1:{},s2:{},i2:{}}; });
+function finName(key){ for(var i=0;i<FIN_APPS.length;i++){ if(FIN_APPS[i].key===key) return FIN_APPS[i].name; } return key; }
+function finLabel(ek){
+  return (ek.charAt(0)==='s' ? 'Student' : 'Institute')+' · '+(ek.charAt(1)==='1' ? 'First' : 'Second')+' Installment';
+}
+function finMoney(v){ return (v===''||v==null) ? '' : '₹'+Number(v).toLocaleString('en-IN'); }
+function finDate(v){
+  if(!v) return '';
+  var p = String(v).split('-'); if(p.length!==3) return v;
+  var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return Number(p[2])+' '+m[Number(p[1])-1]+' '+p[0];
+}
+// The live application status is read from its pill in the Fellow Applications accordion — the same
+// element updateAppStatus() rewrites — so the gate can never disagree with what is on screen.
+function finAppStatus(key){
+  var pill = document.querySelector('#fp-apps .app-acc-item[data-app="'+key+'"] .pill');
+  return pill ? pill.textContent.trim() : '';
+}
+function finUnlocked(key){
+  var s = finAppStatus(key);
+  return s==='Application Approved · funds awaited' || s==='Benefits Received';
+}
+function finHasAny(key){
+  var f = FIN[key]; if(!f) return false;
+  return ['s1','i1','s2','i2'].some(function(ek){ return f[ek] && f[ek].amount!=='' && f[ek].amount!=null; });
+}
+function finCellEdit(key, ek){
+  var d = FIN[key][ek] || {};
+  var opts = FIN_STATUSES.map(function(s){ return '<option'+(d.status===s?' selected':'')+'>'+s+'</option>'; }).join('');
+  return '<td>'+
+    '<div class="amt"><span class="rs">₹</span><input type="number" placeholder="0" data-fin="amount" data-entry="'+ek+'" value="'+(d.amount||'')+'" /></div>'+
+    '<select data-fin="status" data-entry="'+ek+'"><option value="">Status…</option>'+opts+'</select>'+
+    '<input type="date" data-fin="date" data-entry="'+ek+'" value="'+(d.date||'')+'" />'+
+    (d.proof ? '<a class="fin-proof" href="#" onclick="event.preventDefault();downloadDoc(\''+d.proof+'\')">View proof · '+d.proof+'</a>' : '')+
+    '<input class="fin-proof" type="file" accept="application/pdf,image/*" data-fin="proof" data-entry="'+ek+'" />'+
+    '</td>';
+}
+// A zero amount is a deliberate "this level receives nothing" record, not a pending disbursement.
+function finStatusText(d){
+  if(Number(d.amount)===0) return 'Not applicable';
+  return d.status || 'Awaiting Approval';
+}
+function finCellView(key, ek){
+  var d = FIN[key][ek] || {};
+  if(d.amount==='' || d.amount==null) return '<td><span class="fin-ro fk">Not recorded</span></td>';
+  return '<td><div class="fin-ro"><b>'+finMoney(d.amount)+'</b><br /><span class="fk">'+finStatusText(d)+'</span>'+
+    (d.date ? '<br /><span class="fk">'+finDate(d.date)+'</span>' : '')+
+    (d.proof ? '<br /><a href="#" onclick="event.preventDefault();downloadDoc(\''+d.proof+'\')">View proof</a>' : '')+
+    '</div></td>';
+}
+function finGrid(key, mode){
+  var cell = (mode==='edit') ? finCellEdit : finCellView;
+  return '<table class="instgrid">'+
+    '<thead><tr><th></th><th>First Installment'+(mode==='edit'?' <span class="fin-req">*</span>':'')+'</th><th>Second Installment</th></tr></thead>'+
+    '<tbody>'+
+      '<tr><td class="rowh">Student</td>'+cell(key,'s1')+cell(key,'s2')+'</tr>'+
+      '<tr><td class="rowh">Institute</td>'+cell(key,'i1')+cell(key,'i2')+'</tr>'+
+    '</tbody></table>';
+}
+// Match the pill colours used everywhere else for these same statuses.
+function finPillCls(status){
+  var map = {
+    'Under Scrutiny':'blue', 'Application Approved · funds awaited':'teal', 'Benefits Received':'green',
+    'Ready to Submit':'amber', 'Documents Pending':'amber', 'Re-apply':'amber', 'Rejected':'red'
+  };
+  return map[status] || 'grey';
+}
+function renderFinBlock(key, mode){
+  var st = finAppStatus(key);
+  var head = '<div class="fin-bh"><b>'+finName(key)+'</b><span class="pill '+finPillCls(st)+'"><span class="pdot"></span>'+(st||'Status unknown')+'</span></div>';
+  if(!finUnlocked(key)){
+    // The student's compact view sits inside a card that already shows this scheme's name and status —
+    // repeating them in a locked block would duplicate on-screen data, so it renders nothing at all.
+    if(mode==='line') return '';
+    return '<div class="fin-block">'+head+'<div class="fin-locked">Financial Tracking unlocks once this application is Approved.</div></div>';
+  }
+  if(mode==='line'){
+    if(!finHasAny(key)) return '';
+    var rows = ['s1','i1','s2','i2'].filter(function(ek){ var d=FIN[key][ek]; return d && d.amount!=='' && d.amount!=null; })
+      .map(function(ek){
+        var d = FIN[key][ek];
+        return '<div class="flr"><span>'+finLabel(ek)+': <b>'+finMoney(d.amount)+'</b></span>'+
+          '<span class="flh">'+finStatusText(d)+(d.date?' · '+finDate(d.date):'')+'</span>'+
+          (d.proof ? '<a href="#" onclick="event.preventDefault();downloadDoc(\''+d.proof+'\')">View proof</a>' : '')+'</div>';
+      }).join('');
+    return '<div class="fin-line"><span class="flh">💰 Disbursement</span>'+rows+'</div>';
+  }
+  if(mode==='edit'){
+    return '<div class="fin-block">'+head+finGrid(key,'edit')+
+      '<div class="fin-actions">'+
+        '<button class="btn btn-primary btn-sm" type="button" onclick="saveFinInstallment(this,\''+key+'\',1)">Save First Installment</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" onclick="saveFinInstallment(this,\''+key+'\',2)">Save Second Installment</button>'+
+      '</div>'+
+      '<div class="fin-note">First Installment is mandatory: an amount is required for both levels, and any amount above 0 also needs a disbursement date and proof. Second Installment is optional — leave it empty for single-installment schemes.</div></div>';
+  }
+  return '<div class="fin-block">'+head+finGrid(key,'view')+
+    (finHasAny(key) ? '' : '<div class="fin-empty">No disbursement recorded yet.</div>')+'</div>';
+}
+function refreshFin(key){
+  document.querySelectorAll('.fin-host[data-app="'+key+'"]').forEach(function(h){
+    h.innerHTML = renderFinBlock(key, h.getAttribute('data-mode')||'view');
+  });
+}
+function initFinAll(){
+  document.querySelectorAll('.fin-host').forEach(function(h){
+    h.innerHTML = renderFinBlock(h.getAttribute('data-app'), h.getAttribute('data-mode')||'view');
+  });
+}
+// Save one installment column (both levels). num 1 = First (mandatory), 2 = Second (optional).
+function saveFinInstallment(btn, key, num){
+  var block = btn.closest('.fin-block');
+  if(!block) return;
+  var eks = (num===1) ? ['s1','i1'] : ['s2','i2'];
+  var staged = {};
+  for(var i=0;i<eks.length;i++){
+    var ek = eks[i];
+    var amountEl = block.querySelector('[data-fin="amount"][data-entry="'+ek+'"]');
+    var statusEl = block.querySelector('[data-fin="status"][data-entry="'+ek+'"]');
+    var dateEl   = block.querySelector('[data-fin="date"][data-entry="'+ek+'"]');
+    var proofEl  = block.querySelector('[data-fin="proof"][data-entry="'+ek+'"]');
+    var amount = amountEl ? amountEl.value.trim() : '';
+    var date   = dateEl ? dateEl.value : '';
+    var proof  = (proofEl && proofEl.files && proofEl.files[0]) ? proofEl.files[0].name : (FIN[key][ek].proof || '');
+    if(num===1){
+      if(amount===''){ alert(finLabel(ek)+': amount is required. Enter 0 if this level receives nothing.'); amountEl && amountEl.focus(); return; }
+      if(Number(amount)>0 && !date){ alert(finLabel(ek)+': disbursement date is required once an amount is entered.'); dateEl && dateEl.focus(); return; }
+      if(Number(amount)>0 && !proof){ alert(finLabel(ek)+': proof of benefit received is required once an amount is entered (PDF or image).'); proofEl && proofEl.focus(); return; }
+    }
+    staged[ek] = {
+      amount: amount,
+      date: date,
+      proof: proof,
+      status: (statusEl && statusEl.value) ? statusEl.value : (Number(amount)>0 ? 'Awaiting Approval' : '')
+    };
+  }
+  var recorded = 0;
+  eks.forEach(function(ek){ if(staged[ek].amount!==''){ FIN[key][ek] = staged[ek]; recorded++; } });
+  refreshFin(key);
+  var label = (num===1?'First':'Second')+' Installment';
+  var msg = recorded
+    ? '✓ '+label+' saved — visible to the Program Admin and the student.'
+    : label+' left empty — nothing recorded (this installment is optional).';
+  if(typeof renderFellowCards==='function') renderFellowCards();   // card 8 (funds unlocked) reads FIN
+  var actions = document.querySelector('#fp-fin .fin-host[data-app="'+key+'"] .fin-actions');
+  if(actions) actions.insertAdjacentHTML('beforeend','<span class="fin-saved">'+msg+'</span>');
+}
+// ---- MIS dashboard indicators (Program Admin) ----
+// Mock figures, deliberately consistent with the headline cards already on this screen
+// (480 onboarded, 264 submitted, 182 approved, ₹74.2L disbursed) so no chart contradicts a card.
+// unit: 'count' figures respond to the filter strip; 'pct' and 'days' do not.
+var MIS = {
+  months:      {unit:'count', rows:[{l:'Apr',v:12},{l:'May',v:19},{l:'Jun',v:31},{l:'Jul',v:38},{l:'Aug',v:34},{l:'Sep',v:22},{l:'Oct',v:18},{l:'Nov',v:16},{l:'Dec',v:14},{l:'Jan',v:21},{l:'Feb',v:24},{l:'Mar',v:15}]},
+  gender:      {unit:'count', rows:[{l:'Female',v:268},{l:'Male',v:210},{l:'Not disclosed',v:2}]},
+  caste:       {unit:'count', rows:[{l:'SC',v:186},{l:'OBC',v:128},{l:'ST',v:62},{l:'VJNT',v:54},{l:'Minority',v:38},{l:'EWS',v:12}]},
+  income:      {unit:'count', rows:[{l:'Below ₹50,000',v:96},{l:'₹50,000 – ₹1L',v:132},{l:'₹1 – 2L',v:141},{l:'₹2 – 4L',v:78},{l:'₹4 – 8L',v:28},{l:'₹8L and above',v:5}]},
+  stream:      {unit:'count', rows:[{l:'Arts',v:148},{l:'Science',v:132},{l:'Commerce',v:121},{l:'Engineering',v:52},{l:'Diploma / ITI',v:27}]},
+  grade:       {unit:'count', rows:[{l:'UG Year 1',v:142},{l:'UG Year 2',v:128},{l:'UG Year 3',v:96},{l:'Post Graduate',v:71},{l:'Diploma',v:43}]},
+  geo:         {unit:'count', rows:[{l:'Pune',v:168},{l:'Nashik',v:96},{l:'Satara',v:74},{l:'Ahmednagar',v:62},{l:'Solapur',v:48},{l:'Other',v:32}]},
+  migrant:     {unit:'count', rows:[{l:'Non-migrant',v:391},{l:'Migrant',v:82},{l:'Not disclosed',v:7}]},
+  schemeUtil:  {unit:'pct',   rows:[{l:'Post-Matric SC',v:78},{l:'OBC Post-Matric',v:64},{l:'VJNT Post-Matric',v:52},{l:'Minority Scholarship',v:41},{l:'Ambedkar Swadhar',v:36}]},
+  docSupport:  {unit:'count', rows:[{l:'Accepted',v:1046},{l:'Under Review',v:118},{l:'Pending',v:78},{l:'Rejected',v:42}]},
+  ttApproval:  {unit:'days',  rows:[{l:'Post-Matric SC',v:31},{l:'OBC Post-Matric',v:34},{l:'VJNT Post-Matric',v:39},{l:'Minority Scholarship',v:44},{l:'Ambedkar Swadhar',v:47}]},
+  ttDisburse:  {unit:'days',  rows:[{l:'Post-Matric SC',v:18},{l:'OBC Post-Matric',v:21},{l:'VJNT Post-Matric',v:24},{l:'Minority Scholarship',v:29},{l:'Ambedkar Swadhar',v:33}]},
+  docFriction: {unit:'days',  rows:[{l:'Caste Validity',v:26},{l:'Non-Creamy Layer',v:21},{l:'Income Certificate',v:14},{l:'Domicile',v:9},{l:'Bonafide',v:6}]},
+  figures: { colleges:62, schemesTapped:18, renewal:27, avgApproval:34, avgDisburse:21 }
+};
+// Filter strip state. Changing any filter narrows the population, so 'count' figures scale down by a
+// deterministic factor. STATED SIMPLIFICATION: this is not real filtering — in the Frappe build each
+// widget re-queries with the filter values. See the design doc.
+var MIS_FILTER = {};
+function misScale(){
+  var n = Object.keys(MIS_FILTER).filter(function(k){ return MIS_FILTER[k]; }).length;
+  return n===0 ? 1 : Math.max(0.18, 1 - (0.22*n));
+}
+function misVal(v, unit){
+  if(unit!=='count') return v;
+  return Math.max(0, Math.round(v * misScale()));
+}
+function renderMisBars(hostId, key){
+  var host = document.getElementById(hostId);
+  if(!host) return;
+  var spec = MIS[key], unit = spec.unit;
+  var vals = spec.rows.map(function(r){ return misVal(r.v, unit); });
+  var max = Math.max.apply(null, vals) || 1;
+  var suffix = unit==='pct' ? '%' : (unit==='days' ? ' days' : '');
+  host.innerHTML = '<div class="misbars">'+spec.rows.map(function(r,i){
+    return '<div class="mb-row"><span class="mb-lbl">'+r.l+'</span>'+
+      '<span class="mb-track"><span class="mb-fill" style="width:'+Math.round((vals[i]/max)*100)+'%"></span></span>'+
+      '<span class="mb-val">'+vals[i].toLocaleString('en-IN')+suffix+'</span></div>';
+  }).join('')+'</div>';
+}
+// Drop-off rate per funnel stage, computed from the stage counts already in the markup so the
+// percentages can never contradict the bars. (This is the client's requested conversion funnel,
+// folded into the existing 5-stage funnel rather than added as a second one.)
+function initFunnelDropoff(){
+  var rows = document.querySelectorAll('#a-home .funnel .frow');
+  var prev = null;
+  rows.forEach(function(row){
+    var bar = row.querySelector('.fbar');
+    var n = Number((bar ? bar.textContent : '0').replace(/[^0-9]/g,''));
+    var old = row.querySelector('.fdrop');
+    if(old) old.remove();
+    var span = document.createElement('span');
+    span.className = 'fdrop';
+    span.textContent = (prev===null || !prev) ? 'entry stage' : '−'+Math.round(((prev-n)/prev)*100)+'% drop-off';
+    row.appendChild(span);
+    prev = n;
+  });
+}
+function renderMisAll(){
+  ['months','gender','caste','income','stream','grade','geo','migrant','schemeUtil','docSupport','ttApproval','ttDisburse','docFriction']
+    .forEach(function(k){ renderMisBars('mis-'+k, k); });
+  var f = MIS.figures, s = misScale();
+  var set = function(id, txt){ var el=document.getElementById(id); if(el) el.textContent = txt; };
+  set('misFigColleges', Math.round(f.colleges*s).toLocaleString('en-IN'));
+  set('misFigSchemes', Math.round(f.schemesTapped*s));
+  set('misFigRenewal', f.renewal+'%');
+  set('misFigApproval', f.avgApproval+' days');
+  set('misFigDisburse', f.avgDisburse+' days');
+  set('misFigTapped', Math.round(f.schemesTapped*s));
+  var chip = document.getElementById('misChip');
+  if(chip){
+    var active = Object.keys(MIS_FILTER).filter(function(k){ return MIS_FILTER[k]; }).map(function(k){ return MIS_FILTER[k]; });
+    chip.style.display = active.length ? '' : 'none';
+    chip.textContent = active.length ? 'Filtered view: '+active.join(' · ') : '';
+  }
+  initFunnelDropoff();
+}
+// ---- Fellow dashboard cards (12-card workload grid) ----
+// 8 cards are computed live from CASES (scoped to CASE_FELLOW) and from FIN; the document-support
+// figures and the day-ages/monthly history are mock, since the wireframe holds no document-case
+// array and records no status-change timestamps. Mock values are chosen to agree with figures
+// already on screen (24 students, the "2 documents Pending" alert, the ">15 days" alert).
+var FDASH = {
+  students: 24,                 // matches "Showing N of 24" on My Students
+  docAssigned: 9, docCompleted: 7, docInProcess: 2, docsSupported: 26,
+  fundsBaseline: 620000,        // this Fellow's other students, outside the 4 demo applications
+  caseAges: {                   // days each case has been sitting, for the aging card
+    'CASE-2026-001':22,'CASE-2026-002':9,'CASE-2026-003':12,'CASE-2026-004':6,'CASE-2026-005':4,
+    'CASE-2026-006':3,'CASE-2026-007':11,'CASE-2026-008':5,'CASE-2026-009':7,'CASE-2026-010':2
+  },
+  months: [{m:'Mar',v:1},{m:'Apr',v:0},{m:'May',v:2},{m:'Jun',v:1},{m:'Jul',v:3},{m:'Aug',v:2}]
+};
+// ---- Camps / Campaign management (Point 5 / Module 11) ----
+// "Campaign" and "Camp" are the same entity per the client documents — modelled once as Camp.
+// Duration, camp ID and the timeline are all DERIVED, never stored or hand-entered.
+var CAMP_PROGRAMS = ['Scholarship','Documentation','Mentoring'];
+var CAMP_STATUSES = ['Draft','Scheduled','Active','Completed','Closed'];
+var CAMP_FELLOWS  = ['Rahul More','Sandip K','Dhanashree O','Vaibhav D'];
+var CAMPS = [
+  {id:'FER-12/08/26-001', name:'Fergusson College Scholarship Drive', program:'Scholarship',
+   start:'2026-08-12', end:'2026-08-22', owner:'Meera Nair', status:'Active', target:120,
+   description:'Post-Matric and OBC drive across UG streams.',
+   venueType:'College', institution:'Fergusson College, Pune', address:'FC Road, Shivajinagar',
+   city:'Pune', district:'Pune', state:'Maharashtra', venueContact:'Prof. S. Kulkarni', venuePhone:'98220 11234',
+   hasPartner:true, partnerName:'Vidya Poshak Trust', partnerContact:'Anil Deshmukh', partnerPhone:'98230 55671',
+   partnershipType:'Outreach partner', partnerNotes:'Provides volunteers and refreshments.',
+   primaryFellow:'Rahul More', supportingFellows:['Dhanashree O'],
+   registered:86, completed:71, draft:9, docSupport:4, today:12},
+  {id:'SPC-02/09/26-002', name:'S.P. College Documentation Camp', program:'Documentation',
+   start:'2026-09-02', end:'2026-09-05', owner:'Meera Nair', status:'Scheduled', target:60,
+   description:'Caste validity and income certificate support.',
+   venueType:'College', institution:'Sir Parshurambhau (S.P.) College, Pune', address:'Tilak Road',
+   city:'Pune', district:'Pune', state:'Maharashtra', venueContact:'Dr. A. Joshi', venuePhone:'98221 33445',
+   hasPartner:false, partnerName:'', partnerContact:'', partnerPhone:'', partnershipType:'', partnerNotes:'',
+   primaryFellow:'Sandip K', supportingFellows:[],
+   registered:0, completed:0, draft:0, docSupport:0, today:0},
+  {id:'MOD-14/07/26-003', name:'Modern College Onboarding Camp', program:'Scholarship',
+   start:'2026-07-14', end:'2026-07-18', owner:'Meera Nair', status:'Completed', target:80,
+   description:'Completed drive — follow-up closed.',
+   venueType:'College', institution:'Modern College, Pune', address:'Shivajinagar',
+   city:'Pune', district:'Pune', state:'Maharashtra', venueContact:'Prof. R. Pawar', venuePhone:'98225 77889',
+   hasPartner:false, partnerName:'', partnerContact:'', partnerPhone:'', partnershipType:'', partnerNotes:'',
+   primaryFellow:'Dhanashree O', supportingFellows:['Vaibhav D'],
+   registered:78, completed:76, draft:0, docSupport:1, today:0}
+];
+var CAMP_SEQ = 3;
+// Student -> fellow/camp assignment. One student is deliberately left Not Assigned so that state is
+// visible on first load (the source document requires unassigned students to be identifiable).
+var STUDENT_ASSIGN = {
+  'Aarti Ramesh Pawar': {fellow:'Rahul More',   camp:'FER-12/08/26-001', status:'Assigned'},
+  'Kavya Deshmukh':     {fellow:'Rahul More',   camp:'FER-12/08/26-001', status:'Assigned'},
+  'Sneha Patil':        {fellow:'Dhanashree O', camp:'MOD-14/07/26-003', status:'Reassigned'},
+  'Suresh Jadhav':      {fellow:'',             camp:'',                status:'Not Assigned'}
+};
+var ASSIGN_LOG = {
+  'Sneha Patil': [{from:'Vaibhav D', to:'Dhanashree O', by:'Meera Nair', on:'18 Jul 2026', reason:'Fellow region change'}]
+};
+function campById(id){ for(var i=0;i<CAMPS.length;i++){ if(CAMPS[i].id===id) return CAMPS[i]; } return null; }
+function campFellows(c){ return [c.primaryFellow].concat(c.supportingFellows||[]).filter(Boolean); }
+// Calendar days between two dates, EXCLUDING Sundays — confirmed in the client document. Never entered.
+function campDuration(start, end){
+  if(!start || !end) return 0;
+  var a = new Date(start), b = new Date(end), n = 0;
+  if(b < a) return 0;
+  while(a <= b){ if(a.getDay() !== 0) n++; a = new Date(a.getTime()+86400000); }
+  return n;
+}
+// Camp ID: first 3 letters of the institution + dd/mm/yy + sequence.
+function campIdFor(institution, startDate, seq){
+  var pre = (institution||'CMP').replace(/[^A-Za-z]/g,'').slice(0,3).toUpperCase() || 'CMP';
+  var p = String(startDate||'').split('-');
+  var dt = (p.length===3) ? (p[2]+'/'+p[1]+'/'+p[0].slice(2)) : '00/00/00';
+  return pre+'-'+dt+'-'+String(seq).padStart(3,'0');
+}
+function campLink(c){ return 'samavesh.org/onboard/'+c.id.replace(/[^A-Za-z0-9]/g,''); }
+// The timeline is computed from the camp's own fields, so it can never disagree with its state.
+function campTimeline(c){
+  var si = CAMP_STATUSES.indexOf(c.status);
+  return [
+    {label:'Camp Created',      on:true},
+    {label:'Fellow Assigned',   on:!!c.primaryFellow},
+    {label:'Link Generated',    on:!!c.primaryFellow},
+    {label:'Camp Published',    on:si >= CAMP_STATUSES.indexOf('Scheduled')},
+    {label:'Camp Live',         on:si >= CAMP_STATUSES.indexOf('Active')},
+    {label:'Camp Completed',    on:si >= CAMP_STATUSES.indexOf('Completed')},
+    {label:'Follow-up Closed',  on:si >= CAMP_STATUSES.indexOf('Closed')}
+  ];
+}
+// Institution names in the demo data often already include the city ("Fergusson College, Pune"),
+// so only append it when it isn't already there.
+function campVenueLabel(c){
+  var inst = c.institution || '';
+  if(!c.city) return inst;
+  return (inst.toLowerCase().indexOf(c.city.toLowerCase())>-1) ? inst : (inst+', '+c.city);
+}
+function campStatusCls(s){
+  return {Draft:'grey', Scheduled:'blue', Active:'green', Completed:'teal', Closed:'grey'}[s] || 'grey';
+}
+// A drawn placeholder QR — no external library, and labelled so nobody mistakes it for scannable.
+function qrBox(link){
+  var seed = 0; for(var i=0;i<link.length;i++) seed += link.charCodeAt(i);
+  var cells = '';
+  for(var y=0;y<9;y++) for(var x=0;x<9;x++){
+    var corner = (x<3&&y<3)||(x>5&&y<3)||(x<3&&y>5);
+    var on = corner ? ((x===0||x===2||y===0||y===2||(x===1&&y===1)) ? 1 : 0)
+                    : (((x*7 + y*13 + seed) % 3) ? 1 : 0);
+    if(on) cells += '<rect x="'+(x*8+2)+'" y="'+(y*8+2)+'" width="8" height="8" />';
+  }
+  return '<div class="qr-box"><svg width="78" height="78" viewBox="0 0 78 78" role="img" aria-label="Sample QR code">'+
+    '<rect width="78" height="78" fill="#fff" stroke="var(--line)"/><g fill="var(--ink)">'+cells+'</g></svg>'+
+    '<span class="qrl">Sample QR — generated server-side from the camp link in production.</span></div>';
+}
+// ---- Camps: program overview ----
+function renderCampList(){
+  var host = document.getElementById('campTotals');
+  if(!host) return;
+  var sum = function(k){ return CAMPS.reduce(function(a,c){ return a + (c[k]||0); }, 0); };
+  var figs = [
+    {v:CAMPS.length, l:'Total camps'}, {v:sum('target'), l:'Overall target'},
+    {v:sum('registered'), l:'Students registered'}, {v:sum('completed'), l:'Onboarding completed'},
+    {v:sum('draft'), l:'Forms in draft'}, {v:sum('docSupport'), l:'Need document support'}
+  ];
+  host.innerHTML = '<div class="mis-figs" style="margin-bottom:18px">'+figs.map(function(f){
+    return '<div class="mis-fig"><div class="mfv">'+f.v.toLocaleString('en-IN')+'</div><div class="mfl">'+f.l+'</div></div>';
+  }).join('')+'</div>';
+  var tbl = document.getElementById('campTable');
+  if(!tbl) return;
+  tbl.innerHTML = '<div class="dtable-wrap"><table class="dtable">'+
+    '<thead><tr><th>Camp</th><th>Dates</th><th>Duration</th><th>Venue</th><th>Primary Fellow</th>'+
+    '<th class="num">Onboarded</th><th class="num">Completed</th><th>Status</th></tr></thead><tbody>'+
+    CAMPS.map(function(c){
+      return '<tr style="cursor:pointer" onclick="openCamp(\''+c.id+'\')">'+
+        '<td><b>'+c.name+'</b><br /><small style="color:var(--muted)">'+c.id+' · '+c.program+'</small></td>'+
+        '<td>'+hrDate(c.start)+' – '+hrDate(c.end)+'</td>'+
+        '<td>'+campDuration(c.start,c.end)+' days</td>'+
+        '<td>'+c.institution+'</td><td>'+(c.primaryFellow||'—')+'</td>'+
+        '<td class="num">'+c.registered+' / '+c.target+'</td><td class="num">'+c.completed+'</td>'+
+        '<td><span class="pill '+campStatusCls(c.status)+'"><span class="pdot"></span>'+c.status+'</span></td></tr>';
+    }).join('')+'</tbody></table></div>';
+}
+var CAMP_OPEN = null;
+function openCamp(id){ CAMP_OPEN = id; renderCampDash(id); go('a-camp'); }
+// ---- Camps: single camp dashboard (7 cards + student table) ----
+function renderCampDash(id){
+  var host = document.getElementById('campDash');
+  var c = campById(id || CAMP_OPEN);
+  if(!host || !c) return;
+  var pct = c.target ? Math.round((c.registered/c.target)*100) : 0;
+  var link = campLink(c);
+  var fellows = campFellows(c);
+  var students = Object.keys(STUDENT_ASSIGN).filter(function(n){ return STUDENT_ASSIGN[n].camp===c.id; });
+  var card = function(title, body){ return '<div class="camp-card"><h4>'+title+'</h4>'+body+'</div>'; };
+  var tl = campTimeline(c).map(function(t){
+    return '<div class="camp-tl-row '+(t.on?'done':'todo')+'"><span class="tk '+(t.on?'on':'off')+'">'+(t.on?'✓':'')+'</span>'+t.label+'</div>';
+  }).join('');
+  host.innerHTML =
+    '<div class="camp-head"><div><h2>'+c.name+'</h2>'+
+      '<span class="pill '+campStatusCls(c.status)+'"><span class="pdot"></span>'+c.status+'</span>'+
+      '<div class="chm"><span>'+c.id+'</span><span>'+c.program+'</span>'+
+        '<span>'+hrDate(c.start)+' – '+hrDate(c.end)+' · '+campDuration(c.start,c.end)+' days (Sundays excluded)</span>'+
+        '<span>'+campVenueLabel(c)+'</span><span>Fellows: '+fellows.join(', ')+'</span></div></div>'+
+      '<select class="btn btn-ghost btn-sm" style="font-weight:600" onchange="setCampStatus(this,\''+c.id+'\')">'+
+        '<option value="">Update status…</option>'+CAMP_STATUSES.map(function(st){return '<option>'+st+'</option>';}).join('')+
+      '</select></div>'+
+    '<div class="camp-grid">'+
+      card('Student registrations','<div class="cv">'+c.registered+' <span style="font-size:14px;color:var(--muted)">/ '+c.target+'</span></div>'+
+        '<div class="cs">'+pct+'% of target</div><span class="camp-prog"><span style="width:'+Math.min(100,pct)+'%"></span></span>')+
+      card('Onboarding completed','<div class="cv">'+c.completed+'</div><div class="cs">'+c.draft+' saved as draft / pending</div>')+
+      card("Today's registrations",'<div class="cv">'+c.today+'</div><div class="cs">'+(c.status==='Active'?'Camp is live':'Camp not live')+'</div>')+
+      card('Fellow','<div class="cv" style="font-size:17px">'+(c.primaryFellow||'Not assigned')+'</div>'+
+        '<div class="cs">'+(FDASH.students||24)+' students onboarded · '+(fdashCounts?fdashCounts().appsAssigned:0)+' applications · '+FDASH.docAssigned+' document cases</div>'+
+        '<div class="cs" style="font-style:italic;font-size:11.5px">Applications and document counts read from the Fellow\'s caseload; camp-scoped figures need Point 7 eligibility matching.</div>'+
+        '<div class="cacts"><button class="btn btn-ghost btn-sm" type="button" data-go="a-fellows">View Fellow</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" data-go="a-students">View Students</button></div>')+
+      card('Camp link','<span class="camp-link">'+link+'</span><div class="cs">'+c.registered+' registrations through this link</div>'+
+        qrBox(link)+
+        '<div class="cacts"><button class="btn btn-primary btn-sm" type="button" onclick="openCampLink(\''+c.id+'\')">Open onboarding link</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" onclick="campCopy(\''+link+'\')">Copy</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" onclick="campQr(\''+c.id+'\')">Download QR</button>'+
+        '<button class="btn btn-ghost btn-sm" type="button" onclick="campShare(\''+c.id+'\')">Share</button></div>')+
+      card('Camp timeline', tl)+
+      card('Pending actions','<div class="cs" style="font-size:13px;line-height:1.9">'+
+        '• <b>'+c.draft+'</b> student forms saved as draft<br />'+
+        '• <b>'+c.docSupport+'</b> students require document support</div>'+
+        '<div class="cacts"><button class="btn btn-ghost btn-sm" type="button" data-go="a-verify">View pending actions</button></div>')+
+    '</div>'+
+    '<div class="dtable-wrap"><table class="dtable"><thead><tr><th>Student</th><th>Mobile</th><th>Onboarding Date</th>'+
+      '<th>Documents</th><th class="num">Scholarships Mapped</th><th>Application Status</th><th>Final Status</th><th>Assigned Fellow</th></tr></thead><tbody>'+
+      (students.length ? students.map(function(n,i){
+        var a = STUDENT_ASSIGN[n];
+        return '<tr><td><b>'+n+'</b></td><td>98'+(220+i)+' 1'+(1000+i*7)+'</td><td>'+hrDate(c.start)+'</td>'+
+          '<td>'+(i===0?'5 of 9 Accepted':'Complete')+'</td><td class="num">'+(i===0?4:2)+'</td>'+
+          '<td>'+(i===0?'Under Scrutiny':'Benefits Received')+'</td>'+
+          '<td><span class="pill '+(i===0?'amber':'green')+'"><span class="pdot"></span>'+(i===0?'In progress':'Completed')+'</span></td>'+
+          '<td>'+(a.fellow||'—')+'</td></tr>';
+      }).join('') : '<tr><td colspan="8" style="color:var(--muted)">No students onboarded through this camp yet.</td></tr>')+
+    '</tbody></table></div>';
+}
+function setCampStatus(sel, id){
+  if(!sel.value) return;
+  var c = campById(id); if(!c) return;
+  c.status = sel.value;
+  renderCampDash(id); renderCampList(); renderMyCamps();
+}
+function campCopy(link){ alert('Copied to clipboard (demo):\n\n'+link); }
+function campQr(id){ alert('Download QR — saves the camp\'s QR code as a PNG.\n\nIn the wireframe the QR is a drawn sample; production generates it server-side from the camp link.'); }
+function campShare(id){ var c=campById(id); alert('Share camp link (demo)\n\n'+c.name+'\n'+campLink(c)+'\n\nShared with the assigned Fellow(s): '+campFellows(c).join(', ')); }
+// ---- Camps: creation form ----
+function fellowWorkload(f){
+  var active = CAMPS.filter(function(c){ return campFellows(c).indexOf(f)>-1 && (c.status==='Active'||c.status==='Scheduled'); }).length;
+  var students = (TARGETS_ACTUAL[f]||{}).students || 0;
+  return f+' · '+active+' active camp'+(active===1?'':'s')+' · '+students+' students';
+}
+function renderCampForm(){
+  var host = document.getElementById('campForm');
+  if(!host) return;
+  var colleges = ['Fergusson College, Pune','Sir Parshurambhau (S.P.) College, Pune','Modern College, Pune',
+    'Brihan Maharashtra College of Commerce (BMCC)','Abasaheb Garware College','Nowrosjee Wadia College'];
+  host.innerHTML =
+    '<div class="camp-sec"><h3>Basic information</h3><div class="csl">Duration is calculated for you — Sundays are excluded.</div>'+
+      '<div class="form-grid">'+
+        '<div class="fg"><label>Camp name<span class="req">*</span></label><input id="cfName" placeholder="e.g. Fergusson College Scholarship Drive" /></div>'+
+        '<div class="fg"><label>Program<span class="req">*</span></label><select id="cfProgram">'+CAMP_PROGRAMS.map(function(p){return '<option>'+p+'</option>';}).join('')+'</select></div>'+
+        '<div class="fg"><label>Start date<span class="req">*</span></label><input type="date" id="cfStart" onchange="campRecalcDuration()" /></div>'+
+        '<div class="fg"><label>End date<span class="req">*</span></label><input type="date" id="cfEnd" onchange="campRecalcDuration()" /></div>'+
+        '<div class="fg"><label>Duration (auto)</label><input id="cfDuration" class="camp-ro" value="—" readonly title="Calculated from the dates, excluding Sundays" /></div>'+
+        '<div class="fg"><label>Camp owner</label><select id="cfOwner"><option>Meera Nair (Program Admin)</option><option>Program Manager</option></select></div>'+
+        '<div class="fg"><label>Overall student target<span class="req">*</span></label><input type="number" id="cfTarget" placeholder="0" /></div>'+
+        '<div class="fg full"><label>Description</label><input id="cfDesc" placeholder="Optional" /></div>'+
+      '</div></div>'+
+    '<div class="camp-sec"><h3>Venue &amp; institution</h3><div class="csl">Pick the institution, or type a new one if it is not listed.</div>'+
+      '<div class="form-grid">'+
+        '<div class="fg"><label>Venue type</label><select id="cfVenueType"><option>College</option><option>Partner Org</option></select></div>'+
+        '<div class="fg"><label>Institution / partner name<span class="req">*</span></label><input id="cfInstitution" list="cfInstList" placeholder="Search or type…" />'+
+          '<datalist id="cfInstList">'+colleges.map(function(c){return '<option>'+c+'</option>';}).join('')+'</datalist></div>'+
+        '<div class="fg full"><label>Address</label><input id="cfAddress" placeholder="Street / area" /></div>'+
+        '<div class="fg"><label>City</label><input id="cfCity" value="Pune" /></div>'+
+        '<div class="fg"><label>District</label><input id="cfDistrict" value="Pune" /></div>'+
+        '<div class="fg"><label>State</label><input id="cfState" value="Maharashtra" /></div>'+
+        '<div class="fg"><label>Venue contact person</label><input id="cfVContact" /></div>'+
+        '<div class="fg"><label>Venue contact number</label><input id="cfVPhone" placeholder="10-digit mobile" /></div>'+
+      '</div></div>'+
+    '<div class="camp-sec"><h3>Partner organisation</h3>'+
+      '<div class="opts row" style="margin-bottom:10px"><label class="opt"><input type="radio" name="cfPartner" onchange="campTogglePartner(false)" checked /> No partner</label>'+
+        '<label class="opt"><input type="radio" name="cfPartner" onchange="campTogglePartner(true)" /> Yes, there is a partner</label></div>'+
+      '<div id="cfPartnerBlock" style="display:none"><div class="form-grid">'+
+        '<div class="fg"><label>Partner name</label><input id="cfPName" /></div>'+
+        '<div class="fg"><label>Partnership type</label><select id="cfPType"><option>Outreach partner</option><option>Venue partner</option><option>Funding partner</option></select></div>'+
+        '<div class="fg"><label>Contact person</label><input id="cfPContact" /></div>'+
+        '<div class="fg"><label>Contact number</label><input id="cfPPhone" /></div>'+
+        '<div class="fg full"><label>Notes</label><input id="cfPNotes" /></div>'+
+      '</div></div></div>'+
+    '<div class="camp-sec"><h3>Fellow assignment</h3><div class="csl">A camp cannot be published without a Primary Fellow. Workload is shown so you can assign fairly.</div>'+
+      '<div class="form-grid">'+
+        '<div class="fg full"><label>Primary Fellow<span class="req">*</span></label><select id="cfPrimary"><option value="">Select a Fellow…</option>'+
+          CAMP_FELLOWS.map(function(f){return '<option value="'+f+'">'+fellowWorkload(f)+'</option>';}).join('')+'</select></div>'+
+        '<div class="fg full"><label>Supporting Fellows (optional)</label><div class="opts">'+
+          CAMP_FELLOWS.map(function(f){return '<label class="opt"><input type="checkbox" name="cfSupport" value="'+f+'" /> '+f+'</label>';}).join('')+
+        '</div></div>'+
+      '</div></div>'+
+    '<div class="camp-sec"><h3>Summary</h3><div class="csl">Review before publishing. The link and QR are generated on save.</div>'+
+      '<div id="cfSummary" style="font-size:13px;color:var(--ink-soft)">Fill the form above to see the summary.</div>'+
+      '<div class="cacts" style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">'+
+        '<button class="btn btn-ghost" type="button" onclick="campSummary()">Refresh summary</button>'+
+        '<button class="btn btn-ghost" type="button" onclick="saveCamp(\'draft\')">Save as Draft</button>'+
+        '<button class="btn btn-primary" type="button" onclick="saveCamp(\'publish\')">Publish Camp</button>'+
+      '</div></div>';
+}
+function campTogglePartner(on){
+  var b = document.getElementById('cfPartnerBlock');
+  if(b) b.style.display = on ? '' : 'none';
+}
+function campRecalcDuration(){
+  var s = (document.getElementById('cfStart')||{}).value, e = (document.getElementById('cfEnd')||{}).value;
+  var out = document.getElementById('cfDuration');
+  if(!out) return;
+  var d = campDuration(s,e);
+  out.value = (s && e) ? (d + ' days (Sundays excluded)') : '—';
+  campSummary();
+}
+function campFormValues(){
+  var v = function(id){ var el=document.getElementById(id); return el ? el.value.trim() : ''; };
+  var support = Array.from(document.querySelectorAll('[name="cfSupport"]:checked')).map(function(x){ return x.value; });
+  return {name:v('cfName'), program:v('cfProgram'), start:v('cfStart'), end:v('cfEnd'), target:Number(v('cfTarget'))||0,
+    owner:v('cfOwner'), description:v('cfDesc'), venueType:v('cfVenueType'), institution:v('cfInstitution'),
+    address:v('cfAddress'), city:v('cfCity'), district:v('cfDistrict'), state:v('cfState'),
+    venueContact:v('cfVContact'), venuePhone:v('cfVPhone'),
+    hasPartner:document.getElementById('cfPartnerBlock').style.display!=='none',
+    partnerName:v('cfPName'), partnerContact:v('cfPContact'), partnerPhone:v('cfPPhone'),
+    partnershipType:v('cfPType'), partnerNotes:v('cfPNotes'),
+    primaryFellow:v('cfPrimary'), supportingFellows:support};
+}
+function campSummary(){
+  var host = document.getElementById('cfSummary');
+  if(!host) return;
+  var f = campFormValues();
+  if(!f.name && !f.institution){ host.textContent = 'Fill the form above to see the summary.'; return; }
+  var rows = [
+    ['Camp name', f.name || '—'], ['Program', f.program],
+    ['Dates', (f.start && f.end) ? (hrDate(f.start)+' – '+hrDate(f.end)) : '—'],
+    ['Duration', (f.start && f.end) ? (campDuration(f.start,f.end)+' days (Sundays excluded)') : '—'],
+    ['Venue', f.institution ? (f.institution+(f.city?', '+f.city:'')) : '—'],
+    ['Partner', f.hasPartner ? (f.partnerName||'Yes — name not entered') : 'None'],
+    ['Student target', f.target || '—'],
+    ['Primary Fellow', f.primaryFellow || '⚠ not assigned — required to publish'],
+    ['Supporting Fellows', f.supportingFellows.length ? f.supportingFellows.join(', ') : 'None'],
+    ['Link &amp; QR', f.primaryFellow ? 'Will be generated on save' : 'Blocked until a Primary Fellow is assigned']
+  ];
+  host.innerHTML = rows.map(function(r){
+    return '<div style="display:flex;gap:10px;padding:5px 0;border-top:1px dashed var(--line)"><span style="flex:0 0 168px;color:var(--muted)">'+r[0]+'</span><span>'+r[1]+'</span></div>';
+  }).join('');
+}
+function saveCamp(mode){
+  var f = campFormValues();
+  if(!f.name){ alert('Camp name is required.'); return; }
+  if(!f.start || !f.end){ alert('Start and end dates are required — the duration is calculated from them.'); return; }
+  if(!f.institution){ alert('Institution / partner name is required.'); return; }
+  if(mode==='publish' && !f.primaryFellow){
+    alert('This camp cannot be published without a Primary Fellow assigned.\n\nAssign one under Fellow assignment, or use Save as Draft.');
+    return;
+  }
+  CAMP_SEQ++;
+  var camp = f;
+  camp.id = campIdFor(f.institution, f.start, CAMP_SEQ);
+  camp.status = (mode==='publish') ? 'Scheduled' : 'Draft';
+  camp.registered = 0; camp.completed = 0; camp.draft = 0; camp.docSupport = 0; camp.today = 0;
+  CAMPS.push(camp);
+  renderCampList(); renderMyCamps();
+  alert((mode==='publish' ? 'Camp published' : 'Saved as draft')+'\n\n'+camp.id+
+    (mode==='publish' ? '\nOnboarding link: '+campLink(camp)+'\nQR code generated.' : '\nNo link generated yet — publish to generate it.'));
+  openCamp(camp.id);
+}
+// ---- Camps: the Fellow's own view ----
+function renderMyCamps(){
+  var host = document.getElementById('myCamps');
+  if(!host) return;
+  var f = hrFellow();
+  var mine = CAMPS.filter(function(c){ return campFellows(c).indexOf(f)>-1; });
+  if(!mine.length){ host.innerHTML = '<div class="empty" style="padding:18px;color:var(--muted)">You have no camps assigned yet.</div>'; return; }
+  host.innerHTML = mine.map(function(c){
+    var link = campLink(c);
+    return '<div class="camp-sec"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start">'+
+      '<div><h3>'+c.name+'</h3><div class="csl">'+hrDate(c.start)+' – '+hrDate(c.end)+' · '+campDuration(c.start,c.end)+' days · target '+c.target+'</div></div>'+
+      '<span class="pill '+campStatusCls(c.status)+'"><span class="pdot"></span>'+c.status+'</span></div>'+
+      '<div class="form-grid" style="margin-top:6px">'+
+        '<div class="fg"><label>Venue &amp; directions</label><div style="font-size:13px">'+campVenueLabel(c)+'<br />'+c.address+'</div></div>'+
+        '<div class="fg"><label>Timing</label><div style="font-size:13px">'+hrDate(c.start)+' – '+hrDate(c.end)+'<br />Venue contact: '+(c.venueContact||'—')+' · '+(c.venuePhone||'—')+'</div></div>'+
+        '<div class="fg"><label>Partner contact</label><div style="font-size:13px">'+(c.hasPartner ? (c.partnerName+'<br />'+c.partnerContact+' · '+c.partnerPhone) : 'No partner organisation')+'</div></div>'+
+        '<div class="fg"><label>Progress</label><div style="font-size:13px">'+c.registered+' onboarded · '+c.completed+' completed · '+c.draft+' pending</div></div>'+
+      '</div>'+
+      '<div style="margin-top:12px"><span class="camp-link">'+link+'</span>'+qrBox(link)+
+        '<div class="cacts" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">'+
+          '<button class="btn btn-primary btn-sm" type="button" onclick="openCampLink(\''+c.id+'\')">Open camp &amp; onboard a student</button>'+
+          '<button class="btn btn-ghost btn-sm" type="button" onclick="campCopy(\''+link+'\')">Copy link</button>'+
+          '<button class="btn btn-ghost btn-sm" type="button" onclick="campQr(\''+c.id+'\')">Download QR</button>'+
+        '</div></div></div>';
+  }).join('');
+}
+// ---- Camps: fellow reassignment with assignment status + audit trail ----
+// Replaces the alert-only "Reassign" stub that used to sit on the Admin student-detail.
+function asStudentName(){
+  var el = document.getElementById('asName');
+  return el ? el.textContent.trim() : 'Aarti Ramesh Pawar';
+}
+function assignStatusPill(status){
+  var cls = {Assigned:'green', Reassigned:'blue', 'Not Assigned':'amber', 'Inactive-Closed':'grey'}[status] || 'grey';
+  return '<span class="pill '+cls+'"><span class="pdot"></span>'+status+'</span>';
+}
+function renderReassign(){
+  var pill = document.getElementById('asAssignStatus');
+  var host = document.getElementById('asReassignHost');
+  if(!pill || !host) return;
+  var name = asStudentName();
+  var a = STUDENT_ASSIGN[name] || {fellow:'', camp:'', status:'Not Assigned'};
+  pill.innerHTML = assignStatusPill(a.status);
+  var fellowEl = document.getElementById('asFellow');
+  if(fellowEl && a.fellow) fellowEl.textContent = a.fellow;
+  var log = ASSIGN_LOG[name] || [];
+  host.innerHTML = (a.camp ? '<div style="font-size:12.5px;color:var(--muted);margin-top:6px">Onboarded through camp <b>'+a.camp+'</b></div>' : '')+
+    (log.length
+      ? '<div class="assign-hist"><div style="font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em">Assignment history</div>'+
+        log.map(function(e){
+          return '<div class="ah"><span class="ahw">'+e.from+' → '+e.to+'</span><span>'+e.by+' · '+e.on+
+            (e.reason?' · '+e.reason:'')+'</span></div>';
+        }).join('')+'</div>'
+      : '');
+}
+function openReassign(btn){
+  var host = document.getElementById('asReassignHost');
+  if(!host) return;
+  if(document.getElementById('reassignForm')){ renderReassign(); return; }
+  var name = asStudentName();
+  var cur = (STUDENT_ASSIGN[name]||{}).fellow || '';
+  var opts = CAMP_FELLOWS.filter(function(f){ return f!==cur; }).map(function(f){ return '<option>'+f+'</option>'; }).join('');
+  host.insertAdjacentHTML('afterbegin',
+    '<div class="reassign-form" id="reassignForm">'+
+      '<div><label>New Fellow</label><select id="raFellow"><option value="">Select…</option>'+opts+'</select></div>'+
+      '<div style="flex:1;min-width:170px"><label>Reason (optional)</label><input id="raReason" placeholder="e.g. Fellow region change" style="width:100%;box-sizing:border-box" /></div>'+
+      '<button class="btn btn-primary btn-sm" type="button" onclick="saveReassign()">Save</button>'+
+      '<button class="btn btn-ghost btn-sm" type="button" onclick="document.getElementById(\'reassignForm\').remove()">Cancel</button>'+
+    '</div>');
+}
+function saveReassign(){
+  var name = asStudentName();
+  var sel = document.getElementById('raFellow');
+  var reason = (document.getElementById('raReason')||{}).value || '';
+  if(!sel || !sel.value){ alert('Pick the Fellow who should take over this student.'); return; }
+  var a = STUDENT_ASSIGN[name] || {fellow:'', camp:'', status:'Not Assigned'};
+  var from = a.fellow || 'Unassigned';
+  ASSIGN_LOG[name] = ASSIGN_LOG[name] || [];
+  ASSIGN_LOG[name].unshift({from:from, to:sel.value, by:'Meera Nair', on:hrDate(new Date().toISOString().slice(0,10)), reason:reason.trim()});
+  a.fellow = sel.value;
+  a.status = 'Reassigned';                     // current assignment stays active; history keeps the trail
+  STUDENT_ASSIGN[name] = a;
+  var form = document.getElementById('reassignForm'); if(form) form.remove();
+  renderReassign();
+  if(typeof renderCampDash==='function' && CAMP_OPEN) renderCampDash(CAMP_OPEN);
+}
+// ---- Camps: the two student-assignment tracks ----
+// Track 1 = reached through a camp link (?camp=<ID>, or the dashboard button): camp, venue and
+// institution are pre-set and hidden, and the fellow list is scoped to that camp.
+// Track 2 = the regular form: nothing pre-filled, full org fellow list.
+var CAMP_CONTEXT = null;
+function openCampLink(id){
+  CAMP_CONTEXT = id;
+  go('f-onboard');
+  setTimeout(applyCampContext, 0);
+}
+function clearCampContext(){ CAMP_CONTEXT = null; applyCampContext(); }
+function applyCampContext(){
+  var banner = document.getElementById('onbCampBanner');
+  var sel    = document.getElementById('onbAssignFellow');
+  var lead   = document.getElementById('onbAssignLead');
+  var help   = document.getElementById('onbAssignHelp');
+  if(!sel) return;
+  var c = CAMP_CONTEXT ? campById(CAMP_CONTEXT) : null;
+  // These three are pre-set and hidden on Track 1 — the student never picks a camp or venue.
+  var collegeQ  = (document.getElementById('onbCollege')  || {}).closest ? document.getElementById('onbCollege').closest('.q')  : null;
+  var districtQ = (document.getElementById('onbDistrict') || {}).closest ? document.getElementById('onbDistrict').closest('.q') : null;
+  if(!c){
+    if(banner){ banner.style.display='none'; banner.innerHTML=''; }
+    if(collegeQ)  collegeQ.style.display='';
+    if(districtQ) districtQ.style.display='';
+    sel.innerHTML = '<option value="">Select a Fellow…</option>'+CAMP_FELLOWS.map(function(f){ return '<option>'+f+'</option>'; }).join('');
+    sel.disabled = false;
+    if(lead) lead.textContent = "Choose the Fellow who will own this student's caseload.";
+    if(help) help.textContent = 'A Fellow onboarding a student can simply select their own name.';
+    return;
+  }
+  var fellows = campFellows(c);
+  if(banner){
+    banner.style.display = '';
+    banner.innerHTML = '<b>Onboarding through a camp link.</b> '+c.name+' · '+c.id+' · '+
+      hrDate(c.start)+' – '+hrDate(c.end)+' · '+c.institution+', '+c.city+
+      '<br />Camp, venue and institution are set from the link — no manual selection. '+
+      '<a href="#" onclick="event.preventDefault();clearCampContext()">Onboard outside this camp instead</a>';
+  }
+  if(document.getElementById('onbCollege'))  document.getElementById('onbCollege').value  = c.institution;
+  if(document.getElementById('onbDistrict')) document.getElementById('onbDistrict').value = c.district;
+  if(collegeQ)  collegeQ.style.display  = 'none';
+  if(districtQ) districtQ.style.display = 'none';
+  if(fellows.length === 1){
+    sel.innerHTML = '<option>'+fellows[0]+'</option>';
+    sel.disabled = true;
+    if(lead) lead.textContent = 'This camp has one Fellow — the student is assigned automatically.';
+    if(help) help.textContent = 'Auto-assigned to '+fellows[0]+' because they are the only Fellow on this camp.';
+  } else {
+    sel.disabled = false;
+    sel.innerHTML = fellows.map(function(f){ return '<option>'+f+'</option>'; }).join('');
+    if(lead) lead.textContent = 'This camp has '+fellows.length+' Fellows — pick who takes this student.';
+    if(help) help.textContent = "Only this camp's Fellows are listed (Primary and Supporting), not the full organisation.";
+  }
+}
+// Called from onbSubmit() once its own validation has passed.
+function campRecordAssignment(){
+  var sel = document.getElementById('onbAssignFellow');
+  var nameEl = document.getElementById('onbName') || document.getElementById('onbFullName');
+  var student = (nameEl && nameEl.value.trim()) ? nameEl.value.trim() : 'New student';
+  var fellow = sel ? sel.value : '';
+  var c = CAMP_CONTEXT ? campById(CAMP_CONTEXT) : null;
+  if(!fellow){
+    STUDENT_ASSIGN[student] = {fellow:'', camp:c?c.id:'', status:'Not Assigned'};
+  } else {
+    STUDENT_ASSIGN[student] = {fellow:fellow, camp:c?c.id:'', status:'Assigned'};
+  }
+  if(c){
+    c.registered++; c.today++;
+    renderCampList(); renderCampDash(c.id); renderMyCamps();
+  }
+  return {student:student, fellow:fellow, camp:c};
+}
+function campAssignmentConfirmation(a){
+  if(a.camp){
+    return '\n\nAssignment confirmed\n· Student: '+a.student+'\n· Camp: '+a.camp.name+' ('+a.camp.id+')'+
+      '\n· Camp dates: '+hrDate(a.camp.start)+' – '+hrDate(a.camp.end)+
+      '\n· Assigned Fellow: '+(a.fellow||'Not assigned')+
+      '\n· Onboarding status: Submitted for approval\n· Application status: Eligibility Identified';
+  }
+  return '\n\nAssigned Fellow: '+(a.fellow || 'Not assigned — this student will show as unassigned.');
+}
+// ---- HRMS: attendance status, leave and holidays (Point 9 / Module 13) ----
+// Check-in choices are the client's three. "On Leave" is NOT a check-in choice — it is written only by
+// an approved leave request, which is already what it means in the existing attendance tables.
+var ATT_STATUS_CHOICES = ['Present','Work From Home','Absent'];
+var LEAVE_TYPES = ['Casual','Sick','Earned'];
+// Covers BOTH fellow rosters that already exist in this file — Fellows & Users lists Rahul / Sandip /
+// Dhanashree / Vaibhav, while the Attendance screen's own records also carry Priya Kulkarni and Sunil
+// Kadam. Everyone visible on either screen therefore has a balance; the roster split itself is a
+// pre-existing drift recorded as a watch-item in BUILD_STATUS, not something this module invented.
+var LEAVE_BALANCE = {
+  'Rahul More':     {Casual:{total:12,used:4}, Sick:{total:8,used:2}, Earned:{total:15,used:6}},
+  'Sandip K':       {Casual:{total:12,used:6}, Sick:{total:8,used:1}, Earned:{total:15,used:9}},
+  'Dhanashree O':   {Casual:{total:12,used:2}, Sick:{total:8,used:4}, Earned:{total:15,used:3}},
+  'Vaibhav D':      {Casual:{total:12,used:5}, Sick:{total:8,used:0}, Earned:{total:15,used:7}},
+  'Priya Kulkarni': {Casual:{total:12,used:3}, Sick:{total:8,used:3}, Earned:{total:15,used:4}},
+  'Sunil Kadam':    {Casual:{total:12,used:7}, Sick:{total:8,used:2}, Earned:{total:15,used:5}}
+};
+// Seeded so both a Pending and an already-Approved request are visible on first load. The approved Sick
+// day is 30 Jun 2026 — the same date the Fellow's attendance table already shows as "On Leave".
+var LEAVE_REQUESTS = [
+  {id:'LV-2026-004', fellow:'Rahul More', type:'Casual', from:'2026-08-24', to:'2026-08-25', days:2, reason:'Family function at home town', status:'Pending', note:''},
+  {id:'LV-2026-003', fellow:'Sandip K',   type:'Casual', from:'2026-08-27', to:'2026-08-27', days:1, reason:'Ganesh Chaturthi travel', status:'Pending', note:''},
+  {id:'LV-2026-002', fellow:'Rahul More', type:'Sick',   from:'2026-06-30', to:'2026-06-30', days:1, reason:'Fever', status:'Approved', note:'Approved — get well.'}
+];
+// State-specific holiday lists. The second entry is a clearly-marked sample placeholder: the wireframe's
+// source documents only ever reference Maharashtra, so a second real state would be invented vocabulary.
+var HOLIDAYS = {
+  'Maharashtra': [
+    {date:'2026-05-01', name:'Maharashtra Day'},
+    {date:'2026-08-15', name:'Independence Day'},
+    {date:'2026-08-27', name:'Ganesh Chaturthi'},
+    {date:'2026-10-02', name:'Gandhi Jayanti'}
+  ],
+  'Sample State (placeholder)': [
+    {date:'2026-08-15', name:'Independence Day'},
+    {date:'2026-10-02', name:'Gandhi Jayanti'}
+  ]
+};
+var HOLIDAY_STATE_SEL = 'Maharashtra';
+var FELLOW_STATE = {'Rahul More':'Maharashtra','Sandip K':'Maharashtra','Dhanashree O':'Maharashtra','Vaibhav D':'Maharashtra','Priya Kulkarni':'Maharashtra','Sunil Kadam':'Maharashtra'};
+function hrFellow(){ return (typeof CASE_FELLOW!=='undefined') ? CASE_FELLOW : 'Rahul More'; }
+function hrDate(iso){
+  if(!iso) return '—';
+  var p = String(iso).split('-'); if(p.length!==3) return iso;
+  var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return Number(p[2])+' '+m[Number(p[1])-1]+' '+p[0];
+}
+function hrDayCount(from, to){
+  var a = new Date(from), b = new Date(to);
+  return Math.round((b-a)/86400000) + 1;
+}
+function hrDateRange(from, to){
+  var out=[], a=new Date(from), b=new Date(to);
+  while(a<=b){ out.push(a.toISOString().slice(0,10)); a=new Date(a.getTime()+86400000); }
+  return out;
+}
+function leaveRemaining(fellow, type){
+  var b = (LEAVE_BALANCE[fellow]||{})[type] || {total:0,used:0};
+  return b.total - b.used;
+}
+function statusPill(status){
+  var cls = status==='Approved' ? 'green' : (status==='Rejected' ? 'red' : 'amber');
+  return '<span class="pill '+cls+'"><span class="pdot"></span>'+status+'</span>';
+}
+// Write attendance rows for a date range — used when a leave is approved, which is the only way a row
+// can read "On Leave". Writes into the Fellow's own table (if it is their leave) and the Admin table.
+function addAttendanceRows(fellow, dates, status){
+  dates.forEach(function(iso){
+    if(fellow===hrFellow()){
+      var fb = document.querySelector('#fAttTable tbody');
+      if(fb && !fb.querySelector('tr[data-date="'+iso+'"][data-status="'+status+'"]')){
+        var tr = document.createElement('tr');
+        tr.setAttribute('data-date', iso); tr.setAttribute('data-status', status);
+        tr.innerHTML = '<td>'+hrDate(iso)+'</td><td>—</td><td>—</td><td>0.0</td><td>'+statusPill(status)+'</td><td>—</td>';
+        fb.insertBefore(tr, fb.firstChild);
+      }
+    }
+    var ab = document.querySelector('#attTable tbody');
+    if(ab && !ab.querySelector('tr[data-fellow="'+fellow+'"][data-date="'+iso+'"][data-status="'+status+'"]')){
+      var tr2 = document.createElement('tr');
+      tr2.setAttribute('data-fellow', fellow); tr2.setAttribute('data-date', iso); tr2.setAttribute('data-status', status);
+      tr2.innerHTML = '<td>'+fellow+'</td><td>'+hrDate(iso)+'</td><td>'+statusPill(status)+'</td><td>—</td><td>—</td><td>0.0</td><td>—</td>';
+      ab.insertBefore(tr2, ab.firstChild);
+    }
+  });
+}
+// ---- Fellow: balance, apply, my requests, my state's holidays ----
+function renderMyLeave(){
+  var host = document.getElementById('myLeave');
+  if(!host) return;
+  var f = hrFellow(), state = FELLOW_STATE[f] || 'Maharashtra';
+  var tiles = LEAVE_TYPES.map(function(t){
+    var b = (LEAVE_BALANCE[f]||{})[t] || {total:0,used:0};
+    return '<div class="lb-tile"><div class="lbt">'+t+' leave</div><div class="lbv">'+(b.total-b.used)+'</div>'+
+      '<div class="lbs">of '+b.total+' · '+b.used+' used</div></div>';
+  }).join('');
+  var mine = LEAVE_REQUESTS.filter(function(r){ return r.fellow===f; });
+  var reqs = mine.length ? mine.map(function(r){
+    return '<div class="lreq"><span class="lrw">'+r.type+'</span>'+
+      '<span class="lrd">'+hrDate(r.from)+(r.from!==r.to?' – '+hrDate(r.to):'')+' · '+r.days+' day'+(r.days===1?'':'s')+'</span>'+
+      '<span class="lrr">'+r.reason+(r.note?' — <i>'+r.note+'</i>':'')+'</span>'+statusPill(r.status)+'</div>';
+  }).join('') : '<div class="lreq" style="color:var(--muted)">No leave applied for yet.</div>';
+  var hols = (HOLIDAYS[state]||[]).map(function(h){
+    return '<div class="hol-row"><span class="hd">'+hrDate(h.date)+'</span><span>'+h.name+'</span></div>';
+  }).join('');
+  host.innerHTML =
+    '<div class="hr-sec"><div class="hrh"><h3>My leave</h3><span>Balance, applications and your state\'s holiday list</span></div>'+
+      '<div class="leave-bal">'+tiles+'</div>'+
+      '<div class="leave-form">'+
+        '<div><label>Leave type</label><select id="lvType">'+LEAVE_TYPES.map(function(t){return '<option>'+t+'</option>';}).join('')+'</select></div>'+
+        '<div><label>From</label><input type="date" id="lvFrom" /></div>'+
+        '<div><label>To</label><input type="date" id="lvTo" /></div>'+
+        '<div class="lf-reason"><label>Reason</label><input type="text" id="lvReason" placeholder="Why you need the leave" /></div>'+
+        '<button class="btn btn-primary btn-sm" type="button" onclick="applyLeave(this)">Apply for leave</button>'+
+      '</div>'+
+      '<div style="font-size:13px;font-weight:600;margin-bottom:2px">My requests</div>'+reqs+
+      '<div style="font-size:13px;font-weight:600;margin:14px 0 2px">Holidays · '+state+
+        (state.indexOf('placeholder')>-1 ? ' <span class="sample-tag">sample</span>' : '')+'</div>'+hols+
+    '</div>';
+}
+function applyLeave(btn){
+  var type = document.getElementById('lvType').value;
+  var from = document.getElementById('lvFrom').value;
+  var to   = document.getElementById('lvTo').value;
+  var reason = document.getElementById('lvReason').value.trim();
+  if(!from){ alert('From date is required.'); return; }
+  if(!to){ alert('To date is required.'); return; }
+  if(new Date(to) < new Date(from)){ alert('The To date cannot be before the From date.'); return; }
+  if(!reason){ alert('A reason is required — the Program Admin sees it when approving.'); return; }
+  var days = hrDayCount(from, to);
+  var f = hrFellow();
+  if(days > leaveRemaining(f, type)){
+    alert(days+' day'+(days===1?'':'s')+' requested but only '+leaveRemaining(f,type)+' '+type+' leave remaining. Applying anyway is not allowed.');
+    return;
+  }
+  LEAVE_REQUESTS.unshift({id:'LV-2026-'+(100+LEAVE_REQUESTS.length), fellow:f, type:type, from:from, to:to,
+    days:days, reason:reason, status:'Pending', note:''});
+  renderMyLeave();                       // balance deliberately untouched — only approval moves it
+  if(typeof renderAdminLeave==='function') renderAdminLeave();
+  alert('Leave applied — '+days+' day'+(days===1?'':'s')+' of '+type+' leave sent to the Program Admin. Your balance changes only once it is approved.');
+}
+// ---- Admin: request queue, balance adjustment, holiday calendar ----
+function renderAdminLeave(){
+  var host = document.getElementById('adminLeave');
+  if(!host) return;
+  var pending = LEAVE_REQUESTS.filter(function(r){ return r.status==='Pending'; });
+  var decided = LEAVE_REQUESTS.filter(function(r){ return r.status!=='Pending'; });
+  var row = function(r, actions){
+    return '<div class="lreq"><span class="lrw">'+r.fellow+'</span>'+
+      '<span class="lrd">'+r.type+' · '+hrDate(r.from)+(r.from!==r.to?' – '+hrDate(r.to):'')+' · '+r.days+'d</span>'+
+      '<span class="lrr">'+r.reason+(r.note?' — <i>'+r.note+'</i>':'')+'</span>'+
+      (actions
+        ? '<span class="lra"><input type="text" placeholder="Note (optional)" data-note="'+r.id+'" />'+
+          '<button class="btn btn-primary btn-sm" type="button" onclick="decideLeave(\''+r.id+'\',\'approve\')">Approve</button>'+
+          '<button class="btn btn-ghost btn-sm" type="button" onclick="decideLeave(\''+r.id+'\',\'reject\')">Reject</button></span>'
+        : statusPill(r.status))+'</div>';
+  };
+  var grid = Object.keys(LEAVE_BALANCE).map(function(f){
+    return '<div class="lb-tile"><div class="lbt">'+f+'</div>'+
+      LEAVE_TYPES.map(function(t){
+        var b = LEAVE_BALANCE[f][t];
+        return '<div class="lbs" style="margin-top:6px">'+t+': <input type="number" min="0" value="'+b.total+'" '+
+          'onchange="adjustBalance(\''+f+'\',\''+t+'\',this.value)" /> total · '+b.used+' used</div>';
+      }).join('')+'</div>';
+  }).join('');
+  host.innerHTML =
+    '<div class="hr-sec"><div class="hrh"><h3>Leave requests</h3><span>Approving deducts the balance and marks those dates On Leave</span></div>'+
+      (pending.length ? pending.map(function(r){ return row(r,true); }).join('') : '<div class="lreq" style="color:var(--muted)">No pending requests.</div>')+
+      (decided.length ? '<div style="font-size:13px;font-weight:600;margin:14px 0 2px">Decided</div>'+decided.map(function(r){ return row(r,false); }).join('') : '')+
+    '</div>'+
+    '<div class="hr-sec"><div class="hrh"><h3>Leave balances</h3><span>Adjustable by the Program Admin</span></div>'+
+      '<div class="leave-bal">'+grid+'</div></div>'+
+    '<div class="hr-sec"><div class="hrh"><h3>Holiday calendar</h3><span>State-specific — a Fellow sees the list for their own state</span></div>'+
+      '<div id="holHost"></div></div>';
+  renderHolidays();
+}
+function decideLeave(id, action){
+  var r = LEAVE_REQUESTS.filter(function(x){ return x.id===id; })[0];
+  if(!r) return;
+  var noteEl = document.querySelector('[data-note="'+id+'"]');
+  r.note = noteEl && noteEl.value.trim() ? noteEl.value.trim() : (action==='approve' ? 'Approved.' : 'Rejected.');
+  if(action==='approve'){
+    r.status = 'Approved';
+    var b = (LEAVE_BALANCE[r.fellow]||{})[r.type];
+    if(b) b.used += r.days;                                  // the only place a balance is deducted
+    addAttendanceRows(r.fellow, hrDateRange(r.from, r.to), 'On Leave');
+  } else {
+    r.status = 'Rejected';                                   // rejection never touches the balance
+  }
+  renderAdminLeave();
+  if(typeof renderMyLeave==='function') renderMyLeave();
+}
+function adjustBalance(fellow, type, value){
+  var b = (LEAVE_BALANCE[fellow]||{})[type];
+  if(!b) return;
+  b.total = Math.max(0, Number(value)||0);
+  renderAdminLeave();
+  if(typeof renderMyLeave==='function') renderMyLeave();
+}
+function renderHolidays(){
+  var host = document.getElementById('holHost');
+  if(!host) return;
+  var states = Object.keys(HOLIDAYS);
+  var opts = states.map(function(s){ return '<option'+(s===HOLIDAY_STATE_SEL?' selected':'')+'>'+s+'</option>'; }).join('');
+  var list = (HOLIDAYS[HOLIDAY_STATE_SEL]||[]).map(function(h){
+    return '<div class="hol-row"><span class="hd">'+hrDate(h.date)+'</span><span>'+h.name+'</span></div>';
+  }).join('');
+  host.innerHTML = '<div class="leave-form">'+
+      '<div><label>State</label><select onchange="setHolidayState(this)">'+opts+'</select></div>'+
+      '<div><label>Holiday date</label><input type="date" id="holDate" /></div>'+
+      '<div class="lf-reason"><label>Holiday name</label><input type="text" id="holName" placeholder="e.g. Diwali" /></div>'+
+      '<button class="btn btn-primary btn-sm" type="button" onclick="addHoliday(this)">Add holiday</button>'+
+    '</div>'+
+    (HOLIDAY_STATE_SEL.indexOf('placeholder')>-1 ? '<div style="margin-bottom:8px"><span class="sample-tag">Sample state — placeholder, not client-confirmed</span></div>' : '')+
+    (list || '<div class="hol-row" style="color:var(--muted)">No holidays scheduled for this state yet.</div>');
+}
+function setHolidayState(sel){ HOLIDAY_STATE_SEL = sel.value; renderHolidays(); }
+function addHoliday(btn){
+  var d = document.getElementById('holDate').value, n = document.getElementById('holName').value.trim();
+  if(!d){ alert('Holiday date is required.'); return; }
+  if(!n){ alert('Holiday name is required.'); return; }
+  HOLIDAYS[HOLIDAY_STATE_SEL] = HOLIDAYS[HOLIDAY_STATE_SEL] || [];
+  HOLIDAYS[HOLIDAY_STATE_SEL].push({date:d, name:n});
+  HOLIDAYS[HOLIDAY_STATE_SEL].sort(function(a,b){ return a.date<b.date?-1:1; });
+  renderHolidays();
+  if(typeof renderMyLeave==='function') renderMyLeave();
+}
+// ---- Fellow targets (Point 6 / Module 12) ----
+// One target per fellow x period x metric, exactly as the client doc specifies. A metric missing from
+// the object means "no target set", which renders differently from a target of 0 — the doc's edge case.
+var TARGET_METRICS = [
+  {k:'apps',     label:'Applications Submitted'},
+  {k:'docs',     label:'Documents Collected'},
+  {k:'students', label:'Students Onboarded'}
+];
+var TARGET_PERIODS = ['Jul 2026','Aug 2026','Sep 2026'];
+var FELLOW_TARGETS = {
+  'Aug 2026': {
+    'Rahul More':   {apps:15, docs:110, students:28},
+    'Sandip K':     {apps:12, docs:90,  students:22},
+    'Dhanashree O': {apps:12, students:24},              // docs deliberately unset — shows "No target set"
+    'Vaibhav D':    {apps:10, docs:70,  students:20}
+  },
+  'Jul 2026': {
+    'Rahul More':   {apps:12, docs:100, students:24},
+    'Sandip K':     {apps:10, docs:85,  students:19},
+    'Dhanashree O': {apps:11, docs:88,  students:22},
+    'Vaibhav D':    {apps:8,  docs:60,  students:17}
+  },
+  'Sep 2026': {}                                          // nothing set yet for the coming month
+};
+var TARGET_PERIOD_SEL = {};   // per-fellow period currently shown in that fellow's panel
+// Actuals. 'apps' is live from CASES (a case has an application ID only once submitted on the portal)
+// plus a per-fellow baseline for that fellow's cases outside the demo sample — the baselines are set so
+// each fellow's total matches the Submitted column already shown in the MIS Fellow-wise table.
+var TARGETS_ACTUAL = {
+  'Rahul More':   {appsBaseline:6,  docs:96, students:24},
+  'Sandip K':     {appsBaseline:8,  docs:74, students:19},
+  'Dhanashree O': {appsBaseline:11, docs:88, students:22},
+  'Vaibhav D':    {appsBaseline:8,  docs:61, students:17}
+};
+function targetActual(fellow, metric){
+  var a = TARGETS_ACTUAL[fellow] || {};
+  if(metric==='apps'){
+    var live = (typeof CASES==='undefined') ? 0 :
+      CASES.filter(function(c){ return c.fellow===fellow && c.appId && c.appId!=='—'; }).length;
+    return (a.appsBaseline||0) + live;
+  }
+  return a[metric]||0;
+}
+function targetOf(fellow, metric){
+  var per = TARGET_PERIOD_SEL[fellow] || 'Aug 2026';
+  var rec = (FELLOW_TARGETS[per]||{})[fellow] || {};
+  return (metric in rec) ? rec[metric] : null;      // null = no target set (distinct from 0)
+}
+function targetRow(fellow, metric, label, editable){
+  var t = targetOf(fellow, metric), act = targetActual(fellow, metric);
+  var input = editable ? '<input type="number" min="0" placeholder="—" data-tgt="'+metric+'" value="'+(t===null?'':t)+'" />' : '';
+  if(t===null){
+    return '<div class="tgt-row"><span class="tgl">'+label+'</span>'+input+
+      '<span class="tgt-num">'+act+' actual</span><span class="tgt-none">No target set</span>'+
+      (editable?'':'')+'</div>';
+  }
+  var pct = t>0 ? Math.min(100, Math.round((act/t)*100)) : 100;
+  var gap = act>=t ? ('+'+(act-t)+' over target') : ((t-act)+' to go');
+  return '<div class="tgt-row"><span class="tgl">'+label+'</span>'+input+
+    '<span class="tgt-bar"><span class="tgt-fill'+(act>=t?' over':'')+'" style="width:'+pct+'%"></span></span>'+
+    '<span class="tgt-num">'+act+' / '+t+' ('+pct+'%)</span>'+
+    '<span class="tgt-gap">'+gap+'</span>'+
+    (editable ? '<a href="#" onclick="event.preventDefault();clearTarget(\''+fellow+'\',\''+metric+'\')">Clear</a>' : '')+
+    '</div>';
+}
+function renderTargetPanel(fellow){
+  var per = TARGET_PERIOD_SEL[fellow] || 'Aug 2026';
+  var opts = TARGET_PERIODS.map(function(p){ return '<option'+(p===per?' selected':'')+'>'+p+'</option>'; }).join('');
+  return '<div class="tgt-head"><b>Targets — '+fellow+'</b>'+
+      '<select onchange="setTargetPeriod(this,\''+fellow+'\')">'+opts+'</select>'+
+      '<span style="font-size:11.5px;color:var(--muted)">Actuals are computed, never entered.</span></div>'+
+    TARGET_METRICS.map(function(m){ return targetRow(fellow, m.k, m.label, true); }).join('')+
+    '<div class="tgt-acts"><button class="btn btn-primary btn-sm" type="button" onclick="saveTargets(this,\''+fellow+'\')">Save targets</button>'+
+      '<span class="tgt-gap" data-saved></span></div>';
+}
+function toggleTargetPanel(btn, fellow){
+  var row = btn.closest('tr');
+  var next = row.nextElementSibling;
+  if(next && next.classList.contains('tgt-panel')){ next.remove(); btn.textContent='Targets'; return; }
+  var tr = document.createElement('tr');
+  tr.className = 'tgt-panel';
+  tr.innerHTML = '<td colspan="6">'+renderTargetPanel(fellow)+'</td>';
+  row.parentNode.insertBefore(tr, row.nextSibling);
+  btn.textContent = 'Hide targets';
+}
+function refreshTargetPanel(fellow){
+  document.querySelectorAll('#a-fellows tr.tgt-panel').forEach(function(tr){
+    if(tr.textContent.indexOf(fellow)>-1) tr.querySelector('td').innerHTML = renderTargetPanel(fellow);
+  });
+}
+function setTargetPeriod(sel, fellow){
+  TARGET_PERIOD_SEL[fellow] = sel.value;
+  refreshTargetPanel(fellow);
+}
+function saveTargets(btn, fellow){
+  var panel = btn.closest('td');
+  var per = TARGET_PERIOD_SEL[fellow] || 'Aug 2026';
+  FELLOW_TARGETS[per] = FELLOW_TARGETS[per] || {};
+  var rec = {};
+  panel.querySelectorAll('[data-tgt]').forEach(function(inp){
+    var v = inp.value.trim();
+    if(v!=='') rec[inp.getAttribute('data-tgt')] = Number(v);   // blank stays "no target set"; 0 is a real zero
+  });
+  FELLOW_TARGETS[per][fellow] = rec;
+  refreshTargetPanel(fellow);
+  var flash = document.querySelector('#a-fellows tr.tgt-panel [data-saved]');
+  if(flash) flash.textContent = '✓ Saved for '+per;
+  if(typeof renderMyTargets==='function') renderMyTargets();
+}
+function clearTarget(fellow, metric){
+  var per = TARGET_PERIOD_SEL[fellow] || 'Aug 2026';
+  if(FELLOW_TARGETS[per] && FELLOW_TARGETS[per][fellow]) delete FELLOW_TARGETS[per][fellow][metric];
+  refreshTargetPanel(fellow);
+  if(typeof renderMyTargets==='function') renderMyTargets();
+}
+// The logged-in Fellow's own view of the same numbers.
+function renderMyTargets(){
+  var host = document.getElementById('myTargets');
+  if(!host) return;
+  var fellow = (typeof CASE_FELLOW!=='undefined') ? CASE_FELLOW : 'Rahul More';
+  var per = TARGET_PERIOD_SEL[fellow] || 'Aug 2026';
+  host.innerHTML = '<div class="tgt-strip"><div class="tsh"><h3>My targets — '+per+'</h3>'+
+      '<span>Set by the Program Admin · actuals update as you work</span></div>'+
+    '<div class="card" style="padding:12px 16px">'+
+      TARGET_METRICS.map(function(m){ return targetRow(fellow, m.k, m.label, false); }).join('')+
+    '</div></div>';
+}
+var FDASH_THRESHOLD = 15;       // days; configurable on the card, never hardcoded into the count
+var FDASH_INPROCESS = ['Ready to Submit','Under Scrutiny','Application Approved · funds awaited'];
+function fdashMyCases(){
+  return (typeof CASES==='undefined') ? [] : CASES.filter(function(c){ return c.fellow===CASE_FELLOW; });
+}
+function fdashFunds(){
+  var total = FDASH.fundsBaseline;
+  if(typeof FIN!=='undefined'){
+    Object.keys(FIN).forEach(function(k){
+      ['s1','i1','s2','i2'].forEach(function(ek){
+        var d = FIN[k][ek];
+        if(d && d.status==='Funds Disbursed' && d.amount) total += Number(d.amount);
+      });
+    });
+  }
+  return total;
+}
+function fdashCounts(){
+  var mine = fdashMyCases();
+  var by = function(st){ return mine.filter(function(c){ return c.status===st; }).length; };
+  return {
+    students: FDASH.students,
+    appsAssigned: mine.length,
+    docAssigned: FDASH.docAssigned,
+    appsCompleted: by('Benefits Received'),
+    docCompleted: FDASH.docCompleted,
+    appsInProcess: mine.filter(function(c){ return FDASH_INPROCESS.indexOf(c.status)>-1; }).length,
+    docInProcess: FDASH.docInProcess,
+    funds: fdashFunds(),
+    docsSupported: FDASH.docsSupported,
+    rejected: by('Rejected'),
+    aging: mine.filter(function(c){ return (FDASH.caseAges[c.id]||0) > FDASH_THRESHOLD; }).length
+  };
+}
+var FDASH_ICONS = {
+  people:'<circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/>',
+  file:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/>',
+  check:'<path d="M20 6 9 17l-5-5"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  money:'<path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+  cross:'<path d="M18 6 6 18M6 6l12 12"/>',
+  trend:'<path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/>'
+};
+function fdashCard(icon, tone, num, cap, extra){
+  return '<div class="card stat hoverable"><div class="top"><div class="ic '+tone+'">'+
+    '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">'+FDASH_ICONS[icon]+'</svg>'+
+    '</div></div><div class="num">'+num+'</div><div class="cap">'+cap+'</div>'+(extra||'')+'</div>';
+}
+function renderFellowCards(){
+  var host = document.getElementById('fDashCards');
+  if(!host) return;
+  var c = fdashCounts();
+  var thrOpts = [7,15,30].map(function(d){ return '<option value="'+d+'"'+(FDASH_THRESHOLD===d?' selected':'')+'>beyond '+d+' days</option>'; }).join('');
+  var maxM = Math.max.apply(null, FDASH.months.map(function(m){ return m.v; })) || 1;
+  var trend = '<div class="fdash-mini">'+FDASH.months.map(function(m){
+    return '<div class="mbw"><div class="mb" style="height:'+Math.round((m.v/maxM)*100)+'%" title="'+m.m+': '+m.v+'"></div><div class="mbl">'+m.m+'</div></div>';
+  }).join('')+'</div>';
+  host.innerHTML =
+    fdashCard('people','teal',  c.students,      'Students assigned') +
+    fdashCard('file','gold',    c.appsAssigned,  'Applications assigned') +
+    fdashCard('file','blue',    c.docAssigned,   'Document support cases assigned') +
+    fdashCard('check','green',  c.appsCompleted, 'Applications completed') +
+    fdashCard('check','green',  c.docCompleted,  'Document cases completed') +
+    fdashCard('clock','gold',   c.appsInProcess, 'Applications in process') +
+    fdashCard('clock','blue',   c.docInProcess,  'Document cases in process') +
+    fdashCard('money','teal',   '₹'+Number(c.funds).toLocaleString('en-IN'), 'Total funds unlocked') +
+    fdashCard('file','teal',    c.docsSupported, 'Total documents supported') +
+    fdashCard('cross','red',    c.rejected,      'Rejected applications') +
+    fdashCard('clock','red',    c.aging,         'Pending beyond threshold',
+      '<select class="fdash-thr" onchange="setFdashThreshold(this)">'+thrOpts+'</select>') +
+    fdashCard('trend','gold',   FDASH.months[FDASH.months.length-1].v, 'Completions this month', trend);
+}
+function setFdashThreshold(sel){
+  FDASH_THRESHOLD = Number(sel.value);
+  renderFellowCards();
+}
+// Data Entry form §7 grid — same four numbers as the Financial Tracking tab, one shared source
+// so the two views can never disagree. Demo targets 'pm' (same stated simplification as the PDF field).
+function saveSchFinCell(el){
+  var ek = el.getAttribute('data-fin-entry'), field = el.getAttribute('data-fin-field');
+  if(!ek || !field) return;
+  var v = (field==='proof') ? ((el.files && el.files[0]) ? el.files[0].name : '') : el.value;
+  if(field==='status' && v.indexOf('Status')===0) v = '';   // the form's placeholder option carries no value attribute
+  FIN.pm[ek] = FIN.pm[ek] || {};
+  FIN.pm[ek][field] = v;
+  refreshFin('pm');
+}
 var NOTIF = {
   student:[
     {t:'Your onboarding was approved — full portal unlocked', s:'2 Jul'},
@@ -4993,11 +6608,17 @@ function showNotifications(){
   panel.style.display='block';
 }
 // MIS dashboard filter strip — reflects the active selection (wireframe stub; production re-queries funnel/cards/tables).
-function misFilter(){
+function misFilter(sel, label){
   const active=[];
   document.querySelectorAll('#a-home .misfilters select').forEach(function(s){ if(s.selectedIndex>0) active.push(s.value); });
   const note=document.getElementById('misFilterNote');
   if(note) note.textContent = active.length ? ('Filtered by: '+active.join(' · ')) : '';
+  // Every filter narrows the population, so re-render the indicator charts (see design doc's
+  // stated simplification — 'count' figures scale, they are not really re-queried).
+  if(sel && label){
+    if(sel.selectedIndex>0) MIS_FILTER[label] = sel.value; else delete MIS_FILTER[label];
+  }
+  if(typeof renderMisAll==='function') renderMisAll();
 }
 function fileAct(btn,status){
   const row=btn.closest('.doc-row');
@@ -5062,6 +6683,10 @@ function updateAppStatus(sel){
   if(!info) return;
   pill.className = 'pill '+info.cls;
   pill.innerHTML = '<span class="pdot"></span>'+info.text;
+  // Financial Tracking is gated on this status — re-render that application's blocks so the tab
+  // unlocks (or re-locks) the moment the status changes, on every surface at once.
+  const appKey = card.getAttribute('data-app');
+  if(appKey && typeof refreshFin==='function') refreshFin(appKey);
   // Reset the dropdown to its placeholder for next time.
   sel.value = '';
 }
@@ -5495,8 +7120,17 @@ function onbSubmit(){
     const sec=document.getElementById('sec-personal'); if(sec) sec.scrollIntoView({behavior:'smooth'});
     return;
   }
-  alert('✅ Onboarding submitted. A unique Student ID is generated and the eligibility engine has matched scholarships automatically.');
-  go('f-student');
+  // Fellow assignment is required on both tracks (Point 5) — a student must never be silently unassigned.
+  const asg = document.getElementById('onbAssignFellow');
+  if(asg && !asg.value){
+    alert('Assign Fellow is required — pick the Fellow who will own this student, or your own name if that is you.');
+    const sec=document.getElementById('sec-assign'); if(sec) sec.scrollIntoView({behavior:'smooth'});
+    return;
+  }
+  const a = (typeof campRecordAssignment==='function') ? campRecordAssignment() : null;
+  alert('✅ Onboarding submitted. A unique Student ID is generated and the eligibility engine has matched scholarships automatically.'+
+    (a && typeof campAssignmentConfirmation==='function' ? campAssignmentConfirmation(a) : ''));
+  go(CAMP_CONTEXT ? 'a-camp' : 'f-student');
 }
 // Initialise on first paint if the form is already in the DOM (covers reload-on-onboarding case).
 document.addEventListener('DOMContentLoaded',function(){ if(document.getElementById('onbDob')) setTimeout(onbInit,0); if(document.getElementById('approvalList')) renderApprovalList(); if(document.getElementById('caseListFellow')) renderCaseList('fellow'); if(document.getElementById('caseListAdmin')) renderCaseList('admin'); });
@@ -5573,9 +7207,28 @@ function filterAStu(){
   if(typeof initSubdocs==='function') initSubdocs();
   if(typeof initFellowSubdocs==='function') initFellowSubdocs();
   if(typeof initTurnPills==='function') initTurnPills();
+  if(typeof initDocNotesAll==='function') initDocNotesAll();
+  if(typeof initAppPdfAll==='function') initAppPdfAll();
+  if(typeof initFinAll==='function') initFinAll();
+  if(typeof renderFellowCards==='function') renderFellowCards();
+  if(typeof renderMisAll==='function') renderMisAll();
+  if(typeof renderMyTargets==='function') renderMyTargets();
+  if(typeof renderMyLeave==='function') renderMyLeave();
+  if(typeof renderAdminLeave==='function') renderAdminLeave();
+  if(typeof renderCampList==='function') renderCampList();
+  if(typeof renderCampForm==='function') renderCampForm();
+  if(typeof renderMyCamps==='function') renderMyCamps();
+  if(typeof renderReassign==='function') renderReassign();
   const p=new URLSearchParams(location.search);
   const role=p.get('role'); const screen=p.get('screen');
+  const campParam=p.get('camp');
   if(role && ({student:1,fellow:1,admin:1,mentor:1})[role]){ loginAs(role); if(screen) go(screen); }
+  // ?camp=<CAMP-ID> is the camp's onboarding link (Point 5, Track 1): log in as the Fellow if no role
+  // was given, then open the onboarding form with the camp's details pre-set.
+  if(campParam && typeof campById==='function' && campById(campParam)){
+    if(!role) loginAs('fellow');
+    setTimeout(function(){ openCampLink(campParam); }, 30);
+  }
 })();
 </script>
 <div class="doc-modal" id="docPreviewModal" onclick="if(event.target===this)closeDocPreview()">

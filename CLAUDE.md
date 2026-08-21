@@ -36,7 +36,9 @@ Avoid two pushes within ~a minute: GitHub Pages allows one active deployment, so
 4. **Ripple check.** Introduce a pattern (a taxonomy, a layout, a master list) → immediately enumerate every sibling surface that should match, and update them in the same round. Most past rework came from skipping this.
 5. **Verify behaviour before saying done** — not just that the HTML parses. Render the screen headlessly and click the thing. Recipe in `docs/CONTEXT.md` § Verifying.
 6. **Desktop/web only.** Don't polish mobile viewports or add mobile variants unless asked. Leave existing `@media` rules alone.
-7. **Aarti Ramesh Pawar is the canonical demo student.** Her data lives in several places (static HTML per screen + JS arrays). Change one, change all — see `docs/CONTEXT.md` § Canonical demo data.
+7. **Never kill a browser by name.** No `pkill -f "Google Chrome"`, no `killall`, no `taskkill /IM`. Render-verification must launch headless Chrome with `&`, capture `CHROME_PID=$!`, and kill **only that PID**, with a throwaway `--user-data-dir` every time. A kill-by-name closes the developer's own browser and tabs — this happened repeatedly on 2026-08-21 and cost Shweta her working session. Recipe: `docs/CONTEXT.md` § Verifying.
+8. **Stay inside this project.** Work only within the Samavesh project folder (plus a scratch dir for render temp files). Don't touch unrelated files or apps on the machine.
+9. **Aarti Ramesh Pawar is the canonical demo student.** Her data lives in several places (static HTML per screen + JS arrays). Change one, change all — see `docs/CONTEXT.md` § Canonical demo data.
 
 ## Files to leave alone
 
