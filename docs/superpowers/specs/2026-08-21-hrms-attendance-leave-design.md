@@ -1,5 +1,11 @@
 # HRMS — Attendance & Leave Management — Design
 
+> **SUPERSEDED 2026-09-01.** The module this design describes was removed. Shweta: the HRMS built here
+> was custom; the client gets the **standard Frappe HR app** instead. Kept as the record of what was
+> built and why it was withdrawn. Current: `docs/superpowers/specs/2026-09-01-hrms-frappe-standard-design.md`
+> and `docs/superpowers/plans/2026-09-01-hrms-frappe-standard.md`.
+
+
 **Date:** 2026-08-21
 **Status:** Draft — awaiting Shweta's yes
 **Scope:** `wireframe/index.html` only — the Fellow attendance card (`#fAttCard`, line 2291), the Fellow "My Attendance" screen (`#f-attendance`, line 3214) and the Admin "Attendance" screen (`#a-attendance`, line 4259).
