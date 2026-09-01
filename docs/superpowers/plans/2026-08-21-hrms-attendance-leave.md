@@ -1,5 +1,11 @@
 # HRMS — Attendance & Leave Management — Implementation Plan
 
+> **SUPERSEDED 2026-09-01.** The module this plan describes was removed. Shweta: the HRMS built here
+> was custom; the client gets the **standard Frappe HR app** instead. Kept as the record of what was
+> built and why it was withdrawn. Current: `docs/superpowers/specs/2026-09-01-hrms-frappe-standard-design.md`
+> and `docs/superpowers/plans/2026-09-01-hrms-frappe-standard.md`.
+
+
 **Goal:** Add the five genuine gaps to the attendance system that already exists — Work From Home as a status, status chosen at check-in, a Fellow leave flow (balance / apply / history / own-state holidays), Admin leave approval and balance adjustment, and a state-specific holiday calendar — and rewrite the two "leaves are managed manually" sentences that this module makes false.
 
 **Architecture:** One state block (`LEAVE_TYPES`, `LEAVE_BALANCE`, `LEAVE_REQUESTS`, `HOLIDAYS`, `FELLOW_STATE`, `ATT_STATUS_CHOICES`), renderers per surface (`renderMyLeave`, `renderAdminLeave`, `renderHolidays`), and approval as the only writer to a balance. Check-in extends the existing `fellowPunch()` rather than replacing it.

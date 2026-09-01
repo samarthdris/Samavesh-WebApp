@@ -457,15 +457,6 @@ img{max-width:100%}
 .att-card{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-left:4px solid var(--teal-500)}
 .att-state{font-size:13.5px;color:var(--ink-soft)}
 .att-state b{color:var(--ink)}
-.att-btn{font-family:inherit;font-weight:700;font-size:14px;border:none;border-radius:9px;padding:12px 22px;cursor:pointer;transition:.15s}
-.att-btn.in{background:var(--green);color:#fff}
-.att-btn.out{background:var(--red);color:#fff}
-.att-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
-.wn-list{display:grid;gap:10px}
-.wn-row{display:flex;align-items:center;gap:12px}
-.wn-row .sa{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;flex:0 0 36px}
-.wn-row b{font-size:14px}
-.wn-row small{display:block;color:var(--muted);font-size:12px}
 
 /* ID 12 Fellow notes (student-visible) */
 .note-form{background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:14px;margin-bottom:14px}
@@ -1219,31 +1210,6 @@ img{max-width:100%}
 .reassign-form label{display:block;font-size:11.5px;color:var(--muted);font-weight:600;margin-bottom:4px}
 .reassign-form select,.reassign-form input{border:1.5px solid var(--line);border-radius:8px;padding:7px 9px;font-family:inherit;font-size:12.5px;background:var(--paper)}
 /* HRMS — leave & holidays */
-.hr-sec{margin-top:22px}
-.hr-sec > .hrh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
-.hr-sec > .hrh h3{font-size:17px;margin:0}
-.hr-sec > .hrh span{font-size:12.5px;color:var(--muted)}
-.leave-bal{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}
-.lb-tile{flex:1;min-width:150px;background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:12px 14px}
-.lb-tile .lbt{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.lb-tile .lbv{font-size:21px;font-weight:700;margin-top:4px}
-.lb-tile .lbs{font-size:11.5px;color:var(--muted);margin-top:2px}
-.lb-tile input{width:64px;border:1.5px solid var(--line);border-radius:8px;padding:5px 7px;font-family:inherit;font-size:12.5px;background:var(--paper)}
-.leave-form{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:var(--cream);border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin-bottom:14px}
-.leave-form label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:4px;font-weight:600}
-.leave-form select,.leave-form input{border:1.5px solid var(--line);border-radius:8px;padding:7px 9px;font-family:inherit;font-size:12.5px;background:var(--paper)}
-.leave-form .lf-reason{flex:1;min-width:180px}
-.leave-form .lf-reason input{width:100%;box-sizing:border-box}
-.lreq{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:10px 0;border-top:1px dashed var(--line);font-size:12.5px}
-.lreq .lrw{flex:0 0 128px;width:128px;font-weight:600}
-.lreq .lrd{flex:0 0 190px;width:190px;color:var(--ink-soft)}
-.lreq .lrr{flex:1;min-width:140px;color:var(--muted)}
-.lreq .lra{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.lreq .lra input{border:1.5px solid var(--line);border-radius:8px;padding:6px 8px;font-family:inherit;font-size:12px;background:var(--paper);width:150px}
-.hol-row{display:flex;gap:12px;align-items:center;padding:8px 0;border-top:1px dashed var(--line);font-size:12.5px}
-.hol-row .hd{flex:0 0 120px;width:120px;font-weight:600}
-.sample-tag{background:var(--marigold-50);color:#8a6212;border:1px solid #f0d9a8;border-radius:999px;padding:3px 9px;font-size:11px;font-weight:600}
-.att-status-sel{border:1.5px solid var(--line);border-radius:9px;padding:8px 10px;font-family:inherit;font-size:12.5px;background:var(--paper);margin-right:10px}
 /* fellow targets (target vs actual) */
 .tgt-panel td{background:var(--cream);padding:14px 16px !important}
 .tgt-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
@@ -1284,6 +1250,74 @@ img{max-width:100%}
 .mis-fig .mfl{font-size:11.5px;color:var(--muted);margin-top:3px}
 .mis-chip{background:var(--teal-50);color:var(--teal-700);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600}
 .funnel .fdrop{flex:0 0 104px;width:104px;font-size:11.5px;color:var(--muted);font-weight:600}
+/* Standard Frappe HR desk, replicated so the client clicks the real screens (2026-09-01).
+   Styled from the reference screenshots in Login Logout Fellow/ — stock app, Dhwani bench. */
+.fdesk{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;margin-bottom:14px;box-shadow:var(--shadow-sm)}
+.fd-top{background:#7a1c22;color:#fff;display:flex;align-items:center;gap:10px;padding:9px 14px;font-size:12.5px}
+.fd-top .fd-logo{width:22px;height:22px;border-radius:50%;background:#fff;color:#7a1c22;display:grid;place-items:center;font-weight:800;font-size:10px;flex:0 0 22px}
+.fd-top .fd-crumb{opacity:.95}
+.fd-top .fd-search{margin-left:auto;background:rgba(255,255,255,.15);border-radius:8px;padding:5px 12px;font-size:11.5px;color:rgba(255,255,255,.8)}
+.fd-top .fd-btn{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3);color:#fff}
+.fd-top .fd-btn:hover{background:rgba(255,255,255,.24);border-color:#fff;color:#fff}
+.fd-top .fd-av{width:22px;height:22px;border-radius:50%;background:#e8821e;color:#fff;display:grid;place-items:center;font-size:10px;font-weight:700;flex:0 0 22px}
+.fd-tabs{display:flex;background:#faf7f3;border-bottom:1px solid var(--line);padding:0 8px;flex-wrap:wrap}
+.fd-tab{border:none;background:none;font-family:inherit;font-size:12.5px;font-weight:600;color:var(--muted);padding:10px 12px;cursor:pointer;border-bottom:2px solid transparent}
+.fd-tab:hover{color:#7a1c22}
+.fd-tab.on{color:#7a1c22;border-bottom-color:#7a1c22}
+.fd-head{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.fd-head h4{margin:0;font-size:15.5px;color:#171717}
+.fd-head .fd-acts{margin-left:auto;display:flex;gap:8px;align-items:center}
+.fd-btn{font-family:inherit;font-size:12px;font-weight:600;border:1px solid var(--line);background:#fff;color:var(--ink-soft);border-radius:7px;padding:6px 11px;cursor:pointer}
+.fd-btn:hover{border-color:#7a1c22;color:#7a1c22}
+.fd-btn.pri{background:#7a1c22;border-color:#7a1c22;color:#fff}
+.fd-btn.pri:hover{background:#5f151a;color:#fff}
+.fd-btn.sm{padding:4px 9px;font-size:11.5px}
+.fd-body{display:flex;align-items:stretch}
+.fd-side{flex:0 0 148px;padding:12px;border-right:1px solid var(--line);background:#fdfcfa}
+.fd-side .fs-l{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.fd-side select,.fd-side input{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:7px;padding:5px 7px;font-family:inherit;font-size:11.5px;background:#fff;margin-bottom:8px;color:var(--ink-soft)}
+.fd-main{flex:1;min-width:0;padding:12px 14px;overflow-x:auto}
+.fd-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px;align-items:center}
+.fd-filters select,.fd-filters input{border:1px solid var(--line);border-radius:7px;padding:6px 9px;font-family:inherit;font-size:12px;background:#fff;color:var(--ink-soft)}
+.fd-count{margin-left:auto;font-size:11.5px;color:var(--muted);white-space:nowrap}
+.fd-table{width:100%;border-collapse:collapse;font-size:12.5px}
+.fd-table th{background:#f7f4ef;text-align:left;font-weight:600;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:11px;text-transform:uppercase;letter-spacing:.03em}
+.fd-table td{padding:9px 10px;border-bottom:1px solid #f2ece2;color:var(--ink-soft);white-space:nowrap}
+.fd-table tr:last-child td{border-bottom:none}
+.fd-table td b{color:#171717;font-weight:600}
+.fd-table input[type=number]{width:62px;border:1px solid var(--line);border-radius:6px;padding:4px 6px;font-family:inherit;font-size:12px;background:#fff}
+.fd-none{padding:18px;text-align:center;color:var(--muted);font-size:12.5px}
+.fd-pill{border-radius:6px;padding:2px 9px;font-size:11.5px;font-weight:600;display:inline-block}
+.fd-pill.green{background:#e7f4ec;color:#1f7a45}
+.fd-pill.amber{background:#fbf1de;color:#8a6212}
+.fd-pill.grey{background:#eeeae4;color:#5c5c5c}
+.fd-pill.blue{background:#e7eefb;color:#22509e}
+.fd-pill.red{background:#fbeae6;color:#a63a26}
+.fd-in{color:#c0392b;font-weight:600}
+.fd-out{color:#1f7a45;font-weight:600}
+.fd-form{padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:13px 22px}
+.fd-form label{display:block;font-size:11.5px;color:var(--muted);margin-bottom:4px;font-weight:600}
+.fd-form label .req{color:#c0392b}
+.fd-form input,.fd-form select,.fd-form textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:7px;padding:8px 9px;font-family:inherit;font-size:12.5px;background:#f7f4ef;color:#171717}
+.fd-form .ff-full{grid-column:1/-1}
+.fd-form .ff-chk{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft);align-self:end}
+.fd-form .ff-chk input{width:auto}
+.fd-form .ff-ro{background:#efe9e0;color:var(--muted)}
+.fd-notsaved{background:#fbeae6;color:#a63a26;border-radius:6px;padding:2px 9px;font-size:11px;font-weight:600}
+.fd-msg{font-size:12px;font-weight:600;padding:0 14px 12px;color:#1f7a45}
+.fd-msg.err{color:#c0392b}
+.fd-hint{font-size:11.5px;color:var(--muted);padding:0 14px 12px;font-style:italic}
+.content.wide{max-width:none;padding:22px 26px}
+.screen.hr-fullscreen{animation:none;transform:none}
+.fdesk.full{position:fixed;inset:0;z-index:400;border-radius:0;margin:0;display:flex;flex-direction:column;box-shadow:none}
+.fdesk.full .fd-body{flex:1;min-height:0}
+.fdesk.full .fd-main{overflow:auto}
+.fd-body{min-height:460px}
+.fd-full-note{font-size:11.5px;color:var(--muted);margin-top:8px}
+.fd-ref{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.fd-ref a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.fd-ref a:hover{border-color:#7a1c22}
+.fd-ref img{width:100%;height:auto;display:block}
 </style>
 </head>
 <body>
@@ -2346,14 +2380,14 @@ img{max-width:100%}
           <div class="quote">“ One student, one journey, end to end. ”</div>
         </div>
 
-        <!-- ID 7 attendance: Log In / Log Out (captures time + date + browser location) -->
+        <!-- Attendance lives in the standard Frappe HR app (2026-09-01) — this card points there.
+             It no longer punches: there is no custom check-in in the Samavesh build. -->
         <div class="card att-card" id="fAttCard">
           <div>
             <div class="eyebrow">Attendance</div>
-            <div class="att-state" id="fAttState">You're <b>logged out</b>. Log in to start your day.</div>
-            <a href="#" data-go="f-attendance" style="display:inline-block;margin-top:6px;font-size:12.5px;color:var(--teal-700);font-weight:600;text-decoration:none">View my attendance history →</a>
+            <div class="att-state" id="fAttState">Check in, apply for leave and see your holiday list in the <b>HR system</b>.</div>
+            <a href="#" data-go="f-attendance" style="display:inline-block;margin-top:6px;font-size:12.5px;color:var(--teal-700);font-weight:600;text-decoration:none">Go to My Attendance →</a>
           </div>
-          <div style="display:flex;align-items:center;flex-wrap:wrap"><select class="att-status-sel" id="fAttStatusSel" title="Your work status for today"><option>Present</option><option>Work From Home</option><option>Absent</option></select><button class="att-btn in" id="fAttBtn" onclick="fellowPunch(this)">Log In</button></div>
         </div>
 
         <!-- Workload cards (12, per New Feedbacks/Point_08_Fellow_Interface_Cards.md). Eight figures are
@@ -3287,41 +3321,11 @@ img{max-width:100%}
 
       <!-- ===== FELLOW MY ATTENDANCE (ID 7) ===== -->
       <section class="screen" id="f-attendance">
-        <div class="page-h"><div class="eyebrow">Attendance</div><h1>My Attendance</h1><p>Your login/logout history — pick your work status when you log in. Apply for leave and see your balance and your state's holiday list below.</p></div>
+        <div class="page-h"><div class="eyebrow">Attendance</div><h1>My Attendance</h1><p>Check in, see your attendance, apply for leave.</p></div>
 
-        <div class="misfilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
-          <input class="fatt-date" type="date" onchange="fAttFilter()" />
-          <select class="fatt-status" onchange="fAttFilter()"><option value="">All statuses</option><option>Present</option><option>Work From Home</option><option>On Leave</option><option>Absent</option></select>
-          <button class="btn btn-ghost btn-sm" onclick="fAttClear()">Clear</button>
-          <span id="fAttFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
-        </div>
-
-        <div class="dtable-wrap" style="max-height:520px;overflow:auto"><table class="dtable" id="fAttTable">
-          <thead><tr><th>Date</th><th>In</th><th>Out</th><th>Gross Hrs</th><th>Status</th><th>Location</th></tr></thead>
-          <tbody>
-            <tr data-date="2026-07-02" data-status="Present"><td>02 Jul 2026</td><td>10:13 AM</td><td>06:47 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH · 18.51, 73.85</td></tr>
-            <tr data-date="2026-07-01" data-status="Present"><td>01 Jul 2026</td><td>09:58 AM</td><td>06:31 PM</td><td>8.5</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
-            <tr data-date="2026-06-30" data-status="On Leave"><td>30 Jun 2026</td><td>—</td><td>—</td><td>0.0</td><td><span class="pill amber"><span class="pdot"></span>On Leave</span></td><td>—</td></tr>
-            <tr data-date="2026-06-29" data-status="Present"><td>29 Jun 2026</td><td>10:22 AM</td><td>07:05 PM</td><td>8.7</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>PCMC, MH</td></tr>
-            <tr data-date="2026-06-28" data-status="Absent"><td>28 Jun 2026</td><td>—</td><td>—</td><td>—</td><td><span class="pill grey"><span class="pdot"></span>Absent</span></td><td>—</td></tr>
-            <tr data-date="2026-06-27" data-status="Present"><td>27 Jun 2026</td><td>09:47 AM</td><td>07:12 PM</td><td>9.1</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
-            <tr data-date="2026-06-26" data-status="Present"><td>26 Jun 2026</td><td>10:05 AM</td><td>06:40 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
-            <tr data-date="2026-06-25" data-status="Present"><td>25 Jun 2026</td><td>09:52 AM</td><td>06:30 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Nashik, MH</td></tr>
-            <tr data-date="2026-06-24" data-status="Present"><td>24 Jun 2026</td><td>10:10 AM</td><td>06:55 PM</td><td>8.7</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
-            <tr data-date="2026-06-23" data-status="On Leave"><td>23 Jun 2026</td><td>—</td><td>—</td><td>0.0</td><td><span class="pill amber"><span class="pdot"></span>On Leave</span></td><td>—</td></tr>
-            <tr data-date="2026-06-20" data-status="Present"><td>20 Jun 2026</td><td>09:40 AM</td><td>06:20 PM</td><td>8.7</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
-            <tr data-date="2026-06-19" data-status="Present"><td>19 Jun 2026</td><td>10:15 AM</td><td>07:00 PM</td><td>8.8</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
-            <tr data-date="2026-06-18" data-status="Present"><td>18 Jun 2026</td><td>09:58 AM</td><td>06:35 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>PCMC, MH</td></tr>
-            <tr data-date="2026-06-17" data-status="Present"><td>17 Jun 2026</td><td>10:02 AM</td><td>06:45 PM</td><td>8.7</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
-            <tr data-date="2026-06-16" data-status="Present"><td>16 Jun 2026</td><td>09:50 AM</td><td>06:28 PM</td><td>8.6</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>Pune, MH</td></tr>
-          </tbody>
-        </table>
-        <div class="empty" id="fAttEmpty" style="display:none;padding:18px;text-align:center;color:var(--muted)">No records match this filter.</div>
-
-        </div>
-
-        <!-- Leave (Point 9): balance, application, own-state holidays. -->
-        <div id="myLeave"></div>
+        <!-- Point 9 / Module 13: the standard Frappe HR app's own screens, replicated so they can be
+             clicked (2026-09-01). No Samavesh customisation — see docs/superpowers/specs/2026-09-01-*. -->
+        <div id="hrDeskFellow"></div>
       </section>
 
       <!-- ===== FELLOW PROFILE ===== -->
@@ -4344,54 +4348,12 @@ img{max-width:100%}
 
       <!-- ===== ADMIN ATTENDANCE (ID 7) ===== -->
       <section class="screen" id="a-attendance">
-        <div class="page-h" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px">
-          <div><div class="eyebrow">Workspace</div><h1>Attendance</h1><p>Who's working now, plus each Fellow's daily login/logout record. Approve leave, adjust balances and schedule state-wise holidays below.</p></div>
-          <button class="btn btn-ghost" onclick="alert('Export — downloads the filtered attendance as Excel (wireframe stub).')"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" style="vertical-align:-3px;margin-right:6px"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Export</button>
-        </div>
+        <div class="page-h"><div class="eyebrow">Workspace</div><h1>Attendance</h1><p>Attendance, leave approval, allocations and holiday calendars.</p></div>
 
-        <!-- Working now — the live view that removes the "call each Fellow to check" problem -->
-        <div class="card" style="border-left:4px solid var(--green);margin-bottom:18px">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px"><span class="att-dot" style="background:var(--green);width:10px;height:10px"></span><h3 style="font-size:17px;margin:0">Working now · <b style="color:var(--green)">3</b> logged in</h3></div>
-          <div class="wn-list">
-            <div class="wn-row"><span class="sa" style="background:linear-gradient(140deg,#0f857a,#0a3f3a)">R</span><div><b>Rahul More</b><small>in since 10:06 AM · Pune, MH</small></div></div>
-            <div class="wn-row"><span class="sa" style="background:linear-gradient(140deg,#2f6fd6,#1c4ea8)">P</span><div><b>Priya Kulkarni</b><small>in since 09:42 AM · Nashik, MH</small></div></div>
-            <div class="wn-row"><span class="sa" style="background:linear-gradient(140deg,#7a5cd0,#5538a8)">S</span><div><b>Sunil Kadam</b><small>in since 10:21 AM · PCMC, MH</small></div></div>
-          </div>
-        </div>
-
-        <div class="grid g-3 stagger" style="margin-bottom:18px">
-          <div class="card stat"><div class="num" style="color:var(--green)">3</div><div class="cap">Present today</div></div>
-          <div class="card stat"><div class="num" style="color:var(--amber)">1</div><div class="cap">On leave</div></div>
-          <div class="card stat"><div class="num" style="color:var(--blue)">8.6</div><div class="cap">Avg hrs (7 days)</div></div>
-        </div>
-
-        <div class="misfilters" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
-          <select class="att-fellow" onchange="attFilter()"><option value="">All Fellows</option><option>Rahul More</option><option>Priya Kulkarni</option><option>Sunil Kadam</option></select>
-          <input class="att-date" type="date" onchange="attFilter()" />
-          <select class="att-status" onchange="attFilter()"><option value="">All statuses</option><option>Present</option><option>Work From Home</option><option>On Leave</option><option>Absent</option></select>
-          <button class="btn btn-ghost btn-sm" onclick="attClear()">Clear</button>
-          <span id="attFilterNote" style="font-size:12.5px;color:var(--teal-700);font-weight:600;align-self:center"></span>
-        </div>
-
-        <div class="dtable-wrap"><table class="dtable" id="attTable">
-          <thead><tr><th>Fellow</th><th>Date</th><th>Status</th><th>In</th><th>Out</th><th>Gross Hrs</th><th>Location</th></tr></thead>
-          <tbody>
-            <tr data-fellow="Rahul More" data-date="2026-07-02" data-status="Present"><td>Rahul More</td><td>02 Jul 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>10:13 AM</td><td>06:47 PM</td><td>8.6</td><td>Pune, MH</td></tr>
-            <tr data-fellow="Priya Kulkarni" data-date="2026-07-02" data-status="Present"><td>Priya Kulkarni</td><td>02 Jul 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>09:40 AM</td><td>06:15 PM</td><td>8.6</td><td>Nashik, MH</td></tr>
-            <tr data-fellow="Sunil Kadam" data-date="2026-07-02" data-status="On Leave"><td>Sunil Kadam</td><td>02 Jul 2026</td><td><span class="pill amber"><span class="pdot"></span>On Leave</span></td><td>—</td><td>—</td><td>0.0</td><td>—</td></tr>
-            <tr data-fellow="Rahul More" data-date="2026-07-01" data-status="Present"><td>Rahul More</td><td>01 Jul 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>09:58 AM</td><td>06:31 PM</td><td>8.5</td><td>Pune, MH</td></tr>
-            <tr data-fellow="Priya Kulkarni" data-date="2026-07-01" data-status="Absent"><td>Priya Kulkarni</td><td>01 Jul 2026</td><td><span class="pill grey"><span class="pdot"></span>Absent</span></td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-            <tr data-fellow="Sunil Kadam" data-date="2026-07-01" data-status="Present"><td>Sunil Kadam</td><td>01 Jul 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>10:21 AM</td><td>07:02 PM</td><td>8.7</td><td>PCMC, MH</td></tr>
-            <tr data-fellow="Rahul More" data-date="2026-06-30" data-status="On Leave"><td>Rahul More</td><td>30 Jun 2026</td><td><span class="pill amber"><span class="pdot"></span>On Leave</span></td><td>—</td><td>—</td><td>0.0</td><td>—</td></tr>
-            <tr data-fellow="Priya Kulkarni" data-date="2026-06-30" data-status="Present"><td>Priya Kulkarni</td><td>30 Jun 2026</td><td><span class="pill green"><span class="pdot"></span>Present</span></td><td>09:35 AM</td><td>06:20 PM</td><td>8.8</td><td>Nashik, MH</td></tr>
-          </tbody>
-        </table>
-        <div class="empty" id="attEmpty" style="display:none;padding:18px;text-align:center;color:var(--muted)">No attendance records match this filter.</div>
-
-        </div>
-
-        <!-- Leave approval, balance adjustment and the state holiday calendar (Point 9). -->
-        <div id="adminLeave"></div>
+        <!-- Point 9 / Module 13: the standard Frappe HR app's own screens, replicated so they can be
+             clicked (2026-09-01). The custom attendance table and "Working now" panel that stood here
+             were removed with that decision — see docs/superpowers/specs/2026-09-01-*. -->
+        <div id="hrDeskAdmin"></div>
       </section>
 
       <!-- ===== ADMIN PROFILE ===== -->
@@ -4786,6 +4748,9 @@ function go(id){
   document.querySelectorAll('.nav-link').forEach(a=>a.classList.toggle('active',a.dataset.go===id));
   setCrumb(id);
   window.scrollTo({top:0,behavior:'smooth'});
+  // The Frappe HR desk is a whole application, not a panel — give it the full content width.
+  var c=document.querySelectorAll('.content');
+  for(var i=0;i<c.length;i++) c[i].classList.toggle('wide', id==='f-attendance' || id==='a-attendance');
   if(id==='f-onboard' && typeof onbInit==='function') setTimeout(onbInit,0);
   if(id==='f-scholarship' && typeof schInit==='function') setTimeout(schInit,0);
   if(id==='s-onboard' && typeof buildStudentOnboard==='function') setTimeout(buildStudentOnboard,0);
@@ -4993,118 +4958,6 @@ function initFellowSubdocs(){
   });
 }
 
-// ===== ID 7 attendance (Fellow Log In / Log Out) =====
-var FELLOW_LOGGED_IN = false;
-function getGeo(cb){
-  // Wireframe: try the browser, fall back to a static Pune location if denied/unavailable.
-  if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(
-      function(p){ cb('Pune, MH · '+p.coords.latitude.toFixed(2)+', '+p.coords.longitude.toFixed(2)); },
-      function(){ cb('Pune, MH · 18.51, 73.85'); }, {timeout:2000});
-  } else cb('Pune, MH · 18.51, 73.85');
-}
-function fellowPunch(btn){
-  getGeo(function(loc){
-    var now = new Date();
-    var t = now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
-    var st = document.getElementById('fAttState');
-    // Work status is chosen by the Fellow at check-in (Point 9) — never inferred from location.
-    var sel = document.getElementById('fAttStatusSel');
-    var status = sel ? sel.value : 'Present';
-    if(!FELLOW_LOGGED_IN){
-      FELLOW_LOGGED_IN = true;
-      btn.className='att-btn out'; btn.textContent='Log Out';
-      st.innerHTML='<span class="att-dot" style="background:var(--green)"></span>Logged in <b>'+t+'</b> · <b>'+status+'</b> · '+loc;
-      punchAttendanceRow(status, t, loc);
-      if(sel) sel.disabled = true;                      // the day's status is fixed once you check in
-    } else {
-      FELLOW_LOGGED_IN = false;
-      btn.className='att-btn in'; btn.textContent='Log In';
-      st.innerHTML='Logged out <b>'+t+'</b> · recorded as <b>'+status+'</b> · thanks for today.';
-      punchAttendanceRow(status, null, loc, t);
-      if(sel) sel.disabled = false;
-    }
-  });
-}
-// Checking in writes today's row into both attendance tables; checking out fills Out and gross hours,
-// so a punch produces a visible record rather than only changing the card's label.
-function punchAttendanceRow(status, inTime, loc, outTime){
-  var now = new Date();
-  var iso = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
-  var fellow = (typeof hrFellow==='function') ? hrFellow() : 'Rahul More';
-  var pill = (typeof statusPill==='function') ? statusPill(status)
-           : '<span class="pill green"><span class="pdot"></span>'+status+'</span>';
-  var pretty = (typeof hrDate==='function') ? hrDate(iso) : iso;
-  var hours = function(a,b){
-    if(!a||!b) return '0.0';
-    var p=function(x){ var m=x.match(/(\d+):(\d+)\s*(AM|PM)/i); if(!m) return 0;
-      var h=Number(m[1])%12 + (/PM/i.test(m[3])?12:0); return h+Number(m[2])/60; };
-    return Math.max(0, p(b)-p(a)).toFixed(1);
-  };
-  [{tb:document.querySelector('#fAttTable tbody'), admin:false},
-   {tb:document.querySelector('#attTable tbody'),  admin:true}].forEach(function(t){
-    if(!t.tb) return;
-    var sel = t.admin ? 'tr[data-fellow="'+fellow+'"][data-date="'+iso+'"]' : 'tr[data-date="'+iso+'"]';
-    var row = t.tb.querySelector(sel);
-    if(!row){
-      row = document.createElement('tr');
-      row.setAttribute('data-date', iso);
-      if(t.admin) row.setAttribute('data-fellow', fellow);
-      t.tb.insertBefore(row, t.tb.firstChild);
-    }
-    row.setAttribute('data-status', status);
-    var inT  = inTime  || row.getAttribute('data-in')  || '—';
-    var outT = outTime || row.getAttribute('data-out') || '—';
-    if(inTime)  row.setAttribute('data-in', inTime);
-    if(outTime) row.setAttribute('data-out', outTime);
-    var h = hours(row.getAttribute('data-in'), row.getAttribute('data-out'));
-    row.innerHTML = t.admin
-      ? '<td>'+fellow+'</td><td>'+pretty+'</td><td>'+pill+'</td><td>'+inT+'</td><td>'+outT+'</td><td>'+h+'</td><td>'+(loc||'—')+'</td>'
-      : '<td>'+pretty+'</td><td>'+inT+'</td><td>'+outT+'</td><td>'+h+'</td><td>'+pill+'</td><td>'+(loc||'—')+'</td>';
-  });
-}
-function attFilter(){
-  var host=document.getElementById('a-attendance');
-  var f=host.querySelector('.att-fellow').value;
-  var d=host.querySelector('.att-date').value;   // yyyy-mm-dd
-  var s=host.querySelector('.att-status').value;
-  var shown=0;
-  host.querySelectorAll('#attTable tbody tr').forEach(function(r){
-    var ok=(!f||r.dataset.fellow===f)&&(!d||r.dataset.date===d)&&(!s||r.dataset.status===s);
-    r.style.display=ok?'':'none'; if(ok)shown++;
-  });
-  var empty=document.getElementById('attEmpty'); if(empty) empty.style.display=shown?'none':'';
-  var active=[]; if(f)active.push(f); if(d)active.push(d); if(s)active.push(s);
-  var note=document.getElementById('attFilterNote');
-  if(note) note.textContent=active.length?('Filtered by: '+active.join(' · ')+' · '+shown+' record'+(shown===1?'':'s')):'';
-}
-function attClear(){
-  var host=document.getElementById('a-attendance');
-  host.querySelector('.att-fellow').value='';
-  host.querySelector('.att-date').value='';
-  host.querySelector('.att-status').value='';
-  attFilter();
-}
-function fAttFilter(){
-  var host=document.getElementById('f-attendance');
-  var d=host.querySelector('.fatt-date').value;
-  var s=host.querySelector('.fatt-status').value;
-  var shown=0;
-  host.querySelectorAll('#fAttTable tbody tr').forEach(function(r){
-    var ok=(!d||r.dataset.date===d)&&(!s||r.dataset.status===s);
-    r.style.display=ok?'':'none'; if(ok)shown++;
-  });
-  var empty=document.getElementById('fAttEmpty'); if(empty) empty.style.display=shown?'none':'';
-  var active=[]; if(d)active.push(d); if(s)active.push(s);
-  var note=document.getElementById('fAttFilterNote');
-  if(note) note.textContent=active.length?('Filtered by: '+active.join(' · ')+' · '+shown+' record'+(shown===1?'':'s')):'';
-}
-function fAttClear(){
-  var host=document.getElementById('f-attendance');
-  host.querySelector('.fatt-date').value='';
-  host.querySelector('.fatt-status').value='';
-  fAttFilter();
-}
 // Fellow downloads any document the student has on record (Accepted / Under Review / Uploaded) — available at all times to fill the government portal.
 function downloadDoc(name){ alert('Downloading: '+name+' (demo)\n\nThe student\'s uploaded PDF is pulled from secure storage. Fellows can download any document on record here at any time — used to fill the government scholarship portal.'); }
 // Fellow reviews a student-uploaded doc: Accept, or Request re-upload with a reason (Task 9 to-and-fro).
@@ -6111,232 +5964,383 @@ function campAssignmentConfirmation(a){
   }
   return '\n\nAssigned Fellow: '+(a.fellow || 'Not assigned — this student will show as unassigned.');
 }
-// ---- HRMS: attendance status, leave and holidays (Point 9 / Module 13) ----
-// Check-in choices are the client's three. "On Leave" is NOT a check-in choice — it is written only by
-// an approved leave request, which is already what it means in the existing attendance tables.
-var ATT_STATUS_CHOICES = ['Present','Work From Home','Absent'];
-var LEAVE_TYPES = ['Casual','Sick','Earned'];
-// Covers BOTH fellow rosters that already exist in this file — Fellows & Users lists Rahul / Sandip /
-// Dhanashree / Vaibhav, while the Attendance screen's own records also carry Priya Kulkarni and Sunil
-// Kadam. Everyone visible on either screen therefore has a balance; the roster split itself is a
-// pre-existing drift recorded as a watch-item in BUILD_STATUS, not something this module invented.
-var LEAVE_BALANCE = {
-  'Rahul More':     {Casual:{total:12,used:4}, Sick:{total:8,used:2}, Earned:{total:15,used:6}},
-  'Sandip K':       {Casual:{total:12,used:6}, Sick:{total:8,used:1}, Earned:{total:15,used:9}},
-  'Dhanashree O':   {Casual:{total:12,used:2}, Sick:{total:8,used:4}, Earned:{total:15,used:3}},
-  'Vaibhav D':      {Casual:{total:12,used:5}, Sick:{total:8,used:0}, Earned:{total:15,used:7}},
-  'Priya Kulkarni': {Casual:{total:12,used:3}, Sick:{total:8,used:3}, Earned:{total:15,used:4}},
-  'Sunil Kadam':    {Casual:{total:12,used:7}, Sick:{total:8,used:2}, Earned:{total:15,used:5}}
-};
-// Seeded so both a Pending and an already-Approved request are visible on first load. The approved Sick
-// day is 30 Jun 2026 — the same date the Fellow's attendance table already shows as "On Leave".
-var LEAVE_REQUESTS = [
-  {id:'LV-2026-004', fellow:'Rahul More', type:'Casual', from:'2026-08-24', to:'2026-08-25', days:2, reason:'Family function at home town', status:'Pending', note:''},
-  {id:'LV-2026-003', fellow:'Sandip K',   type:'Casual', from:'2026-08-27', to:'2026-08-27', days:1, reason:'Ganesh Chaturthi travel', status:'Pending', note:''},
-  {id:'LV-2026-002', fellow:'Rahul More', type:'Sick',   from:'2026-06-30', to:'2026-06-30', days:1, reason:'Fever', status:'Approved', note:'Approved — get well.'}
+// ---- HRMS: the standard Frappe HR app, replicated so it can be clicked (Point 9 / Module 13) ----
+// 2026-09-01 (Shweta): no custom HRMS is built for Samavesh — attendance and leave come from the
+// standard Frappe HR app. The client asked to see the app itself rather than a description of it, so
+// these are the stock screens: Employee Checkin, Attendance, Leave Application, Leave Allocation and
+// Holiday List, with Frappe's own field names and values. Styled from the reference screenshots in
+// Login Logout Fellow/ (stock Frappe HR on a Dhwani bench). Nothing here is a Samavesh customisation.
+//
+// Employees are the Fellows & Users roster. This also retires Priya Kulkarni / Sunil Kadam, who existed
+// only in the old custom attendance table and in no other roster — the 2026-08-21 watch-item.
+var FR_EMP = ['Rahul More','Sandip K','Dhanashree O','Vaibhav D'];
+var FR_EMPID = {'Rahul More':'HR-EMP-00014','Sandip K':'HR-EMP-00021','Dhanashree O':'HR-EMP-00027','Vaibhav D':'HR-EMP-00033'};
+// Frappe's own values — not Samavesh labels.
+var FR_LOG_TYPES  = ['IN','OUT'];
+var FR_ATT_STATUS = ['Present','Absent','On Leave','Half Day','Work From Home'];
+var FR_LEAVE_TYPES= ['Casual Leave','Sick Leave','Privilege Leave'];
+var FR_LV_STATUS  = ['Open','Approved','Rejected'];
+
+var FR_CHECKIN = [
+  {id:'EMP-CKIN-09-2026-00051', emp:'Rahul More',    log:'OUT', time:'29-08-2026 18:47:00'},
+  {id:'EMP-CKIN-09-2026-00050', emp:'Rahul More',    log:'IN',  time:'29-08-2026 10:13:16'},
+  {id:'EMP-CKIN-09-2026-00049', emp:'Dhanashree O',  log:'OUT', time:'29-08-2026 18:31:44'},
+  {id:'EMP-CKIN-09-2026-00048', emp:'Dhanashree O',  log:'IN',  time:'29-08-2026 09:59:15'},
+  {id:'EMP-CKIN-09-2026-00047', emp:'Sandip K',      log:'OUT', time:'29-08-2026 19:08:20'},
+  {id:'EMP-CKIN-09-2026-00046', emp:'Sandip K',      log:'IN',  time:'29-08-2026 10:18:40'},
+  {id:'EMP-CKIN-08-2026-00045', emp:'Rahul More',    log:'OUT', time:'28-08-2026 18:50:06'},
+  {id:'EMP-CKIN-08-2026-00044', emp:'Rahul More',    log:'IN',  time:'28-08-2026 09:30:06'},
+  {id:'EMP-CKIN-08-2026-00043', emp:'Vaibhav D',     log:'OUT', time:'28-08-2026 18:44:36'},
+  {id:'EMP-CKIN-08-2026-00042', emp:'Vaibhav D',     log:'IN',  time:'28-08-2026 10:06:38'}
 ];
-// State-specific holiday lists. The second entry is a clearly-marked sample placeholder: the wireframe's
-// source documents only ever reference Maharashtra, so a second real state would be invented vocabulary.
-var HOLIDAYS = {
-  'Maharashtra': [
-    {date:'2026-05-01', name:'Maharashtra Day'},
-    {date:'2026-08-15', name:'Independence Day'},
-    {date:'2026-08-27', name:'Ganesh Chaturthi'},
-    {date:'2026-10-02', name:'Gandhi Jayanti'}
+var FR_ATT = [
+  {emp:'Rahul More',   date:'2026-08-29', status:'Present',        inT:'10:13:16', outT:'18:47:00', hrs:'8.6', early:false},
+  {emp:'Sandip K',     date:'2026-08-29', status:'Present',        inT:'10:18:40', outT:'19:08:20', hrs:'8.8', early:false},
+  {emp:'Dhanashree O', date:'2026-08-29', status:'Present',        inT:'09:59:15', outT:'18:31:44', hrs:'8.5', early:false},
+  {emp:'Vaibhav D',    date:'2026-08-29', status:'Work From Home', inT:'09:48:02', outT:'18:22:10', hrs:'8.5', early:false},
+  {emp:'Rahul More',   date:'2026-08-28', status:'Present',        inT:'09:30:06', outT:'18:50:06', hrs:'9.3', early:false},
+  {emp:'Sandip K',     date:'2026-08-28', status:'On Leave',       inT:'', outT:'', hrs:'0.0', early:false},
+  {emp:'Dhanashree O', date:'2026-08-28', status:'Present',        inT:'10:06:52', outT:'17:58:47', hrs:'7.6', early:true},
+  {emp:'Vaibhav D',    date:'2026-08-28', status:'Present',        inT:'10:06:38', outT:'18:44:36', hrs:'8.6', early:false},
+  {emp:'Rahul More',   date:'2026-08-27', status:'Half Day',       inT:'10:00:58', outT:'14:03:58', hrs:'4.0', early:false},
+  {emp:'Sandip K',     date:'2026-08-27', status:'Absent',         inT:'', outT:'', hrs:'0.0', early:false}
+];
+var FR_LEAVE = [
+  {id:'HR-LAP-2026-00019', emp:'Sandip K',     type:'Casual Leave',    from:'2026-08-28', to:'2026-08-28', days:1, status:'Approved', reason:'Family function'},
+  {id:'HR-LAP-2026-00020', emp:'Dhanashree O', type:'Sick Leave',      from:'2026-09-04', to:'2026-09-05', days:2, status:'Open',     reason:'Fever'},
+  {id:'HR-LAP-2026-00021', emp:'Rahul More',   type:'Privilege Leave', from:'2026-09-10', to:'2026-09-12', days:3, status:'Open',     reason:'Travel'}
+];
+var FR_ALLOC = {};
+FR_EMP.forEach(function(e,i){
+  FR_ALLOC[e] = {'Casual Leave':{alloc:12, used:(e==='Sandip K'?1:0)},
+                 'Sick Leave':{alloc:8, used:i%2}, 'Privilege Leave':{alloc:15, used:i}};
+});
+// One Holiday List per state is how Frappe HR does state-specific calendars — assigned on the Employee.
+var FR_HOL = {
+  'Maharashtra 2026': [
+    {date:'2026-09-15', name:'Ganesh Chaturthi'},
+    {date:'2026-10-02', name:'Gandhi Jayanti'},
+    {date:'2026-11-08', name:'Diwali'}
   ],
-  'Sample State (placeholder)': [
-    {date:'2026-08-15', name:'Independence Day'},
-    {date:'2026-10-02', name:'Gandhi Jayanti'}
+  'Sample State 2026 — placeholder': [
+    {date:'2026-10-02', name:'Gandhi Jayanti'},
+    {date:'2026-12-25', name:'Christmas'}
   ]
 };
-var HOLIDAY_STATE_SEL = 'Maharashtra';
-var FELLOW_STATE = {'Rahul More':'Maharashtra','Sandip K':'Maharashtra','Dhanashree O':'Maharashtra','Vaibhav D':'Maharashtra','Priya Kulkarni':'Maharashtra','Sunil Kadam':'Maharashtra'};
+var FR_EMP_HOL = {'Rahul More':'Maharashtra 2026','Sandip K':'Maharashtra 2026','Dhanashree O':'Maharashtra 2026','Vaibhav D':'Maharashtra 2026'};
+var FR_TABS = {
+  fellow: ['Employee Checkin','Attendance','Leave Application','Holiday List'],
+  admin:  ['Attendance','Employee Checkin','Leave Application','Leave Allocation','Holiday List']
+};
+var FR_VIEW = {
+  fellow: {tab:'Employee Checkin', form:null, msg:'', err:false, f:{}, hol:'Maharashtra 2026', full:false, draft:{}},
+  admin:  {tab:'Attendance',       form:null, msg:'', err:false, f:{}, hol:'Maharashtra 2026', full:false, draft:{}}
+};
+function frV(role){ return FR_VIEW[role==='admin'?'admin':'fellow']; }
+function frMe(){ return hrFellow(); }
+function frRows(role, list){                       // a Fellow sees only their own Employee record
+  return role==='admin' ? list : list.filter(function(r){ return r.emp===frMe(); });
+}
+function frToday(){
+  var d=new Date(), p=function(n){ return (n<10?'0':'')+n; };
+  return p(d.getDate())+'-'+p(d.getMonth()+1)+'-'+d.getFullYear()+' '+p(d.getHours())+':'+p(d.getMinutes())+':'+p(d.getSeconds());
+}
+function frAttPill(s){
+  var c = s==='Present'?'green' : s==='On Leave'?'amber' : s==='Work From Home'?'blue' : s==='Half Day'?'grey' : 'red';
+  return '<span class="fd-pill '+c+'">'+s+'</span>';
+}
+function frLvPill(s){
+  return '<span class="fd-pill '+(s==='Approved'?'green':s==='Rejected'?'red':'blue')+'">'+s+'</span>';
+}
+
+// ---- the desk chrome ----
+function renderHrDesk(role){
+  var host = document.getElementById(role==='admin' ? 'hrDeskAdmin' : 'hrDeskFellow');
+  if(!host) return;
+  var v = frV(role), who = role==='admin' ? 'Meera Nair' : frMe();
+  var tabs = FR_TABS[role==='admin'?'admin':'fellow'].map(function(t){
+    return '<button class="fd-tab'+(t===v.tab?' on':'')+'" type="button" onclick="frTab(\''+role+'\',\''+t+'\')">'+t+'</button>';
+  }).join('');
+  var crumb = (role==='admin'?'HR':'My Attendance')+' &rsaquo; <b>'+v.tab+'</b>'+(v.form?' &rsaquo; New '+v.form:'');
+  var body = v.form ? frForm(role) : frList(role);
+  var fullBtn = '<button class="fd-btn" type="button" onclick="frFull(\''+role+'\')">'+(v.full?'Exit full screen ✕':'Full screen ⤢')+'</button>';
+  var msg = v.msg ? '<div class="fd-msg'+(v.err?' err':'')+'">'+v.msg+'</div>' : '';
+  host.innerHTML =
+    '<div class="fdesk'+(v.full?' full':'')+'">'+
+      '<div class="fd-top"><span class="fd-logo">D</span><span class="fd-crumb">'+crumb+'</span>'+
+        '<span class="fd-search">Search or type a command (Ctrl + G)</span>'+
+        fullBtn+'<span class="fd-av">'+who.charAt(0)+'</span></div>'+
+      '<div class="fd-tabs">'+tabs+'</div>'+ body + msg +
+    '</div>'+ (v.full ? '' : frFooter(role));
+}
+function frFull(role){
+  var v=frV(role); v.full=!v.full;
+  document.body.style.overflow = v.full ? 'hidden' : '';
+  var host=document.getElementById(role==='admin'?'hrDeskAdmin':'hrDeskFellow');
+  var sc=host; while(sc && sc.className.indexOf('screen')<0) sc=sc.parentElement;
+  if(sc) sc.classList.toggle('hr-fullscreen', v.full);   // see .screen.hr-fullscreen — frees position:fixed
+  renderHrDesk(role);
+}
+document.addEventListener('keydown', function(e){
+  if(e.key!=='Escape') return;
+  ['fellow','admin'].forEach(function(r){ if(frV(r).full) frFull(r); });
+});
+function frTab(role, tab){ var v=frV(role); v.tab=tab; v.form=null; v.msg=''; v.f={}; v.draft={}; renderHrDesk(role); }
+function frNew(role, dt){ var v=frV(role); v.form=dt; v.msg=''; v.draft={}; renderHrDesk(role); }
+function frCancel(role){ var v=frV(role); v.form=null; v.msg=''; v.draft={}; renderHrDesk(role); }
+function frSetF(role, key, val){ var v=frV(role); v.f[key]=val; v.msg=''; renderHrDesk(role); }
+function frSetHol(role, val){ var v=frV(role); v.hol=val; renderHrDesk(role); }
+function frSide(role, extra){
+  return '<div class="fd-side"><div class="fs-l">Filter By</div>'+
+    '<select onchange="frSetF(\''+role+'\',\'assigned\',this.value)"><option value="">Assigned To</option>'+
+      FR_EMP.map(function(e){ return '<option'+(frV(role).f.assigned===e?' selected':'')+'>'+e+'</option>'; }).join('')+'</select>'+
+    '<select onchange="frSetF(\''+role+'\',\'created\',this.value)"><option value="">Created By</option><option'+(frV(role).f.created==='Administrator'?' selected':'')+'>Administrator</option></select>'+
+    (extra||'')+
+    '<div class="fs-l" style="margin-top:12px">Save Filter</div><input placeholder="Filter Name" onchange="frSaveFilter(this,\''+role+'\')" />'+
+  '</div>';
+}
+function frSaveFilter(inp, role){
+  var v=frV(role);
+  v.msg = inp.value.trim() ? 'Filter “'+inp.value.trim()+'” saved for this list.' : 'Give the filter a name to save it.';
+  v.err = !inp.value.trim();
+  renderHrDesk(role);
+}
+
+// ---- list views ----
+function frList(role){
+  var v=frV(role), admin = role==='admin';
+  var head, filters, cols, rows, count, side='';
+
+  if(v.tab==='Employee Checkin'){
+    var ck = frRows(role, FR_CHECKIN).filter(function(r){
+      return (!v.f.log || r.log===v.f.log) && (!v.f.emp || r.emp===v.f.emp) && (!v.f.assigned || r.emp===v.f.assigned);
+    });
+    head = frHead(role,'Employee Checkin','<button class="fd-btn pri" type="button" onclick="frNew(\''+role+'\',\'Employee Checkin\')">+ Add Employee Checkin</button>');
+    filters = (admin?frSel(role,'emp','Employee Name',FR_EMP):'')+frSel(role,'log','Log Type',FR_LOG_TYPES);
+    cols = ['Employee Name','Log Type','Time','ID'];
+    rows = ck.map(function(r){
+      return '<tr><td><b>'+r.emp+'</b></td><td><span class="fd-pill '+(r.log==='IN'?'green':'grey')+'">'+r.log+'</span></td>'+
+        '<td>'+r.time+'</td><td>'+r.id+'</td></tr>'; });
+    count = ck.length+' of '+FR_CHECKIN.length;
+
+  } else if(v.tab==='Attendance'){
+    var at = frRows(role, FR_ATT).filter(function(r){
+      return (!v.f.status || r.status===v.f.status) && (!v.f.emp || r.emp===v.f.emp) && (!v.f.assigned || r.emp===v.f.assigned);
+    });
+    head = frHead(role,'Attendance','<button class="fd-btn" type="button" onclick="frExport(\''+role+'\')">Export</button>');
+    filters = (admin?frSel(role,'emp','Employee Name',FR_EMP):'')+frSel(role,'status','Status',FR_ATT_STATUS)+frSel(role,'leaveType','Leave Type',FR_LEAVE_TYPES);
+    cols = ['Employee Name','Status','Attendance Date','In Time','Out Time','Gross Hours','Early Exit'];
+    rows = at.map(function(r){
+      return '<tr><td><b>'+r.emp+'</b></td><td>'+frAttPill(r.status)+'</td><td>'+hrDate(r.date)+'</td>'+
+        '<td class="fd-in">'+(r.inT||'--')+'</td><td class="fd-out">'+(r.outT||'--')+'</td><td>'+r.hrs+'</td>'+
+        '<td>'+(r.early?'✔':'')+'</td></tr>'; });
+    count = at.length+' of '+FR_ATT.length;
+
+  } else if(v.tab==='Leave Application'){
+    var lv = frRows(role, FR_LEAVE).filter(function(r){
+      return (!v.f.status || r.status===v.f.status) && (!v.f.leaveType || r.type===v.f.leaveType) && (!v.f.assigned || r.emp===v.f.assigned);
+    });
+    head = frHead(role,'Leave Application','<button class="fd-btn pri" type="button" onclick="frNew(\''+role+'\',\'Leave Application\')">+ Add Leave Application</button>');
+    filters = frSel(role,'status','Status',FR_LV_STATUS)+frSel(role,'leaveType','Leave Type',FR_LEAVE_TYPES);
+    cols = ['ID','Employee Name','Leave Type','From Date','To Date','Total Days','Status','Reason'].concat(admin?['Action']:[]);
+    rows = lv.map(function(r){
+      var act = admin ? '<td>'+(r.status==='Open'
+        ? '<button class="fd-btn sm pri" type="button" onclick="frDecide(\''+role+'\',\''+r.id+'\',\'Approved\')">Approve</button> '+
+          '<button class="fd-btn sm" type="button" onclick="frDecide(\''+role+'\',\''+r.id+'\',\'Rejected\')">Reject</button>'
+        : '<span style="color:var(--muted)">—</span>')+'</td>' : '';
+      return '<tr><td>'+r.id+'</td><td><b>'+r.emp+'</b></td><td>'+r.type+'</td><td>'+hrDate(r.from)+'</td><td>'+hrDate(r.to)+'</td>'+
+        '<td>'+r.days+'</td><td>'+frLvPill(r.status)+'</td><td>'+r.reason+'</td>'+act+'</tr>'; });
+    count = lv.length+' of '+FR_LEAVE.length;
+
+  } else if(v.tab==='Leave Allocation'){
+    head = frHead(role,'Leave Allocation','');
+    filters = frSel(role,'leaveType','Leave Type',FR_LEAVE_TYPES);
+    cols = ['Employee Name','Employee ID','Leave Type','New Leaves Allocated','Used','Balance'];
+    rows = [];
+    FR_EMP.forEach(function(e){
+      FR_LEAVE_TYPES.forEach(function(t){
+        if(v.f.leaveType && t!==v.f.leaveType) return;
+        var a = FR_ALLOC[e][t];
+        rows.push('<tr><td><b>'+e+'</b></td><td>'+FR_EMPID[e]+'</td><td>'+t+'</td>'+
+          '<td><input type="number" min="0" value="'+a.alloc+'" onchange="frAlloc(\''+role+'\',\''+e+'\',\''+t+'\',this.value)" /></td>'+
+          '<td>'+a.used+'</td><td><b>'+(a.alloc-a.used)+'</b></td></tr>');
+      });
+    });
+    count = rows.length+' of '+(FR_EMP.length*FR_LEAVE_TYPES.length);
+
+  } else {   // Holiday List
+    var lists = Object.keys(FR_HOL), cur = v.hol, mine = FR_EMP_HOL[frMe()];
+    if(!admin) cur = mine;
+    head = frHead(role,'Holiday List', admin
+      ? '<button class="fd-btn pri" type="button" onclick="frNew(\''+role+'\',\'Holiday\')">+ Add Holiday</button>' : '');
+    filters = admin
+      ? '<select onchange="frSetHol(\''+role+'\',this.value)">'+lists.map(function(l){ return '<option'+(l===cur?' selected':'')+'>'+l+'</option>'; }).join('')+'</select>'
+      : '<span style="font-size:12px;color:var(--muted)">Assigned to you on your Employee record: <b style="color:#171717">'+cur+'</b> (read-only)</span>';
+    cols = ['Date','Holiday'];
+    rows = (FR_HOL[cur]||[]).map(function(h){ return '<tr><td>'+hrDate(h.date)+'</td><td><b>'+h.name+'</b></td></tr>'; });
+    count = rows.length+' holidays';
+  }
+
+  var table = rows.length
+    ? '<table class="fd-table"><thead><tr>'+cols.map(function(c){return '<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>'+rows.join('')+'</tbody></table>'
+    : '<div class="fd-none">No records match this filter.</div>';
+  return head+'<div class="fd-body">'+frSide(role,side)+'<div class="fd-main">'+
+    '<div class="fd-filters">'+filters+'<span class="fd-count">'+count+'</span></div>'+table+'</div></div>';
+}
+function frHead(role, title, acts){
+  return '<div class="fd-head"><h4>'+title+'</h4><div class="fd-acts">'+
+    '<button class="fd-btn" type="button" onclick="frRefresh(\''+role+'\')">List View ⌄</button>'+(acts||'')+'</div></div>';
+}
+function frSel(role, key, label, opts){
+  var cur = frV(role).f[key] || '';
+  return '<select onchange="frSetF(\''+role+'\',\''+key+'\',this.value)"><option value="">'+label+'</option>'+
+    opts.map(function(o){ return '<option'+(o===cur?' selected':'')+'>'+o+'</option>'; }).join('')+'</select>';
+}
+function frRefresh(role){ var v=frV(role); v.msg='List refreshed — this is the standard list view.'; v.err=false; renderHrDesk(role); }
+function frExport(role){
+  var v=frV(role);
+  v.msg='Export started — the filtered Attendance list downloads as a spreadsheet. This is the standard list-view export, not a custom report.';
+  v.err=false; renderHrDesk(role);
+}
+
+// ---- form views (the standard New <doctype> forms) ----
+function frForm(role){
+  // v.draft holds what the user typed. A validation error re-renders the form, and without this the
+  // typed values would be wiped — which is not how the real form behaves.
+  var v=frV(role), admin=role==='admin', me=frMe(), f, d=v.draft||{};
+  if(v.form==='Employee Checkin'){
+    f = '<div><label>Employee <span class="req">*</span></label>'+
+          (admin ? '<select id="frckEmp">'+FR_EMP.map(function(e){return '<option>'+e+'</option>';}).join('')+'</select>'
+                 : '<input class="ff-ro" id="frckEmp" value="'+me+'" readonly />')+'</div>'+
+        '<div><label>Time <span class="req">*</span></label><input class="ff-ro" id="frckTime" value="'+frToday()+'" readonly /><div style="font-size:11px;color:var(--muted);margin-top:4px">Asia/Kolkata</div></div>'+
+        '<div><label>Log Type</label><select id="frckLog"><option value="">Select…</option>'+FR_LOG_TYPES.map(function(l){return '<option'+(d.log===l?' selected':'')+'>'+l+'</option>';}).join('')+'</select></div>'+
+        '<div><label>Location / Device ID</label><input id="frckLoc" placeholder="Pune, MH" value="'+(d.loc||'')+'" /></div>'+
+        '<div class="ff-chk"><input type="checkbox" id="frckSkip" /><label style="margin:0">Skip Auto Attendance</label></div>'+
+        '<div class="ff-full"><button class="fd-btn pri" type="button" onclick="frSaveCheckin(\''+role+'\')">Save</button> '+
+          '<button class="fd-btn" type="button" onclick="frCancel(\''+role+'\')">Cancel</button></div>';
+  } else if(v.form==='Leave Application'){
+    f = '<div><label>Employee <span class="req">*</span></label>'+
+          (admin ? '<select id="frlvEmp">'+FR_EMP.map(function(e){return '<option>'+e+'</option>';}).join('')+'</select>'
+                 : '<input class="ff-ro" id="frlvEmp" value="'+me+'" readonly />')+'</div>'+
+        '<div><label>Leave Type <span class="req">*</span></label><select id="frlvType">'+FR_LEAVE_TYPES.map(function(t){return '<option'+(d.type===t?' selected':'')+'>'+t+'</option>';}).join('')+'</select></div>'+
+        '<div><label>From Date <span class="req">*</span></label><input type="date" id="frlvFrom" value="'+(d.from||'')+'" /></div>'+
+        '<div><label>To Date <span class="req">*</span></label><input type="date" id="frlvTo" value="'+(d.to||'')+'" /></div>'+
+        '<div class="ff-full"><label>Reason</label><textarea id="frlvReason" rows="2" placeholder="Reason for leave">'+(d.reason||'')+'</textarea></div>'+
+        '<div class="ff-full"><button class="fd-btn pri" type="button" onclick="frSaveLeave(\''+role+'\')">Save</button> '+
+          '<button class="fd-btn" type="button" onclick="frCancel(\''+role+'\')">Cancel</button></div>';
+  } else {   // Holiday, added to a Holiday List
+    f = '<div><label>Holiday List <span class="req">*</span></label><input class="ff-ro" value="'+v.hol+'" readonly /></div>'+
+        '<div><label>Date <span class="req">*</span></label><input type="date" id="frhDate" value="'+(d.date||'')+'" /></div>'+
+        '<div class="ff-full"><label>Description <span class="req">*</span></label><input id="frhName" placeholder="Holiday name" value="'+(d.name||'')+'" /></div>'+
+        '<div class="ff-full"><button class="fd-btn pri" type="button" onclick="frSaveHoliday(\''+role+'\')">Save</button> '+
+          '<button class="fd-btn" type="button" onclick="frCancel(\''+role+'\')">Cancel</button></div>';
+  }
+  return '<div class="fd-head"><h4>New '+v.form+'</h4> <span class="fd-notsaved">Not Saved</span></div>'+
+         '<div class="fd-form">'+f+'</div>';
+}
+function frSaveCheckin(role){
+  var v=frV(role), emp=document.getElementById('frckEmp').value, log=document.getElementById('frckLog').value;
+  var loc=document.getElementById('frckLoc').value.trim(), t=document.getElementById('frckTime').value,
+      skip=document.getElementById('frckSkip').checked;
+  v.draft={log:log, loc:loc};
+  if(!log){ v.msg='Log Type is required — pick IN or OUT.'; v.err=true; renderHrDesk(role); return; }
+  FR_CHECKIN.unshift({id:'EMP-CKIN-09-2026-000'+(52+FR_CHECKIN.length), emp:emp, log:log, time:t});
+  // Standard behaviour: Shift Type auto-attendance turns check-ins into the day's Attendance record,
+  // unless Skip Auto Attendance was ticked on the checkin.
+  if(!skip && log==='IN'){
+    var iso = t.slice(6,10)+'-'+t.slice(3,5)+'-'+t.slice(0,2);
+    if(!FR_ATT.filter(function(r){ return r.emp===emp && r.date===iso; }).length){
+      FR_ATT.unshift({emp:emp, date:iso, status:'Present', inT:t.slice(11), outT:'', hrs:'0.0', early:false});
+    }
+  }
+  v.form=null; v.draft={}; v.err=false;
+  v.msg='Employee Checkin saved'+(loc?' ('+loc+')':'')+'. '+(skip
+    ? 'Skip Auto Attendance was ticked, so no Attendance record was created.'
+    : (log==='IN' ? 'Auto Attendance created today’s Attendance record — open the Attendance tab.'
+                  : 'The OUT log closes the day on the existing Attendance record.'));
+  renderHrDesk(role);
+}
+function frSaveLeave(role){
+  var v=frV(role), emp=document.getElementById('frlvEmp').value, type=document.getElementById('frlvType').value,
+      from=document.getElementById('frlvFrom').value, to=document.getElementById('frlvTo').value,
+      reason=document.getElementById('frlvReason').value.trim();
+  v.draft={type:type, from:from, to:to, reason:reason};
+  if(!from){ v.msg='From Date is required.'; v.err=true; renderHrDesk(role); return; }
+  if(!to){ v.msg='To Date is required.'; v.err=true; renderHrDesk(role); return; }
+  if(to<from){ v.msg='To Date cannot be before From Date.'; v.err=true; renderHrDesk(role); return; }
+  var days = Math.round((new Date(to)-new Date(from))/86400000)+1;
+  var a = FR_ALLOC[emp][type], left = a.alloc-a.used;
+  if(days>left){ v.msg='Only '+left+' day'+(left===1?'':'s')+' left in this employee’s '+type+' allocation — asked for '+days+'.'; v.err=true; renderHrDesk(role); return; }
+  FR_LEAVE.unshift({id:'HR-LAP-2026-000'+(22+FR_LEAVE.length), emp:emp, type:type, from:from, to:to, days:days,
+                    status:'Open', reason:reason||'—'});
+  v.form=null; v.draft={}; v.err=false; v.tab='Leave Application';
+  v.msg='Leave Application saved with status Open. Nothing is deducted until the approver approves it.';
+  renderHrDesk(role);
+  if(role==='admin') renderHrDesk('fellow'); else renderHrDesk('admin');
+}
+function frDecide(role, id, decision){
+  var v=frV(role), r=FR_LEAVE.filter(function(x){ return x.id===id; })[0];
+  if(!r) return;
+  r.status = decision;
+  if(decision==='Approved'){
+    FR_ALLOC[r.emp][r.type].used += r.days;                 // only approval moves an allocation
+    var d=new Date(r.from), end=new Date(r.to);
+    while(d<=end){
+      var iso=d.toISOString().slice(0,10);
+      if(!FR_ATT.filter(function(x){ return x.emp===r.emp && x.date===iso; }).length){
+        FR_ATT.unshift({emp:r.emp, date:iso, status:'On Leave', inT:'', outT:'', hrs:'0.0', early:false});
+      }
+      d=new Date(d.getTime()+86400000);
+    }
+    v.msg=r.emp+'’s '+r.type+' approved — '+r.days+' day'+(r.days===1?'':'s')+' deducted from the Leave Allocation, and those dates now read On Leave in Attendance.';
+  } else {
+    v.msg=r.emp+'’s '+r.type+' rejected. The allocation is untouched.';
+  }
+  v.err=false; renderHrDesk('admin'); renderHrDesk('fellow');
+}
+function frAlloc(role, emp, type, val){
+  var n=parseInt(val,10); if(isNaN(n)||n<0) n=0;
+  FR_ALLOC[emp][type].alloc = n;
+  var v=frV(role); v.msg=emp+'’s '+type+' allocation set to '+n+' days.'; v.err=false;
+  renderHrDesk('admin'); renderHrDesk('fellow');
+}
+function frSaveHoliday(role){
+  var v=frV(role), d=document.getElementById('frhDate').value, n=document.getElementById('frhName').value.trim();
+  v.draft={date:d, name:n};
+  if(!d){ v.msg='Date is required.'; v.err=true; renderHrDesk(role); return; }
+  if(!n){ v.msg='Description is required.'; v.err=true; renderHrDesk(role); return; }
+  FR_HOL[v.hol] = FR_HOL[v.hol] || [];
+  FR_HOL[v.hol].push({date:d, name:n});
+  FR_HOL[v.hol].sort(function(a,b){ return a.date<b.date?-1:1; });
+  v.form=null; v.draft={}; v.err=false; v.msg=n+' added to '+v.hol+'.';
+  renderHrDesk('admin'); renderHrDesk('fellow');
+}
+
+// ---- reference: the same screens on a live Frappe HR bench ----
+// No explanatory copy on these screens (Shweta, 2026-09-01): this is a prototype the client clicks, not
+// a document they read. Where standard Frappe HR differs from Point 9 — Work From Home is raised via an
+// Attendance Request rather than chosen at check-in, and the old "working now" panel is not a screen the
+// app ships — that is recorded in BUILD_STATUS.md and the design doc for the team, not shown to the client.
+var HR_SHOTS = [
+  {src:'img/frappe-hr-checkin-form.png', t:'Employee Checkin'},
+  {src:'img/frappe-hr-checkin-list.png', t:'Employee Checkin list'},
+  {src:'img/frappe-hr-attendance-list.png', t:'Attendance'}
+];
+function frFooter(role){
+  return '<div class="fd-ref">'+ HR_SHOTS.map(function(s){
+    return '<a href="'+s.src+'" target="_blank" rel="noopener" title="'+s.t+' — open full size">'+
+      '<img src="'+s.src+'" alt="'+s.t+' — HR screen" loading="lazy" /></a>';
+  }).join('') +'</div>';
+}
+
+// ---- Shared helpers, kept because Camps uses them (the HRMS module that introduced them was
+//      removed on 2026-09-01 — attendance and leave are delivered by the standard Frappe HR app). ----
 function hrFellow(){ return (typeof CASE_FELLOW!=='undefined') ? CASE_FELLOW : 'Rahul More'; }
 function hrDate(iso){
   if(!iso) return '—';
   var p = String(iso).split('-'); if(p.length!==3) return iso;
   var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   return Number(p[2])+' '+m[Number(p[1])-1]+' '+p[0];
-}
-function hrDayCount(from, to){
-  var a = new Date(from), b = new Date(to);
-  return Math.round((b-a)/86400000) + 1;
-}
-function hrDateRange(from, to){
-  var out=[], a=new Date(from), b=new Date(to);
-  while(a<=b){ out.push(a.toISOString().slice(0,10)); a=new Date(a.getTime()+86400000); }
-  return out;
-}
-function leaveRemaining(fellow, type){
-  var b = (LEAVE_BALANCE[fellow]||{})[type] || {total:0,used:0};
-  return b.total - b.used;
-}
-function statusPill(status){
-  var cls = status==='Approved' ? 'green' : (status==='Rejected' ? 'red' : 'amber');
-  return '<span class="pill '+cls+'"><span class="pdot"></span>'+status+'</span>';
-}
-// Write attendance rows for a date range — used when a leave is approved, which is the only way a row
-// can read "On Leave". Writes into the Fellow's own table (if it is their leave) and the Admin table.
-function addAttendanceRows(fellow, dates, status){
-  dates.forEach(function(iso){
-    if(fellow===hrFellow()){
-      var fb = document.querySelector('#fAttTable tbody');
-      if(fb && !fb.querySelector('tr[data-date="'+iso+'"][data-status="'+status+'"]')){
-        var tr = document.createElement('tr');
-        tr.setAttribute('data-date', iso); tr.setAttribute('data-status', status);
-        tr.innerHTML = '<td>'+hrDate(iso)+'</td><td>—</td><td>—</td><td>0.0</td><td>'+statusPill(status)+'</td><td>—</td>';
-        fb.insertBefore(tr, fb.firstChild);
-      }
-    }
-    var ab = document.querySelector('#attTable tbody');
-    if(ab && !ab.querySelector('tr[data-fellow="'+fellow+'"][data-date="'+iso+'"][data-status="'+status+'"]')){
-      var tr2 = document.createElement('tr');
-      tr2.setAttribute('data-fellow', fellow); tr2.setAttribute('data-date', iso); tr2.setAttribute('data-status', status);
-      tr2.innerHTML = '<td>'+fellow+'</td><td>'+hrDate(iso)+'</td><td>'+statusPill(status)+'</td><td>—</td><td>—</td><td>0.0</td><td>—</td>';
-      ab.insertBefore(tr2, ab.firstChild);
-    }
-  });
-}
-// ---- Fellow: balance, apply, my requests, my state's holidays ----
-function renderMyLeave(){
-  var host = document.getElementById('myLeave');
-  if(!host) return;
-  var f = hrFellow(), state = FELLOW_STATE[f] || 'Maharashtra';
-  var tiles = LEAVE_TYPES.map(function(t){
-    var b = (LEAVE_BALANCE[f]||{})[t] || {total:0,used:0};
-    return '<div class="lb-tile"><div class="lbt">'+t+' leave</div><div class="lbv">'+(b.total-b.used)+'</div>'+
-      '<div class="lbs">of '+b.total+' · '+b.used+' used</div></div>';
-  }).join('');
-  var mine = LEAVE_REQUESTS.filter(function(r){ return r.fellow===f; });
-  var reqs = mine.length ? mine.map(function(r){
-    return '<div class="lreq"><span class="lrw">'+r.type+'</span>'+
-      '<span class="lrd">'+hrDate(r.from)+(r.from!==r.to?' – '+hrDate(r.to):'')+' · '+r.days+' day'+(r.days===1?'':'s')+'</span>'+
-      '<span class="lrr">'+r.reason+(r.note?' — <i>'+r.note+'</i>':'')+'</span>'+statusPill(r.status)+'</div>';
-  }).join('') : '<div class="lreq" style="color:var(--muted)">No leave applied for yet.</div>';
-  var hols = (HOLIDAYS[state]||[]).map(function(h){
-    return '<div class="hol-row"><span class="hd">'+hrDate(h.date)+'</span><span>'+h.name+'</span></div>';
-  }).join('');
-  host.innerHTML =
-    '<div class="hr-sec"><div class="hrh"><h3>My leave</h3><span>Balance, applications and your state\'s holiday list</span></div>'+
-      '<div class="leave-bal">'+tiles+'</div>'+
-      '<div class="leave-form">'+
-        '<div><label>Leave type</label><select id="lvType">'+LEAVE_TYPES.map(function(t){return '<option>'+t+'</option>';}).join('')+'</select></div>'+
-        '<div><label>From</label><input type="date" id="lvFrom" /></div>'+
-        '<div><label>To</label><input type="date" id="lvTo" /></div>'+
-        '<div class="lf-reason"><label>Reason</label><input type="text" id="lvReason" placeholder="Why you need the leave" /></div>'+
-        '<button class="btn btn-primary btn-sm" type="button" onclick="applyLeave(this)">Apply for leave</button>'+
-      '</div>'+
-      '<div style="font-size:13px;font-weight:600;margin-bottom:2px">My requests</div>'+reqs+
-      '<div style="font-size:13px;font-weight:600;margin:14px 0 2px">Holidays · '+state+
-        (state.indexOf('placeholder')>-1 ? ' <span class="sample-tag">sample</span>' : '')+'</div>'+hols+
-    '</div>';
-}
-function applyLeave(btn){
-  var type = document.getElementById('lvType').value;
-  var from = document.getElementById('lvFrom').value;
-  var to   = document.getElementById('lvTo').value;
-  var reason = document.getElementById('lvReason').value.trim();
-  if(!from){ alert('From date is required.'); return; }
-  if(!to){ alert('To date is required.'); return; }
-  if(new Date(to) < new Date(from)){ alert('The To date cannot be before the From date.'); return; }
-  if(!reason){ alert('A reason is required — the Program Admin sees it when approving.'); return; }
-  var days = hrDayCount(from, to);
-  var f = hrFellow();
-  if(days > leaveRemaining(f, type)){
-    alert(days+' day'+(days===1?'':'s')+' requested but only '+leaveRemaining(f,type)+' '+type+' leave remaining. Applying anyway is not allowed.');
-    return;
-  }
-  LEAVE_REQUESTS.unshift({id:'LV-2026-'+(100+LEAVE_REQUESTS.length), fellow:f, type:type, from:from, to:to,
-    days:days, reason:reason, status:'Pending', note:''});
-  renderMyLeave();                       // balance deliberately untouched — only approval moves it
-  if(typeof renderAdminLeave==='function') renderAdminLeave();
-  alert('Leave applied — '+days+' day'+(days===1?'':'s')+' of '+type+' leave sent to the Program Admin. Your balance changes only once it is approved.');
-}
-// ---- Admin: request queue, balance adjustment, holiday calendar ----
-function renderAdminLeave(){
-  var host = document.getElementById('adminLeave');
-  if(!host) return;
-  var pending = LEAVE_REQUESTS.filter(function(r){ return r.status==='Pending'; });
-  var decided = LEAVE_REQUESTS.filter(function(r){ return r.status!=='Pending'; });
-  var row = function(r, actions){
-    return '<div class="lreq"><span class="lrw">'+r.fellow+'</span>'+
-      '<span class="lrd">'+r.type+' · '+hrDate(r.from)+(r.from!==r.to?' – '+hrDate(r.to):'')+' · '+r.days+'d</span>'+
-      '<span class="lrr">'+r.reason+(r.note?' — <i>'+r.note+'</i>':'')+'</span>'+
-      (actions
-        ? '<span class="lra"><input type="text" placeholder="Note (optional)" data-note="'+r.id+'" />'+
-          '<button class="btn btn-primary btn-sm" type="button" onclick="decideLeave(\''+r.id+'\',\'approve\')">Approve</button>'+
-          '<button class="btn btn-ghost btn-sm" type="button" onclick="decideLeave(\''+r.id+'\',\'reject\')">Reject</button></span>'
-        : statusPill(r.status))+'</div>';
-  };
-  var grid = Object.keys(LEAVE_BALANCE).map(function(f){
-    return '<div class="lb-tile"><div class="lbt">'+f+'</div>'+
-      LEAVE_TYPES.map(function(t){
-        var b = LEAVE_BALANCE[f][t];
-        return '<div class="lbs" style="margin-top:6px">'+t+': <input type="number" min="0" value="'+b.total+'" '+
-          'onchange="adjustBalance(\''+f+'\',\''+t+'\',this.value)" /> total · '+b.used+' used</div>';
-      }).join('')+'</div>';
-  }).join('');
-  host.innerHTML =
-    '<div class="hr-sec"><div class="hrh"><h3>Leave requests</h3><span>Approving deducts the balance and marks those dates On Leave</span></div>'+
-      (pending.length ? pending.map(function(r){ return row(r,true); }).join('') : '<div class="lreq" style="color:var(--muted)">No pending requests.</div>')+
-      (decided.length ? '<div style="font-size:13px;font-weight:600;margin:14px 0 2px">Decided</div>'+decided.map(function(r){ return row(r,false); }).join('') : '')+
-    '</div>'+
-    '<div class="hr-sec"><div class="hrh"><h3>Leave balances</h3><span>Adjustable by the Program Admin</span></div>'+
-      '<div class="leave-bal">'+grid+'</div></div>'+
-    '<div class="hr-sec"><div class="hrh"><h3>Holiday calendar</h3><span>State-specific — a Fellow sees the list for their own state</span></div>'+
-      '<div id="holHost"></div></div>';
-  renderHolidays();
-}
-function decideLeave(id, action){
-  var r = LEAVE_REQUESTS.filter(function(x){ return x.id===id; })[0];
-  if(!r) return;
-  var noteEl = document.querySelector('[data-note="'+id+'"]');
-  r.note = noteEl && noteEl.value.trim() ? noteEl.value.trim() : (action==='approve' ? 'Approved.' : 'Rejected.');
-  if(action==='approve'){
-    r.status = 'Approved';
-    var b = (LEAVE_BALANCE[r.fellow]||{})[r.type];
-    if(b) b.used += r.days;                                  // the only place a balance is deducted
-    addAttendanceRows(r.fellow, hrDateRange(r.from, r.to), 'On Leave');
-  } else {
-    r.status = 'Rejected';                                   // rejection never touches the balance
-  }
-  renderAdminLeave();
-  if(typeof renderMyLeave==='function') renderMyLeave();
-}
-function adjustBalance(fellow, type, value){
-  var b = (LEAVE_BALANCE[fellow]||{})[type];
-  if(!b) return;
-  b.total = Math.max(0, Number(value)||0);
-  renderAdminLeave();
-  if(typeof renderMyLeave==='function') renderMyLeave();
-}
-function renderHolidays(){
-  var host = document.getElementById('holHost');
-  if(!host) return;
-  var states = Object.keys(HOLIDAYS);
-  var opts = states.map(function(s){ return '<option'+(s===HOLIDAY_STATE_SEL?' selected':'')+'>'+s+'</option>'; }).join('');
-  var list = (HOLIDAYS[HOLIDAY_STATE_SEL]||[]).map(function(h){
-    return '<div class="hol-row"><span class="hd">'+hrDate(h.date)+'</span><span>'+h.name+'</span></div>';
-  }).join('');
-  host.innerHTML = '<div class="leave-form">'+
-      '<div><label>State</label><select onchange="setHolidayState(this)">'+opts+'</select></div>'+
-      '<div><label>Holiday date</label><input type="date" id="holDate" /></div>'+
-      '<div class="lf-reason"><label>Holiday name</label><input type="text" id="holName" placeholder="e.g. Diwali" /></div>'+
-      '<button class="btn btn-primary btn-sm" type="button" onclick="addHoliday(this)">Add holiday</button>'+
-    '</div>'+
-    (HOLIDAY_STATE_SEL.indexOf('placeholder')>-1 ? '<div style="margin-bottom:8px"><span class="sample-tag">Sample state — placeholder, not client-confirmed</span></div>' : '')+
-    (list || '<div class="hol-row" style="color:var(--muted)">No holidays scheduled for this state yet.</div>');
-}
-function setHolidayState(sel){ HOLIDAY_STATE_SEL = sel.value; renderHolidays(); }
-function addHoliday(btn){
-  var d = document.getElementById('holDate').value, n = document.getElementById('holName').value.trim();
-  if(!d){ alert('Holiday date is required.'); return; }
-  if(!n){ alert('Holiday name is required.'); return; }
-  HOLIDAYS[HOLIDAY_STATE_SEL] = HOLIDAYS[HOLIDAY_STATE_SEL] || [];
-  HOLIDAYS[HOLIDAY_STATE_SEL].push({date:d, name:n});
-  HOLIDAYS[HOLIDAY_STATE_SEL].sort(function(a,b){ return a.date<b.date?-1:1; });
-  renderHolidays();
-  if(typeof renderMyLeave==='function') renderMyLeave();
 }
 // ---- Fellow targets (Point 6 / Module 12) ----
 // One target per fellow x period x metric, exactly as the client doc specifies. A metric missing from
@@ -6524,7 +6528,7 @@ function renderFellowCards(){
   }).join('')+'</div>';
   host.innerHTML =
     fdashCard('people','teal',  c.students,      'Students assigned') +
-    fdashCard('file','gold',    c.appsAssigned,  'Applications assigned') +
+    fdashCard('file','gold',    c.appsAssigned,  'Application initiated') +
     fdashCard('file','blue',    c.docAssigned,   'Document support cases assigned') +
     fdashCard('check','green',  c.appsCompleted, 'Applications completed') +
     fdashCard('check','green',  c.docCompleted,  'Document cases completed') +
@@ -7213,8 +7217,7 @@ function filterAStu(){
   if(typeof renderFellowCards==='function') renderFellowCards();
   if(typeof renderMisAll==='function') renderMisAll();
   if(typeof renderMyTargets==='function') renderMyTargets();
-  if(typeof renderMyLeave==='function') renderMyLeave();
-  if(typeof renderAdminLeave==='function') renderAdminLeave();
+  if(typeof renderHrDesk==='function'){ renderHrDesk('fellow'); renderHrDesk('admin'); }
   if(typeof renderCampList==='function') renderCampList();
   if(typeof renderCampForm==='function') renderCampForm();
   if(typeof renderMyCamps==='function') renderMyCamps();
